@@ -1,0 +1,18 @@
+enum STATUS {
+  TO_DO,
+  IN_PROGRESS,
+  DONE,
+}
+
+enum ROLE {
+  DEVELOPER,
+  DESIGNER,
+  MANAGER,
+}
+
+enum PROJECT {
+  NIKE_SNEAKER,
+  NETFLIX,
+  LIBRA,
+}
+export { STATUS, ROLE, PROJECT };
