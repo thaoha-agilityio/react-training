@@ -1,4 +1,4 @@
-enum IStatus {
+enum Status {
   todo,
   inProgress,
   done,
@@ -8,6 +8,6 @@ export interface IUser {
   id: number;
   name: string;
   email: string;
-  status: IStatus;
+  status: Status;
   avatar: string;
 }
