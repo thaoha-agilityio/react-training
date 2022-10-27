@@ -1,13 +1,11 @@
-enum Status {
-  todo,
-  inProgress,
-  done,
-}
+import { STATUS, ROLE, PROJECT } from '../constants/user';
 
 export interface IUser {
-  id: number;
+  id: string;
   name: string;
   email: string;
-  status: Status;
+  role: ROLE;
+  project: PROJECT;
+  status: STATUS;
   avatar: string;
 }
