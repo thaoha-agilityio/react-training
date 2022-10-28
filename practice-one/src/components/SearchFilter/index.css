@@ -1,0 +1,19 @@
+.dropDown {
+  padding: 20px 20px 24px;
+  box-shadow: 0px 2px 5px var(--color-primary);
+  border-radius: 10px;
+}
+
+.dropDown h2 {
+  font-family: 'Inter';
+  font-weight: 600;
+  font-size: 25px;
+  line-height: calc(32 / 25);
+  color: var(--color-primary);
+}
+
+.dropDown-menu {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
