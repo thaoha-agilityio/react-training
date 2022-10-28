@@ -1,0 +1,11 @@
+.add-btn {
+  width: 116px;
+  height: 38px;
+  background: var(--color-secondary-100);
+  text-transform: uppercase;
+  border-radius: 5px;
+  font-family: 'Inter';
+  font-size: 14px;
+  line-height: calc(24 / 14);
+  color: #ffffff;
+}
