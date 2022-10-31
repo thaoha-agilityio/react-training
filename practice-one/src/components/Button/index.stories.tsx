@@ -2,18 +2,16 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import Button from '.';
 
 export default {
-  title: 'Components/Button',
+  title: 'Button',
   component: Button,
   argTypes: {
     variant: {
       defaultValue: 'primary',
       options: ['primary', 'secondary', 'tertiary'],
-      control: { type: 'radio' },
     },
     size: {
       defaultValue: 'small',
       options: ['small', 'medium', 'large'],
-      control: { type: 'radio' },
     },
     children: {
       defaultValue: 'click',
@@ -29,34 +27,36 @@ export default {
 
 const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 
-export const Primary = Template.bind({});
+const Primary = Template.bind({});
 
-export const Secondary = Template.bind({});
-
+const Secondary = Template.bind({});
 Secondary.args = {
   ...Secondary.args,
   variant: 'secondary',
 };
 
-export const Tertiary = Template.bind({});
-
+const Tertiary = Template.bind({});
 Tertiary.args = {
   ...Tertiary.args,
   variant: 'tertiary',
 };
 
-export const Small = Template.bind({});
+const Small = Template.bind({});
+Small.args = {
+  ...Small.args,
+  size: 'small',
+};
 
-export const Medium = Template.bind({});
-
+const Medium = Template.bind({});
 Medium.args = {
   ...Medium.args,
   size: 'medium',
 };
 
-export const Large = Template.bind({});
-
+const Large = Template.bind({});
 Large.args = {
   ...Large.args,
   size: 'large',
 };
+
+export { Primary, Secondary, Tertiary, Small, Medium, Large };
