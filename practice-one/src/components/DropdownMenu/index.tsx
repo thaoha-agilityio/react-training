@@ -6,7 +6,7 @@ interface IProps {
   options: IDropdown[];
 }
 
-class DropdownMenu extends React.Component<IProps> {
+class DropdownMenu extends React.PureComponent<IProps> {
   render() {
     const { options } = this.props;
     return (

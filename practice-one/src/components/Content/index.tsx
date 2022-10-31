@@ -2,10 +2,10 @@ import React from 'react';
 import './index.css';
 
 interface IProps {
-  children?: React.ReactNode;
+  children: React.ReactNode;
 }
 
-class Content extends React.Component<IProps> {
+class Content extends React.PureComponent<IProps> {
   render() {
     const { children } = this.props;
     return (

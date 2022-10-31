@@ -10,7 +10,7 @@ import TextField from '../../components/TextField';
 import Button from '../../components/Button';
 import './index.css';
 
-class Home extends React.Component {
+class Home extends React.PureComponent {
   render(): React.ReactNode {
     return (
       <div className="container">
@@ -23,7 +23,7 @@ class Home extends React.Component {
           <div className="main-content">
             <div className="page-wrapper">
               <TextField type="text" placeholder="Search name..." />
-              <Button type="button" primary={true}>
+              <Button variant="primary" size="medium">
                 Add User
               </Button>
             </div>

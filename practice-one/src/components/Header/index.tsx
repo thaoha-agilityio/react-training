@@ -4,7 +4,7 @@ import notification from '../../assets/images/notification.png';
 import dark from '../../assets/images/dark.png';
 import './index.css';
 
-class Header extends React.Component {
+class Header extends React.PureComponent {
   render(): React.ReactNode {
     return (
       <header>

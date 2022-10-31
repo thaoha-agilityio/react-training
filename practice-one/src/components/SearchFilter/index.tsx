@@ -2,16 +2,16 @@ import React from 'react';
 import './index.css';
 
 interface IProps {
-  children?: React.ReactNode;
+  children: React.ReactNode;
 }
 
 class SearchFilter extends React.Component<IProps> {
   render(): React.ReactNode {
     const { children } = this.props;
     return (
-      <div className="dropDown">
+      <div className="dropdown">
         <h2>Search filter</h2>
-        <div className="dropDown-menu">{children}</div>
+        <div className="dropdown-menu">{children}</div>
       </div>
     );
   }
