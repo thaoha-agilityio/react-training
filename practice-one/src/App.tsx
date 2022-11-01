@@ -1,13 +1,12 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <h1>Hello World</h1>
-    </div>
-  );
+import './App.css';
+import Home from './pages/Home';
+
+class App extends React.Component {
+  render(): React.ReactNode {
+    return <Home />;
+  }
 }
 
 export default App;

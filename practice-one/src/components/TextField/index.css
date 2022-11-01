@@ -1,0 +1,7 @@
+.text-field {
+  width: 314px;
+  height: 40px;
+  border: 1px solid rgba(58, 53, 65, 0.23);
+  border-radius: 6px;
+  padding: 10px;
+}
