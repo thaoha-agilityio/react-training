@@ -9,6 +9,7 @@ import { OPTIONS_ROLE, OPTIONS_PROJECT } from '../../constants/dropdown';
 import TextField from '../../components/TextField';
 import Button from '../../components/Button';
 import './index.css';
+import ListUser from '../../components/ListUsers';
 
 class Home extends React.PureComponent {
   render(): React.ReactNode {
@@ -27,6 +28,7 @@ class Home extends React.PureComponent {
                 Add User
               </Button>
             </div>
+            <ListUser />
           </div>
         </Content>
         <Footer />
