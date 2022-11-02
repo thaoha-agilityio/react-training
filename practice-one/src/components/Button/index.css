@@ -2,11 +2,12 @@
   text-transform: uppercase;
   border-radius: 5px;
   font-family: 'Inter';
-  color: var(--color-secondary);
+  border: none;
 }
 
 .btn-primary {
   background: var(--color-secondary-100);
+  color: var(--color-secondary);
 }
 
 .btn-secondary {
