@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { IUser } from '../../types/IUsers';
+import { IUser } from '../../types/IUser';
 import { ROLE, PROJECT, STATUS } from '../../constants/user';
 import ListUser from '.';
 
@@ -13,7 +13,7 @@ const dataUser: IUser[] = [
   {
     id: '1',
     name: 'user1',
-    email: 'use1@gmail.com',
+    email: '@use1',
     role: ROLE.DESIGNER,
     project: PROJECT.LIBRA,
     status: STATUS.DONE,
@@ -26,7 +26,6 @@ const Template: ComponentStory<typeof ListUser> = (args) => <ListUser {...args} 
 
 const Default = Template.bind({});
 Default.args = {
-  ...Default.args,
   list: dataUser,
 };
 
