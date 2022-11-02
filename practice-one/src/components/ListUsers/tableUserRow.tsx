@@ -1,33 +1,27 @@
 import React from 'react';
 
-import moreVert from '../../assets/images/moreVert.png';
+import moreVert from '../../assets/images/moreVertIcon.png';
 import Avatar from '../Avatar';
-import { IUser } from '../../types/IUsers';
-import { ROLE, PROJECT, STATUS } from '../../constants/user';
+
 import './index.css';
+import { IUser } from '../../types/IUser';
 
-class TableUserRow extends React.Component {
+export interface IUserRowProps {
+  user: IUser;
+  index: number;
+}
+
+class TableUserRow extends React.Component<IUserRowProps> {
   render(): React.ReactNode {
-    // Render data in view
-    const dataUser: IUser = {
-      id: '1',
-      name: 'user1',
-      email: 'use1@gmail.com',
-      role: ROLE.DESIGNER,
-      project: PROJECT.LIBRA,
-      status: STATUS.DONE,
-      avatar:
-        'https://d5nunyagcicgy.cloudfront.net/external_assets/hero_examples/hair_beach_v391182663/original.jpeg',
-    };
-
-    const { name, email, role, project, status, avatar } = dataUser;
+    const { name, email, avatar, role, project, status } = this.props.user;
+    const { index } = this.props;
 
     return (
       <tbody className="table-body">
         <tr>
-          <td>1</td>
+          <td>{index + 1}</td>
           <td>
-            <Avatar username={name} styles="circle" size="small" url={avatar} />
+            <Avatar username={name} styles="circle" size="small" url={avatar} alt="avatar" />
           </td>
           <td>{email}</td>
           <td>

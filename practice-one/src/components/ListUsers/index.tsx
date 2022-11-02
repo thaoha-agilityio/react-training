@@ -1,9 +1,21 @@
 import React from 'react';
 
-import './index.css';
-import TableUserRow from './tableUserRow';
+import TableUserRow, { IUserRowProps } from './tableUserRow';
 
-class ListUser extends React.Component {
+import './index.css';
+import { IUser } from '../../types/IUser';
+
+interface IProps {
+  list: IUser[];
+}
+
+class ListUser extends React.Component<IProps> {
+  renderRow = (listRow: IProps) => {
+    const { list } = listRow;
+
+    return list.map((item, index) => <TableUserRow key={item.id} user={item} index={index} />);
+  };
+
   render(): React.ReactNode {
     return (
       <>
@@ -33,7 +45,7 @@ class ListUser extends React.Component {
               </th>
             </tr>
           </thead>
-          <TableUserRow />
+          {this.renderRow(this.props)}
         </table>
       </>
     );

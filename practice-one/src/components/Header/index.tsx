@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from '../../assets/images/logo.jpg';
-import notification from '../../assets/images/notification.png';
-import dark from '../../assets/images/dark.png';
+import notification from '../../assets/images/notificationIcon.png';
+import dark from '../../assets/images/darkIcon.png';
 import './index.css';
 
 class Header extends React.PureComponent {
