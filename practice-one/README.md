@@ -56,6 +56,6 @@
 
 - Step 3: Install packages `npm install`
 
-- Step 4: Run project `npm dev`
+- Step 4: Run project `npm start`
 
 - Step 5: Open your browser at `http://localhost:3000/`
