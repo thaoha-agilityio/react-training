@@ -3,6 +3,7 @@
   border-radius: 5px;
   font-family: 'Inter';
   border: none;
+  cursor: pointer;
 }
 
 .btn-primary {
