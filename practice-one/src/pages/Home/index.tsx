@@ -15,7 +15,7 @@ import { random } from '../../helpers/random';
 
 import './index.css';
 
-class Home extends React.PureComponent {
+class Home extends React.Component {
   state = { listUser };
 
   handleAddUser = () => {
