@@ -9,13 +9,11 @@ interface IProps {
   alt: string;
 }
 
-const Avatar = ({ username, url, styles, size, alt }: IProps): React.ReactElement => {
-  return (
-    <div className="info">
-      <img className={`avatar avatar-${styles} avatar-${size}`} src={url} alt={alt} />
-      {username}
-    </div>
-  );
-};
+const Avatar = ({ username, url, styles, size, alt }: IProps): React.ReactElement => (
+  <div className="info">
+    <img className={`avatar avatar-${styles} avatar-${size}`} src={url} alt={alt} />
+    {username}
+  </div>
+);
 
 export default Avatar;
