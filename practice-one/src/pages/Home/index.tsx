@@ -14,11 +14,12 @@ import { IUser } from '../../types/IUser';
 import { random } from '../../helpers/random';
 
 import './index.css';
+import Dialog from '../../components/Dialog';
 
 class Home extends React.Component {
   state = { listUser };
 
-  handleAddUser = () => {
+  handleAddUser = (): void => {
     const newUser = {
       id: new Date().getTime().toString(),
       name: random(userNames),
@@ -33,6 +34,7 @@ class Home extends React.Component {
   render(): React.ReactNode {
     return (
       <div className="container">
+        <Dialog />
         <Header />
         <Content>
           <SearchFilter>
