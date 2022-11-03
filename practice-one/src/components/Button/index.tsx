@@ -8,24 +8,16 @@ interface IProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   onClick?: () => void;
 }
 
-class Button extends React.Component<IProps> {
-  static defaultProps: { className: string };
+const Button = (props: IProps) => {
+  const { variant, size, className, onClick } = props;
 
-  render(): React.ReactNode {
-    const { variant, size, className, onClick } = this.props;
-
-    return (
-      <button
-        {...this.props}
-        className={`${className} btn btn-${variant} btn-${size}`}
-        onClick={onClick}
-      />
-    );
-  }
-}
-
-Button.defaultProps = {
-  className: '',
+  return (
+    <button
+      className={`${className} btn btn-${variant} btn-${size}`}
+      onClick={onClick}
+      {...props}
+    />
+  );
 };
 
 export default Button;
