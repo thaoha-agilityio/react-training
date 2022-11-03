@@ -1,5 +1,5 @@
 import React from 'react';
-import { IDropdown } from '../../types/IDropdown ';
+import { IDropdown } from '../../types/IDropdown';
 import './index.css';
 
 interface IProps {
@@ -9,6 +9,7 @@ interface IProps {
 class DropdownMenu extends React.PureComponent<IProps> {
   render() {
     const { options } = this.props;
+
     return (
       <>
         <select className="select">

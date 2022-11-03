@@ -1,18 +1,18 @@
 enum STATUS {
-  TO_DO = 'TO DO',
-  IN_PROGRESS = 'IN PROGRESS',
-  DONE = 'DONE',
+  TO_DO = 'To do',
+  IN_PROGRESS = 'In progress',
+  DONE = 'Done',
 }
 
 enum ROLE {
-  DEVELOPER = 'DEVELOPER',
-  DESIGNER = 'DESIGNER',
-  MANAGER = 'MANAGER',
+  DEVELOPER = 'Develop',
+  DESIGNER = 'Design',
+  MANAGER = 'Manager',
 }
 
 enum PROJECT {
-  NIKE_SNEAKER = 'NIKE SNEAKER',
-  NETFLIX = 'NETFLIX',
-  LIBRA = 'LIBRA',
+  NIKE_SNEAKER = 'Nike Sneaker',
+  NETFLIX = 'Netflix',
+  LIBRA = 'Libra',
 }
 export { STATUS, ROLE, PROJECT };

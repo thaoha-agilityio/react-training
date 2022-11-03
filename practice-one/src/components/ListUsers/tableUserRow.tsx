@@ -1,44 +1,43 @@
 import React from 'react';
 
-import moreVert from '../../assets/images/moreVert.png';
+import moreVert from '../../assets/images/moreVertIcon.png';
 import Avatar from '../Avatar';
-import { IUser } from '../../types/IUsers';
-import { ROLE, PROJECT, STATUS } from '../../constants/user';
+import { IUser } from '../../types/IUser';
 import './index.css';
 
-class TableUserRow extends React.Component {
-  render(): React.ReactNode {
-    // Render data in view
-    const dataUser: IUser = {
-      id: '1',
-      name: 'user1',
-      email: 'use1@gmail.com',
-      role: ROLE.DESIGNER,
-      project: PROJECT.LIBRA,
-      status: STATUS.DONE,
-      avatar:
-        'https://d5nunyagcicgy.cloudfront.net/external_assets/hero_examples/hair_beach_v391182663/original.jpeg',
-    };
+export interface IUserRowProps {
+  user: IUser;
+  order: number;
+}
 
-    const { name, email, role, project, status, avatar } = dataUser;
+class TableUserRow extends React.Component<IUserRowProps> {
+  renderCell = <T, K extends keyof T, V extends keyof T>(data: T[] | undefined, key: K, id: V) => {
+    //Check data empty
+    if (!data) {
+      return '';
+    }
+
+    return data.map((item: T) => <p key={item[id] as string}>{item[key] as string}</p>);
+  };
+
+  render(): React.ReactNode {
+    const { name, email, avatar, projects } = this.props.user;
+
+    const { order } = this.props;
 
     return (
       <tbody className="table-body">
         <tr>
-          <td>1</td>
+          <td>{order}</td>
           <td>
-            <Avatar username={name} styles="circle" size="small" url={avatar} />
+            <Avatar username={name} styles="circle" size="small" url={avatar} alt="avatar" />
           </td>
           <td>{email}</td>
-          <td>
-            <p>{role}</p>
-          </td>
-          <td>
-            <p>{project}</p>
-          </td>
-          <td>
-            <p>{status}</p>
-          </td>
+
+          <td>{this.renderCell(projects, 'projectName', 'id')}</td>
+          <td>{this.renderCell(projects, 'role', 'id')}</td>
+          <td>{this.renderCell(projects, 'status', 'id')}</td>
+
           <td>
             <img src={moreVert} />
           </td>

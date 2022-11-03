@@ -6,18 +6,14 @@ interface IProps {
   url?: string;
   styles?: 'circle' | 'square';
   size?: 'small' | 'medium' | 'large';
+  alt: string;
 }
 
-class Avatar extends React.Component<IProps> {
-  render(): React.ReactNode {
-    const { url, size, styles, username } = this.props;
-    return (
-      <div className="info">
-        <img className={`avatar avatar-${styles} avatar-${size}`} src={url} />
-        {username}
-      </div>
-    );
-  }
-}
+const Avatar = ({ username, url, styles, size, alt }: IProps): React.ReactElement => (
+  <div className="info">
+    <img className={`avatar avatar-${styles} avatar-${size}`} src={url} alt={alt} />
+    {username}
+  </div>
+);
 
 export default Avatar;

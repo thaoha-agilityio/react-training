@@ -1,4 +1,4 @@
-import { IDropdown } from '../types/IDropdown ';
+import { IDropdown } from '../types/IDropdown';
 
 const OPTIONS_ROLE: IDropdown[] = [
   { value: '', text: 'Select Role' },
