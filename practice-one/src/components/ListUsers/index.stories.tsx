@@ -12,11 +12,22 @@ export default {
 const dataUser: IUser[] = [
   {
     id: '1',
-    name: 'user1',
-    email: '@use1',
-    role: ROLE.DESIGNER,
-    project: PROJECT.LIBRA,
-    status: STATUS.DONE,
+    name: 'Patrick Roland',
+    email: '@Patrick',
+    projects: [
+      {
+        id: '1',
+        projectName: PROJECT.LIBRA,
+        role: ROLE.DESIGNER,
+        status: STATUS.IN_PROGRESS,
+      },
+      {
+        id: '2',
+        projectName: PROJECT.LIBRA,
+        role: ROLE.DESIGNER,
+        status: STATUS.IN_PROGRESS,
+      },
+    ],
     avatar:
       'https://d5nunyagcicgy.cloudfront.net/external_assets/hero_examples/hair_beach_v391182663/original.jpeg',
   },

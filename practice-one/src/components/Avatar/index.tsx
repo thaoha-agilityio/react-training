@@ -9,17 +9,13 @@ interface IProps {
   alt: string;
 }
 
-class Avatar extends React.Component<IProps> {
-  render(): React.ReactNode {
-    const { url, size, styles, username, alt } = this.props;
-
-    return (
-      <div className="info">
-        <img className={`avatar avatar-${styles} avatar-${size}`} src={url} alt={alt} />
-        {username}
-      </div>
-    );
-  }
-}
+const Avatar = ({ username, url, styles, size, alt }: IProps): React.ReactElement => {
+  return (
+    <div className="info">
+      <img className={`avatar avatar-${styles} avatar-${size}`} src={url} alt={alt} />
+      {username}
+    </div>
+  );
+};
 
 export default Avatar;

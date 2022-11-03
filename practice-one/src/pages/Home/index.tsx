@@ -14,10 +14,17 @@ import { IUser } from '../../types/IUser';
 import { random } from '../../helpers/random';
 
 import './index.css';
-import Dialog from '../../components/Dialog';
 
-class Home extends React.Component {
-  state = { listUser };
+interface IProps {
+  children?: React.ReactNode;
+}
+
+interface IState {
+  listUser: IUser[];
+}
+
+class Home extends React.Component<IProps, IState> {
+  state = { listUser: [] };
 
   handleAddUser = (): void => {
     const newUser = {
@@ -28,13 +35,12 @@ class Home extends React.Component {
     } as IUser;
 
     listUser.push(newUser);
-    this.setState({ listUser: newUser });
+    this.setState({ listUser: listUser });
   };
 
   render(): React.ReactNode {
     return (
       <div className="container">
-        <Dialog />
         <Header />
         <Content>
           <SearchFilter>

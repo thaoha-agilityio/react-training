@@ -1,6 +1,6 @@
 import React from 'react';
 
-import TableUserRow, { IUserRowProps } from './tableUserRow';
+import TableUserRow from './tableUserRow';
 
 import './index.css';
 import { IUser } from '../../types/IUser';
@@ -13,7 +13,7 @@ class ListUser extends React.Component<IProps> {
   renderRow = (listRow: IProps) => {
     const { list } = listRow;
 
-    return list.map((item, index) => <TableUserRow key={item.id} user={item} index={index} />);
+    return list.map((item, index) => <TableUserRow key={item.id} user={item} order={index + 1} />);
   };
 
   render(): React.ReactNode {

@@ -1,11 +1,16 @@
 import { STATUS, ROLE, PROJECT } from '../constants/user';
 
 export interface IUser {
-  id: string;
+  readonly id: string;
   name: string;
   email: string;
-  role: ROLE;
-  project: PROJECT;
-  status: STATUS;
+  projects?: IProject[];
   avatar: string;
+}
+
+export interface IProject {
+  readonly id: string;
+  role: ROLE;
+  projectName: PROJECT;
+  status: STATUS;
 }

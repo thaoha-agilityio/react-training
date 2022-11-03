@@ -8,15 +8,9 @@ interface IProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   onClick?: () => void;
 }
 
-const Button = (props: IProps) => {
-  const { variant, size, className, onClick } = props;
-
+const Button = ({ variant, size, className, onClick, ...rest }: IProps): React.ReactElement => {
   return (
-    <button
-      className={`${className} btn btn-${variant} btn-${size}`}
-      onClick={onClick}
-      {...props}
-    />
+    <button className={`${className} btn btn-${variant} btn-${size}`} onClick={onClick} {...rest} />
   );
 };
 
