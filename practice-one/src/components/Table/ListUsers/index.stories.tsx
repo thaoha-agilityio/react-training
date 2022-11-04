@@ -1,7 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { IUser } from '../../types/IUser';
-import { ROLE, PROJECT, STATUS } from '../../constants/user';
+import { IUser } from '../../../types/IUser';
+import { ROLE, PROJECT, STATUS } from '../../../constants/user';
 import ListUser from '.';
 
 export default {

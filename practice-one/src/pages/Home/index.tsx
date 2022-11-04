@@ -8,7 +8,7 @@ import DropdownMenu from '../../components/DropdownMenu';
 import { OPTIONS_ROLE, OPTIONS_PROJECT } from '../../constants/dropdown';
 import TextField from '../../components/TextField';
 import Button from '../../components/Button';
-import ListUser from '../../components/ListUsers';
+import ListUser from '../../components/Table/ListUsers';
 import { avatars, userNames, listUser, emails } from '../../mocks/info';
 import { IUser } from '../../types/IUser';
 import { createUser } from '../../helpers/createUser';

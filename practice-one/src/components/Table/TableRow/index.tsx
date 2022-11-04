@@ -1,8 +1,10 @@
 import React from 'react';
 
-import moreVert from '../../assets/images/moreVertIcon.png';
-import Avatar from '../Avatar';
-import { IUser } from '../../types/IUser';
+import Avatar from '../../Avatar';
+import { IUser } from '../../../types/IUser';
+import moreVert from '../../../assets/images/moreVertIcon.jpg';
+import RowMore from '../RowMore';
+
 import './index.css';
 
 export interface IUserRowProps {
@@ -26,7 +28,7 @@ class TableUserRow extends React.Component<IUserRowProps> {
     const { order } = this.props;
 
     return (
-      <tbody className="table-body">
+      <>
         <tr>
           <td>{order}</td>
           <td>
@@ -42,7 +44,8 @@ class TableUserRow extends React.Component<IUserRowProps> {
             <img src={moreVert} />
           </td>
         </tr>
-      </tbody>
+        <RowMore />
+      </>
     );
   }
 }

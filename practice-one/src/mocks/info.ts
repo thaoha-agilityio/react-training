@@ -87,6 +87,18 @@ const listUser: IUser[] = [
         role: ROLE.DESIGNER,
         status: STATUS.IN_PROGRESS,
       },
+      {
+        id: '8',
+        projectName: PROJECT.LIBRA,
+        role: ROLE.DESIGNER,
+        status: STATUS.IN_PROGRESS,
+      },
+      {
+        id: '9',
+        projectName: PROJECT.LIBRA,
+        role: ROLE.DESIGNER,
+        status: STATUS.IN_PROGRESS,
+      },
     ],
     avatar:
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAfp-b5yYkHGmqK1Kh-V-lAZQzEARHhqVudmCH9MKxCZA8W5obUe9zjDZKXG5LmiW41YA&usqp=CAU',
