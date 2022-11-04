@@ -11,7 +11,7 @@ import Button from '../../components/Button';
 import ListUser from '../../components/ListUsers';
 import { avatars, userNames, listUser } from '../../mocks/info';
 import { IUser } from '../../types/IUser';
-import { random } from '../../helpers/random';
+import { createUser } from '../../helpers/createUser';
 
 import './index.css';
 
@@ -26,14 +26,9 @@ interface IState {
 class Home extends React.Component<IProps, IState> {
   state = { listUser: [] };
 
+  // Add a user in data
   handleAddUser = (): void => {
-    const newUser = {
-      id: new Date().getTime().toString(),
-      name: random(userNames),
-      email: random(userNames),
-      avatar: random(avatars),
-    } as IUser;
-
+    const newUser = createUser(userNames, avatars);
     listUser.push(newUser);
     this.setState({ listUser: listUser });
   };
