@@ -1,18 +1,10 @@
 import { PROJECT, ROLE, STATUS } from '../constants/user';
-import { IProject, IUser } from '../types/IUser';
+import { IUser } from '../types/IUser';
 
-export const userNames = [
-  'Alex',
-  'John',
-  'David',
-  'Daniel',
-  'Brian',
-  'Christopher',
-  'Robert',
-  'James',
-];
+// Data use random
+const userNames = ['Alex', 'John', 'David', 'Daniel', 'Brian', 'Christopher', 'Robert', 'James'];
 
-export const avatars = [
+const avatars = [
   'https://www.facebeautyscience.com/wp-content/uploads/2020/04/face-beauty-skin-face2-proc.jpg',
   'https://t4.ftcdn.net/jpg/02/18/93/97/360_F_218939757_YqHgeD3BAANU87y2Kc10Y40HNVgDv5rK.jpg',
   'https://fashionjournal.com.au/wp-content/uploads/2020/07/fashion-journal-facereading-mob.jpeg',
@@ -20,7 +12,9 @@ export const avatars = [
   'https://img-19.commentcamarche.net/cI8qqj-finfDcmx6jMK6Vr-krEw=/1500x/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg',
 ];
 
-export const listUser: IUser[] = [
+const emails = ['@Alex', '@ohn', '@David', '@Daniel', '@Brian', '@Christopher', '@Robert'];
+
+const listUser: IUser[] = [
   {
     id: '1',
     name: 'Patrick Roland',
@@ -113,3 +107,5 @@ export const listUser: IUser[] = [
       'https://swall.teahub.io/photos/small/0-2836_nature-wallpaper-with-flowers-image-good-morning-photo.jpg',
   },
 ];
+
+export { userNames, avatars, emails, listUser };

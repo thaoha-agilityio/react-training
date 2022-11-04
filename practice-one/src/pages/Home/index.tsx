@@ -9,7 +9,7 @@ import { OPTIONS_ROLE, OPTIONS_PROJECT } from '../../constants/dropdown';
 import TextField from '../../components/TextField';
 import Button from '../../components/Button';
 import ListUser from '../../components/ListUsers';
-import { avatars, userNames, listUser } from '../../mocks/info';
+import { avatars, userNames, listUser, emails } from '../../mocks/info';
 import { IUser } from '../../types/IUser';
 import { createUser } from '../../helpers/createUser';
 
@@ -28,7 +28,7 @@ class Home extends React.Component<IProps, IState> {
 
   // Add a user in data
   handleAddUser = (): void => {
-    const newUser = createUser(userNames, avatars);
+    const newUser = createUser(userNames, avatars, emails);
     listUser.push(newUser);
     this.setState({ listUser: listUser });
   };
