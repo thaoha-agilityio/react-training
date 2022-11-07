@@ -4,7 +4,7 @@ import { IProject } from '../../../types/IUser';
 
 interface IProps {
   listProject: IProject[];
-  loadMore: boolean;
+  hasLoadMore: boolean;
 }
 
 type ProjectRender = Partial<IProps>;
@@ -18,7 +18,7 @@ class TableListCell extends React.Component<ProjectRender, IProps> {
     }
 
     // Get first 2 element or all element
-    const loadCount = this.props.loadMore ? data.length : 2;
+    const loadCount = this.props.hasLoadMore ? data.length : 2;
 
     return data
       .slice(0, loadCount)

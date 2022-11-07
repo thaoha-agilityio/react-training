@@ -49,7 +49,7 @@ class TableUserRow extends React.Component<IUserRowProps> {
             <Avatar username={name} styles="circle" size="small" url={avatar} alt="avatar" />
           </td>
           <td>{email}</td>
-          <TableListCell listProject={projects} loadMore={this.state.loadMore} />
+          <TableListCell listProject={projects} hasLoadMore={this.state.loadMore} />
 
           <td>
             <a className="action" onClick={this.handleShowDialog}>
@@ -58,7 +58,7 @@ class TableUserRow extends React.Component<IUserRowProps> {
           </td>
         </tr>
         {this.isShowMore() && (
-          <RowMore onClick={this.handleLoadMore} loadMore={this.state.loadMore} />
+          <RowMore onClick={this.handleLoadMore} hasLoadMore={this.state.loadMore} />
         )}
       </>
     );
