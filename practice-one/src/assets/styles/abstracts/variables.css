@@ -5,21 +5,13 @@
   --color-primary-100: rgba(58, 53, 65, 0.38);
   --color-primary-200: rgba(58, 53, 65, 0.12);
   --color-secondary: #ffff;
-  --color-secondary--50: #f9fafc;
+  --color-secondary-50: #f9fafc;
   --color-secondary-100: #2684ff;
-
+  --color-secondary-100-bg: #26dbff12;
   --color-tertiary: #4caf50;
-  --color-tertiary-bg: linear-gradient(0deg, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.88)),
-    #4caf50;
-
+  --color-tertiary-bg: #4caf500d;
   --color-tertiary-100: #ed6c02;
-  --color-tertiary-bg-100: linear-gradient(
-      0deg,
-      rgba(255, 255, 255, 0.88),
-      rgba(255, 255, 255, 0.88)
-    ),
-    #ed6c02;
-
+  --color-tertiary-bg-100: #ed6c0224;
   --color-danger: #ff4c51;
 
   /* Font size */
