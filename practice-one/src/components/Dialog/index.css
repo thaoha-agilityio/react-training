@@ -1,0 +1,23 @@
+.dialog {
+  position: absolute;
+  width: 158px;
+  height: 96px;
+  background: var(--color-secondary);
+  display: flex;
+  flex-direction: column;
+  box-shadow: 1px 3px 3px 0px var(--color-primary-50);
+  border-radius: 6px;
+  justify-content: center;
+  text-align: left;
+}
+
+.dialog a {
+  color: var(--color-primary-50);
+  font-family: 'Inter';
+  font-weight: 400;
+  font-size: 14px;
+  line-height: calc(20 / 14);
+  margin-top: 10px;
+  cursor: pointer;
+  margin-left: 20px;
+}
