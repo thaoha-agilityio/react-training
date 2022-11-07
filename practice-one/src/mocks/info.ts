@@ -14,7 +14,7 @@ const avatars = [
 
 const emails = ['@Alex', '@ohn', '@David', '@Daniel', '@Brian', '@Christopher', '@Robert'];
 
-const listUser: IUser[] = [
+const users: IUser[] = [
   {
     id: '1',
     name: 'Patrick Roland',
@@ -132,4 +132,4 @@ const listUser: IUser[] = [
   },
 ];
 
-export { userNames, avatars, emails, listUser };
+export { userNames, avatars, emails, users };
