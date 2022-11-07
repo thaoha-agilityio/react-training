@@ -6,17 +6,17 @@ import './index.css';
 
 interface IProps {
   onClick: () => void;
-  loadMore: boolean;
+  hasLoadMore: boolean;
 }
 
-const RowMore = ({ onClick, loadMore }: IProps): React.ReactElement => {
+const RowMore = ({ onClick, hasLoadMore }: IProps): React.ReactElement => {
   return (
     <tr className="table-row">
       <td className="row-more" colSpan={7}>
         <div className="more">
-          <p>{loadMore ? 'less' : 'more'}</p>
+          <p>{hasLoadMore ? 'less' : 'more'}</p>
           <button onClick={onClick}>
-            <img src={loadMore ? circumflexUpIcon : circumflexDownIcon} />
+            <img src={hasLoadMore ? circumflexUpIcon : circumflexDownIcon} />
           </button>
         </div>
       </td>
