@@ -1,36 +1,46 @@
 import React from 'react';
 
+// Components
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Content from '../../components/Content';
 import SearchFilter from '../../components/SearchFilter';
 import DropdownMenu from '../../components/DropdownMenu';
-import { OPTIONS_ROLE, OPTIONS_PROJECT } from '../../constants/dropdown';
 import TextField from '../../components/TextField';
 import Button from '../../components/Button';
 import ListUser from '../../components/Table/ListUsers';
-import { avatars, userNames, listUser, emails } from '../../mocks/info';
-import { IUser } from '../../types/IUser';
-import { createUser } from '../../helpers/createUser';
 
+import { OPTIONS_ROLE, OPTIONS_PROJECT } from '../../constants/dropdown';
+import { avatars, userNames, users, emails } from '../../mocks/info';
+import { IUser } from '../../types/IUser';
+import { createID } from '../../helpers/createId';
+
+// CSS
 import './index.css';
+import { random } from '../../helpers/random';
 
 interface IProps {
   children?: React.ReactNode;
 }
 
 interface IState {
-  listUser: IUser[];
+  users: IUser[];
 }
 
 class Home extends React.Component<IProps, IState> {
-  state = { listUser: [] };
+  state = { users: [] };
 
   // Add a user in data
   handleAddUser = (): void => {
-    const newUser = createUser(userNames, avatars, emails);
-    listUser.push(newUser);
-    this.setState({ listUser: listUser });
+    const newUser = {
+      id: createID(),
+      name: random(userNames),
+      email: random(emails),
+      avatar: random(avatars),
+    } as IUser;
+
+    users.push(newUser);
+    this.setState({ users });
   };
 
   render(): React.ReactNode {
@@ -49,7 +59,7 @@ class Home extends React.Component<IProps, IState> {
                 Add User
               </Button>
             </div>
-            <ListUser list={listUser} />
+            <ListUser list={users} />
           </div>
         </Content>
         <Footer />

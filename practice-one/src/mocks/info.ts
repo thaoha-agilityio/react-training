@@ -14,7 +14,7 @@ const avatars = [
 
 const emails = ['@Alex', '@ohn', '@David', '@Daniel', '@Brian', '@Christopher', '@Robert'];
 
-const listUser: IUser[] = [
+const users: IUser[] = [
   {
     id: '1',
     name: 'Patrick Roland',
@@ -73,6 +73,18 @@ const listUser: IUser[] = [
         role: ROLE.DESIGNER,
         status: STATUS.IN_PROGRESS,
       },
+      {
+        id: '15',
+        projectName: PROJECT.NETFLIX,
+        role: ROLE.DESIGNER,
+        status: STATUS.TO_DO,
+      },
+      {
+        id: '16',
+        projectName: PROJECT.LIBRA,
+        role: ROLE.DESIGNER,
+        status: STATUS.IN_PROGRESS,
+      },
     ],
     avatar: 'https://cdn.pixabay.com/photo/2018/08/14/13/23/ocean-3605547__340.jpg',
   },
@@ -120,4 +132,4 @@ const listUser: IUser[] = [
   },
 ];
 
-export { userNames, avatars, emails, listUser };
+export { userNames, avatars, emails, users };

@@ -25,3 +25,7 @@
 .table-body td p {
   line-height: 1.75;
 }
+
+.action {
+  cursor: pointer;
+}
