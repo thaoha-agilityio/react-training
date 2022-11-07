@@ -9,7 +9,7 @@ interface IProps {
 
 type ProjectRender = Partial<IProps>;
 
-class TableListCell extends React.PureComponent<ProjectRender, IProps> {
+class TableListCell extends React.Component<ProjectRender, IProps> {
   // Render data table cell
   renderCell = <T, K extends keyof T, V extends keyof T>(data: T[] | undefined, key: K, id: V) => {
     //Check data empty
