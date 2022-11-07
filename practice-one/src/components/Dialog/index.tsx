@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { IUser } from '../../types/IUser';
+import ConfirmModal from '../ConfirmModal';
 
 import './index.css';
 interface IProps {
@@ -25,10 +25,13 @@ class Dialog extends React.Component<IProps> {
     const { idUser } = this.props;
     console.log(idUser);
     return (
-      <div className="dialog">
-        <a>Update User</a>
-        <a onClick={this.handleShowModal}>Delete User</a>
-      </div>
+      <>
+        <div className="dialog">
+          <a>Update User</a>
+          <a onClick={this.handleShowModal}>Delete User</a>
+        </div>
+        {this.state.stateShowModal && <ConfirmModal />}
+      </>
     );
   }
 }

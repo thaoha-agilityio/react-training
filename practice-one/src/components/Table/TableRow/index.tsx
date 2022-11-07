@@ -5,6 +5,7 @@ import { IUser } from '../../../types/IUser';
 import moreVert from '../../../assets/images/moreVertIcon.jpg';
 import RowMore from '../RowMore';
 import TableListCell from '../TableListCell';
+import Dialog from '../../Dialog';
 
 import './index.css';
 
@@ -55,8 +56,11 @@ class TableUserRow extends React.Component<IUserRowProps> {
             <a className="action" onClick={this.handleShowDialog}>
               <img src={moreVert} />
             </a>
+            {/* Show dialog action */}
+            {this.state.stateDialog && <Dialog />}
           </td>
         </tr>
+        {/* Show Row More */}
         {this.isShowMore() && (
           <RowMore onClick={this.handleLoadMore} loadMore={this.state.loadMore} />
         )}
