@@ -1,18 +1,22 @@
+// Library
 import React from 'react';
 
+// Component
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Content from '../../components/Content';
 import SearchFilter from '../../components/SearchFilter';
 import DropdownMenu from '../../components/DropdownMenu';
-import { OPTIONS_ROLE, OPTIONS_PROJECT } from '../../constants/dropdown';
 import TextField from '../../components/TextField';
 import Button from '../../components/Button';
 import ListUser from '../../components/Table/ListUsers';
+
+import { OPTIONS_ROLE, OPTIONS_PROJECT } from '../../constants/dropdown';
 import { avatars, userNames, listUser, emails } from '../../mocks/info';
 import { IUser } from '../../types/IUser';
 import { createUser } from '../../helpers/createUser';
 
+// CSS
 import './index.css';
 
 interface IProps {
@@ -29,6 +33,7 @@ class Home extends React.Component<IProps, IState> {
   // Add a user in data
   handleAddUser = (): void => {
     const newUser = createUser(userNames, avatars, emails);
+
     listUser.push(newUser);
     this.setState({ listUser: listUser });
   };

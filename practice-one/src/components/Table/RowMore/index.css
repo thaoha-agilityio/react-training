@@ -15,8 +15,11 @@
   font-weight: 400;
   line-height: calc(24 / 16);
   color: var(--color-primary-50);
+  text-transform: capitalize;
 }
 
-.more a {
+.more button {
+  border: none;
   cursor: pointer;
+  background-color: var(--color-secondary);
 }
