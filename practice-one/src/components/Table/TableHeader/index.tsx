@@ -13,8 +13,9 @@ const TableHeader = (props: IProps) => {
     <thead className="table-header">
       <tr className="table-row">
         {listCell.map((cell) => (
-          <th key={cell} className="table__cell">
+          <th key={cell}>
             {cell}
+            <span>|</span>
           </th>
         ))}
       </tr>

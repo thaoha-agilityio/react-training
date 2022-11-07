@@ -1,13 +1,12 @@
 import React from 'react';
 
 import circumflexDownIcon from '../../../assets/images/circumflexDownIcon.jpg';
-import circumflexUpIcon from '../../../assets/images/circumflexUpIcon.jpg';
 import './index.css';
 
 class RowMore extends React.Component {
   render(): React.ReactNode {
     return (
-      <tr>
+      <tr className="table-row">
         <td className="row-more" colSpan={7}>
           <div className="more">
             <p>More</p>

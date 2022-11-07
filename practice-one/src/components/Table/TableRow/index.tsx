@@ -7,12 +7,12 @@ import RowMore from '../RowMore';
 
 import './index.css';
 
-export interface IUserRowProps {
+export interface IProps {
   user: IUser;
   order: number;
 }
 
-class TableUserRow extends React.Component<IUserRowProps> {
+class TableUserRow extends React.Component<IProps> {
   renderCell = <T, K extends keyof T, V extends keyof T>(data: T[] | undefined, key: K, id: V) => {
     //Check data empty
     if (!data) {

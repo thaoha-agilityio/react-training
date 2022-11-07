@@ -3,6 +3,7 @@ import React from 'react';
 import TableUserRow from '../TableRow';
 import TableHeader from '../TableHeader';
 import { IUser } from '../../../types/IUser';
+import { listCell } from '../../../constants/table';
 import './index.css';
 
 interface IProps {
@@ -20,7 +21,7 @@ class ListUser extends React.Component<IProps> {
     return (
       <>
         <table className="table">
-          <TableHeader listCell={['order', 'avatar', 'role', 'project', 'status', 'action']} />
+          <TableHeader listCell={listCell} />
           <tbody className="table-body">{this.renderRow(this.props)}</tbody>
         </table>
       </>
