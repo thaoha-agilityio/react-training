@@ -1,5 +1,4 @@
 .btn {
-  text-transform: uppercase;
   border-radius: 5px;
   font-family: 'Inter';
   border: none;
@@ -9,14 +8,21 @@
 .btn-primary {
   background: var(--color-secondary-100);
   color: var(--color-secondary);
+  text-transform: uppercase;
 }
 
 .btn-secondary {
-  background-color: var(--color-danger);
+  background-color: var(--color-secondary-200);
+  color: var(--color-secondary);
 }
 
 .btn-tertiary {
   background-color: var(--color-tertiary);
+}
+
+.btn-normal {
+  background-color: var(--color-secondary);
+  color: var(--color-primary-50);
 }
 
 .btn-small {

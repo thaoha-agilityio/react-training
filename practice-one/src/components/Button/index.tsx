@@ -2,7 +2,7 @@ import React from 'react';
 import './index.css';
 
 interface IProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant: 'primary' | 'secondary' | 'tertiary';
+  variant: 'primary' | 'secondary' | 'tertiary' | 'normal';
   size: 'small' | 'medium' | 'large';
   className?: string;
   onClick?: () => void;

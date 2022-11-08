@@ -27,6 +27,12 @@ const dataUser: IUser[] = [
         role: ROLE.DESIGNER,
         status: STATUS.IN_PROGRESS,
       },
+      {
+        id: '3',
+        projectName: PROJECT.NIKE_SNEAKER,
+        role: ROLE.DESIGNER,
+        status: STATUS.DONE,
+      },
     ],
     avatar:
       'https://d5nunyagcicgy.cloudfront.net/external_assets/hero_examples/hair_beach_v391182663/original.jpeg',
