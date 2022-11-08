@@ -30,8 +30,8 @@ class TableUserRow extends React.Component<IUserRowProps> {
   };
 
   render(): React.ReactNode {
-    const { id, name, email, avatar, projects } = this.props.user;
-    const { order, users, onDelete } = this.props;
+    const { name, email, avatar, projects } = this.props.user;
+    const { order } = this.props;
     const shouldShowLoadMore = !(!projects || projects.length <= 2);
 
     return (
@@ -52,7 +52,6 @@ class TableUserRow extends React.Component<IUserRowProps> {
             {this.state.stateDialog && <Dialog users={users} idUser={id} onDelete={onDelete} />}
           </td>
         </tr>
-
         {shouldShowLoadMore && (
           <RowMore onClick={this.handleToggleLoadMore} hasLoadMore={this.state.loadMore} />
         )}
