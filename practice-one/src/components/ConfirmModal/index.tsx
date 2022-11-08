@@ -10,13 +10,13 @@ import { IUser } from '../../types/IUser';
 
 interface IProps {
   onClose: () => void;
-  onConfirm: (data: IUser[], id: string) => void;
+  onConfirm: (id: string) => void;
   users: IUser[];
   id: string;
   message: string;
 }
 
-const ConfirmModal = ({ onClose, id, users, onConfirm, message }: IProps): React.ReactElement => (
+const ConfirmModal = ({ onClose, id, onConfirm, message }: IProps): React.ReactElement => (
   <div className="overlay">
     <div className="modal">
       <div className="closeModal">
@@ -29,7 +29,7 @@ const ConfirmModal = ({ onClose, id, users, onConfirm, message }: IProps): React
         <Button variant="secondary" size="small" onClick={onClose}>
           Cancel
         </Button>
-        <Button variant="primary" size="small" onClick={() => onConfirm(users, id)}>
+        <Button variant="primary" size="small" onClick={() => onConfirm(id)}>
           Save
         </Button>
       </div>

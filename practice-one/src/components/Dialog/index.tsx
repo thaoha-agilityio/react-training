@@ -10,7 +10,7 @@ import './index.css';
 interface IProps {
   idUser: string;
   users: IUser[];
-  onDelete: (users: IUser[], idUser: string) => void;
+  onDelete: (idUser: string) => void;
 }
 
 class Dialog extends React.Component<IProps> {
