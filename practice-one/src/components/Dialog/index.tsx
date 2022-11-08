@@ -2,14 +2,14 @@ import React from 'react';
 import { IUser } from '../../types/IUser';
 
 import ConfirmModal from '../ConfirmModal';
-import { TITLE_MESSAGE } from '../../constants/message';
-import './index.css';
 import Button from '../Button';
+import { TITLE_MESSAGE } from '../../constants/message';
+
+import './index.css';
 
 interface IProps {
   idUser: string;
   users: IUser[];
-
   onDelete: (users: IUser[], idUser: string) => void;
 }
 
@@ -20,7 +20,7 @@ class Dialog extends React.Component<IProps> {
     this.setState({ stateModal: true });
   };
 
-  toggleConfirm = (): void => {
+  handleCloseModal = (): void => {
     this.setState({ stateModal: false });
   };
 
@@ -37,9 +37,10 @@ class Dialog extends React.Component<IProps> {
             Delete User
           </Button>
         </div>
+        {/* Show confirm nodal */}
         {this.state.stateModal && (
           <ConfirmModal
-            handleClose={this.toggleConfirm}
+            handleClose={this.handleCloseModal}
             users={users}
             id={idUser}
             handleConfirm={onDelete}
