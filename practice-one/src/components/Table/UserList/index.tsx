@@ -7,41 +7,29 @@ import { listCell } from '../../../constants/table';
 import './index.css';
 
 interface IProps {
-  list: IUser[];
+  userList: IUser[];
+  onDelete: (id: string) => void;
 }
 
-class UserList extends React.Component<IProps> {
-  state = { userList: this.props.list };
-
-  // Delete by Id
-  handleDeleteUser = (users: IUser[], id: string): void => {
-    const currentUserList = users.filter((item) => item.id !== id);
-
-    this.setState({ userList: currentUserList });
-  };
-
-  renderRow = (listRow: IUser[]): JSX.Element[] => {
+const UserList = ({ userList, onDelete }: IProps) => {
+  const renderRow = (listRow: IUser[]): JSX.Element[] => {
     return listRow.map((item, index) => (
       <TableUserRow
         key={item.id}
         user={item}
         order={index + 1}
-        onDelete={this.handleDeleteUser}
+        onDelete={onDelete}
         users={listRow}
       />
     ));
   };
 
-  render(): React.ReactNode {
-    return (
-      <>
-        <table className="table">
-          <TableHeader listCell={listCell} />
-          <tbody className="table-body">{this.renderRow(this.state.userList)}</tbody>
-        </table>
-      </>
-    );
-  }
-}
+  return (
+    <table className="table">
+      <TableHeader listCell={listCell} />
+      <tbody className="table-body">{renderRow(userList)}</tbody>
+    </table>
+  );
+};
 
 export default UserList;

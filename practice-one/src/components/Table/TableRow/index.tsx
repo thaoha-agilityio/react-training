@@ -13,7 +13,7 @@ export interface IUserRowProps {
   user: IUser;
   order: number;
   users: IUser[];
-  onDelete: (users: IUser[], id: string) => void;
+  onDelete: (id: string) => void;
 }
 
 class TableUserRow extends React.Component<IUserRowProps> {
