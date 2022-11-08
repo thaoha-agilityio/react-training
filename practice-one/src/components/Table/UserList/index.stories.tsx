@@ -43,7 +43,7 @@ const Template: ComponentStory<typeof ListUser> = (args) => <ListUser {...args} 
 
 const Default = Template.bind({});
 Default.args = {
-  list: dataUser,
+  userList: dataUser,
 };
 
 export { Default };

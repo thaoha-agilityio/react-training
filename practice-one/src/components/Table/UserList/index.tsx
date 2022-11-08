@@ -7,11 +7,11 @@ import { listCell } from '../../../constants/table';
 import './index.css';
 
 interface IProps {
-  list: IUser[];
+  userList: IUser[];
   onDelete: (id: string) => void;
 }
 
-const UserList = ({ list, onDelete }: IProps) => {
+const UserList = ({ userList, onDelete }: IProps) => {
   const renderRow = (listRow: IUser[]): JSX.Element[] => {
     return listRow.map((item, index) => (
       <TableUserRow
@@ -25,12 +25,10 @@ const UserList = ({ list, onDelete }: IProps) => {
   };
 
   return (
-    <>
-      <table className="table">
-        <TableHeader listCell={listCell} />
-        <tbody className="table-body">{renderRow(list)}</tbody>
-      </table>
-    </>
+    <table className="table">
+      <TableHeader listCell={listCell} />
+      <tbody className="table-body">{renderRow(userList)}</tbody>
+    </table>
   );
 };
 

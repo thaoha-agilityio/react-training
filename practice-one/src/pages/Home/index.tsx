@@ -66,8 +66,10 @@ class Home extends React.Component<IProps, IState> {
   };
 
   // Get value input
-  handleChangeText = (event: React.FormEvent<HTMLInputElement>) => {
+  handleChangeText = (event: React.FormEvent<HTMLInputElement>): string => {
     this.setState({ value: event.currentTarget.value });
+
+    return this.state.value;
   };
 
   render(): React.ReactNode {
@@ -96,7 +98,7 @@ class Home extends React.Component<IProps, IState> {
               </Button>
             </div>
             <UserList
-              list={usersUpdateLength > 0 ? usersUpdate : userList}
+              userList={usersUpdateLength > 0 ? usersUpdate : userList}
               onDelete={this.handleDeleteUser}
             />
           </div>
