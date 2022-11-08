@@ -11,16 +11,16 @@ interface IProps {
 }
 
 class UserList extends React.Component<IProps> {
-  state = { listData: this.props.list };
+  state = { userList: this.props.list };
 
   // Delete by Id
-  handleDeleteUser = (users: IUser[], id: string) => {
-    const currentData = users.filter((item) => item.id !== id);
+  handleDeleteUser = (users: IUser[], id: string): void => {
+    const currentUserList = users.filter((item) => item.id !== id);
 
-    this.setState({ listData: currentData });
+    this.setState({ userList: currentUserList });
   };
 
-  renderRow = (listRow: IUser[]) => {
+  renderRow = (listRow: IUser[]): JSX.Element[] => {
     return listRow.map((item, index) => (
       <TableUserRow
         key={item.id}
@@ -37,7 +37,7 @@ class UserList extends React.Component<IProps> {
       <>
         <table className="table">
           <TableHeader listCell={listCell} />
-          <tbody className="table-body">{this.renderRow(this.state.listData)}</tbody>
+          <tbody className="table-body">{this.renderRow(this.state.userList)}</tbody>
         </table>
       </>
     );

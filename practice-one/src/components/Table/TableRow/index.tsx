@@ -17,7 +17,7 @@ export interface IUserRowProps {
 }
 
 class TableUserRow extends React.Component<IUserRowProps> {
-  state = { stateDialog: false, loadMore: false };
+  state = { isDialogOpen: false, loadMore: false };
 
   // Set state for load more
   handleToggleLoadMore = (): void => {
@@ -26,12 +26,12 @@ class TableUserRow extends React.Component<IUserRowProps> {
 
   //Show dialog
   handleToggleDialog = (): void => {
-    this.setState({ stateDialog: !this.state.stateDialog });
+    this.setState({ isDialogOpen: !this.state.isDialogOpen });
   };
 
   render(): React.ReactNode {
-    const { name, email, avatar, projects } = this.props.user;
-    const { order } = this.props;
+    const { id, name, email, avatar, projects } = this.props.user;
+    const { order, users, onDelete } = this.props;
     const shouldShowLoadMore = !(!projects || projects.length <= 2);
 
     return (
@@ -49,7 +49,7 @@ class TableUserRow extends React.Component<IUserRowProps> {
             <a className="action" onClick={this.handleToggleDialog}>
               <img src={moreVert} />
             </a>
-            {this.state.stateDialog && <Dialog users={users} idUser={id} onDelete={onDelete} />}
+            {this.state.isDialogOpen && <Dialog users={users} idUser={id} onDelete={onDelete} />}
           </td>
         </tr>
         {shouldShowLoadMore && (

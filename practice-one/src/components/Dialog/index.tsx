@@ -14,14 +14,10 @@ interface IProps {
 }
 
 class Dialog extends React.Component<IProps> {
-  state = { stateModal: false, listData: this.props.users };
+  state = { isModalOpen: false, listData: this.props.users };
 
-  handleShowModal = (): void => {
-    this.setState({ stateModal: true });
-  };
-
-  handleCloseModal = (): void => {
-    this.setState({ stateModal: false });
+  handleToggleModal = (): void => {
+    this.setState({ isModalOpen: !this.state.isModalOpen });
   };
 
   render() {
@@ -33,18 +29,18 @@ class Dialog extends React.Component<IProps> {
           <Button variant="normal" size="small">
             Update User
           </Button>
-          <Button onClick={this.handleShowModal} variant="normal" size="small">
+          <Button onClick={this.handleToggleModal} variant="normal" size="small">
             Delete User
           </Button>
         </div>
         {/* Show confirm nodal */}
-        {this.state.stateModal && (
+        {this.state.isModalOpen && (
           <ConfirmModal
-            handleClose={this.handleCloseModal}
+            onClose={this.handleToggleModal}
             users={users}
             id={idUser}
-            handleConfirm={onDelete}
-            mainMessage={TITLE_MESSAGE}
+            onConfirm={onDelete}
+            message={TITLE_MESSAGE}
           />
         )}
       </>

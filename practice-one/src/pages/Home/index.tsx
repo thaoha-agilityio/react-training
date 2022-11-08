@@ -59,7 +59,7 @@ class Home extends React.Component<IProps, IState> {
                 Add User
               </Button>
             </div>
-            <ListUser list={users} />
+            <UserList list={users} />
           </div>
         </Content>
         <Footer />
