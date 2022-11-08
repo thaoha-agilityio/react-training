@@ -49,4 +49,5 @@
   height: 38px;
   font-family: 'Roboto';
   font-weight: 400;
+  text-transform: capitalize;
 }
