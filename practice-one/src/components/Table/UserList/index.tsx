@@ -10,13 +10,14 @@ interface IProps {
   list: IUser[];
 }
 
-class ListUser extends React.Component<IProps> {
+class UserList extends React.Component<IProps> {
   state = { listData: this.props.list };
 
+  // Delete by Id
   handleDeleteUser = (users: IUser[], id: string) => {
-    const currentUser = users.filter((item) => item.id !== id);
+    const currentData = users.filter((item) => item.id !== id);
 
-    this.setState({ listData: currentUser });
+    this.setState({ listData: currentData });
   };
 
   renderRow = (listRow: IUser[]) => {
@@ -43,4 +44,4 @@ class ListUser extends React.Component<IProps> {
   }
 }
 
-export default ListUser;
+export default UserList;

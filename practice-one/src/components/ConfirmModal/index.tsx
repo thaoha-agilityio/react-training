@@ -11,13 +11,14 @@ import { IUser } from '../../types/IUser';
 interface IProps {
   handleClose: () => void;
   handleConfirm: (data: IUser[], id: string) => void;
-  data: IUser[];
+  users: IUser[];
   id: string;
 }
 
 class ConfirmModal extends React.Component<IProps> {
   render() {
-    const { handleClose, id, data, handleConfirm } = this.props;
+    const { handleClose, id, users, handleConfirm } = this.props;
+
     return (
       <div className="overlay">
         <div className="modal">
@@ -31,7 +32,7 @@ class ConfirmModal extends React.Component<IProps> {
             <Button variant="primary" size="small" onClick={handleClose}>
               Cancel
             </Button>
-            <Button variant="secondary" size="small" onClick={() => handleConfirm(data, id)}>
+            <Button variant="secondary" size="small" onClick={() => handleConfirm(users, id)}>
               Delete
             </Button>
           </div>

@@ -7,12 +7,12 @@ import './index.css';
 
 interface IProps {
   idUser: string;
-  onDelete: (data: IUser[], idUser: string) => void;
-  data: IUser[];
+  users: IUser[];
+  onDelete: (users: IUser[], idUser: string) => void;
 }
 
 class Dialog extends React.Component<IProps> {
-  state = { stateShowModal: false, listData: this.props.data };
+  state = { stateShowModal: false, listData: this.props.users };
 
   handleShowModal = (): void => {
     this.setState({ stateShowModal: true });
@@ -23,7 +23,7 @@ class Dialog extends React.Component<IProps> {
   };
 
   render() {
-    const { data, idUser, onDelete } = this.props;
+    const { users, idUser, onDelete } = this.props;
 
     return (
       <>
@@ -34,7 +34,7 @@ class Dialog extends React.Component<IProps> {
         {this.state.stateShowModal && (
           <ConfirmModal
             handleClose={this.toggleConfirm}
-            data={data}
+            users={users}
             id={idUser}
             handleConfirm={onDelete}
           />

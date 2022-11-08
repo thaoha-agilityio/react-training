@@ -8,7 +8,7 @@ import SearchFilter from '../../components/SearchFilter';
 import DropdownMenu from '../../components/DropdownMenu';
 import TextField from '../../components/TextField';
 import Button from '../../components/Button';
-import ListUser from '../../components/Table/UserList';
+import UserList from '../../components/Table/UserList';
 
 import { OPTIONS_ROLE, OPTIONS_PROJECT } from '../../constants/dropdown';
 import { avatars, userNames, users, emails } from '../../mocks/info';
@@ -59,7 +59,7 @@ class Home extends React.Component<IProps, IState> {
                 Add User
               </Button>
             </div>
-            <ListUser list={users} />
+            <UserList list={users} />
           </div>
         </Content>
         <Footer />

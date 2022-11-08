@@ -49,7 +49,7 @@ class TableUserRow extends React.Component<IUserRowProps> {
             <a className="action" onClick={this.handleToggleDialog}>
               <img src={moreVert} />
             </a>
-            {this.state.stateDialog && <Dialog data={users} idUser={id} onDelete={onDelete} />}
+            {this.state.stateDialog && <Dialog users={users} idUser={id} onDelete={onDelete} />}
           </td>
         </tr>
 
