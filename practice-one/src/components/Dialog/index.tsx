@@ -2,24 +2,26 @@ import React from 'react';
 import { IUser } from '../../types/IUser';
 
 import ConfirmModal from '../ConfirmModal';
-
+import { TITLE_MESSAGE } from '../../constants/message';
 import './index.css';
+import Button from '../Button';
 
 interface IProps {
   idUser: string;
   users: IUser[];
+
   onDelete: (users: IUser[], idUser: string) => void;
 }
 
 class Dialog extends React.Component<IProps> {
-  state = { stateShowModal: false, listData: this.props.users };
+  state = { stateModal: false, listData: this.props.users };
 
   handleShowModal = (): void => {
-    this.setState({ stateShowModal: true });
+    this.setState({ stateModal: true });
   };
 
   toggleConfirm = (): void => {
-    this.setState({ stateShowModal: false });
+    this.setState({ stateModal: false });
   };
 
   render() {
@@ -28,15 +30,20 @@ class Dialog extends React.Component<IProps> {
     return (
       <>
         <div className="dialog">
-          <a>Update User</a>
-          <a onClick={this.handleShowModal}>Delete User</a>
+          <Button variant="normal" size="small">
+            Update User
+          </Button>
+          <Button onClick={this.handleShowModal} variant="normal" size="small">
+            Delete User
+          </Button>
         </div>
-        {this.state.stateShowModal && (
+        {this.state.stateModal && (
           <ConfirmModal
             handleClose={this.toggleConfirm}
             users={users}
             id={idUser}
             handleConfirm={onDelete}
+            mainMessage={TITLE_MESSAGE}
           />
         )}
       </>

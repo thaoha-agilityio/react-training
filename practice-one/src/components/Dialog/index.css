@@ -11,13 +11,8 @@
   text-align: left;
 }
 
-.dialog a {
-  color: var(--color-primary-50);
-  font-family: 'Inter';
-  font-weight: 400;
-  font-size: 14px;
+.dialog button {
   line-height: calc(20 / 14);
   margin-top: 10px;
-  cursor: pointer;
-  margin-left: 20px;
+  margin-left: 13px;
 }
