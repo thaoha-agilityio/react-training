@@ -49,17 +49,18 @@ class Home extends React.Component<IProps, IState> {
   handleDeleteUser = (id: string): void => {
     const currentUserList = this.state.userList.filter((item) => item.id !== id);
 
-    this.setState({ usersUpdate: currentUserList });
+    this.setState({ userList: currentUserList });
   };
 
   // Search by name
   handleSearchUser = (): void => {
     const { userList } = this.state;
-    const dataSearch = userList.filter(
+
+    const searchList = userList.filter(
       (item: IUser) => item.name.toLowerCase().search(this.state.value.toLowerCase()) >= 0
     );
 
-    this.setState({ userList: dataSearch });
+    this.setState({ userList: searchList });
 
     // Clear text
     this.setState({ value: '' });
@@ -72,17 +73,40 @@ class Home extends React.Component<IProps, IState> {
     return this.state.value;
   };
 
+  // On change select dropdown
+  handleChangeSelect = (event: React.ChangeEvent<HTMLSelectElement>): void => {
+    const { userList } = this.state;
+    const values = event.target.value;
+
+    // Get name from value dropdown
+    if (values) {
+      const usersSelected = userList.filter((item: IUser) => {
+        const userSelected = item.projects?.find((project) => {
+          return project.role === values;
+        });
+
+        return userSelected;
+      });
+
+      this.setState({ usersUpdate: usersSelected });
+    }
+  };
+
   render(): React.ReactNode {
     const { value, usersUpdate, userList } = this.state;
     const usersUpdateLength = usersUpdate.length;
-
+    console.log(usersUpdateLength);
     return (
       <div className="container">
         <Header />
         <Content>
           <SearchFilter>
-            <DropdownMenu options={OPTIONS_ROLE} />
-            <DropdownMenu options={OPTIONS_PROJECT} />
+            <DropdownMenu options={OPTIONS_ROLE} size="large" onChange={this.handleChangeSelect} />
+            <DropdownMenu
+              options={OPTIONS_PROJECT}
+              size="large"
+              onChange={this.handleChangeSelect}
+            />
           </SearchFilter>
           <div className="main-content">
             <div className="page-wrapper">

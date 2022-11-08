@@ -6,4 +6,9 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  overflow-y: scroll;
+}
+
+::-webkit-scrollbar {
+  height: calc(100vh - 218px);
 }
