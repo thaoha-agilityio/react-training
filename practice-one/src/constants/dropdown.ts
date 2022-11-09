@@ -1,5 +1,5 @@
 import { IDropdown } from '../types/IDropdown';
-import { PROJECT, ROLE } from './user';
+import { PROJECT, ROLE, STATUS } from './user';
 
 const OPTIONS_ROLE: IDropdown[] = [
   { value: '', text: 'Select Role' },
@@ -15,4 +15,11 @@ const OPTIONS_PROJECT: IDropdown[] = [
   { value: PROJECT.LIBRA, text: 'Libra' },
 ];
 
-export { OPTIONS_ROLE, OPTIONS_PROJECT };
+const OPTIONS_STATUS: IDropdown[] = [
+  { value: '', text: 'Select Status' },
+  { value: STATUS.TO_DO, text: 'To Do' },
+  { value: STATUS.IN_PROGRESS, text: 'In progress' },
+  { value: STATUS.DONE, text: 'Done' },
+];
+
+export { OPTIONS_ROLE, OPTIONS_PROJECT, OPTIONS_STATUS };

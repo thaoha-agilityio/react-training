@@ -18,7 +18,7 @@ interface IProps {
 
 const ConfirmModal = ({ onClose, id, onConfirm, message }: IProps): React.ReactElement => (
   <div className="overlay">
-    <div className="modal">
+    <div className="confirm-modal">
       <div className="closeModal">
         <a onClick={onClose}>
           <img src={closeIcon} alt="icon" />

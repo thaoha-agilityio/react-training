@@ -31,7 +31,12 @@ interface IState {
 }
 
 class Home extends React.Component<IProps, IState> {
-  state = { userList: users, value: '', usersUpdate: [], selectedFilter: [] };
+  state = {
+    userList: users,
+    value: '',
+    usersUpdate: [],
+    selectedFilter: [],
+  };
 
   // Add a user in data
   handleAddUser = (): void => {
@@ -112,12 +117,12 @@ class Home extends React.Component<IProps, IState> {
           <SearchFilter>
             <DropdownMenu
               options={OPTIONS_ROLE}
-              size="large"
+              size="medium"
               onChange={this.handleChangeSelectRole}
             />
             <DropdownMenu
               options={OPTIONS_PROJECT}
-              size="large"
+              size="medium"
               onChange={this.handleChangeSelectProject}
             />
           </SearchFilter>
@@ -125,7 +130,6 @@ class Home extends React.Component<IProps, IState> {
             <div className="page-wrapper">
               <TextField
                 type="text"
-                placeholder="Search name..."
                 onChange={this.handleChangeText}
                 onClick={this.handleSearchUser}
                 value={value}
