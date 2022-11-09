@@ -6,6 +6,7 @@ import Button from '../Button';
 import { TITLE_MESSAGE } from '../../constants/message';
 
 import './index.css';
+import Modal from '../Modal';
 
 interface IProps {
   idUser: string;
@@ -14,7 +15,11 @@ interface IProps {
 }
 
 class Dialog extends React.Component<IProps> {
-  state = { isModalOpen: false, listData: this.props.users };
+  state = { isModalOpen: false, isConfirmModalOpen: false };
+
+  handleToggleConfirmModal = (): void => {
+    this.setState({ isConfirmModalOpen: !this.state.isConfirmModalOpen });
+  };
 
   handleToggleModal = (): void => {
     this.setState({ isModalOpen: !this.state.isModalOpen });
@@ -26,23 +31,26 @@ class Dialog extends React.Component<IProps> {
     return (
       <>
         <div className="dialog">
-          <Button variant="normal" size="small">
+          <Button variant="normal" size="small" onClick={this.handleToggleModal}>
             Update User
           </Button>
-          <Button onClick={this.handleToggleModal} variant="normal" size="small">
+          <Button onClick={this.handleToggleConfirmModal} variant="normal" size="small">
             Delete User
           </Button>
         </div>
-        {/* Show confirm nodal */}
-        {this.state.isModalOpen && (
+        {/* Show confirm modal */}
+        {this.state.isConfirmModalOpen && (
           <ConfirmModal
-            onClose={this.handleToggleModal}
+            onClose={this.handleToggleConfirmModal}
             users={users}
             id={idUser}
             onConfirm={onDelete}
             message={TITLE_MESSAGE}
           />
         )}
+
+        {/* Show modal */}
+        {this.state.isModalOpen && <Modal onClose={this.handleToggleModal} message="add project" />}
       </>
     );
   }

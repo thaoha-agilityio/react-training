@@ -1,4 +1,5 @@
 import React from 'react';
+import Input from '../Input';
 
 import './index.css';
 
@@ -10,7 +11,14 @@ interface IProps extends React.ComponentPropsWithoutRef<'input'> {
 
 const TextField = ({ onClick, onChange, value, ...props }: IProps): React.ReactElement => (
   <div className="search">
-    <input className="text-field" {...props} value={value} onChange={onChange} />
+    <Input
+      className="text-field"
+      {...props}
+      value={value}
+      onChange={onChange}
+      type="text"
+      placeholder="Search name..."
+    />
     <button className="search-btn" onClick={onClick}>
       <i className="fa fa-search" />
     </button>
