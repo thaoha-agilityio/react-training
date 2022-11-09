@@ -14,10 +14,10 @@ import { OPTIONS_ROLE, OPTIONS_PROJECT } from '../../constants/dropdown';
 import { avatars, userNames, users, emails } from '../../mocks/info';
 import { IUser } from '../../types/IUser';
 import { createID } from '../../helpers/createId';
+import { random } from '../../helpers/random';
 
 // CSS
 import './index.css';
-import { random } from '../../helpers/random';
 
 interface IProps {
   children?: React.ReactNode;
@@ -27,10 +27,11 @@ interface IState {
   userList: IUser[];
   value: string;
   usersUpdate: IUser[];
+  selectedFilter: IUser[];
 }
 
 class Home extends React.Component<IProps, IState> {
-  state = { userList: users, value: '', usersUpdate: [] };
+  state = { userList: users, value: '', usersUpdate: [], selectedFilter: [] };
 
   // Add a user in data
   handleAddUser = (): void => {
@@ -49,20 +50,18 @@ class Home extends React.Component<IProps, IState> {
   handleDeleteUser = (id: string): void => {
     const currentUserList = this.state.userList.filter((item) => item.id !== id);
 
-    this.setState({ usersUpdate: currentUserList });
+    this.setState({ userList: currentUserList });
   };
 
   // Search by name
   handleSearchUser = (): void => {
     const { userList } = this.state;
-    const dataSearch = userList.filter(
+
+    const searchList = userList.filter(
       (item: IUser) => item.name.toLowerCase().search(this.state.value.toLowerCase()) >= 0
     );
 
-    this.setState({ userList: dataSearch });
-
-    // Clear text
-    this.setState({ value: '' });
+    this.setState({ userList: searchList });
   };
 
   // Get value input
@@ -70,6 +69,36 @@ class Home extends React.Component<IProps, IState> {
     this.setState({ value: event.currentTarget.value });
 
     return this.state.value;
+  };
+
+  // Handle filter user by role
+  handleChangeSelectRole = (event: React.ChangeEvent<HTMLSelectElement>): IUser[] => {
+    const { userList } = this.state;
+
+    // get project name from value dropdown
+    const valueSelected = event.target.value;
+
+    const usersFilter = userList.filter((item: IUser) =>
+      item.projects?.some((value) => value.role === valueSelected)
+    );
+
+    this.setState({ selectedFilter: usersFilter });
+
+    return usersFilter;
+  };
+
+  // Handle filter user by role & project name
+  handleChangeSelectProject = (event: React.ChangeEvent<HTMLSelectElement>): IUser[] => {
+    const { selectedFilter } = this.state;
+    const values = event.target.value;
+
+    const usersFilter = selectedFilter.filter((item: IUser) =>
+      item.projects?.some((value) => value.projectName === values)
+    );
+
+    this.setState({ usersUpdate: usersFilter });
+
+    return usersFilter;
   };
 
   render(): React.ReactNode {
@@ -81,8 +110,16 @@ class Home extends React.Component<IProps, IState> {
         <Header />
         <Content>
           <SearchFilter>
-            <DropdownMenu options={OPTIONS_ROLE} />
-            <DropdownMenu options={OPTIONS_PROJECT} />
+            <DropdownMenu
+              options={OPTIONS_ROLE}
+              size="large"
+              onChange={this.handleChangeSelectRole}
+            />
+            <DropdownMenu
+              options={OPTIONS_PROJECT}
+              size="large"
+              onChange={this.handleChangeSelectProject}
+            />
           </SearchFilter>
           <div className="main-content">
             <div className="page-wrapper">

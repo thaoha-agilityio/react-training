@@ -47,12 +47,6 @@ const users: IUser[] = [
         role: ROLE.DESIGNER,
         status: STATUS.IN_PROGRESS,
       },
-      {
-        id: '4',
-        projectName: PROJECT.NIKE_SNEAKER,
-        role: ROLE.MANAGER,
-        status: STATUS.IN_PROGRESS,
-      },
     ],
     avatar: 'https://petapixel.com/assets/uploads/2022/07/DALLEcopy-800x420.jpg',
   },
