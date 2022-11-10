@@ -9,11 +9,10 @@ interface IProps extends React.ComponentPropsWithoutRef<'input'> {
   onChange: (event: React.FormEvent<HTMLInputElement>) => void;
 }
 
-const TextField = ({ onClick, onChange, value, ...props }: IProps): React.ReactElement => (
+const TextField = ({ onClick, onChange, value }: IProps): React.ReactElement => (
   <div className="search">
     <Input
       className="text-field"
-      {...props}
       value={value}
       onChange={onChange}
       type="text"

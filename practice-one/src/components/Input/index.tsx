@@ -6,10 +6,10 @@ interface IProps extends React.ComponentPropsWithoutRef<'input'> {
   className?: string;
   placeholder?: string;
   type: 'text' | 'checkbox';
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const Input = ({ name, value, type, onChange, className, placeholder }: IProps) => (
+const Input = ({ name, value, type, onChange, className, placeholder, ...rest }: IProps) => (
   <>
     <input
       name={name}
@@ -18,6 +18,7 @@ const Input = ({ name, value, type, onChange, className, placeholder }: IProps) 
       type={type}
       className={className}
       placeholder={placeholder}
+      {...rest}
     />
   </>
 );

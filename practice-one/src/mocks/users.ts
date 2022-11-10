@@ -28,7 +28,7 @@ const users: IUser[] = [
       },
       {
         id: '2',
-        projectName: PROJECT.LIBRA,
+        projectName: PROJECT.NETFLIX,
         role: ROLE.DESIGNER,
         status: STATUS.IN_PROGRESS,
       },
@@ -69,15 +69,9 @@ const users: IUser[] = [
       },
       {
         id: '15',
-        projectName: PROJECT.NETFLIX,
+        projectName: PROJECT.NIKE_SNEAKER,
         role: ROLE.DESIGNER,
         status: STATUS.TO_DO,
-      },
-      {
-        id: '16',
-        projectName: PROJECT.LIBRA,
-        role: ROLE.DESIGNER,
-        status: STATUS.IN_PROGRESS,
       },
     ],
     avatar: 'https://cdn.pixabay.com/photo/2018/08/14/13/23/ocean-3605547__340.jpg',
@@ -88,12 +82,6 @@ const users: IUser[] = [
     email: '@Jon',
     projects: [
       {
-        id: '7',
-        projectName: PROJECT.LIBRA,
-        role: ROLE.DESIGNER,
-        status: STATUS.IN_PROGRESS,
-      },
-      {
         id: '8',
         projectName: PROJECT.LIBRA,
         role: ROLE.DESIGNER,
@@ -101,7 +89,7 @@ const users: IUser[] = [
       },
       {
         id: '9',
-        projectName: PROJECT.LIBRA,
+        projectName: PROJECT.NETFLIX,
         role: ROLE.DESIGNER,
         status: STATUS.IN_PROGRESS,
       },

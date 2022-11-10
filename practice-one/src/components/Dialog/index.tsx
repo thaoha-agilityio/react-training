@@ -1,16 +1,18 @@
 import React from 'react';
-import { IUser } from '../../types/IUser';
 
 import ConfirmModal from '../ConfirmModal';
 import Button from '../Button';
-import { TITLE_MESSAGE } from '../../constants/message';
 import Modal from '../Modal';
+
+import { IProject, IUser } from '../../types/IUser';
+import { TITLE_MESSAGE } from '../../constants/message';
 
 import './index.css';
 
 interface IProps {
   idUser: string;
   users: IUser[];
+  projects: IProject[];
   onDelete: (idUser: string) => void;
 }
 
@@ -31,7 +33,7 @@ class Dialog extends React.Component<IProps, IState> {
   };
 
   render() {
-    const { users, idUser, onDelete } = this.props;
+    const { users, idUser, projects, onDelete } = this.props;
 
     return (
       <>
@@ -55,7 +57,9 @@ class Dialog extends React.Component<IProps, IState> {
         )}
 
         {/* Show modal */}
-        {this.state.isModalOpen && <Modal onClose={this.handleToggleModal} message="add project" />}
+        {this.state.isModalOpen && (
+          <Modal onClose={this.handleToggleModal} message="add project" defaultValue={projects} />
+        )}
       </>
     );
   }

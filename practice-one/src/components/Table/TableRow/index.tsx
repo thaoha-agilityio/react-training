@@ -54,7 +54,14 @@ class TableUserRow extends React.Component<IProps, IState> {
             <a className="action" onClick={this.handleToggleDialog}>
               <img src={moreVert} />
             </a>
-            {this.state.isDialogOpen && <Dialog users={users} idUser={id} onDelete={onDelete} />}
+            {this.state.isDialogOpen && (
+              <Dialog
+                users={users}
+                idUser={id}
+                onDelete={onDelete}
+                projects={projects as IProject[]}
+              />
+            )}
           </td>
         </tr>
         {shouldShowLoadMore && (

@@ -10,10 +10,24 @@ interface IProps {
   onChange?: (event: React.ChangeEvent<HTMLSelectElement>) => void;
   value?: string;
   name?: string;
+  defaultValue?: string;
 }
 
-const DropdownMenu = ({ options, size, value, onChange, name }: IProps): React.ReactElement => (
-  <select className={`select ${size}`} onChange={onChange} value={value} name={name}>
+const DropdownMenu = ({
+  options,
+  size,
+  value,
+  defaultValue,
+  onChange,
+  name,
+}: IProps): React.ReactElement => (
+  <select
+    className={`select ${size}`}
+    onChange={onChange}
+    value={value}
+    name={name}
+    defaultValue={defaultValue}
+  >
     {options.map((option) => (
       <option className="option" key={option.value} value={option.value}>
         {option.text}

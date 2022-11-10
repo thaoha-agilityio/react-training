@@ -2,28 +2,32 @@ import React from 'react';
 
 // Components
 import Button from '../Button';
-import DropdownMenu from '../DropdownMenu';
-import { OPTIONS_ROLE, OPTIONS_STATUS } from '../../constants/dropdown';
+import RowProject from '../RowProject';
+
 import arrowIcon from '../../assets/images/arrowIcon.jpg';
 import closeIcon from '../../assets/images/closeIcon.jpg';
 import { IProject } from '../../types/IUser';
+import { PROJECT } from '../../constants/user';
 
 // CSS
 import './index.css';
-import Input from '../Input';
-import { PROJECT } from '../../constants/user';
 
 interface IProps {
   name?: string;
   message?: string;
-  defaultValue?: IProject;
+  defaultValue?: IProject[];
   onChange?: (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
   onClose: () => void;
   onConfirm?: (event: React.FormEvent) => void;
 }
 
-class Modal extends React.Component<IProps> {
-  state = { isChecked: false };
+interface IState {
+  isChecked: boolean;
+  valueSelected: string;
+}
+
+class Modal extends React.Component<IProps, IState> {
+  state = { isChecked: false, valueSelected: '' };
 
   toggleIsChecked = (): boolean => {
     this.setState({ isChecked: !this.state.isChecked });
@@ -31,9 +35,14 @@ class Modal extends React.Component<IProps> {
     return this.state.isChecked;
   };
 
+  handleOnChange = (event: React.ChangeEvent<HTMLSelectElement>): void => {
+    const value = event.target.value;
+
+    this.setState({ valueSelected: value });
+  };
+
   render() {
-    const { message, onClose, onConfirm } = this.props;
-    const { isChecked } = this.state;
+    const { message, defaultValue, onClose, onConfirm } = this.props;
 
     return (
       <div className="overlay">
@@ -56,62 +65,14 @@ class Modal extends React.Component<IProps> {
             </div>
             <form className="form" onSubmit={onConfirm}>
               <div className="modal-form">
-                {/* ================================ */}
+                <RowProject
+                  name={PROJECT.NIKE_SNEAKER}
+                  defaultValues={defaultValue}
+                  variant="nike-sneaker"
+                />
+                <RowProject name={PROJECT.NETFLIX} defaultValues={defaultValue} variant="netflix" />
 
-                <div className="form-group">
-                  <div className="form-control">
-                    <Input
-                      type="checkbox"
-                      onChange={this.toggleIsChecked}
-                      checked={isChecked}
-                      name={PROJECT.NIKE_SNEAKER}
-                    />
-                    <label className="nike-sneaker">nike sneakers</label>
-                  </div>
-                  <div className="form-control">
-                    <DropdownMenu options={OPTIONS_ROLE} size="small" name="role" />
-                  </div>
-                  <div className="form-control">
-                    <DropdownMenu options={OPTIONS_STATUS} size="small" name="status" />
-                  </div>
-                </div>
-                {/* ================================ */}
-                <div className="form-group">
-                  <div className="form-control">
-                    <Input
-                      type="checkbox"
-                      onChange={this.toggleIsChecked}
-                      checked={isChecked}
-                      name={PROJECT.NETFLIX}
-                    />
-                    <label className="netflix">netflix</label>
-                  </div>
-                  <div className="form-control">
-                    <DropdownMenu options={OPTIONS_ROLE} size="small" name="role" />
-                  </div>
-                  <div className="form-control">
-                    <DropdownMenu options={OPTIONS_STATUS} size="small" name="status" />
-                  </div>
-                </div>
-                {/* ==================================== */}
-                <div className="form-group">
-                  <div className="form-control">
-                    <Input
-                      type="checkbox"
-                      onChange={this.toggleIsChecked}
-                      checked={isChecked}
-                      name={PROJECT.LIBRA}
-                    />
-                    <label className="libra">libra</label>
-                  </div>
-                  <div className="form-control">
-                    <DropdownMenu options={OPTIONS_ROLE} size="small" name="role" />
-                  </div>
-                  <div className="form-control">
-                    <DropdownMenu options={OPTIONS_STATUS} size="small" name="status" />
-                  </div>
-                </div>
-                {/* ============================ */}
+                <RowProject name={PROJECT.LIBRA} defaultValues={defaultValue} variant="libra" />
               </div>
               <div className="form-group-btn">
                 <Button variant="primary" size="medium" type="submit">
