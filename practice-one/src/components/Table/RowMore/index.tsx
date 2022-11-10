@@ -5,11 +5,11 @@ import circumflexUpIcon from '../../../assets/images/circumflexUpIcon.jpg';
 import './index.css';
 
 interface IProps {
-  onClick: () => void;
   hasLoadMore: boolean;
+  onClick: () => void;
 }
 
-const RowMore = ({ onClick, hasLoadMore }: IProps): React.ReactElement => {
+const RowMore = ({ hasLoadMore, onClick }: IProps): React.ReactElement => {
   return (
     <tr className="table-row">
       <td className="row-more" colSpan={7}>

@@ -5,15 +5,10 @@ interface IProps {
   children: React.ReactNode;
 }
 
-class Content extends React.PureComponent<IProps> {
-  render() {
-    const { children } = this.props;
-    return (
-      <main>
-        <div className="content">{children}</div>;
-      </main>
-    );
-  }
-}
+const Content = ({ children }: IProps): React.ReactElement => (
+  <main>
+    <div className="content">{children}</div>;
+  </main>
+);
 
 export default Content;

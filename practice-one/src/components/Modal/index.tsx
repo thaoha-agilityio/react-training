@@ -14,12 +14,12 @@ import Input from '../Input';
 import { PROJECT } from '../../constants/user';
 
 interface IProps {
-  onClose: () => void;
-  onConfirm?: (event: React.FormEvent) => void;
+  name?: string;
   message?: string;
   defaultValue?: IProject;
   onChange?: (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
-  name?: string;
+  onClose: () => void;
+  onConfirm?: (event: React.FormEvent) => void;
 }
 
 class Modal extends React.Component<IProps> {
@@ -32,7 +32,7 @@ class Modal extends React.Component<IProps> {
   };
 
   render() {
-    const { onClose, onConfirm, message } = this.props;
+    const { message, onClose, onConfirm } = this.props;
     const { isChecked } = this.state;
 
     return (

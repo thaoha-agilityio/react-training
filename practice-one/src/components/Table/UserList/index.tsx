@@ -2,8 +2,10 @@ import React from 'react';
 
 import TableUserRow from '../TableRow';
 import TableHeader from '../TableHeader';
+
 import { IUser } from '../../../types/IUser';
 import { listCell } from '../../../constants/table';
+
 import './index.css';
 
 interface IProps {

@@ -4,9 +4,9 @@ import './index.css';
 interface IProps {
   username: string;
   url?: string;
+  alt: string;
   styles?: 'circle' | 'square';
   size?: 'small' | 'medium' | 'large';
-  alt: string;
 }
 
 const Avatar = ({ username, url, styles, size, alt }: IProps): React.ReactElement => (
