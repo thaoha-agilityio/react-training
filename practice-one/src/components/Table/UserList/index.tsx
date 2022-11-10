@@ -11,9 +11,10 @@ import './index.css';
 interface IProps {
   userList: IUser[];
   onDelete: (id: string) => void;
+  onChange: (event: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>) => void;
 }
 
-const UserList = ({ userList, onDelete }: IProps) => {
+const UserList = ({ userList, onDelete, onChange }: IProps) => {
   const renderRow = (listRow: IUser[]): JSX.Element[] => {
     return listRow.map((item, index) => (
       <TableUserRow
@@ -22,6 +23,7 @@ const UserList = ({ userList, onDelete }: IProps) => {
         order={index + 1}
         onDelete={onDelete}
         users={listRow}
+        onChange={onChange}
       />
     ));
   };

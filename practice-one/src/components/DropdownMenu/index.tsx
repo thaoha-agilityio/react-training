@@ -4,30 +4,13 @@ import { IDropdown } from '../../types/IDropdown';
 
 import './index.css';
 
-interface IProps {
+interface IProps extends Omit<React.ComponentPropsWithoutRef<'select'>, 'size'> {
   options: IDropdown[];
   size?: 'small' | 'medium' | 'large';
-  onChange?: (event: React.ChangeEvent<HTMLSelectElement>) => void;
-  value?: string;
-  name?: string;
-  defaultValue?: string;
 }
 
-const DropdownMenu = ({
-  options,
-  size,
-  value,
-  defaultValue,
-  onChange,
-  name,
-}: IProps): React.ReactElement => (
-  <select
-    className={`select ${size}`}
-    onChange={onChange}
-    value={value}
-    name={name}
-    defaultValue={defaultValue}
-  >
+const DropdownMenu = ({ options, size, className, ...selectProps }: IProps): React.ReactElement => (
+  <select className={`select ${size} ${className}`} {...selectProps}>
     {options.map((option) => (
       <option className="option" key={option.value} value={option.value}>
         {option.text}

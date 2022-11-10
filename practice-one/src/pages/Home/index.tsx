@@ -106,6 +106,19 @@ class Home extends React.Component<IProps, IState> {
     return usersFilter;
   };
 
+  handleOnChange = (event: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>) => {
+    const element = event.target;
+
+    if (element.className.includes('checkbox')) {
+      const checkbox = element as HTMLInputElement;
+      // console.log(checkbox.name);
+      const isChecked = checkbox.checked;
+
+      const value = isChecked ? checkbox.name : undefined;
+      console.log(value);
+    }
+  };
+
   render(): React.ReactNode {
     const { value, usersUpdate, userList } = this.state;
     const usersUpdateLength = usersUpdate.length;
@@ -141,6 +154,7 @@ class Home extends React.Component<IProps, IState> {
             <UserList
               userList={usersUpdateLength > 0 ? usersUpdate : userList}
               onDelete={this.handleDeleteUser}
+              onChange={this.handleOnChange}
             />
           </div>
         </Content>

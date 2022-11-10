@@ -16,9 +16,10 @@ interface IProps {
   name?: string;
   message?: string;
   defaultValue?: IProject[];
-  onChange?: (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
+
   onClose: () => void;
   onConfirm?: (event: React.FormEvent) => void;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
 }
 
 interface IState {
@@ -42,7 +43,7 @@ class Modal extends React.Component<IProps, IState> {
   };
 
   render() {
-    const { message, defaultValue, onClose, onConfirm } = this.props;
+    const { message, defaultValue, onClose, onConfirm, onChange } = this.props;
 
     return (
       <div className="overlay">
@@ -68,11 +69,22 @@ class Modal extends React.Component<IProps, IState> {
                 <RowProject
                   name={PROJECT.NIKE_SNEAKER}
                   defaultValues={defaultValue}
-                  variant="nike-sneaker"
+                  className="nike-sneaker"
+                  onChange={onChange}
                 />
-                <RowProject name={PROJECT.NETFLIX} defaultValues={defaultValue} variant="netflix" />
+                <RowProject
+                  name={PROJECT.NETFLIX}
+                  defaultValues={defaultValue}
+                  className="netflix"
+                  onChange={onChange}
+                />
 
-                <RowProject name={PROJECT.LIBRA} defaultValues={defaultValue} variant="libra" />
+                <RowProject
+                  name={PROJECT.LIBRA}
+                  defaultValues={defaultValue}
+                  className="libra"
+                  onChange={onChange}
+                />
               </div>
               <div className="form-group-btn">
                 <Button variant="primary" size="medium" type="submit">

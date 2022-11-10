@@ -14,6 +14,7 @@ interface IProps {
   order: number;
   users: IUser[];
   onDelete: (id: string) => void;
+  onChange: (event: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>) => void;
 }
 
 interface IState {
@@ -36,7 +37,7 @@ class TableUserRow extends React.Component<IProps, IState> {
 
   render(): React.ReactNode {
     const { id, name, email, avatar, projects } = this.props.user;
-    const { order, users, onDelete } = this.props;
+    const { order, users, onDelete, onChange } = this.props;
     const shouldShowLoadMore = !(!projects || projects.length <= 2);
 
     return (
@@ -54,14 +55,15 @@ class TableUserRow extends React.Component<IProps, IState> {
             <a className="action" onClick={this.handleToggleDialog}>
               <img src={moreVert} />
             </a>
-            {this.state.isDialogOpen && (
-              <Dialog
-                users={users}
-                idUser={id}
-                onDelete={onDelete}
-                projects={projects as IProject[]}
-              />
-            )}
+
+            <Dialog
+              users={users}
+              idUser={id}
+              onDelete={onDelete}
+              projects={projects as IProject[]}
+              isOpen={this.state.isDialogOpen}
+              onChange={onChange}
+            />
           </td>
         </tr>
         {shouldShowLoadMore && (
