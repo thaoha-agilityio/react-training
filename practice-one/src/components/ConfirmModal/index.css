@@ -24,7 +24,7 @@
   flex-direction: column;
 }
 
-.closeModal {
+.close-modal {
   text-align: right;
   cursor: pointer;
 }

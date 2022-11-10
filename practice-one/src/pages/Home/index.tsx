@@ -11,7 +11,7 @@ import Button from '../../components/Button';
 import UserList from '../../components/Table/UserList';
 
 import { OPTIONS_ROLE, OPTIONS_PROJECT } from '../../constants/dropdown';
-import { avatars, userNames, users, emails } from '../../mocks/info';
+import { avatars, userNames, users, emails } from '../../mocks/users';
 import { IUser } from '../../types/IUser';
 import { createID } from '../../helpers/createId';
 import { random } from '../../helpers/random';
@@ -24,8 +24,8 @@ interface IProps {
 }
 
 interface IState {
-  userList: IUser[];
   value: string;
+  userList: IUser[];
   usersUpdate: IUser[];
   selectedFilter: IUser[];
 }
@@ -70,14 +70,14 @@ class Home extends React.Component<IProps, IState> {
   };
 
   // Get value input
-  handleChangeText = (event: React.FormEvent<HTMLInputElement>): string => {
+  handleChangeInput = (event: React.FormEvent<HTMLInputElement>): string => {
     this.setState({ value: event.currentTarget.value });
 
     return this.state.value;
   };
 
   // Handle filter user by role
-  handleChangeSelectRole = (event: React.ChangeEvent<HTMLSelectElement>): IUser[] => {
+  handleFilterUserByRole = (event: React.ChangeEvent<HTMLSelectElement>): IUser[] => {
     const { userList } = this.state;
 
     // get project name from value dropdown
@@ -93,7 +93,7 @@ class Home extends React.Component<IProps, IState> {
   };
 
   // Handle filter user by role & project name
-  handleChangeSelectProject = (event: React.ChangeEvent<HTMLSelectElement>): IUser[] => {
+  handleFilterUserByProject = (event: React.ChangeEvent<HTMLSelectElement>): IUser[] => {
     const { selectedFilter } = this.state;
     const values = event.target.value;
 
@@ -118,19 +118,19 @@ class Home extends React.Component<IProps, IState> {
             <DropdownMenu
               options={OPTIONS_ROLE}
               size="medium"
-              onChange={this.handleChangeSelectRole}
+              onChange={this.handleFilterUserByRole}
             />
             <DropdownMenu
               options={OPTIONS_PROJECT}
               size="medium"
-              onChange={this.handleChangeSelectProject}
+              onChange={this.handleFilterUserByProject}
             />
           </SearchFilter>
           <div className="main-content">
             <div className="page-wrapper">
               <TextField
                 type="text"
-                onChange={this.handleChangeText}
+                onChange={this.handleChangeInput}
                 onClick={this.handleSearchUser}
                 value={value}
               />

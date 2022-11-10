@@ -5,23 +5,28 @@ import { IProject, IUser } from '../../../types/IUser';
 import moreVert from '../../../assets/images/moreVertIcon.jpg';
 import RowMore from '../RowMore';
 import TableListCell from '../TableListCell';
-
-import './index.css';
 import Dialog from '../../Dialog';
 
-export interface IUserRowProps {
+import './index.css';
+
+interface IProps {
   user: IUser;
   order: number;
   users: IUser[];
   onDelete: (id: string) => void;
 }
 
-class TableUserRow extends React.Component<IUserRowProps> {
-  state = { isDialogOpen: false, loadMore: false };
+interface IState {
+  isDialogOpen: boolean;
+  isLoadMore: boolean;
+}
+
+class TableUserRow extends React.Component<IProps, IState> {
+  state = { isDialogOpen: false, isLoadMore: false };
 
   // Set state for load more
   handleToggleLoadMore = (): void => {
-    this.setState({ loadMore: !this.state.loadMore });
+    this.setState({ isLoadMore: !this.state.isLoadMore });
   };
 
   //Show dialog
@@ -43,7 +48,7 @@ class TableUserRow extends React.Component<IUserRowProps> {
           </td>
           <td>{email}</td>
           {/* Render data of Role, Project, Status */}
-          <TableListCell listProject={projects as IProject[]} hasLoadMore={this.state.loadMore} />
+          <TableListCell listProject={projects as IProject[]} hasLoadMore={this.state.isLoadMore} />
 
           <td>
             <a className="action" onClick={this.handleToggleDialog}>
@@ -53,7 +58,7 @@ class TableUserRow extends React.Component<IUserRowProps> {
           </td>
         </tr>
         {shouldShowLoadMore && (
-          <RowMore onClick={this.handleToggleLoadMore} hasLoadMore={this.state.loadMore} />
+          <RowMore onClick={this.handleToggleLoadMore} hasLoadMore={this.state.isLoadMore} />
         )}
       </>
     );

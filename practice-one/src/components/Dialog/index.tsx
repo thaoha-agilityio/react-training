@@ -4,9 +4,9 @@ import { IUser } from '../../types/IUser';
 import ConfirmModal from '../ConfirmModal';
 import Button from '../Button';
 import { TITLE_MESSAGE } from '../../constants/message';
+import Modal from '../Modal';
 
 import './index.css';
-import Modal from '../Modal';
 
 interface IProps {
   idUser: string;
@@ -14,7 +14,12 @@ interface IProps {
   onDelete: (idUser: string) => void;
 }
 
-class Dialog extends React.Component<IProps> {
+interface IState {
+  isModalOpen: boolean;
+  isConfirmModalOpen: boolean;
+}
+
+class Dialog extends React.Component<IProps, IState> {
   state = { isModalOpen: false, isConfirmModalOpen: false };
 
   handleToggleConfirmModal = (): void => {

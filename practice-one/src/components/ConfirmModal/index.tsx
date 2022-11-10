@@ -9,17 +9,17 @@ import './index.css';
 import { IUser } from '../../types/IUser';
 
 interface IProps {
+  id: string;
+  users: IUser[];
+  message: string;
   onClose: () => void;
   onConfirm: (id: string) => void;
-  users: IUser[];
-  id: string;
-  message: string;
 }
 
 const ConfirmModal = ({ onClose, id, onConfirm, message }: IProps): React.ReactElement => (
   <div className="overlay">
     <div className="confirm-modal">
-      <div className="closeModal">
+      <div className="close-modal">
         <a onClick={onClose}>
           <img src={closeIcon} alt="icon" />
         </a>
