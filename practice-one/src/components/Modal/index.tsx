@@ -72,6 +72,7 @@ class Modal extends React.Component<IProps, IState> {
                   className="nike-sneaker"
                   onChange={onChange}
                 />
+
                 <RowProject
                   name={PROJECT.NETFLIX}
                   defaultValues={defaultValue}

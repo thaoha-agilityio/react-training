@@ -13,7 +13,11 @@ interface IProps {
   onChange?: (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
 }
 
-class RowProject extends React.Component<IProps> {
+interface IState {
+  isChecked: boolean;
+}
+
+class RowProject extends React.Component<IProps, IState> {
   state = {
     isChecked: !!this.props.defaultValues?.find((value) => value.projectName === this.props.name),
   };
@@ -39,6 +43,7 @@ class RowProject extends React.Component<IProps> {
             onChange={this.handleChange}
             name={name}
             className="checkbox"
+            value={name}
           />
           <label className={`${className}`}>{name}</label>
         </div>
@@ -46,22 +51,22 @@ class RowProject extends React.Component<IProps> {
           <DropdownMenu
             options={OPTIONS_ROLE}
             size="small"
-            name="role"
+            name={name}
             defaultValue={isChecked ? matchProject?.role : undefined}
             disabled={!isChecked}
             onChange={onChange}
-            className="menu-role"
+            className="menu role"
           />
         </div>
         <div className="form-control">
           <DropdownMenu
             options={OPTIONS_STATUS}
             size="small"
-            name="status"
+            name={name}
             defaultValue={isChecked ? matchProject?.status : undefined}
             disabled={!isChecked}
             onChange={onChange}
-            className="menu-role"
+            className="menu status"
           />
         </div>
       </div>

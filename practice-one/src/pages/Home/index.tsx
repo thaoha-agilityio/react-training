@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FormEvent } from 'react';
 
 // Components
 import Header from '../../components/Header';
@@ -12,12 +12,13 @@ import UserList from '../../components/Table/UserList';
 
 import { OPTIONS_ROLE, OPTIONS_PROJECT } from '../../constants/dropdown';
 import { avatars, userNames, users, emails } from '../../mocks/users';
-import { IUser } from '../../types/IUser';
+import { IProject, IUser } from '../../types/IUser';
 import { createID } from '../../helpers/createId';
 import { random } from '../../helpers/random';
 
 // CSS
 import './index.css';
+import { PROJECT, ROLE, STATUS } from '../../constants/user';
 
 interface IProps {
   children?: React.ReactNode;
@@ -106,19 +107,6 @@ class Home extends React.Component<IProps, IState> {
     return usersFilter;
   };
 
-  handleOnChange = (event: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>) => {
-    const element = event.target;
-
-    if (element.className.includes('checkbox')) {
-      const checkbox = element as HTMLInputElement;
-      // console.log(checkbox.name);
-      const isChecked = checkbox.checked;
-
-      const value = isChecked ? checkbox.name : undefined;
-      console.log(value);
-    }
-  };
-
   render(): React.ReactNode {
     const { value, usersUpdate, userList } = this.state;
     const usersUpdateLength = usersUpdate.length;
@@ -154,7 +142,6 @@ class Home extends React.Component<IProps, IState> {
             <UserList
               userList={usersUpdateLength > 0 ? usersUpdate : userList}
               onDelete={this.handleDeleteUser}
-              onChange={this.handleOnChange}
             />
           </div>
         </Content>

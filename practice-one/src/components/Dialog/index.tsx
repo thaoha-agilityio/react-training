@@ -16,6 +16,7 @@ interface IProps {
   projects: IProject[];
   onDelete: (idUser: string) => void;
   onChange: (event: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>) => void;
+  onUpdate: (event: React.FormEvent) => void;
 }
 
 interface IState {
@@ -42,7 +43,7 @@ class Dialog extends React.Component<IProps, IState> {
   };
 
   render() {
-    const { users, idUser, projects, onDelete, onChange } = this.props;
+    const { users, idUser, projects, onDelete, onChange, onUpdate } = this.props;
 
     return (
       this.state.isShow && (
@@ -73,6 +74,7 @@ class Dialog extends React.Component<IProps, IState> {
               message="add project"
               defaultValue={projects}
               onChange={onChange}
+              onConfirm={onUpdate}
             />
           )}
         </>
