@@ -28,4 +28,6 @@
 
 .action {
   cursor: pointer;
+  background: var(--color-secondary);
+  border: none;
 }

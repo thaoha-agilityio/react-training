@@ -25,3 +25,12 @@
   margin-top: 10px;
   margin-left: 13px;
 }
+
+.modal-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: transparent;
+  height: 100%;
+  width: 100vw;
+}

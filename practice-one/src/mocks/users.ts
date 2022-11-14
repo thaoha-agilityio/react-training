@@ -42,7 +42,7 @@ const users: IUser[] = [
     email: '@Elly',
     projects: [
       {
-        id: '3',
+        id: '2',
         projectName: PROJECT.NETFLIX,
         role: ROLE.DESIGNER,
         status: STATUS.IN_PROGRESS,
@@ -56,19 +56,19 @@ const users: IUser[] = [
     email: '@Ned',
     projects: [
       {
-        id: '5',
+        id: '2',
         projectName: PROJECT.NETFLIX,
         role: ROLE.DESIGNER,
         status: STATUS.TO_DO,
       },
       {
-        id: '6',
+        id: '1',
         projectName: PROJECT.LIBRA,
         role: ROLE.DESIGNER,
         status: STATUS.IN_PROGRESS,
       },
       {
-        id: '15',
+        id: '3',
         projectName: PROJECT.NIKE_SNEAKER,
         role: ROLE.DESIGNER,
         status: STATUS.TO_DO,
@@ -82,13 +82,13 @@ const users: IUser[] = [
     email: '@Jon',
     projects: [
       {
-        id: '8',
+        id: '1',
         projectName: PROJECT.LIBRA,
         role: ROLE.DESIGNER,
         status: STATUS.IN_PROGRESS,
       },
       {
-        id: '9',
+        id: '2',
         projectName: PROJECT.NETFLIX,
         role: ROLE.DESIGNER,
         status: STATUS.IN_PROGRESS,
@@ -103,7 +103,7 @@ const users: IUser[] = [
     email: '@Petyr',
     projects: [
       {
-        id: '8',
+        id: '1',
         projectName: PROJECT.LIBRA,
         role: ROLE.DEVELOPER,
         status: STATUS.IN_PROGRESS,

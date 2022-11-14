@@ -16,7 +16,6 @@ interface IProps {
   name?: string;
   message?: string;
   defaultValue?: IProject[];
-
   onClose: () => void;
   onConfirm?: (event: React.FormEvent) => void;
   onChange?: (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
@@ -42,9 +41,15 @@ class Modal extends React.Component<IProps, IState> {
     this.setState({ valueSelected: value });
   };
 
+  handleSubmit = (event: React.FormEvent): void => {
+    if (this.props.onConfirm) {
+      this.props.onConfirm(event);
+      this.props.onClose();
+    }
+  };
+
   render() {
     const { message, defaultValue, onClose, onConfirm, onChange } = this.props;
-
     return (
       <div className="overlay">
         <div className="modal">
@@ -64,7 +69,7 @@ class Modal extends React.Component<IProps, IState> {
               <p>role</p>
               <p>status</p>
             </div>
-            <form className="form" onSubmit={onConfirm}>
+            <form className="form" onSubmit={this.handleSubmit}>
               <div className="modal-form">
                 <RowProject
                   name={PROJECT.NIKE_SNEAKER}

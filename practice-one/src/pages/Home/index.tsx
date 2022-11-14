@@ -1,4 +1,4 @@
-import React, { FormEvent } from 'react';
+import React from 'react';
 
 // Components
 import Header from '../../components/Header';
@@ -12,13 +12,12 @@ import UserList from '../../components/Table/UserList';
 
 import { OPTIONS_ROLE, OPTIONS_PROJECT } from '../../constants/dropdown';
 import { avatars, userNames, users, emails } from '../../mocks/users';
-import { IProject, IUser } from '../../types/IUser';
+import { IUser } from '../../types/IUser';
 import { createID } from '../../helpers/createId';
 import { random } from '../../helpers/random';
 
 // CSS
 import './index.css';
-import { PROJECT, ROLE, STATUS } from '../../constants/user';
 
 interface IProps {
   children?: React.ReactNode;
@@ -48,8 +47,7 @@ class Home extends React.Component<IProps, IState> {
       avatar: random(avatars),
     } as IUser;
 
-    users.push(newUser);
-    this.setState({ userList: users });
+    this.setState({ userList: [...this.state.userList, newUser] });
   };
 
   // Delete by Id

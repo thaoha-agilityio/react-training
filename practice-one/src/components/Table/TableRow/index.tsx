@@ -1,12 +1,14 @@
 import React from 'react';
 
 import Avatar from '../../Avatar';
-import { IProject, IUser } from '../../../types/IUser';
 import moreVert from '../../../assets/images/moreVertIcon.jpg';
 import RowMore from '../RowMore';
 import TableListCell from '../TableListCell';
 import Dialog from '../../Dialog';
+import { IProject, IUser } from '../../../types/IUser';
+
 import { ROLE, STATUS } from '../../../constants/user';
+import { createID } from '../../../helpers/createId';
 
 import './index.css';
 
@@ -18,13 +20,14 @@ interface IProps {
 }
 
 interface IProjects {
-  [key: string]: Omit<IProject, 'id'> | undefined;
+  [key: string]: IProject | undefined;
 }
 
 interface IState {
   isDialogOpen: boolean;
   isLoadMore: boolean;
   valueProjects?: IProjects;
+  projectList: IProject[];
 }
 
 class TableUserRow extends React.Component<IProps, IState> {
@@ -38,10 +41,12 @@ class TableUserRow extends React.Component<IProps, IState> {
           projectName: currentP.projectName,
           role: currentP.role,
           status: currentP.status,
+          id: currentP.id,
         },
       }),
       {}
     ),
+    projectList: this.props.user.projects as IProject[],
   };
 
   // Set state for load more
@@ -49,11 +54,12 @@ class TableUserRow extends React.Component<IProps, IState> {
     this.setState({ isLoadMore: !this.state.isLoadMore });
   };
 
-  //Show dialog
+  // Show dialog
   handleToggleDialog = (): void => {
     this.setState({ isDialogOpen: !this.state.isDialogOpen });
   };
 
+  // Get value from form modal
   handleOnchange = (event: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>) => {
     const element = event.target;
     const nameProject = element.name;
@@ -67,8 +73,10 @@ class TableUserRow extends React.Component<IProps, IState> {
           [nameProject]: checkbox.checked
             ? {
                 projectName: nameProject,
+                //Not selected, default value is Designer & To do
                 role: ROLE.DESIGNER,
                 status: STATUS.TO_DO,
+                id: createID(),
               }
             : undefined,
         },
@@ -79,7 +87,7 @@ class TableUserRow extends React.Component<IProps, IState> {
       if (!valueProjects) {
         return;
       }
-      // if (valueProjects) {
+
       const project = {
         ...(valueProjects[nameProject as keyof typeof valueProjects] as IProjects),
       };
@@ -90,23 +98,37 @@ class TableUserRow extends React.Component<IProps, IState> {
             ...project,
             role: !element.className.includes('status') ? element.value : project.role,
             status: element.className.includes('status') ? element.value : project.status,
+            id: createID(),
           },
         },
       });
-      // }
     }
   };
 
-  handleOnUpdate = (event: React.FormEvent) => {
+  // Submit form update project
+  handleOnUpdateProject = (event: React.FormEvent): void => {
     event.preventDefault();
 
-    console.log(this.state.valueProjects);
+    const { valueProjects } = this.state;
+    const { user } = this.props;
+
+    // Assign all projects of user an empty array
+    user.projects = [];
+
+    // Convert object to array
+    Object.values(valueProjects as IProjects).forEach((value) => {
+      if (value) {
+        user.projects = [...(user.projects || []), value];
+      }
+    });
   };
 
   render(): React.ReactNode {
     const { id, name, email, avatar, projects } = this.props.user;
-    const { order, users, onDelete } = this.props;
+    const { order, onDelete } = this.props;
     const shouldShowLoadMore = !(!projects || projects.length <= 2);
+
+    console.log(this.state.isDialogOpen);
 
     return (
       <>
@@ -120,19 +142,19 @@ class TableUserRow extends React.Component<IProps, IState> {
           <TableListCell listProject={projects as IProject[]} hasLoadMore={this.state.isLoadMore} />
 
           <td>
-            <a className="action" onClick={this.handleToggleDialog}>
+            <button className="action" onClick={this.handleToggleDialog}>
               <img src={moreVert} />
-            </a>
+            </button>
 
-            <Dialog
-              users={users}
-              idUser={id}
-              onDelete={onDelete}
-              projects={projects as IProject[]}
-              isOpen={this.state.isDialogOpen}
-              onChange={this.handleOnchange}
-              onUpdate={this.handleOnUpdate}
-            />
+            {this.state.isDialogOpen && (
+              <Dialog
+                idUser={id}
+                onDelete={onDelete}
+                projects={projects as IProject[]}
+                onChange={this.handleOnchange}
+                onUpdate={this.handleOnUpdateProject}
+              />
+            )}
           </td>
         </tr>
         {shouldShowLoadMore && (
