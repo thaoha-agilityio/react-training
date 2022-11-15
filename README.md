@@ -59,3 +59,5 @@
 - Step 4: Run project `npm start`
 
 - Step 5: Open your browser at `http://localhost:3000/`
+
+- Step 6: Run storybook `npm run storybook`
