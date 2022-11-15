@@ -1,7 +1,6 @@
-import React from 'react';
-
-// Components
+// Component
 import Button from '../Button';
+
 import closeIcon from '../../assets/images/closeIcon.jpg';
 
 // Css
@@ -9,7 +8,6 @@ import './index.css';
 
 interface IProps {
   id: string;
-
   message: string;
   onClose: () => void;
   onConfirm: (id: string) => void;

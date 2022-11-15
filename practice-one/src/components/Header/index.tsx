@@ -1,7 +1,7 @@
-import React from 'react';
 import logo from '../../assets/images/logo.png';
 import notification from '../../assets/images/notificationIcon.jpg';
 import dark from '../../assets/images/darkIcon.jpg';
+
 import './index.css';
 
 const Header = (): React.ReactElement => (

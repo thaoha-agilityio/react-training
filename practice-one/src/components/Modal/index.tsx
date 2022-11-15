@@ -1,5 +1,3 @@
-import React from 'react';
-
 // Components
 import Button from '../Button';
 import RowProject from '../RowProject';

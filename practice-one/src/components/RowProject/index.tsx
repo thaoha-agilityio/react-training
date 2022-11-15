@@ -22,8 +22,9 @@ class RowProject extends React.Component<IProps, IState> {
     isChecked: !!this.props.defaultValues?.find((value) => value.projectName === this.props.name),
   };
 
-  handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     this.setState({ isChecked: e.target.checked });
+
     if (this.props.onChange) {
       this.props.onChange(e);
     }

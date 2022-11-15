@@ -1,12 +1,12 @@
 import React from 'react';
 
 import Avatar from '../../Avatar';
-import moreVert from '../../../assets/images/moreVertIcon.jpg';
 import RowMore from '../RowMore';
 import TableListCell from '../TableListCell';
 import Dialog from '../../Dialog';
-import { IProject, IUser } from '../../../types/IUser';
 
+import moreVert from '../../../assets/images/moreVertIcon.jpg';
+import { IProject, IUser } from '../../../types/IUser';
 import { ROLE, STATUS } from '../../../constants/user';
 import { createID } from '../../../helpers/createId';
 
@@ -47,19 +47,6 @@ class TableUserRow extends React.Component<IProps, IState> {
       {}
     ),
     projectList: this.props.user.projects as IProject[],
-  };
-
-  // Set state for load more
-  handleToggleLoadMore = (): void => {
-    this.setState({ isLoadMore: !this.state.isLoadMore });
-  };
-
-  // Show dialog
-  handleToggleDialog = () => {
-    this.setState({ isDialogOpen: !this.state.isDialogOpen });
-  };
-  handleClose = () => {
-    this.setState({ isDialogOpen: false });
   };
 
   // Get value from form modal
@@ -127,6 +114,21 @@ class TableUserRow extends React.Component<IProps, IState> {
         user.projects = [...(user.projects || []), value];
       }
     });
+  };
+
+  // Set state for load more
+  handleToggleLoadMore = (): void => {
+    this.setState({ isLoadMore: !this.state.isLoadMore });
+  };
+
+  // Show dialog
+  handleToggleDialog = (): void => {
+    this.setState({ isDialogOpen: !this.state.isDialogOpen });
+  };
+
+  // Close dialog
+  handleClose = (): void => {
+    this.setState({ isDialogOpen: false });
   };
 
   render(): React.ReactNode {

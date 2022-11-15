@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { THUMBNAIL } from '../../constants/user';
 
 import './index.css';

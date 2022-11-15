@@ -1,5 +1,3 @@
-import React from 'react';
-
 interface IProps extends React.ComponentPropsWithoutRef<'input'> {
   name?: string;
   value?: string;
@@ -9,7 +7,15 @@ interface IProps extends React.ComponentPropsWithoutRef<'input'> {
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const Input = ({ name, value, type, onChange, className, placeholder, ...rest }: IProps) => (
+const Input = ({
+  name,
+  value,
+  type,
+  onChange,
+  className,
+  placeholder,
+  ...rest
+}: IProps): React.ReactElement => (
   <>
     <input
       name={name}

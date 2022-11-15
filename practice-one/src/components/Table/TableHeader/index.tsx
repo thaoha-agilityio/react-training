@@ -1,12 +1,10 @@
-import React from 'react';
-
 import './index.css';
 
 interface IProps {
   listCell: string[];
 }
 
-const TableHeader = (props: IProps) => {
+const TableHeader = (props: IProps): React.ReactElement => {
   const { listCell } = props;
 
   return (

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { IDropdown } from '../../types/IDropdown';
 
 import './index.css';

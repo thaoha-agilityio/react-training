@@ -1,5 +1,3 @@
-import React from 'react';
-
 import TableUserRow from '../TableRow';
 import TableHeader from '../TableHeader';
 
@@ -13,7 +11,7 @@ interface IProps {
   onDelete: (id: string) => void;
 }
 
-const UserList = ({ userList, onDelete }: IProps) => {
+const UserList = ({ userList, onDelete }: IProps): React.ReactElement => {
   const renderRow = (listRow: IUser[]): JSX.Element[] => {
     return listRow.map((item, index) => (
       <TableUserRow

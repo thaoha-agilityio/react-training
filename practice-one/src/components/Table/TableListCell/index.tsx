@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { IProject } from '../../../types/IUser';
 
 interface IProps {
