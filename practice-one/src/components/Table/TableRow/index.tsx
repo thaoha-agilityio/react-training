@@ -55,18 +55,22 @@ class TableUserRow extends React.Component<IProps, IState> {
   };
 
   // Show dialog
-  handleToggleDialog = (): void => {
+  handleToggleDialog = () => {
     this.setState({ isDialogOpen: !this.state.isDialogOpen });
+  };
+  handleClose = () => {
+    this.setState({ isDialogOpen: false });
   };
 
   // Get value from form modal
-  handleOnchange = (event: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>) => {
+  handleOnchange = (event: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>): void => {
     const element = event.target;
     const nameProject = element.name;
 
     if (element.className.includes('checkbox')) {
       const checkbox = element as HTMLInputElement;
 
+      // Add new project
       this.setState({
         valueProjects: {
           ...this.state.valueProjects,
@@ -91,6 +95,8 @@ class TableUserRow extends React.Component<IProps, IState> {
       const project = {
         ...(valueProjects[nameProject as keyof typeof valueProjects] as IProjects),
       };
+
+      // Update project
       this.setState({
         valueProjects: {
           ...valueProjects,
@@ -126,9 +132,9 @@ class TableUserRow extends React.Component<IProps, IState> {
   render(): React.ReactNode {
     const { id, name, email, avatar, projects } = this.props.user;
     const { order, onDelete } = this.props;
-    const shouldShowLoadMore = !(!projects || projects.length <= 2);
 
-    console.log(this.state.isDialogOpen);
+    // Check project empty or <= 2
+    const shouldShowLoadMore = !(!projects || projects.length <= 2);
 
     return (
       <>
@@ -153,6 +159,7 @@ class TableUserRow extends React.Component<IProps, IState> {
                 projects={projects as IProject[]}
                 onChange={this.handleOnchange}
                 onUpdate={this.handleOnUpdateProject}
+                onCloseDialog={this.handleClose}
               />
             )}
           </td>

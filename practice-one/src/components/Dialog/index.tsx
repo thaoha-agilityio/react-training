@@ -10,8 +10,8 @@ import { TITLE_MESSAGE } from '../../constants/message';
 import './index.css';
 
 interface IProps {
+  onCloseDialog: () => void;
   idUser: string;
-
   projects: IProject[];
   onDelete: (idUser: string) => void;
   onChange: (event: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>) => void;
@@ -37,13 +37,15 @@ class Dialog extends React.Component<IProps, IState> {
   };
 
   render() {
-    const { idUser, projects, onDelete, onChange, onUpdate } = this.props;
+    const { idUser, projects, onDelete, onChange, onUpdate, onCloseDialog } = this.props;
 
     return (
       <>
+        <div className="modal-backdrop" onClick={onCloseDialog}></div>
+
         <div className="dialog">
           <Button variant="normal" size="small" onClick={this.handleToggleModal}>
-            Update User
+            Update project
           </Button>
           <Button onClick={this.handleToggleConfirmModal} variant="normal" size="small">
             Delete User
@@ -67,6 +69,7 @@ class Dialog extends React.Component<IProps, IState> {
             defaultValue={projects}
             onChange={onChange}
             onConfirm={onUpdate}
+            onCloseDialog={onCloseDialog}
           />
         )}
       </>

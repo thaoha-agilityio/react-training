@@ -15,4 +15,7 @@ enum PROJECT {
   NETFLIX = 'Netflix',
   LIBRA = 'Libra',
 }
-export { STATUS, ROLE, PROJECT };
+
+const THUMBNAIL = 'https://icons.veryicon.com/png/o/internet--web/prejudice/user-128.png';
+
+export { STATUS, ROLE, PROJECT, THUMBNAIL };
