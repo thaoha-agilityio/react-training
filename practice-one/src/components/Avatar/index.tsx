@@ -1,4 +1,7 @@
 import React from 'react';
+
+import { THUMBNAIL } from '../../constants/user';
+
 import './index.css';
 
 interface IProps {
@@ -11,7 +14,11 @@ interface IProps {
 
 const Avatar = ({ username, url, styles, size, alt }: IProps): React.ReactElement => (
   <div className="info">
-    <img className={`avatar avatar-${styles} avatar-${size}`} src={url} alt={alt} />
+    <img
+      className={`avatar avatar-${styles || 'square'} avatar-${size}`}
+      src={url || THUMBNAIL}
+      alt={alt}
+    />
     {username}
   </div>
 );

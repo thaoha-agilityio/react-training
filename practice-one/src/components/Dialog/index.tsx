@@ -1,17 +1,21 @@
 import React from 'react';
-import { IUser } from '../../types/IUser';
 
 import ConfirmModal from '../ConfirmModal';
 import Button from '../Button';
-import { TITLE_MESSAGE } from '../../constants/message';
 import Modal from '../Modal';
+
+import { IProject } from '../../types/IUser';
+import { TITLE_MESSAGE } from '../../constants/message';
 
 import './index.css';
 
 interface IProps {
+  onCloseDialog: () => void;
   idUser: string;
-  users: IUser[];
+  projects: IProject[];
   onDelete: (idUser: string) => void;
+  onChange: (event: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>) => void;
+  onUpdate: (event: React.FormEvent) => void;
 }
 
 interface IState {
@@ -22,40 +26,52 @@ interface IState {
 class Dialog extends React.Component<IProps, IState> {
   state = { isModalOpen: false, isConfirmModalOpen: false };
 
+  // Show/hide confirm modal
   handleToggleConfirmModal = (): void => {
     this.setState({ isConfirmModalOpen: !this.state.isConfirmModalOpen });
   };
 
+  // Show/hide form modal
   handleToggleModal = (): void => {
     this.setState({ isModalOpen: !this.state.isModalOpen });
   };
 
   render() {
-    const { users, idUser, onDelete } = this.props;
+    const { idUser, projects, onDelete, onChange, onUpdate, onCloseDialog } = this.props;
 
     return (
       <>
+        <div className="modal-backdrop" onClick={onCloseDialog}></div>
+
         <div className="dialog">
           <Button variant="normal" size="small" onClick={this.handleToggleModal}>
-            Update User
+            Update project
           </Button>
           <Button onClick={this.handleToggleConfirmModal} variant="normal" size="small">
             Delete User
           </Button>
         </div>
+
         {/* Show confirm modal */}
         {this.state.isConfirmModalOpen && (
           <ConfirmModal
             onClose={this.handleToggleConfirmModal}
-            users={users}
             id={idUser}
             onConfirm={onDelete}
             message={TITLE_MESSAGE}
           />
         )}
-
         {/* Show modal */}
-        {this.state.isModalOpen && <Modal onClose={this.handleToggleModal} message="add project" />}
+        {this.state.isModalOpen && (
+          <Modal
+            onClose={this.handleToggleModal}
+            message="update project"
+            defaultValue={projects}
+            onChange={onChange}
+            onConfirm={onUpdate}
+            onCloseDialog={onCloseDialog}
+          />
+        )}
       </>
     );
   }

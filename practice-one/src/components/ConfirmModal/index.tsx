@@ -6,11 +6,10 @@ import closeIcon from '../../assets/images/closeIcon.jpg';
 
 // Css
 import './index.css';
-import { IUser } from '../../types/IUser';
 
 interface IProps {
   id: string;
-  users: IUser[];
+
   message: string;
   onClose: () => void;
   onConfirm: (id: string) => void;

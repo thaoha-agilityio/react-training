@@ -24,7 +24,7 @@ const TableListCell = ({ listProject, hasLoadMore }: IProps): React.ReactElement
 
     return data
       .slice(0, loadCount)
-      .map((item: T) => <p key={item[id] as string}>{item[key] as string}</p>);
+      .map((item: T) => (item ? <p key={item[id] as string}>{item[key] as string}</p> : null));
   };
 
   return (

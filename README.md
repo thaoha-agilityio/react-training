@@ -33,7 +33,7 @@
 - Add user with random data when click button “ADD USER”
 - Show list of actions (Update, Remove) when click icon on Action column
 - Remove user when click Remove action
-- Update user when click Update action
+- Update project when click Update action
 
 # Prerequisites
 

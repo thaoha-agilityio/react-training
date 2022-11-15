@@ -1,3 +1,11 @@
+.overlays {
+  background-color: transparent;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
 .dialog {
   position: absolute;
   width: 158px;
@@ -9,10 +17,20 @@
   border-radius: 6px;
   justify-content: center;
   text-align: left;
+  z-index: 1;
 }
 
 .dialog button {
   line-height: calc(20 / 14);
   margin-top: 10px;
   margin-left: 13px;
+}
+
+.modal-backdrop {
+  background: transparent;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }

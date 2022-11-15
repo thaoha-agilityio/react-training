@@ -26,7 +26,6 @@ interface IProps {
 interface IState {
   value: string;
   userList: IUser[];
-  usersUpdate: IUser[];
   selectedFilter: IUser[];
 }
 
@@ -34,7 +33,6 @@ class Home extends React.Component<IProps, IState> {
   state = {
     userList: users,
     value: '',
-    usersUpdate: [],
     selectedFilter: [],
   };
 
@@ -47,8 +45,7 @@ class Home extends React.Component<IProps, IState> {
       avatar: random(avatars),
     } as IUser;
 
-    users.push(newUser);
-    this.setState({ userList: users });
+    this.setState({ userList: [...this.state.userList, newUser] });
   };
 
   // Delete by Id
@@ -101,14 +98,13 @@ class Home extends React.Component<IProps, IState> {
       item.projects?.some((value) => value.projectName === values)
     );
 
-    this.setState({ usersUpdate: usersFilter });
+    this.setState({ userList: usersFilter });
 
-    return usersFilter;
+    return this.state.userList;
   };
 
   render(): React.ReactNode {
-    const { value, usersUpdate, userList } = this.state;
-    const usersUpdateLength = usersUpdate.length;
+    const { value, userList } = this.state;
 
     return (
       <div className="container">
@@ -138,10 +134,7 @@ class Home extends React.Component<IProps, IState> {
                 Add User
               </Button>
             </div>
-            <UserList
-              userList={usersUpdateLength > 0 ? usersUpdate : userList}
-              onDelete={this.handleDeleteUser}
-            />
+            <UserList userList={userList} onDelete={this.handleDeleteUser} />
           </div>
         </Content>
         <Footer />
