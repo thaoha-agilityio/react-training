@@ -27,7 +27,7 @@ interface IState {
   isDialogOpen: boolean;
   isLoadMore: boolean;
   valueProjects?: IProjects;
-  projectList: IProject[];
+  projectList?: IProject[];
 }
 
 class TableUserRow extends React.Component<IProps, IState> {
@@ -46,7 +46,7 @@ class TableUserRow extends React.Component<IProps, IState> {
       }),
       {}
     ),
-    projectList: this.props.user.projects as IProject[],
+    projectList: this.props.user.projects,
   };
 
   // Get value from form modal
@@ -146,8 +146,9 @@ class TableUserRow extends React.Component<IProps, IState> {
             <Avatar username={name} styles="circle" size="small" url={avatar} alt="avatar" />
           </td>
           <td>{email}</td>
+
           {/* Render data of Role, Project, Status */}
-          <TableListCell listProject={projects as IProject[]} hasLoadMore={this.state.isLoadMore} />
+          <TableListCell listProject={projects || []} hasLoadMore={this.state.isLoadMore} />
 
           <td>
             <button className="action" onClick={this.handleToggleDialog}>
@@ -158,7 +159,7 @@ class TableUserRow extends React.Component<IProps, IState> {
               <Dialog
                 idUser={id}
                 onDelete={() => onDelete(id)}
-                projects={projects as IProject[]}
+                projects={projects || []}
                 onChange={this.handleOnchange}
                 onUpdate={this.handleOnUpdateProject}
                 onCloseDialog={this.handleClose}

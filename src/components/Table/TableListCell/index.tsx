@@ -7,11 +7,7 @@ interface IProps {
 
 const TableListCell = ({ listProject, hasLoadMore }: IProps): React.ReactElement => {
   // Render data table cell
-  const renderCell = <T, K extends keyof T, V extends keyof T>(
-    data: T[] | undefined,
-    key: K,
-    id: V
-  ) => {
+  const renderCell = <T extends { id: string }, K extends keyof T>(key: K, data?: T[]) => {
     //Check data empty
     if (!data) {
       return '';
@@ -22,14 +18,14 @@ const TableListCell = ({ listProject, hasLoadMore }: IProps): React.ReactElement
 
     return data
       .slice(0, loadCount)
-      .map((item: T) => (item ? <p key={item[id] as string}>{item[key] as string}</p> : null));
+      .map((item: T) => (item ? <p key={item.id}>{item[key] as string}</p> : null));
   };
 
   return (
     <>
-      <td>{renderCell(listProject, 'role', 'id')}</td>
-      <td>{renderCell(listProject, 'projectName', 'id')}</td>
-      <td>{renderCell(listProject, 'status', 'id')}</td>
+      <td>{renderCell('role', listProject)}</td>
+      <td>{renderCell('projectName', listProject)}</td>
+      <td>{renderCell('status', listProject)}</td>
     </>
   );
 };

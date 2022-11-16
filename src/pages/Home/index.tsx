@@ -38,12 +38,12 @@ class Home extends React.Component<IProps, IState> {
 
   // Add a user in data
   handleAddUser = (): void => {
-    const newUser = {
+    const newUser: IUser = {
       id: createID(),
       name: random(userNames),
       email: random(emails),
       avatar: random(avatars),
-    } as IUser;
+    };
 
     this.setState({ userList: [...this.state.userList, newUser] });
   };
