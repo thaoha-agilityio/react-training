@@ -1,0 +1,22 @@
+:root {
+  /* color */
+  --color-primary: rgba(58, 53, 65, 0.68);
+  --color-primary-50: rgba(58, 53, 65, 0.87);
+  --color-primary-100: rgba(58, 53, 65, 0.38);
+  --color-primary-200: rgba(58, 53, 65, 0.12);
+  --color-secondary: #ffff;
+  --color-secondary-50: #f9fafc;
+  --color-secondary-200: #be9870;
+  --color-secondary-100: #2684ff;
+  --color-secondary-100-bg: #26dbff12;
+  --color-tertiary: #4caf50;
+  --color-tertiary-bg: #4caf500d;
+  --color-tertiary-100: #ed6c02;
+  --color-tertiary-bg-100: #ed6c0224;
+  --color-danger: #ff4c51;
+
+  /* Font size */
+  --fs-small: 12px;
+  --fs-medium: 14px;
+  --fs-large: 20px;
+}

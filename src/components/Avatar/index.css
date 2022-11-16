@@ -1,0 +1,31 @@
+.info {
+  display: flex;
+  justify-content: flex-start;
+  gap: 30px;
+  align-items: center;
+  font-family: 'Roboto';
+  font-weight: 500;
+}
+
+.avatar {
+  background-size: cover;
+}
+
+.avatar-circle {
+  border-radius: 50%;
+}
+
+.avatar-small {
+  width: 34px;
+  height: 34px;
+}
+
+.avatar-medium {
+  width: 80px;
+  height: 80px;
+}
+
+.avatar-large {
+  width: 160px;
+  height: 160px;
+}
