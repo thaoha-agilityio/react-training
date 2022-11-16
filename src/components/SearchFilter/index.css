@@ -1,6 +1,6 @@
 .dropdown {
   padding: 20px 20px 24px;
-  box-shadow: 0px 2px 5px var(--color-primary);
+  box-shadow: 0px 2px 10px var(--color-primary-200);
   border-radius: 10px;
 }
 

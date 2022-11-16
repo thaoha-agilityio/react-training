@@ -1,9 +1,11 @@
 :root {
   /* color */
-  --color-primary: rgba(58, 53, 65, 0.68);
-  --color-primary-50: rgba(58, 53, 65, 0.87);
-  --color-primary-100: rgba(58, 53, 65, 0.38);
-  --color-primary-200: rgba(58, 53, 65, 0.12);
+  --color-primary: #3a3541ad;
+  --color-primary-50: #3a3541de;
+  --color-primary-100: #3a354161;
+  --color-primary-200: #3a35411f;
+  --color-primary-250: #3a35411a;
+  --color-primary-300: #3a35413b;
   --color-secondary: #ffff;
   --color-secondary-50: #f9fafc;
   --color-secondary-200: #be9870;
