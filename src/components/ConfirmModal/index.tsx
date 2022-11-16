@@ -10,7 +10,7 @@ interface IProps {
   id: string;
   message: string;
   onClose: () => void;
-  onConfirm: (id: string) => void;
+  onConfirm?: (id: string) => void;
 }
 
 const ConfirmModal = ({ onClose, id, onConfirm, message }: IProps): React.ReactElement => (
@@ -26,7 +26,7 @@ const ConfirmModal = ({ onClose, id, onConfirm, message }: IProps): React.ReactE
         <Button variant="secondary" size="small" onClick={onClose}>
           Cancel
         </Button>
-        <Button variant="primary" size="small" onClick={() => onConfirm(id)}>
+        <Button variant="primary" size="small">
           Save
         </Button>
       </div>
