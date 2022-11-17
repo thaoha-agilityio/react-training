@@ -13,7 +13,7 @@ interface IProps {
   onConfirm?: (id: string) => void;
 }
 
-const ConfirmModal = ({ onClose, id, onConfirm, message }: IProps): React.ReactElement => (
+const ConfirmModal = ({ onClose, onConfirm, message }: IProps): React.ReactElement => (
   <div className="overlay">
     <div className="confirm-modal">
       <div className="close-modal">
@@ -26,7 +26,7 @@ const ConfirmModal = ({ onClose, id, onConfirm, message }: IProps): React.ReactE
         <Button variant="secondary" size="small" onClick={onClose}>
           Cancel
         </Button>
-        <Button variant="primary" size="small">
+        <Button variant="primary" size="small" onClick={() => onConfirm}>
           Save
         </Button>
       </div>

@@ -1,11 +1,11 @@
 import React from 'react';
 
-import ConfirmModal from '../ConfirmModal';
-import Button from '../Button';
+import ConfirmModal from '../../../../components/ConfirmModal';
+import Button from '../../../../components/Button';
 import Modal from '../Modal';
 
-import { IProject } from '../../types/IUser';
-import { TITLE_MESSAGE } from '../../constants/message';
+import { IProject } from '../../../../types/IUser';
+import { TITLE_MESSAGE } from '../../../../constants/message';
 
 import './index.css';
 
@@ -13,7 +13,7 @@ interface IProps {
   onCloseDialog: () => void;
   idUser: string;
   projects: IProject[];
-  onDelete: (idUser: string) => void;
+  onDelete: (id: string) => void;
   onChange: (event: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>) => void;
   onUpdate: (event: React.FormEvent) => void;
 }

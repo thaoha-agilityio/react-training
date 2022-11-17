@@ -3,7 +3,7 @@ import React from 'react';
 import Avatar from '../../../../../components/Avatar';
 import RowMore from '../RowMore';
 import TableListCell from '../TableListCell';
-import Dialog from '../../../../../components/Dialog';
+import Dialog from '../../Dialog';
 
 import moreVert from '../../../../../assets/images/moreVertIcon.jpg';
 import { IProject, IUser } from '../../../../../types/IUser';
