@@ -7,7 +7,7 @@ import SearchFilter from '../../components/SearchFilter';
 import DropdownMenu from '../../components/DropdownMenu';
 import TextField from '../../components/TextField';
 import Button from '../../components/Button';
-import UserList from '../../components/Table/UserList';
+import UserList from './components/Table/UserList';
 
 import { OPTIONS_ROLE, OPTIONS_PROJECT } from '../../constants/dropdown';
 import { avatars, userNames, users, emails } from '../../mocks/users';
@@ -17,7 +17,6 @@ import { random } from '../../helpers/random';
 
 // CSS
 import './index.css';
-import Input from '../../components/Input';
 
 interface IProps {
   children?: React.ReactNode;

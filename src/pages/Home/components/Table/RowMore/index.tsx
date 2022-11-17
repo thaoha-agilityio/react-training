@@ -1,5 +1,5 @@
-import circumflexDownIcon from '../../../assets/images/circumflexDownIcon.jpg';
-import circumflexUpIcon from '../../../assets/images/circumflexUpIcon.jpg';
+import circumflexDownIcon from '../../../../../assets/images/circumflexDownIcon.jpg';
+import circumflexUpIcon from '../../../../../assets/images/circumflexUpIcon.jpg';
 
 import './index.css';
 

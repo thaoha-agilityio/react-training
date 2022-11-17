@@ -1,16 +1,16 @@
 import './index.css';
 
 interface IProps {
-  listCell: string[];
+  columns: string[];
 }
 
 const TableHeader = (props: IProps): React.ReactElement => {
-  const { listCell } = props;
+  const { columns } = props;
 
   return (
     <thead className="table-header">
       <tr className="table-row">
-        {listCell.map((cell) => (
+        {columns.map((cell) => (
           <th key={cell}>
             {cell}
             <span>|</span>

@@ -1,14 +1,14 @@
 import React from 'react';
 
-import Avatar from '../../Avatar';
+import Avatar from '../../../../../components/Avatar';
 import RowMore from '../RowMore';
 import TableListCell from '../TableListCell';
-import Dialog from '../../Dialog';
+import Dialog from '../../../../../components/Dialog';
 
-import moreVert from '../../../assets/images/moreVertIcon.jpg';
-import { IProject, IUser } from '../../../types/IUser';
-import { ROLE, STATUS } from '../../../constants/user';
-import { createID } from '../../../helpers/createId';
+import moreVert from '../../../../../assets/images/moreVertIcon.jpg';
+import { IProject, IUser } from '../../../../../types/IUser';
+import { ROLE, STATUS } from '../../../../../constants/user';
+import { createID } from '../../../../../helpers/createId';
 
 import './index.css';
 

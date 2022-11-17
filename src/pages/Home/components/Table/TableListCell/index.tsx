@@ -1,4 +1,4 @@
-import { IProject } from '../../../types/IUser';
+import { IProject } from '../../../../../types/IUser';
 
 interface IProps {
   listProject: IProject[];
