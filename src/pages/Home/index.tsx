@@ -3,7 +3,6 @@ import React from 'react';
 // Components
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
-import Content from '../../components/Content';
 import SearchFilter from '../../components/SearchFilter';
 import DropdownMenu from '../../components/DropdownMenu';
 import TextField from '../../components/TextField';
@@ -18,6 +17,7 @@ import { random } from '../../helpers/random';
 
 // CSS
 import './index.css';
+import Input from '../../components/Input';
 
 interface IProps {
   children?: React.ReactNode;
@@ -103,7 +103,7 @@ class Home extends React.Component<IProps, IState> {
     return (
       <div className="container">
         <Header />
-        <Content>
+        <div className="content">
           <SearchFilter>
             <DropdownMenu
               options={OPTIONS_ROLE}
@@ -120,17 +120,19 @@ class Home extends React.Component<IProps, IState> {
             <div className="page-wrapper">
               <TextField
                 type="text"
+                placeholder="Search name..."
                 onChange={this.handleChangeInput}
                 onClick={this.handleSearchUser}
                 value={value}
               />
+
               <Button variant="primary" size="medium" onClick={this.handleAddUser}>
                 Add User
               </Button>
             </div>
             <UserList userList={userList} onDelete={this.handleDeleteUser} />
           </div>
-        </Content>
+        </div>
         <Footer />
       </div>
     );

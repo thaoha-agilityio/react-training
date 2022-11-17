@@ -8,7 +8,7 @@ interface IProps {
 const TableListCell = ({ listProject, hasLoadMore }: IProps): React.ReactElement => {
   // Render data table cell
   const renderCell = <T extends { id: string }, K extends keyof T>(key: K, data?: T[]) => {
-    //Check data empty
+    // Check data empty
     if (!data) {
       return '';
     }
