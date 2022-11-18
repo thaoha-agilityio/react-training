@@ -1,11 +1,11 @@
 // Components
-import Button from '../Button';
+import Button from '../../../../components/Button';
 import RowProject from '../RowProject';
 
-import arrowIcon from '../../assets/images/arrowIcon.jpg';
-import closeIcon from '../../assets/images/closeIcon.jpg';
-import { IProject } from '../../types/IUser';
-import { PROJECT } from '../../constants/user';
+import arrowIcon from '../../../../assets/images/arrowIcon.jpg';
+import closeIcon from '../../../../assets/images/closeIcon.jpg';
+import { IProject } from '../../../../types/IUser';
+import { PROJECT } from '../../../../constants/user';
 
 // CSS
 import './index.css';

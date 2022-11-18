@@ -1,8 +1,8 @@
 import TableUserRow from '../TableRow';
 import TableHeader from '../TableHeader';
 
-import { IUser } from '../../../types/IUser';
-import { LIST_CELL } from '../../../constants/table';
+import { IUser } from '../../../../../types/IUser';
+import { LIST_CELL } from '../../../../../constants/table';
 
 import './index.css';
 
@@ -26,7 +26,7 @@ const UserList = ({ userList, onDelete }: IProps): React.ReactElement => {
 
   return (
     <table className="table">
-      <TableHeader listCell={LIST_CELL} />
+      <TableHeader columns={LIST_CELL} />
       <tbody className="table-body">{renderRow(userList)}</tbody>
     </table>
   );

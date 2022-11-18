@@ -6,16 +6,17 @@ interface IProps extends React.ComponentPropsWithoutRef<'input'> {
   value: string | undefined;
   onClick?: () => void;
   onChange: (event: React.FormEvent<HTMLInputElement>) => void;
+  placeholder?: string;
 }
 
-const TextField = ({ onChange, value }: IProps): React.ReactElement => (
+const TextField = ({ onChange, value, placeholder }: IProps): React.ReactElement => (
   <div className="search">
     <Input
       className="text-field"
       value={value}
       onChange={onChange}
       type="text"
-      placeholder="Search name..."
+      placeholder={placeholder}
     />
   </div>
 );

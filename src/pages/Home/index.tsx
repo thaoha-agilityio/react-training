@@ -3,12 +3,11 @@ import React from 'react';
 // Components
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
-import Content from '../../components/Content';
 import SearchFilter from '../../components/SearchFilter';
 import DropdownMenu from '../../components/DropdownMenu';
 import TextField from '../../components/TextField';
 import Button from '../../components/Button';
-import UserList from '../../components/Table/UserList';
+import UserList from './components/Table/UserList';
 
 import { OPTIONS_ROLE, OPTIONS_PROJECT } from '../../constants/dropdown';
 import { avatars, userNames, users, emails } from '../../mocks/users';
@@ -38,12 +37,12 @@ class Home extends React.Component<IProps, IState> {
 
   // Add a user in data
   handleAddUser = (): void => {
-    const newUser = {
+    const newUser: IUser = {
       id: createID(),
       name: random(userNames),
       email: random(emails),
       avatar: random(avatars),
-    } as IUser;
+    };
 
     this.setState({ userList: [...this.state.userList, newUser] });
   };
@@ -103,7 +102,7 @@ class Home extends React.Component<IProps, IState> {
     return (
       <div className="container">
         <Header />
-        <Content>
+        <div className="content">
           <SearchFilter>
             <DropdownMenu
               options={OPTIONS_ROLE}
@@ -120,17 +119,19 @@ class Home extends React.Component<IProps, IState> {
             <div className="page-wrapper">
               <TextField
                 type="text"
+                placeholder="Search name..."
                 onChange={this.handleChangeInput}
                 onClick={this.handleSearchUser}
                 value={value}
               />
+
               <Button variant="primary" size="medium" onClick={this.handleAddUser}>
                 Add User
               </Button>
             </div>
             <UserList userList={userList} onDelete={this.handleDeleteUser} />
           </div>
-        </Content>
+        </div>
         <Footer />
       </div>
     );

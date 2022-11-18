@@ -1,10 +1,10 @@
 import React from 'react';
 
-import DropdownMenu from '../DropdownMenu';
-import Input from '../Input';
+import DropdownMenu from '../../../../components/DropdownMenu';
+import Input from '../../../../components/Input';
 
-import { OPTIONS_ROLE, OPTIONS_STATUS } from '../../constants/dropdown';
-import { IProject } from '../../types/IUser';
+import { OPTIONS_ROLE, OPTIONS_STATUS } from '../../../../constants/dropdown';
+import { IProject } from '../../../../types/IUser';
 
 interface IProps {
   name: string;

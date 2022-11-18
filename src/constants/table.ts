@@ -1,7 +1,7 @@
 export const LIST_CELL: string[] = [
   'order',
-  'avatar',
-  'email',
+  'name',
+  'login',
   'role',
   'project',
   'status',
