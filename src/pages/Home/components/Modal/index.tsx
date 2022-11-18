@@ -66,21 +66,21 @@ const Modal = ({
               <RowProject
                 name={PROJECT.NIKE_SNEAKER}
                 defaultValues={defaultValue}
-                className="nike-sneaker"
+                className="primary"
                 onChange={onChange}
               />
 
               <RowProject
                 name={PROJECT.NETFLIX}
                 defaultValues={defaultValue}
-                className="netflix"
+                className="secondary"
                 onChange={onChange}
               />
 
               <RowProject
                 name={PROJECT.LIBRA}
                 defaultValues={defaultValue}
-                className="libra"
+                className="tertiary"
                 onChange={onChange}
               />
             </div>

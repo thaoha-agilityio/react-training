@@ -89,24 +89,6 @@
   padding: 0px 7px;
 }
 
-.nike-sneaker {
-  background-color: #26dbff12;
-  color: var(--color-secondary-100);
-  width: 100px;
-}
-
-.netflix {
-  background-color: #4caf500d;
-  color: var(--color-tertiary);
-  width: 52px;
-}
-
-.libra {
-  background-color: #ed6c0224;
-  color: var(--color-tertiary-100);
-  width: 43px;
-}
-
 .form-group-btn {
   text-align: right;
   margin: 30px 38px;

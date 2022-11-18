@@ -3,7 +3,6 @@ import React from 'react';
 // Components
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
-import SearchFilter from '../../components/SearchFilter';
 import DropdownMenu from '../../components/DropdownMenu';
 import TextField from '../../components/TextField';
 import Button from '../../components/Button';
@@ -103,18 +102,21 @@ class Home extends React.Component<IProps, IState> {
       <div className="container">
         <Header />
         <div className="content">
-          <SearchFilter>
-            <DropdownMenu
-              options={OPTIONS_ROLE}
-              size="medium"
-              onChange={this.handleFilterUserByRole}
-            />
-            <DropdownMenu
-              options={OPTIONS_PROJECT}
-              size="medium"
-              onChange={this.handleFilterUserByProject}
-            />
-          </SearchFilter>
+          <div className="dropdown">
+            <h2>Search filter</h2>
+            <div className="dropdown-menu">
+              <DropdownMenu
+                options={OPTIONS_ROLE}
+                size="medium"
+                onChange={this.handleFilterUserByRole}
+              />
+              <DropdownMenu
+                options={OPTIONS_PROJECT}
+                size="medium"
+                onChange={this.handleFilterUserByProject}
+              />
+            </div>
+          </div>
           <div className="main-content">
             <div className="page-wrapper">
               <TextField
