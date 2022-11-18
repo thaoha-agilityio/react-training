@@ -13,6 +13,7 @@ import { avatars, userNames, users, emails } from '../../mocks/users';
 import { IUser } from '../../types/IUser';
 import { createID } from '../../helpers/createId';
 import { random } from '../../helpers/random';
+import { NOTICE_MESSAGE } from '../../constants/message';
 
 // CSS
 import './index.css';
@@ -22,16 +23,20 @@ interface IProps {
 }
 
 interface IState {
+  isOpened: boolean;
   value: string;
-  userList: IUser[];
+  users: IUser[];
   selectedFilter: IUser[];
+  updateUsers: IUser[];
 }
 
 class Home extends React.Component<IProps, IState> {
   state = {
-    userList: users,
+    isOpened: false,
+    users: users,
     value: '',
     selectedFilter: [],
+    updateUsers: [],
   };
 
   // Add a user in data
@@ -43,25 +48,39 @@ class Home extends React.Component<IProps, IState> {
       avatar: random(avatars),
     };
 
-    this.setState({ userList: [...this.state.userList, newUser] });
+    this.setState({ users: [...this.state.users, newUser] });
   };
 
   // Delete by Id
   handleDeleteUser = (id: string): void => {
-    const currentUserList = this.state.userList.filter((item) => item.id !== id);
+    const currentUserList = this.state.users.filter((item) => item.id !== id);
 
-    this.setState({ userList: currentUserList });
+    this.setState({ users: currentUserList });
   };
 
   // Search by name
-  handleSearchUser = (): void => {
-    const { userList } = this.state;
+  handleSearchUser = (event: React.FormEvent<HTMLInputElement>): void => {
+    // Get value input
+    const inputValue = event.currentTarget.value;
 
-    const searchList = userList.filter(
-      (item: IUser) => item.name.toLowerCase().search(this.state.value.toLowerCase()) >= 0
+    this.setState({ value: inputValue });
+
+    const { users } = this.state;
+
+    // Check input value empty
+    if (inputValue.length === 0) {
+      this.setState({ isOpened: false });
+
+      return;
+    }
+
+    this.setState({ isOpened: true });
+
+    const searchList = users.filter((item: IUser) =>
+      item.name.toLowerCase().includes(inputValue.toLowerCase())
     );
 
-    this.setState({ userList: searchList });
+    this.setState({ updateUsers: searchList });
   };
 
   // Get value input
@@ -71,12 +90,12 @@ class Home extends React.Component<IProps, IState> {
 
   // Handle filter user by role
   handleFilterUserByRole = (event: React.ChangeEvent<HTMLSelectElement>): void => {
-    const { userList } = this.state;
+    const { users } = this.state;
 
     // get project name from value dropdown
     const valueSelected = event.target.value;
 
-    const usersFilter = userList.filter((item: IUser) =>
+    const usersFilter = users.filter((item: IUser) =>
       item.projects?.some((value) => value.role === valueSelected)
     );
 
@@ -92,11 +111,11 @@ class Home extends React.Component<IProps, IState> {
       item.projects?.some((value) => value.projectName === values)
     );
 
-    this.setState({ userList: usersFilter });
+    this.setState({ users: usersFilter });
   };
 
   render(): React.ReactNode {
-    const { value, userList } = this.state;
+    const { value, users, updateUsers, isOpened } = this.state;
 
     return (
       <div className="container">
@@ -122,8 +141,7 @@ class Home extends React.Component<IProps, IState> {
               <TextField
                 type="text"
                 placeholder="Search name..."
-                onChange={this.handleChangeInput}
-                onClick={this.handleSearchUser}
+                onChange={this.handleSearchUser}
                 value={value}
               />
 
@@ -131,7 +149,11 @@ class Home extends React.Component<IProps, IState> {
                 Add User
               </Button>
             </div>
-            <UserList userList={userList} onDelete={this.handleDeleteUser} />
+            <UserList
+              userList={isOpened ? updateUsers : users}
+              onDelete={this.handleDeleteUser}
+              message={updateUsers.length === 0 && isOpened ? NOTICE_MESSAGE : ''}
+            />
           </div>
         </div>
         <Footer />
