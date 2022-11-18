@@ -6,10 +6,12 @@ import Input from '../../../../components/Input';
 import { OPTIONS_ROLE, OPTIONS_STATUS } from '../../../../constants/dropdown';
 import { IProject } from '../../../../types/IUser';
 
+import './index.css';
+
 interface IProps {
   name: string;
   defaultValues?: IProject[];
-  className?: 'nike-sneaker' | 'netflix' | 'libra';
+  className?: 'primary' | 'secondary' | 'tertiary';
   onChange?: (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
 }
 
@@ -46,7 +48,7 @@ class RowProject extends React.Component<IProps, IState> {
             className="checkbox"
             value={name}
           />
-          <label className={`${className}`}>{name}</label>
+          <label className={`project-${className}`}>{name}</label>
         </div>
         <div className="form-control">
           <DropdownMenu
