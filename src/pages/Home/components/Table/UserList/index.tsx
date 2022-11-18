@@ -25,10 +25,12 @@ const UserList = ({ userList, onDelete }: IProps): React.ReactElement => {
   };
 
   return (
-    <table className="table">
-      <TableHeader columns={LIST_CELL} />
-      <tbody className="table-body">{renderRow(userList)}</tbody>
-    </table>
+    <>
+      <table className="table">
+        <TableHeader columns={LIST_CELL} />
+        <tbody className="table-body">{renderRow(userList)}</tbody>
+      </table>
+    </>
   );
 };
 

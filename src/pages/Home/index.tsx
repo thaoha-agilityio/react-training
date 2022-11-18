@@ -22,16 +22,20 @@ interface IProps {
 }
 
 interface IState {
+  isOpened: boolean;
   value: string;
   users: IUser[];
   selectedFilter: IUser[];
+  updateUsers: IUser[];
 }
 
 class Home extends React.Component<IProps, IState> {
   state = {
+    isOpened: false,
     users: users,
     value: '',
     selectedFilter: [],
+    updateUsers: [],
   };
 
   // Add a user in data
@@ -54,14 +58,28 @@ class Home extends React.Component<IProps, IState> {
   };
 
   // Search by name
-  handleSearchUser = (): void => {
+  handleSearchUser = (event: React.FormEvent<HTMLInputElement>): void => {
+    // Get value input
+    const inputValue = event.currentTarget.value;
+
+    this.setState({ value: inputValue });
+
     const { users } = this.state;
 
-    const searchList = users.filter(
-      (item: IUser) => item.name.toLowerCase().search(this.state.value.toLowerCase()) >= 0
+    // Check input value empty
+    if (inputValue.length === 0) {
+      this.setState({ isOpened: false });
+
+      return;
+    }
+
+    this.setState({ isOpened: true });
+
+    const searchList = users.filter((item: IUser) =>
+      item.name.toLowerCase().includes(inputValue.toLowerCase())
     );
 
-    this.setState({ users: searchList });
+    this.setState({ updateUsers: searchList });
   };
 
   // Get value input
@@ -96,7 +114,7 @@ class Home extends React.Component<IProps, IState> {
   };
 
   render(): React.ReactNode {
-    const { value, users } = this.state;
+    const { value, users, updateUsers, isOpened } = this.state;
 
     return (
       <div className="container">
@@ -122,8 +140,7 @@ class Home extends React.Component<IProps, IState> {
               <TextField
                 type="text"
                 placeholder="Search name..."
-                onChange={this.handleChangeInput}
-                onClick={this.handleSearchUser}
+                onChange={this.handleSearchUser}
                 value={value}
               />
 
@@ -131,7 +148,7 @@ class Home extends React.Component<IProps, IState> {
                 Add User
               </Button>
             </div>
-            <UserList userList={users} onDelete={this.handleDeleteUser} />
+            <UserList userList={isOpened ? updateUsers : users} onDelete={this.handleDeleteUser} />
           </div>
         </div>
         <Footer />
