@@ -23,13 +23,13 @@ interface IProps {
 
 interface IState {
   value: string;
-  userList: IUser[];
+  users: IUser[];
   selectedFilter: IUser[];
 }
 
 class Home extends React.Component<IProps, IState> {
   state = {
-    userList: users,
+    users: users,
     value: '',
     selectedFilter: [],
   };
@@ -43,25 +43,25 @@ class Home extends React.Component<IProps, IState> {
       avatar: random(avatars),
     };
 
-    this.setState({ userList: [...this.state.userList, newUser] });
+    this.setState({ users: [...this.state.users, newUser] });
   };
 
   // Delete by Id
   handleDeleteUser = (id: string): void => {
-    const currentUserList = this.state.userList.filter((item) => item.id !== id);
+    const currentUserList = this.state.users.filter((item) => item.id !== id);
 
-    this.setState({ userList: currentUserList });
+    this.setState({ users: currentUserList });
   };
 
   // Search by name
   handleSearchUser = (): void => {
-    const { userList } = this.state;
+    const { users } = this.state;
 
-    const searchList = userList.filter(
+    const searchList = users.filter(
       (item: IUser) => item.name.toLowerCase().search(this.state.value.toLowerCase()) >= 0
     );
 
-    this.setState({ userList: searchList });
+    this.setState({ users: searchList });
   };
 
   // Get value input
@@ -71,12 +71,12 @@ class Home extends React.Component<IProps, IState> {
 
   // Handle filter user by role
   handleFilterUserByRole = (event: React.ChangeEvent<HTMLSelectElement>): void => {
-    const { userList } = this.state;
+    const { users } = this.state;
 
     // get project name from value dropdown
     const valueSelected = event.target.value;
 
-    const usersFilter = userList.filter((item: IUser) =>
+    const usersFilter = users.filter((item: IUser) =>
       item.projects?.some((value) => value.role === valueSelected)
     );
 
@@ -92,11 +92,11 @@ class Home extends React.Component<IProps, IState> {
       item.projects?.some((value) => value.projectName === values)
     );
 
-    this.setState({ userList: usersFilter });
+    this.setState({ users: usersFilter });
   };
 
   render(): React.ReactNode {
-    const { value, userList } = this.state;
+    const { value, users } = this.state;
 
     return (
       <div className="container">
@@ -131,7 +131,7 @@ class Home extends React.Component<IProps, IState> {
                 Add User
               </Button>
             </div>
-            <UserList userList={userList} onDelete={this.handleDeleteUser} />
+            <UserList userList={users} onDelete={this.handleDeleteUser} />
           </div>
         </div>
         <Footer />
