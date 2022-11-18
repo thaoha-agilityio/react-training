@@ -13,6 +13,7 @@ import { avatars, userNames, users, emails } from '../../mocks/users';
 import { IUser } from '../../types/IUser';
 import { createID } from '../../helpers/createId';
 import { random } from '../../helpers/random';
+import { NOTICE_MESSAGE } from '../../constants/message';
 
 // CSS
 import './index.css';
@@ -148,7 +149,11 @@ class Home extends React.Component<IProps, IState> {
                 Add User
               </Button>
             </div>
-            <UserList userList={isOpened ? updateUsers : users} onDelete={this.handleDeleteUser} />
+            <UserList
+              userList={isOpened ? updateUsers : users}
+              onDelete={this.handleDeleteUser}
+              message={updateUsers.length === 0 && isOpened ? NOTICE_MESSAGE : ''}
+            />
           </div>
         </div>
         <Footer />
