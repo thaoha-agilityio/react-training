@@ -10,10 +10,9 @@ import { TITLE_MESSAGE } from '../../../../constants/message';
 import './index.css';
 
 interface IProps {
-  onCloseDialog: () => void;
-  idUser: string;
   projects: IProject[];
-  onDelete: (id: string) => void;
+  onCloseDialog: () => void;
+  onDelete: () => void;
   onChange: (event: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>) => void;
   onUpdate: (event: React.FormEvent) => void;
 }
@@ -37,7 +36,7 @@ class Dialog extends React.Component<IProps, IState> {
   };
 
   render() {
-    const { idUser, projects, onDelete, onChange, onUpdate, onCloseDialog } = this.props;
+    const { projects, onDelete, onChange, onUpdate, onCloseDialog } = this.props;
 
     return (
       <>
@@ -55,12 +54,13 @@ class Dialog extends React.Component<IProps, IState> {
         {/* Show confirm modal */}
         {this.state.isConfirmModalOpen && (
           <ConfirmModal
+            text="delete"
             onClose={this.handleToggleConfirmModal}
-            id={idUser}
             onConfirm={onDelete}
             message={TITLE_MESSAGE}
           />
         )}
+
         {/* Show modal */}
         {this.state.isModalOpen && (
           <Modal

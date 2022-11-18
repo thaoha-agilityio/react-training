@@ -7,13 +7,13 @@ import closeIcon from '../../assets/images/closeIcon.jpg';
 import './index.css';
 
 interface IProps {
-  id: string;
   message: string;
+  text: string;
   onClose: () => void;
-  onConfirm?: (id: string) => void;
+  onConfirm?: () => void;
 }
 
-const ConfirmModal = ({ onClose, onConfirm, message }: IProps): React.ReactElement => (
+const ConfirmModal = ({ onClose, onConfirm, message, text }: IProps): React.ReactElement => (
   <div className="overlay">
     <div className="confirm-modal">
       <div className="close-modal">
@@ -26,8 +26,12 @@ const ConfirmModal = ({ onClose, onConfirm, message }: IProps): React.ReactEleme
         <Button variant="secondary" size="small" onClick={onClose}>
           Cancel
         </Button>
-        <Button variant="primary" size="small" onClick={() => onConfirm}>
-          Save
+        <Button
+          variant={text === 'delete' ? 'danger' : 'primary'}
+          size="small"
+          onClick={() => onConfirm?.()}
+        >
+          {text}
         </Button>
       </div>
     </div>

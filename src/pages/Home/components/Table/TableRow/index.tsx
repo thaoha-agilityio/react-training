@@ -157,7 +157,6 @@ class TableUserRow extends React.Component<IProps, IState> {
 
             {this.state.isDialogOpen && (
               <Dialog
-                idUser={id}
                 onDelete={() => onDelete(id)}
                 projects={projects || []}
                 onChange={this.handleOnchange}
