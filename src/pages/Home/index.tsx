@@ -108,7 +108,7 @@ class Home extends React.Component<IProps, IState> {
 
   render(): React.ReactNode {
     const { value, users, updateUsers, isOpened } = this.state;
-    console.log(this.state.valueSelected);
+
     return (
       <div className="container">
         <Header />
