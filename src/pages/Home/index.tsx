@@ -28,6 +28,7 @@ interface IState {
   users: IUser[];
   selectedFilter: IUser[];
   updateUsers: IUser[];
+  valueSelected: object;
 }
 
 class Home extends React.Component<IProps, IState> {
@@ -37,6 +38,7 @@ class Home extends React.Component<IProps, IState> {
     value: '',
     selectedFilter: [],
     updateUsers: [],
+    valueSelected: { role: '', project: '' },
   };
 
   // Add a user in data
@@ -89,29 +91,19 @@ class Home extends React.Component<IProps, IState> {
   };
 
   // Handle filter user by role
-  handleFilterUserByRole = (event: React.ChangeEvent<HTMLSelectElement>): void => {
+  handleFilterUser = (event: React.ChangeEvent<HTMLSelectElement>): void => {
     const { users } = this.state;
 
-    // get project name from value dropdown
-    const valueSelected = event.target.value;
+    const { value: selected, name } = event.target;
+    this.setState({
+      valueSelected: { ...this.state.valueSelected, [name]: selected },
+    });
 
     const usersFilter = users.filter((item: IUser) =>
-      item.projects?.some((value) => value.role === valueSelected)
+      item.projects?.some((value) => value.role === event.target.value)
     );
 
     this.setState({ selectedFilter: usersFilter });
-  };
-
-  // Handle filter user by role & project name
-  handleFilterUserByProject = (event: React.ChangeEvent<HTMLSelectElement>): void => {
-    const { selectedFilter } = this.state;
-    const values = event.target.value;
-
-    const usersFilter = selectedFilter.filter((item: IUser) =>
-      item.projects?.some((value) => value.projectName === values)
-    );
-
-    this.setState({ users: usersFilter });
   };
 
   render(): React.ReactNode {
@@ -127,12 +119,14 @@ class Home extends React.Component<IProps, IState> {
               <DropdownMenu
                 options={OPTIONS_ROLE}
                 size="medium"
-                onChange={this.handleFilterUserByRole}
+                onChange={this.handleFilterUser}
+                name="role"
               />
               <DropdownMenu
                 options={OPTIONS_PROJECT}
                 size="medium"
-                onChange={this.handleFilterUserByProject}
+                onChange={this.handleFilterUser}
+                name="project"
               />
             </div>
           </div>
