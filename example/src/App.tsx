@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 
-import { Cars, CountTime, CountTimeClass } from './components/useState';
-import { Example } from './components/useEffect';
+import { Cars, CountTime, CountTimeClass } from "./components/useState";
+import { Content, Example, Post } from "./components/useEffect";
 
-import './App.css';
+import "./App.css";
 
 function App() {
   return (
@@ -12,6 +12,8 @@ function App() {
       <CountTimeClass />
       <Cars />
       <Example />
+      <Content />
+      <Post />
     </div>
   );
 }
