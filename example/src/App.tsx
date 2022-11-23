@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import { Cars, CountTime, CountTimeClass } from "./components/useState";
 import { Example, Post, ShowImage } from "./components/useEffect";
+import { ThemedButton } from "./components/useContext/useContext";
 
 import "./App.css";
 
@@ -21,7 +22,7 @@ function App() {
 
       <Post />
       <button onClick={handleToggle}>Toggle</button>
-
+      <ThemedButton />
       {isShow && <ShowImage />}
     </div>
   );
