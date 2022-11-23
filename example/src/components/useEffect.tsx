@@ -54,3 +54,28 @@ export const Post = () => {
     </div>
   );
 };
+
+export const ShowImage = () => {
+  const [avatar, setAvatar] = useState();
+
+  useEffect(() => {
+    // Cleanup function is always called before the callback function is called (except mounted)
+    return () => {
+      avatar && URL.revokeObjectURL(avatar);
+    };
+  }, [avatar]);
+
+  const handlePreviewAvatar = (e: any) => {
+    const file = e.target.files[0];
+
+    file.preview = URL.createObjectURL(file);
+
+    setAvatar(file.preview);
+  };
+  return (
+    <>
+      <input type="file" onChange={handlePreviewAvatar} />
+      {avatar && <img src={avatar} alt="" />}
+    </>
+  );
+};
