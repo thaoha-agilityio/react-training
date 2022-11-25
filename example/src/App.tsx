@@ -5,6 +5,8 @@ import { Example, Post, ShowImage } from "./components/useEffect";
 import { ThemedButton } from "./components/useContext/useContext";
 
 import "./App.css";
+import { Countdown } from "./components/useRef";
+import { Counter } from "./components/useReducer";
 
 function App() {
   const [isShow, setIsShow] = useState(false);
@@ -24,6 +26,8 @@ function App() {
       <button onClick={handleToggle}>Toggle</button>
       <ThemedButton />
       {isShow && <ShowImage />}
+      <Countdown />
+      <Counter />
     </div>
   );
 }

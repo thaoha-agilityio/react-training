@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-export const Content = () => {
+export const Countdown = () => {
   const [count, setCount] = useState(60);
   const timerID: any = useRef(0);
   const prevCount = useRef(0);
