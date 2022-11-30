@@ -1,0 +1,24 @@
+.row-more {
+  width: 1324px;
+  height: 40px;
+  background: var(--color-secondary--50);
+  border: 1px solid var(--color-primary-200);
+}
+
+.more {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 20px 0px 20px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  line-height: calc(24 / 16);
+  color: var(--color-primary-50);
+  text-transform: capitalize;
+}
+
+.more button {
+  border: none;
+  cursor: pointer;
+  background-color: var(--color-secondary);
+}

@@ -1,0 +1,23 @@
+.search {
+  position: relative;
+}
+
+.text-field {
+  width: 314px;
+  height: 40px;
+  border: 1px solid var(--color-primary-250);
+  border-radius: 6px;
+  padding: 10px;
+}
+
+.search-btn {
+  border: none;
+  background-color: var(--color-secondary);
+  cursor: pointer;
+  position: absolute;
+  top: 13px;
+  right: 12px;
+  z-index: 1;
+  font-size: 16px;
+  color: var(--color-primary-250);
+}

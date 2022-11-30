@@ -1,0 +1,52 @@
+.overlay {
+  background-color: #0000004d;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.confirm-modal {
+  position: absolute;
+  width: 400px;
+  height: 180px;
+  background: var(--color-secondary);
+  z-index: 39;
+  font-family: 'Inter';
+  border-radius: 8px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.close-modal {
+  text-align: right;
+  cursor: pointer;
+}
+
+.modal p {
+  text-align: center;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.button-wrapper {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 50px;
+}
+
+.button-wrapper button {
+  border: none;
+  font-size: 14px;
+  border-radius: 5px;
+  width: 100px;
+  height: 38px;
+  font-family: 'Roboto';
+  font-weight: 400;
+  text-transform: capitalize;
+}

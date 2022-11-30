@@ -1,0 +1,33 @@
+.table-header {
+  border: 1px solid var(--color-primary-200);
+  width: 100%;
+}
+
+.table-row {
+  background: var(--color-secondary-50);
+}
+
+.table-row th {
+  height: 54px;
+  padding: 15px 25px 15px 0px;
+  text-align: revert;
+  text-transform: uppercase;
+  font-family: 'Inter';
+  font-weight: 600;
+  font-size: 12px;
+  line-height: calc(24 / 12);
+  color: var(--color-primary-50);
+}
+
+.table-row th:first-child {
+  width: 120px;
+}
+
+.table-row th:nth-child(2) {
+  width: 220px;
+}
+
+.table-row th span {
+  color: var(--color-primary-200);
+  float: right;
+}
