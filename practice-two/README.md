@@ -3,13 +3,14 @@
 # Overview
 
 - This document provides information about React Practice one
-- Build a Users Management Web Application
+- Build a BookShelf Management Web Application
 
 # Target
 
-- Apply knowledge of HTML5/CSS3/TypeScript (with ES6 syntax
-- React basic
-- Apply Storybook
+- Apply knowledge of HTML5/CSS3/TypeScript (with ES6 syntax)
+- Understand about how React hooks + Contexts work
+- Apply React hooks
+- Check re-render and using hook to avoid re-render
 
 # Technical
 
@@ -22,23 +23,27 @@
 
 # Requirements
 
-- [link](https://docs.google.com/document/d/1gzj2TB2vd0gg93hjK1J20PZBLVrQUhaWV28qMKQEJ7M/edit#)
+- [link](https://docs.google.com/document/d/1XFeMkeZhulA7msPbssoxWq9mTJe-l1NTCl0x9cLIL-w/edit#)
 
 # Overview app feature
 
-- Show user list with basic infos: avatar, user name, login name, role, projects, status of project (todo, in-progress, done)
-- See more user’s projects when click on More text (Only show this section if project > 2).
-- Filter users by role and project
-- Search users by name
-- Add user with random data when click button “ADD USER”
-- Show list of actions (Update, Remove) when click icon on Action column
-- Remove user when click Remove action
-- Update project when click Update action
+- Users could see all books in view
+- Users could change dark/light mode on header
+- Users could see a list of the book categories on sidebar
+- Filter books by categories
+- Show selected categories on header and total book match the categories
+- Remove categories filter
+- Users could see book detail
+- Users could change book view mode to grid or list
+- Users could sort books by Alphabetical or Release Year
+- Users could search books by name
+- Users could see maximum 10 item (pagination)
 
 # Prerequisites
 
-- node: v18.9.0
-- npm: v8.19.1
+- node: v16.16.0
+- npm: v9.1.2
+- vite: v3.2.3
 
 # Reference
 
@@ -52,12 +57,14 @@
   or
   `git@gitlab.asoft-python.com:thao.ha/react-training.git`
 
-- Step 2: Go to the folder `cd practice-one`
+- Step 2: Go to the folder `cd practice-two`
 
-- Step 3: Install packages `npm install`
+- Step 3: Checkout branch `git checkout feat/practice-two`
 
-- Step 4: Run project `npm start`
+- Step 4: Install packages `npm install`
 
-- Step 5: Open your browser at `http://localhost:3000/`
+- Step 5: Run project `npm start`
 
-- Step 6: Run storybook `npm run storybook`
+- Step 6: Open your browser at `http://localhost:3000/`
+
+- Step 7: Run storybook `npm run storybook`
