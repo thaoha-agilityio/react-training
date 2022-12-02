@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-// import { ReactComponent as Light } from '@/assets/images/icons/light.svg';
+import { ReactComponent as Light } from '@/assets/images/icons/light.svg';
 
 import Button from '.';
 
@@ -49,7 +49,7 @@ OutLine.args = {
   ...OutLine.args,
   variant: 'outline',
   size: 'small',
-  // icon: <Light />,
+  icon: <Light />,
 };
 
 export { Primary, Secondary, Danger, OutLine };
