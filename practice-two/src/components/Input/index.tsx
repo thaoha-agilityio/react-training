@@ -4,9 +4,7 @@ interface IProps extends React.ComponentPropsWithoutRef<'input'> {
 }
 
 const Input = ({ type, onChange, ...rest }: IProps): React.ReactElement => (
-  <>
-    <input type={type} onChange={onChange} {...rest} />
-  </>
+  <input type={type} onChange={onChange} {...rest} />
 );
 
 export default Input;
