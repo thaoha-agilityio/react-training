@@ -1,0 +1,55 @@
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+
+// import { ReactComponent as Light } from '@/assets/images/icons/light.svg';
+
+import Button from '.';
+
+export default {
+  title: 'Button',
+  component: Button,
+  argTypes: {
+    variant: {
+      defaultValue: 'primary',
+      options: ['primary', 'secondary', 'danger'],
+    },
+    size: {
+      defaultValue: 'small',
+      options: ['small', 'medium', 'large'],
+    },
+  },
+  parameters: {
+    actions: {
+      handles: ['click'],
+    },
+  },
+} as ComponentMeta<typeof Button>;
+
+const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
+
+const Primary = Template.bind({});
+
+const Secondary = Template.bind({});
+Secondary.args = {
+  ...Secondary.args,
+  variant: 'secondary',
+  size: 'small',
+  text: 'click',
+};
+
+const Danger = Template.bind({});
+Danger.args = {
+  ...Danger.args,
+  variant: 'danger',
+  size: 'small',
+  text: 'click',
+};
+
+const OutLine = Template.bind({});
+OutLine.args = {
+  ...OutLine.args,
+  variant: 'outline',
+  size: 'small',
+  // icon: <Light />,
+};
+
+export { Primary, Secondary, Danger, OutLine };
