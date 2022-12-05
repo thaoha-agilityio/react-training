@@ -1,22 +1,27 @@
-import { BookRequire } from '@/types/book';
 import Avatar from '../Avatar';
 
 import './index.css';
 
 interface IProps {
-  book: BookRequire;
+  id: Readonly<string>;
+  name: string;
+  avatar: string;
+  author: string;
+  description?: string;
+  published: string;
+  publisher?: string;
 }
 
-const CardItem = ({ book }: IProps): React.ReactElement => {
+const CardItem = ({ id, name, avatar, author, published }: IProps): React.ReactElement => {
   return (
-    <div className="card-item" data-id={book.id}>
-      <div className="card-image">
-        <Avatar url={book.avatar} alt={book.name} />
+    <div className="card-item" data-id={id}>
+      <div className="card-image-wrapper">
+        <Avatar url={avatar} alt={name} size="small" />
       </div>
       <div className="card-contents">
-        <h2 className="title">{book.name}</h2>
-        <p className="info">{book.author}</p>
-        <p className="info">{book.published}</p>
+        <h2 className="card-title">{name}</h2>
+        <p className="card-info">{author}</p>
+        <p className="card-info">{published}</p>
       </div>
     </div>
   );
