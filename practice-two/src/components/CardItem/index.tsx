@@ -7,7 +7,7 @@ interface IProps {
   book: BookRequire;
 }
 
-const CartItem = ({ book }: IProps) => {
+const CardItem = ({ book }: IProps): React.ReactElement => {
   return (
     <div className="card-item">
       <div className="card-image">
@@ -22,4 +22,4 @@ const CartItem = ({ book }: IProps) => {
   );
 };
 
-export default CartItem;
+export default CardItem;
