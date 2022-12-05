@@ -1,18 +1,15 @@
+import { IBook } from '@/types/book';
 import Avatar from '../Avatar';
 
 import './index.css';
 
 interface IProps {
-  id: Readonly<string>;
-  name: string;
-  avatar: string;
-  author: string;
-  description?: string;
-  published: string;
-  publisher?: string;
+  book: IBook;
 }
 
-const CardItem = ({ id, name, avatar, author, published }: IProps): React.ReactElement => {
+const CardItem = ({
+  book: { id, name, avatar, author, published },
+}: IProps): React.ReactElement => {
   return (
     <div className="card-item" data-id={id}>
       <div className="card-image-wrapper">
