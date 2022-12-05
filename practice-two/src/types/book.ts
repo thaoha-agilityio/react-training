@@ -3,10 +3,9 @@ interface IBook {
   name: string;
   avatar: string;
   author: string;
-  description: string;
+  description?: string;
   published: string;
-  publisher: string;
+  publisher?: string;
 }
 
-type BookRequire = Omit<IBook, 'description' | 'publisher'>;
-export type { IBook, BookRequire };
+export type { IBook };
