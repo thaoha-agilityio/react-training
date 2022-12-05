@@ -7,7 +7,7 @@
   flex-direction: column;
 }
 
-.card-image {
+.card-image-wrapper {
   width: 249px;
   height: 238px;
   background: var(--color-secondary-100);
@@ -15,20 +15,14 @@
   display: flex;
   justify-content: center;
   margin: 13px 18px;
-}
-
-.card-image img {
-  width: 201px;
-  height: 202px;
-  border-radius: 5px;
-  margin-top: 18px;
+  padding-top: 18px;
 }
 
 .card-contents {
   margin: 21px 19px;
 }
 
-.title {
+.card-title {
   font-family: 'Rubik';
   font-weight: 500;
   font-size: 18px;
@@ -36,7 +30,7 @@
   line-height: calc(21 / 18);
 }
 
-.info {
+.card-info {
   font-family: 'Noto_Sans';
   font-weight: 500;
   font-size: 13px;
