@@ -9,14 +9,14 @@ interface IProps {
 
 const CardItem = ({ book }: IProps): React.ReactElement => {
   return (
-    <div className="card-item">
+    <div className="card-item" data-id={book.id}>
       <div className="card-image">
-        <Avatar url="" alt="" />
+        <Avatar url={book.avatar} alt={book.name} />
       </div>
       <div className="card-contents">
-        <h2 className="title"></h2>
-        <p className="info"></p>
-        <p className="info"></p>
+        <h2 className="title">{book.name}</h2>
+        <p className="info">{book.author}</p>
+        <p className="info">{book.published}</p>
       </div>
     </div>
   );
