@@ -1,0 +1,27 @@
+.avatar {
+  background-size: cover;
+}
+
+.avatar-circle {
+  border-radius: 50%;
+}
+
+.avatar-square {
+  width: 201px;
+  height: 202px;
+}
+
+.avatar-small {
+  width: 201px;
+  height: 202px;
+}
+
+.avatar-medium {
+  width: 201px;
+  height: 263px;
+}
+
+.avatar-large {
+  width: 353px;
+  height: 144px;
+}
