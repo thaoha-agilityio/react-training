@@ -1,7 +1,7 @@
 import './index.css';
 
 interface IProps {
-  url?: string;
+  url: string;
   alt: string;
   styles?: 'circle' | 'square';
   size?: 'small' | 'medium' | 'large';
