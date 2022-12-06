@@ -1,28 +1,23 @@
 import { ReactNode } from 'react';
-
-import { ReactComponent as DeleteIcon } from '@/assets/images/icons/xmark.svg';
+import Button from '../Button';
 
 import './index.css';
 
 interface IProps {
-  isOption: boolean;
   label: string;
-  size?: 'small' | 'medium';
-  icon?: ReactNode;
-  adornments: 'deletable' | 'icon';
+  size: 'small' | 'medium';
+  adornments: 'startAdornments' | 'endAdornments';
+  startAdornments?: ReactNode;
+  endAdornments?: ReactNode;
   onClick?: () => void;
 }
 
-const Chip = ({ icon, size, label, isOption, adornments, onClick }: IProps) => {
+const Chip = ({ size, label, adornments, startAdornments, endAdornments, onClick }: IProps) => {
   return (
-    <div className={`chip chip-${size} chip-${adornments}`} onClick={onClick}>
-      {/* Icon Chip */}
-      {isOption && icon}
-
+    <div className={`chip chip-${size} chip-${adornments}`}>
+      {startAdornments && <Button icon={startAdornments} onClick={onClick} variant={'outlined'} />}
       <p>{label}</p>
-
-      {/* Delete icon */}
-      {!isOption && (icon = <DeleteIcon />)}
+      {endAdornments && <Button icon={endAdornments} onClick={onClick} variant={'outlined'} />}
     </div>
   );
 };
