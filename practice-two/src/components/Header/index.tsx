@@ -14,7 +14,7 @@ const Header = (): React.ReactElement => {
         <img src={bookshelf} alt="logo" />
       </div>
       <div className="dark-light">
-        <Button variant="outline" size="medium" icon={<Icon />} />
+        <Button variant="outlined" size="medium" icon={<Icon />} />
       </div>
     </header>
   );

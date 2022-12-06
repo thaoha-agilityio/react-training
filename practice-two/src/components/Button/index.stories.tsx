@@ -10,7 +10,7 @@ export default {
   argTypes: {
     variant: {
       defaultValue: 'primary',
-      options: ['primary', 'secondary', 'danger'],
+      options: ['primary', 'secondary', 'danger', 'outlined'],
     },
     size: {
       defaultValue: 'small',
@@ -47,7 +47,7 @@ Danger.args = {
 const OutLine = Template.bind({});
 OutLine.args = {
   ...OutLine.args,
-  variant: 'outline',
+  variant: 'outlined',
   size: 'small',
   icon: <Light />,
 };
