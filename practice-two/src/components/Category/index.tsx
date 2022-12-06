@@ -1,15 +1,14 @@
-import { CATEGORIES_BACKGROUND } from '@/constants/categories';
+import { ICategory } from '@/types/category';
 
 import './index.css';
 
 interface IProps {
-  categoryName: string;
-  acronym: string;
-  total: Number;
-  background: CATEGORIES_BACKGROUND;
+  category: ICategory;
 }
 
-const Category = ({ categoryName, acronym, total, background }: IProps): React.ReactElement => {
+const Category = ({
+  category: { categoryName, acronym, total, background },
+}: IProps): React.ReactElement => {
   return (
     <div className="category-wrapper">
       <div className="category">
