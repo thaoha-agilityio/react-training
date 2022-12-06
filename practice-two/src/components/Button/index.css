@@ -26,11 +26,12 @@
 
 .btn-small {
   font-size: var(--fs-small);
-  width: 45px;
-  height: 26px;
+  width: 10px;
 }
 
 .btn-medium {
+  width: 45px;
+  height: 26px;
   padding: 7px 22px;
   font-size: var(--fs-medium);
   line-height: calc(24 / 14);
