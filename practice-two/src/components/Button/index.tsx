@@ -2,12 +2,12 @@ import { ReactNode } from 'react';
 import './index.css';
 
 interface IProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant: 'primary' | 'secondary' | 'tertiary' | 'outline' | 'danger';
-  size: 'small' | 'medium' | 'large';
+  variant: 'primary' | 'secondary' | 'tertiary' | 'outlined' | 'danger';
+  size?: 'small' | 'medium' | 'large';
   className?: string;
-  onClick?: () => void;
-  icon?: ReactNode;
   text?: string;
+  icon?: ReactNode;
+  onClick?: () => void;
 }
 
 const Button = ({

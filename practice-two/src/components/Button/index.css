@@ -20,8 +20,8 @@
   color: var(--color-secondary);
 }
 
-.btn-outline {
-  background-color: var(--color-secondary);
+.btn-outlined {
+  background: transparent;
 }
 
 .btn-small {
