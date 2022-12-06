@@ -15,9 +15,11 @@ interface IProps {
 const Chip = ({ size, label, adornments, startAdornments, endAdornments, onClick }: IProps) => {
   return (
     <div className={`chip chip-${size} chip-${adornments}`}>
-      {startAdornments && <Button icon={startAdornments} onClick={onClick} variant={'outlined'} />}
+      {startAdornments && <Button icon={startAdornments} onClick={onClick} variant="outlined" />}
       <p>{label}</p>
-      {endAdornments && <Button icon={endAdornments} onClick={onClick} variant={'outlined'} />}
+      {endAdornments && (
+        <Button icon={endAdornments} onClick={onClick} variant="outlined" size="small" />
+      )}
     </div>
   );
 };
