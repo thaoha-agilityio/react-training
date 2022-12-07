@@ -1,7 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { CATEGORIES_BACKGROUND } from '@/constants/categories';
-
 import SideBar from '.';
 
 const data = [
@@ -9,13 +7,11 @@ const data = [
     categoryName: 'Adventure',
     acronym: 'ad',
     total: 123,
-    background: CATEGORIES_BACKGROUND.LIGHTBLUE,
   },
   {
     categoryName: 'Romance',
     acronym: 'rm',
     total: 123,
-    background: CATEGORIES_BACKGROUND.PINK,
   },
 ];
 
