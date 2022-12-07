@@ -13,7 +13,7 @@ export default {
       options: ['primary', 'secondary', 'danger', 'outlined'],
     },
     size: {
-      defaultValue: 'small',
+      defaultValue: 'medium',
       options: ['small', 'medium', 'large'],
     },
   },
@@ -32,7 +32,7 @@ const Secondary = Template.bind({});
 Secondary.args = {
   ...Secondary.args,
   variant: 'secondary',
-  size: 'small',
+  size: 'medium',
   text: 'click',
 };
 
@@ -40,7 +40,7 @@ const Danger = Template.bind({});
 Danger.args = {
   ...Danger.args,
   variant: 'danger',
-  size: 'small',
+  size: 'large',
   text: 'click',
 };
 
@@ -48,7 +48,7 @@ const OutLine = Template.bind({});
 OutLine.args = {
   ...OutLine.args,
   variant: 'outlined',
-  size: 'small',
+  size: 'large',
   icon: <Light />,
 };
 

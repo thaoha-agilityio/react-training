@@ -32,9 +32,8 @@
 .btn-medium {
   width: 45px;
   height: 26px;
-  padding: 7px 22px;
-  font-size: var(--fs-medium);
-  line-height: calc(24 / 14);
+  padding: 5px 2px 1px 5px;
+  font-size: 12px;
 }
 
 .btn-large {
