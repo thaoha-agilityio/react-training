@@ -9,7 +9,7 @@ import { IBook } from '@/types/book';
 import './index.css';
 
 interface IProps {
-  books: IBook;
+  books: IBook[];
 }
 
 const FilterModal = ({ books }: IProps) => {
