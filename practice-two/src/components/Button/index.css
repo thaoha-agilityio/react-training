@@ -37,6 +37,8 @@
 }
 
 .btn-large {
-  padding: 10px 20px;
+  width: 77px;
+  height: 34px;
+  padding: 5px 10px;
   font-size: var(--fs-large);
 }
