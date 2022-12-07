@@ -1,0 +1,49 @@
+.overlay {
+  background-color: transparent;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.filter-modal {
+  position: absolute;
+  right: 0px;
+  width: 268px;
+  height: 331px;
+  background: var(--color-secondary);
+  box-shadow: 0px 1px 4px #0000001a;
+  border-radius: 5px;
+  padding: 29px 21px;
+}
+
+.options {
+  font-family: 'Rubik';
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 2.3;
+}
+
+.btn-wrapper {
+  display: flex;
+  gap: 9px;
+  margin-top: 5px;
+}
+
+.optional-layout :hover {
+  background: var(--color-secondary-100);
+  border: none;
+}
+
+.optional-layout p {
+  font-family: 'Rubik';
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 2.3;
+  margin-left: 8px;
+}
+
+.sort {
+  margin-top: 15px;
+}
