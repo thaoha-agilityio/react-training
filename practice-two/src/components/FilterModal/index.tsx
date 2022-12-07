@@ -1,9 +1,9 @@
 import Button from '../Button';
 import Chip from '../Chip';
+import SvgGridComponent from '../Icon/SvgGridComponent';
+import SvgListComponent from '../Icon/SvgListComponent';
+import SvgArrowComponent from '../Icon/SvgArrowComponent';
 
-import { ReactComponent as GridIcon } from '@/assets/images/icons/grid.svg';
-import { ReactComponent as ListIcon } from '@/assets/images/icons/list.svg';
-import { ReactComponent as ArrowIcon } from '@/assets/images/icons/arrow.svg';
 import { IBook } from '@/types/book';
 
 import './index.css';
@@ -19,11 +19,11 @@ const FilterModal = ({ books }: IProps) => {
         <p className="options">Display Options</p>
         <div className="btn-wrapper">
           <div className="optional-layout">
-            <Button variant="outlined" icon={<GridIcon />} size="radius" />
+            <Button variant="outlined" icon={<SvgGridComponent />} size="radius" />
             <p>Grid</p>
           </div>
           <div className="optional-layout">
-            <Button variant="outlined" icon={<ListIcon />} size="radius" />
+            <Button variant="outlined" icon={<SvgListComponent />} size="radius" />
             <p>List</p>
           </div>
         </div>
@@ -33,13 +33,13 @@ const FilterModal = ({ books }: IProps) => {
             label="Alphabetical Order"
             size="large"
             adornments="customAdornments"
-            endAdornments={<ArrowIcon />}
+            endAdornments={<SvgArrowComponent />}
           />
           <Chip
             label="Release Year"
             size="large"
             adornments="customAdornments"
-            endAdornments={<ArrowIcon />}
+            endAdornments={<SvgArrowComponent />}
           />
         </div>
       </div>

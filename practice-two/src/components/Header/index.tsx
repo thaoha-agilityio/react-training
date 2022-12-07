@@ -1,8 +1,8 @@
+import Button from '@/components/Button';
+import SvgLightComponent from '../Icon/SvgLightComponent';
+
 import bookshelf from '@/assets/images/bookshelf.png';
 import logo from '@/assets/images/logo.png';
-
-import { ReactComponent as Icon } from '@/assets/images/icons/light.svg';
-import Button from '@/components/Button';
 
 import './index.css';
 
@@ -14,7 +14,7 @@ const Header = (): React.ReactElement => {
         <img src={bookshelf} alt="logo" />
       </div>
       <div className="dark-light">
-        <Button variant="outlined" size="medium" icon={<Icon />} />
+        <Button variant="outlined" size="medium" icon={<SvgLightComponent />} />
       </div>
     </header>
   );

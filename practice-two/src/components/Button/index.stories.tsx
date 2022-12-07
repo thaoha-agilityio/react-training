@@ -14,7 +14,7 @@ export default {
     },
     size: {
       defaultValue: 'medium',
-      options: ['small', 'medium', 'large'],
+      options: ['small', 'medium', 'large', 'radius'],
     },
   },
   parameters: {

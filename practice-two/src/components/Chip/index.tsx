@@ -1,12 +1,13 @@
 import { ReactNode } from 'react';
+
 import Button from '../Button';
 
 import './index.css';
 
 interface IProps {
   label: string;
-  size: 'small' | 'medium';
-  adornments: 'startAdornments' | 'endAdornments';
+  size: 'small' | 'medium' | 'large';
+  adornments: 'startAdornments' | 'endAdornments' | 'customAdornments';
   startAdornments?: ReactNode;
   endAdornments?: ReactNode;
   onClick?: () => void;
