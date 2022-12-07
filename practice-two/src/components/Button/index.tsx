@@ -3,7 +3,7 @@ import './index.css';
 
 interface IProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant: 'primary' | 'secondary' | 'tertiary' | 'outlined' | 'danger';
-  size?: 'small' | 'medium' | 'large';
+  size?: 'small' | 'medium' | 'large' | 'radius';
   className?: string;
   text?: string;
   icon?: ReactNode;
