@@ -1,6 +1,6 @@
 import { SVGProps } from 'react';
 
-const SvgFilterComponent = (props: SVGProps<SVGSVGElement>) => (
+export const SvgFilterComponent = (props: SVGProps<SVGSVGElement>) => (
   <svg width={25} height={25} fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
     <path
       fillRule="evenodd"
@@ -16,5 +16,3 @@ const SvgFilterComponent = (props: SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
-
-export default SvgFilterComponent;
