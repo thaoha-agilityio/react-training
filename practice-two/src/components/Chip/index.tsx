@@ -6,7 +6,7 @@ import './index.css';
 
 interface IProps {
   label: string;
-  size: 'small' | 'medium' | 'large';
+  size?: 'small' | 'medium' | 'large';
   adornments: 'startAdornments' | 'endAdornments' | 'customAdornments';
   startAdornments?: ReactNode;
   endAdornments?: ReactNode;

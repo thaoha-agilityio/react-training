@@ -1,5 +1,5 @@
 import Button from '@/components/Button';
-import SvgLightComponent from '../Icon/SvgLightComponent';
+import { SvgLightComponent } from '../Icon';
 
 import bookshelf from '@/assets/images/bookshelf.png';
 import logo from '@/assets/images/logo.png';

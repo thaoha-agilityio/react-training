@@ -30,7 +30,7 @@
   font-weight: 500;
   line-height: calc(17 / 14);
   color: var(--color-tertiary-100);
-  background: var(--color-tertiary-200);
+  background: var(--color-tertiary);
 }
 
 .chip-startAdornments {
