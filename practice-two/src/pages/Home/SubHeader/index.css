@@ -1,0 +1,30 @@
+.sub-header {
+  height: 56px;
+  box-shadow: 0px 0px 2px #00000026;
+  padding: 18px 41px 18px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sub-header h2 {
+  font-family: 'Rubik';
+  font-weight: 400;
+  font-size: 18px;
+  line-height: calc(21 / 18);
+}
+
+.total-categories {
+  display: flex;
+  width: 598px;
+  gap: 20px;
+  align-items: center;
+}
+
+.result {
+  font-family: 'Rubik';
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: var(--color-primary);
+}
