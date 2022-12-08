@@ -1,8 +1,7 @@
-import Avatar from '@/components/Avatar';
-import Button from '@/components/Button';
-import Chip from '@/components/Chip';
-import SvgLightComponent from '@/components/Icon/SvgLightComponent';
-import SvgXmarkComponent from '@/components/Icon/SvgXmarkComponent';
+import Avatar from '../../Avatar';
+import Button from '../../Button';
+import Chip from '../../Chip';
+import { SvgLightComponent, SvgXmarkComponent } from '../../Icon';
 
 import { IBook } from '@/types/book';
 
@@ -38,7 +37,7 @@ const DetailModal = ({
           </div>
           <div className="details">
             <p>Publishers:</p>
-            <Chip label={publisher || ''} adornments={'endAdornments'} />
+            <Chip label={publisher!} adornments={'endAdornments'} />
           </div>
         </div>
 

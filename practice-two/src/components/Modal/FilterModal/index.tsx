@@ -1,8 +1,6 @@
 import Button from '../../Button';
 import Chip from '../../Chip';
-import SvgGridComponent from '../../Icon/SvgGridComponent';
-import SvgListComponent from '../../Icon/SvgListComponent';
-import SvgArrowComponent from '../../Icon/SvgArrowComponent';
+import { SvgGridComponent, SvgListComponent, SvgArrowComponent } from '../../Icon';
 
 import { IBook } from '@/types/book';
 
