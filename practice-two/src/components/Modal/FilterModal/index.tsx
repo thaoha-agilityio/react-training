@@ -1,8 +1,6 @@
-import Button from '../Button';
-import Chip from '../Chip';
-import SvgGridComponent from '../Icon/SvgGridComponent';
-import SvgListComponent from '../Icon/SvgListComponent';
-import SvgArrowComponent from '../Icon/SvgArrowComponent';
+import Button from '../../Button';
+import Chip from '../../Chip';
+import { SvgGridComponent, SvgListComponent, SvgArrowComponent } from '../../Icon';
 
 import { IBook } from '@/types/book';
 
@@ -15,7 +13,7 @@ interface IProps {
 const FilterModal = ({ books }: IProps) => {
   return (
     <div className="overlay">
-      <div className="modal-filter">
+      <div className="filter-modal">
         <p className="options">Display Options</p>
         <div className="btn-wrapper">
           <div className="optional-layout">

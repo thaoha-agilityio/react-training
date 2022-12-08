@@ -1,6 +1,6 @@
 import { SVGProps } from 'react';
 
-const SvgArrowComponent = (props: SVGProps<SVGSVGElement>) => (
+export const SvgArrowComponent = (props: SVGProps<SVGSVGElement>) => (
   <svg width={8} height={11} fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
     <path
       fillRule="evenodd"
@@ -16,5 +16,3 @@ const SvgArrowComponent = (props: SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
-
-export default SvgArrowComponent;

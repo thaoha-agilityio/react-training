@@ -1,6 +1,6 @@
 import { SVGProps } from 'react';
 
-const SvgListComponent = (props: SVGProps<SVGSVGElement>) => (
+export const SvgListComponent = (props: SVGProps<SVGSVGElement>) => (
   <svg width={14} height={10} fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
     <path
       fillRule="evenodd"
@@ -10,5 +10,3 @@ const SvgListComponent = (props: SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
-
-export default SvgListComponent;
