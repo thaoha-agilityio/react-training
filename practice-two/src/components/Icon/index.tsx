@@ -13,3 +13,5 @@ export * from './SvgMoonComponent';
 export * from './SvgSearchComponent';
 
 export * from './SvgXmarkComponent';
+
+export * from './SvgArrowRightComponent';
