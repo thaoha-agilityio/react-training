@@ -1,7 +1,8 @@
 import axios from 'axios';
+import { API_BASE_URL, API_PATH } from '@/constants/api';
 
 const instance = axios.create({
-  baseURL: `https://6385df7ebeaa6458266b766f.mockapi.io/books`,
+  baseURL: `${API_BASE_URL}${API_PATH}`,
   timeout: 3000,
   headers: { 'Content-Type': 'application/json' },
 });
