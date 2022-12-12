@@ -1,5 +1,8 @@
-const API_BASE_URL = 'https://6385df7ebeaa6458266b766f.mockapi.io';
+const API_BASE_URL = process.env.VITE_BASE_URL;
 
-const API_PATH = '/books';
+const API_PATH = {
+  books: '/books',
+  categories: '/categories',
+};
 
 export { API_PATH, API_BASE_URL };

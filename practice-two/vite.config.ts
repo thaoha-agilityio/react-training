@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import EnvironmentPlugin from 'vite-plugin-environment';
 import path from 'path';
 import svgr from 'vite-plugin-svgr';
 
@@ -13,5 +14,5 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
-  plugins: [react(), svgr()],
+  plugins: [react(), svgr(), EnvironmentPlugin('all')],
 });
