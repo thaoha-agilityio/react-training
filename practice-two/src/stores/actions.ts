@@ -5,6 +5,7 @@ export type GetBooks = {
   type: ACTIONS.GET_BOOKS;
   payload: {
     items: IBook[];
+    ids: string[];
   };
 };
 
