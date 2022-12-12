@@ -1,26 +1,31 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 import Header from '@/components/Header';
 import SubHeader from './SubHeader';
 import Books from './Books.tsx';
 
 import { getData } from '@/services/APIRequest';
-import { IBook } from '@/types/book';
+
 import { API_BASE_URL, API_PATH } from '@/constants/api';
+import { ICategory } from '@/types/category';
+import SideBar from '@/components/SideBar';
+import { BooksContext } from '@/contexts/BooksContext';
 
 import './index.css';
 
-const Home = () => {
-  const [books, setBooks] = useState<IBook[]>([]);
+const Home = (): JSX.Element => {
+  const { ids } = useContext(BooksContext);
+  const [categories, setCategories] = useState<ICategory[]>([]);
+
+  // Get categories form server
+  const getCategories = async (): Promise<void> => {
+    const categories: ICategory[] = await getData(`${API_BASE_URL}${API_PATH.categories}`);
+    setCategories(categories);
+  };
 
   useEffect(() => {
-    getBooks();
+    getCategories();
   }, []);
-
-  const getBooks = async (): Promise<void> => {
-    const books: IBook[] = await getData(`${API_BASE_URL}${API_PATH}`);
-    setBooks(books);
-  };
 
   return (
     <div className="home">
@@ -28,7 +33,8 @@ const Home = () => {
         <Header />
         <SubHeader />
         <div className="contents">
-          <Books books={books} />
+          <SideBar categories={categories} />
+          <Books idBooks={ids} />
         </div>
       </div>
     </div>
