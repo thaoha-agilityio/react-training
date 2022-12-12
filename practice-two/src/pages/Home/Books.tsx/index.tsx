@@ -6,10 +6,10 @@ interface IProps {
   idBooks: string[];
 }
 
-const Books = ({ idBooks }: IProps) => {
+const Books = ({ idBooks }: IProps): JSX.Element => {
   return (
     <div className="books">
-      {idBooks.map((id: any) => (
+      {idBooks.map((id: string) => (
         <div key={id}>{<CardItem idBook={id} />}</div>
       ))}
     </div>
