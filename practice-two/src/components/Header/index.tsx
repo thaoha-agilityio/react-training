@@ -1,3 +1,6 @@
+import { useContext } from 'react';
+import { ThemeContext } from '@/contexts/ThemeContext ';
+
 import Button from '@/components/Button';
 import Input from '../Input';
 import { SvgLightComponent, SvgMoonComponent, SvgSearchComponent } from '../Icon';
@@ -6,11 +9,9 @@ import bookshelf from '@/assets/images/bookshelf.png';
 import logo from '@/assets/images/logo.png';
 
 import './index.css';
-import { useContext } from 'react';
-import { BooksContext } from '@/contexts/BooksContext';
 
 const Header = (): React.ReactElement => {
-  const { theme, toggleTheme } = useContext(BooksContext);
+  const { theme, toggleTheme } = useContext(ThemeContext);
 
   return (
     <header className="header">
@@ -31,7 +32,7 @@ const Header = (): React.ReactElement => {
           <Button
             variant="primary"
             size="medium"
-            icon={theme === 'light-theme' ? <SvgLightComponent /> : <SvgMoonComponent />}
+            icon={theme ? <SvgLightComponent /> : <SvgMoonComponent />}
             onClick={toggleTheme}
           />
         </div>
