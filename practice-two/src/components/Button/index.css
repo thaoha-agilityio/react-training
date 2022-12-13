@@ -5,8 +5,7 @@
 }
 
 .btn-primary {
-  background: var(--color-tertiary-100);
-  color: var(--color-secondary);
+  background: transparent;
 }
 
 .btn-secondary {
@@ -18,10 +17,6 @@
 .btn-danger {
   background-color: var(--color-red);
   color: var(--color-secondary);
-}
-
-.btn-outlined {
-  background: transparent;
 }
 
 .btn-small {
@@ -43,7 +38,7 @@
   font-size: var(--fs-large);
 }
 
-.btn-radius {
+.btn-circle {
   width: 40px;
   height: 40px;
   border: 1px solid #e3e6eb;

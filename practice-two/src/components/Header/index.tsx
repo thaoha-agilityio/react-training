@@ -19,12 +19,12 @@ const Header = (): React.ReactElement => {
           <Input
             type="text"
             size="large"
-            leftElement={<Button variant="outlined" icon={<SvgSearchComponent />} />}
+            leftElement={<Button variant="primary" icon={<SvgSearchComponent />} />}
             placeholder="Search books"
           />
         </div>
         <div className="dark-light">
-          <Button variant="outlined" size="medium" icon={<SvgLightComponent />} />
+          <Button variant="primary" size="medium" icon={<SvgLightComponent />} />
         </div>
       </div>
     </header>
