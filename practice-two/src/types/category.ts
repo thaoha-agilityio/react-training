@@ -1,5 +1,5 @@
 export interface ICategory {
-  categoryName: string;
-  acronym: string;
+  id: string;
+  name: string;
   total: Number;
 }
