@@ -11,6 +11,9 @@ export type GetBooks = {
 
 export type ChangeDarkMode = {
   type: ACTIONS.CHANGE_DARK_MODE;
+  payload: {
+    theme: 'dark-theme' | 'light-theme';
+  };
 };
 
 export type GetBookById = {

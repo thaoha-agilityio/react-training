@@ -6,12 +6,14 @@ export interface BooksState {
   books: IBook[];
   book: IBook | null;
   ids: string[];
+  theme: 'dark-theme' | 'light-theme';
 }
 
 const initialState: BooksState = {
   books: [],
   book: null,
   ids: [],
+  theme: 'light-theme',
 };
 
 const booksReducer = (state: BooksState = initialState, actions: BooksAction): BooksState => {
@@ -29,6 +31,11 @@ const booksReducer = (state: BooksState = initialState, actions: BooksAction): B
         book: actions.payload.book,
       };
 
+    case ACTIONS.CHANGE_DARK_MODE:
+      return {
+        ...state,
+        theme: actions.payload.theme,
+      };
     default:
       return state;
   }
