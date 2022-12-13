@@ -5,7 +5,7 @@ import { themeReducer, initialState } from '@/stores/theme/reducer';
 import { ACTIONS } from '@/constants/actions';
 
 interface IThemeContext {
-  theme: 'dark-theme' | 'light-theme';
+  theme: boolean;
   toggleTheme: () => void;
   dispatch: Dispatch<ThemeAction>;
 }
@@ -26,13 +26,15 @@ export const ThemeProvider = ({ children }: IThemeProvider) => {
     dispatch({
       type: ACTIONS.CHANGE_DARK_MODE,
       payload: {
-        theme: state.theme === 'dark-theme' ? 'light-theme' : 'dark-theme',
+        theme: !state.theme,
       },
     });
   };
 
   useEffect(() => {
-    document.body.className = state.theme;
+    state.theme
+      ? (document.body.className = 'light-theme')
+      : (document.body.className = 'dark-theme');
   }, [state.theme]);
 
   const value = {
