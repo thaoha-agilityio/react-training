@@ -10,8 +10,6 @@ import { ACTIONS } from '@/constants/actions';
 interface IBookContext {
   books: IBook[];
   ids: string[];
-  theme: 'dark-theme' | 'light-theme';
-  toggleTheme: () => void;
   getBookById: (id: string) => IBook;
   dispatch: Dispatch<BooksAction>;
 }
@@ -64,20 +62,6 @@ export const BooksProvider = ({ children }: IBookProvider) => {
     return book;
   };
 
-  // Change dark-light mode
-  const toggleTheme = (): void => {
-    dispatch({
-      type: ACTIONS.CHANGE_DARK_MODE,
-      payload: {
-        theme: state.theme === 'dark-theme' ? 'light-theme' : 'dark-theme',
-      },
-    });
-  };
-
-  useEffect(() => {
-    document.body.className = state.theme;
-  }, [state.theme]);
-
   useEffect(() => {
     fetchData();
   }, []);
@@ -87,9 +71,7 @@ export const BooksProvider = ({ children }: IBookProvider) => {
     () => ({
       books: state.books,
       ids: state.ids,
-      theme: state.theme,
       getBookById,
-      toggleTheme,
       dispatch,
     }),
     [state]
