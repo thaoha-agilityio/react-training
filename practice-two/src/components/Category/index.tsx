@@ -7,14 +7,14 @@ interface IProps {
   category: ICategory;
 }
 
-const Category = ({ category: { categoryName, acronym, total } }: IProps): React.ReactElement => {
+const Category = ({ category: { name, total } }: IProps): React.ReactElement => {
   return (
     <div className="category-wrapper">
       <div className="category">
         <div className="thumbnail" style={{ backgroundColor: generateColor() }}>
-          <p>{acronym}</p>
+          <p>{name.substring(0, 2)}</p>
         </div>
-        <p className="category-name">{categoryName}</p>
+        <p className="category-name">{name}</p>
       </div>
       <p className="total">{total.toString()}</p>
     </div>
