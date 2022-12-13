@@ -1,20 +1,20 @@
 import { ACTIONS } from '@/constants/actions';
 import { ThemeAction } from './action';
 
-export interface BooksState {
-  theme: boolean;
+export interface ThemeState {
+  isDarkMode: boolean;
 }
 
-const initialState: BooksState = {
-  theme: true,
+const initialState: ThemeState = {
+  isDarkMode: false,
 };
 
-const themeReducer = (state: BooksState = initialState, actions: ThemeAction): BooksState => {
+const themeReducer = (state: ThemeState = initialState, actions: ThemeAction): ThemeState => {
   switch (actions.type) {
     case ACTIONS.CHANGE_DARK_MODE:
       return {
         ...state,
-        theme: actions.payload.theme,
+        isDarkMode: actions.payload.isDarkMode,
       };
     default:
       return state;

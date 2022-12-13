@@ -5,7 +5,7 @@ import { themeReducer, initialState } from '@/stores/theme/reducer';
 import { ACTIONS } from '@/constants/actions';
 
 interface IThemeContext {
-  theme: boolean;
+  isDarkMode: boolean;
   toggleTheme: () => void;
   dispatch: Dispatch<ThemeAction>;
 }
@@ -26,21 +26,15 @@ export const ThemeProvider = ({ children }: IThemeProvider) => {
     dispatch({
       type: ACTIONS.CHANGE_DARK_MODE,
       payload: {
-        theme: !state.theme,
+        isDarkMode: !state.isDarkMode,
       },
     });
   };
 
-  useEffect(() => {
-    state.theme
-      ? (document.body.className = 'light-theme')
-      : (document.body.className = 'dark-theme');
-  }, [state.theme]);
-
   // Value pass to provider context
   const value = useMemo(
     () => ({
-      theme: state.theme,
+      isDarkMode: state.isDarkMode,
       toggleTheme,
       dispatch,
     }),

@@ -11,7 +11,7 @@ import logo from '@/assets/images/logo.png';
 import './index.css';
 
 const Header = (): React.ReactElement => {
-  const { theme, toggleTheme } = useContext(ThemeContext);
+  const { isDarkMode, toggleTheme } = useContext(ThemeContext);
 
   return (
     <header className="header">
@@ -32,7 +32,7 @@ const Header = (): React.ReactElement => {
           <Button
             variant="primary"
             size="medium"
-            icon={theme ? <SvgLightComponent /> : <SvgMoonComponent />}
+            icon={isDarkMode ? <SvgMoonComponent /> : <SvgLightComponent />}
             onClick={toggleTheme}
           />
         </div>

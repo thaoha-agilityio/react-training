@@ -6,16 +6,18 @@ import Books from './Books.tsx';
 
 import SideBar from '@/pages/Home/SideBar';
 import { BooksContext } from '@/contexts/BooksContext';
+import { CategoriesContext } from '@/contexts/CategoriesContext';
+import { ThemeContext } from '@/contexts/ThemeContext ';
 
 import './index.css';
-import { CategoriesContext } from '@/contexts/CategoriesContext';
 
 const Home = (): JSX.Element => {
   const { ids } = useContext(BooksContext);
   const { categories } = useContext(CategoriesContext);
+  const { isDarkMode } = useContext(ThemeContext);
 
   return (
-    <div className="home">
+    <div className={`home ${isDarkMode ? 'dark-theme' : 'light-theme'}  `}>
       <div className="container">
         <Header />
         <SubHeader />
