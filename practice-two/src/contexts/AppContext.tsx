@@ -1,3 +1,4 @@
+import { ThemeProvider } from './ThemeContext ';
 import React, { ReactNode } from 'react';
 
 import { BooksProvider } from './BooksContext';
@@ -9,8 +10,10 @@ type AppProviderProps = {
 
 export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
   return (
-    <BooksProvider>
-      <CategoriesProvider>{children}</CategoriesProvider>
-    </BooksProvider>
+    <ThemeProvider>
+      <BooksProvider>
+        <CategoriesProvider>{children}</CategoriesProvider>
+      </BooksProvider>
+    </ThemeProvider>
   );
 };
