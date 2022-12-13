@@ -4,7 +4,7 @@ import Header from '@/components/Header';
 import SubHeader from './SubHeader';
 import Books from './Books.tsx';
 
-import SideBar from '@/components/SideBar';
+import SideBar from '@/pages/Home/SideBar';
 import { BooksContext } from '@/contexts/BooksContext';
 
 import './index.css';
