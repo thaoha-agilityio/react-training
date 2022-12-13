@@ -5,6 +5,7 @@
   border-radius: 5px;
   display: flex;
   flex-direction: column;
+  background-color: var(--color-secondary);
 }
 
 .card-image-wrapper {

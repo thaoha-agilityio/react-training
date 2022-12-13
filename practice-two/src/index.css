@@ -1,0 +1,11 @@
+.dark-theme {
+  --main-heading: #1e1e2fba;
+  --text-color: #ffff;
+}
+
+.light-theme {
+  --main-heading: #ffff;
+  --main-content: var(--color-secondary-100);
+  --categories-text: #222531;
+  --total-text-color: #58667e;
+}
