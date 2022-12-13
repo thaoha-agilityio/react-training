@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+
 import Avatar from '../Avatar';
 
 import { BooksContext } from '@/contexts/BooksContext';
@@ -7,15 +8,15 @@ import { IBook } from '@/types/book';
 import './index.css';
 
 interface IProps {
-  idBook: string;
+  id: string;
 }
 
-const CardItem = ({ idBook }: IProps): React.ReactElement => {
-  const { books } = useContext(BooksContext);
-  const book: IBook = books.find((item) => item.id === idBook) as IBook;
+const CardItem = ({ id }: IProps): React.ReactElement => {
+  const { getBookById } = useContext(BooksContext);
+  const book: IBook = getBookById(id);
 
   return (
-    <div className="card-item" data-id={idBook}>
+    <div className="card-item" data-id={id}>
       <div className="card-image-wrapper">
         <Avatar url={book.avatar} alt={book.name} size="small" />
       </div>

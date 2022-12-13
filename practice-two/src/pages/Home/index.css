@@ -4,3 +4,7 @@
   margin: auto;
   border: 1px solid;
 }
+
+.contents {
+  display: flex;
+}

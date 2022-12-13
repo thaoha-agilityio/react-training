@@ -13,7 +13,9 @@ const SideBar = ({ categories }: IProps): React.ReactElement => {
     <div className="categories">
       <p className="paraphrase">A curated list of every book ever written</p>
       {categories?.map((category: ICategory) => (
-        <Category key={category.categoryName} category={category} />
+        <div key={category.id}>
+          <Category key={category.name} category={category} />
+        </div>
       ))}
     </div>
   );

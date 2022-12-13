@@ -1,31 +1,18 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 
 import Header from '@/components/Header';
 import SubHeader from './SubHeader';
 import Books from './Books.tsx';
 
-import { getData } from '@/services/APIRequest';
-
-import { API_BASE_URL, API_PATH } from '@/constants/api';
-import { ICategory } from '@/types/category';
 import SideBar from '@/components/SideBar';
 import { BooksContext } from '@/contexts/BooksContext';
 
 import './index.css';
+import { CategoriesContext } from '@/contexts/CategoriesContext';
 
 const Home = (): JSX.Element => {
   const { ids } = useContext(BooksContext);
-  const [categories, setCategories] = useState<ICategory[]>([]);
-
-  // Get categories form server
-  const getCategories = async (): Promise<void> => {
-    const categories: ICategory[] = await getData(`${API_BASE_URL}${API_PATH.categories}`);
-    setCategories(categories);
-  };
-
-  useEffect(() => {
-    getCategories();
-  }, []);
+  const { categories } = useContext(CategoriesContext);
 
   return (
     <div className="home">
@@ -34,7 +21,7 @@ const Home = (): JSX.Element => {
         <SubHeader />
         <div className="contents">
           <SideBar categories={categories} />
-          <Books idBooks={ids} />
+          <Books ids={ids} />
         </div>
       </div>
     </div>
