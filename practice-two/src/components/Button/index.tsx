@@ -1,25 +1,17 @@
 import { ReactNode } from 'react';
+
 import './index.css';
 
 interface IProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant: 'primary' | 'secondary' | 'tertiary' | 'outlined' | 'danger';
+  variant: 'primary' | 'secondary' | 'tertiary';
   size?: 'small' | 'medium' | 'large' | 'radius';
-  className?: string;
   text?: string;
   icon?: ReactNode;
-  onClick?: () => void;
+  styles?: 'normal' | 'circle';
 }
 
-const Button = ({
-  variant,
-  size,
-  className,
-  onClick,
-  icon,
-  text,
-  ...rest
-}: IProps): React.ReactElement => (
-  <button className={`$ btn btn-${variant} btn-${size}`} onClick={onClick} {...rest}>
+const Button = ({ variant, size, icon, text, styles, ...rest }: IProps): React.ReactElement => (
+  <button className={`$ btn btn-${variant} btn-${size} btn-${styles}`} {...rest}>
     {icon}
     {text}
   </button>
