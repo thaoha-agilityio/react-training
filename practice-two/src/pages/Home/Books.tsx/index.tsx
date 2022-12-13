@@ -3,14 +3,14 @@ import CardItem from '@/components/CardItem';
 import './index.css';
 
 interface IProps {
-  idBooks: string[];
+  ids: string[];
 }
 
-const Books = ({ idBooks }: IProps): JSX.Element => {
+const Books = ({ ids }: IProps): JSX.Element => {
   return (
     <div className="books">
-      {idBooks.map((id: string) => (
-        <div key={id}>{<CardItem idBook={id} />}</div>
+      {ids.map((id: string) => (
+        <div key={id}>{<CardItem id={id} />}</div>
       ))}
     </div>
   );
