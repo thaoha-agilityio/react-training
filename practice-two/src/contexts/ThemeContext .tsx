@@ -14,10 +14,10 @@ interface IThemeProvider {
   children: ReactNode;
 }
 
-// Create books context with initial value
+// Create theme context with initial value
 export const ThemeContext: Context<IThemeContext> = createContext({} as unknown as IThemeContext);
 
-// Book provider
+// Theme provider
 export const ThemeProvider = ({ children }: IThemeProvider) => {
   const [state, dispatch] = useReducer(themeReducer, initialState);
 
@@ -37,6 +37,7 @@ export const ThemeProvider = ({ children }: IThemeProvider) => {
       : (document.body.className = 'dark-theme');
   }, [state.theme]);
 
+  // Value pass to provider context
   const value = {
     theme: state.theme,
     toggleTheme,
