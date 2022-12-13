@@ -1,24 +1,28 @@
-import { IBook } from '@/types/book';
+import { useContext } from 'react';
 import Avatar from '../Avatar';
+
+import { BooksContext } from '@/contexts/BooksContext';
+import { IBook } from '@/types/book';
 
 import './index.css';
 
 interface IProps {
-  book: IBook;
+  idBook: string;
 }
 
-const CardItem = ({
-  book: { id, name, avatar, author, published },
-}: IProps): React.ReactElement => {
+const CardItem = ({ idBook }: IProps): React.ReactElement => {
+  const { books } = useContext(BooksContext);
+  const book: IBook = books.find((item) => item.id === idBook) as IBook;
+
   return (
-    <div className="card-item" data-id={id}>
+    <div className="card-item" data-id={idBook}>
       <div className="card-image-wrapper">
-        <Avatar url={avatar} alt={name} size="small" />
+        <Avatar url={book.avatar} alt={book.name} size="small" />
       </div>
       <div className="card-contents">
-        <h2 className="card-title">{name}</h2>
-        <p className="card-info">{author}</p>
-        <p className="card-info">{published}</p>
+        <h2 className="card-title">{book.name}</h2>
+        <p className="card-info">{book.author}</p>
+        <p className="card-info">{book.published}</p>
       </div>
     </div>
   );

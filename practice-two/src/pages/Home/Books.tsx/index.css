@@ -1,0 +1,9 @@
+.books {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+  padding: 33px 38px;
+  background: var(--color-secondary-100);
+  margin: 1px 1px;
+  flex: 1;
+}
