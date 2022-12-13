@@ -17,11 +17,12 @@ const FilterModal = ({ books }: IProps) => {
         <p className="options">Display Options</p>
         <div className="btn-wrapper">
           <div className="optional-layout">
-            <Button variant="outlined" icon={<SvgGridComponent />} size="radius" />
+            <Button variant="primary" icon={<SvgGridComponent />} styles="circle" />
             <p>Grid</p>
           </div>
+
           <div className="optional-layout">
-            <Button variant="outlined" icon={<SvgListComponent />} size="radius" />
+            <Button variant="primary" icon={<SvgListComponent />} styles="circle" />
             <p>List</p>
           </div>
         </div>

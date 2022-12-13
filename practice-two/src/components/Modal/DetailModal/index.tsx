@@ -19,7 +19,7 @@ const DetailModal = ({
       <div className="detail-modal">
         <div className="modal-header">
           <p className="modal-title">{name}</p>
-          <Button variant="outlined" icon={<SvgXmarkComponent />} />
+          <Button variant="primary" icon={<SvgXmarkComponent />} />
         </div>
 
         <div className="modal-body">
@@ -47,7 +47,7 @@ const DetailModal = ({
             <p>To Escape</p>
           </div>
           <div className="btn-background">
-            <Button variant="outlined" icon={<SvgLightComponent />} size="large" />
+            <Button variant="primary" icon={<SvgLightComponent />} size="large" />
           </div>
         </div>
       </div>
