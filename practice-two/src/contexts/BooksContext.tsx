@@ -1,4 +1,4 @@
-import { createContext, Context, ReactNode, useEffect, Dispatch, useReducer } from 'react';
+import { createContext, Context, ReactNode, useEffect, Dispatch, useReducer, useMemo } from 'react';
 
 import { API_BASE_URL, API_PATH } from '@/constants/api';
 import { getData } from '@/services/APIRequest';
@@ -55,6 +55,7 @@ export const BooksProvider = ({ children }: IBookProvider) => {
     }
   };
 
+  // Show book item by id
   const getBookById = (id: string): IBook => {
     const book: IBook = state.books.find((item) => item.id === id) as IBook;
 
@@ -66,12 +67,15 @@ export const BooksProvider = ({ children }: IBookProvider) => {
   }, []);
 
   // Value pass to provider context
-  const value = {
-    books: state.books,
-    ids: state.ids,
-    getBookById,
-    dispatch,
-  };
+  const value = useMemo(
+    () => ({
+      books: state.books,
+      ids: state.ids,
+      getBookById,
+      dispatch,
+    }),
+    [state]
+  );
 
   return <BooksContext.Provider value={value}>{children}</BooksContext.Provider>;
 };

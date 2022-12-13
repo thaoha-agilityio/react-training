@@ -1,13 +1,18 @@
+import { useContext } from 'react';
+import { ThemeContext } from '@/contexts/ThemeContext ';
+
 import Button from '@/components/Button';
-import { SvgLightComponent, SvgSearchComponent } from '../Icon';
+import Input from '../Input';
+import { SvgLightComponent, SvgMoonComponent, SvgSearchComponent } from '../Icon';
 
 import bookshelf from '@/assets/images/bookshelf.png';
 import logo from '@/assets/images/logo.png';
 
 import './index.css';
-import Input from '../Input';
 
 const Header = (): React.ReactElement => {
+  const { isDarkMode, toggleTheme } = useContext(ThemeContext);
+
   return (
     <header className="header">
       <div className="logo-header">
@@ -24,7 +29,12 @@ const Header = (): React.ReactElement => {
           />
         </div>
         <div className="dark-light">
-          <Button variant="primary" size="medium" icon={<SvgLightComponent />} />
+          <Button
+            variant="primary"
+            size="medium"
+            icon={isDarkMode ? <SvgMoonComponent /> : <SvgLightComponent />}
+            onClick={toggleTheme}
+          />
         </div>
       </div>
     </header>
