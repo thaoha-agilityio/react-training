@@ -38,11 +38,14 @@ export const ThemeProvider = ({ children }: IThemeProvider) => {
   }, [state.theme]);
 
   // Value pass to provider context
-  const value = {
-    theme: state.theme,
-    toggleTheme,
-    dispatch,
-  };
+  const value = useMemo(
+    () => ({
+      theme: state.theme,
+      toggleTheme,
+      dispatch,
+    }),
+    [state]
+  );
 
   return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
 };
