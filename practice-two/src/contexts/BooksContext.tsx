@@ -6,11 +6,14 @@ import { IBook } from '@/types/book';
 import { BooksAction } from '@/stores/books/actions';
 import { booksReducer, initialState } from '@/stores/books/reducers';
 import { ACTIONS } from '@/constants/actions';
+import { generateUrl } from '@/helper/filter';
+import { filterId } from '@/helper/filterIds';
 
 interface IBookContext {
   books: IBook[];
   ids: string[];
   getBookById: (id: string) => IBook;
+  searchBooks: (input: string) => Promise<void>;
   dispatch: Dispatch<BooksAction>;
 }
 
@@ -22,6 +25,7 @@ interface IBookProvider {
 export const BooksContext: Context<IBookContext> = createContext({
   books: [],
   ids: [],
+  searchItems: () => {},
 } as unknown as IBookContext);
 
 // Book provider
@@ -33,17 +37,11 @@ export const BooksProvider = ({ children }: IBookProvider) => {
     try {
       const result: IBook[] = await getData(`${API_BASE_URL}${API_PATH.books}`);
 
-      // Filter ids in data
-      const ids: string[] = [];
-      result.map((item) => {
-        if (item.id) ids.push(item.id);
-      });
-
       dispatch({
         type: ACTIONS.GET_BOOKS,
         payload: {
           books: result,
-          ids: ids,
+          ids: filterId(result),
         },
       });
     } catch (error: unknown) {
@@ -62,6 +60,19 @@ export const BooksProvider = ({ children }: IBookProvider) => {
     return book;
   };
 
+  //Search by call api
+  const searchBooks = async (input: string): Promise<void> => {
+    const result: IBook[] = await getData(generateUrl({ searchInput: input }));
+
+    dispatch({
+      type: ACTIONS.SEARCH_BOOKS,
+      payload: {
+        books: result,
+        ids: filterId(result),
+      },
+    });
+  };
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -72,6 +83,7 @@ export const BooksProvider = ({ children }: IBookProvider) => {
       books: state.books,
       ids: state.ids,
       getBookById,
+      searchBooks,
       dispatch,
     }),
     [state]

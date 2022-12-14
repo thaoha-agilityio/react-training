@@ -6,6 +6,7 @@ interface IBook {
   description?: string;
   published: string;
   publisher?: string;
+  category?: string;
 }
 
 export type { IBook };

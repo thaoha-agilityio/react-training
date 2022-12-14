@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { ChangeEvent, useCallback, useContext, useState } from 'react';
 
 import Header from '@/components/Header';
 import SubHeader from './SubHeader';
@@ -12,14 +12,30 @@ import { ThemeContext } from '@/contexts/ThemeContext ';
 import './index.css';
 
 const Home = (): JSX.Element => {
-  const { ids } = useContext(BooksContext);
+  const { ids, searchBooks } = useContext(BooksContext);
   const { categories } = useContext(CategoriesContext);
   const { isDarkMode } = useContext(ThemeContext);
+
+  const [valueInput, setValueInput] = useState<string>('');
+
+  // Handle Search books
+  const handleChangeInput = useCallback(
+    async (event: ChangeEvent<HTMLInputElement>): Promise<void> => {
+      // Get value input
+      const values = event.target.value;
+
+      // Search books by name
+      await searchBooks(values);
+
+      setValueInput(values);
+    },
+    [valueInput]
+  );
 
   return (
     <div className={`home ${isDarkMode ? 'dark-theme' : 'light-theme'}  `}>
       <div className="container">
-        <Header />
+        <Header onchange={handleChangeInput} />
         <SubHeader />
         <div className="contents">
           <SideBar categories={categories} />

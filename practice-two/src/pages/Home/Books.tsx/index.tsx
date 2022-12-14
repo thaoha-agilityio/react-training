@@ -1,4 +1,8 @@
+import { memo } from 'react';
+
 import CardItem from '@/components/CardItem';
+
+import { NOTICE_MESSAGE } from '@/constants/message';
 
 import './index.css';
 
@@ -12,8 +16,11 @@ const Books = ({ ids }: IProps): JSX.Element => {
       {ids.map((id: string) => (
         <div key={id}>{<CardItem id={id} />}</div>
       ))}
+
+      {/* Show message when array empty */}
+      {ids.length === 0 && <p>{NOTICE_MESSAGE}</p>}
     </div>
   );
 };
 
-export default Books;
+export default memo(Books);
