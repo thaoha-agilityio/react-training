@@ -1,4 +1,5 @@
-import { useContext } from 'react';
+import { ChangeEvent, useContext } from 'react';
+
 import { ThemeContext } from '@/contexts/ThemeContext ';
 
 import Button from '@/components/Button';
@@ -10,7 +11,12 @@ import logo from '@/assets/images/logo.png';
 
 import './index.css';
 
-const Header = (): React.ReactElement => {
+interface IProps {
+  onchange?: (event: ChangeEvent<HTMLInputElement>) => void;
+  onClick?: () => void;
+}
+
+const Header = ({ onchange, onClick }: IProps): React.ReactElement => {
   const { isDarkMode, toggleTheme } = useContext(ThemeContext);
 
   return (
@@ -24,8 +30,11 @@ const Header = (): React.ReactElement => {
           <Input
             type="text"
             size="large"
-            leftElement={<Button variant="primary" icon={<SvgSearchComponent />} />}
+            leftElement={
+              <Button variant="primary" icon={<SvgSearchComponent />} onClick={onClick} />
+            }
             placeholder="Search books"
+            onChange={onchange}
           />
         </div>
         <div className="dark-light">
