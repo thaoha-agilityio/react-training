@@ -1,3 +1,5 @@
+import { memo } from 'react';
+
 import Category from '../../../components/Category';
 
 import { ICategory } from '@/types/category';
@@ -21,4 +23,4 @@ const SideBar = ({ categories }: IProps): React.ReactElement => {
   );
 };
 
-export default SideBar;
+export default memo(SideBar);
