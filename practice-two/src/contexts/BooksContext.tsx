@@ -60,7 +60,7 @@ export const BooksProvider = ({ children }: IBookProvider) => {
     return book;
   };
 
-  //Search by name
+  //Search by call api
   const searchBooks = async (input: string): Promise<void> => {
     const result: IBook[] = await getData(generateUrl({ searchInput: input }));
 
