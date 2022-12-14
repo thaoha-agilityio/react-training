@@ -16,4 +16,12 @@ export type GetBookById = {
   };
 };
 
-export type BooksAction = GetBooks | GetBookById;
+export type SearchBook = {
+  type: ACTIONS.SEARCH_BOOKS;
+  payload: {
+    books: IBook[];
+    ids: string[];
+  };
+};
+
+export type BooksAction = GetBooks | GetBookById | SearchBook;

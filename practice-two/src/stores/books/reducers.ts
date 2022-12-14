@@ -29,6 +29,12 @@ const booksReducer = (state: BooksState = initialState, actions: BooksAction): B
         book: actions.payload.book,
       };
 
+    case ACTIONS.SEARCH_BOOKS:
+      return {
+        ...state,
+        books: actions.payload.books,
+        ids: actions.payload.ids,
+      };
     default:
       return state;
   }
