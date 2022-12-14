@@ -18,23 +18,22 @@ const Home = (): JSX.Element => {
 
   const [valueInput, setValueInput] = useState<string>('');
 
-  // Get value input
-  const handleChangeInput = useCallback(
-    (event: ChangeEvent<HTMLInputElement>): void => {
+  // Handle Search books
+  const handleSearchBooks = useCallback(
+    async (event: ChangeEvent<HTMLInputElement>): Promise<void> => {
+      // Get value input
       setValueInput(event.target.value);
+
+      // Search books by name
+      await searchBooks(valueInput);
     },
     [valueInput]
   );
 
-  // Handle search books by name
-  const handleSearch = async (): Promise<void> => {
-    await searchBooks(valueInput);
-  };
-
   return (
     <div className={`home ${isDarkMode ? 'dark-theme' : 'light-theme'}  `}>
       <div className="container">
-        <Header onchange={handleChangeInput} onClick={handleSearch} />
+        <Header onchange={handleSearchBooks} />
         <SubHeader />
         <div className="contents">
           <SideBar categories={categories} />

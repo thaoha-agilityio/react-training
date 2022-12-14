@@ -13,10 +13,9 @@ import './index.css';
 
 interface IProps {
   onchange?: (event: ChangeEvent<HTMLInputElement>) => void;
-  onClick?: () => void;
 }
 
-const Header = ({ onchange, onClick }: IProps): React.ReactElement => {
+const Header = ({ onchange }: IProps): React.ReactElement => {
   const { isDarkMode, toggleTheme } = useContext(ThemeContext);
 
   return (
@@ -30,9 +29,7 @@ const Header = ({ onchange, onClick }: IProps): React.ReactElement => {
           <Input
             type="text"
             size="large"
-            leftElement={
-              <Button variant="primary" icon={<SvgSearchComponent />} onClick={onClick} />
-            }
+            leftElement={<Button variant="primary" icon={<SvgSearchComponent />} />}
             placeholder="Search books"
             onChange={onchange}
           />
