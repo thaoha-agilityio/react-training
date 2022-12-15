@@ -36,20 +36,22 @@ const Home = (): JSX.Element => {
   );
 
   // Handle show modal
-  const handleShowModal = (id: string) => {
+  const handleShowModal = (id: string): void => {
     setIsModalOpen(true);
+
+    // Get id when click item
     setSelectedBookId(id);
   };
 
   // Handle close modal
-  const handleCloseModal = () => {
+  const handleCloseModal = (): void => {
     setIsModalOpen(false);
   };
 
   return (
     <div className={`home ${isDarkMode ? 'dark-theme' : 'light-theme'}  `}>
       <div className="container">
-        <Header onchange={handleChangeInput} />
+        <Header onChange={handleChangeInput} />
         <SubHeader />
         <div className="contents">
           <SideBar categories={categories} />
