@@ -16,8 +16,12 @@ const CardItem = ({ id, onShowModal }: IProps): React.ReactElement => {
   const { getBookById } = useContext(BooksContext);
   const book: IBook = getBookById(id);
 
+  const handleShowModal = () => {
+    onShowModal(id);
+  };
+
   return (
-    <div className="card-item" data-id={id} onClick={() => onShowModal(id)}>
+    <div className="card-item" data-id={id} onClick={handleShowModal}>
       <div className="card-image-wrapper">
         <Avatar url={book.avatar} alt={book.name} size="small" />
       </div>
