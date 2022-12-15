@@ -24,15 +24,15 @@ const DetailModal = ({
 
   // Close modal by keyboard
   useEffect(() => {
-    const close = (e: KeyboardEvent) => {
-      if (e.keyCode === KEY_NAME_ESC) {
+    const handleCloseModal = (event: KeyboardEvent) => {
+      if (event.keyCode === KEY_NAME_ESC) {
         onCloseModal();
       }
     };
 
-    window.addEventListener('keydown', close);
+    window.addEventListener('keydown', handleCloseModal);
 
-    return () => window.removeEventListener('keydown', close);
+    return () => window.removeEventListener('keydown', handleCloseModal);
   }, []);
 
   return (
