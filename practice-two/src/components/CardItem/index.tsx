@@ -9,14 +9,15 @@ import './index.css';
 
 interface IProps {
   id: string;
+  onShowModal: (id: string) => void;
 }
 
-const CardItem = ({ id }: IProps): React.ReactElement => {
+const CardItem = ({ id, onShowModal }: IProps): React.ReactElement => {
   const { getBookById } = useContext(BooksContext);
   const book: IBook = getBookById(id);
 
   return (
-    <div className="card-item" data-id={id}>
+    <div className="card-item" data-id={id} onClick={() => onShowModal(id)}>
       <div className="card-image-wrapper">
         <Avatar url={book.avatar} alt={book.name} size="small" />
       </div>

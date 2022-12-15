@@ -9,17 +9,19 @@ import './index.css';
 
 interface IPops {
   book: IBook;
+  onCloseModal: () => void;
 }
 
 const DetailModal = ({
   book: { name, avatar, author, description, publisher, published },
+  onCloseModal,
 }: IPops) => {
   return (
     <div className="modal-backdrop">
       <div className="detail-modal">
         <div className="modal-header">
           <p className="modal-title">{name}</p>
-          <Button variant="primary" icon={<SvgXmarkComponent />} />
+          <Button variant="primary" icon={<SvgXmarkComponent />} onClick={onCloseModal} />
         </div>
 
         <div className="modal-body">

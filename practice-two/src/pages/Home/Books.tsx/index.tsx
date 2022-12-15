@@ -8,13 +8,14 @@ import './index.css';
 
 interface IProps {
   ids: string[];
+  onShowModal: (id: string) => void;
 }
 
-const Books = ({ ids }: IProps): JSX.Element => {
+const Books = ({ ids, onShowModal }: IProps): JSX.Element => {
   return (
     <div className="books">
       {ids.map((id: string) => (
-        <div key={id}>{<CardItem id={id} />}</div>
+        <div key={id}>{<CardItem id={id} onShowModal={onShowModal} />}</div>
       ))}
 
       {/* Show message when array empty */}
