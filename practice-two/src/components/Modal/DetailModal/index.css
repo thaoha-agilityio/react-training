@@ -37,6 +37,7 @@
 .modal-body {
   padding: 39px 41px 31px;
   min-height: calc(100vh - 122px);
+  background-color: var(--main-heading);
 }
 
 .modal-image {
@@ -50,24 +51,25 @@
   font-weight: 400;
   font-size: 13px;
   line-height: 1.7;
-  color: #58667e;
+  color: var(--total-text-color);
   margin-bottom: 9px;
 }
 
-.details {
+.book-info {
   display: flex;
   align-items: baseline;
   gap: 10px;
   margin-top: 15px;
 }
 
-.details p {
+.main-info {
   font-weight: 400;
   font-size: 14px;
   line-height: calc(17 / 14);
+  color: var(--text-color);
 }
 
-.details div {
+.book-info div {
   padding: 5px 15px;
 }
 

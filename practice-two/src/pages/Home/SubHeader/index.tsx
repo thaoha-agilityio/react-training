@@ -1,3 +1,5 @@
+import { memo } from 'react';
+
 import Chip from '@/components/Chip';
 import { SvgXmarkComponent, SvgArrowRightComponent, SvgFilterComponent } from '@/components/Icon';
 
@@ -36,4 +38,4 @@ const SubHeader = ({ categoryName, total }: IProps): React.ReactElement => {
   );
 };
 
-export default SubHeader;
+export default memo(SubHeader);

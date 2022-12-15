@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { memo, useContext } from 'react';
 
 import Avatar from '../Avatar';
 
@@ -9,14 +9,19 @@ import './index.css';
 
 interface IProps {
   id: string;
+  onShowModal: (id: string) => void;
 }
 
-const CardItem = ({ id }: IProps): React.ReactElement => {
+const CardItem = ({ id, onShowModal }: IProps): React.ReactElement => {
   const { getBookById } = useContext(BooksContext);
   const book: IBook = getBookById(id);
 
+  const handleShowModal = () => {
+    onShowModal(id);
+  };
+
   return (
-    <div className="card-item" data-id={id}>
+    <div className="card-item" data-id={id} onClick={handleShowModal}>
       <div className="card-image-wrapper">
         <Avatar url={book.avatar} alt={book.name} size="small" />
       </div>
@@ -29,4 +34,4 @@ const CardItem = ({ id }: IProps): React.ReactElement => {
   );
 };
 
-export default CardItem;
+export default memo(CardItem);
