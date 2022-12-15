@@ -1,7 +1,7 @@
 import { memo } from 'react';
 
 import Chip from '@/components/Chip';
-import { SvgXmarkComponent, SvgArrowRightComponent, SvgFilterComponent } from '@/components/Icon';
+import { XmarkIcon, ArrowRightIcon, FilterIcon } from '@/components/Icon';
 
 import './index.css';
 
@@ -19,10 +19,10 @@ const SubHeader = ({ categoryName, total }: IProps): React.ReactElement => {
           <Chip
             label={categoryName}
             adornments={'endAdornments'}
-            endAdornments={<SvgXmarkComponent />}
+            endAdornments={<XmarkIcon />}
             size="medium"
           />
-          <SvgArrowRightComponent />
+          <ArrowRightIcon />
           <p className="result">Showing {total?.toString()}Result(s)</p>
         </div>
       )}
@@ -30,7 +30,7 @@ const SubHeader = ({ categoryName, total }: IProps): React.ReactElement => {
         <Chip
           label="filter"
           adornments="startAdornments"
-          startAdornments={<SvgFilterComponent />}
+          startAdornments={<FilterIcon />}
           size="small"
         />
       </div>

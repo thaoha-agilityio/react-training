@@ -1,17 +1,17 @@
-export * from './SvgArrowComponent';
+export * from './ArrowIcon';
 
-export * from './SvgFilterComponent';
+export * from './FilterIcon';
 
-export * from './SvgGridComponent';
+export * from './GridIcon';
 
-export * from './SvgLightComponent';
+export * from './LightIcon';
 
-export * from './SvgListComponent';
+export * from './ListIcon';
 
-export * from './SvgMoonComponent';
+export * from './MoonIcon';
 
-export * from './SvgSearchComponent';
+export * from './SearchIcon';
 
-export * from './SvgXmarkComponent';
+export * from './XmarkIcon';
 
-export * from './SvgArrowRightComponent';
+export * from './ArrowRightIcon';
