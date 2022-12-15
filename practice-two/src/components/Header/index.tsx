@@ -12,10 +12,10 @@ import logo from '@/assets/images/logo.png';
 import './index.css';
 
 interface IProps {
-  onchange?: (event: ChangeEvent<HTMLInputElement>) => void;
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
-const Header = ({ onchange }: IProps): React.ReactElement => {
+const Header = ({ onChange }: IProps): React.ReactElement => {
   const { isDarkMode, toggleTheme } = useContext(ThemeContext);
 
   return (
@@ -31,7 +31,7 @@ const Header = ({ onchange }: IProps): React.ReactElement => {
             size="large"
             leftElement={<Button variant="primary" icon={<SvgSearchComponent />} />}
             placeholder="Search books"
-            onChange={onchange}
+            onChange={onChange}
           />
         </div>
         <div className="dark-light">

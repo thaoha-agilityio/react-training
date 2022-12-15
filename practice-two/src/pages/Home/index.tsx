@@ -19,7 +19,7 @@ const Home = (): JSX.Element => {
 
   const [valueInput, setValueInput] = useState<string>('');
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const [selectedBookId, setSelectedBookId] = useState('');
+  const [selectedBookId, setSelectedBookId] = useState<string>('');
 
   // Handle Search books
   const handleChangeInput = useCallback(
