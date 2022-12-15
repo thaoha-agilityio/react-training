@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { memo, useContext } from 'react';
 
 import Avatar from '../Avatar';
 
@@ -30,4 +30,4 @@ const CardItem = ({ id, onShowModal }: IProps): React.ReactElement => {
   );
 };
 
-export default CardItem;
+export default memo(CardItem);
