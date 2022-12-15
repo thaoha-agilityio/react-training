@@ -1,6 +1,6 @@
 import Button from '../../Button';
 import Chip from '../../Chip';
-import { SvgGridComponent, SvgListComponent, SvgArrowComponent } from '../../Icon';
+import { ArrowIcon, GridIcon, ListIcon } from '../../Icon';
 
 import { IBook } from '@/types/book';
 
@@ -17,12 +17,12 @@ const FilterModal = ({ books }: IProps) => {
         <p className="options">Display Options</p>
         <div className="btn-wrapper">
           <div className="optional-layout">
-            <Button variant="primary" icon={<SvgGridComponent />} styles="circle" />
+            <Button variant="primary" icon={<GridIcon />} styles="circle" />
             <p>Grid</p>
           </div>
 
           <div className="optional-layout">
-            <Button variant="primary" icon={<SvgListComponent />} styles="circle" />
+            <Button variant="primary" icon={<ListIcon />} styles="circle" />
             <p>List</p>
           </div>
         </div>
@@ -32,13 +32,13 @@ const FilterModal = ({ books }: IProps) => {
             label="Alphabetical Order"
             size="large"
             adornments="customAdornments"
-            endAdornments={<SvgArrowComponent />}
+            endAdornments={<ArrowIcon />}
           />
           <Chip
             label="Release Year"
             size="large"
             adornments="customAdornments"
-            endAdornments={<SvgArrowComponent />}
+            endAdornments={<ArrowIcon />}
           />
         </div>
       </div>

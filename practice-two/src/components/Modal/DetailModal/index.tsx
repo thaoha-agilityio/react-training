@@ -4,7 +4,7 @@ import { ThemeContext } from '@/contexts/ThemeContext ';
 import Avatar from '../../Avatar';
 import Button from '../../Button';
 import Chip from '../../Chip';
-import { SvgLightComponent, SvgXmarkComponent, SvgMoonComponent } from '../../Icon';
+import { LightIcon, MoonIcon, XmarkIcon } from '../../Icon';
 
 import { IBook } from '@/types/book';
 import { KEY_NAME_ESC } from '@/constants/message';
@@ -40,7 +40,7 @@ const DetailModal = ({
       <div className="detail-modal">
         <div className="modal-header">
           <p className="modal-title">{name}</p>
-          <Button variant="primary" icon={<SvgXmarkComponent />} onClick={onCloseModal} />
+          <Button variant="primary" icon={<XmarkIcon />} onClick={onCloseModal} />
         </div>
 
         <div className="modal-body">
@@ -70,7 +70,7 @@ const DetailModal = ({
           <div className="btn-background">
             <Button
               variant="primary"
-              icon={isDarkMode ? <SvgMoonComponent /> : <SvgLightComponent />}
+              icon={isDarkMode ? <MoonIcon /> : <LightIcon />}
               size="large"
               onClick={toggleTheme}
             />

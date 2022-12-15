@@ -4,7 +4,7 @@ import { ThemeContext } from '@/contexts/ThemeContext ';
 
 import Button from '@/components/Button';
 import Input from '../Input';
-import { SvgLightComponent, SvgMoonComponent, SvgSearchComponent } from '../Icon';
+import { LightIcon, MoonIcon, SearchIcon } from '../Icon';
 
 import bookshelf from '@/assets/images/bookshelf.png';
 import logo from '@/assets/images/logo.png';
@@ -29,7 +29,7 @@ const Header = ({ onChange }: IProps): React.ReactElement => {
           <Input
             type="text"
             size="large"
-            leftElement={<Button variant="primary" icon={<SvgSearchComponent />} />}
+            leftElement={<Button variant="primary" icon={<SearchIcon />} />}
             placeholder="Search books"
             onChange={onChange}
           />
@@ -38,7 +38,7 @@ const Header = ({ onChange }: IProps): React.ReactElement => {
           <Button
             variant="primary"
             size="medium"
-            icon={isDarkMode ? <SvgMoonComponent /> : <SvgLightComponent />}
+            icon={isDarkMode ? <MoonIcon /> : <LightIcon />}
             onClick={toggleTheme}
           />
         </div>
