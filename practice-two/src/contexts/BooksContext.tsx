@@ -14,6 +14,8 @@ interface IBookContext {
   ids: string[];
   getBookById: (id: string) => IBook;
   searchBooks: (input: string) => Promise<void>;
+  filterByCategories: (ids: string[]) => void;
+  fetchData: () => Promise<void>;
   dispatch: Dispatch<BooksAction>;
 }
 
@@ -73,6 +75,19 @@ export const BooksProvider = ({ children }: IBookProvider) => {
     });
   };
 
+  // Filter by categories
+  const filterByCategories = async (ids: string[]): Promise<void> => {
+    const result: IBook[] = await getData(generateUrl({ categoriesId: ids }));
+
+    dispatch({
+      type: ACTIONS.FILTER_BY_CATEGORIES,
+      payload: {
+        books: result,
+        ids: filterId(result),
+      },
+    });
+  };
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -84,6 +99,8 @@ export const BooksProvider = ({ children }: IBookProvider) => {
       ids: state.ids,
       getBookById,
       searchBooks,
+      filterByCategories,
+      fetchData,
       dispatch,
     }),
     [state]

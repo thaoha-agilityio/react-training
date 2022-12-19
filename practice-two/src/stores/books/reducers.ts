@@ -6,12 +6,14 @@ export interface BooksState {
   books: IBook[];
   book: IBook | null;
   ids: string[];
+  array: IBook[];
 }
 
 const initialState: BooksState = {
   books: [],
   book: null,
   ids: [],
+  array: [],
 };
 
 const booksReducer = (state: BooksState = initialState, actions: BooksAction): BooksState => {
@@ -35,6 +37,14 @@ const booksReducer = (state: BooksState = initialState, actions: BooksAction): B
         books: actions.payload.books,
         ids: actions.payload.ids,
       };
+
+    case ACTIONS.FILTER_BY_CATEGORIES:
+      return {
+        ...state,
+        books: actions.payload.books,
+        ids: actions.payload.ids,
+      };
+
     default:
       return state;
   }
