@@ -4,12 +4,20 @@
   width: 180px;
   justify-content: space-between;
   margin-top: 18px;
+  cursor: pointer;
 }
 
 .category {
   display: flex;
   gap: 11px;
   align-items: center;
+}
+
+.active {
+  background-color: var(--color-secondary-50);
+  width: 236px;
+  height: 56px;
+  border-radius: 10px;
 }
 
 .thumbnail {
