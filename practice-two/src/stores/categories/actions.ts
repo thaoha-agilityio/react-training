@@ -8,4 +8,18 @@ export type GetCategories = {
   };
 };
 
-export type CategoriesAction = GetCategories;
+export type SelectedCategoriesId = {
+  type: ACTIONS.SELECTED_CATEGORIES_ID;
+  payload: {
+    categoriesId: string[];
+  };
+};
+
+export type RemoveCategoriesId = {
+  type: ACTIONS.REMOVE_CATEGORIES_ID;
+  payload: {
+    categoriesId: string[];
+  };
+};
+
+export type CategoriesAction = GetCategories | SelectedCategoriesId | RemoveCategoriesId;

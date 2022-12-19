@@ -1,4 +1,4 @@
-import { Context, createContext, Dispatch, ReactNode, useEffect, useReducer } from 'react';
+import { Context, createContext, Dispatch, ReactNode, useEffect, useMemo, useReducer } from 'react';
 
 import { CategoriesAction } from '@/stores/categories/actions';
 import { ICategory } from '@/types/category';
@@ -9,7 +9,10 @@ import { ACTIONS } from '@/constants/actions';
 
 interface ICategoriesContext {
   categories: ICategory[];
-
+  categoriesId: string[];
+  getSelectedId: (id: string) => void;
+  getCategoryById: (ids: string[]) => ICategory[];
+  removeCategoriesId: (categoryId: string) => void;
   dispatch: Dispatch<CategoriesAction>;
 }
 
@@ -46,15 +49,52 @@ export const CategoriesProvider = ({ children }: ICategoriesProvider) => {
     }
   };
 
+  // Get categories id when click
+  const getSelectedId = (id: string): void => {
+    dispatch({
+      type: ACTIONS.SELECTED_CATEGORIES_ID,
+      payload: {
+        categoriesId: [...state.categoriesId, id],
+      },
+    });
+  };
+
+  // Show categories name in sub heading
+  const getCategoryById = (ids: string[]): ICategory[] => {
+    const categories = state.categories.filter((item) => ids.some((id) => id === item.id));
+
+    return categories;
+  };
+
+  // Remove categories in subHeading
+  const removeCategoriesId = (categoryId: string): void => {
+    // Remove id when click button
+    const currentId = state.categoriesId.filter((id) => id !== categoryId);
+
+    dispatch({
+      type: ACTIONS.REMOVE_CATEGORIES_ID,
+      payload: {
+        categoriesId: currentId,
+      },
+    });
+  };
+
   useEffect(() => {
     fetchData();
   }, []);
 
   // Value pass to provider context
-  const value = {
-    categories: state.categories,
-    dispatch,
-  };
+  const value = useMemo(
+    () => ({
+      categories: state.categories,
+      categoriesId: state.categoriesId,
+      getSelectedId,
+      getCategoryById,
+      removeCategoriesId,
+      dispatch,
+    }),
+    [state]
+  );
 
   return <CategoriesContext.Provider value={value}>{children}</CategoriesContext.Provider>;
 };

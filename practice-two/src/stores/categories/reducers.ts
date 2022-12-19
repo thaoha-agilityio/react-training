@@ -4,10 +4,12 @@ import { ICategory } from '@/types/category';
 
 export interface CategoriesState {
   categories: ICategory[];
+  categoriesId: string[];
 }
 
 const initialState: CategoriesState = {
   categories: [],
+  categoriesId: [],
 };
 
 const categoriesReducer = (
@@ -19,6 +21,18 @@ const categoriesReducer = (
       return {
         ...state,
         categories: actions.payload.categories,
+      };
+
+    case ACTIONS.SELECTED_CATEGORIES_ID:
+      return {
+        ...state,
+        categoriesId: actions.payload.categoriesId,
+      };
+
+    case ACTIONS.REMOVE_CATEGORIES_ID:
+      return {
+        ...state,
+        categoriesId: actions.payload.categoriesId,
       };
     default:
       return state;
