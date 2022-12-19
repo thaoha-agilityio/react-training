@@ -77,15 +77,23 @@ export const BooksProvider = ({ children }: IBookProvider) => {
 
   // Filter by categories
   const filterByCategories = async (ids: string[]): Promise<void> => {
-    const result: IBook[] = await getData(generateUrl({ categoriesId: ids }));
+    try {
+      const result: IBook[] = await getData(generateUrl({ categoriesId: ids }));
 
-    dispatch({
-      type: ACTIONS.FILTER_BY_CATEGORIES,
-      payload: {
-        books: result,
-        ids: filterId(result),
-      },
-    });
+      dispatch({
+        type: ACTIONS.FILTER_BY_CATEGORIES,
+        payload: {
+          books: result,
+          ids: filterId(result),
+        },
+      });
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        console.error(error.message);
+      } else {
+        console.error('Unexpected error', error);
+      }
+    }
   };
 
   useEffect(() => {
