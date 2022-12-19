@@ -14,15 +14,15 @@ interface IProps {
 }
 
 const SideBar = ({ categories }: IProps): React.ReactElement => {
-  const { getSelectedId, categoriesId } = useContext(CategoriesContext);
+  const { setSelectedCategory, categoryIds } = useContext(CategoriesContext);
   const { filterByCategories } = useContext(BooksContext);
 
-  // Get categoryId when click
-  const handleSelectedId = (id: string) => {
-    getSelectedId(id);
+  // Set categoryId when click
+  const handleSelectCategory = (id: string) => {
+    setSelectedCategory(id);
 
     // Show books after filter
-    filterByCategories([...categoriesId, id]);
+    filterByCategories([...categoryIds, id]);
   };
 
   return (
@@ -30,7 +30,7 @@ const SideBar = ({ categories }: IProps): React.ReactElement => {
       <p className="paraphrase">A curated list of every book ever written</p>
       {categories?.map((category: ICategory) => (
         <div key={category.id}>
-          <Category key={category.name} category={category} onSelectId={handleSelectedId} />
+          <Category key={category.name} category={category} onSelectId={handleSelectCategory} />
         </div>
       ))}
     </div>

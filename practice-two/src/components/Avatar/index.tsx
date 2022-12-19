@@ -9,7 +9,7 @@ interface IProps {
 
 const Avatar = ({ url, styles = 'square', size, alt }: IProps): React.ReactElement => (
   <div className="avatar">
-    <img className={`avatar-${styles} avatar-${size}`} src={url} alt={alt} />
+    <img className={`avatar avatar-${styles} avatar-${size}`} src={url} alt={alt} />
   </div>
 );
 

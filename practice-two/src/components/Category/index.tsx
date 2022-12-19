@@ -11,14 +11,14 @@ interface IProps {
 }
 
 const Category = ({ category: { id, name, total }, onSelectId }: IProps): React.ReactElement => {
-  const { categoriesId } = useContext(CategoriesContext);
+  const { categoryIds } = useContext(CategoriesContext);
 
   const handleSelectId = () => {
     onSelectId(id);
   };
 
   return (
-    <div className={`${categoriesId.includes(id) ? 'active' : ''}`}>
+    <div className={`${categoryIds.includes(id) ? 'active' : ''}`}>
       <div className="category-wrapper" onClick={handleSelectId}>
         <div className="category">
           <div className="thumbnail" style={{ backgroundColor: generateColor() }}>

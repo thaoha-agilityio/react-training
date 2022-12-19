@@ -13,20 +13,20 @@ interface IProps {
 }
 
 const SubHeader = (): React.ReactElement => {
-  const { categoriesId, getCategoryById, removeCategoriesId } = useContext(CategoriesContext);
-  const { filterByCategories, fetchData, ids } = useContext(BooksContext);
+  const { categoryIds, getCategoryById, removeSelectedCategory } = useContext(CategoriesContext);
+  const { filterByCategories, getBooks, ids } = useContext(BooksContext);
 
-  const categories = getCategoryById(categoriesId);
+  const categories = getCategoryById(categoryIds);
 
   // Remove category in sub heading
   const handleRemoveCategories = (id: string) => {
-    removeCategoriesId(id);
+    removeSelectedCategory(id);
 
-    const currentId = categoriesId.filter((categoryId) => categoryId !== id);
+    const currentId = categoryIds.filter((categoryId) => categoryId !== id);
 
     // Check currentId is empty then render initial books
-    if (currentId.length === 0) {
-      fetchData();
+    if (!currentId.length) {
+      getBooks();
 
       return;
     }

@@ -9,10 +9,10 @@ import { ACTIONS } from '@/constants/actions';
 
 interface ICategoriesContext {
   categories: ICategory[];
-  categoriesId: string[];
-  getSelectedId: (id: string) => void;
+  categoryIds: string[];
+  setSelectedCategory: (id: string) => void;
   getCategoryById: (ids: string[]) => ICategory[];
-  removeCategoriesId: (categoryId: string) => void;
+  removeSelectedCategory: (categoryId: string) => void;
   dispatch: Dispatch<CategoriesAction>;
 }
 
@@ -30,7 +30,7 @@ export const CategoriesProvider = ({ children }: ICategoriesProvider) => {
   const [state, dispatch] = useReducer(categoriesReducer, initialState);
 
   // Get data from server
-  const fetchData = async (): Promise<void> => {
+  const getCategories = async (): Promise<void> => {
     try {
       const result: ICategory[] = await getData(`${API_BASE_URL}${API_PATH.categories}`);
 
@@ -49,48 +49,45 @@ export const CategoriesProvider = ({ children }: ICategoriesProvider) => {
     }
   };
 
-  // Get categories id when click
-  const getSelectedId = (id: string): void => {
+  // Set categories id when click
+  const setSelectedCategory = (id: string): void => {
     dispatch({
-      type: ACTIONS.SELECTED_CATEGORIES_ID,
+      type: ACTIONS.SET_SELECTED_CATEGORY,
       payload: {
-        categoriesId: [...state.categoriesId, id],
+        categoryIds: [...state.categoryIds, id],
       },
     });
   };
 
   // Show categories name in sub heading
-  const getCategoryById = (ids: string[]): ICategory[] => {
-    const categories = state.categories.filter((item) => ids.some((id) => id === item.id));
-
-    return categories;
-  };
+  const getCategoryById = (ids: string[]): ICategory[] =>
+    state.categories.filter((item) => ids.some((id) => id === item.id));
 
   // Remove categories in subHeading
-  const removeCategoriesId = (categoryId: string): void => {
+  const removeSelectedCategory = (categoryId: string): void => {
     // Remove id when click button
-    const currentId = state.categoriesId.filter((id) => id !== categoryId);
+    const restIds = state.categoryIds.filter((id) => id !== categoryId);
 
     dispatch({
-      type: ACTIONS.REMOVE_CATEGORIES_ID,
+      type: ACTIONS.REMOVE_SELECTED_CATEGORY,
       payload: {
-        categoriesId: currentId,
+        categoryIds: restIds,
       },
     });
   };
 
   useEffect(() => {
-    fetchData();
+    getCategories();
   }, []);
 
   // Value pass to provider context
   const value = useMemo(
     () => ({
       categories: state.categories,
-      categoriesId: state.categoriesId,
-      getSelectedId,
+      categoryIds: state.categoryIds,
+      setSelectedCategory,
       getCategoryById,
-      removeCategoriesId,
+      removeSelectedCategory,
       dispatch,
     }),
     [state]

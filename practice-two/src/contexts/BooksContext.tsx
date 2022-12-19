@@ -15,7 +15,7 @@ interface IBookContext {
   getBookById: (id: string) => IBook;
   searchBooks: (input: string) => Promise<void>;
   filterByCategories: (ids: string[]) => void;
-  fetchData: () => Promise<void>;
+  getBooks: () => Promise<void>;
   dispatch: Dispatch<BooksAction>;
 }
 
@@ -35,7 +35,7 @@ export const BooksProvider = ({ children }: IBookProvider) => {
   const [state, dispatch] = useReducer(booksReducer, initialState);
 
   // Get data from server
-  const fetchData = async (): Promise<void> => {
+  const getBooks = async (): Promise<void> => {
     try {
       const result: IBook[] = await getData(`${API_BASE_URL}${API_PATH.books}`);
 
@@ -97,7 +97,7 @@ export const BooksProvider = ({ children }: IBookProvider) => {
   };
 
   useEffect(() => {
-    fetchData();
+    getBooks();
   }, []);
 
   // Value pass to provider context
@@ -108,7 +108,7 @@ export const BooksProvider = ({ children }: IBookProvider) => {
       getBookById,
       searchBooks,
       filterByCategories,
-      fetchData,
+      getBooks,
       dispatch,
     }),
     [state]
