@@ -63,7 +63,7 @@ export const CategoriesProvider = ({ children }: ICategoriesProvider) => {
   const getCategoryById = (ids: string[]): ICategory[] =>
     state.categories.filter((item) => ids.some((id) => id === item.id));
 
-  // Remove categories in subHeading
+  // Remove categories in sub heading
   const removeSelectedCategory = (categoryId: string): void => {
     // Remove id when click button
     const restIds = state.categoryIds.filter((id) => id !== categoryId);
