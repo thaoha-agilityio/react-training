@@ -1,7 +1,8 @@
+import { memo, useContext } from 'react';
+
 import { CategoriesContext } from '@/contexts/CategoriesContext';
 import { generateColor } from '@/helper/randomColor';
 import { ICategory } from '@/types/category';
-import { memo, useContext } from 'react';
 
 import './index.css';
 
