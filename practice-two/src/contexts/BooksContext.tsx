@@ -12,9 +12,11 @@ import { filterId } from '@/helper/filterIds';
 interface IBookContext {
   books: IBook[];
   ids: string[];
+  isGridView: boolean;
   getBookById: (id: string) => IBook;
   searchBooks: (input: string) => Promise<void>;
   filterByCategories: (ids: string[]) => void;
+  changeGridView: (status: boolean) => void;
   getBooks: () => Promise<void>;
   dispatch: Dispatch<BooksAction>;
 }
@@ -96,6 +98,16 @@ export const BooksProvider = ({ children }: IBookProvider) => {
     }
   };
 
+  // Change book view mode to grid
+  const changeGridView = (status: boolean): void => {
+    dispatch({
+      type: ACTIONS.CHANGE_GRID_VIEW,
+      payload: {
+        isGridView: status,
+      },
+    });
+  };
+
   useEffect(() => {
     getBooks();
   }, []);
@@ -105,9 +117,11 @@ export const BooksProvider = ({ children }: IBookProvider) => {
     () => ({
       books: state.books,
       ids: state.ids,
+      isGridView: state.isGridView,
       getBookById,
       searchBooks,
       filterByCategories,
+      changeGridView,
       getBooks,
       dispatch,
     }),
