@@ -12,7 +12,7 @@ interface IProps {
   onShowModal: () => void;
 }
 
-const SubHeader = (): React.ReactElement => {
+const SubHeader = ({ onShowModal }: IProps): React.ReactElement => {
   const { categoryIds, getCategoryById, removeSelectedCategory } = useContext(CategoriesContext);
   const { filterByCategories, getBooks, ids } = useContext(BooksContext);
 
@@ -60,6 +60,7 @@ const SubHeader = (): React.ReactElement => {
           adornments="startAdornments"
           startAdornments={<FilterIcon />}
           size="small"
+          onClick={onShowModal}
         />
       </div>
     </div>
