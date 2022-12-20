@@ -24,7 +24,6 @@ const Category = ({
   };
 
   return (
-    // <div className={`category-wrapper ${categoryIds.includes(id) ? 'active' : ''}`}>
     <div
       className={`category-wrapper ${categoryIds.includes(id) ? 'active' : ''}`}
       onClick={handleSelectCategory}
@@ -37,7 +36,6 @@ const Category = ({
       </div>
       <p className="total">{total}</p>
     </div>
-    // </div>
   );
 };
 
