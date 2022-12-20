@@ -38,12 +38,15 @@ const Home = (): JSX.Element => {
   );
 
   // Handle show modal
-  const handleShowModal = (id: string): void => {
-    setIsModalOpen(true);
+  const handleShowModal = useCallback(
+    (id: string): void => {
+      setIsModalOpen(true);
 
-    // Get id when click item
-    setSelectedBookId(id);
-  };
+      // Get id when click item
+      setSelectedBookId(id);
+    },
+    [isModalOpen]
+  );
 
   // Handle close modal
   const handleCloseModal = (): void => {
@@ -51,9 +54,9 @@ const Home = (): JSX.Element => {
   };
 
   // Handle show filter modal
-  const handleShowFilterModal = (): void => {
+  const handleShowFilterModal = useCallback((): void => {
     setIsModalFilterOpen(true);
-  };
+  }, [isModalFilterOpen]);
 
   // Handle close modal
   const handleCloseFilterModal = (): void => {
