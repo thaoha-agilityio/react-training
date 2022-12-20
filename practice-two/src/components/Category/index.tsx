@@ -7,28 +7,37 @@ import './index.css';
 
 interface IProps {
   category: ICategory;
-  onSelectId: (id: string) => void;
+  onSelectCategory: (id: string) => void;
 }
 
-const Category = ({ category: { id, name, total }, onSelectId }: IProps): React.ReactElement => {
+const Category = ({
+  category: { id, name, total },
+  onSelectCategory,
+}: IProps): React.ReactElement => {
   const { categoryIds } = useContext(CategoriesContext);
 
-  const handleSelectId = () => {
-    onSelectId(id);
+  const handleSelectCategory = (): void => {
+    // Check if selected category then don't call function
+    if (categoryIds.includes(id)) return;
+
+    onSelectCategory(id);
   };
 
   return (
-    <div className={`${categoryIds.includes(id) ? 'active' : ''}`}>
-      <div className="category-wrapper" onClick={handleSelectId}>
-        <div className="category">
-          <div className="thumbnail" style={{ backgroundColor: generateColor() }}>
-            <p>{name.substring(0, 2)}</p>
-          </div>
-          <p className="category-name">{name}</p>
+    // <div className={`category-wrapper ${categoryIds.includes(id) ? 'active' : ''}`}>
+    <div
+      className={`category-wrapper ${categoryIds.includes(id) ? 'active' : ''}`}
+      onClick={handleSelectCategory}
+    >
+      <div className="category">
+        <div className="thumbnail" style={{ backgroundColor: generateColor() }}>
+          <p>{name.substring(0, 2)}</p>
         </div>
-        <p className="total">{total}</p>
+        <p className="category-name">{name}</p>
       </div>
+      <p className="total">{total}</p>
     </div>
+    // </div>
   );
 };
 

@@ -3,7 +3,7 @@ import { memo, useContext } from 'react';
 import { CategoriesContext } from '@/contexts/CategoriesContext';
 import { BooksContext } from '@/contexts/BooksContext';
 
-import Category from '../../../components/Category';
+import Category from '@/components/Category';
 
 import { ICategory } from '@/types/category';
 
@@ -30,7 +30,11 @@ const SideBar = ({ categories }: IProps): React.ReactElement => {
       <p className="paraphrase">A curated list of every book ever written</p>
       {categories?.map((category: ICategory) => (
         <div key={category.id}>
-          <Category key={category.name} category={category} onSelectId={handleSelectCategory} />
+          <Category
+            key={category.name}
+            category={category}
+            onSelectCategory={handleSelectCategory}
+          />
         </div>
       ))}
     </div>
