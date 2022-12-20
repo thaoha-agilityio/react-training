@@ -24,4 +24,12 @@ export type SearchBook = {
   };
 };
 
-export type BooksAction = GetBooks | GetBookById | SearchBook;
+export type FilterByCategories = {
+  type: ACTIONS.FILTER_BY_CATEGORIES;
+  payload: {
+    books: IBook[];
+    ids: string[];
+  };
+};
+
+export type BooksAction = GetBooks | GetBookById | SearchBook | FilterByCategories;

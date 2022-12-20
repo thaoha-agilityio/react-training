@@ -1,15 +1,25 @@
 .category-wrapper {
   display: flex;
   align-items: center;
-  width: 180px;
   justify-content: space-between;
-  margin-top: 18px;
+  margin-top: 10px;
+  cursor: pointer;
+  padding: 8px 18px 0px;
+  background-color: #ffff;
+  width: 236px;
+  height: 56px;
+  border-radius: 10px;
+  margin-left: 14px;
 }
 
 .category {
   display: flex;
   gap: 11px;
   align-items: center;
+}
+
+.active {
+  background-color: var(--color-secondary-100);
 }
 
 .thumbnail {
