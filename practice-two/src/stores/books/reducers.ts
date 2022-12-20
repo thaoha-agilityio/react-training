@@ -7,6 +7,7 @@ export interface BooksState {
   book: IBook | null;
   ids: string[];
   array: IBook[];
+  isGridView: boolean;
 }
 
 const initialState: BooksState = {
@@ -14,6 +15,7 @@ const initialState: BooksState = {
   book: null,
   ids: [],
   array: [],
+  isGridView: false,
 };
 
 const booksReducer = (state: BooksState = initialState, actions: BooksAction): BooksState => {
@@ -43,6 +45,12 @@ const booksReducer = (state: BooksState = initialState, actions: BooksAction): B
         ...state,
         books: actions.payload.books,
         ids: actions.payload.ids,
+      };
+
+    case ACTIONS.CHANGE_GRID_VIEW:
+      return {
+        ...state,
+        isGridView: actions.payload.isGridView,
       };
 
     default:

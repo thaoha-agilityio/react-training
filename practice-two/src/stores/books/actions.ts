@@ -32,4 +32,11 @@ export type FilterByCategories = {
   };
 };
 
-export type BooksAction = GetBooks | GetBookById | SearchBook | FilterByCategories;
+export type ChangeGridView = {
+  type: ACTIONS.CHANGE_GRID_VIEW;
+  payload: {
+    isGridView: boolean;
+  };
+};
+
+export type BooksAction = GetBooks | GetBookById | SearchBook | FilterByCategories | ChangeGridView;
