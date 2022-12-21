@@ -4,7 +4,7 @@ import { BooksContext } from '@/contexts/BooksContext';
 
 import Button from '@/components/Button';
 import Chip from '@/components/Chip';
-import { ArrowIcon, GridIcon, ListIcon, ArrowDownIcon } from '@/components/Icon';
+import { ArrowIcon, GridIcon, ListIcon } from '@/components/Icon';
 
 import './index.css';
 
@@ -51,7 +51,7 @@ const FilterModal = ({ onCloseModal }: IProps) => {
             label="Release Year"
             size="large"
             adornments="customAdornments"
-            endAdornments={<ArrowDownIcon />}
+            endAdornments={<ArrowIcon />}
           />
         </div>
       </div>
