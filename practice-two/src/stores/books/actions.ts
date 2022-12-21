@@ -46,10 +46,18 @@ export type SortByAlphabet = {
   };
 };
 
+export type SortByReleaseYear = {
+  type: ACTIONS.SORT_BY_Year;
+  payload: {
+    ids: string[];
+  };
+};
+
 export type BooksAction =
   | GetBooks
   | GetBookById
   | SearchBook
   | FilterByCategories
   | ChangeGridView
-  | SortByAlphabet;
+  | SortByAlphabet
+  | SortByReleaseYear;

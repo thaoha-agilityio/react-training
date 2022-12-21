@@ -49,6 +49,11 @@ const booksReducer = (state: BooksState = initialState, actions: BooksAction): B
         ids: actions.payload.ids,
       };
 
+    case ACTIONS.SORT_BY_Year:
+      return {
+        ...state,
+        ids: actions.payload.ids,
+      };
     default:
       return state;
   }
