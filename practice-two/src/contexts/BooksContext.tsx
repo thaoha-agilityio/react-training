@@ -16,7 +16,8 @@ import { BooksAction } from '@/stores/books/actions';
 import { booksReducer, initialState } from '@/stores/books/reducers';
 import { ACTIONS } from '@/constants/actions';
 import { generateUrl } from '@/helper/filter';
-import { filterId } from '@/helper/filterIds';
+import { getIdsFromList } from '@/helper/getIds';
+import { ERROR_MESSAGES } from '@/constants/message';
 
 interface IBookContext {
   books: IBook[];
@@ -57,15 +58,14 @@ export const BooksProvider = ({ children }: IBookProvider) => {
         type: ACTIONS.GET_BOOKS,
         payload: {
           books: result,
-          ids: filterId(result),
+          ids: getIdsFromList(result),
         },
       });
-    } catch (error: unknown) {
+    } catch (error) {
       if (error instanceof Error) {
         console.error(error.message);
-      } else {
-        console.error('Unexpected error', error);
       }
+      alert(ERROR_MESSAGES);
     }
   };
 
@@ -81,12 +81,12 @@ export const BooksProvider = ({ children }: IBookProvider) => {
     try {
       const result: IBook[] = await getData(generateUrl({ searchInput: input }));
 
-      let bookIds = filterId(result);
+      let bookIds = getIdsFromList(result);
       setSearchBooksIds(bookIds);
 
       // Find searchBooksIds matching filterBookIds
       if (filterBookIds) {
-        bookIds = bookIds.filter((id) => filterBookIds?.indexOf(id) !== -1);
+        bookIds = bookIds.filter((id) => filterBookIds.indexOf(id) !== -1);
       }
 
       dispatch({
@@ -96,12 +96,11 @@ export const BooksProvider = ({ children }: IBookProvider) => {
           ids: bookIds,
         },
       });
-    } catch (error: unknown) {
+    } catch (error) {
       if (error instanceof Error) {
         console.error(error.message);
-      } else {
-        console.error('Unexpected error', error);
       }
+      alert(ERROR_MESSAGES);
     }
   };
 
@@ -110,12 +109,12 @@ export const BooksProvider = ({ children }: IBookProvider) => {
     try {
       const result: IBook[] = await getData(generateUrl({ categoryIds: ids }));
 
-      let bookIds = filterId(result);
+      let bookIds = getIdsFromList(result);
       setFilterBookIds(bookIds);
 
       // Find filterBookIds matching searchBooksIds
       if (searchBooksIds) {
-        bookIds = bookIds.filter((id) => searchBooksIds?.indexOf(id) !== -1);
+        bookIds = bookIds.filter((id) => searchBooksIds.indexOf(id) !== -1);
       }
 
       dispatch({
@@ -125,12 +124,11 @@ export const BooksProvider = ({ children }: IBookProvider) => {
           ids: bookIds,
         },
       });
-    } catch (error: unknown) {
+    } catch (error) {
       if (error instanceof Error) {
         console.error(error.message);
-      } else {
-        console.error('Unexpected error', error);
       }
+      alert(ERROR_MESSAGES);
     }
   };
 
