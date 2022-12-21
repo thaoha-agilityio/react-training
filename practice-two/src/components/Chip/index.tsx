@@ -17,7 +17,7 @@ const Chip = ({ size, label, adornments, startAdornments, endAdornments, onClick
   return (
     <div className={`chip chip-${size} chip-${adornments}`}>
       {startAdornments && <Button icon={startAdornments} onClick={onClick} variant="primary" />}
-      <p>{label}</p>
+      <p className="label">{label}</p>
       {endAdornments && (
         <Button icon={endAdornments} onClick={onClick} variant="primary" size="small" />
       )}
