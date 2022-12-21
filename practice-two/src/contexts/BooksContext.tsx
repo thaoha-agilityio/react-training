@@ -24,7 +24,6 @@ interface IBookContext {
   isGridView: boolean;
   getBookById: (id: string) => IBook;
   searchBooks: (input: string) => Promise<void>;
-  sortByAlphabet: (params: string) => Promise<void>;
   filterByCategories: (ids: string[]) => void;
   changeGridView: () => void;
   getBooks: () => Promise<void>;
@@ -145,18 +144,6 @@ export const BooksProvider = ({ children }: IBookProvider) => {
     });
   };
 
-  // Sort by alphabet
-  const sortByAlphabet = async (params: string) => {
-    const result: IBook[] = await getData(generateUrl({ params: params }));
-
-    dispatch({
-      type: ACTIONS.SORT_BY_ALPHABET,
-      payload: {
-        ids: filterId(result),
-      },
-    });
-  };
-
   useEffect(() => {
     getBooks();
   }, []);
@@ -171,7 +158,6 @@ export const BooksProvider = ({ children }: IBookProvider) => {
       searchBooks,
       filterByCategories,
       changeGridView,
-      sortByAlphabet,
       getBooks,
       dispatch,
     }),
