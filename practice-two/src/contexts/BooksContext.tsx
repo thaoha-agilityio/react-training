@@ -28,6 +28,8 @@ interface IBookContext {
   filterByCategories: (ids: string[]) => void;
   changeGridView: () => void;
   getBooks: () => Promise<void>;
+  sortByAlphabet: () => void;
+  sortByReleaseYear: () => void;
   dispatch: Dispatch<BooksAction>;
 }
 
@@ -48,6 +50,7 @@ export const BooksProvider = ({ children }: IBookProvider) => {
 
   const [searchBooksIds, setSearchBooksIds] = useState<string[]>();
   const [filterBookIds, setFilterBookIds] = useState<string[]>();
+  const [sortNameStatus, setSortNameStatus] = useState(true);
 
   // Get data from server
   const getBooks = async (): Promise<void> => {
@@ -142,6 +145,52 @@ export const BooksProvider = ({ children }: IBookProvider) => {
     });
   };
 
+  // Sort by name
+  const sortByAlphabet = () => {
+    let result: IBook[] = [];
+
+    setSortNameStatus(!sortNameStatus);
+
+    // Toggle sort desc <=> asc
+    result = state.books.sort((a, b) => {
+      return sortNameStatus ? (a.name > b.name ? 1 : -1) : a.name > b.name ? -1 : 1;
+    });
+
+    dispatch({
+      type: ACTIONS.FILTER_BY_CATEGORIES,
+      payload: {
+        books: result,
+        ids: getIdsFromList(result),
+      },
+    });
+  };
+
+  // Sort by year
+  const sortByReleaseYear = () => {
+    let result: IBook[] = [];
+
+    setSortNameStatus(!sortNameStatus);
+
+    // Toggle sort desc <=> asc
+    result = state.books.sort((a, b) => {
+      return sortNameStatus
+        ? a.published > b.published
+          ? 1
+          : -1
+        : a.published > b.published
+        ? -1
+        : 1;
+    });
+
+    dispatch({
+      type: ACTIONS.FILTER_BY_CATEGORIES,
+      payload: {
+        books: result,
+        ids: getIdsFromList(result),
+      },
+    });
+  };
+
   useEffect(() => {
     getBooks();
   }, []);
@@ -156,6 +205,8 @@ export const BooksProvider = ({ children }: IBookProvider) => {
       searchBooks,
       filterByCategories,
       changeGridView,
+      sortByAlphabet,
+      sortByReleaseYear,
       getBooks,
       dispatch,
     }),
