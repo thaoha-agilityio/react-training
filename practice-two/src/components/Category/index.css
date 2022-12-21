@@ -5,7 +5,7 @@
   margin-top: 10px;
   cursor: pointer;
   padding: 8px 18px 0px;
-  background-color: #ffff;
+  background-color: var(--main-heading);
   width: 236px;
   height: 56px;
   border-radius: 10px;
@@ -18,7 +18,7 @@
   align-items: center;
 }
 
-.active {
+.active-category {
   background-color: var(--color-secondary-100);
 }
 

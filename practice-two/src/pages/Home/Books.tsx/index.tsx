@@ -7,13 +7,14 @@ import { NOTICE_MESSAGE } from '@/constants/message';
 import './index.css';
 
 interface IProps {
+  isGridView: boolean;
   ids: string[];
   onShowModal: (id: string) => void;
 }
 
-const Books = ({ ids, onShowModal }: IProps): JSX.Element => {
+const Books = ({ ids, isGridView, onShowModal }: IProps): JSX.Element => {
   return (
-    <div className="books">
+    <div className={`${isGridView ? 'grid' : 'list'}`}>
       {ids.map((id: string) => (
         <div key={id}>{<CardItem id={id} onShowModal={onShowModal} />}</div>
       ))}

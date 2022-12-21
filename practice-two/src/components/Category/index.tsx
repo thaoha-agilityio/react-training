@@ -26,7 +26,7 @@ const Category = ({
 
   return (
     <div
-      className={`category-wrapper ${categoryIds.includes(id) ? 'active' : ''}`}
+      className={`category-wrapper ${categoryIds.includes(id) ? 'active-category' : ''}`}
       onClick={handleSelectCategory}
     >
       <div className="category">

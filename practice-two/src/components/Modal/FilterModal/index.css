@@ -9,7 +9,9 @@
 
 .filter-modal {
   position: absolute;
-  right: 0px;
+  left: 78.5%;
+  top: 26%;
+  transform: translate(-51%, -49%);
   width: 268px;
   height: 331px;
   background: var(--color-secondary);
@@ -31,7 +33,10 @@
   margin-top: 5px;
 }
 
-.optional-layout :hover {
+.active {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
   background: var(--color-secondary-100);
   border: none;
 }

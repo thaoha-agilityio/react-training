@@ -1,4 +1,4 @@
-import { ChangeEvent, useContext } from 'react';
+import { ChangeEvent, memo, useContext } from 'react';
 
 import { ThemeContext } from '@/contexts/ThemeContext ';
 
@@ -47,4 +47,4 @@ const Header = ({ onChange }: IProps): React.ReactElement => {
   );
 };
 
-export default Header;
+export default memo(Header);

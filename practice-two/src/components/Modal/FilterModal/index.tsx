@@ -1,28 +1,41 @@
-import Button from '../../Button';
-import Chip from '../../Chip';
-import { ArrowIcon, GridIcon, ListIcon } from '../../Icon';
+import { useContext } from 'react';
 
-import { IBook } from '@/types/book';
+import { BooksContext } from '@/contexts/BooksContext';
+
+import Button from '@/components/Button';
+import Chip from '@/components/Chip';
+import { ArrowIcon, GridIcon, ListIcon } from '@/components/Icon';
 
 import './index.css';
 
 interface IProps {
-  books: IBook[];
+  onCloseModal: () => void;
 }
 
-const FilterModal = ({ books }: IProps) => {
+const FilterModal = ({ onCloseModal }: IProps) => {
+  const { changeGridView, isGridView } = useContext(BooksContext);
+
+  const handleChangeGridView = (): void => {
+    changeGridView();
+  };
+
   return (
-    <div className="overlay">
+    <div className="overlay" onClick={onCloseModal}>
       <div className="filter-modal">
         <p className="options">Display Options</p>
         <div className="btn-wrapper">
-          <div className="optional-layout">
+          <div className={`optional-layout ${isGridView ? 'active' : ''}`} onClick={changeGridView}>
             <Button variant="primary" icon={<GridIcon />} styles="circle" />
             <p>Grid</p>
           </div>
 
-          <div className="optional-layout">
-            <Button variant="primary" icon={<ListIcon />} styles="circle" />
+          <div className={`optional-layout ${!isGridView ? 'active' : ''}`}>
+            <Button
+              variant="primary"
+              icon={<ListIcon />}
+              styles="circle"
+              onClick={handleChangeGridView}
+            />
             <p>List</p>
           </div>
         </div>
