@@ -1,4 +1,13 @@
-import { createContext, Context, ReactNode, useEffect, Dispatch, useReducer, useMemo } from 'react';
+import {
+  createContext,
+  Context,
+  ReactNode,
+  useEffect,
+  Dispatch,
+  useReducer,
+  useMemo,
+  useState,
+} from 'react';
 
 import { API_BASE_URL, API_PATH } from '@/constants/api';
 import { getData } from '@/services/APIRequest';
@@ -15,8 +24,9 @@ interface IBookContext {
   isGridView: boolean;
   getBookById: (id: string) => IBook;
   searchBooks: (input: string) => Promise<void>;
+  sortByAlphabet: (params: string) => Promise<void>;
   filterByCategories: (ids: string[]) => void;
-  changeGridView: (status: boolean) => void;
+  changeGridView: () => void;
   getBooks: () => Promise<void>;
   dispatch: Dispatch<BooksAction>;
 }
@@ -35,6 +45,9 @@ export const BooksContext: Context<IBookContext> = createContext({
 // Book provider
 export const BooksProvider = ({ children }: IBookProvider) => {
   const [state, dispatch] = useReducer(booksReducer, initialState);
+
+  const [searchBooksIds, setSearchBooksIds] = useState<string[]>();
+  const [filterBookIds, setFilterBookIds] = useState<string[]>();
 
   // Get data from server
   const getBooks = async (): Promise<void> => {
@@ -64,29 +77,53 @@ export const BooksProvider = ({ children }: IBookProvider) => {
     return book;
   };
 
-  //Search by call api
+  // Search by call api
   const searchBooks = async (input: string): Promise<void> => {
-    const result: IBook[] = await getData(generateUrl({ searchInput: input }));
+    try {
+      const result: IBook[] = await getData(generateUrl({ searchInput: input }));
 
-    dispatch({
-      type: ACTIONS.SEARCH_BOOKS,
-      payload: {
-        books: result,
-        ids: filterId(result),
-      },
-    });
+      let bookIds = filterId(result);
+      setSearchBooksIds(bookIds);
+
+      // Find searchBooksIds matching filterBookIds
+      if (filterBookIds) {
+        bookIds = bookIds.filter((id) => filterBookIds?.indexOf(id) !== -1);
+      }
+
+      dispatch({
+        type: ACTIONS.SEARCH_BOOKS,
+        payload: {
+          books: result,
+          ids: bookIds,
+        },
+      });
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        console.error(error.message);
+      } else {
+        console.error('Unexpected error', error);
+      }
+    }
   };
 
   // Filter by categories
   const filterByCategories = async (ids: string[]): Promise<void> => {
     try {
-      const result: IBook[] = await getData(generateUrl({ categoriesId: ids }));
+      const result: IBook[] = await getData(generateUrl({ categoryIds: ids }));
+
+      let bookIds = filterId(result);
+      setFilterBookIds(bookIds);
+
+      // Find filterBookIds matching searchBooksIds
+      if (searchBooksIds) {
+        bookIds = bookIds.filter((id) => searchBooksIds?.indexOf(id) !== -1);
+      }
 
       dispatch({
         type: ACTIONS.FILTER_BY_CATEGORIES,
         payload: {
           books: result,
-          ids: filterId(result),
+          ids: bookIds,
         },
       });
     } catch (error: unknown) {
@@ -99,11 +136,23 @@ export const BooksProvider = ({ children }: IBookProvider) => {
   };
 
   // Change book view mode to grid
-  const changeGridView = (status: boolean): void => {
+  const changeGridView = (): void => {
     dispatch({
       type: ACTIONS.CHANGE_GRID_VIEW,
       payload: {
-        isGridView: status,
+        isGridView: !state.isGridView,
+      },
+    });
+  };
+
+  // Sort by alphabet
+  const sortByAlphabet = async (params: string) => {
+    const result: IBook[] = await getData(generateUrl({ params: params }));
+
+    dispatch({
+      type: ACTIONS.SORT_BY_ALPHABET,
+      payload: {
+        ids: filterId(result),
       },
     });
   };
@@ -122,6 +171,7 @@ export const BooksProvider = ({ children }: IBookProvider) => {
       searchBooks,
       filterByCategories,
       changeGridView,
+      sortByAlphabet,
       getBooks,
       dispatch,
     }),
