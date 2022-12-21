@@ -1,4 +1,4 @@
-.books {
+.grid {
   display: flex;
   gap: 32px;
   flex-wrap: wrap;
@@ -6,4 +6,34 @@
   background: var(--main-content);
   margin: 1px 1px;
   flex: 1;
+}
+
+/* style grid view */
+.list .card-item {
+  width: 908px;
+  height: 213px;
+  align-items: center;
+  flex-direction: row;
+}
+
+.list .card-image-wrapper {
+  margin: 13px 18px;
+  padding: 16px 20px;
+  width: 396px;
+  height: 178px;
+}
+
+.list .avatar-small {
+  width: 353px;
+  height: 144px;
+}
+
+.list .card-title {
+  line-height: calc(43 / 36);
+  font-size: 36px;
+}
+
+.list .card-info {
+  line-height: calc(25 / 18);
+  font-size: 18px;
 }

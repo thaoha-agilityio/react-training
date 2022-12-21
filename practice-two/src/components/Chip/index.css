@@ -26,6 +26,10 @@
   border-radius: 10px;
 }
 
+.label {
+  line-height: 2.03;
+}
+
 .chip-endAdornments {
   font-weight: 500;
   line-height: calc(17 / 14);
