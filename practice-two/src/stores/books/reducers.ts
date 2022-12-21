@@ -4,18 +4,14 @@ import { BooksAction } from './actions';
 
 export interface BooksState {
   books: IBook[];
-  book: IBook | null;
   ids: string[];
-  array: IBook[];
   isGridView: boolean;
 }
 
 const initialState: BooksState = {
   books: [],
-  book: null,
   ids: [],
-  array: [],
-  isGridView: false,
+  isGridView: true,
 };
 
 const booksReducer = (state: BooksState = initialState, actions: BooksAction): BooksState => {
@@ -25,12 +21,6 @@ const booksReducer = (state: BooksState = initialState, actions: BooksAction): B
         ...state,
         books: actions.payload.books,
         ids: actions.payload.ids,
-      };
-
-    case ACTIONS.GET_BOOK_BY_ID:
-      return {
-        ...state,
-        book: actions.payload.book,
       };
 
     case ACTIONS.SEARCH_BOOKS:
@@ -51,6 +41,12 @@ const booksReducer = (state: BooksState = initialState, actions: BooksAction): B
       return {
         ...state,
         isGridView: actions.payload.isGridView,
+      };
+
+    case ACTIONS.SORT_BY_ALPHABET:
+      return {
+        ...state,
+        ids: actions.payload.ids,
       };
 
     default:

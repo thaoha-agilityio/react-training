@@ -39,4 +39,17 @@ export type ChangeGridView = {
   };
 };
 
-export type BooksAction = GetBooks | GetBookById | SearchBook | FilterByCategories | ChangeGridView;
+export type SortByAlphabet = {
+  type: ACTIONS.SORT_BY_ALPHABET;
+  payload: {
+    ids: string[];
+  };
+};
+
+export type BooksAction =
+  | GetBooks
+  | GetBookById
+  | SearchBook
+  | FilterByCategories
+  | ChangeGridView
+  | SortByAlphabet;
