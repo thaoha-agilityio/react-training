@@ -1,3 +1,3 @@
 export const NOTICE_MESSAGE = 'No records to display';
 
-export const KEY_NAME_ESC = 27;
+export const ERROR_MESSAGES = 'URL is not valid';
