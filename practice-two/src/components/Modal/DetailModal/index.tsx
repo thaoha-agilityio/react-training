@@ -7,7 +7,7 @@ import Chip from '../../Chip';
 import { LightIcon, MoonIcon, XmarkIcon } from '../../Icon';
 
 import { IBook } from '@/types/book';
-import { KEY_NAME_ESC } from '@/constants/message';
+import { KEY_NAME_ESC } from '@/constants/actions';
 
 import './index.css';
 
