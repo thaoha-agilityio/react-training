@@ -7,6 +7,7 @@ import {
   useReducer,
   useMemo,
   useState,
+  useCallback,
 } from 'react';
 
 import { API_BASE_URL, API_PATH } from '@/constants/api';
@@ -20,9 +21,11 @@ import { getIdsFromList } from '@/helper/getIds';
 import { ERROR_MESSAGES } from '@/constants/message';
 
 interface IBookContext {
+  isGridView: boolean;
+  sortNameStatus: boolean;
+  sortYearStatus: boolean;
   books: IBook[];
   ids: string[];
-  isGridView: boolean;
   getBookById: (id: string) => IBook;
   searchBooks: (input: string) => Promise<void>;
   filterByCategories: (ids: string[]) => void;
@@ -50,7 +53,6 @@ export const BooksProvider = ({ children }: IBookProvider) => {
 
   const [searchBooksIds, setSearchBooksIds] = useState<string[]>();
   const [filterBookIds, setFilterBookIds] = useState<string[]>();
-  const [sortNameStatus, setSortNameStatus] = useState(true);
 
   // Get data from server
   const getBooks = async (): Promise<void> => {
@@ -147,48 +149,32 @@ export const BooksProvider = ({ children }: IBookProvider) => {
 
   // Sort by name
   const sortByAlphabet = () => {
-    setSortNameStatus(!sortNameStatus);
-
     // Toggle sort desc <=> asc
-    const result: IBook[] = state.books.sort((firstEl, secondEl) => {
-      return sortNameStatus
-        ? firstEl.name > secondEl.name
-          ? 1
-          : -1
-        : firstEl.name > secondEl.name
-        ? -1
-        : 1;
+    const result: IBook[] = state.books.sort((a, b) => {
+      return state.sortNameStatus ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name);
     });
 
     dispatch({
-      type: ACTIONS.FILTER_BY_CATEGORIES,
+      type: ACTIONS.SORT_BY_ALPHABET,
       payload: {
-        books: result,
         ids: getIdsFromList(result),
+        sortNameStatus: !state.sortNameStatus,
       },
     });
   };
 
   // Sort by year
   const sortByReleaseYear = () => {
-    setSortNameStatus(!sortNameStatus);
-
     // Toggle sort desc <=> asc
-    const result: IBook[] = state.books.sort((firstEl, secondEl) => {
-      return sortNameStatus
-        ? firstEl.published > secondEl.published
-          ? 1
-          : -1
-        : firstEl.published > secondEl.published
-        ? -1
-        : 1;
+    const result: IBook[] = state.books.sort((a, b) => {
+      return state.sortYearStatus ? a.published - b.published : b.published - a.published;
     });
 
     dispatch({
-      type: ACTIONS.FILTER_BY_CATEGORIES,
+      type: ACTIONS.SORT_BY_Year,
       payload: {
-        books: result,
         ids: getIdsFromList(result),
+        sortYearStatus: !state.sortYearStatus,
       },
     });
   };
@@ -203,6 +189,8 @@ export const BooksProvider = ({ children }: IBookProvider) => {
       books: state.books,
       ids: state.ids,
       isGridView: state.isGridView,
+      sortNameStatus: state.sortNameStatus,
+      sortYearStatus: state.sortYearStatus,
       getBookById,
       searchBooks,
       filterByCategories,
