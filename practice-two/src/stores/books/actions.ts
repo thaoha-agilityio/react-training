@@ -43,6 +43,7 @@ export type SortByAlphabet = {
   type: ACTIONS.SORT_BY_ALPHABET;
   payload: {
     ids: string[];
+    sortNameStatus: boolean;
   };
 };
 
@@ -50,6 +51,7 @@ export type SortByReleaseYear = {
   type: ACTIONS.SORT_BY_Year;
   payload: {
     ids: string[];
+    sortYearStatus: boolean;
   };
 };
 
