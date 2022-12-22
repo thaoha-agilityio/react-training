@@ -147,12 +147,10 @@ export const BooksProvider = ({ children }: IBookProvider) => {
 
   // Sort by name
   const sortByAlphabet = () => {
-    let result: IBook[] = [];
-
     setSortNameStatus(!sortNameStatus);
 
     // Toggle sort desc <=> asc
-    result = state.books.sort((firstEl, secondEl) => {
+    const result: IBook[] = state.books.sort((firstEl, secondEl) => {
       return sortNameStatus
         ? firstEl.name > secondEl.name
           ? 1
@@ -173,12 +171,10 @@ export const BooksProvider = ({ children }: IBookProvider) => {
 
   // Sort by year
   const sortByReleaseYear = () => {
-    let result: IBook[] = [];
-
     setSortNameStatus(!sortNameStatus);
 
     // Toggle sort desc <=> asc
-    result = state.books.sort((firstEl, secondEl) => {
+    const result: IBook[] = state.books.sort((firstEl, secondEl) => {
       return sortNameStatus
         ? firstEl.published > secondEl.published
           ? 1
