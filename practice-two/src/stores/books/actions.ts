@@ -43,6 +43,15 @@ export type SortByAlphabet = {
   type: ACTIONS.SORT_BY_ALPHABET;
   payload: {
     ids: string[];
+    sortNameStatus: boolean;
+  };
+};
+
+export type SortByReleaseYear = {
+  type: ACTIONS.SORT_BY_YEAR;
+  payload: {
+    ids: string[];
+    sortYearStatus: boolean;
   };
 };
 
@@ -52,4 +61,5 @@ export type BooksAction =
   | SearchBook
   | FilterByCategories
   | ChangeGridView
-  | SortByAlphabet;
+  | SortByAlphabet
+  | SortByReleaseYear;

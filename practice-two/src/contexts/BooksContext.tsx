@@ -7,6 +7,7 @@ import {
   useReducer,
   useMemo,
   useState,
+  useCallback,
 } from 'react';
 
 import { API_BASE_URL, API_PATH } from '@/constants/api';
@@ -20,14 +21,18 @@ import { getIdsFromList } from '@/helper/getIds';
 import { ERROR_MESSAGES } from '@/constants/message';
 
 interface IBookContext {
+  isGridView: boolean;
+  sortNameStatus: boolean;
+  sortYearStatus: boolean;
   books: IBook[];
   ids: string[];
-  isGridView: boolean;
   getBookById: (id: string) => IBook;
   searchBooks: (input: string) => Promise<void>;
   filterByCategories: (ids: string[]) => void;
   changeGridView: () => void;
   getBooks: () => Promise<void>;
+  sortByAlphabet: () => void;
+  sortByReleaseYear: () => void;
   dispatch: Dispatch<BooksAction>;
 }
 
@@ -142,6 +147,38 @@ export const BooksProvider = ({ children }: IBookProvider) => {
     });
   };
 
+  // Sort by name
+  const sortByAlphabet = () => {
+    // Toggle sort desc <=> asc
+    const result: IBook[] = state.books.sort((a, b) => {
+      return state.sortNameStatus ? b.name.localeCompare(a.name) : a.name.localeCompare(b.name);
+    });
+
+    dispatch({
+      type: ACTIONS.SORT_BY_ALPHABET,
+      payload: {
+        ids: getIdsFromList(result),
+        sortNameStatus: !state.sortNameStatus,
+      },
+    });
+  };
+
+  // Sort by year
+  const sortByReleaseYear = () => {
+    // Toggle sort desc <=> asc
+    const result: IBook[] = state.books.sort((a, b) => {
+      return state.sortYearStatus ? b.published - a.published : a.published - b.published;
+    });
+
+    dispatch({
+      type: ACTIONS.SORT_BY_YEAR,
+      payload: {
+        ids: getIdsFromList(result),
+        sortYearStatus: !state.sortYearStatus,
+      },
+    });
+  };
+
   useEffect(() => {
     getBooks();
   }, []);
@@ -152,10 +189,14 @@ export const BooksProvider = ({ children }: IBookProvider) => {
       books: state.books,
       ids: state.ids,
       isGridView: state.isGridView,
+      sortNameStatus: state.sortNameStatus,
+      sortYearStatus: state.sortYearStatus,
       getBookById,
       searchBooks,
       filterByCategories,
       changeGridView,
+      sortByAlphabet,
+      sortByReleaseYear,
       getBooks,
       dispatch,
     }),

@@ -14,7 +14,7 @@ interface IProps {
 
 const Books = ({ ids, isGridView, onShowModal }: IProps): JSX.Element => {
   return (
-    <div className={`${isGridView ? 'grid' : 'list'}`}>
+    <div className={`books ${isGridView ? 'grid' : 'list'}`}>
       {ids.map((id: string) => (
         <div key={id}>{<CardItem id={id} onShowModal={onShowModal} />}</div>
       ))}

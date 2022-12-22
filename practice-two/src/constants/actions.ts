@@ -9,11 +9,7 @@ export enum ACTIONS {
   REMOVE_SELECTED_CATEGORY = 'remove_category_ids',
   CHANGE_GRID_VIEW = 'change_grid_view',
   SORT_BY_ALPHABET = 'sort_by_alphabet',
+  SORT_BY_YEAR = 'sort_by_year',
 }
-
-export const SORT = {
-  ASC: 'ascending',
-  DESC: 'descending',
-};
 
 export const KEY_NAME_ESC = 27;

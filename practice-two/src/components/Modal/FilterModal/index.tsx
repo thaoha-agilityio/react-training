@@ -13,7 +13,14 @@ interface IProps {
 }
 
 const FilterModal = ({ onCloseModal }: IProps) => {
-  const { changeGridView, isGridView } = useContext(BooksContext);
+  const {
+    changeGridView,
+    isGridView,
+    sortByAlphabet,
+    sortByReleaseYear,
+    sortNameStatus,
+    sortYearStatus,
+  } = useContext(BooksContext);
 
   const handleChangeGridView = (): void => {
     changeGridView();
@@ -41,18 +48,24 @@ const FilterModal = ({ onCloseModal }: IProps) => {
         </div>
         <div className="sort">
           <p className="options">Sort By</p>
-          <Chip
-            label="Alphabetical Order"
-            size="large"
-            adornments="customAdornments"
-            endAdornments={<ArrowIcon />}
-          />
-          <Chip
-            label="Release Year"
-            size="large"
-            adornments="customAdornments"
-            endAdornments={<ArrowIcon />}
-          />
+          <div className={`${sortNameStatus ? 'active-sort' : ''}`}>
+            <Chip
+              label="Alphabetical Order"
+              size="large"
+              adornments="customAdornments"
+              endAdornments={<ArrowIcon />}
+              onClick={sortByAlphabet}
+            />
+          </div>
+          <div className={`${sortYearStatus ? 'active-sort' : ''}`}>
+            <Chip
+              label="Release Year"
+              size="large"
+              adornments="customAdornments"
+              endAdornments={<ArrowIcon />}
+              onClick={sortByReleaseYear}
+            />
+          </div>
         </div>
       </div>
     </div>

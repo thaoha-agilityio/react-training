@@ -1,4 +1,4 @@
-.grid {
+.books {
   display: flex;
   gap: 32px;
   flex-wrap: wrap;
@@ -6,9 +6,15 @@
   background: var(--main-content);
   margin: 1px 1px;
   flex: 1;
+  flex-direction: row;
 }
 
-/* style grid view */
+/* style list view */
+
+.list {
+  flex-direction: column;
+}
+
 .list .card-item {
   width: 908px;
   height: 213px;

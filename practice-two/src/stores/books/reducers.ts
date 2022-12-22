@@ -6,12 +6,16 @@ export interface BooksState {
   books: IBook[];
   ids: string[];
   isGridView: boolean;
+  sortNameStatus: boolean;
+  sortYearStatus: boolean;
 }
 
 const initialState: BooksState = {
   books: [],
   ids: [],
   isGridView: true,
+  sortNameStatus: false,
+  sortYearStatus: false,
 };
 
 const booksReducer = (state: BooksState = initialState, actions: BooksAction): BooksState => {
@@ -47,8 +51,15 @@ const booksReducer = (state: BooksState = initialState, actions: BooksAction): B
       return {
         ...state,
         ids: actions.payload.ids,
+        sortNameStatus: actions.payload.sortNameStatus,
       };
 
+    case ACTIONS.SORT_BY_YEAR:
+      return {
+        ...state,
+        ids: actions.payload.ids,
+        sortYearStatus: actions.payload.sortYearStatus,
+      };
     default:
       return state;
   }
