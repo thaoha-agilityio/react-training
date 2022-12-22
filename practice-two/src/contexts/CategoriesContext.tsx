@@ -6,6 +6,7 @@ import { categoriesReducer, initialState } from '@/stores/categories/reducers';
 import { API_BASE_URL, API_PATH } from '@/constants/api';
 import { getData } from '@/services/APIRequest';
 import { ACTIONS } from '@/constants/actions';
+import { ERROR_MESSAGES } from '@/constants/message';
 
 interface ICategoriesContext {
   categories: ICategory[];
@@ -40,12 +41,11 @@ export const CategoriesProvider = ({ children }: ICategoriesProvider) => {
           categories: result,
         },
       });
-    } catch (error: unknown) {
+    } catch (error) {
       if (error instanceof Error) {
         console.error(error.message);
-      } else {
-        console.error('Unexpected error', error);
       }
+      alert(ERROR_MESSAGES);
     }
   };
 
