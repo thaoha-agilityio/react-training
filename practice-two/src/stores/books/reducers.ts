@@ -54,7 +54,7 @@ const booksReducer = (state: BooksState = initialState, actions: BooksAction): B
         sortNameStatus: actions.payload.sortNameStatus,
       };
 
-    case ACTIONS.SORT_BY_Year:
+    case ACTIONS.SORT_BY_YEAR:
       return {
         ...state,
         ids: actions.payload.ids,

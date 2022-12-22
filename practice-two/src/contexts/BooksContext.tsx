@@ -171,7 +171,7 @@ export const BooksProvider = ({ children }: IBookProvider) => {
     });
 
     dispatch({
-      type: ACTIONS.SORT_BY_Year,
+      type: ACTIONS.SORT_BY_YEAR,
       payload: {
         ids: getIdsFromList(result),
         sortYearStatus: !state.sortYearStatus,
