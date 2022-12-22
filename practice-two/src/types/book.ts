@@ -4,9 +4,9 @@ interface IBook {
   avatar: string;
   author: string;
   description?: string;
-  published: string;
+  published: number;
   publisher?: string;
-  category?: string;
+  categoryId?: string;
 }
 
 export type { IBook };

@@ -20,6 +20,17 @@
   padding: 29px 21px;
 }
 
+.filter-modal::before {
+  content: ' ';
+  width: 10px;
+  height: 10px;
+  background-color: #ffff;
+  position: absolute;
+  top: 0;
+  right: 60px;
+  transform: translate(50%, -50%) rotate(45deg);
+}
+
 .options {
   font-family: 'Rubik';
   font-weight: 500;
@@ -51,4 +62,14 @@
 
 .sort {
   margin-top: 15px;
+}
+
+.active-sort {
+  width: 100%;
+  background-color: var(--color-secondary-100);
+  color: #0d75ff;
+}
+
+.active-sort svg {
+  transform: rotate(180deg);
 }
