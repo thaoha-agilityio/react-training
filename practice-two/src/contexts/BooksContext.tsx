@@ -152,8 +152,14 @@ export const BooksProvider = ({ children }: IBookProvider) => {
     setSortNameStatus(!sortNameStatus);
 
     // Toggle sort desc <=> asc
-    result = state.books.sort((a, b) => {
-      return sortNameStatus ? (a.name > b.name ? 1 : -1) : a.name > b.name ? -1 : 1;
+    result = state.books.sort((firstEl, secondEl) => {
+      return sortNameStatus
+        ? firstEl.name > secondEl.name
+          ? 1
+          : -1
+        : firstEl.name > secondEl.name
+        ? -1
+        : 1;
     });
 
     dispatch({
@@ -172,12 +178,12 @@ export const BooksProvider = ({ children }: IBookProvider) => {
     setSortNameStatus(!sortNameStatus);
 
     // Toggle sort desc <=> asc
-    result = state.books.sort((a, b) => {
+    result = state.books.sort((firstEl, secondEl) => {
       return sortNameStatus
-        ? a.published > b.published
+        ? firstEl.published > secondEl.published
           ? 1
           : -1
-        : a.published > b.published
+        : firstEl.published > secondEl.published
         ? -1
         : 1;
     });
