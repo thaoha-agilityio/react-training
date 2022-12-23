@@ -49,9 +49,9 @@ const Home = (): JSX.Element => {
   );
 
   // Handle close modal
-  const handleCloseModal = (): void => {
+  const handleCloseModal = useCallback((): void => {
     setIsModalOpen(false);
-  };
+  }, [isModalOpen]);
 
   // Handle show filter modal
   const handleShowFilterModal = useCallback((): void => {
@@ -59,9 +59,9 @@ const Home = (): JSX.Element => {
   }, [isModalFilterOpen]);
 
   // Handle close modal
-  const handleCloseFilterModal = (): void => {
+  const handleCloseFilterModal = useCallback((): void => {
     setIsModalFilterOpen(false);
-  };
+  }, [isModalFilterOpen]);
 
   return (
     <div className={`home ${isDarkMode ? 'dark-theme' : 'light-theme'}  `}>

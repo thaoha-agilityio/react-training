@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { memo, ReactNode } from 'react';
 
 import './index.css';
 
@@ -17,4 +17,4 @@ const Button = ({ variant, size, icon, text, styles, ...rest }: IProps): React.R
   </button>
 );
 
-export default Button;
+export default memo(Button);

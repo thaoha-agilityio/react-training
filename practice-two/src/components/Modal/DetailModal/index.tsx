@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { memo, useContext, useEffect } from 'react';
 import { ThemeContext } from '@/contexts/ThemeContext ';
 
 import Avatar from '../../Avatar';
@@ -81,4 +81,4 @@ const DetailModal = ({
   );
 };
 
-export default DetailModal;
+export default memo(DetailModal);

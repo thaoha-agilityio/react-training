@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { memo, useContext } from 'react';
 
 import { BooksContext } from '@/contexts/BooksContext';
 
@@ -72,4 +72,4 @@ const FilterModal = ({ onCloseModal }: IProps) => {
   );
 };
 
-export default FilterModal;
+export default memo(FilterModal);

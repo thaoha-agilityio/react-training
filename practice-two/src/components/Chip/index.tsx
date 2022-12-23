@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { memo, ReactNode } from 'react';
 
 import Button from '../Button';
 
@@ -25,4 +25,4 @@ const Chip = ({ size, label, adornments, startAdornments, endAdornments, onClick
   );
 };
 
-export default Chip;
+export default memo(Chip);
