@@ -1,7 +1,4 @@
 import '../src/assets/styles/all.css';
-// import { addDecorator } from '@storybook/[framework]';
-// import { withContexts } from '@storybook/addon-contexts/[framework]';
-// import { contexts } from './configs/contexts';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -12,5 +9,3 @@ export const parameters = {
     },
   },
 };
-
-// addDecorator(withContexts(contexts));
