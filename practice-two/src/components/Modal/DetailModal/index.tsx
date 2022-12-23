@@ -17,7 +17,7 @@ interface IPops {
 }
 
 const DetailModal = ({
-  book: { name, avatar, author, description, publisher, published },
+  book: { name, avatar, author, description, publishers, published },
   onCloseModal,
 }: IPops) => {
   const { toggleTheme, isDarkMode } = useContext(ThemeContext);
@@ -54,11 +54,11 @@ const DetailModal = ({
           </div>
           <div className="book-info">
             <p className="main-info">Published : </p>
-            <Chip label={published} adornments={'endAdornments'} />
+            <Chip label={published.toString()} adornments={'endAdornments'} />
           </div>
           <div className="book-info">
             <p className="main-info">Publishers : </p>
-            <Chip label={publisher!} adornments={'endAdornments'} />
+            <Chip label={publishers!} adornments={'endAdornments'} />
           </div>
         </div>
 

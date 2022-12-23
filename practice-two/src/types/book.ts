@@ -5,7 +5,7 @@ interface IBook {
   author: string;
   description?: string;
   published: number;
-  publisher?: string;
+  publishers?: string;
   categoryId?: string;
 }
 
