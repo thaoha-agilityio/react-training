@@ -1,43 +1,28 @@
-import { BooksContext } from '@/contexts/BooksContext';
-
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import CardItem from '.';
+import Category from '.';
 
-export default {
-  title: 'CardItem',
-  component: CardItem,
-} as ComponentMeta<typeof CardItem>;
-
-const id = '1';
-const books = [
-  {
-    name: 'Down With The Red Flag',
-    avatar: 'http://digital.library.lse.ac.uk/objects/lse:dap375xow/view/medium',
-    author: 'Jamal Kasper',
-    description:
-      'Liberal Unionist poster depicting the British Bulldog taking a large bite out of the impending spectre of Socialism in the country.',
-    published: '1990',
-    publisher: 'Printer',
-    id: '1',
-  },
-  {
-    name: 'Don Quijote de la Mancha',
-    avatar: 'https://image.cdn0.buscalibre.com/5c7482160bf0b5fd0c8b4567.__RSF640x640__.jpg',
-    author: 'libsa',
-    description: 'abc',
-    published: '2016',
-    publisher: 'Printer',
-    id: '2',
-  },
-];
-
-const context = {
-  getBookById: (id: string) => books['1'],
+const category = {
+  id: '1',
+  name: 'Sport',
+  total: 1,
 };
 
-export const Template: ComponentStory<typeof CardItem> = (args) => (
-  <BooksContext.Provider value={context}>
-    <CardItem {...args} />
-  </BooksContext.Provider>
-);
+export default {
+  title: 'Category',
+  component: Category,
+  argTypes: {
+    category: {
+      defaultValue: category,
+    },
+    actions: {
+      onSelectCategory: ['click'],
+    },
+  },
+} as ComponentMeta<typeof Category>;
+
+const Template: ComponentStory<typeof Category> = (args) => <Category {...args} />;
+
+const DefaultValue = Template.bind({});
+
+export { DefaultValue };
