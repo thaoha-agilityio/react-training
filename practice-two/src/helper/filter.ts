@@ -3,11 +3,10 @@ import { API_PATH, API_BASE_URL } from '@/constants/api';
 type FilterType = {
   searchInput?: string;
   categoryIds?: string[];
-  params?: string;
 };
 
 export const generateUrl = (filterOption: FilterType) => {
-  const { searchInput, categoryIds, params } = filterOption;
+  const { searchInput, categoryIds } = filterOption;
 
   let result = `${API_BASE_URL}${API_PATH.books}`;
 
@@ -18,9 +17,6 @@ export const generateUrl = (filterOption: FilterType) => {
 
     case !!categoryIds:
       return (result += `?categoryId=[${categoryIds}]`);
-
-    case !!params:
-      return (result += `?sortBy=${params}&order=asc`);
 
     default:
       return result;
