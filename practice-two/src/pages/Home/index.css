@@ -1,3 +1,7 @@
+.container {
+  position: relative;
+}
+
 .home {
   max-width: 1273px;
   border-radius: 10px;

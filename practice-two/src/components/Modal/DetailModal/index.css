@@ -1,6 +1,6 @@
 .modal-backdrop {
   background: #0000008f;
-  position: fixed;
+  position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
