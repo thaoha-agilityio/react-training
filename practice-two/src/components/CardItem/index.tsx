@@ -16,7 +16,7 @@ const CardItem = ({ id, onShowModal }: IProps): React.ReactElement => {
   const { getBookById } = useContext(BooksContext);
   const book: IBook = getBookById(id);
 
-  const handleShowModal = () => {
+  const handleShowModal = (): void => {
     onShowModal(id);
   };
 

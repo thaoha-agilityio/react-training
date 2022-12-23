@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { SvgSearchComponent } from '../Icon';
+import { SearchIcon } from '../Icon';
 import Input from '@/components/Input';
 
 export default {
@@ -16,7 +16,7 @@ Text.args = {
   type: 'text',
   placeholder: 'Search books',
   size: 'large',
-  leftElement: <SvgSearchComponent />,
+  leftElement: <SearchIcon />,
 };
 
 const Checkbox = Template.bind({});

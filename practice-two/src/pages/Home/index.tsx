@@ -1,9 +1,9 @@
 import { ChangeEvent, useCallback, useContext, useState } from 'react';
 
 import Header from '@/components/Header';
-import SubHeader from './SubHeader';
-import Books from './Books.tsx';
-import SideBar from '@/pages/Home/SideBar';
+import SubHeader from './components/SubHeader';
+import Books from './components/Books.tsx';
+import SideBar from '@/pages/Home/components/SideBar';
 import DetailModal from '@/components/Modal/DetailModal';
 import FilterModal from '@/components/Modal/FilterModal';
 

@@ -32,7 +32,7 @@ const Secondary = Template.bind({});
 Secondary.args = {
   ...Secondary.args,
   variant: 'secondary',
-  size: 'medium',
+  size: 'large',
   text: 'click',
 };
 
