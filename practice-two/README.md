@@ -37,7 +37,6 @@
 - Users could change book view mode to grid or list
 - Users could sort books by Alphabetical or Release Year
 - Users could search books by name
-- Users could see maximum 10 item (pagination)
 
 # Prerequisites
 
@@ -49,6 +48,10 @@
 
 - [Handbook](https://reactjs.org/docs/getting-started.html)
 - [Storybook](https://storybook.js.org/docs/react/get-started/introduction)
+
+# MockApi
+
+- [link](https://6385df7ebeaa6458266b766f.mockapi.io)
 
 # Getting started
 
