@@ -1,6 +1,6 @@
 .overlay {
   background-color: transparent;
-  position: fixed;
+  position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
@@ -9,9 +9,8 @@
 
 .filter-modal {
   position: absolute;
-  left: 78.5%;
-  top: 26%;
-  transform: translate(-51%, -49%);
+  left: 74.5%;
+  top: 2%;
   width: 268px;
   height: 331px;
   background: var(--color-secondary);

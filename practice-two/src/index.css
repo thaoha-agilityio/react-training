@@ -4,6 +4,7 @@
   --total-text-color: #ffff;
   --categories-text: #ffff;
   --main-content: #1e1e2fba;
+  --card-bg: #e3e6eb;
 }
 
 .light-theme {
@@ -12,4 +13,5 @@
   --main-content: var(--color-secondary-100);
   --categories-text: #222531;
   --total-text-color: #58667e;
+  --card-bg: var(--color-secondary);
 }
