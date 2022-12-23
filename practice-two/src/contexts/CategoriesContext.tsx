@@ -7,7 +7,6 @@ import { API_BASE_URL, API_PATH } from '@/constants/api';
 import { getData } from '@/services/APIRequest';
 import { ACTIONS } from '@/constants/actions';
 import { ERROR_MESSAGES } from '@/constants/message';
-import { AxiosError } from 'axios';
 
 interface ICategoriesContext {
   categories: ICategory[];
