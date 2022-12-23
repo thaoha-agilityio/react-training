@@ -70,13 +70,15 @@ const Home = (): JSX.Element => {
         <SubHeader onShowModal={handleShowFilterModal} />
         <div className="contents">
           <SideBar categories={categories} />
+
           <Books ids={ids} onShowModal={handleShowModal} isGridView={isGridView} />
+
+          {isModalFilterOpen && <FilterModal onCloseModal={handleCloseFilterModal} />}
         </div>
+
         {isModalOpen && (
           <DetailModal onCloseModal={handleCloseModal} book={getBookById(selectedBookId)} />
         )}
-
-        {isModalFilterOpen && <FilterModal onCloseModal={handleCloseFilterModal} />}
       </div>
     </div>
   );
