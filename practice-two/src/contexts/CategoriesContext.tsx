@@ -7,10 +7,11 @@ import { API_BASE_URL, API_PATH } from '@/constants/api';
 import { getData } from '@/services/APIRequest';
 import { ACTIONS } from '@/constants/actions';
 import { ERROR_MESSAGES } from '@/constants/message';
+import { AxiosError } from 'axios';
 
 interface ICategoriesContext {
   categories: ICategory[];
-  categoryIds: string[];
+  selectedIds: string[];
   setSelectedCategory: (id: string) => void;
   getCategoryById: (ids: string[]) => ICategory[];
   removeSelectedCategory: (categoryId: string) => void;
@@ -54,7 +55,7 @@ export const CategoriesProvider = ({ children }: ICategoriesProvider) => {
     dispatch({
       type: ACTIONS.SET_SELECTED_CATEGORY,
       payload: {
-        categoryIds: [...state.categoryIds, id],
+        selectedIds: [...state.selectedIds, id],
       },
     });
   };
@@ -66,12 +67,12 @@ export const CategoriesProvider = ({ children }: ICategoriesProvider) => {
   // Remove categories in sub heading
   const removeSelectedCategory = (categoryId: string): void => {
     // Remove id when click button
-    const restIds = state.categoryIds.filter((id) => id !== categoryId);
+    const restIds = state.selectedIds.filter((id) => id !== categoryId);
 
     dispatch({
       type: ACTIONS.REMOVE_SELECTED_CATEGORY,
       payload: {
-        categoryIds: restIds,
+        selectedIds: restIds,
       },
     });
   };
@@ -84,7 +85,7 @@ export const CategoriesProvider = ({ children }: ICategoriesProvider) => {
   const value = useMemo(
     () => ({
       categories: state.categories,
-      categoryIds: state.categoryIds,
+      selectedIds: state.selectedIds,
       setSelectedCategory,
       getCategoryById,
       removeSelectedCategory,

@@ -15,18 +15,18 @@ const Category = ({
   category: { id, name, total },
   onSelectCategory,
 }: IProps): React.ReactElement => {
-  const { categoryIds } = useContext(CategoriesContext);
+  const { selectedIds } = useContext(CategoriesContext);
 
   const handleSelectCategory = (): void => {
     // Check if selected category then don't call function
-    if (categoryIds.includes(id)) return;
+    if (selectedIds.includes(id)) return;
 
     onSelectCategory(id);
   };
 
   return (
     <div
-      className={`category-wrapper ${categoryIds.includes(id) ? 'active-category' : ''}`}
+      className={`category-wrapper ${selectedIds?.includes(id) ? 'active-category' : ''}`}
       onClick={handleSelectCategory}
     >
       <div className="category">

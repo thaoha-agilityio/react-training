@@ -11,14 +11,14 @@ export type GetCategories = {
 export type SetSelectedCategory = {
   type: ACTIONS.SET_SELECTED_CATEGORY;
   payload: {
-    categoryIds: string[];
+    selectedIds: string[];
   };
 };
 
 export type RemoveSelectedCategoryIds = {
   type: ACTIONS.REMOVE_SELECTED_CATEGORY;
   payload: {
-    categoryIds: string[];
+    selectedIds: string[];
   };
 };
 
