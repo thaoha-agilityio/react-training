@@ -66,8 +66,8 @@
 
 - Step 4: Install packages `npm install`
 
-- Step 5: Run project `npm start`
+- Step 5: Run project `npm run dev`
 
-- Step 6: Open your browser at `http://localhost:3000/`
+- Step 6: Open your browser at `http://localhost:5000/`
 
 - Step 7: Run storybook `npm run storybook`
