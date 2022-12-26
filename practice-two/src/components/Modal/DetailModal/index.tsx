@@ -40,7 +40,13 @@ const DetailModal = ({
       <div className="detail-modal">
         <div className="modal-header">
           <p className="modal-title">{name}</p>
-          <Button variant="primary" icon={<XmarkIcon />} onClick={onCloseModal} />
+          <Button
+            variant="primary"
+            icon={<XmarkIcon />}
+            onClick={onCloseModal}
+            size="small"
+            styles="normal"
+          />
         </div>
 
         <div className="modal-body">
@@ -64,14 +70,15 @@ const DetailModal = ({
 
         <div className="modal-footer">
           <div className="modal-wrapper">
-            <Button variant="secondary" text="esc" size="medium" />
+            <Button variant="secondary" text="esc" size="medium" styles="normal" />
             <p>To Escape</p>
           </div>
           <div className="btn-background">
             <Button
               variant="primary"
               icon={isDarkMode ? <MoonIcon /> : <LightIcon />}
-              size="large"
+              size="small"
+              styles="normal"
               onClick={toggleTheme}
             />
           </div>

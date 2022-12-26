@@ -29,7 +29,9 @@ const Header = ({ onChange }: IProps): React.ReactElement => {
           <Input
             type="text"
             size="large"
-            leftElement={<Button variant="primary" icon={<SearchIcon />} />}
+            leftElement={
+              <Button variant="primary" icon={<SearchIcon />} styles="normal" size="small" />
+            }
             placeholder="Search books"
             onChange={onChange}
           />
@@ -40,6 +42,7 @@ const Header = ({ onChange }: IProps): React.ReactElement => {
             size="medium"
             icon={isDarkMode ? <MoonIcon /> : <LightIcon />}
             onClick={toggleTheme}
+            styles="normal"
           />
         </div>
       </div>
