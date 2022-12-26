@@ -19,6 +19,7 @@ export default {
   argTypes: {
     category: {
       book: data,
+      onCloseModal: { action: 'click' },
     },
   },
 } as ComponentMeta<typeof DetailModal>;
@@ -29,6 +30,9 @@ const Default = Template.bind({});
 Default.args = {
   ...Default.args,
   book: data,
+  onCloseModal: () => {
+    alert('Close modal');
+  },
 };
 
 export { Default };
