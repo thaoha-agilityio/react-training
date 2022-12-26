@@ -6,7 +6,7 @@ import { categoriesReducer, initialState } from '@/stores/categories/reducers';
 import { API_BASE_URL, API_PATH } from '@/constants/api';
 import { getData } from '@/services/APIRequest';
 import { ACTIONS } from '@/constants/actions';
-import { ERROR_MESSAGES } from '@/constants/message';
+import { ERROR_MESSAGE } from '@/constants/messages';
 
 interface ICategoriesContext {
   categories: ICategory[];
@@ -22,9 +22,9 @@ interface ICategoriesProvider {
 }
 
 // Create Categories context with initial value
-export const CategoriesContext: Context<ICategoriesContext> = createContext({
-  categories: [],
-} as unknown as ICategoriesContext);
+export const CategoriesContext: Context<ICategoriesContext> = createContext(
+  {} as unknown as ICategoriesContext
+);
 
 // Categories provider
 export const CategoriesProvider = ({ children }: ICategoriesProvider) => {
@@ -45,7 +45,7 @@ export const CategoriesProvider = ({ children }: ICategoriesProvider) => {
       if (error instanceof Error) {
         console.error(error.message);
       }
-      alert(ERROR_MESSAGES);
+      alert(ERROR_MESSAGE);
     }
   };
 

@@ -60,6 +60,7 @@ const booksReducer = (state: BooksState = initialState, actions: BooksAction): B
         ids: actions.payload.ids,
         sortYearStatus: actions.payload.sortYearStatus,
       };
+
     default:
       return state;
   }

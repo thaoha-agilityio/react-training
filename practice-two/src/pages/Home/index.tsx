@@ -38,30 +38,27 @@ const Home = (): JSX.Element => {
   );
 
   // Handle show modal
-  const handleShowModal = useCallback(
-    (id: string): void => {
-      setIsModalOpen(true);
+  const handleShowModal = useCallback((id: string): void => {
+    setIsModalOpen(true);
 
-      // Get id when click item
-      setSelectedBookId(id);
-    },
-    [isModalOpen]
-  );
+    // Get id when click item
+    setSelectedBookId(id);
+  }, []);
 
   // Handle close modal
   const handleCloseModal = useCallback((): void => {
     setIsModalOpen(false);
-  }, [isModalOpen]);
+  }, []);
 
   // Handle show filter modal
   const handleShowFilterModal = useCallback((): void => {
     setIsModalFilterOpen(true);
-  }, [isModalFilterOpen]);
+  }, []);
 
   // Handle close modal
   const handleCloseFilterModal = useCallback((): void => {
     setIsModalFilterOpen(false);
-  }, [isModalFilterOpen]);
+  }, []);
 
   return (
     <div className={`home ${isDarkMode ? 'dark-theme' : 'light-theme'}  `}>

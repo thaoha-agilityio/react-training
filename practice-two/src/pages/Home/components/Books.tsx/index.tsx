@@ -2,7 +2,7 @@ import { memo } from 'react';
 
 import CardItem from '@/components/CardItem';
 
-import { NOTICE_MESSAGE } from '@/constants/message';
+import { NOTICE_MESSAGE } from '@/constants/messages';
 
 import './index.css';
 
