@@ -4,35 +4,31 @@ import { ThemeContext } from '@/contexts/ThemeContext ';
 import Avatar from '../../Avatar';
 import Button from '../../Button';
 import Chip from '../../Chip';
-import { LightIcon, MoonIcon, XmarkIcon } from '../../Icon';
+import { LightIcon, MoonIcon, XmarkIcon } from '@/components/Icon';
 
 import { IBook } from '@/types/book';
-import { KEY_NAME_ESC } from '@/constants/actions';
 
 import './index.css';
 
 interface IPops {
   book: IBook;
   onCloseModal: () => void;
+  onCloseByKeyboard: (event: KeyboardEvent) => void;
 }
 
 const DetailModal = ({
   book: { name, avatar, author, description, publishers, published },
   onCloseModal,
+  onCloseByKeyboard,
 }: IPops) => {
   const { toggleTheme, isDarkMode } = useContext(ThemeContext);
 
   // Close modal by keyboard
   useEffect(() => {
-    const handleCloseModal = (event: KeyboardEvent) => {
-      if (event.keyCode === KEY_NAME_ESC) {
-        onCloseModal();
-      }
-    };
+    window.addEventListener('keydown', onCloseByKeyboard);
 
-    window.addEventListener('keydown', handleCloseModal);
-
-    return () => window.removeEventListener('keydown', handleCloseModal);
+    // Remove event before closing modal
+    return () => window.removeEventListener('keydown', onCloseByKeyboard);
   }, []);
 
   return (

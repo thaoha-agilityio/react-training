@@ -10,6 +10,7 @@ import FilterModal from '@/components/Modal/FilterModal';
 import { BooksContext } from '@/contexts/BooksContext';
 import { CategoriesContext } from '@/contexts/CategoriesContext';
 import { ThemeContext } from '@/contexts/ThemeContext ';
+import { KEY_NAME_ESC } from '@/constants/actions';
 
 import './index.css';
 
@@ -34,7 +35,7 @@ const Home = (): JSX.Element => {
 
       setValueInput(values);
     },
-    [valueInput]
+    []
   );
 
   // Handle show modal
@@ -46,9 +47,9 @@ const Home = (): JSX.Element => {
   }, []);
 
   // Handle close modal
-  const handleCloseModal = useCallback((): void => {
+  const handleCloseModal = (): void => {
     setIsModalOpen(false);
-  }, []);
+  };
 
   // Handle show filter modal
   const handleShowFilterModal = useCallback((): void => {
@@ -56,9 +57,16 @@ const Home = (): JSX.Element => {
   }, []);
 
   // Handle close modal
-  const handleCloseFilterModal = useCallback((): void => {
+  const handleCloseFilterModal = (): void => {
     setIsModalFilterOpen(false);
-  }, []);
+  };
+
+  // Close detail modal by keyboard
+  const handleCloseByKeyboard = (event: KeyboardEvent) => {
+    if (event.keyCode === KEY_NAME_ESC) {
+      handleCloseModal();
+    }
+  };
 
   return (
     <div className={`home ${isDarkMode ? 'dark-theme' : 'light-theme'}  `}>
@@ -74,7 +82,11 @@ const Home = (): JSX.Element => {
         </div>
 
         {isModalOpen && (
-          <DetailModal onCloseModal={handleCloseModal} book={getBookById(selectedBookId)} />
+          <DetailModal
+            onCloseModal={handleCloseModal}
+            book={getBookById(selectedBookId)}
+            onCloseByKeyboard={handleCloseByKeyboard}
+          />
         )}
       </div>
     </div>
