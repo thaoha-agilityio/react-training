@@ -1,4 +1,4 @@
-import { THUMBNAIL } from '@/constants/message';
+import { THUMBNAIL } from '@/constants/messages';
 
 import './index.css';
 
