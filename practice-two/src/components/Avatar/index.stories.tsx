@@ -11,6 +11,7 @@ const Template: ComponentStory<typeof Avatar> = (args) => <Avatar {...args} />;
 
 const Default = Template.bind({});
 Default.args = {
+  url: 'http://betweenthelines.in/wp-content/uploads/2012/09/Life-is-what-you-make-it-11.jpg',
   size: 'small',
 };
 

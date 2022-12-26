@@ -9,13 +9,18 @@ const data = {
   author: 'Francis ',
   description:
     'The serial killer nicknamed Buffalo Bill has been capturing and starving women, then murdering and skinning them. FBI rookie Clarice Starling is assigned to solicit help from imprisoned psychopath Dr Hannibal the Cannibal Lecter, whose insight into the depraved minds of serial killers is second to none.',
-  published: '1990',
-  publisher: 'Paperback',
+  published: 1990,
+  publishers: 'Paperback',
 };
 
 export default {
   title: 'DetailModal',
   component: DetailModal,
+  argTypes: {
+    category: {
+      book: data,
+    },
+  },
 } as ComponentMeta<typeof DetailModal>;
 
 const Template: ComponentStory<typeof DetailModal> = (args) => <DetailModal {...args} />;
