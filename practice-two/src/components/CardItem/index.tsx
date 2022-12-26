@@ -1,21 +1,18 @@
-import { memo, useContext } from 'react';
+import { memo } from 'react';
 
 import Avatar from '../Avatar';
 
-import { BooksContext } from '@/contexts/BooksContext';
 import { IBook } from '@/types/book';
 
 import './index.css';
 
 interface IProps {
   id: string;
+  item: IBook;
   onShowModal: (id: string) => void;
 }
 
-const CardItem = ({ id, onShowModal }: IProps): React.ReactElement => {
-  const { getBookById } = useContext(BooksContext);
-  const book: IBook = getBookById(id);
-
+const CardItem = ({ id, onShowModal, item }: IProps): React.ReactElement => {
   const handleClick = (): void => {
     onShowModal(id);
   };
@@ -23,12 +20,12 @@ const CardItem = ({ id, onShowModal }: IProps): React.ReactElement => {
   return (
     <div className="card-item" data-id={id} onClick={handleClick}>
       <div className="card-image-wrapper">
-        <Avatar url={book.avatar} alt={book.name} size="small" />
+        <Avatar url={item.avatar} alt={item.name} size="small" />
       </div>
       <div className="card-contents">
-        <h2 className="card-title">{book.name}</h2>
-        <p className="card-info">{book.author}</p>
-        <p className="card-info">{book.published}</p>
+        <h2 className="card-title">{item.name}</h2>
+        <p className="card-info">{item.author}</p>
+        <p className="card-info">{item.published}</p>
       </div>
     </div>
   );
