@@ -7,8 +7,10 @@ import { Countdown } from "./components/useRef";
 import { Counter } from "./components/useReducer";
 import { CheckRender } from "./components/useCallback";
 
-import "./App.css";
 import { MyComponent } from "./advanced/code-spliting";
+import { ExampleErrorBoundary } from "./advanced/error-boudaries";
+
+import "./App.css";
 
 function App() {
   const [isShow, setIsShow] = useState(false);
@@ -33,6 +35,7 @@ function App() {
       <CheckRender /> */}
 
       <MyComponent />
+      <ExampleErrorBoundary />
     </div>
   );
 }
