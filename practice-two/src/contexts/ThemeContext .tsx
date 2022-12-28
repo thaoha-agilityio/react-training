@@ -1,4 +1,4 @@
-import { createContext, Context, ReactNode, useEffect, Dispatch, useReducer, useMemo } from 'react';
+import { createContext, Context, ReactNode, Dispatch, useReducer, useMemo } from 'react';
 
 import { ThemeAction } from '@/stores/theme/action';
 import { themeReducer, initialState } from '@/stores/theme/reducer';

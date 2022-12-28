@@ -1,4 +1,4 @@
-import { memo, useContext } from 'react';
+import { memo, useCallback, useContext } from 'react';
 
 import { CategoriesContext } from '@/contexts/CategoriesContext';
 import { BooksContext } from '@/contexts/BooksContext';
@@ -18,12 +18,15 @@ const SideBar = ({ categories }: IProps): React.ReactElement => {
   const { filterByCategories } = useContext(BooksContext);
 
   // Set categoryId when click
-  const handleSelectCategory = (id: string) => {
-    setSelectedCategory(id);
+  const handleSelectCategory = useCallback(
+    (id: string) => {
+      setSelectedCategory(id);
 
-    // Show books after filter
-    filterByCategories([...selectedIds, id]);
-  };
+      // Show books after filter
+      filterByCategories([...selectedIds, id]);
+    },
+    [selectedIds]
+  );
 
   return (
     <div className="categories">

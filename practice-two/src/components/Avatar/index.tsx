@@ -1,3 +1,5 @@
+import { THUMBNAIL } from '@/constants/messages';
+
 import './index.css';
 
 interface IProps {
@@ -7,7 +9,7 @@ interface IProps {
   size?: 'small' | 'medium' | 'large';
 }
 
-const Avatar = ({ url, styles = 'square', size, alt }: IProps): React.ReactElement => (
+const Avatar = ({ url = THUMBNAIL, styles = 'square', size, alt }: IProps): React.ReactElement => (
   <div className="avatar">
     <img className={`avatar avatar-${styles} avatar-${size}`} src={url} alt={alt} />
   </div>

@@ -4,10 +4,10 @@ import './index.css';
 
 interface IProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant: 'primary' | 'secondary' | 'tertiary';
-  size?: 'small' | 'medium' | 'large' | 'radius';
+  size: 'small' | 'medium' | 'large' | 'radius';
+  styles: 'normal' | 'circle';
   text?: string;
   icon?: ReactNode;
-  styles?: 'normal' | 'circle';
 }
 
 const Button = ({ variant, size, icon, text, styles, ...rest }: IProps): React.ReactElement => (

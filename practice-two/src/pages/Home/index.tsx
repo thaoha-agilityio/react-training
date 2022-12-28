@@ -10,11 +10,12 @@ import FilterModal from '@/components/Modal/FilterModal';
 import { BooksContext } from '@/contexts/BooksContext';
 import { CategoriesContext } from '@/contexts/CategoriesContext';
 import { ThemeContext } from '@/contexts/ThemeContext ';
+import { KEY_NAME_ESC } from '@/constants/actions';
 
 import './index.css';
 
 const Home = (): JSX.Element => {
-  const { ids, searchBooks, getBookById, isGridView } = useContext(BooksContext);
+  const { searchBooks, getBookById, isGridView } = useContext(BooksContext);
   const { categories } = useContext(CategoriesContext);
   const { isDarkMode } = useContext(ThemeContext);
 
@@ -34,34 +35,38 @@ const Home = (): JSX.Element => {
 
       setValueInput(values);
     },
-    [valueInput]
+    []
   );
 
   // Handle show modal
-  const handleShowModal = useCallback(
-    (id: string): void => {
-      setIsModalOpen(true);
+  const handleShowModal = useCallback((id: string): void => {
+    setIsModalOpen(true);
 
-      // Get id when click item
-      setSelectedBookId(id);
-    },
-    [isModalOpen]
-  );
+    // Get id when click item
+    setSelectedBookId(id);
+  }, []);
 
   // Handle close modal
-  const handleCloseModal = useCallback((): void => {
+  const handleCloseModal = (): void => {
     setIsModalOpen(false);
-  }, [isModalOpen]);
+  };
 
   // Handle show filter modal
   const handleShowFilterModal = useCallback((): void => {
     setIsModalFilterOpen(true);
-  }, [isModalFilterOpen]);
+  }, []);
 
   // Handle close modal
-  const handleCloseFilterModal = useCallback((): void => {
+  const handleCloseFilterModal = (): void => {
     setIsModalFilterOpen(false);
-  }, [isModalFilterOpen]);
+  };
+
+  // Close detail modal by keyboard
+  const handleCloseByKeyboard = (event: KeyboardEvent) => {
+    if (event.keyCode === KEY_NAME_ESC) {
+      handleCloseModal();
+    }
+  };
 
   return (
     <div className={`home ${isDarkMode ? 'dark-theme' : 'light-theme'}  `}>
@@ -71,13 +76,17 @@ const Home = (): JSX.Element => {
         <div className="contents">
           <SideBar categories={categories} />
 
-          <Books ids={ids} onShowModal={handleShowModal} isGridView={isGridView} />
+          <Books onShowModal={handleShowModal} isGridView={isGridView} />
 
           {isModalFilterOpen && <FilterModal onCloseModal={handleCloseFilterModal} />}
         </div>
 
         {isModalOpen && (
-          <DetailModal onCloseModal={handleCloseModal} book={getBookById(selectedBookId)} />
+          <DetailModal
+            onCloseModal={handleCloseModal}
+            book={getBookById(selectedBookId)}
+            onCloseByKeyboard={handleCloseByKeyboard}
+          />
         )}
       </div>
     </div>

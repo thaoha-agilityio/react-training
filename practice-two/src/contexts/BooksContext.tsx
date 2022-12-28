@@ -1,31 +1,18 @@
-import {
-  createContext,
-  Context,
-  ReactNode,
-  useEffect,
-  Dispatch,
-  useReducer,
-  useMemo,
-  useState,
-  useCallback,
-} from 'react';
+import { createContext, Context, ReactNode, useEffect, useReducer, useMemo, useState } from 'react';
 
 import { API_BASE_URL, API_PATH } from '@/constants/api';
 import { getData } from '@/services/APIRequest';
 import { IBook } from '@/types/book';
-import { BooksAction } from '@/stores/books/actions';
 import { booksReducer, initialState } from '@/stores/books/reducers';
 import { ACTIONS } from '@/constants/actions';
-import { generateUrl } from '@/helper/filter';
-import { getIdsFromList } from '@/helper/getIds';
-import { ERROR_MESSAGES } from '@/constants/message';
+import { generateUrl } from '@/helper/generateUrl';
+import { ERROR_MESSAGE } from '@/constants/messages';
 
 interface IBookContext {
   isGridView: boolean;
   sortNameStatus: boolean;
   sortYearStatus: boolean;
   books: IBook[];
-  ids: string[];
   getBookById: (id: string) => IBook;
   searchBooks: (input: string) => Promise<void>;
   filterByCategories: (ids: string[]) => void;
@@ -33,7 +20,6 @@ interface IBookContext {
   getBooks: () => Promise<void>;
   sortByAlphabet: () => void;
   sortByReleaseYear: () => void;
-  dispatch: Dispatch<BooksAction>;
 }
 
 interface IBookProvider {
@@ -41,18 +27,11 @@ interface IBookProvider {
 }
 
 // Create books context with initial value
-export const BooksContext: Context<IBookContext> = createContext({
-  books: [],
-  ids: [],
-  searchItems: () => {},
-} as unknown as IBookContext);
+export const BooksContext: Context<IBookContext> = createContext({} as unknown as IBookContext);
 
 // Book provider
 export const BooksProvider = ({ children }: IBookProvider) => {
   const [state, dispatch] = useReducer(booksReducer, initialState);
-
-  const [searchBooksIds, setSearchBooksIds] = useState<string[]>();
-  const [filterBookIds, setFilterBookIds] = useState<string[]>();
 
   // Get data from server
   const getBooks = async (): Promise<void> => {
@@ -63,14 +42,13 @@ export const BooksProvider = ({ children }: IBookProvider) => {
         type: ACTIONS.GET_BOOKS,
         payload: {
           books: result,
-          ids: getIdsFromList(result),
         },
       });
     } catch (error) {
       if (error instanceof Error) {
         console.error(error.message);
       }
-      alert(ERROR_MESSAGES);
+      alert(ERROR_MESSAGE);
     }
   };
 
@@ -86,26 +64,17 @@ export const BooksProvider = ({ children }: IBookProvider) => {
     try {
       const result: IBook[] = await getData(generateUrl({ searchInput: input }));
 
-      let bookIds = getIdsFromList(result);
-      setSearchBooksIds(bookIds);
-
-      // Find searchBooksIds matching filterBookIds
-      if (filterBookIds) {
-        bookIds = bookIds.filter((id) => filterBookIds.indexOf(id) !== -1);
-      }
-
       dispatch({
         type: ACTIONS.SEARCH_BOOKS,
         payload: {
           books: result,
-          ids: bookIds,
         },
       });
     } catch (error) {
       if (error instanceof Error) {
         console.error(error.message);
       }
-      alert(ERROR_MESSAGES);
+      alert(ERROR_MESSAGE);
     }
   };
 
@@ -114,26 +83,17 @@ export const BooksProvider = ({ children }: IBookProvider) => {
     try {
       const result: IBook[] = await getData(generateUrl({ categoryIds: ids }));
 
-      let bookIds = getIdsFromList(result);
-      setFilterBookIds(bookIds);
-
-      // Find filterBookIds matching searchBooksIds
-      if (searchBooksIds) {
-        bookIds = bookIds.filter((id) => searchBooksIds.indexOf(id) !== -1);
-      }
-
       dispatch({
         type: ACTIONS.FILTER_BY_CATEGORIES,
         payload: {
           books: result,
-          ids: bookIds,
         },
       });
     } catch (error) {
       if (error instanceof Error) {
         console.error(error.message);
       }
-      alert(ERROR_MESSAGES);
+      alert(ERROR_MESSAGE);
     }
   };
 
@@ -157,7 +117,7 @@ export const BooksProvider = ({ children }: IBookProvider) => {
     dispatch({
       type: ACTIONS.SORT_BY_ALPHABET,
       payload: {
-        ids: getIdsFromList(result),
+        books: result,
         sortNameStatus: !state.sortNameStatus,
       },
     });
@@ -173,7 +133,7 @@ export const BooksProvider = ({ children }: IBookProvider) => {
     dispatch({
       type: ACTIONS.SORT_BY_YEAR,
       payload: {
-        ids: getIdsFromList(result),
+        books: result,
         sortYearStatus: !state.sortYearStatus,
       },
     });

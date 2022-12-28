@@ -34,6 +34,9 @@ Deletable.args = {
   adornments: 'endAdornments',
   label: 'Romance',
   endAdornments: <DeleteIcon />,
+  onClick: () => {
+    alert('Close selected item');
+  },
 };
 
 const Filter = Template.bind({});
@@ -43,6 +46,9 @@ Filter.args = {
   adornments: 'startAdornments',
   label: 'filter',
   startAdornments: <FilterIcon />,
+  onClick: () => {
+    alert('Click item');
+  },
 };
 
 export { Deletable, Filter };

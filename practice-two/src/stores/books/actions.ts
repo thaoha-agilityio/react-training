@@ -5,14 +5,6 @@ export type GetBooks = {
   type: ACTIONS.GET_BOOKS;
   payload: {
     books: IBook[];
-    ids: string[];
-  };
-};
-
-export type GetBookById = {
-  type: ACTIONS.GET_BOOK_BY_ID;
-  payload: {
-    book: IBook;
   };
 };
 
@@ -20,7 +12,6 @@ export type SearchBook = {
   type: ACTIONS.SEARCH_BOOKS;
   payload: {
     books: IBook[];
-    ids: string[];
   };
 };
 
@@ -28,7 +19,6 @@ export type FilterByCategories = {
   type: ACTIONS.FILTER_BY_CATEGORIES;
   payload: {
     books: IBook[];
-    ids: string[];
   };
 };
 
@@ -42,7 +32,7 @@ export type ChangeGridView = {
 export type SortByAlphabet = {
   type: ACTIONS.SORT_BY_ALPHABET;
   payload: {
-    ids: string[];
+    books: IBook[];
     sortNameStatus: boolean;
   };
 };
@@ -50,14 +40,13 @@ export type SortByAlphabet = {
 export type SortByReleaseYear = {
   type: ACTIONS.SORT_BY_YEAR;
   payload: {
-    ids: string[];
+    books: IBook[];
     sortYearStatus: boolean;
   };
 };
 
 export type BooksAction =
   | GetBooks
-  | GetBookById
   | SearchBook
   | FilterByCategories
   | ChangeGridView

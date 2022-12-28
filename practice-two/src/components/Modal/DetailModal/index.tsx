@@ -4,35 +4,31 @@ import { ThemeContext } from '@/contexts/ThemeContext ';
 import Avatar from '../../Avatar';
 import Button from '../../Button';
 import Chip from '../../Chip';
-import { LightIcon, MoonIcon, XmarkIcon } from '../../Icon';
+import { LightIcon, MoonIcon, XmarkIcon } from '@/components/Icon';
 
 import { IBook } from '@/types/book';
-import { KEY_NAME_ESC } from '@/constants/actions';
 
 import './index.css';
 
 interface IPops {
   book: IBook;
   onCloseModal: () => void;
+  onCloseByKeyboard: (event: KeyboardEvent) => void;
 }
 
 const DetailModal = ({
   book: { name, avatar, author, description, publishers, published },
   onCloseModal,
+  onCloseByKeyboard,
 }: IPops) => {
   const { toggleTheme, isDarkMode } = useContext(ThemeContext);
 
   // Close modal by keyboard
   useEffect(() => {
-    const handleCloseModal = (event: KeyboardEvent) => {
-      if (event.keyCode === KEY_NAME_ESC) {
-        onCloseModal();
-      }
-    };
+    window.addEventListener('keydown', onCloseByKeyboard);
 
-    window.addEventListener('keydown', handleCloseModal);
-
-    return () => window.removeEventListener('keydown', handleCloseModal);
+    // Remove event before closing modal
+    return () => window.removeEventListener('keydown', onCloseByKeyboard);
   }, []);
 
   return (
@@ -40,7 +36,13 @@ const DetailModal = ({
       <div className="detail-modal">
         <div className="modal-header">
           <p className="modal-title">{name}</p>
-          <Button variant="primary" icon={<XmarkIcon />} onClick={onCloseModal} />
+          <Button
+            variant="primary"
+            icon={<XmarkIcon />}
+            onClick={onCloseModal}
+            size="small"
+            styles="normal"
+          />
         </div>
 
         <div className="modal-body">
@@ -64,14 +66,15 @@ const DetailModal = ({
 
         <div className="modal-footer">
           <div className="modal-wrapper">
-            <Button variant="secondary" text="esc" size="medium" />
+            <Button variant="secondary" text="esc" size="medium" styles="normal" />
             <p>To Escape</p>
           </div>
           <div className="btn-background">
             <Button
               variant="primary"
               icon={isDarkMode ? <MoonIcon /> : <LightIcon />}
-              size="large"
+              size="small"
+              styles="normal"
               onClick={toggleTheme}
             />
           </div>

@@ -24,21 +24,18 @@ const booksReducer = (state: BooksState = initialState, actions: BooksAction): B
       return {
         ...state,
         books: actions.payload.books,
-        ids: actions.payload.ids,
       };
 
     case ACTIONS.SEARCH_BOOKS:
       return {
         ...state,
         books: actions.payload.books,
-        ids: actions.payload.ids,
       };
 
     case ACTIONS.FILTER_BY_CATEGORIES:
       return {
         ...state,
         books: actions.payload.books,
-        ids: actions.payload.ids,
       };
 
     case ACTIONS.CHANGE_GRID_VIEW:
@@ -50,16 +47,17 @@ const booksReducer = (state: BooksState = initialState, actions: BooksAction): B
     case ACTIONS.SORT_BY_ALPHABET:
       return {
         ...state,
-        ids: actions.payload.ids,
+        books: actions.payload.books,
         sortNameStatus: actions.payload.sortNameStatus,
       };
 
     case ACTIONS.SORT_BY_YEAR:
       return {
         ...state,
-        ids: actions.payload.ids,
+        books: actions.payload.books,
         sortYearStatus: actions.payload.sortYearStatus,
       };
+
     default:
       return state;
   }

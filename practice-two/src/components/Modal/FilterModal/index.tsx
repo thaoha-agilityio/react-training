@@ -32,7 +32,7 @@ const FilterModal = ({ onCloseModal }: IProps) => {
         <p className="options">Display Options</p>
         <div className="btn-wrapper">
           <div className={`optional-layout ${isGridView ? 'active' : ''}`} onClick={changeGridView}>
-            <Button variant="primary" icon={<GridIcon />} styles="circle" />
+            <Button variant="primary" icon={<GridIcon />} styles="circle" size="small" />
             <p>Grid</p>
           </div>
 
@@ -41,6 +41,7 @@ const FilterModal = ({ onCloseModal }: IProps) => {
               variant="primary"
               icon={<ListIcon />}
               styles="circle"
+              size="small"
               onClick={handleChangeGridView}
             />
             <p>List</p>

@@ -1,4 +1,4 @@
-import { memo, useContext } from 'react';
+import { memo, useCallback, useContext, useMemo } from 'react';
 
 import { CategoriesContext } from '@/contexts/CategoriesContext';
 import { generateColor } from '@/helper/randomColor';
@@ -24,13 +24,15 @@ const Category = ({
     onSelectCategory(id);
   };
 
+  const color = useMemo(() => generateColor(), []);
+
   return (
     <div
       className={`category-wrapper ${selectedIds?.includes(id) ? 'active-category' : ''}`}
       onClick={handleSelectCategory}
     >
       <div className="category">
-        <div className="thumbnail" style={{ backgroundColor: generateColor() }}>
+        <div className="thumbnail" style={{ backgroundColor: color }}>
           <p>{name.substring(0, 2)}</p>
         </div>
         <p className="category-name">{name}</p>
