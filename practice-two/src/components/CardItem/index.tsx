@@ -7,18 +7,17 @@ import { IBook } from '@/types/book';
 import './index.css';
 
 interface IProps {
-  id: string;
   item: IBook;
   onShowModal: (id: string) => void;
 }
 
-const CardItem = ({ id, onShowModal, item }: IProps): React.ReactElement => {
+const CardItem = ({ onShowModal, item }: IProps): React.ReactElement => {
   const handleClick = (): void => {
-    onShowModal(id);
+    onShowModal(item.id);
   };
 
   return (
-    <div className="card-item" data-id={id} onClick={handleClick}>
+    <div className="card-item" onClick={handleClick}>
       <div className="card-image-wrapper">
         <Avatar url={item.avatar} alt={item.name} size="small" />
       </div>

@@ -14,7 +14,7 @@ interface IProps {
 
 const SubHeader = ({ onShowModal }: IProps): React.ReactElement => {
   const { selectedIds, getCategoryById, removeSelectedCategory } = useContext(CategoriesContext);
-  const { filterByCategories, getBooks, ids } = useContext(BooksContext);
+  const { filterByCategories, getBooks, books } = useContext(BooksContext);
 
   const categories = getCategoryById(selectedIds);
 
@@ -51,7 +51,7 @@ const SubHeader = ({ onShowModal }: IProps): React.ReactElement => {
           </div>
         ))}
         <ArrowRightIcon />
-        <p className="result">Showing {ids.length} Result(s)</p>
+        <p className="result">Showing {books.length} Result(s)</p>
       </div>
 
       <div>

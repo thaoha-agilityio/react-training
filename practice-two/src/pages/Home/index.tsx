@@ -15,7 +15,7 @@ import { KEY_NAME_ESC } from '@/constants/actions';
 import './index.css';
 
 const Home = (): JSX.Element => {
-  const { ids, searchBooks, getBookById, isGridView } = useContext(BooksContext);
+  const { searchBooks, getBookById, isGridView } = useContext(BooksContext);
   const { categories } = useContext(CategoriesContext);
   const { isDarkMode } = useContext(ThemeContext);
 
@@ -76,7 +76,7 @@ const Home = (): JSX.Element => {
         <div className="contents">
           <SideBar categories={categories} />
 
-          <Books ids={ids} onShowModal={handleShowModal} isGridView={isGridView} />
+          <Books onShowModal={handleShowModal} isGridView={isGridView} />
 
           {isModalFilterOpen && <FilterModal onCloseModal={handleCloseFilterModal} />}
         </div>
