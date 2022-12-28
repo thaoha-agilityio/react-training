@@ -6,7 +6,6 @@ import { IBook } from '@/types/book';
 import { booksReducer, initialState } from '@/stores/books/reducers';
 import { ACTIONS } from '@/constants/actions';
 import { generateUrl } from '@/helper/generateUrl';
-import { getIdsFromList } from '@/helper/getIds';
 import { ERROR_MESSAGE } from '@/constants/messages';
 
 interface IBookContext {
@@ -33,7 +32,6 @@ export const BooksContext: Context<IBookContext> = createContext({} as unknown a
 // Book provider
 export const BooksProvider = ({ children }: IBookProvider) => {
   const [state, dispatch] = useReducer(booksReducer, initialState);
-  const [filterBookIds, setFilterBookIds] = useState<string[]>();
 
   // Get data from server
   const getBooks = async (): Promise<void> => {
@@ -66,12 +64,6 @@ export const BooksProvider = ({ children }: IBookProvider) => {
     try {
       const result: IBook[] = await getData(generateUrl({ searchInput: input }));
 
-      const bookIds = getIdsFromList(result);
-      // Get ids from result
-      console.log(state.books);
-      const booksId = state.books.map((i) => i.id);
-      const filtered = result.filter((item) => booksId.includes(item.id));
-
       dispatch({
         type: ACTIONS.SEARCH_BOOKS,
         payload: {
@@ -90,14 +82,6 @@ export const BooksProvider = ({ children }: IBookProvider) => {
   const filterByCategories = async (ids: string[]): Promise<void> => {
     try {
       const result: IBook[] = await getData(generateUrl({ categoryIds: ids }));
-
-      const bookIds = getIdsFromList(result);
-
-      setFilterBookIds(bookIds);
-
-      // console.log(filterBookIds);
-
-      // Find filterBookIds matching searchBooksIds
 
       dispatch({
         type: ACTIONS.FILTER_BY_CATEGORIES,
