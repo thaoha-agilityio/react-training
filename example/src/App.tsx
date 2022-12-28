@@ -8,6 +8,7 @@ import { Counter } from "./components/useReducer";
 import { CheckRender } from "./components/useCallback";
 
 import "./App.css";
+import { MyComponent } from "./advanced/code-spliting";
 
 function App() {
   const [isShow, setIsShow] = useState(false);
@@ -18,7 +19,7 @@ function App() {
 
   return (
     <div className="App">
-      <CountTime />
+      {/* <CountTime />
       <CountTimeClass />
       <Cars />
       <Example />
@@ -29,7 +30,9 @@ function App() {
       {isShow && <ShowImage />}
       <Countdown />
       <Counter />
-      <CheckRender />
+      <CheckRender /> */}
+
+      <MyComponent />
     </div>
   );
 }
