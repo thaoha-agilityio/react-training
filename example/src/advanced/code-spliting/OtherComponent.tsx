@@ -1,5 +1,3 @@
-import React from "react";
-
 const OtherComponent = () => <h1>Hello World</h1>;
 
 export default OtherComponent;
