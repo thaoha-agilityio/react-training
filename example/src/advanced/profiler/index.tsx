@@ -13,10 +13,13 @@ export const Form = (props: FormProp) => {
   };
   return (
     <div>
-      <label htmlFor={labelName}>
-        {labelName}:
-        <input type="text" value={inputValue} onChange={handleChange} />
-      </label>
+      <label htmlFor={labelName}>{labelName}:</label>
+      <input
+        type="text"
+        value={inputValue}
+        id={labelName}
+        onChange={handleChange}
+      />
     </div>
   );
 };
