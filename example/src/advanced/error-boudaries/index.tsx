@@ -26,7 +26,7 @@ export class ErrorBoundary extends Component<ErrorBoundaryProp, StateProp> {
     if (this.state.errorInfo) {
       return (
         <div>
-          <h2>An Error Has Occured</h2>
+          <h2>An Error Has Occurred</h2>
           <details>
             <p>{this.state.error && this.state.error.toString()}</p>
             <p>{this.state.errorInfo.componentStack}</p>
