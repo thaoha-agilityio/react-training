@@ -9,9 +9,10 @@ import { CheckRender } from "./components/useCallback";
 
 import { MyComponent } from "./advanced/code-spliting";
 import { ExampleErrorBoundary } from "./advanced/error-boudaries";
+import Home from "./advanced/HOC/Home";
+import { ExampleProfiler } from "./advanced/profiler";
 
 import "./App.css";
-import Home from "./advanced/HOC/Home";
 
 function App() {
   const [isShow, setIsShow] = useState(false);
@@ -38,6 +39,7 @@ function App() {
       <MyComponent />
       <ExampleErrorBoundary />
       <Home />
+      <ExampleProfiler />
     </div>
   );
 }
