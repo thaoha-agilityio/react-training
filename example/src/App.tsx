@@ -1,14 +1,14 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
-import { Cars, CountTime, CountTimeClass } from "./components/useState";
-import { Example, Post, ShowImage } from "./components/useEffect";
-import { ThemedButton } from "./components/useContext/useContext";
-import { Countdown } from "./components/useRef";
-import { Counter } from "./components/useReducer";
-import { CheckRender } from "./components/useCallback";
+// import { Cars, CountTime, CountTimeClass } from "./components/useState";
+// import { Example, Post, ShowImage } from "./components/useEffect";
+// import { ThemedButton } from "./components/useContext/useContext";
+// import { Countdown } from "./components/useRef";
+// import { Counter } from "./components/useReducer";
+// import { CheckRender } from "./components/useCallback";
 
-import { MyComponent } from "./advanced/code-spliting";
-import { ExampleErrorBoundary } from "./advanced/error-boudaries";
+import { MyComponent } from "./advanced/code-splitting";
+import { ExampleErrorBoundary } from "./advanced/error-boundaries";
 import Home from "./advanced/HOC/Home";
 import { ExampleProfiler } from "./advanced/profiler";
 
