@@ -14,6 +14,7 @@ import { ExampleProfiler } from "./advanced/profiler";
 
 import "./App.css";
 import FileInput from "./advanced/uncontrolled-component";
+import { Count1, Count2 } from "./advanced/custom-hook/Count";
 
 function App() {
   const [isShow, setIsShow] = useState(false);
@@ -42,6 +43,8 @@ function App() {
       <Home />
       <ExampleProfiler />
       <FileInput />
+      <Count1 />
+      <Count2 />
     </div>
   );
 }
