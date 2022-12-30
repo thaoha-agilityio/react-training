@@ -13,6 +13,7 @@ import Home from "./advanced/HOC/Home";
 import { ExampleProfiler } from "./advanced/profiler";
 
 import "./App.css";
+import FileInput from "./advanced/uncontrolled-component";
 
 function App() {
   const [isShow, setIsShow] = useState(false);
@@ -40,6 +41,7 @@ function App() {
       <ExampleErrorBoundary />
       <Home />
       <ExampleProfiler />
+      <FileInput />
     </div>
   );
 }
