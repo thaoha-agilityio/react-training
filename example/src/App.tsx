@@ -11,10 +11,11 @@ import { MyComponent } from "./advanced/code-splitting";
 import { ExampleErrorBoundary } from "./advanced/error-boundaries";
 import Home from "./advanced/HOC/Home";
 import { ExampleProfiler } from "./advanced/profiler";
-
-import "./App.css";
 import FileInput from "./advanced/uncontrolled-component";
 import { Count1, Count2 } from "./advanced/custom-hook/Count";
+import { Profile } from "./advanced/swr";
+
+import "./App.css";
 
 function App() {
   const [isShow, setIsShow] = useState(false);
@@ -45,6 +46,7 @@ function App() {
       <FileInput />
       <Count1 />
       <Count2 />
+      <Profile />
     </div>
   );
 }
