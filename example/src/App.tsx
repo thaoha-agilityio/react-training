@@ -16,6 +16,7 @@ import { Count1, Count2 } from "./advanced/custom-hook/Count";
 import { Profile } from "./advanced/swr";
 
 import "./App.css";
+import { Greeting } from "./advanced/unit-test/greeting";
 
 function App() {
   const [isShow, setIsShow] = useState(false);
@@ -47,6 +48,7 @@ function App() {
       <Count1 />
       <Count2 />
       <Profile />
+      <Greeting />
     </div>
   );
 }
