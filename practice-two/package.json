@@ -14,14 +14,14 @@
     "axios": "^1.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router": "^6.6.1",
-    "storybook-addon-react-router-v6": "^0.2.1"
+    "react-router": "^6.6.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.5",
     "@storybook/addon-actions": "^6.5.13",
     "@storybook/addon-essentials": "^6.4.22",
     "@storybook/addon-interactions": "^6.5.13",
+    "storybook-addon-react-router-v6": "^0.2.1",
     "@storybook/addon-links": "^6.5.13",
     "@storybook/builder-vite": "^0.1.37",
     "@storybook/react": "^6.1.21",
