@@ -3,15 +3,26 @@ import styled from "styled-components";
 interface StyledButtonProps {
   variant: "primary" | "secondary";
   size: "small" | "medium" | "large";
-  styles: "normal" | "circle";
 }
 
-export const StyledButton = styled.button<StyledButtonProps>`
+export const BaseButton = styled.button<StyledButtonProps>`
+  font-family: "DM_Sans";
+  font-weight: 500;
   border: none;
-  cursor: pointer;
   border-radius: 5px;
-  color: var(--color-secondary);
   padding: 5px 10px;
+  text-transform: uppercase;
+  cursor: pointer;
+
+  color: var(
+    ${(props) => {
+      if (props.variant === "primary") {
+        return "--color-primary-50";
+      }
+
+      return `--color-secondary`;
+    }}
+  );
 
   background-color: var(
     ${(props) => {
@@ -48,4 +59,13 @@ export const StyledButton = styled.button<StyledButtonProps>`
       }
     }}
   );
+`;
+
+export const CircleButton = styled(BaseButton)`
+  border-radius: 50%;
+  text-align: center;
+  padding-top: 4px;
+  border: 1px solid #e3e6eb;
+  width: 40px;
+  height: 40px;
 `;
