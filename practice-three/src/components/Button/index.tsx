@@ -1,11 +1,11 @@
 import { memo, ReactNode } from "react";
-import { StyledButton } from "./index.styled";
-import "./index.css";
+
+import { CircleButton, BaseButton } from "./index.styled";
 
 interface IProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  isCircle: boolean;
   variant: "primary" | "secondary";
   size: "small" | "medium" | "large";
-  styles: "normal" | "circle";
   text?: string;
   icon?: ReactNode;
 }
@@ -15,12 +15,20 @@ const Button = ({
   size,
   icon,
   text,
-  styles,
+  isCircle,
 }: IProps): React.ReactElement => (
-  <StyledButton variant={variant} size={size} styles={styles}>
-    {icon}
-    {text}
-  </StyledButton>
+  <>
+    {isCircle ? (
+      <CircleButton variant={variant} size={size}>
+        {icon}
+      </CircleButton>
+    ) : (
+      <BaseButton variant={variant} size={size}>
+        {icon}
+        {text}
+      </BaseButton>
+    )}
+  </>
 );
 
 export default memo(Button);
