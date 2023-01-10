@@ -16,14 +16,15 @@ const Button = ({
   icon,
   text,
   isCircle,
+  ...rest
 }: IProps): React.ReactElement => (
   <>
     {isCircle ? (
-      <CircleButton variant={variant} size={size}>
+      <CircleButton variant={variant} size={size} {...rest}>
         {icon}
       </CircleButton>
     ) : (
-      <BaseButton variant={variant} size={size}>
+      <BaseButton variant={variant} size={size} {...rest}>
         {icon}
         {text}
       </BaseButton>
