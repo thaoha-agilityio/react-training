@@ -18,6 +18,7 @@ const JustifyBetweenStyle = css`
 const ColumnCenterStyle = css`
   display: flex;
   flex-direction: column;
+  align-items: center;
 `;
 
 export { Container, AlignCenterStyle, JustifyBetweenStyle, ColumnCenterStyle };
