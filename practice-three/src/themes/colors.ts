@@ -1,4 +1,4 @@
-export const color = {
+export const colors = {
   dark: {
     50: "#222531",
     100: "#14282f",
