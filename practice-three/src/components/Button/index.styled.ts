@@ -7,7 +7,7 @@ interface StyledButtonProps {
   height?: string;
 }
 
-export const IconButton = styled.button<StyledButtonProps>`
+export const IconButtonStyled = styled.button<StyledButtonProps>`
   ${(props) => props.width && `width:${props.width}`};
   ${(props) => props.height && `height:${props.height}`};
   background-color: ${colors.transparent};
@@ -15,7 +15,7 @@ export const IconButton = styled.button<StyledButtonProps>`
   cursor: pointer;
 `;
 
-export const CircleButton = styled(IconButton)`
+export const CircleButtonStyled = styled(IconButtonStyled)`
   border-radius: 50%;
   border: 1px solid ${colors.gray[20]};
 `;

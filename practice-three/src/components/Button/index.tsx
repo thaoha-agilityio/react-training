@@ -1,6 +1,6 @@
 import { memo, ReactNode } from "react";
 
-import { CircleButton, IconButton } from "./index.styled";
+import { CircleButtonStyled, IconButtonStyled } from "./index.styled";
 
 interface IProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   isCircle: boolean;
@@ -18,13 +18,13 @@ const Button = ({
 }: IProps): React.ReactElement => (
   <>
     {isCircle ? (
-      <CircleButton width={width} height={height} {...rest}>
+      <CircleButtonStyled width={width} height={height} {...rest}>
         {icon}
-      </CircleButton>
+      </CircleButtonStyled>
     ) : (
-      <IconButton width={width} height={height} {...rest}>
+      <IconButtonStyled width={width} height={height} {...rest}>
         {icon}
-      </IconButton>
+      </IconButtonStyled>
     )}
   </>
 );
