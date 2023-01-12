@@ -1,33 +1,30 @@
 import { memo, ReactNode } from "react";
 
-import { CircleButton, BaseButton } from "./index.styled";
+import { CircleButton, IconButton } from "./index.styled";
 
 interface IProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   isCircle: boolean;
-  variant: "primary" | "secondary";
-  size: "small" | "medium" | "large";
-  text?: string;
-  icon?: ReactNode;
+  height?: string;
+  width?: string;
+  icon: ReactNode;
 }
 
 const Button = ({
-  variant,
-  size,
+  width = "40px",
+  height = "40px",
   icon,
-  text,
   isCircle,
   ...rest
 }: IProps): React.ReactElement => (
   <>
     {isCircle ? (
-      <CircleButton variant={variant} size={size} {...rest}>
+      <CircleButton width={width} height={height} {...rest}>
         {icon}
       </CircleButton>
     ) : (
-      <BaseButton variant={variant} size={size} {...rest}>
+      <IconButton width={width} height={height} {...rest}>
         {icon}
-        {text}
-      </BaseButton>
+      </IconButton>
     )}
   </>
 );
