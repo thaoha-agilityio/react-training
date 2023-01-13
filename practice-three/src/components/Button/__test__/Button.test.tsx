@@ -1,9 +1,13 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
 import { ListIcon } from "../../Icon";
 
 import Button from "..";
+
+const mockProps = {
+  onClick: jest.fn(),
+};
 
 describe("testing button component", () => {
   test("testing icon button", () => {
@@ -31,5 +35,22 @@ describe("testing button component", () => {
 
     expect(button).toBeTruthy();
     expect(tree).toMatchSnapshot();
+  });
+
+  test("testing  onClick event and expect mock function", () => {
+    render(
+      <Button
+        aria-label="icon"
+        isCircle={true}
+        icon={<ListIcon />}
+        {...mockProps}
+      />
+    );
+
+    const button = screen.getByRole("button");
+
+    fireEvent.click(button);
+
+    expect(mockProps.onClick).toHaveBeenCalledTimes(1);
   });
 });
