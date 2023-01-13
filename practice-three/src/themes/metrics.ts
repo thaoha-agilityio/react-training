@@ -51,4 +51,10 @@ const shadows = {
   md: "0px 0px 4px rgba(0, 0, 0, 0.12)",
 };
 
-export { widths, heights, margins, paddings, shadows };
+const borderRadius = {
+  none: 0,
+  tiny: 5,
+  xs: 7,
+};
+
+export { widths, heights, margins, paddings, shadows, borderRadius };
