@@ -4,14 +4,14 @@ import { CircleButtonStyled, IconButtonStyled } from "./index.styled";
 
 interface IProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   isCircle: boolean;
-  height?: string;
-  width?: string;
+  height?: number;
+  width?: number;
   icon: ReactNode;
 }
 
 const Button = ({
-  width = "40px",
-  height = "40px",
+  width = 40,
+  height = 40,
   icon,
   isCircle,
   ...rest

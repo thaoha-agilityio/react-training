@@ -3,13 +3,13 @@ import styled from "styled-components";
 import { colors } from "../../themes";
 
 interface StyledButtonProps {
-  width?: string;
-  height?: string;
+  width?: number;
+  height?: number;
 }
 
 export const IconButtonStyled = styled.button<StyledButtonProps>`
-  ${(props) => props.width && `width:${props.width}`};
-  ${(props) => props.height && `height:${props.height}`};
+  ${(props) => props.width && `width:${props.width}px`};
+  ${(props) => props.height && `height:${props.height}px`};
   background-color: ${colors.transparent};
   border: none;
   cursor: pointer;
