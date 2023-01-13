@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { fonts, colors, metrics } from "@/themes";
+import { fonts, colors, metrics } from "../../../../themes";
 
 export const LabelButtonStyled = styled.button`
   width: ${metrics.widths.tiny}px;
