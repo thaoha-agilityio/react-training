@@ -2,7 +2,7 @@ export const colors = {
   dark: {
     50: "#222531",
     100: "#14282f",
-    200: "#000000",
+    200: "#000",
   },
   gray: {
     20: "#e5e5e5",
@@ -21,5 +21,5 @@ export const colors = {
     400: "#770dff",
   },
   transparent: "transparent",
-  white: "#ffffff",
+  white: "#fff",
 };
