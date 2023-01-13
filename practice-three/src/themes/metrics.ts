@@ -1,5 +1,6 @@
 const widths = {
   xxs: "40px",
+  tiny: "45px",
   xs: "123px",
   sm: "201px",
   md: "236px",
@@ -10,7 +11,8 @@ const widths = {
 };
 
 const heights = {
-  xxs: "40px",
+  xxs: "25px",
+  tiny: "40px",
   xs: "45px",
   sm: "56px",
   md: "114px",
@@ -32,7 +34,7 @@ const margins = {
 };
 
 const paddings = {
-  xxs: "5x",
+  xxs: "5px",
   xs: "8px",
   sm: "10px",
   md: "12px",
@@ -43,4 +45,10 @@ const paddings = {
   "4xl": "45px",
 };
 
-export { widths, heights, margins, paddings };
+const shadows = {
+  xs: "0 0 0 1px rgba(0, 0, 0, 0.05)",
+  sm: "0 1px 2px 0 rgba(0, 0, 0, 0.05)",
+  md: "0px 0px 4px rgba(0, 0, 0, 0.12)",
+};
+
+export { widths, heights, margins, paddings, shadows };
