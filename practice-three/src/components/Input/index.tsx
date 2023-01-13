@@ -34,7 +34,6 @@ const Input = ({
         height={height}
         onChange={onChange}
         borderRadius={borderRadius}
-        placeholder="Search book"
         pLeft={pLeft}
         {...rest}
       />
