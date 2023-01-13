@@ -1,21 +1,21 @@
 const fontSizes = {
-  xxs: "11px",
-  xs: "12px",
-  sm: "13px",
-  md: "14px",
-  lg: "18px",
-  xl: "24px",
-  xxl: "36px",
+  xxs: 11,
+  xs: 12,
+  sm: 13,
+  md: 14,
+  lg: 18,
+  xl: 24,
+  xxl: 36,
 };
 
 const lineHeights = {
-  none: "1",
-  shorter: "1.15",
-  short: "1.2",
-  normal: "1.38",
-  base: "1.55",
-  tall: "1.7",
-  taller: "2",
+  xxs: "1",
+  tiny: "1.15",
+  xs: "1.2",
+  sm: "1.38",
+  md: "1.55",
+  lg: "1.7",
+  xl: "2",
 };
 
 const fontFamilies = {
