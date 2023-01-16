@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { metrics, fonts } from "../../themes";
+import { metrics, fonts, colors } from "../../themes";
 
 interface StyledInputProps {
   width: number;
@@ -33,7 +33,7 @@ const InputStyled = styled.input<StyledInputProps>`
   border: none;
 
   &::placeholder {
-    color: rgba(0, 0, 0, 0.24);
+    color: ${colors.gray[10]};
   }
 `;
 
