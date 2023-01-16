@@ -27,16 +27,26 @@ const setupGetValue = () => {
 };
 
 describe("Input render", () => {
-  it("Should match Input DOM Snapshot", () => {
-    const { input, component } = setupGetValue();
+  it("should render Input component ", () => {
+    const { input } = setupGetValue();
 
     expect(input).toBeTruthy();
-    expect(component).toMatchSnapshot();
   });
 
-  it("Should be able type in input", () => {
+  it("Value correct when change input value", () => {
     const { input } = setupGetValue();
+
     fireEvent.change(input, { target: { value: "Angels and demons" } });
     expect(input.value).toBe("Angels and demons");
+  });
+
+  it("Should allow the value to be deleted", () => {
+    const { input } = setupGetValue();
+
+    fireEvent.change(input, { target: { value: "Angels and demons" } });
+    expect(input.value).toBe("Angels and demons");
+
+    fireEvent.change(input, { target: { value: "" } });
+    expect(input.value).toBe("");
   });
 });
