@@ -7,9 +7,9 @@ interface StyledAvatarProps {
 }
 
 const AvatarStyled = styled.img<StyledAvatarProps>`
-  ${(props) => props.width && `width:${props.width}px`};
-  ${(props) => props.height && `height:${props.height}px`};
-  ${(props) => props.borderRadius && ` border-radius:${props.borderRadius}px`};
+  ${(props) => `width:${props.width}px`};
+  ${(props) => `height:${props.height}px`};
+  ${(props) => `border-radius:${props.borderRadius}px`};
 `;
 
 export { AvatarStyled };
