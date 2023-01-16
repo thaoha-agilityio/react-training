@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 interface StyledAvatarProps {
-  width: number;
-  height: number;
+  width?: number;
+  height?: number;
   borderRadius: number;
 }
 

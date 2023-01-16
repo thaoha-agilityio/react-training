@@ -5,14 +5,14 @@ import { THUMBNAIL } from "../../constants/books";
 interface IProps {
   url: string;
   alt: string;
-  width: number;
-  height: number;
+  width?: number;
+  height?: number;
   borderRadius: number;
 }
 
 const Avatar = ({
-  width,
-  height,
+  width = 201,
+  height = 202,
   alt,
   url = THUMBNAIL,
   borderRadius,
