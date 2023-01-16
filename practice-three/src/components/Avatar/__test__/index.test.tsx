@@ -1,7 +1,5 @@
 import { render, screen } from "@testing-library/react";
 
-import "@testing-library/jest-dom";
-
 import { THUMBNAIL } from "../../../constants/books";
 
 import Avatar from "..";
@@ -16,10 +14,10 @@ const mockProps = {
 
 describe("Avatar render", () => {
   test("Ensure image avatar render correctly", () => {
-    const tree = render(<Avatar {...mockProps} />);
+    render(<Avatar {...mockProps} />);
     const imageAvatar = screen.getByRole("img");
 
-    expect(imageAvatar).toBeTruthy();
-    expect(tree).toMatchSnapshot();
+    expect(imageAvatar.getAttribute("src")).toBe(THUMBNAIL);
+    expect(imageAvatar.getAttribute("alt")).toBe("avatar");
   });
 });
