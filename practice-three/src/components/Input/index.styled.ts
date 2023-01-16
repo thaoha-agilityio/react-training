@@ -3,10 +3,10 @@ import styled from "styled-components";
 import { metrics, fonts, colors } from "../../themes";
 
 interface StyledInputProps {
-  width: number;
-  height: number;
   borderRadius: number;
   pLeft: number;
+  width?: number;
+  height?: number;
 }
 
 const InputGroupStyled = styled.div`
@@ -14,7 +14,7 @@ const InputGroupStyled = styled.div`
   position: relative;
 `;
 
-const InputLeftElementStyled = styled.div`
+const InputStartAdornmentStyled = styled.div`
   position: absolute;
   z-index: 1;
   padding-top: ${metrics.paddings.md}px;
@@ -22,10 +22,10 @@ const InputLeftElementStyled = styled.div`
 `;
 
 const InputStyled = styled.input<StyledInputProps>`
-  ${(props) => props.width && `width:${props.width}px`};
-  ${(props) => props.height && `height:${props.height}px`};
-  ${(props) => props.borderRadius && `border-radius:${props.borderRadius}px`};
-  ${(props) => props.pLeft && `padding-left:${props.pLeft}px`};
+  ${(props) => `width:${props.width}px`};
+  ${(props) => `height:${props.height}px`};
+  ${(props) => `border-radius:${props.borderRadius}px`};
+  ${(props) => `padding-left:${props.pLeft}px`};
   font-family: ${fonts.fontFamilies.primary};
   box-shadow: ${metrics.shadows.sm};
   font-size: ${fonts.fontSizes.sm}px;
@@ -37,4 +37,4 @@ const InputStyled = styled.input<StyledInputProps>`
   }
 `;
 
-export { InputGroupStyled, InputLeftElementStyled, InputStyled };
+export { InputGroupStyled, InputStartAdornmentStyled, InputStyled };

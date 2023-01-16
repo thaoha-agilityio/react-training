@@ -2,13 +2,13 @@ import { ComponentPropsWithRef, ReactNode } from "react";
 
 import {
   InputGroupStyled,
-  InputLeftElementStyled,
+  InputStartAdornmentStyled,
   InputStyled,
 } from "./index.styled";
 
 interface IProps extends Omit<ComponentPropsWithRef<"input">, "size"> {
-  width: number;
-  height: number;
+  width?: number;
+  height?: number;
   borderRadius: number;
   pLeft: number;
   children?: ReactNode;
@@ -16,10 +16,9 @@ interface IProps extends Omit<ComponentPropsWithRef<"input">, "size"> {
 }
 
 const Input = ({
-  width,
-  height,
+  width = 670,
+  height = 53,
   borderRadius,
-  type,
   pLeft,
   children,
   onChange,
@@ -27,9 +26,8 @@ const Input = ({
 }: IProps) => {
   return (
     <InputGroupStyled>
-      <InputLeftElementStyled children={children} />
+      <InputStartAdornmentStyled children={children} />
       <InputStyled
-        type={type}
         width={width}
         height={height}
         onChange={onChange}
