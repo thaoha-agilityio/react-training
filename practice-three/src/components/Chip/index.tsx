@@ -30,7 +30,7 @@ const Chip = ({
   fontWeight,
   onClick,
   ...rest
-}: IProps) => {
+}: IProps): React.ReactElement => {
   return (
     <ChipStyled width={width} height={height} onClick={onClick} {...rest}>
       {startAdornments && <Button isCircle={false} icon={startAdornments} />}
