@@ -1,11 +1,11 @@
-import { IBook } from "@/types/book";
 import Avatar from "../Avatar";
+import { Heading } from "../../styled-common/paragraph";
+import { IBook } from "@/types/book";
 import {
   CardItemStyled,
-  CardInfoStyled,
   CardImgWrapperStyled,
-  CardTitleStyled,
   CardContentStyled,
+  CardInfoStyled,
 } from "./index.styled";
 
 interface IProps {
@@ -13,14 +13,14 @@ interface IProps {
   onShowModal: (id: string) => void;
 }
 
-const CardItem = ({ item }: IProps) => {
+const CardItem = ({ item, onShowModal }: IProps): React.ReactElement => {
   return (
     <CardItemStyled data-testid="card-item">
       <CardImgWrapperStyled>
         <Avatar url={item.avatar} alt="avatar" borderRadius={5} />
       </CardImgWrapperStyled>
       <CardContentStyled>
-        <CardTitleStyled> {item.name}</CardTitleStyled>
+        <Heading> {item.name}</Heading>
         <CardInfoStyled>{item.author}</CardInfoStyled>
         <CardInfoStyled>{item.published}</CardInfoStyled>
       </CardContentStyled>

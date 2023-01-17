@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 import { ColumnCenterStyle } from "../../styled-common/layout";
 import { colors, fonts, metrics } from "../../themes";
+import { SubHeading } from "../../styled-common/paragraph";
 
 const CardItemStyled = styled.div`
   width: ${metrics.widths.lg}px;
@@ -26,16 +27,7 @@ const CardContentStyled = styled.div`
   font-weight: ${fonts.fontWeights.semiBold};
 `;
 
-const CardTitleStyled = styled.h2`
-  font-family: ${fonts.fontFamilies.primary};
-  font-size: ${fonts.fontSizes.lg}px;
-  line-height: ${fonts.lineHeights.md};
-`;
-
-const CardInfoStyled = styled.p`
-  font-family: ${fonts.fontFamilies.tertiary};
-  font-size: ${fonts.fontSizes.sm}px;
-  line-height: ${fonts.lineHeights.md};
+const CardInfoStyled = styled(SubHeading)`
   color: ${colors.gray[300]};
 `;
 
@@ -43,6 +35,5 @@ export {
   CardItemStyled,
   CardImgWrapperStyled,
   CardInfoStyled,
-  CardTitleStyled,
   CardContentStyled,
 };
