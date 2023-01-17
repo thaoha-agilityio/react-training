@@ -47,7 +47,7 @@ const paddings = {
 
 const shadows = {
   xs: "0 0 0 1px rgba(0, 0, 0, 0.05)",
-  sm: "0 1px 2px 0 rgba(0, 0, 0, 0.05)",
+  sm: "0px 0px 3px rgba(0, 0, 0, 0.1);",
   md: "0px 0px 4px rgba(0, 0, 0, 0.12)",
 };
 
