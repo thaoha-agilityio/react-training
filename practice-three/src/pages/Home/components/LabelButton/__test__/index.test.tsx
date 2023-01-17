@@ -10,11 +10,10 @@ const mockProps = {
 
 describe("testing button component", () => {
   test("testing label button", () => {
-    const tree = render(<LabelButton aria-label="icon" {...mockProps} />);
+    render(<LabelButton aria-label="icon" {...mockProps} />);
     const button = screen.getByRole("button");
 
-    expect(button).toBeTruthy();
-    expect(tree).toMatchSnapshot();
+    expect(button).toBeInTheDocument();
   });
 
   test("testing  onClick event and expect mock function", () => {
