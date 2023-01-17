@@ -11,6 +11,7 @@ const CardItemStyled = styled.div`
   ${ColumnCenterStyle}
   cursor: pointer;
 `;
+
 const CardImgWrapperStyled = styled.div`
   width: 249px;
   height: 238px;
