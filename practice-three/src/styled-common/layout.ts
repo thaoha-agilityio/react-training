@@ -10,14 +10,25 @@ const AlignCenterStyle = css`
   align-items: center;
 `;
 
-const JustifyBetweenStyle = css`
-  display: flex;
-  justify-content: space-between;
-`;
-
 const ColumnCenterStyle = css`
   ${AlignCenterStyle};
   flex-direction: column;
 `;
 
-export { Container, AlignCenterStyle, JustifyBetweenStyle, ColumnCenterStyle };
+const JustifyBetweenStyle = css`
+  ${AlignCenterStyle};
+  justify-content: space-between;
+`;
+
+const CenterAllStyle = css`
+  ${AlignCenterStyle};
+  justify-content: center;
+`;
+
+export {
+  Container,
+  CenterAllStyle,
+  AlignCenterStyle,
+  JustifyBetweenStyle,
+  ColumnCenterStyle,
+};
