@@ -16,10 +16,10 @@ export default {
       defaultValue: <LightIcon />,
     },
     width: {
-      defaultValue: "40px",
+      defaultValue: 40,
     },
     height: {
-      defaultValue: "40px",
+      defaultValue: 40,
     },
   },
   parameters: {
