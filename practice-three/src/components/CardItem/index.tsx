@@ -10,7 +10,6 @@ import {
 
 interface IProps {
   item: IBook;
-
   onShowModal: (id: string) => void;
 }
 
