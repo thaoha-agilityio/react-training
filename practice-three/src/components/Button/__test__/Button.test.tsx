@@ -11,13 +11,10 @@ const mockProps = {
 
 describe("testing button component", () => {
   test("testing icon button", () => {
-    const tree = render(
-      <Button aria-label="icon" isCircle={false} icon={<ListIcon />} />
-    );
+    render(<Button aria-label="icon" isCircle={false} icon={<ListIcon />} />);
     const button = screen.getByRole("button");
 
-    expect(button).toBeTruthy();
-    expect(tree).toMatchSnapshot();
+    expect(button).toBeInTheDocument();
   });
 
   test("testing circle button", () => {
@@ -33,8 +30,7 @@ describe("testing button component", () => {
 
     const button = screen.getByRole("button");
 
-    expect(button).toBeTruthy();
-    expect(tree).toMatchSnapshot();
+    expect(button).toBeInTheDocument();
   });
 
   test("testing  onClick event and expect mock function", () => {

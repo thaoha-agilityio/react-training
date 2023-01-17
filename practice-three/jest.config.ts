@@ -21,6 +21,7 @@ const config = {
     "!**/types/**",
     "!**/styles/**",
   ],
+  setupFilesAfterEnv: ["<rootDir>/setupTest.ts"],
 };
 
 export default config;
