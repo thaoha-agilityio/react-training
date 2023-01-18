@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 
-import { THUMBNAIL } from "../../../constants/books";
+import { THUMBNAIL } from "../../../constants/mockData";
 
 import Avatar from "..";
 
