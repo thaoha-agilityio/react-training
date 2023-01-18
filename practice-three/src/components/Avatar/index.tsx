@@ -1,6 +1,6 @@
 import { AvatarStyled } from "./index.styled";
 
-import { THUMBNAIL } from "../../constants/books";
+import { THUMBNAIL } from "../../constants/mockData";
 
 interface IProps {
   url: string;

@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { THUMBNAIL } from "@/constants/books";
+import { THUMBNAIL } from "@/constants/mockData";
 
 import Avatar from ".";
 
