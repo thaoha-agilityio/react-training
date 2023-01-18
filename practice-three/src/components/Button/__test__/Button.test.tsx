@@ -18,7 +18,7 @@ describe("testing button component", () => {
   });
 
   test("testing circle button", () => {
-    const tree = render(
+    render(
       <Button
         aria-label="icon"
         isCircle={true}

@@ -13,8 +13,7 @@ const Button = ({
   width = 40,
   height = 40,
   icon,
-  isCircle,
-
+  isCircle = false,
   ...rest
 }: IProps): React.ReactElement => (
   <>
