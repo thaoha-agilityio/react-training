@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 import { ColumnCenterStyle } from "../../styled-common/layout";
 import { colors, fonts, metrics } from "../../themes";
-import { SubHeading } from "../../styled-common/paragraph";
+import { P } from "../../styled-common/paragraph";
 
 const CardItemStyled = styled.div`
   width: ${metrics.widths.lg}px;
@@ -27,13 +27,14 @@ const CardContentStyled = styled.div`
   font-weight: ${fonts.fontWeights.semiBold};
 `;
 
-const CardInfoStyled = styled(SubHeading)`
-  color: ${colors.gray[300]};
-`;
+const CardTitleStyled = styled(P.Medium)``;
+
+const CardInfoStyled = styled(P.Small)``;
 
 export {
   CardItemStyled,
   CardImgWrapperStyled,
   CardInfoStyled,
   CardContentStyled,
+  CardTitleStyled,
 };

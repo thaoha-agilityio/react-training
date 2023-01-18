@@ -1,11 +1,13 @@
 import Avatar from "../Avatar";
-import { Heading } from "../../styled-common/paragraph";
+
 import { IBook } from "@/types/book";
+
 import {
   CardItemStyled,
   CardImgWrapperStyled,
   CardContentStyled,
   CardInfoStyled,
+  CardTitleStyled,
 } from "./index.styled";
 
 interface IProps {
@@ -20,7 +22,7 @@ const CardItem = ({ item, onShowModal }: IProps): React.ReactElement => {
         <Avatar url={item.avatar} alt="avatar" borderRadius={5} />
       </CardImgWrapperStyled>
       <CardContentStyled>
-        <Heading> {item.name}</Heading>
+        <CardTitleStyled>{item.name}</CardTitleStyled>
         <CardInfoStyled>{item.author}</CardInfoStyled>
         <CardInfoStyled>{item.published}</CardInfoStyled>
       </CardContentStyled>
