@@ -55,6 +55,7 @@ const borderRadius = {
   none: 0,
   tiny: 5,
   xs: 7,
+  md: 10,
   lg: 30,
 };
 
