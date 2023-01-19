@@ -21,11 +21,31 @@ const SmallText = styled(NormalText)`
   color: ${colors.gray[300]};
 `;
 
+const TinyText = styled(NormalText)`
+  font-size: ${fonts.fontSizes.xs}px;
+  line-height: ${fonts.lineHeights.md};
+`;
+
+const ThumbnailText = styled(NormalText)`
+  font-size: 16px;
+  line-height: 19px;
+  text-transform: capitalize;
+  color: ${colors.white};
+`;
+
+const CategoryName = styled(NormalText)`
+  font-size: ${fonts.fontSizes.sm}px;
+  line-height: ${fonts.lineHeights.tiny};
+`;
+
 interface ParagraphStyle {
   Normal: typeof NormalText;
   Bold: typeof BoldText;
   Medium: typeof MediumText;
   Small: typeof SmallText;
+  Tiny: typeof TinyText;
+  Thumbnail: typeof ThumbnailText;
+  CategoryName: typeof CategoryName;
 }
 
 export const P: ParagraphStyle = {
@@ -33,6 +53,17 @@ export const P: ParagraphStyle = {
   Bold: BoldText,
   Medium: MediumText,
   Small: SmallText,
+  Tiny: TinyText,
+  Thumbnail: ThumbnailText,
+  CategoryName: CategoryName,
 };
 
-export { MediumText, NormalText, BoldText, SmallText };
+export {
+  MediumText,
+  CategoryName,
+  NormalText,
+  BoldText,
+  SmallText,
+  TinyText,
+  ThumbnailText,
+};
