@@ -7,7 +7,11 @@ import {
   JustifyBetweenStyle,
   AlignCenterStyle,
 } from "../../styled-common";
-import { metrics } from "../../themes";
+import { colors, metrics } from "../../themes";
+
+interface StyledThumbnailProps {
+  bgColor: string;
+}
 
 const CategoryWrapperStyled = styled.div`
   ${JustifyBetweenStyle}
@@ -23,26 +27,28 @@ const CategoryStyled = styled.div`
   gap: 11px;
 `;
 
-const ThumbnailStyled = styled.div`
+const ThumbnailStyled = styled.div<StyledThumbnailProps>`
   position: relative;
   background-size: cover;
   border-radius: 50%;
   width: ${metrics.widths.xxs}px;
   height: ${metrics.heights.tiny}px;
+  ${(props) => ` background-color:${props.bgColor}`};
 `;
 
 const ThumbnailTextStyled = styled(ThumbnailText)`
   position: absolute;
   top: 11px;
   left: 9px;
-`;
-
-const CategoryNameStyled = styled(CategoryName)`
   font-weight: 700;
 `;
 
+const CategoryNameStyled = styled(CategoryName)`
+  text-transform: capitalize;
+`;
+
 const TotalStyled = styled(TinyText)`
-  color: #58667e;
+  color: ${colors.gray[150]};
 `;
 
 export {

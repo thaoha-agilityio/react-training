@@ -1,3 +1,4 @@
+import { ICategory } from "../../types/category";
 import {
   CategoryWrapperStyled,
   CategoryStyled,
@@ -7,17 +8,22 @@ import {
   TotalStyled,
 } from "./index.styled";
 
-const Category = () => {
+interface IProps {
+  category: ICategory;
+}
+
+const Category = ({
+  category: { id, name, total, bgColor },
+}: IProps): React.ReactElement => {
   return (
-    <CategoryWrapperStyled>
+    <CategoryWrapperStyled data-testid="category">
       <CategoryStyled>
-        <ThumbnailStyled>
-          <ThumbnailTextStyled>
-            <CategoryNameStyled>TH</CategoryNameStyled>
-          </ThumbnailTextStyled>
+        <ThumbnailStyled bgColor={bgColor}>
+          <ThumbnailTextStyled>{name.substring(0, 2)}</ThumbnailTextStyled>
         </ThumbnailStyled>
+        <CategoryNameStyled>{name}</CategoryNameStyled>
       </CategoryStyled>
-      <TotalStyled>123</TotalStyled>
+      <TotalStyled>{total}</TotalStyled>
     </CategoryWrapperStyled>
   );
 };
