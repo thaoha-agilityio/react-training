@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 import { JustifyBetweenStyle, AlignCenterStyle, P } from "../../styled-common";
-import { colors, metrics } from "../../themes";
+import { colors, fonts, metrics } from "../../themes";
 
 interface StyledThumbnailProps {
   bgColor: string;
@@ -34,7 +34,7 @@ const ThumbnailTextStyled = styled(P.Thumbnail)`
   position: absolute;
   top: 11px;
   left: 9px;
-  font-weight: 700;
+  font-weight: ${fonts.fontWeights.bold};
 `;
 
 const CategoryNameStyled = styled(P.CategoryName)`
