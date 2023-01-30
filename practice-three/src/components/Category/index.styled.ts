@@ -1,12 +1,6 @@
 import styled from "styled-components";
 
-import {
-  CategoryName,
-  ThumbnailText,
-  TinyText,
-  JustifyBetweenStyle,
-  AlignCenterStyle,
-} from "../../styled-common";
+import { JustifyBetweenStyle, AlignCenterStyle, P } from "../../styled-common";
 import { colors, metrics } from "../../themes";
 
 interface StyledThumbnailProps {
@@ -36,18 +30,18 @@ const ThumbnailStyled = styled.div<StyledThumbnailProps>`
   ${(props) => ` background-color:${props.bgColor}`};
 `;
 
-const ThumbnailTextStyled = styled(ThumbnailText)`
+const ThumbnailTextStyled = styled(P.Thumbnail)`
   position: absolute;
   top: 11px;
   left: 9px;
   font-weight: 700;
 `;
 
-const CategoryNameStyled = styled(CategoryName)`
+const CategoryNameStyled = styled(P.CategoryName)`
   text-transform: capitalize;
 `;
 
-const TotalStyled = styled(TinyText)`
+const TotalStyled = styled(P.Tiny)`
   color: ${colors.gray[150]};
 `;
 

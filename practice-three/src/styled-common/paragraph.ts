@@ -38,6 +38,12 @@ const CategoryName = styled(NormalText)`
   line-height: ${fonts.lineHeights.tiny};
 `;
 
+const OptionalText = styled(NormalText)`
+  font-size: ${fonts.fontSizes.xxs}px;
+  line-height: 2.3;
+  color: ${colors.dark[200]};
+`;
+
 interface ParagraphStyle {
   Normal: typeof NormalText;
   Bold: typeof BoldText;
@@ -46,6 +52,7 @@ interface ParagraphStyle {
   Tiny: typeof TinyText;
   Thumbnail: typeof ThumbnailText;
   CategoryName: typeof CategoryName;
+  Optional: typeof OptionalText;
 }
 
 export const P: ParagraphStyle = {
@@ -56,14 +63,5 @@ export const P: ParagraphStyle = {
   Tiny: TinyText,
   Thumbnail: ThumbnailText,
   CategoryName: CategoryName,
-};
-
-export {
-  MediumText,
-  CategoryName,
-  NormalText,
-  BoldText,
-  SmallText,
-  TinyText,
-  ThumbnailText,
+  Optional: OptionalText,
 };
