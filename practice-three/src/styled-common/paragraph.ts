@@ -7,7 +7,12 @@ const NormalText = styled.p`
 `;
 
 const BoldText = styled(NormalText)`
-  font-weight: ${fonts.fontWeights.semiBold};
+  font-weight: ${fonts.fontWeights.medium};
+`;
+
+const LargeText = styled(BoldText)`
+  font-size: ${fonts.fontSizes.xl}px;
+  line-height: ${fonts.lineHeights.tiny};
 `;
 
 const MediumText = styled(BoldText)`
@@ -40,13 +45,14 @@ const CategoryName = styled(NormalText)`
 
 const OptionalText = styled(NormalText)`
   font-size: ${fonts.fontSizes.xxs}px;
-  line-height: 2.3;
   color: ${colors.dark[200]};
+  line-height: 2.3;
 `;
 
 interface ParagraphStyle {
   Normal: typeof NormalText;
   Bold: typeof BoldText;
+  Large: typeof LargeText;
   Medium: typeof MediumText;
   Small: typeof SmallText;
   Tiny: typeof TinyText;
@@ -64,4 +70,5 @@ export const P: ParagraphStyle = {
   Thumbnail: ThumbnailText,
   CategoryName: CategoryName,
   Optional: OptionalText,
+  Large: LargeText,
 };
