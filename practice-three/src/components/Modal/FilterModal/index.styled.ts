@@ -29,7 +29,7 @@ const FilterModalStyled = styled.div<StyledModalProps>`
     content: " ";
     width: 10px;
     height: 10px;
-    background-color: #ffff;
+    background-color: #fff;
     position: absolute;
     top: 0;
     right: 60px;
@@ -48,10 +48,11 @@ const MenuListStyled = styled.div`
   margin-top: ${metrics.margins.xxs};
 `;
 
-const MenuOptionGroup = styled.div``;
+const MenuOptionGroup = styled.div`
+  text-align: center;
+`;
 
 const OptionalTextStyled = styled(P.Optional)`
-  margin-left: 8px;
   text-transform: capitalize;
 `;
 
