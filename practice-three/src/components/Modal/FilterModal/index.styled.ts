@@ -20,7 +20,6 @@ const FilterModalStyled = styled.div<StyledModalProps>`
   ${(props) => `top:${props.top}px`};
   ${(props) => `right:${props.right}px`};
   position: absolute;
-  background: var(--color-secondary);
   box-shadow: ${metrics.shadows.lg};
   border-radius: ${metrics.borderRadius.tiny}px;
   padding: 29px 21px;
@@ -45,7 +44,7 @@ const MenuOptionStyled = styled(P.Bold)`
 const MenuListStyled = styled.div`
   display: flex;
   gap: 9px;
-  margin-top: ${metrics.margins.xxs};
+  margin-top: ${metrics.margins.xxs}px;
 `;
 
 const MenuOptionGroup = styled.div`
@@ -57,7 +56,7 @@ const OptionalTextStyled = styled(P.Optional)`
 `;
 
 const SortOptionStyled = styled.div`
-  margin-top: ${metrics.margins.lg};
+  margin-top: ${metrics.margins.lg}px;
 `;
 
 export {
