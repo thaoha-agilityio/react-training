@@ -2,7 +2,7 @@ import { ComponentMeta, ComponentStory } from "@storybook/react";
 
 import DetailModal from ".";
 
-import { book } from "@/constants/mockData";
+import { book } from "../../../constants/mockData";
 
 export default {
   title: "DetailModal",

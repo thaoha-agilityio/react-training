@@ -1,7 +1,11 @@
 import styled from "styled-components";
 
-import { AlignBaseLineStyle, JustifyBetweenStyle, P } from "@/styled-common";
-import { colors, fonts, metrics } from "@/themes";
+import {
+  AlignBaseLineStyle,
+  JustifyBetweenStyle,
+  P,
+} from "../../../styled-common";
+import { colors, fonts, metrics } from "../../../themes";
 
 const DetailModalStyled = styled.div`
   position: absolute;

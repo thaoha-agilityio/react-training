@@ -7,6 +7,13 @@ export const book = {
   author: "libsa",
   description: "abc",
   published: 2016,
-  publisher: "Printer",
+  publishers: "Printer",
   id: "2",
+};
+
+export const category = {
+  id: "1",
+  name: "romance",
+  total: 12,
+  bgColor: "#0DA8FF",
 };

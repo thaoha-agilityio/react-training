@@ -10,6 +10,11 @@ const AlignCenterStyle = css`
   align-items: center;
 `;
 
+const AlignBaseLineStyle = css`
+  display: flex;
+  align-items: baseline;
+`;
+
 const ColumnCenterStyle = css`
   ${AlignCenterStyle};
   flex-direction: column;
@@ -31,4 +36,5 @@ export {
   AlignCenterStyle,
   JustifyBetweenStyle,
   ColumnCenterStyle,
+  AlignBaseLineStyle,
 };

@@ -30,7 +30,7 @@ const margins = {
   md: 12,
   lg: 15,
   xl: 20,
-  xxl: 25,
+  xxl: 45,
 };
 
 const paddings = {
@@ -49,6 +49,7 @@ const shadows = {
   xs: "0 0 0 1px rgba(0, 0, 0, 0.05)",
   sm: "0px 0px 3px rgba(0, 0, 0, 0.1)",
   md: "0px 0px 4px rgba(0, 0, 0, 0.12)",
+  lg: "0px 1px 4px rgba(0, 0, 0, 0.1)",
 };
 
 const borderRadius = {

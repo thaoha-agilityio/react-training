@@ -1,13 +1,13 @@
 import { memo } from "react";
 
-import Avatar from "@/components/Avatar";
-import Button from "@/components/Button";
-import ToggleButton from "@/components/ToggleButton";
-import LabelButton from "@/pages/Home/components/LabelButton";
-import { LightIcon, XmarkIcon } from "@/components/Icon";
+import Avatar from "../../Avatar";
+import Button from "../../Button";
+import ToggleButton from "../../ToggleButton";
+import LabelButton from "../../../pages/Home/components/LabelButton";
+import { LightIcon, XmarkIcon } from "../../Icon";
 
-import { Backdrop } from "@/styled-common";
-import { IBook } from "@/types/book";
+import { Backdrop } from "../../../styled-common";
+import { IBook } from "../../../types/book";
 
 import {
   DetailModalStyled,

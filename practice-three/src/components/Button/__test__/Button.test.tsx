@@ -11,7 +11,14 @@ const mockProps = {
 
 describe("testing button component", () => {
   test("testing icon button", () => {
-    render(<Button aria-label="icon" isCircle={false} icon={<ListIcon />} />);
+    render(
+      <Button
+        aria-label="icon"
+        isCircle={false}
+        icon={<ListIcon />}
+        bgColor="transparent"
+      />
+    );
     const button = screen.getByRole("button");
 
     expect(button).toBeInTheDocument();
@@ -25,6 +32,7 @@ describe("testing button component", () => {
         icon={<ListIcon />}
         width={40}
         height={40}
+        bgColor="transparent"
       />
     );
 
@@ -39,6 +47,7 @@ describe("testing button component", () => {
         aria-label="icon"
         isCircle={true}
         icon={<ListIcon />}
+        bgColor="transparent"
         {...mockProps}
       />
     );
