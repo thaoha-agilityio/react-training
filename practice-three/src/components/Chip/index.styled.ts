@@ -39,6 +39,7 @@ export const ChipStyled = styled.div<StyledChipProps>`
 export const LabelStyled = styled.p<StyledLabelProps>`
   font-family: ${fonts.fontFamilies.primary};
   line-height: ${fonts.lineHeights.xl};
+  text-transform: capitalize;
   ${(props) => `font-size:${props.fontSize}px`};
-  ${(props) => `font-weight:${props.fontWeight}px`};
+  ${(props) => `font-weight:${props.fontWeight}`};
 `;

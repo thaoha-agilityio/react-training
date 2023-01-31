@@ -2,6 +2,7 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
 import { colors } from "../../../themes";
+
 import { XmarkIcon } from "../../Icon";
 import Chip from "..";
 

@@ -28,16 +28,27 @@ const Chip = ({
   height,
   fontSize,
   fontWeight,
+  bgColor,
   onClick,
   ...rest
 }: IProps): React.ReactElement => {
   return (
-    <ChipStyled width={width} height={height} onClick={onClick} {...rest}>
-      {startAdornments && <Button isCircle={false} icon={startAdornments} />}
+    <ChipStyled
+      width={width}
+      height={height}
+      onClick={onClick}
+      bgColor={bgColor}
+      {...rest}
+    >
+      {startAdornments && (
+        <Button isCircle={false} icon={startAdornments} bgColor="transparent" />
+      )}
       <LabelStyled fontSize={fontSize} fontWeight={fontWeight}>
         {label}
       </LabelStyled>
-      {endAdornments && <Button isCircle={false} icon={endAdornments} />}
+      {endAdornments && (
+        <Button isCircle={false} icon={endAdornments} bgColor="transparent" />
+      )}
     </ChipStyled>
   );
 };
