@@ -26,8 +26,9 @@ const fontFamilies = {
 
 const fontWeights = {
   normal: 400,
-  semiBold: 500,
-  bold: 600,
+  medium: 500,
+  semiBold: 600,
+  bold: 700,
 };
 
 export { fontSizes, lineHeights, fontFamilies, fontWeights };
