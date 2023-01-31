@@ -1,5 +1,6 @@
-import { category } from "@/constants/mockData";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
+
+import { category } from "@/constants/mockData";
 
 import Category from ".";
 
