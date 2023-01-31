@@ -1,6 +1,7 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { ListIcon, LightIcon } from "@/components/Icon";
+import { ListIcon, LightIcon, GridIcon } from "@/components/Icon";
+import { colors } from "@/themes";
 
 import Button from ".";
 
@@ -21,6 +22,9 @@ export default {
     height: {
       defaultValue: 40,
     },
+    bgColor: {
+      defaultValue: "transparent",
+    },
   },
   parameters: {
     actions: {
@@ -38,4 +42,14 @@ CircleBtn.args = {
   ...CircleBtn.args,
   isCircle: true,
   icon: <ListIcon />,
+  borderColor: colors.gray[20],
+};
+
+export const CircleBtnActive = Template.bind({});
+CircleBtnActive.args = {
+  ...CircleBtnActive.args,
+  isCircle: true,
+  icon: <GridIcon />,
+  bgColor: colors.gray[30],
+  borderColor: colors.gray[30],
 };

@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-import { colors } from "../../themes";
-
 interface StyledButtonProps {
+  bgColor: string;
+  borderColor?: string;
   width?: number;
   height?: number;
 }
@@ -10,12 +10,13 @@ interface StyledButtonProps {
 export const IconButtonStyled = styled.button<StyledButtonProps>`
   ${(props) => props.width && `width:${props.width}px`};
   ${(props) => props.height && `height:${props.height}px`};
-  background-color: ${colors.transparent};
+  ${(props) => `background-color:${props.bgColor}`};
   border: none;
   cursor: pointer;
 `;
 
 export const CircleButtonStyled = styled(IconButtonStyled)`
   border-radius: 50%;
-  border: 1px solid ${colors.gray[20]};
+  border: 1px solid;
+  ${(props) => props.borderColor && `border-color:${props.borderColor}`};
 `;
