@@ -14,7 +14,7 @@ const DetailModalStyled = styled.div`
 
 const ModalHeaderStyled = styled.div`
   ${JustifyBetweenStyle};
-  width: ${metrics.widths.xxl};
+  width: 485px;
   height: 68px;
   padding: 20px 29px;
   background-color: ${colors.gray[30]};
