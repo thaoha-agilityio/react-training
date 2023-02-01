@@ -17,3 +17,18 @@ export const category = {
   total: 12,
   bgColor: "#0DA8FF",
 };
+
+export const categories = [
+  {
+    name: "Adventure",
+    id: "1",
+    total: 123,
+    bgColor: "#F388B5",
+  },
+  {
+    name: "Romance",
+    id: "2",
+    total: 123,
+    bgColor: "#94AAE4",
+  },
+];
