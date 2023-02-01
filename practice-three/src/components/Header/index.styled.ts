@@ -1,11 +1,10 @@
 import styled from "styled-components";
 
-import { AlignCenterStyle } from "../../styled-common";
+import { AlignCenterStyle, JustifyBetweenStyle } from "../../styled-common";
 
 const HeaderStyled = styled.header`
+  ${JustifyBetweenStyle};
   padding: 12px 35px 14px 45px;
-  display: flex;
-  justify-content: space-between;
   background-color: var(--main-heading);
 `;
 
