@@ -17,7 +17,7 @@ const SideBar = ({
   categories,
 }: SidebarCategoriesProps): React.ReactElement => {
   return (
-    <CategoriesStyled>
+    <CategoriesStyled data-testid="Sidebar">
       <>
         <ParaphraseStyled>
           A curated list of every book ever written
