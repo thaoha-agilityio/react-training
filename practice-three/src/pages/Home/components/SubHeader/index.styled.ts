@@ -1,7 +1,7 @@
+import styled from "styled-components";
+
 import { AlignCenterStyle, JustifyBetweenStyle, P } from "@/styled-common";
 import { fonts, metrics } from "@/themes";
-
-import styled from "styled-components";
 
 const SubheaderStyled = styled.aside`
   ${JustifyBetweenStyle}

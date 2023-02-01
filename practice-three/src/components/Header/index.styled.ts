@@ -1,5 +1,6 @@
-import { AlignCenterStyle } from "../../styled-common";
 import styled from "styled-components";
+
+import { AlignCenterStyle } from "../../styled-common";
 
 const HeaderStyled = styled.header`
   padding: 12px 35px 14px 45px;
