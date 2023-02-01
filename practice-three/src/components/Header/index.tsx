@@ -4,8 +4,8 @@ import Input from "../Input";
 import Button from "../Button";
 import { LightIcon, SearchIcon } from "../Icon";
 
-import bookshelf from "../assets/images/bookshelf.png";
-import logo from "../assets/images/logo.png";
+import bookshelf from "../../assets/images/bookshelf.png";
+import logo from "../../assets/images/logo.png";
 
 import { HeaderStyled, LogoStyled, ActionWrapperStyled } from "./index.styled";
 
