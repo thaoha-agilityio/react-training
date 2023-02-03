@@ -1,8 +1,8 @@
 const API_BASE_URL = process.env.VITE_BASE_URL;
 
 const API_PATH = {
-  books: "/books",
-  categories: "/categories",
+  BOOKS: "/books",
+  CATEGORIES: "/categories",
 };
 
 export { API_PATH, API_BASE_URL };
