@@ -1,37 +1,30 @@
-import { createContext, ReactNode, useEffect, useState } from "react";
+import { createContext, ReactNode } from "react";
 import { useFetching } from "@/hooks/useFetching";
 
 import { API_BASE_URL, API_PATH } from "@/constants/api";
 
 import { IBook } from "@/types/book";
 
-interface IBookContext {
+type IBookContext = {
   books: IBook[];
-}
+};
 
-interface IBookProvider {
+type IBookProvider = {
   children: ReactNode;
-}
+};
 
 // Create books context with initial value
 export const BooksContext = createContext<IBookContext>({} as IBookContext);
 
 // Book provider
 export const BooksProvider = ({ children }: IBookProvider) => {
-  const [books, setBooks] = useState<IBook[]>([]);
-
   // Fetch data from server
-  const { data: items, error } = useFetching<IBook[]>(
-    "api/books",
-    `${API_BASE_URL}${API_PATH.books}`
+  const { data: items } = useFetching<IBook[]>(
+    `${API_BASE_URL}${API_PATH.BOOKS}`
   );
 
-  useEffect(() => {
-    setBooks(items ?? []);
-  }, [!items && !error]);
-
   const value: IBookContext = {
-    books: books,
+    books: items || [],
   };
 
   return (
