@@ -1,4 +1,4 @@
-export const colors = {
+const colors = {
   dark: {
     50: "#222531",
     100: "#14282f",
@@ -26,3 +26,25 @@ export const colors = {
   transparent: "transparent",
   white: "#fff",
 };
+
+const darkTheme = {
+  mainHeading: "#1e1e2fba",
+  textColor: "#fff",
+  totalTextColor: "#fff",
+  categoriesText: "#fff",
+  mainContent: "#1e1e2fba",
+  cardBg: "#1e1e2fba",
+  infoBook: "#fff",
+};
+
+const lightTheme = {
+  mainHeading: "#fff",
+  textColor: "#000",
+  totalTextColor: "#f8fafd",
+  categoriesText: "#222531",
+  MainContent: "#58667e",
+  cardBg: "#fff",
+  infoBook: "#757881",
+};
+
+export { lightTheme, darkTheme, colors };
