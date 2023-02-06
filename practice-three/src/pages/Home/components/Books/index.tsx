@@ -5,9 +5,9 @@ import CardItem from "@/components/CardItem";
 
 import { BooksContext } from "@/contexts/BooksContext";
 
+import { NOTICE_MESSAGE } from "@/constants/message";
 // Styled
 import { BooksStyled } from "./index.styled";
-import { NOTICE_MESSAGE } from "@/constants/message";
 import { P } from "@/styled-common";
 
 const Books = (): React.ReactElement => {
