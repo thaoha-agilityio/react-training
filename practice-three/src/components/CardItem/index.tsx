@@ -12,7 +12,7 @@ import {
 
 interface IProps {
   item: IBook;
-  onShowModal: (id: string) => void;
+  onShowModal?: (id: string) => void;
 }
 
 const CardItem = ({ item, onShowModal }: IProps): React.ReactElement => {

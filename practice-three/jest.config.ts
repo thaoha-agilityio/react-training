@@ -7,10 +7,13 @@ const config = {
     "^.+\\.svg$": "svg-jest",
     ".+\\.(css|png|webp|)$": "jest-transform-stub",
   },
+  transformIgnorePatterns: ["<rootDir>/node_modules/(?!variables/.*)"],
   moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
   moduleNameMapper: {
     "@/(.*)": "<rootDir>/src/$1",
+    axios: "axios/dist/node/axios.cjs",
   },
+
   collectCoverageFrom: [
     "**/*.{ts,tsx}",
     "!**/*.stories.tsx",
