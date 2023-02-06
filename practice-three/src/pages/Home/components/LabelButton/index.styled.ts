@@ -8,7 +8,7 @@ export const LabelButtonStyled = styled.button`
   font-family: ${fonts.fontFamilies.secondary};
   font-weight: ${fonts.fontWeights.semiBold};
   color: ${colors.white};
-  background-color: ${colors.gray[100]};
+  background-color: ${colors.cadetBlue};
   border-radius: ${metrics.borderRadius.tiny}px;
   padding-left: ${metrics.paddings.sm}px;
   padding-right: ${metrics.paddings.sm}px;

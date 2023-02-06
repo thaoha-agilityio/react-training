@@ -33,7 +33,7 @@ const InputStyled = styled.input<StyledInputProps>`
   border: none;
 
   &::placeholder {
-    color: ${colors.gray[10]};
+    color: ${colors.ash};
   }
 `;
 

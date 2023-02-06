@@ -12,12 +12,12 @@ const SubheaderStyled = styled.aside`
   min-height: ${metrics.heights.sm};
   box-shadow: ${metrics.shadows.xl};
   padding: 18px 41px 18px 30px;
-  background-color: var(--main-heading);
+  background-color: ${({ theme }) => theme.mainHeading};
 `;
 
 const TitleStyled = styled(P.Medium)`
   font-weight: ${fonts.fontWeights.normal};
-  color: #000;
+  color: ${({ theme }) => theme.textColor};
 `;
 
 const ShowCategoriesStyled = styled.div`
@@ -28,7 +28,7 @@ const ShowCategoriesStyled = styled.div`
 `;
 
 const TotalBooksStyled = styled(P.Bold)`
-  color: #000;
+  color: ${({ theme }) => theme.textColor};
 `;
 
 export { SubheaderStyled, TitleStyled, ShowCategoriesStyled, TotalBooksStyled };

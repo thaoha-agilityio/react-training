@@ -19,6 +19,7 @@ const colors = {
   bitter: "#1e1e2fba",
   transparent: "transparent",
   white: "#fff",
+  bostonBlue: "#0d75ff17",
 };
 
 const darkTheme = {
