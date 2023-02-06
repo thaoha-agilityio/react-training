@@ -21,11 +21,11 @@ const ModalHeaderStyled = styled.div`
   width: 485px;
   height: 68px;
   padding: 20px 29px;
-  background-color: ${colors.gray[30]};
+  background-color: ${colors.linkWater};
 `;
 
 const ModalTitleStyled = styled(P.Large)`
-  color: ${colors.dark[100]};
+  color: ${colors.linkWater};
 `;
 
 const ModalBodyStyled = styled.div`
@@ -40,7 +40,7 @@ const ModalImageStyled = styled.div`
 `;
 
 const DescriptionTextStyled = styled(P.Tiny)`
-  color: ${colors.gray[150]};
+  color: ${colors.linkWater};
   line-height: ${fonts.lineHeights.lg};
   margin-bottom: 9px;
   width: 413px;
@@ -53,17 +53,17 @@ const BookInfoStyled = styled.div`
 `;
 
 const MainTextStyled = styled(P.Normal)`
-  color: ${colors.dark[50]};
+  color: ${colors.ebonyClay};
 `;
 
 const BackgroundTextStyled = styled.div`
-  background: ${colors.blue[20]};
+  background: ${colors.bostonBlue};
   border-radius: ${metrics.borderRadius.lg}px;
   padding: 5px 15px;
 `;
 
 const TextInfoStyled = styled(P.Normal)`
-  color: ${colors.blue[250]};
+  color: ${colors.azureRadiance};
 `;
 
 const ModalFooterStyled = styled.div`
@@ -72,7 +72,7 @@ const ModalFooterStyled = styled.div`
   gap: 39px;
   height: 58px;
   padding: 12px 19px;
-  background-color: ${colors.gray[30]};
+  background-color: ${colors.linkWater};
 `;
 
 const WrapperButtonStyled = styled.div`
@@ -84,7 +84,7 @@ const EscapeTextStyled = styled.p`
   font-family: ${fonts.fontFamilies.secondary};
   font-weight: ${fonts.fontWeights.medium};
   font-size: ${fonts.fontSizes.xs}px;
-  color: ${colors.gray[150]};
+  color: ${colors.comet};
   line-height: 1.3;
   text-transform: capitalize;
 `;

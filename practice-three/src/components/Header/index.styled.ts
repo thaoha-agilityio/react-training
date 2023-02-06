@@ -5,7 +5,7 @@ import { AlignCenterStyle, JustifyBetweenStyle } from "../../styled-common";
 const HeaderStyled = styled.header`
   ${JustifyBetweenStyle};
   padding: 12px 35px 14px 45px;
-  background-color: var(--main-heading);
+  background-color: ${({ theme }) => theme.mainHeading};
 `;
 
 const LogoStyled = styled.div`

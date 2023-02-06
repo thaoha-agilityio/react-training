@@ -1,6 +1,6 @@
-import { SVGProps } from 'react';
+import { SVGProps } from "react";
 
-export const MoonIcon = (props: SVGProps<SVGSVGElement>) => (
+export const DarkIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 512 512"

@@ -42,7 +42,7 @@ const CategoryNameStyled = styled(P.CategoryName)`
 `;
 
 const TotalStyled = styled(P.Tiny)`
-  color: ${colors.gray[150]};
+  color: ${colors.comet};
 `;
 
 export {

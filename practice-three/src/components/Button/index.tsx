@@ -3,7 +3,7 @@ import { memo, ReactNode } from "react";
 import { CircleButtonStyled, IconButtonStyled } from "./index.styled";
 
 interface IProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  isCircle: boolean;
+  isCircle?: boolean;
   bgColor: string;
   borderColor?: string;
   height?: number;

@@ -1,28 +1,45 @@
-export const colors = {
-  dark: {
-    50: "#222531",
-    100: "#14282f",
-    200: "#000",
-  },
-  gray: {
-    10: "#0000003d",
-    20: "#e5e5e5",
-    30: "#f8fafd",
-    50: "#b4bebf",
-    100: "#a6b0c3",
-    150: "#58667E",
-    200: "#75828a",
-    300: "#757881",
-  },
-  blue: {
-    20: "#0d75ff17",
-    50: "#94aae4",
-    100: "#4f85ac",
-    200: "#0da8ff",
-    250: "#0d75ff",
-    300: "#6f5a8a",
-    400: "#770dff",
-  },
+const colors = {
+  ebonyClay: "#222531",
+  gableGreen: "#14282f",
+  black: "#000",
+  mercury: "#e5e5e5",
+  linkWater: "#F8FAFD",
+  submarine: "#B4BEBF",
+  cadetBlue: "#A6B0C3",
+  comet: "#58667E",
+  rollingStone: "#75828A",
+  stormGray: "#757881",
+  dullLavender: "#94AAE4",
+  wedgwood: "#4F85AC",
+  dodgerBlue: "#0DA8FF",
+  azureRadiance: "#0D75FF",
+  rum: "#6f5a8a",
+  electricViolet: "#770DFF",
+  ash: "#0000003d",
+  bitter: "#1e1e2fba",
   transparent: "transparent",
   white: "#fff",
+  bostonBlue: "#0d75ff17",
 };
+
+const darkTheme = {
+  mainHeading: colors.bitter,
+  textColor: colors.white,
+  totalTextColor: colors.white,
+  categoriesText: colors.white,
+  mainContent: colors.bitter,
+  cardBg: colors.bitter,
+  infoBook: colors.white,
+};
+
+const lightTheme = {
+  mainHeading: colors.white,
+  textColor: colors.rollingStone,
+  totalTextColor: colors.linkWater,
+  categoriesText: colors.black,
+  mainContent: colors.comet,
+  cardBg: colors.white,
+  infoBook: colors.comet,
+};
+
+export { lightTheme, darkTheme, colors };

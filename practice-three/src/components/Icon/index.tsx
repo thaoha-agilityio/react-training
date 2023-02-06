@@ -1,17 +1,17 @@
-export * from './ArrowIcon';
+export * from "./ArrowIcon";
 
-export * from './FilterIcon';
+export * from "./FilterIcon";
 
-export * from './GridIcon';
+export * from "./GridIcon";
 
-export * from './LightIcon';
+export * from "./LightIcon";
 
-export * from './ListIcon';
+export * from "./ListIcon";
 
-export * from './MoonIcon';
+export * from "./DarkIcon";
 
-export * from './SearchIcon';
+export * from "./SearchIcon";
 
-export * from './XmarkIcon';
+export * from "./XmarkIcon";
 
-export * from './ArrowRightIcon';
+export * from "./ArrowRightIcon";
