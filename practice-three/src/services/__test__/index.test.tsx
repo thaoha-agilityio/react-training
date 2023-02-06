@@ -2,11 +2,10 @@ import "@testing-library/jest-dom";
 import axios from "axios";
 
 import { API_BASE_URL, API_PATH } from "../../constants/api";
-import { getData } from "../APIRequest";
+import { api } from "../APIRequest";
 import { books } from "../../constants/mockData";
 
 jest.mock("axios");
-jest.mock("../config");
 
 describe("getData", () => {
   describe("when API call is successful", () => {
@@ -14,11 +13,11 @@ describe("getData", () => {
       axios.get.mockResolvedValueOnce(books);
 
       // when
-      const result = await getData(`${API_BASE_URL}${API_PATH.books}`);
+      const result = await api.getData(`${API_BASE_URL}${API_PATH.BOOKS}`);
 
       // then
       expect(axios.get).toHaveBeenCalledWith(
-        `${API_BASE_URL}${API_PATH.books}`
+        `${API_BASE_URL}${API_PATH.BOOKS}`
       );
       expect(result).toEqual(books.data);
     });
