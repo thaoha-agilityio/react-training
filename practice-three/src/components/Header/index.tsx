@@ -13,10 +13,10 @@ import { HeaderStyled, LogoStyled, ActionWrapperStyled } from "./index.styled";
 
 type HeaderProps = {
   theme: boolean;
-  themeToggle: () => void;
+  onToggleTheme: () => void;
 };
 
-const Header = ({ theme, themeToggle }: HeaderProps): React.ReactElement => {
+const Header = ({ theme, onToggleTheme }: HeaderProps): React.ReactElement => {
   return (
     <HeaderStyled>
       <LogoStyled>
@@ -31,10 +31,9 @@ const Header = ({ theme, themeToggle }: HeaderProps): React.ReactElement => {
           placeholder="Search books"
         />
         <Button
-          isCircle={false}
           bgColor={"transparent"}
           icon={theme ? <LightIcon /> : <DarkIcon />}
-          onClick={themeToggle}
+          onClick={onToggleTheme}
         />
       </ActionWrapperStyled>
     </HeaderStyled>

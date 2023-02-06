@@ -17,14 +17,14 @@ const Home = (): React.ReactElement => {
   const [isDarkTheme, setIsDarkTheme] = useState(false);
 
   // Change dark-light mode
-  const themeToggle = useCallback(() => {
+  const handleToggleTheme = useCallback(() => {
     setIsDarkTheme(!isDarkTheme);
   }, [isDarkTheme]);
 
   return (
     <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
       <Container>
-        <Header theme={isDarkTheme} themeToggle={themeToggle} />
+        <Header theme={isDarkTheme} onToggleTheme={handleToggleTheme} />
         <SubHeader />
         <MainContentStyled>
           <Books />
