@@ -1,4 +1,5 @@
 import { ThemeProvider } from "styled-components";
+import { useCallback, useState } from "react";
 
 // Components
 import Header from "../../components/Header";
@@ -9,21 +10,21 @@ import Books from "./components/Books";
 import { darkTheme, lightTheme } from "@/themes";
 import { Container } from "../../styled-common";
 
+// Styled
 import { MainContentStyled } from "./index.styled";
-import { useCallback, useState } from "react";
 
 const Home = (): React.ReactElement => {
-  const [theme, setTheme] = useState(true);
+  const [isDarkTheme, setIsDarkTheme] = useState(false);
 
   // Change dark-light mode
   const themeToggle = useCallback(() => {
-    setTheme(!theme);
-  }, [theme]);
+    setIsDarkTheme(!isDarkTheme);
+  }, [isDarkTheme]);
 
   return (
-    <ThemeProvider theme={theme ? lightTheme : darkTheme}>
+    <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
       <Container>
-        <Header theme={theme} themeToggle={themeToggle} />
+        <Header theme={isDarkTheme} themeToggle={themeToggle} />
         <SubHeader />
         <MainContentStyled>
           <Books />
