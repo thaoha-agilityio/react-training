@@ -3,6 +3,7 @@ import styled, { css } from "styled-components";
 const Container = styled.div`
   max-width: 1273px;
   margin: auto;
+  box-shadow: 0px 3px 2px 1px rgba(0, 0, 0, 0.1);
 `;
 
 const AlignCenterStyle = css`
