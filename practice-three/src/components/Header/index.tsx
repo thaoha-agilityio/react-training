@@ -1,15 +1,22 @@
 import { memo } from "react";
 
+// Component
 import Input from "../Input";
 import Button from "../Button";
-import { LightIcon, SearchIcon } from "../Icon";
+import { DarkIcon, LightIcon, SearchIcon } from "../Icon";
 
+// Images
 import bookshelf from "../../assets/images/bookshelf.png";
 import logo from "../../assets/images/logo.png";
 
 import { HeaderStyled, LogoStyled, ActionWrapperStyled } from "./index.styled";
 
-const Header = (): React.ReactElement => {
+type HeaderProps = {
+  theme: boolean;
+  themeToggle: () => void;
+};
+
+const Header = ({ theme, themeToggle }: HeaderProps): React.ReactElement => {
   return (
     <HeaderStyled>
       <LogoStyled>
@@ -23,7 +30,12 @@ const Header = (): React.ReactElement => {
           children={<SearchIcon />}
           placeholder="Search books"
         />
-        <Button isCircle={false} bgColor={"transparent"} icon={<LightIcon />} />
+        <Button
+          isCircle={false}
+          bgColor={"transparent"}
+          icon={theme ? <LightIcon /> : <DarkIcon />}
+          onClick={themeToggle}
+        />
       </ActionWrapperStyled>
     </HeaderStyled>
   );
