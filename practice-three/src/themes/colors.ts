@@ -13,6 +13,7 @@ const colors = {
     150: "#58667E",
     200: "#75828a",
     300: "#757881",
+    400: "#1e1e2fba",
   },
   blue: {
     20: "#0d75ff17",
@@ -28,23 +29,23 @@ const colors = {
 };
 
 const darkTheme = {
-  mainHeading: "#1e1e2fba",
-  textColor: "#fff",
-  totalTextColor: "#fff",
-  categoriesText: "#fff",
-  mainContent: "#1e1e2fba",
-  cardBg: "#1e1e2fba",
-  infoBook: "#fff",
+  mainHeading: colors.gray[400],
+  textColor: colors.white,
+  totalTextColor: colors.white,
+  categoriesText: colors.white,
+  mainContent: colors.gray[400],
+  cardBg: colors.gray[400],
+  infoBook: colors.white,
 };
 
 const lightTheme = {
-  mainHeading: "#fff",
-  textColor: "#000",
-  totalTextColor: "#f8fafd",
-  categoriesText: "#222531",
-  MainContent: "#58667e",
-  cardBg: "#fff",
-  infoBook: "#757881",
+  mainHeading: colors.white,
+  textColor: colors.dark[200],
+  totalTextColor: colors.gray[30],
+  categoriesText: colors.dark[50],
+  mainContent: colors.gray[150],
+  cardBg: colors.white,
+  infoBook: colors.gray[300],
 };
 
 export { lightTheme, darkTheme, colors };
