@@ -15,6 +15,7 @@ import { useCallback, useState } from "react";
 const Home = (): React.ReactElement => {
   const [theme, setTheme] = useState(true);
 
+  // Change dark-light mode
   const themeToggle = useCallback(() => {
     setTheme(!theme);
   }, [theme]);
