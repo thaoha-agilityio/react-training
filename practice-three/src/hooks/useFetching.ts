@@ -1,12 +1,12 @@
+import { useEffect } from "react";
 import useSWRImmutable from "swr/immutable";
-import { Key } from "swr";
 
 // API call
-import { getData } from "../services/APIRequest";
+import { api } from "../services/APIRequest";
 
-export const useFetching = <T>(key: Key, url: string) => {
-  const fetcher = () => getData<T>(url);
-  const { data, error } = useSWRImmutable<T>(key, fetcher);
+export const useFetching = <T>(url: string) => {
+  const fetcher = async () => await api.getData<T>(url);
+  const { data, error } = useSWRImmutable<T>(url, fetcher);
 
   return {
     data,
