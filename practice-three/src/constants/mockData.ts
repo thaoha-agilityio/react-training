@@ -32,3 +32,32 @@ export const categories = [
     bgColor: "#94AAE4",
   },
 ];
+
+export const books = {
+  data: [
+    {
+      name: "Don Quijote de la Mancha",
+      avatar:
+        "http://betweenthelines.in/wp-content/uploads/2012/09/Life-is-what-you-make-it-11.jpg",
+      author: "Thomas Harris",
+      description:
+        "he serial killer nicknamed 'Buffalo Bill' has been capturing and starving women, then murdering and skinning them. FBI rookie Clarice Starling is assigned to solicit help from imprisoned psychopath Dr Hannibal 'the Cannibal' Lecter, whose insight into the depraved minds of serial killers is second to none",
+      published: 2012,
+      publishers: "Paperback",
+      categoryId: "1",
+      id: "1",
+    },
+    {
+      name: "Silence Of The Lambs",
+      avatar:
+        "https://kbimages1-a.akamaihd.net/bc050d09-4422-4be0-bda6-49941b0cae5e/1200/1200/False/silence-of-the-lambs.jpg",
+      author: "Thomas Harris",
+      description:
+        "The serial killer nicknamed 'Buffalo Bill' has been capturing and starving women, then murdering and skinning them. FBI rookie Clarice Starling is assigned to solicit help from imprisoned psychopath Dr Hannibal 'the Cannibal' Lecter, whose insight into the depraved minds of serial killers is second to none.",
+      published: 1980,
+      publishers: "Hannibal Lecter",
+      categoryId: "1",
+      id: "2",
+    },
+  ],
+};
