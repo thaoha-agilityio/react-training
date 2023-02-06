@@ -8,7 +8,7 @@ const mockProps = {
   themeToggle: jest.fn(),
 };
 
-describe("testing cardItem component", () => {
+describe("testing Header component", () => {
   it("renders correctly", () => {
     const { getByPlaceholderText } = render(<Header {...mockProps} />);
 
