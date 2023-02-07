@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { ChangeEvent, memo } from "react";
 
 // Component
 import Input from "../Input";
@@ -14,9 +14,14 @@ import { HeaderStyled, LogoStyled, ActionWrapperStyled } from "./index.styled";
 type HeaderProps = {
   theme: boolean;
   onToggleTheme: () => void;
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
 };
 
-const Header = ({ theme, onToggleTheme }: HeaderProps): React.ReactElement => {
+const Header = ({
+  theme,
+  onToggleTheme,
+  onChange,
+}: HeaderProps): React.ReactElement => {
   return (
     <HeaderStyled>
       <LogoStyled>
@@ -29,6 +34,7 @@ const Header = ({ theme, onToggleTheme }: HeaderProps): React.ReactElement => {
           pLeft={50}
           children={<SearchIcon />}
           placeholder="Search books"
+          onChange={onChange}
         />
         <Button
           bgColor={"transparent"}

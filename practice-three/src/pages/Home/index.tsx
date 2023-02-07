@@ -1,5 +1,6 @@
 import { ThemeProvider } from "styled-components";
-import { useCallback, useState } from "react";
+import { ChangeEvent, useCallback, useEffect, useState } from "react";
+import { useBooks, useDebounce } from "@/hooks";
 
 // Components
 import Header from "../../components/Header";
@@ -14,17 +15,43 @@ import { Container } from "../../styled-common";
 import { MainContentStyled } from "./index.styled";
 
 const Home = (): React.ReactElement => {
+  const { searchBooks } = useBooks();
   const [isDarkTheme, setIsDarkTheme] = useState(false);
+  const [inputValue, setInputValue] = useState<string>("");
+  const debounceValue = useDebounce(inputValue);
 
   // Change dark-light mode
   const handleToggleTheme = useCallback(() => {
     setIsDarkTheme(!isDarkTheme);
   }, [isDarkTheme]);
 
+  // Get value input
+  const handleChangeInput = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      const value = event.target.value;
+
+      setInputValue(value);
+    },
+    []
+  );
+
+  useEffect(() => {
+    // Declare the data fetching function
+    const fetchBooks = async () => {
+      await searchBooks(debounceValue);
+    };
+
+    fetchBooks();
+  }, [debounceValue]);
+
   return (
     <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
       <Container>
-        <Header theme={isDarkTheme} onToggleTheme={handleToggleTheme} />
+        <Header
+          theme={isDarkTheme}
+          onToggleTheme={handleToggleTheme}
+          onChange={handleChangeInput}
+        />
         <SubHeader />
         <MainContentStyled>
           <Books />
