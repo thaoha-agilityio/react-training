@@ -9,6 +9,7 @@ import { IBook } from "@/types/book";
 
 type IBookContext = {
   books: IBook[];
+  error: Error;
   searchBooks: (input: string) => Promise<void>;
 };
 
@@ -25,7 +26,7 @@ export const BooksProvider = ({ children }: IBookProvider) => {
 
   // Fetch data from server
   const { data: items, error } = useFetching<IBook[]>(
-    `${API_BASE_URL}${API_PATH.BOOKS}`
+    `${API_BASE_URL}${API_PATH}`
   );
 
   useEffect(() => {
@@ -35,21 +36,24 @@ export const BooksProvider = ({ children }: IBookProvider) => {
   // Search by call api
   const searchBooks = async (input: string): Promise<void> => {
     const result: IBook[] = (await api.getData(
-      generateUrl({ key: "name", value: input })
+      generateUrl({ key: "name", params: input })
     )) as IBook[];
 
     setBooks(result);
   };
 
-  const value: IBookContext = useMemo(
+  const contextValue: IBookContext = useMemo(
     () => ({
       books: books || [],
+      error,
       searchBooks,
     }),
     [books, searchBooks]
   );
 
   return (
-    <BooksContext.Provider value={value}>{children}</BooksContext.Provider>
+    <BooksContext.Provider value={contextValue}>
+      {children}
+    </BooksContext.Provider>
   );
 };
