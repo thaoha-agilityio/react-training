@@ -1,17 +1,12 @@
 import axios from "axios";
-import { ERROR_MESSAGE } from "../constants/message";
 
-const getData = async <T>(url: string): Promise<T | undefined> => {
+const getData = async <T>(url: string): Promise<T | string> => {
   try {
     const res = await axios.get<T>(url);
 
     return res.data;
-  } catch (error) {
-    if (error instanceof Error) {
-      console.error(error.message);
-    }
-
-    alert(ERROR_MESSAGE);
+  } catch (error: any) {
+    return `An error occurred while fetching the data : ${error.message}`;
   }
 };
 
