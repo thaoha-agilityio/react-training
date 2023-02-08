@@ -3,7 +3,7 @@ import { colors, fonts } from "../themes";
 
 const NormalText = styled.p`
   font: 400 14px/18px "Rubik";
-  color: ${colors.dark[50]};
+  color: ${colors.bitter};
 `;
 
 const BoldText = styled(NormalText)`
@@ -23,7 +23,7 @@ const MediumText = styled(BoldText)`
 const SmallText = styled(NormalText)`
   font-size: ${fonts.fontSizes.sm}px;
   line-height: ${fonts.lineHeights.sm};
-  color: ${colors.gray[300]};
+  color: ${colors.stormGray};
 `;
 
 const TinyText = styled(NormalText)`
@@ -45,8 +45,12 @@ const CategoryName = styled(NormalText)`
 
 const OptionalText = styled(NormalText)`
   font-size: ${fonts.fontSizes.xxs}px;
-  color: ${colors.dark[200]};
+  color: ${colors.black};
   line-height: 2.3;
+`;
+
+const ErrorText = styled(NormalText)`
+  color: red;
 `;
 
 interface ParagraphStyle {
@@ -59,6 +63,7 @@ interface ParagraphStyle {
   Thumbnail: typeof ThumbnailText;
   CategoryName: typeof CategoryName;
   Optional: typeof OptionalText;
+  Error: typeof ErrorText;
 }
 
 export const P: ParagraphStyle = {
@@ -71,4 +76,5 @@ export const P: ParagraphStyle = {
   CategoryName: CategoryName,
   Optional: OptionalText,
   Large: LargeText,
+  Error: ErrorText,
 };

@@ -36,6 +36,11 @@ export const BooksProvider = ({ children }: IBookProvider) => {
   //   `${API_BASE_URL}${API_PATH.BOOKS}`
   // );
 
+  const getBooks = async () => {
+    const books = await api.getData(`${API_BASE_URL}${API_PATH.BOOKS}`);
+  };
+  useEffect(() => {}, []);
+
   // console.log("items", items);
   // console.log("error", error);
   // useEffect(() => {

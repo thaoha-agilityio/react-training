@@ -27,7 +27,7 @@ const Home = (): React.ReactElement => {
 
   // Get value input
   const handleChangeInput = useCallback(
-    (event: ChangeEvent<HTMLInputElement>) => {
+    (event: ChangeEvent<HTMLInputElement>): void => {
       const value = event.target.value;
 
       setInputValue(value);
