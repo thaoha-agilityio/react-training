@@ -38,7 +38,7 @@ const FilterModal = ({
             isCircle
             icon={<ListIcon />}
             bgColor="transparent"
-            borderColor={colors.gray[20]}
+            borderColor="#E3E6EB"
           />
           <OptionalTextStyled>list</OptionalTextStyled>
         </MenuOptionGroup>
@@ -47,7 +47,7 @@ const FilterModal = ({
             isCircle
             icon={<GridIcon />}
             bgColor="transparent"
-            borderColor={colors.gray[20]}
+            borderColor="#E3E6EB"
           />
           <OptionalTextStyled>grid</OptionalTextStyled>
         </MenuOptionGroup>
@@ -56,7 +56,7 @@ const FilterModal = ({
         <MenuOptionStyled>sort by</MenuOptionStyled>
         <Chip
           label="alphabetical order"
-          color={colors.dark[200]}
+          color={colors.black}
           width={225}
           height={46}
           fontSize={13}
@@ -66,7 +66,7 @@ const FilterModal = ({
         />
         <Chip
           label="release year"
-          color={colors.dark[200]}
+          color={colors.black}
           width={225}
           height={46}
           fontSize={13}

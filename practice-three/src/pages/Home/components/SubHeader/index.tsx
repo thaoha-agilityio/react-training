@@ -25,8 +25,8 @@ const SubHeader = (): React.ReactElement => {
 
       <Chip
         label="Filter"
-        color={colors.gray[150]}
-        bgColor={colors.gray[30]}
+        color={colors.comet}
+        bgColor={colors.linkWater}
         width={116}
         height={45}
         fontSize={14}

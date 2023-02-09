@@ -5,7 +5,7 @@ import Header from "..";
 
 const mockProps = {
   theme: true,
-  themeToggle: jest.fn(),
+  onToggleTheme: jest.fn(),
 };
 
 describe("testing Header component", () => {
@@ -17,6 +17,6 @@ describe("testing Header component", () => {
 
     const button = screen.getByRole("button");
     fireEvent.click(button);
-    expect(mockProps.themeToggle).toBeCalledTimes(1);
+    expect(mockProps.onToggleTheme).toBeCalledTimes(1);
   });
 });

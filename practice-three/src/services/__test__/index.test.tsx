@@ -19,7 +19,7 @@ describe("getData", () => {
       expect(axios.get).toHaveBeenCalledWith(
         `${API_BASE_URL}${API_PATH.BOOKS}`
       );
-      expect(result).toEqual(books.data);
+      expect(result.data).toEqual(books.data);
     });
   });
 });

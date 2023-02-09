@@ -34,7 +34,7 @@ const darkTheme = {
 
 const lightTheme = {
   mainHeading: colors.white,
-  textColor: colors.rollingStone,
+  textColor: colors.ebonyClay,
   totalTextColor: colors.linkWater,
   categoriesText: colors.black,
   mainContent: colors.comet,
