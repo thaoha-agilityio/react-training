@@ -12,12 +12,19 @@ import { ERROR_MESSAGE, NOTICE_MESSAGE } from "@/constants/message";
 import { BooksStyled } from "./index.styled";
 import { P } from "@/styled-common";
 
-const Books = (): React.ReactElement => {
+type BooksProps = {
+  onShowModal: (id: string) => void;
+};
+
+const Books = ({ onShowModal }: BooksProps): React.ReactElement => {
   const { books, error } = useBooks();
+
   return (
     <BooksStyled>
       {books.map((item) => (
-        <div key={item.id}>{<CardItem item={item} />}</div>
+        <div key={item.id}>
+          {<CardItem onShowModal={onShowModal} item={item} />}
+        </div>
       ))}
 
       {/* Show message when array empty */}

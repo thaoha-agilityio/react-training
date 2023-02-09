@@ -1,10 +1,10 @@
-import { memo } from "react";
+import { memo, useEffect } from "react";
 
 import Avatar from "../../Avatar";
 import Button from "../../Button";
 import ToggleButton from "../../ToggleButton";
 import LabelButton from "../../../pages/Home/components/LabelButton";
-import { LightIcon, XmarkIcon } from "../../Icon";
+import { DarkIcon, LightIcon, XmarkIcon } from "../../Icon";
 
 import { Backdrop } from "../../../styled-common";
 import { IBook } from "../../../types/book";
@@ -27,67 +27,93 @@ import {
 
 interface IProps {
   book: IBook;
+  theme: boolean;
+  onCloseModal: () => void;
+  onCloseByKeyboard: (event: KeyboardEvent) => void;
+  onToggleTheme: () => void;
 }
 
 const DetailModal = ({
   book: { name, avatar, author, description, published, publishers },
-}: IProps): React.ReactElement => (
-  <Backdrop>
-    <DetailModalStyled>
-      <ModalHeaderStyled>
-        <ModalTitleStyled>{name}</ModalTitleStyled>
-        <Button isCircle={false} bgColor="transparent" icon={<XmarkIcon />} />
-      </ModalHeaderStyled>
+  onCloseModal,
+  onCloseByKeyboard,
+  theme,
+  onToggleTheme,
+}: IProps): React.ReactElement => {
+  // Close modal by keyboard
+  useEffect(() => {
+    window.addEventListener("keydown", onCloseByKeyboard);
 
-      <ModalBodyStyled>
-        <ModalImageStyled>
-          <Avatar
-            url={avatar}
-            alt={name}
-            borderRadius={5}
-            width={201}
-            height={263}
+    // Remove event before closing modal
+    return () => window.removeEventListener("keydown", onCloseByKeyboard);
+  }, []);
+
+  return (
+    <Backdrop>
+      <DetailModalStyled>
+        <ModalHeaderStyled>
+          <ModalTitleStyled>{name}</ModalTitleStyled>
+          <Button
+            isCircle={false}
+            bgColor="transparent"
+            icon={<XmarkIcon />}
+            onClick={onCloseModal}
+            data-testid="close-button"
           />
-        </ModalImageStyled>
-        <DescriptionTextStyled>{description}</DescriptionTextStyled>
+        </ModalHeaderStyled>
 
-        <BookInfoStyled>
-          <MainTextStyled>Author :</MainTextStyled>
-          <BackgroundTextStyled>
-            <TextInfoStyled>{author}</TextInfoStyled>
-          </BackgroundTextStyled>
-        </BookInfoStyled>
+        <ModalBodyStyled>
+          <ModalImageStyled>
+            <Avatar
+              url={avatar}
+              alt={name}
+              borderRadius={5}
+              width={201}
+              height={263}
+            />
+          </ModalImageStyled>
+          <DescriptionTextStyled>{description}</DescriptionTextStyled>
 
-        <BookInfoStyled>
-          <MainTextStyled>Published :</MainTextStyled>
-          <BackgroundTextStyled>
-            <TextInfoStyled>{published}</TextInfoStyled>
-          </BackgroundTextStyled>
-        </BookInfoStyled>
+          <BookInfoStyled>
+            <MainTextStyled>Author :</MainTextStyled>
+            <BackgroundTextStyled>
+              <TextInfoStyled>{author}</TextInfoStyled>
+            </BackgroundTextStyled>
+          </BookInfoStyled>
 
-        <BookInfoStyled>
-          <MainTextStyled>Publishers :</MainTextStyled>
-          <BackgroundTextStyled>
-            <TextInfoStyled>{publishers}</TextInfoStyled>
-          </BackgroundTextStyled>
-        </BookInfoStyled>
-      </ModalBodyStyled>
+          <BookInfoStyled>
+            <MainTextStyled>Published :</MainTextStyled>
+            <BackgroundTextStyled>
+              <TextInfoStyled>{published}</TextInfoStyled>
+            </BackgroundTextStyled>
+          </BookInfoStyled>
 
-      <ModalFooterStyled>
-        <WrapperButtonStyled>
-          <LabelButton text="esc" />
-          <EscapeTextStyled>to escape</EscapeTextStyled>
-        </WrapperButtonStyled>
-        <ToggleButton
-          width={77}
-          height={34}
-          textAlign="left"
-          borderRadius={30}
-          icon={<LightIcon />}
-        />
-      </ModalFooterStyled>
-    </DetailModalStyled>
-  </Backdrop>
-);
+          <BookInfoStyled>
+            <MainTextStyled>Publishers :</MainTextStyled>
+            <BackgroundTextStyled>
+              <TextInfoStyled>{publishers}</TextInfoStyled>
+            </BackgroundTextStyled>
+          </BookInfoStyled>
+        </ModalBodyStyled>
+
+        <ModalFooterStyled>
+          <WrapperButtonStyled>
+            <LabelButton text="esc" />
+            <EscapeTextStyled>to escape</EscapeTextStyled>
+          </WrapperButtonStyled>
+          <ToggleButton
+            width={77}
+            height={34}
+            textAlign={theme ? "left" : "right"}
+            borderRadius={30}
+            icon={theme ? <LightIcon /> : <DarkIcon />}
+            onClick={onToggleTheme}
+            data-testid="toggle-button"
+          />
+        </ModalFooterStyled>
+      </DetailModalStyled>
+    </Backdrop>
+  );
+};
 
 export default memo(DetailModal);

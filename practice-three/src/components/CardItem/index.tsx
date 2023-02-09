@@ -12,12 +12,16 @@ import {
 
 interface IProps {
   item: IBook;
-  onShowModal?: (id: string) => void;
+  onShowModal: (id: string) => void;
 }
 
 const CardItem = ({ item, onShowModal }: IProps): React.ReactElement => {
+  const handleClick = (): void => {
+    onShowModal(item.id);
+  };
+
   return (
-    <CardItemStyled data-testid="card-item">
+    <CardItemStyled data-testid="card-item" onClick={handleClick}>
       <CardImgWrapperStyled>
         <Avatar url={item.avatar} alt="avatar" borderRadius={5} />
       </CardImgWrapperStyled>
