@@ -18,6 +18,7 @@ type IBookContext = {
   books: IBook[];
   error: string;
   searchBooks: (input: string) => Promise<void>;
+  getBookById: (id: string) => IBook;
 };
 
 type IBookProvider = {
@@ -52,10 +53,18 @@ export const BooksProvider = ({ children }: IBookProvider) => {
     setBooks(result.data);
   }, []);
 
+  // Show book detail item by id
+  const getBookById = (id: string): IBook => {
+    const book: IBook = books.find((item) => item.id === id) as IBook;
+
+    return book;
+  };
+
   const contextValue: IBookContext = {
     books: books || [],
     error,
     searchBooks,
+    getBookById,
   };
 
   return (
