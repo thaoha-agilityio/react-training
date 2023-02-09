@@ -59,5 +59,15 @@ export const books = {
       categoryId: "1",
       id: "2",
     },
+    {
+      name: "Angels And Demons",
+      avatar: "https://pictures.abebooks.com/isbn/9780552159708-fr.jpg",
+      description: "description 4",
+      author: "Dan Brown",
+      published: 42,
+      publishers: "Hannibal Lecter",
+      categoryId: "3",
+      id: "3",
+    },
   ],
 };

@@ -18,10 +18,10 @@ export default {
       control: { type: "number" },
     },
     color: {
-      defaultValue: colors.gray[150],
+      defaultValue: colors.comet,
     },
     bgColor: {
-      defaultValue: colors.gray[30],
+      defaultValue: colors.linkWater,
     },
     flexLayout: {
       defaultValue: false,
@@ -65,7 +65,7 @@ Deletable.args = {
   ...Deletable.args,
   width: 123,
   height: 48,
-  color: colors.blue[250],
+  color: colors.azureRadiance,
   endAdornments: <XmarkIcon />,
   startAdornments: null,
   pLeft: 28,
@@ -82,7 +82,7 @@ Filter.args = {
   height: 46,
   label: "Alphabetical Order",
   fontSize: 13,
-  color: colors.blue[250],
+  color: colors.azureRadiance,
   flexLayout: true,
   borderRadius: 10,
   endAdornments: <ArrowIcon />,

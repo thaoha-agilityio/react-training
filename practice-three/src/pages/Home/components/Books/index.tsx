@@ -1,7 +1,7 @@
 import { memo } from "react";
 
 // Hook
-import { useBooks } from "@/hooks";
+import { useBooks } from "@/hooks/useBooks";
 
 // Component
 import CardItem from "@/components/CardItem";
@@ -14,7 +14,6 @@ import { P } from "@/styled-common";
 
 const Books = (): React.ReactElement => {
   const { books, error } = useBooks();
-
   return (
     <BooksStyled>
       {books.map((item) => (

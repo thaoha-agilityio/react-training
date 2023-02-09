@@ -9,8 +9,8 @@ import Chip from "..";
 const mockProps = {
   width: 116,
   height: 45,
-  color: colors.gray[150],
-  bgColor: colors.gray[30],
+  color: colors.comet,
+  bgColor: colors.linkWater,
   flexLayout: false,
   borderRadius: 30,
   pLeft: 15,
