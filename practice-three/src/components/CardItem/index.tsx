@@ -1,3 +1,5 @@
+import { useCallback } from "react";
+
 import Avatar from "../Avatar";
 
 import { IBook } from "@/types/book";
@@ -16,9 +18,9 @@ interface IProps {
 }
 
 const CardItem = ({ item, onShowModal }: IProps): React.ReactElement => {
-  const handleClick = (): void => {
+  const handleClick = useCallback((): void => {
     onShowModal(item.id);
-  };
+  }, []);
 
   return (
     <CardItemStyled data-testid="card-item" onClick={handleClick}>
