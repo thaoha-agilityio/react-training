@@ -21,7 +21,6 @@ const colors = {
   white: "#fff",
   bostonBlue: "#0d75ff17",
 };
-
 const darkTheme = {
   mainHeading: colors.bitter,
   textColor: colors.white,

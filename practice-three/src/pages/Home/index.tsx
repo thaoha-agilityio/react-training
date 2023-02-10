@@ -58,44 +58,44 @@ const Home = (): React.ReactElement => {
     }
   }, [debounceValue]); // Only call effect if debounced debounceValue changes
 
-  // Handle show modal
-  const handleShowModal = useCallback((id: string): void => {
-    setIsModalOpen(true);
-
-    // Get id when click item
+  // Set id when click item
+  const handleSetSelectedBookId = useCallback((id: string) => {
     setSelectedBookId(id);
   }, []);
 
-  // Handle close modal
-  const handleCloseModal = useCallback((): void => {
-    setIsModalOpen(false);
-  }, []);
+  const handleToggleModal = useCallback((): void => {
+    setIsModalOpen((prev) => !prev);
+  }, [isModalOpen]);
 
   // Close detail modal by keyboard
   const handleCloseByKeyboard = useCallback((event: KeyboardEvent): void => {
-    if (event.keyCode === KEY_NAME_ESC) handleCloseModal();
+    if (event.keyCode === KEY_NAME_ESC) handleToggleModal();
   }, []);
 
   return (
     <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
       <Container>
         <Header
-          theme={isDarkTheme}
+          isDarkTheme={isDarkTheme}
           onToggleTheme={handleToggleTheme}
           onChange={handleChangeInput}
         />
         <SubHeader />
         <MainContentStyled>
-          <Books onShowModal={handleShowModal} />
+          <Books
+            onShowModal={handleToggleModal}
+            onSetSelectedBookId={handleSetSelectedBookId}
+          />
         </MainContentStyled>
       </Container>
       {isModalOpen && (
         <DetailModal
-          onCloseModal={handleCloseModal}
+          onCloseModal={handleToggleModal}
           book={getBookById(selectedBookId)}
           onCloseByKeyboard={handleCloseByKeyboard}
           isDarkTheme={isDarkTheme}
           onToggleTheme={handleToggleTheme}
+          isModalOpen={isModalOpen}
         />
       )}
     </ThemeProvider>

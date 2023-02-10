@@ -25,22 +25,22 @@ const ModalHeaderStyled = styled.div`
 `;
 
 const ModalTitleStyled = styled(P.Large)`
-  color: ${colors.linkWater};
+  color: ${colors.black};
 `;
 
 const ModalBodyStyled = styled.div`
   padding: 39px 41px 31px;
   min-height: calc(100vh - 122px);
-  background-color: white;
+  background-color: ${({ theme }) => theme.mainHeading};
 `;
 
 const ModalImageStyled = styled.div`
   text-align: center;
-  margin-bottom: ${metrics.margins.xxl};
+  margin-bottom: ${metrics.margins.xxl}px;
 `;
 
 const DescriptionTextStyled = styled(P.Tiny)`
-  color: ${colors.linkWater};
+  color: ${({ theme }) => theme.infoBook};
   line-height: ${fonts.lineHeights.lg};
   margin-bottom: 9px;
   width: 413px;
@@ -53,7 +53,7 @@ const BookInfoStyled = styled.div`
 `;
 
 const MainTextStyled = styled(P.Normal)`
-  color: ${colors.ebonyClay};
+  color: ${({ theme }) => theme.textColor};
 `;
 
 const BackgroundTextStyled = styled.div`

@@ -13,17 +13,25 @@ import { BooksStyled } from "./index.styled";
 import { P } from "@/styled-common";
 
 type BooksProps = {
-  onShowModal: (id: string) => void;
+  onShowModal: () => void;
+  onSetSelectedBookId: (id: string) => void;
 };
 
-const Books = ({ onShowModal }: BooksProps): React.ReactElement => {
+const Books = ({
+  onShowModal,
+  onSetSelectedBookId,
+}: BooksProps): React.ReactElement => {
   const { books, error } = useBooks();
 
   return (
     <BooksStyled>
       {books.map((item) => (
         <div key={item.id}>
-          <CardItem onShowModal={onShowModal} item={item} />
+          <CardItem
+            onShowModal={onShowModal}
+            item={item}
+            onSetSelectedBookId={onSetSelectedBookId}
+          />
         </div>
       ))}
 

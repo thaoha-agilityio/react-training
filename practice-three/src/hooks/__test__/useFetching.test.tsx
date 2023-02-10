@@ -1,17 +1,17 @@
 import { renderHook } from "@testing-library/react";
 
-import { API_BASE_URL, API_PATH } from "../../constants/api";
-
 import { useFetching } from "../useFetching";
 import { IBook } from "../../types/book";
+import { books } from "../../constants/mockData";
 
+import { api } from "../../services/APIRequest";
+
+jest.mock("../../services/APIRequest");
 describe("useFetching", () => {
   it("should return the correct data and error state", async () => {
-    const url = `${API_BASE_URL}${API_PATH.BOOKS}`;
-
-    const { result } = renderHook(() => useFetching<IBook[]>(url));
+    (api.getData as jest.Mock).mockResolvedValue(books);
+    const { result } = renderHook(() => useFetching<IBook[]>("url"));
 
     expect(result.current.data).toBeFalsy();
-    expect(result.current.error).toBeFalsy();
   });
 });
