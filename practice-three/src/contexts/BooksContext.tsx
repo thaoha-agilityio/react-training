@@ -8,6 +8,8 @@ import {
 } from "react";
 
 import { API_BASE_URL, API_PATH } from "@/constants/api";
+import { book as defaultBook } from "@/constants/mockData";
+
 import { generateUrl } from "@/utils/generateUrl";
 
 import { api } from "@/services/APIRequest";
@@ -54,11 +56,11 @@ export const BooksProvider = ({ children }: IBookProvider) => {
   }, []);
 
   // Show book detail item by id
-  const getBookById = (id: string): IBook => {
-    const book: IBook = books.find((item) => item.id === id) as IBook;
+  const getBookById = useCallback((id: string): IBook => {
+    const book: IBook = books.find((item) => item.id === id) || defaultBook;
 
     return book;
-  };
+  }, []);
 
   const contextValue: IBookContext = {
     books: books || [],
