@@ -38,7 +38,7 @@ const Header = ({
         />
         <Button
           bgColor={"transparent"}
-          icon={theme ? <LightIcon /> : <DarkIcon />}
+          icon={theme ? <DarkIcon /> : <LightIcon />}
           onClick={onToggleTheme}
         />
       </ActionWrapperStyled>

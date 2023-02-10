@@ -28,17 +28,19 @@ import {
 interface IProps {
   book: IBook;
   isDarkTheme: boolean;
+  isModalOpen: boolean;
   onCloseModal: () => void;
-  onCloseByKeyboard: (event: KeyboardEvent) => void;
   onToggleTheme: () => void;
+  onCloseByKeyboard: (event: KeyboardEvent) => void;
 }
 
 const DetailModal = ({
   book: { name, avatar, author, description, published, publishers },
   onCloseModal,
   onCloseByKeyboard,
-  isDarkTheme,
   onToggleTheme,
+  isDarkTheme,
+  isModalOpen,
 }: IProps): React.ReactElement => {
   // Close modal by keyboard
   useEffect(() => {
@@ -46,7 +48,7 @@ const DetailModal = ({
 
     // Remove event before closing modal
     return () => window.removeEventListener("keydown", onCloseByKeyboard);
-  }, []);
+  }, [isModalOpen]);
 
   return (
     <Backdrop>

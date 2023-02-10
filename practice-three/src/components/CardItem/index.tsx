@@ -14,12 +14,18 @@ import {
 
 interface IProps {
   item: IBook;
-  onShowModal: (id: string) => void;
+  onShowModal: () => void;
+  onSetSelectedBookId: (id: string) => void;
 }
 
-const CardItem = ({ item, onShowModal }: IProps): React.ReactElement => {
+const CardItem = ({
+  item,
+  onShowModal,
+  onSetSelectedBookId,
+}: IProps): React.ReactElement => {
   const handleClick = useCallback((): void => {
-    onShowModal(item.id);
+    onSetSelectedBookId(item.id);
+    onShowModal();
   }, []);
 
   return (
