@@ -23,7 +23,7 @@ const Books = ({ onShowModal }: BooksProps): React.ReactElement => {
     <BooksStyled>
       {books.map((item) => (
         <div key={item.id}>
-          {<CardItem onShowModal={onShowModal} item={item} />}
+          <CardItem onShowModal={onShowModal} item={item} />
         </div>
       ))}
 
