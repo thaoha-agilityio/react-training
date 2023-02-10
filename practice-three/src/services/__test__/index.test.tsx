@@ -10,7 +10,7 @@ jest.mock("axios");
 describe("getData", () => {
   describe("when API call is successful", () => {
     it("should return all books", async () => {
-      axios.get.mockResolvedValueOnce(books);
+      (axios.get as jest.Mock).mockResolvedValueOnce(books);
 
       // when
       const result = await api.getData(`${API_BASE_URL}${API_PATH.BOOKS}`);
