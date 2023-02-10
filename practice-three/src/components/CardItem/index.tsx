@@ -16,12 +16,14 @@ interface IProps {
   item: IBook;
   onShowModal: () => void;
   onSetSelectedBookId: (id: string) => void;
+  isGridView: boolean;
 }
 
 const CardItem = ({
   item,
   onShowModal,
   onSetSelectedBookId,
+  isGridView,
 }: IProps): React.ReactElement => {
   const handleClick = useCallback((): void => {
     onSetSelectedBookId(item.id);
@@ -29,7 +31,11 @@ const CardItem = ({
   }, []);
 
   return (
-    <CardItemStyled data-testid="card-item" onClick={handleClick}>
+    <CardItemStyled
+      data-testid="card-item"
+      onClick={handleClick}
+      isGridView={isGridView}
+    >
       <CardImgWrapperStyled>
         <Avatar url={item.avatar} alt="avatar" borderRadius={5} />
       </CardImgWrapperStyled>

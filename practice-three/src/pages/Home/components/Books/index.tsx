@@ -15,19 +15,22 @@ import { P } from "@/styled-common";
 type BooksProps = {
   onShowModal: () => void;
   onSetSelectedBookId: (id: string) => void;
+  isGridView: boolean;
 };
 
 const Books = ({
   onShowModal,
   onSetSelectedBookId,
+  isGridView,
 }: BooksProps): React.ReactElement => {
   const { books, error } = useBooks();
 
   return (
-    <BooksStyled>
+    <BooksStyled isGridView={isGridView}>
       {books.map((item) => (
         <div key={item.id}>
           <CardItem
+            isGridView={isGridView}
             onShowModal={onShowModal}
             item={item}
             onSetSelectedBookId={onSetSelectedBookId}

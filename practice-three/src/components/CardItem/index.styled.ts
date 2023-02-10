@@ -4,9 +4,14 @@ import { ColumnCenterStyle } from "../../styled-common/layout";
 import { colors, fonts, metrics } from "../../themes";
 import { P } from "../../styled-common/paragraph";
 
-const CardItemStyled = styled.div`
-  width: ${metrics.widths.lg}px;
-  height: ${metrics.heights["4xl"]}px;
+type CardItemProps = {
+  isGridView: boolean;
+};
+
+const CardItemStyled = styled.div<CardItemProps>`
+  width: ${(props) => (props.isGridView ? `${metrics.widths.lg}px` : "908px")};
+  height: ${(props) =>
+    props.isGridView ? `${metrics.heights["4xl"]}px` : "213px"};
   box-shadow: ${metrics.shadows.sm};
   border-radius: ${metrics.borderRadius.tiny}px;
   ${ColumnCenterStyle}

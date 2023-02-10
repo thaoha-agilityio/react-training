@@ -83,6 +83,7 @@ const Home = (): React.ReactElement => {
         <SubHeader />
         <MainContentStyled>
           <Books
+            isGridView={false}
             onShowModal={handleToggleModal}
             onSetSelectedBookId={handleSetSelectedBookId}
           />
