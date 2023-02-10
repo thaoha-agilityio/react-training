@@ -98,15 +98,15 @@ const DetailModal = ({
 
         <ModalFooterStyled>
           <WrapperButtonStyled>
-            <LabelButton text="esc" />
+            <LabelButton text="esc" onClick={onCloseModal} />
             <EscapeTextStyled>to escape</EscapeTextStyled>
           </WrapperButtonStyled>
           <ToggleButton
             width={77}
             height={34}
-            textAlign={theme ? "left" : "right"}
+            textAlign={theme ? "right" : "left"}
             borderRadius={30}
-            icon={theme ? <LightIcon /> : <DarkIcon />}
+            icon={theme ? <DarkIcon /> : <LightIcon />}
             onClick={onToggleTheme}
             data-testid="toggle-button"
           />
