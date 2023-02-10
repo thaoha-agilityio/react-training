@@ -1,25 +1,33 @@
 import { ThemeProvider } from "styled-components";
-import { ChangeEvent, useCallback, useEffect, useRef, useState } from "react";
+import React, { ChangeEvent, useCallback, useEffect, useState } from "react";
 import { useDebounce } from "@/hooks";
 import { useBooks } from "@/hooks/useBooks";
+
 // Components
 import Header from "../../components/Header";
 import SubHeader from "./components/SubHeader";
 import Books from "./components/Books";
+import DetailModal from "@/components/Modal/DetailModal";
 
 // Themes
 import { darkTheme, lightTheme } from "@/themes";
 import { Container } from "../../styled-common";
 
+// Constant
+import { KEY_NAME_ESC } from "@/constants/actions";
+
 // Styled
 import { MainContentStyled } from "./index.styled";
 
 const Home = (): React.ReactElement => {
-  const { searchBooks } = useBooks();
+  const { searchBooks, getBookById } = useBooks();
   const [isDarkTheme, setIsDarkTheme] = useState(false);
 
   const [inputValue, setInputValue] = useState<string>("");
   const debounceValue = useDebounce(inputValue);
+
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [selectedBookId, setSelectedBookId] = useState<string>("");
 
   // Change dark-light mode
   const handleToggleTheme = useCallback(() => {
@@ -50,6 +58,24 @@ const Home = (): React.ReactElement => {
     }
   }, [debounceValue]); // Only call effect if debounced debounceValue changes
 
+  // Handle show modal
+  const handleShowModal = useCallback((id: string): void => {
+    setIsModalOpen(true);
+
+    // Get id when click item
+    setSelectedBookId(id);
+  }, []);
+
+  // Handle close modal
+  const handleCloseModal = useCallback((): void => {
+    setIsModalOpen(false);
+  }, []);
+
+  // Close detail modal by keyboard
+  const handleCloseByKeyboard = useCallback((event: KeyboardEvent): void => {
+    if (event.keyCode === KEY_NAME_ESC) handleCloseModal();
+  }, []);
+
   return (
     <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
       <Container>
@@ -60,9 +86,18 @@ const Home = (): React.ReactElement => {
         />
         <SubHeader />
         <MainContentStyled>
-          <Books />
+          <Books onShowModal={handleShowModal} />
         </MainContentStyled>
       </Container>
+      {isModalOpen && (
+        <DetailModal
+          onCloseModal={handleCloseModal}
+          book={getBookById(selectedBookId)}
+          onCloseByKeyboard={handleCloseByKeyboard}
+          isDarkTheme={isDarkTheme}
+          onToggleTheme={handleToggleTheme}
+        />
+      )}
     </ThemeProvider>
   );
 };
