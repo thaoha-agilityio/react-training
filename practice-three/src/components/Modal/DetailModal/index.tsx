@@ -27,7 +27,7 @@ import {
 
 interface IProps {
   book: IBook;
-  theme: boolean;
+  isDarkTheme: boolean;
   onCloseModal: () => void;
   onCloseByKeyboard: (event: KeyboardEvent) => void;
   onToggleTheme: () => void;
@@ -37,7 +37,7 @@ const DetailModal = ({
   book: { name, avatar, author, description, published, publishers },
   onCloseModal,
   onCloseByKeyboard,
-  theme,
+  isDarkTheme,
   onToggleTheme,
 }: IProps): React.ReactElement => {
   // Close modal by keyboard
@@ -104,9 +104,9 @@ const DetailModal = ({
           <ToggleButton
             width={77}
             height={34}
-            textAlign={theme ? "right" : "left"}
+            textAlign={isDarkTheme ? "right" : "left"}
             borderRadius={30}
-            icon={theme ? <DarkIcon /> : <LightIcon />}
+            icon={isDarkTheme ? <DarkIcon /> : <LightIcon />}
             onClick={onToggleTheme}
             data-testid="toggle-button"
           />
