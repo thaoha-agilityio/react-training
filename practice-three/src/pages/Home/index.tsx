@@ -76,7 +76,7 @@ const Home = (): React.ReactElement => {
     <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
       <Container>
         <Header
-          theme={isDarkTheme}
+          isDarkTheme={isDarkTheme}
           onToggleTheme={handleToggleTheme}
           onChange={handleChangeInput}
         />
