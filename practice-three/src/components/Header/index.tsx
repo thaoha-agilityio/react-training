@@ -12,13 +12,13 @@ import logo from "../../assets/images/logo.png";
 import { HeaderStyled, LogoStyled, ActionWrapperStyled } from "./index.styled";
 
 type HeaderProps = {
-  theme: boolean;
+  isDarkTheme: boolean;
   onToggleTheme: () => void;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
 };
 
 const Header = ({
-  theme,
+  isDarkTheme,
   onToggleTheme,
   onChange,
 }: HeaderProps): React.ReactElement => {
@@ -38,7 +38,7 @@ const Header = ({
         />
         <Button
           bgColor={"transparent"}
-          icon={theme ? <DarkIcon /> : <LightIcon />}
+          icon={isDarkTheme ? <DarkIcon /> : <LightIcon />}
           onClick={onToggleTheme}
         />
       </ActionWrapperStyled>
