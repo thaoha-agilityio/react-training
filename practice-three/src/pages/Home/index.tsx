@@ -67,14 +67,14 @@ const Home = (): React.ReactElement => {
   }, []);
 
   // Handle close modal
-  const handleCloseModal = (): void => {
+  const handleCloseModal = useCallback((): void => {
     setIsModalOpen(false);
-  };
+  }, []);
 
   // Close detail modal by keyboard
-  const handleCloseByKeyboard = (event: KeyboardEvent) => {
+  const handleCloseByKeyboard = useCallback((event: KeyboardEvent): void => {
     if (event.keyCode === KEY_NAME_ESC) handleCloseModal();
-  };
+  }, []);
 
   return (
     <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
@@ -94,7 +94,7 @@ const Home = (): React.ReactElement => {
           onCloseModal={handleCloseModal}
           book={getBookById(selectedBookId)}
           onCloseByKeyboard={handleCloseByKeyboard}
-          theme={isDarkTheme}
+          isDarkTheme={isDarkTheme}
           onToggleTheme={handleToggleTheme}
         />
       )}
