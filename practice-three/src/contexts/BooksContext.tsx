@@ -69,7 +69,7 @@ export const BooksProvider = ({ children }: IBookProvider) => {
   );
 
   // Change grid view layout
-  const changeGridView = useCallback(() => {
+  const changeGridView = useCallback((): void => {
     setIsGridVIew((prev) => !prev);
   }, []);
 
