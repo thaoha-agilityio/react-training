@@ -32,7 +32,14 @@ const FilterModal = ({
   right,
   onToggleFilterModal,
 }: IProps): React.ReactElement => {
-  const { isGridView, handleChangeGridView } = useBooks();
+  const {
+    isGridView,
+    isSortNameStatus,
+    isSortYearStatus,
+    handleChangeGridView,
+    handleSortByAlphabet,
+    handleSortByReleaseYear,
+  } = useBooks();
 
   return (
     <BackDropStyled onClick={onToggleFilterModal}>
@@ -66,23 +73,33 @@ const FilterModal = ({
           <MenuOptionStyled>sort by</MenuOptionStyled>
           <Chip
             label="alphabetical order"
-            color={colors.black}
+            color={isSortNameStatus ? colors.azureRadiance : colors.black}
+            bgColor={isSortNameStatus ? colors.linkWater : colors.transparent}
             width={225}
             height={46}
             fontSize={13}
             fontWeight={400}
             flexLayout
             endAdornments={<ArrowIcon />}
+            pRight={15}
+            pLeft={15}
+            borderRadius={10}
+            onClick={handleSortByAlphabet}
           />
           <Chip
             label="release year"
-            color={colors.black}
+            color={isSortYearStatus ? colors.azureRadiance : colors.black}
+            bgColor={isSortYearStatus ? colors.linkWater : colors.transparent}
             width={225}
             height={46}
             fontSize={13}
             fontWeight={400}
             flexLayout
             endAdornments={<ArrowIcon />}
+            pRight={15}
+            pLeft={15}
+            borderRadius={10}
+            onClick={handleSortByReleaseYear}
           />
         </SortOptionStyled>
       </FilterModalStyled>
