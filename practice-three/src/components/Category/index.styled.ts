@@ -14,6 +14,7 @@ const CategoryWrapperStyled = styled.div`
   border-radius: ${metrics.borderRadius.md}px;
   margin-left: 14px;
   padding: 8px 18px 0px;
+  cursor: pointer;
 `;
 
 const CategoryStyled = styled.div`

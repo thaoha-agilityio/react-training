@@ -1,5 +1,5 @@
-import { memo } from "react";
-import { useCategories } from "../../../../hooks";
+import { memo, useCallback } from "react";
+import { useCategories, useBooks } from "../../../../hooks";
 
 // Component
 import Category from "../../../../components/Category";
@@ -15,7 +15,19 @@ type SidebarCategoriesProps = {
 };
 
 const SideBar = (): React.ReactElement => {
-  const { categories } = useCategories();
+  const { categories, setSelectedCategory, selectedIds } = useCategories();
+  const { handleFilterByCategories } = useBooks();
+
+  // Set categoryId when click
+  const handleSelectCategory = useCallback(
+    (id: string) => {
+      setSelectedCategory(id);
+
+      // Show books after filter
+      handleFilterByCategories([...selectedIds, id]);
+    },
+    [selectedIds]
+  );
 
   return (
     <CategoriesStyled data-testid="Sidebar">
@@ -25,7 +37,10 @@ const SideBar = (): React.ReactElement => {
         </ParaphraseStyled>
         {categories?.map((category: ICategory) => (
           <div key={category.id}>
-            <Category category={category} />
+            <Category
+              category={category}
+              onSelectCategory={handleSelectCategory}
+            />
           </div>
         ))}
       </>
