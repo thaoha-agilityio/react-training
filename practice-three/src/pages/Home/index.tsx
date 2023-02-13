@@ -19,6 +19,7 @@ import { KEY_NAME_ESC } from "@/constants/actions";
 
 // Styled
 import { MainContentStyled } from "./index.styled";
+import SideBar from "./components/SideBar";
 
 const Home = (): React.ReactElement => {
   const { searchBooks, getBookById, isGridView } = useBooks();
@@ -91,6 +92,7 @@ const Home = (): React.ReactElement => {
         />
         <SubHeader onToggleFilterModal={handleToggleFilterModal} />
         <MainContentStyled>
+          <SideBar />
           <Books
             onShowModal={handleToggleModal}
             onSetSelectedBookId={handleSetSelectedBookId}

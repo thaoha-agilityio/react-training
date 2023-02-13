@@ -1,4 +1,5 @@
 import { memo } from "react";
+import { useCategories } from "../../../../hooks";
 
 // Component
 import Category from "../../../../components/Category";
@@ -9,13 +10,13 @@ import { ICategory } from "../../../../types/category";
 // Styled
 import { CategoriesStyled, ParaphraseStyled } from "./index.styled";
 
-interface SidebarCategoriesProps {
+type SidebarCategoriesProps = {
   categories: ICategory[];
-}
+};
 
-const SideBar = ({
-  categories,
-}: SidebarCategoriesProps): React.ReactElement => {
+const SideBar = (): React.ReactElement => {
+  const { categories } = useCategories();
+
   return (
     <CategoriesStyled data-testid="Sidebar">
       <>
