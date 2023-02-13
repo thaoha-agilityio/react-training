@@ -20,9 +20,13 @@ type IBookContext = {
   books: IBook[];
   error: string;
   isGridView: boolean;
+  isSortNameStatus: boolean;
+  isSortYearStatus: boolean;
   searchBooks: (input: string) => Promise<void>;
   getBookById: (id: string) => IBook;
   handleChangeGridView: () => void;
+  handleSortByAlphabet: () => void;
+  handleSortByReleaseYear: () => void;
 };
 
 type IBookProvider = {
@@ -37,6 +41,9 @@ export const BooksProvider = ({ children }: IBookProvider) => {
   const [books, setBooks] = useState<IBook[]>([]);
 
   const [isGridView, setIsGridVIew] = useState<boolean>(true);
+
+  const [isSortNameStatus, setIsSortNameStatus] = useState<boolean>(false);
+  const [isSortYearStatus, setIsSortYearStatus] = useState<boolean>(false);
 
   // Fetch data from server
   const { data: items, error } = useFetching<IBook[]>(
@@ -73,6 +80,40 @@ export const BooksProvider = ({ children }: IBookProvider) => {
     setIsGridVIew((prev) => !prev);
   }, []);
 
+  // Sort by name
+  const handleSortByAlphabet = useCallback((): void => {
+    // Toggle sort desc <=> asc
+    const result: IBook[] = books.sort((a, b) => {
+      return typeof a.name === "string" && typeof b.name === "string"
+        ? isSortNameStatus
+          ? b.name.localeCompare(a.name)
+          : a.name.localeCompare(b.name)
+        : 0;
+    });
+
+    // Set state when click
+    setIsSortNameStatus((prev) => !prev);
+
+    setBooks(result);
+  }, [books, isSortNameStatus]);
+
+  // Sort by year
+  const handleSortByReleaseYear = useCallback((): void => {
+    // Toggle sort desc <=> asc
+    const result: IBook[] = books.sort((a, b) => {
+      return typeof a.published === "number" && typeof b.published === "number"
+        ? isSortYearStatus
+          ? b.published - a.published
+          : a.published - b.published
+        : 0;
+    });
+
+    // Set state when click
+    setIsSortYearStatus((prev) => !prev);
+
+    setBooks(result);
+  }, [books, isSortYearStatus]);
+
   const contextValue: IBookContext = useMemo(
     () => ({
       books: books || [],
@@ -80,9 +121,24 @@ export const BooksProvider = ({ children }: IBookProvider) => {
       searchBooks,
       getBookById,
       isGridView: isGridView,
+      isSortNameStatus: isSortNameStatus,
+      isSortYearStatus: isSortYearStatus,
       handleChangeGridView,
+      handleSortByReleaseYear,
+      handleSortByAlphabet,
     }),
-    [books, error, searchBooks, getBookById, isGridView, handleChangeGridView]
+    [
+      books,
+      error,
+      searchBooks,
+      getBookById,
+      isGridView,
+      handleChangeGridView,
+      isSortYearStatus,
+      isSortNameStatus,
+      handleSortByAlphabet,
+      handleSortByReleaseYear,
+    ]
   );
 
   return (
