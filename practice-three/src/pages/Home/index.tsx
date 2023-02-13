@@ -1,5 +1,5 @@
-import { ThemeProvider } from "styled-components";
 import React, { ChangeEvent, useCallback, useEffect, useState } from "react";
+import { ThemeProvider } from "styled-components";
 import { useDebounce } from "@/hooks";
 import { useBooks } from "@/hooks/useBooks";
 
@@ -8,6 +8,7 @@ import Header from "../../components/Header";
 import SubHeader from "./components/SubHeader";
 import Books from "./components/Books";
 import DetailModal from "@/components/Modal/DetailModal";
+import FilterModal from "@/components/Modal/FilterModal";
 
 // Themes
 import { darkTheme, lightTheme } from "@/themes";
@@ -20,14 +21,17 @@ import { KEY_NAME_ESC } from "@/constants/actions";
 import { MainContentStyled } from "./index.styled";
 
 const Home = (): React.ReactElement => {
-  const { searchBooks, getBookById } = useBooks();
+  const { searchBooks, getBookById, isGridView } = useBooks();
   const [isDarkTheme, setIsDarkTheme] = useState(false);
 
   const [inputValue, setInputValue] = useState<string>("");
   const debounceValue = useDebounce(inputValue);
 
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+
   const [selectedBookId, setSelectedBookId] = useState<string>("");
+
+  const [isModalFilterOpen, setIsModalFilterOpen] = useState<boolean>(false);
 
   // Change dark-light mode
   const handleToggleTheme = useCallback(() => {
@@ -72,6 +76,11 @@ const Home = (): React.ReactElement => {
     if (event.keyCode === KEY_NAME_ESC) handleToggleModal();
   }, []);
 
+  // Handle show/close filter component
+  const handleToggleFilterModal = useCallback(() => {
+    setIsModalFilterOpen((prev) => !prev);
+  }, []);
+
   return (
     <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
       <Container>
@@ -80,12 +89,12 @@ const Home = (): React.ReactElement => {
           onToggleTheme={handleToggleTheme}
           onChange={handleChangeInput}
         />
-        <SubHeader />
+        <SubHeader onToggleFilterModal={handleToggleFilterModal} />
         <MainContentStyled>
           <Books
-            isGridView={false}
             onShowModal={handleToggleModal}
             onSetSelectedBookId={handleSetSelectedBookId}
+            isGridView={isGridView}
           />
         </MainContentStyled>
       </Container>
@@ -97,6 +106,15 @@ const Home = (): React.ReactElement => {
           isDarkTheme={isDarkTheme}
           onToggleTheme={handleToggleTheme}
           isModalOpen={isModalOpen}
+        />
+      )}
+      {isModalFilterOpen && (
+        <FilterModal
+          width={268}
+          height={331}
+          top={20}
+          right={70}
+          onToggleFilterModal={handleToggleFilterModal}
         />
       )}
     </ThemeProvider>
