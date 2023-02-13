@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 import { Backdrop, P } from "../../../styled-common";
-import { metrics } from "../../../themes";
+import { colors, metrics } from "../../../themes";
 
 interface StyledModalProps {
   width: number;
@@ -23,7 +23,7 @@ const FilterModalStyled = styled.div<StyledModalProps>`
   box-shadow: ${metrics.shadows.lg};
   border-radius: ${metrics.borderRadius.tiny}px;
   padding: 29px 21px;
-
+  background-color: ${colors.white};
   ::before {
     content: " ";
     width: 10px;
