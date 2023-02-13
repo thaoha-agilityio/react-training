@@ -1,25 +1,26 @@
 import React, { ChangeEvent, useCallback, useEffect, useState } from "react";
 import { ThemeProvider } from "styled-components";
-import { useDebounce } from "@/hooks";
-import { useBooks } from "@/hooks/useBooks";
 
+// Custom hooks
+import { useDebounce } from "@/hooks";
+import { useBooks } from "../../hooks/useBooks";
 // Components
 import Header from "../../components/Header";
 import SubHeader from "./components/SubHeader";
 import Books from "./components/Books";
-import DetailModal from "@/components/Modal/DetailModal";
-import FilterModal from "@/components/Modal/FilterModal";
+import DetailModal from "../../components/Modal/DetailModal";
+import FilterModal from "../../components/Modal/FilterModal";
+import SideBar from "./components/SideBar";
 
 // Themes
-import { darkTheme, lightTheme } from "@/themes";
+import { darkTheme, lightTheme } from "../../themes";
 import { Container } from "../../styled-common";
 
 // Constant
-import { KEY_NAME_ESC } from "@/constants/actions";
+import { KEY_NAME_ESC } from "../../constants/actions";
 
 // Styled
 import { MainContentStyled } from "./index.styled";
-import SideBar from "./components/SideBar";
 
 const Home = (): React.ReactElement => {
   const { searchBooks, getBookById, isGridView } = useBooks();
