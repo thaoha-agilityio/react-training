@@ -7,9 +7,9 @@ import {
   useState,
 } from "react";
 
-import { API_BASE_URL, API_PATH } from "@/constants/api";
-import { useFetching } from "@/hooks";
-import { ICategory } from "@/types/category";
+import { API_BASE_URL, API_PATH } from "../constants/api";
+import { useFetching } from "../hooks";
+import { ICategory } from "../types/category";
 
 type CategoriesContext = {
   categories: ICategory[];
