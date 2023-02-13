@@ -32,7 +32,7 @@ const FilterModal = ({
   right,
   onToggleFilterModal,
 }: IProps): React.ReactElement => {
-  const { isGridView, changeGridView } = useBooks();
+  const { isGridView, handleChangeGridView } = useBooks();
 
   return (
     <BackDropStyled onClick={onToggleFilterModal}>
@@ -45,8 +45,8 @@ const FilterModal = ({
               icon={<GridIcon />}
               bgColor={isGridView ? colors.linkWater : colors.transparent}
               borderColor="#E3E6EB"
-              onClick={changeGridView}
-              disabled={isGridView ? true : false}
+              onClick={handleChangeGridView}
+              disabled={isGridView}
             />
             <OptionalTextStyled>grid</OptionalTextStyled>
           </MenuOptionGroup>
@@ -56,8 +56,8 @@ const FilterModal = ({
               icon={<ListIcon />}
               bgColor={isGridView ? colors.transparent : colors.linkWater}
               borderColor="#E3E6EB"
-              onClick={changeGridView}
-              disabled={isGridView ? false : true}
+              onClick={handleChangeGridView}
+              disabled={!isGridView}
             />
             <OptionalTextStyled>list</OptionalTextStyled>
           </MenuOptionGroup>
