@@ -81,7 +81,7 @@ export const BooksProvider = ({ children }: IBookProvider) => {
   }, []);
 
   // Sort by name
-  const handleSortByAlphabet = useCallback(() => {
+  const handleSortByAlphabet = useCallback((): void => {
     // Set state when click
     setIsSortNameStatus((prev) => !prev);
 
@@ -96,7 +96,7 @@ export const BooksProvider = ({ children }: IBookProvider) => {
   }, [books, isSortNameStatus]);
 
   // Sort by year
-  const handleSortByReleaseYear = useCallback(() => {
+  const handleSortByReleaseYear = useCallback((): void => {
     // Set state when click
     setIsSortYearStatus((prev) => !prev);
 
