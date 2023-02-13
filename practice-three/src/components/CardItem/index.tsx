@@ -20,13 +20,13 @@ interface IProps {
 }
 
 const CardItem = ({
-  item,
+  item: { id, avatar, name, author, published },
   onShowModal,
   onSetSelectedBookId,
   isGridView,
 }: IProps): React.ReactElement => {
   const handleClick = useCallback((): void => {
-    onSetSelectedBookId(item.id);
+    onSetSelectedBookId(id);
     onShowModal();
   }, []);
 
@@ -38,7 +38,7 @@ const CardItem = ({
     >
       <CardImgWrapperStyled isGridView={isGridView}>
         <Avatar
-          url={item.avatar}
+          url={avatar}
           alt="avatar"
           borderRadius={5}
           width={isGridView ? 201 : 353}
@@ -46,11 +46,9 @@ const CardItem = ({
         />
       </CardImgWrapperStyled>
       <CardContentStyled>
-        <CardTitleStyled isGridView={isGridView}>{item.name}</CardTitleStyled>
-        <CardInfoStyled isGridView={isGridView}>{item.author}</CardInfoStyled>
-        <CardInfoStyled isGridView={isGridView}>
-          {item.published}
-        </CardInfoStyled>
+        <CardTitleStyled isGridView={isGridView}>{name}</CardTitleStyled>
+        <CardInfoStyled isGridView={isGridView}>{author}</CardInfoStyled>
+        <CardInfoStyled isGridView={isGridView}>{published}</CardInfoStyled>
       </CardContentStyled>
     </CardItemStyled>
   );
