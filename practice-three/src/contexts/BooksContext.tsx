@@ -87,9 +87,11 @@ export const BooksProvider = ({ children }: IBookProvider) => {
 
     // Toggle sort desc <=> asc
     const result: IBook[] = books.sort((a, b) => {
-      return isSortNameStatus
-        ? b.name.localeCompare(a.name)
-        : a.name.localeCompare(b.name);
+      return typeof a.name === "string" && typeof b.name === "string"
+        ? isSortNameStatus
+          ? b.name.localeCompare(a.name)
+          : a.name.localeCompare(b.name)
+        : 0;
     });
 
     setBooks(result);
@@ -102,9 +104,11 @@ export const BooksProvider = ({ children }: IBookProvider) => {
 
     // Toggle sort desc <=> asc
     const result: IBook[] = books.sort((a, b) => {
-      return isSortYearStatus
-        ? b.published - a.published
-        : a.published - b.published;
+      return typeof a.published === "number" && typeof b.published === "number"
+        ? isSortYearStatus
+          ? b.published - a.published
+          : a.published - b.published
+        : 0;
     });
 
     setBooks(result);
