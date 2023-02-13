@@ -1,5 +1,6 @@
 import { memo, useCallback } from "react";
-import { useCategories, useBooks } from "../../../../hooks";
+import { useCategories } from "../../../../hooks";
+import { useBooks } from "../../../../hooks/useBooks";
 
 // Component
 import Category from "../../../../components/Category";
@@ -9,10 +10,6 @@ import { ICategory } from "../../../../types/category";
 
 // Styled
 import { CategoriesStyled, ParaphraseStyled } from "./index.styled";
-
-type SidebarCategoriesProps = {
-  categories: ICategory[];
-};
 
 const SideBar = (): React.ReactElement => {
   const { categories, setSelectedCategory, selectedIds } = useCategories();
