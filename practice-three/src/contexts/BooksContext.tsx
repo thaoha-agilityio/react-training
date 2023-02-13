@@ -22,7 +22,7 @@ type IBookContext = {
   isGridView: boolean;
   searchBooks: (input: string) => Promise<void>;
   getBookById: (id: string) => IBook;
-  changeGridView: () => void;
+  handleChangeGridView: () => void;
 };
 
 type IBookProvider = {
@@ -69,7 +69,7 @@ export const BooksProvider = ({ children }: IBookProvider) => {
   );
 
   // Change grid view layout
-  const changeGridView = useCallback((): void => {
+  const handleChangeGridView = useCallback((): void => {
     setIsGridVIew((prev) => !prev);
   }, []);
 
@@ -80,9 +80,9 @@ export const BooksProvider = ({ children }: IBookProvider) => {
       searchBooks,
       getBookById,
       isGridView: isGridView,
-      changeGridView,
+      handleChangeGridView,
     }),
-    [books, error, searchBooks, getBookById, isGridView, changeGridView]
+    [books, error, searchBooks, getBookById, isGridView, handleChangeGridView]
   );
 
   return (
