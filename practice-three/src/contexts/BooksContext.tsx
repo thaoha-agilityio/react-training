@@ -19,8 +19,10 @@ import { useFetching } from "@/hooks";
 type IBookContext = {
   books: IBook[];
   error: string;
+  isGridView: boolean;
   searchBooks: (input: string) => Promise<void>;
   getBookById: (id: string) => IBook;
+  handleChangeGridView: () => void;
 };
 
 type IBookProvider = {
@@ -34,8 +36,9 @@ export const BooksContext = createContext<IBookContext>({} as IBookContext);
 export const BooksProvider = ({ children }: IBookProvider) => {
   const [books, setBooks] = useState<IBook[]>([]);
 
-  // Fetch data from server
+  const [isGridView, setIsGridVIew] = useState<boolean>(true);
 
+  // Fetch data from server
   const { data: items, error } = useFetching<IBook[]>(
     `${API_BASE_URL}${API_PATH.BOOKS}`
   );
@@ -56,18 +59,31 @@ export const BooksProvider = ({ children }: IBookProvider) => {
   }, []);
 
   // Show book detail item by id
-  const getBookById = useCallback((id: string): IBook => {
-    const book: IBook = books.find((item) => item.id === id) || defaultBook;
+  const getBookById = useCallback(
+    (id: string): IBook => {
+      const book: IBook = books.find((item) => item.id === id) || defaultBook;
 
-    return book;
+      return book;
+    },
+    [books]
+  );
+
+  // Change grid view layout
+  const handleChangeGridView = useCallback((): void => {
+    setIsGridVIew((prev) => !prev);
   }, []);
 
-  const contextValue: IBookContext = {
-    books: books || [],
-    error,
-    searchBooks,
-    getBookById,
-  };
+  const contextValue: IBookContext = useMemo(
+    () => ({
+      books: books || [],
+      error,
+      searchBooks,
+      getBookById,
+      isGridView: isGridView,
+      handleChangeGridView,
+    }),
+    [books, error, searchBooks, getBookById, isGridView, handleChangeGridView]
+  );
 
   return (
     <BooksContext.Provider value={contextValue}>

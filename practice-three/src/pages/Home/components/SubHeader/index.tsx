@@ -13,7 +13,13 @@ import {
   TotalBooksStyled,
 } from "./index.styled";
 
-const SubHeader = (): React.ReactElement => {
+type SubHeaderProps = {
+  onToggleFilterModal: () => void;
+};
+
+const SubHeader = ({
+  onToggleFilterModal,
+}: SubHeaderProps): React.ReactElement => {
   return (
     <SubheaderStyled>
       <TitleStyled>Categories</TitleStyled>
@@ -34,6 +40,7 @@ const SubHeader = (): React.ReactElement => {
         flexLayout={false}
         startAdornments={<FilterIcon />}
         borderRadius={30}
+        onClick={onToggleFilterModal}
       />
     </SubheaderStyled>
   );
