@@ -20,6 +20,7 @@ const colors = {
   transparent: "transparent",
   white: "#fff",
   bostonBlue: "#0d75ff17",
+  athensGray: "#E3E6EB",
 };
 const darkTheme = {
   mainHeading: colors.bitter,

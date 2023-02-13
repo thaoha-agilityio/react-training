@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { ColumnCenterStyle } from "../../styled-common/layout";
 import { colors, fonts, metrics } from "../../themes";
 import { P } from "../../styled-common/paragraph";
-import { fontSizes, lineHeights } from "@/themes/fonts";
+import { fontSizes, lineHeights } from "../../themes/fonts";
 
 type CardItemProps = {
   isGridView: boolean;

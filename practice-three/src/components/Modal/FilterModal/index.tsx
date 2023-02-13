@@ -44,7 +44,7 @@ const FilterModal = ({
               isCircle
               icon={<GridIcon />}
               bgColor={isGridView ? colors.linkWater : colors.transparent}
-              borderColor="#E3E6EB"
+              borderColor={colors.athensGray}
               onClick={handleChangeGridView}
               disabled={isGridView}
             />
@@ -55,7 +55,7 @@ const FilterModal = ({
               isCircle
               icon={<ListIcon />}
               bgColor={isGridView ? colors.transparent : colors.linkWater}
-              borderColor="#E3E6EB"
+              borderColor={colors.athensGray}
               onClick={handleChangeGridView}
               disabled={!isGridView}
             />
