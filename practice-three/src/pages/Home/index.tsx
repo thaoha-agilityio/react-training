@@ -1,4 +1,11 @@
-import React, { ChangeEvent, useCallback, useEffect, useState } from "react";
+import React, {
+  ChangeEvent,
+  useCallback,
+  useEffect,
+  useState,
+  lazy,
+  Suspense,
+} from "react";
 import { ThemeProvider } from "styled-components";
 
 // Custom hooks

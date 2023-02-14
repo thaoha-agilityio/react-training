@@ -26,7 +26,8 @@ const SubHeader = ({
 }: SubHeaderProps): React.ReactElement => {
   const { selectedIds, getCategoryById, removeSelectedCategory } =
     useCategories();
-  const { handleFilterByCategories, searchBooks, books } = useBooks();
+
+  const { handleFilterByCategories, books, searchBooks } = useBooks();
 
   const categories = getCategoryById(selectedIds);
 
@@ -40,6 +41,7 @@ const SubHeader = ({
       // Check currentId is empty then render initial books
       if (!currentId.length) {
         searchBooks("");
+
         return;
       }
 
