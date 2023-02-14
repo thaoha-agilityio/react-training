@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
 import { book } from "../../../constants/mockData";
@@ -6,8 +6,9 @@ import { book } from "../../../constants/mockData";
 import CardItem from "..";
 
 const mockProps = {
+  isGridView: true,
   item: book,
-  onShowModal: jest.fn(),
+  onSetSelectedBookId: jest.fn(),
 };
 
 describe("testing cardItem component", () => {
@@ -17,5 +18,16 @@ describe("testing cardItem component", () => {
     const book = screen.getByTestId("card-item");
 
     expect(book).toBeInTheDocument();
+  });
+
+  test("Should call onSetSelectedBookId when cardItem is clicked", () => {
+    render(<CardItem {...mockProps} />);
+
+    const book = screen.getByTestId("card-item");
+
+    expect(book).toBeInTheDocument();
+    fireEvent.click(book);
+
+    expect(mockProps.onSetSelectedBookId).toHaveBeenCalled();
   });
 });

@@ -2,7 +2,7 @@ import { memo, useCallback } from "react";
 
 import Avatar from "../Avatar";
 
-import { IBook } from "@/types/book";
+import { IBook } from "../../types/book";
 
 import {
   CardItemStyled,
