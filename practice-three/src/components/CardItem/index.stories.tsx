@@ -11,7 +11,7 @@ export default {
     item: {
       defaultValue: book,
     },
-    onShowModal: { action: "click" },
+    onSetSelectedBookId: { action: "click" },
   },
 } as ComponentMeta<typeof CardItem>;
 
