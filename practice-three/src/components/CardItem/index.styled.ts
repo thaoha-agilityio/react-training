@@ -18,7 +18,8 @@ const CardItemStyled = styled.div<CardItemProps>`
       : `${metrics.heights.xl}px`};
   box-shadow: ${metrics.shadows.sm};
   border-radius: ${metrics.borderRadius.tiny}px;
-  ${ColumnBaselineStyle};
+  display:flex;
+  align-items:${(props) => props.isGridView ? 'baseline' : 'center'};
   background-color: ${({ theme }) => theme.mainHeading};
   flex-direction: ${(props) => (props.isGridView ? " column" : "row")};
   cursor: pointer;
@@ -38,13 +39,13 @@ const CardContentStyled = styled.div`
   font-weight: ${fonts.fontWeights.semiBold};
 `;
 
-const CardTitleStyled = styled(P.Medium)<CardItemProps>`
+const CardTitleStyled = styled(P.Medium) <CardItemProps>`
   color: ${({ theme }) => theme.textColor};
   ${(props) => !props.isGridView && `font-size: ${fontSizes.xxl}px;`}
   ${(props) => !props.isGridView && `line-height: ${lineHeights.xl};`}
 `;
 
-const CardInfoStyled = styled(P.Small)<CardItemProps>`
+const CardInfoStyled = styled(P.Small) <CardItemProps>`
   color: ${({ theme }) => theme.infoBook};
   ${(props) => !props.isGridView && `font-size: ${fontSizes.lg}px;`}
   ${(props) => !props.isGridView && `line-height: ${lineHeights.sm};`}

@@ -12,7 +12,7 @@ import {
   CardTitleStyled,
 } from "./index.styled";
 
-interface IProps {
+type CardItemProps = {
   isGridView: boolean;
   item: IBook;
   onSetSelectedBookId: (id: string) => void;
@@ -20,10 +20,9 @@ interface IProps {
 
 const CardItem = ({
   item: { id, avatar, name, author, published },
-
   onSetSelectedBookId,
   isGridView,
-}: IProps): React.ReactElement => {
+}: CardItemProps): React.ReactElement => {
   const handleClick = useCallback((): void => {
     onSetSelectedBookId(id);
   }, []);
