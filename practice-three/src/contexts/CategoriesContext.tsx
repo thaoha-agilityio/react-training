@@ -8,7 +8,7 @@ import {
 } from "react";
 
 import { API_BASE_URL, API_PATH } from "../constants/api";
-import { useFetching } from "../hooks";
+import { useFetching } from "../hooks/useFetching";
 import { ICategory } from "../types/category";
 
 type CategoriesContext = {
