@@ -23,6 +23,7 @@ const config = {
     "!**/constants/**",
     "!**/types/**",
     "!**/styles/**",
+    "!**/useFetching.ts",
   ],
   setupFilesAfterEnv: ["<rootDir>/setupTest.ts"],
 };
