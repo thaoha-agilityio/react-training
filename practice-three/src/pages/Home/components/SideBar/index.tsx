@@ -11,8 +11,12 @@ import { ICategory } from "../../../../types/category";
 // Styled
 import { CategoriesStyled, ParaphraseStyled } from "./index.styled";
 
-const SideBar = (): React.ReactElement => {
-  const { categories, setSelectedCategory, selectedIds } = useCategories();
+type SideBarProps = {
+  categories: ICategory[],
+}
+
+const SideBar = ({ categories }: SideBarProps): React.ReactElement => {
+  const { setSelectedCategory, selectedIds } = useCategories();
   const { handleFilterByCategories } = useBooks();
 
   // Set categoryId when click

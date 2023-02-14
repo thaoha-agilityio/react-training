@@ -8,7 +8,7 @@ import React, {
 import { ThemeProvider } from "styled-components";
 
 // Custom hooks
-import { useDebounce } from "../../hooks";
+import { useCategories, useDebounce } from "../../hooks";
 import { useBooks } from "../../hooks/useBooks";
 
 // Components
@@ -33,6 +33,8 @@ const FilterModal = lazy(() => import("../../components/Modal/FilterModal"));
 
 const Home = (): React.ReactElement => {
   const { searchBooks, getBookById, isGridView } = useBooks();
+
+  const { categories } = useCategories();
 
   const [isDarkTheme, setIsDarkTheme] = useState(false);
 
@@ -106,7 +108,7 @@ const Home = (): React.ReactElement => {
         />
         <SubHeader onToggleFilterModal={handleToggleFilterModal} />
         <MainContentStyled>
-          <SideBar />
+          <SideBar categories={categories} />
           <Books
             onSetSelectedBookId={handleSetSelectedBookId}
             isGridView={isGridView}
