@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
 import { JustifyBetweenStyle, AlignCenterStyle, P } from "../../styled-common";
-import { colors, fonts, metrics } from "../../themes";
+import { fonts, metrics } from "../../themes";
 
-interface StyledThumbnailProps {
+type StyledThumbnailProps = {
   bgColor: string;
-}
+};
 
 const CategoryWrapperStyled = styled.div`
   ${JustifyBetweenStyle}
@@ -14,6 +14,7 @@ const CategoryWrapperStyled = styled.div`
   border-radius: ${metrics.borderRadius.md}px;
   margin-left: 14px;
   padding: 8px 18px 0px;
+  background-color: ${({ theme }) => theme.mainHeading};
   cursor: pointer;
 `;
 
@@ -40,10 +41,11 @@ const ThumbnailTextStyled = styled(P.Thumbnail)`
 
 const CategoryNameStyled = styled(P.CategoryName)`
   text-transform: capitalize;
+  color: ${({ theme }) => theme.textColor};
 `;
 
 const TotalStyled = styled(P.Tiny)`
-  color: ${colors.comet};
+  color: ${({ theme }) => theme.infoBook};
 `;
 
 export {
