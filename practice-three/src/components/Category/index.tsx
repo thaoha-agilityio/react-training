@@ -1,7 +1,10 @@
 import { memo, useCallback } from "react";
 import { useCategories } from "../../hooks";
 
+// Type
 import { ICategory } from "../../types/category";
+
+// Styled
 import {
   CategoryWrapperStyled,
   CategoryStyled,
@@ -11,7 +14,7 @@ import {
   TotalStyled,
 } from "./index.styled";
 
-interface IProps {
+type CategoryProps = {
   category: ICategory;
   onSelectCategory: (id: string) => void;
 }
@@ -19,7 +22,7 @@ interface IProps {
 const Category = ({
   category: { id, name, total, bgColor },
   onSelectCategory,
-}: IProps): React.ReactElement => {
+}: CategoryProps): React.ReactElement => {
   const { selectedIds } = useCategories();
 
   const handleSelectCategory = useCallback((): void => {
