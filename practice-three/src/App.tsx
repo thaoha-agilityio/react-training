@@ -1,14 +1,25 @@
-import "./App.css";
+import { Suspense } from "react";
+
+// Components
+import { ErrorBoundary } from "./components/ErrorBoundary";
+import Home from "./pages/Home";
+import { Spinner } from "./components/Spinner";
+
+// Context
 import { AppProvider } from "./contexts/AppContext";
 
-import Home from "./pages/Home";
+import "./App.css";
 
-function App() {
+const App = () => {
   return (
-    <AppProvider>
-      <Home />
-    </AppProvider>
+    <ErrorBoundary>
+      <Suspense fallback={<Spinner />}>
+        <AppProvider>
+          <Home />
+        </AppProvider>
+      </Suspense>
+    </ErrorBoundary>
   );
-}
+};
 
 export default App;
