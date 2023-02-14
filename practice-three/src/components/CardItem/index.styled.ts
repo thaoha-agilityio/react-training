@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { ColumnCenterStyle } from "../../styled-common/layout";
+import { ColumnBaselineStyle } from "../../styled-common/layout";
 import { colors, fonts, metrics } from "../../themes";
 import { P } from "../../styled-common/paragraph";
 import { fontSizes, lineHeights } from "../../themes/fonts";
@@ -18,9 +18,8 @@ const CardItemStyled = styled.div<CardItemProps>`
       : `${metrics.heights.xl}px`};
   box-shadow: ${metrics.shadows.sm};
   border-radius: ${metrics.borderRadius.tiny}px;
-  ${ColumnCenterStyle}
+  ${ColumnBaselineStyle};
   background-color: ${({ theme }) => theme.mainHeading};
-  display: flex;
   flex-direction: ${(props) => (props.isGridView ? " column" : "row")};
   cursor: pointer;
 `;
