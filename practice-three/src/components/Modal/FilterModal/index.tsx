@@ -46,8 +46,8 @@ const FilterModal = ({
   } = useBooks();
 
   return (
-    <BackDropStyled onClick={onToggleFilterModal}>
-      <FilterModalStyled width={width} height={height} right={right} top={top}>
+    <BackDropStyled onClick={onToggleFilterModal} >
+      <FilterModalStyled width={width} height={height} right={right} top={top} data-testid="filter-modal">
         <MenuOptionStyled>Display Options</MenuOptionStyled>
 
         <MenuListStyled>
