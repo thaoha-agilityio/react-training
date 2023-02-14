@@ -8,13 +8,15 @@ export const useFetching = <T>(
 ): {
   data: T;
   error: string;
+  isLoading: boolean;
 } => {
   const fetcher = async () => (await api.getData<T>(url)).data;
 
-  const { data, error } = useSWRImmutable<T>(url, fetcher);
+  const { data, error, isLoading } = useSWRImmutable<T>(url, fetcher);
 
   return {
     data: data as T,
     error,
+    isLoading,
   };
 };
