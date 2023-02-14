@@ -1,5 +1,6 @@
-import React from "react";
 import styled, { keyframes } from "styled-components";
+
+import { colors } from "../../themes";
 
 const spinAnimation = keyframes`
   to {
@@ -19,13 +20,13 @@ const SpinnerStyled = styled.div`
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  border: 3px solid #ccc;
-  border-top-color: #666;
+  border: 3px solid ${colors.linkWater};
+  border-top-color: ${colors.ebonyClay};
   animation: ${spinAnimation} 0.8s linear infinite;
 `;
 
 export const Spinner = (): React.ReactElement => (
-  <SpinnerContainer>
+  <SpinnerContainer data-testid="spinner" >
     <SpinnerStyled />
   </SpinnerContainer>
 );
