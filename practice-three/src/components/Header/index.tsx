@@ -28,6 +28,7 @@ const Header = ({
         <img src={logo} alt="logo" />
         <img src={bookshelf} alt="logo" />
       </LogoStyled>
+
       <ActionWrapperStyled>
         <Input
           borderRadius={30}

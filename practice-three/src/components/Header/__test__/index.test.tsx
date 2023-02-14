@@ -4,8 +4,9 @@ import "@testing-library/jest-dom";
 import Header from "..";
 
 const mockProps = {
-  theme: true,
+  isDarkTheme: true,
   onToggleTheme: jest.fn(),
+  onChange: jest.fn(),
 };
 
 describe("testing Header component", () => {
