@@ -7,14 +7,14 @@ import {
   useState,
 } from "react";
 
-import { API_BASE_URL, API_PATH } from "@/constants/api";
-import { book as defaultBook } from "@/constants/mockData";
+import { API_BASE_URL, API_PATH } from "../constants/api";
+import { book as defaultBook } from "../constants/mockData";
 
-import { generateUrl } from "@/utils/generateUrl";
+import { generateUrl } from "../utils/generateUrl";
 
-import { api } from "@/services/APIRequest";
-import { IBook } from "@/types/book";
-import { useFetching } from "@/hooks";
+import { api } from "../services/APIRequest";
+import { IBook } from "../types/book";
+import { useFetching } from "../hooks/useFetching";
 
 type IBookContext = {
   books: IBook[];
@@ -27,6 +27,7 @@ type IBookContext = {
   handleChangeGridView: () => void;
   handleSortByAlphabet: () => void;
   handleSortByReleaseYear: () => void;
+  handleFilterByCategories: (ids: string[]) => void;
 };
 
 type IBookProvider = {
@@ -114,6 +115,20 @@ export const BooksProvider = ({ children }: IBookProvider) => {
     setBooks(result);
   }, [books, isSortYearStatus]);
 
+  // Filter by categories
+  const handleFilterByCategories = useCallback(
+    async (ids: string[]): Promise<void> => {
+      const result = await api.getData(
+        generateUrl({ key: "categoryId", value: ids })
+      );
+
+      if (result.error) return setBooks([]);
+
+      setBooks(result.data);
+    },
+    []
+  );
+
   const contextValue: IBookContext = useMemo(
     () => ({
       books: books || [],
@@ -126,6 +141,7 @@ export const BooksProvider = ({ children }: IBookProvider) => {
       handleChangeGridView,
       handleSortByReleaseYear,
       handleSortByAlphabet,
+      handleFilterByCategories,
     }),
     [
       books,
@@ -138,6 +154,7 @@ export const BooksProvider = ({ children }: IBookProvider) => {
       isSortNameStatus,
       handleSortByAlphabet,
       handleSortByReleaseYear,
+      handleFilterByCategories,
     ]
   );
 
