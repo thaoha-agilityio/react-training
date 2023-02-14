@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-interface StyledAvatarProps {
+type StyledAvatarProps = {
   width?: number;
   height?: number;
   borderRadius: number;
