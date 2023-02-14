@@ -6,6 +6,7 @@ import { category } from "../../../constants/mockData";
 
 const mockProps = {
   category: category,
+  onSelectCategory: jest.fn(),
 };
 
 describe("testing Category component", () => {
