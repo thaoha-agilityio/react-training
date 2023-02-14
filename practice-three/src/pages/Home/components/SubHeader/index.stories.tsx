@@ -5,9 +5,11 @@ import SubHeader from ".";
 export default {
   title: "SubHeader",
   component: SubHeader,
-  argTypes: {},
+  argTypes: {
+    onToggleFilterModal: { action: () => console.log('close modal') }
+  },
 } as ComponentMeta<typeof SubHeader>;
 
-const Template: ComponentStory<typeof SubHeader> = () => <SubHeader />;
+const Template: ComponentStory<typeof SubHeader> = (args) => <SubHeader {...args} />;
 
 export const Default = Template.bind({});

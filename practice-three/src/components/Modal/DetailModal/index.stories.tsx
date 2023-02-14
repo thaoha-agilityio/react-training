@@ -10,7 +10,7 @@ export default {
   component: DetailModal,
 } as ComponentMeta<typeof DetailModal>;
 
-const Template: ComponentStory<typeof DetailModal> = (args) => {
+const Template: ComponentStory<typeof DetailModal> = () => {
   const [isDarkTheme, setIsDarkTheme] = useState(false);
 
   const handleCloseModal = (): void => {
