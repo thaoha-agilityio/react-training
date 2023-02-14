@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
-import { BooksContext, BooksProvider, IBookContext } from "../../../../contexts/BooksContext";
+import { BooksContext, IBookContext } from "../../../../contexts/BooksContext";
 
 import FilterModal from "..";
 
