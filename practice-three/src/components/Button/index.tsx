@@ -1,4 +1,4 @@
-import { memo, ReactNode } from "react";
+import { ReactNode } from "react";
 
 import { CircleButtonStyled, IconButtonStyled } from "./index.styled";
 
@@ -42,4 +42,4 @@ const Button = ({
   </>
 );
 
-export default memo(Button);
+export default Button;
