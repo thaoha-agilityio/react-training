@@ -24,7 +24,7 @@ type SubHeaderProps = {
 const SubHeader = ({
   onToggleFilterModal,
 }: SubHeaderProps): React.ReactElement => {
-  const { selectedIds, getCategoryById, removeSelectedCategory } =
+  const { selectedIds, getCategoryById, handleRemoveSelectedCategory } =
     useCategories();
 
   const { handleFilterByCategories, books, searchBooks } = useBooks();
@@ -34,7 +34,7 @@ const SubHeader = ({
   // Remove category in sub heading
   const handleRemoveCategories = useCallback(
     (id: string) => {
-      removeSelectedCategory(id);
+      handleRemoveSelectedCategory(id);
 
       const currentId = selectedIds.filter((categoryId) => categoryId !== id);
 
