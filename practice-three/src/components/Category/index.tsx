@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { memo, useCallback } from "react";
 import { useCategories } from "../../hooks";
 
 import { ICategory } from "../../types/category";
@@ -22,12 +22,12 @@ const Category = ({
 }: IProps): React.ReactElement => {
   const { selectedIds } = useCategories();
 
-  const handleSelectCategory = (): void => {
+  const handleSelectCategory = useCallback((): void => {
     // Check if selected category then don't call function
     if (selectedIds.includes(id)) return;
 
     onSelectCategory(id);
-  };
+  }, [selectedIds]);
 
   return (
     <CategoryWrapperStyled
