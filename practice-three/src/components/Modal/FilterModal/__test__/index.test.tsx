@@ -31,12 +31,12 @@ describe("Testing component FilterModal", () => {
       </BooksContext.Provider>
     );
 
-    // const gridButton = screen.getByTestId("list-button");
-    // const listButton = screen.getByTestId("grid-button");
+    const gridButton = screen.getByTestId("list-button");
+    const listButton = screen.getByTestId("grid-button");
 
-    // fireEvent.click(gridButton);
-    // expect(gridButton).toBeDisabled();
-    // expect(listButton).not.toBeDisabled();
+    fireEvent.click(gridButton);
+    expect(gridButton).toBeDisabled();
+    expect(listButton).not.toBeDisabled();
 
     expect(mockFunction).toHaveBeenCalled();
   });

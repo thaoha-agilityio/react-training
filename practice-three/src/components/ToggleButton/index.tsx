@@ -3,11 +3,11 @@ import { ReactNode } from "react";
 import { ToggleButtonStyled } from "./index.styled";
 
 interface IProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  bgColor?: string;
   width: number;
   height: number;
   textAlign: string;
   borderRadius: number;
-  bgColor?: string;
   icon: ReactNode;
 }
 

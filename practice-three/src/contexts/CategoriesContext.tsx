@@ -17,7 +17,7 @@ type CategoriesContext = {
   selectedIds: string[];
   setSelectedCategory: (id: string) => void;
   getCategoryById: (ids: string[]) => ICategory[];
-  removeSelectedCategory: (categoryId: string) => void;
+  handleRemoveSelectedCategory: (categoryId: string) => void;
 };
 
 type CategoriesProvider = {
@@ -55,7 +55,7 @@ export const CategoriesProvider = ({ children }: CategoriesProvider) => {
   );
 
   // Remove categories in sub heading
-  const removeSelectedCategory = useCallback(
+  const handleRemoveSelectedCategory = useCallback(
     (categoryId: string): void => {
       // Remove id when click button
       const restIds = selectedIds.filter((id) => id !== categoryId);
@@ -76,14 +76,14 @@ export const CategoriesProvider = ({ children }: CategoriesProvider) => {
       selectedIds: selectedIds,
       setSelectedCategory,
       getCategoryById,
-      removeSelectedCategory,
+      handleRemoveSelectedCategory,
     }),
     [
       categories,
       error,
       setSelectedCategory,
       getCategoryById,
-      removeSelectedCategory,
+      handleRemoveSelectedCategory,
     ]
   );
 

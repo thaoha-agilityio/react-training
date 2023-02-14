@@ -6,14 +6,14 @@ import { book } from "../../../../constants/mockData";
 import DetailModal from "..";
 
 const mockProps = {
-  theme: true,
+  isDarkTheme: true,
   onCloseModal: jest.fn(),
   onCloseByKeyboard: jest.fn(),
   onToggleTheme: jest.fn(),
   book: book,
 };
 
-describe("Testing component DrawerDetailBook", () => {
+describe("Testing component DetailModal", () => {
   it("Should show detail book", () => {
     render(<DetailModal {...mockProps} />);
 

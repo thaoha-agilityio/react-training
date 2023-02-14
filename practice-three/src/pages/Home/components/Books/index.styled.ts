@@ -9,7 +9,7 @@ export const BooksStyled = styled.div<BookProps>`
   gap: 32px;
   flex-wrap: wrap;
   padding: 33px 38px;
-  background: var(--main-content);
+  background: ${({ theme }) => theme.mainHeading};
   margin: 1px 1px;
   flex: 1;
   max-height: calc(100vh - 79px - 84px);

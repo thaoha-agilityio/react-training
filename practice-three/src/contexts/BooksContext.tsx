@@ -22,6 +22,7 @@ type IBookContext = {
   isGridView: boolean;
   isSortNameStatus: boolean;
   isSortYearStatus: boolean;
+  isLoading: boolean;
   searchBooks: (input: string) => Promise<void>;
   getBookById: (id: string) => IBook;
   handleChangeGridView: () => void;
@@ -47,9 +48,11 @@ export const BooksProvider = ({ children }: IBookProvider) => {
   const [isSortYearStatus, setIsSortYearStatus] = useState<boolean>(false);
 
   // Fetch data from server
-  const { data: items, error } = useFetching<IBook[]>(
-    `${API_BASE_URL}${API_PATH.BOOKS}`
-  );
+  const {
+    data: items,
+    error,
+    isLoading,
+  } = useFetching<IBook[]>(`${API_BASE_URL}${API_PATH.BOOKS}`);
 
   useEffect(() => {
     setBooks(items);
@@ -133,6 +136,7 @@ export const BooksProvider = ({ children }: IBookProvider) => {
     () => ({
       books: books || [],
       error,
+      isLoading,
       searchBooks,
       getBookById,
       isGridView: isGridView,
@@ -146,6 +150,7 @@ export const BooksProvider = ({ children }: IBookProvider) => {
     [
       books,
       error,
+      isLoading,
       searchBooks,
       getBookById,
       isGridView,
