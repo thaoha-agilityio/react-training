@@ -17,7 +17,6 @@ import { IBook } from "../types/book";
 import { useFetching } from "../hooks/useFetching";
 
 type IBookContext = {
-  isLoading: boolean;
   books: IBook[];
   error: string;
   isGridView: boolean;
@@ -48,11 +47,9 @@ export const BooksProvider = ({ children }: IBookProvider) => {
   const [isSortYearStatus, setIsSortYearStatus] = useState<boolean>(false);
 
   // Fetch data from server
-  const {
-    data: items,
-    error,
-    isLoading,
-  } = useFetching<IBook[]>(`${API_BASE_URL}${API_PATH.BOOKS}`);
+  const { data: items, error } = useFetching<IBook[]>(
+    `${API_BASE_URL}${API_PATH.BOOKS}`
+  );
 
   useEffect(() => {
     setBooks(items);
@@ -136,7 +133,6 @@ export const BooksProvider = ({ children }: IBookProvider) => {
     () => ({
       books: books || [],
       error,
-      isLoading,
       searchBooks,
       getBookById,
       isGridView: isGridView,
@@ -150,7 +146,6 @@ export const BooksProvider = ({ children }: IBookProvider) => {
     [
       books,
       error,
-      isLoading,
       searchBooks,
       getBookById,
       isGridView,
