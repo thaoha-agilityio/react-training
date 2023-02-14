@@ -17,6 +17,7 @@ import { IBook } from "../types/book";
 import { useFetching } from "../hooks/useFetching";
 
 type IBookContext = {
+  isLoading: boolean;
   books: IBook[];
   error: string;
   isGridView: boolean;
@@ -46,12 +47,12 @@ export const BooksProvider = ({ children }: IBookProvider) => {
   const [isSortNameStatus, setIsSortNameStatus] = useState<boolean>(false);
   const [isSortYearStatus, setIsSortYearStatus] = useState<boolean>(false);
 
-  const [isFilterBook, setIsFilterBooks] = useState<IBook[]>();
-
   // Fetch data from server
-  const { data: items, error } = useFetching<IBook[]>(
-    `${API_BASE_URL}${API_PATH.BOOKS}`
-  );
+  const {
+    data: items,
+    error,
+    isLoading,
+  } = useFetching<IBook[]>(`${API_BASE_URL}${API_PATH.BOOKS}`);
 
   useEffect(() => {
     setBooks(items);
@@ -63,14 +64,6 @@ export const BooksProvider = ({ children }: IBookProvider) => {
       generateUrl({ key: "name", value: input })
     );
 
-    console.log("result", result.data);
-    console.log("isFilterBook", isFilterBook);
-    if (isFilterBook) {
-      const arr = isFilterBook.filter((element) =>
-        result.data.includes(element)
-      );
-      console.log(arr);
-    }
     if (result.error) return setBooks([]);
 
     setBooks(result.data);
@@ -134,7 +127,6 @@ export const BooksProvider = ({ children }: IBookProvider) => {
 
       if (result.error) return setBooks([]);
 
-      setIsFilterBooks(result.data);
       setBooks(result.data);
     },
     []
@@ -144,6 +136,7 @@ export const BooksProvider = ({ children }: IBookProvider) => {
     () => ({
       books: books || [],
       error,
+      isLoading,
       searchBooks,
       getBookById,
       isGridView: isGridView,
@@ -157,6 +150,7 @@ export const BooksProvider = ({ children }: IBookProvider) => {
     [
       books,
       error,
+      isLoading,
       searchBooks,
       getBookById,
       isGridView,
