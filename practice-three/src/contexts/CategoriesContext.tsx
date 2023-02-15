@@ -11,22 +11,22 @@ import { API_BASE_URL, API_PATH } from "../constants/api";
 import { useFetching } from "../hooks/useFetching";
 import { ICategory } from "../types/category";
 
-type CategoriesContext = {
+export interface ICategoriesContext {
   categories: ICategory[];
   error: string;
   selectedIds: string[];
   setSelectedCategory: (id: string) => void;
   getCategoryById: (ids: string[]) => ICategory[];
   handleRemoveSelectedCategory: (categoryId: string) => void;
-};
+}
 
 type CategoriesProvider = {
   children: ReactNode;
 };
 
 // Create books context with initial value
-export const CategoriesContext = createContext<CategoriesContext>(
-  {} as CategoriesContext
+export const CategoriesContext = createContext<ICategoriesContext>(
+  {} as ICategoriesContext
 );
 
 // Book provider
@@ -69,7 +69,7 @@ export const CategoriesProvider = ({ children }: CategoriesProvider) => {
     setCategories(items);
   }, [!items]);
 
-  const contextValue: CategoriesContext = useMemo(
+  const contextValue: ICategoriesContext = useMemo(
     () => ({
       categories: categories || [],
       error,
