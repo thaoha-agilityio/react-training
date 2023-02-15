@@ -9,6 +9,6 @@ type AppProviderProps = {
 
 export const AppProvider: React.FC<AppProviderProps> = ({ children }) => (
   <CategoriesProvider>
-    <BooksProvider>{children}</BooksProvider>;
+    <BooksProvider>{children}</BooksProvider>
   </CategoriesProvider>
 );
