@@ -16,7 +16,7 @@ import { api } from "../services/APIRequest";
 import { IBook } from "../types/book";
 import { useFetching } from "../hooks/useFetching";
 
-type IBookContext = {
+export interface IBookContext {
   books: IBook[];
   error: string;
   isGridView: boolean;
@@ -29,7 +29,7 @@ type IBookContext = {
   handleSortByAlphabet: () => void;
   handleSortByReleaseYear: () => void;
   handleFilterByCategories: (ids: string[]) => void;
-};
+}
 
 type IBookProvider = {
   children: ReactNode;
