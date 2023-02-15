@@ -24,10 +24,9 @@ describe("testing cardItem component", () => {
     render(<CardItem {...mockProps} />);
 
     const book = screen.getByTestId("card-item");
-
-    expect(book).toBeInTheDocument();
     fireEvent.click(book);
 
+    expect(book).toBeInTheDocument();
     expect(mockProps.onSetSelectedBookId).toHaveBeenCalled();
   });
 });

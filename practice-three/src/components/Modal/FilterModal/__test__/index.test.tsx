@@ -31,17 +31,17 @@ describe("Testing component FilterModal", () => {
     expect(filterModal).toBeInTheDocument();
   });
 
-  test('should render grid button and list button', () => {
+  it("should render grid button and list button", () => {
     render(
-      <BooksContext.Provider value={mockContextValue as unknown as IBookContext}>
-        <FilterModal
-          {...mockProps}
-        />
+      <BooksContext.Provider
+        value={mockContextValue as unknown as IBookContext}
+      >
+        <FilterModal {...mockProps} />
       </BooksContext.Provider>
     );
 
-    const gridButton = screen.getByTestId('grid-button');
-    const listButton = screen.getByTestId('list-button');
+    const gridButton = screen.getByTestId("grid-button");
+    const listButton = screen.getByTestId("list-button");
 
     expect(gridButton).toBeInTheDocument();
     expect(listButton).toBeInTheDocument();
@@ -49,15 +49,15 @@ describe("Testing component FilterModal", () => {
 
   it("should handleChangeGridView when list button is clicked", () => {
     render(
-      <BooksContext.Provider value={mockContextValue as unknown as IBookContext}>
-        <FilterModal
-          {...mockProps}
-        />
+      <BooksContext.Provider
+        value={mockContextValue as unknown as IBookContext}
+      >
+        <FilterModal {...mockProps} />
       </BooksContext.Provider>
     );
 
-    const gridButton = screen.getByTestId('grid-button');
-    const listButton = screen.getByTestId('list-button');
+    const gridButton = screen.getByTestId("grid-button");
+    const listButton = screen.getByTestId("list-button");
 
     fireEvent.click(listButton);
     expect(gridButton).toBeDisabled();
@@ -66,31 +66,31 @@ describe("Testing component FilterModal", () => {
     expect(mockContextValue.handleChangeGridView).toHaveBeenCalled();
   });
 
-  test('should handleSortByAlphabet when alphabetical button is clicked', () => {
+  it("should handleSortByAlphabet when alphabetical button is clicked", () => {
     render(
-      <BooksContext.Provider value={mockContextValue as unknown as IBookContext}>
-        <FilterModal
-          {...mockProps}
-        />
-      </BooksContext.Provider >
+      <BooksContext.Provider
+        value={mockContextValue as unknown as IBookContext}
+      >
+        <FilterModal {...mockProps} />
+      </BooksContext.Provider>
     );
 
-    const button = screen.getByText('alphabetical order');
+    const button = screen.getByText("alphabetical order");
     fireEvent.click(button);
 
     expect(mockContextValue.handleSortByAlphabet).toHaveBeenCalled();
   });
 
-  test('should call handleSortByAlphabet when release year button is clicked', () => {
+  it("should call handleSortByAlphabet when release year button is clicked", () => {
     render(
-      <BooksContext.Provider value={mockContextValue as unknown as IBookContext}>
-        <FilterModal
-          {...mockProps}
-        />
-      </BooksContext.Provider >
+      <BooksContext.Provider
+        value={mockContextValue as unknown as IBookContext}
+      >
+        <FilterModal {...mockProps} />
+      </BooksContext.Provider>
     );
 
-    const button = screen.getByText('release year');
+    const button = screen.getByText("release year");
     fireEvent.click(button);
 
     expect(mockContextValue.handleSortByReleaseYear).toHaveBeenCalled();

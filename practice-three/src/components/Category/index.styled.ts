@@ -1,13 +1,17 @@
 import styled from "styled-components";
 
 import { JustifyBetweenStyle, AlignCenterStyle, P } from "../../styled-common";
-import { fonts, metrics } from "../../themes";
+import { colors, fonts, metrics } from "../../themes";
 
 type StyledThumbnailProps = {
   bgColor: string;
 };
 
-const CategoryWrapperStyled = styled.div`
+type StyledCategory = {
+  isActive?: boolean;
+};
+
+const CategoryWrapperStyled = styled.div<StyledCategory>`
   ${JustifyBetweenStyle}
   width: ${metrics.widths.md}px;
   height: ${metrics.heights.sm}px;
@@ -15,6 +19,7 @@ const CategoryWrapperStyled = styled.div`
   margin-left: 14px;
   padding: 8px 18px 0px;
   background-color: ${({ theme }) => theme.mainHeading};
+  ${(props) => props.isActive && `background: ${colors.linkWater}`};
   cursor: pointer;
 `;
 

@@ -1,53 +1,67 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
-import { category } from "../../../constants/mockData";
+import { category as MOCK_CATEGORY } from "../../../constants/mockData";
 
-import Category from "..";
-import { CategoriesContext, ICategoriesContext } from "../../../contexts/CategoriesContext";
+import Category, { CategoryProps } from "..";
+import {
+  CategoriesContext,
+  ICategoriesContext,
+} from "../../../contexts/CategoriesContext";
+import { AppProvider } from "../../../contexts/AppContext";
 
-const mockProps = {
-  category: category,
+const mockProps: CategoryProps = {
+  category: MOCK_CATEGORY,
   onSelectCategory: jest.fn(),
 };
 
-const mockContextValue = {
-  selectedIds: ['1']
-}
+const mockContextSelectedValue = {
+  selectedIds: ["1"],
+};
+
+const mockContextNotSelectedValue = {
+  selectedIds: ["2"],
+};
 
 describe("testing Category component", () => {
   it("Should match data for Category component", () => {
-    render(<Category {...mockProps} />);
+    render(
+      <AppProvider>
+        <Category {...mockProps} />
+      </AppProvider>
+    );
 
     const category = screen.getByTestId("category");
 
     expect(category).toBeInTheDocument();
-
   });
 
-  // it("Should call onSelectCategory when categoty is clicked", () => {
-
-  //   render(<Category {...mockProps} />);
-
-  //   const category = screen.getByTestId("category");
-  //   fireEvent.click(category);
-
-  //   expect(mockProps.onSelectCategory).toHaveBeenCalled();
-  // });
-
-  it('does not call onSelectCategory if category is already selected', () => {
+  it("Should call onSelectCategory when category is clicked", () => {
     render(
-      <CategoriesContext.Provider value={mockContextValue as unknown as ICategoriesContext}>
-        <Category
-          {...mockProps}
-        />
-      </CategoriesContext.Provider >
+      <CategoriesContext.Provider
+        value={mockContextNotSelectedValue as unknown as ICategoriesContext}
+      >
+        <Category {...mockProps} />
+      </CategoriesContext.Provider>
     );
 
-    const categoryElement = screen.getByTestId('category');
-    fireEvent.click(categoryElement);
+    const category = screen.getByTestId("category");
+    fireEvent.click(category);
 
-    render(<Category {...mockProps} />);
+    expect(mockProps.onSelectCategory).toHaveBeenCalled();
+  });
+
+  it("does not call onSelectCategory if category is already selected", () => {
+    render(
+      <CategoriesContext.Provider
+        value={mockContextSelectedValue as unknown as ICategoriesContext}
+      >
+        <Category {...mockProps} />
+      </CategoriesContext.Provider>
+    );
+
+    const categoryElement = screen.getByTestId("category");
+    fireEvent.click(categoryElement);
     fireEvent.click(categoryElement);
 
     expect(mockProps.onSelectCategory).not.toHaveBeenCalled();

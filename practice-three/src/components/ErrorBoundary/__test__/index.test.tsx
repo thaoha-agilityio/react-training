@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
-// components
+// component
 import { ErrorBoundary } from "..";
 
 const Child = () => {

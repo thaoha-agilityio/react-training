@@ -14,10 +14,10 @@ import {
   TotalStyled,
 } from "./index.styled";
 
-type CategoryProps = {
+export type CategoryProps = {
   category: ICategory;
   onSelectCategory: (id: string) => void;
-}
+};
 
 const Category = ({
   category: { id, name, total, bgColor },
@@ -36,6 +36,7 @@ const Category = ({
     <CategoryWrapperStyled
       data-testid="category"
       onClick={handleSelectCategory}
+      isActive={!!selectedIds.includes(id)}
     >
       <CategoryStyled>
         <ThumbnailStyled bgColor={bgColor}>

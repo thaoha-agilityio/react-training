@@ -26,7 +26,7 @@ const setupGetValue = () => {
   };
 };
 
-describe("Input render", () => {
+describe("Testing input component", () => {
   it("should render Input component ", () => {
     const { input } = setupGetValue();
 

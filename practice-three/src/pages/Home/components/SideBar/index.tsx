@@ -12,8 +12,8 @@ import { ICategory } from "../../../../types/category";
 import { CategoriesStyled, ParaphraseStyled } from "./index.styled";
 
 type SideBarProps = {
-  categories: ICategory[],
-}
+  categories: ICategory[];
+};
 
 const SideBar = ({ categories }: SideBarProps): React.ReactElement => {
   const { setSelectedCategory, selectedIds } = useCategories();

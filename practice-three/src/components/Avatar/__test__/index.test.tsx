@@ -19,5 +19,6 @@ describe("Avatar render", () => {
 
     expect(imageAvatar.getAttribute("src")).toBe(THUMBNAIL);
     expect(imageAvatar.getAttribute("alt")).toBe("avatar");
+    expect(imageAvatar.getAttribute("alt")).toBeTruthy();
   });
 });

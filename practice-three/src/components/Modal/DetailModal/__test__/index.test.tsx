@@ -13,9 +13,23 @@ const mockProps = {
   book: book,
 };
 
+const secondMockProps = {
+  isDarkTheme: false,
+  onCloseModal: jest.fn(),
+  onCloseByKeyboard: jest.fn(),
+  onToggleTheme: jest.fn(),
+  book: book,
+};
+
 describe("Testing component DetailModal", () => {
   it("Should show detail book", () => {
     render(<DetailModal {...mockProps} />);
+
+    expect(screen.getByText(book.name)).toBeInTheDocument();
+  });
+
+  it("Should show detail book", () => {
+    render(<DetailModal {...secondMockProps} />);
 
     expect(screen.getByText(book.name)).toBeInTheDocument();
   });

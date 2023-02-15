@@ -17,7 +17,7 @@ import {
   TotalBooksStyled,
 } from "./index.styled";
 
-type SubHeaderProps = {
+export type SubHeaderProps = {
   onToggleFilterModal: () => void;
 };
 
