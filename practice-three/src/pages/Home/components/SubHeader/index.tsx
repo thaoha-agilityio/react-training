@@ -74,7 +74,7 @@ const SubHeader = ({
           </div>
         ))}
         <img src={ArrowRight} />
-        <TotalBooksStyled>Showing {books.length} Result(s)</TotalBooksStyled>
+        <TotalBooksStyled>Showing {books?.length} Result(s)</TotalBooksStyled>
       </ShowCategoriesStyled>
 
       <Chip
