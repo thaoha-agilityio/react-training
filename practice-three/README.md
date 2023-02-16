@@ -67,7 +67,7 @@
 
 - Step 2: Go to the folder `cd practice-three`
 
-- Step 3: Checkout branch `git checkout feat/fix-issues`
+- Step 3: Checkout branch `git checkout feat/three`
 
 - Step 4: Install packages `pnpm install`
 
