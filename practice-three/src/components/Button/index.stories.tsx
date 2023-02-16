@@ -42,7 +42,7 @@ CircleBtn.args = {
   ...CircleBtn.args,
   isCircle: true,
   icon: <ListIcon />,
-  borderColor: colors.gray[20],
+  borderColor: colors.athensGray,
 };
 
 export const CircleBtnActive = Template.bind({});
@@ -50,6 +50,6 @@ CircleBtnActive.args = {
   ...CircleBtnActive.args,
   isCircle: true,
   icon: <GridIcon />,
-  bgColor: colors.gray[30],
-  borderColor: colors.gray[30],
+  bgColor: colors.linkWater,
+  borderColor: colors.athensGray,
 };

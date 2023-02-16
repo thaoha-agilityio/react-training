@@ -1,45 +1,46 @@
 import { memo } from "react";
 
 // Hook
-import { useBooks } from "@/hooks/useBooks";
+import { useBooks } from "../../../../hooks/useBooks";
 
 // Component
-import CardItem from "@/components/CardItem";
+import CardItem from "../../../../components/CardItem";
+import { Spinner } from "../../../../components/Spinner";
 
-import { ERROR_MESSAGE, NOTICE_MESSAGE } from "@/constants/message";
+import { ERROR_MESSAGE, NOTICE_MESSAGE } from "../../../../constants/message";
 
 // Styled
 import { BooksStyled } from "./index.styled";
-import { P } from "@/styled-common";
+import { P } from "../../../../styled-common";
 
-type BooksProps = {
-  onShowModal: () => void;
-  onSetSelectedBookId: (id: string) => void;
+export type BooksProps = {
   isGridView: boolean;
+  onSetSelectedBookId: (id: string) => void;
 };
 
 const Books = ({
-  onShowModal,
-  onSetSelectedBookId,
   isGridView,
+  onSetSelectedBookId,
 }: BooksProps): React.ReactElement => {
-  const { books, error } = useBooks();
+  const { books, error, isLoading } = useBooks();
 
-  return (
-    <BooksStyled isGridView={isGridView}>
-      {books.map((item) => (
-        <div key={item.id}>
-          <CardItem
-            isGridView={isGridView}
-            onShowModal={onShowModal}
-            item={item}
-            onSetSelectedBookId={onSetSelectedBookId}
-          />
-        </div>
-      ))}
-
-      {/* Show message when array empty */}
-      {books.length === 0 && <P.Normal>{NOTICE_MESSAGE}</P.Normal>}
+  return isLoading ? (
+    <Spinner />
+  ) : (
+    <BooksStyled isGridView={isGridView} data-testById="books">
+      {books ? (
+        books.map((item) => (
+          <div key={item.id}>
+            <CardItem
+              isGridView={isGridView}
+              item={item}
+              onSetSelectedBookId={onSetSelectedBookId}
+            />
+          </div>
+        ))
+      ) : (
+        <P.Normal>{NOTICE_MESSAGE}</P.Normal>
+      )}
 
       {/* Render error if it have*/}
       {error && <P.Error>{ERROR_MESSAGE}</P.Error>}

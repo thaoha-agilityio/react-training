@@ -4,12 +4,13 @@ import "@testing-library/jest-dom";
 import Header from "..";
 
 const mockProps = {
-  theme: true,
+  isDarkTheme: true,
   onToggleTheme: jest.fn(),
+  onChange: jest.fn(),
 };
 
-describe("testing Header component", () => {
-  it("renders correctly", () => {
+describe("Testing Header component", () => {
+  it("should render the component with the correct props", () => {
     const { getByPlaceholderText } = render(<Header {...mockProps} />);
 
     const input = getByPlaceholderText("Search books");
@@ -17,6 +18,7 @@ describe("testing Header component", () => {
 
     const button = screen.getByRole("button");
     fireEvent.click(button);
+
     expect(mockProps.onToggleTheme).toBeCalledTimes(1);
   });
 });

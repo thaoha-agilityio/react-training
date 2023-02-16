@@ -2,7 +2,7 @@ import { AvatarStyled } from "./index.styled";
 
 import { THUMBNAIL } from "../../constants/mockData";
 
-interface IProps {
+type AvatarProps = {
   url: string;
   alt: string;
   width?: number;
@@ -16,7 +16,7 @@ const Avatar = ({
   alt,
   url = THUMBNAIL,
   borderRadius,
-}: IProps): React.ReactElement => (
+}: AvatarProps): React.ReactElement => (
   <AvatarStyled
     src={url}
     alt={alt}

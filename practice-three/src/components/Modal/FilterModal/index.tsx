@@ -1,9 +1,14 @@
 import { memo } from "react";
 
+// Components
 import Button from "../../Button";
 import Chip from "../../Chip";
 import { GridIcon, ListIcon, ArrowIcon } from "../../Icon";
 
+// Custom hooks
+import { useBooks } from "../../../hooks/useBooks";
+
+// Theme
 import { colors } from "../../../themes";
 
 import {
@@ -15,15 +20,14 @@ import {
   OptionalTextStyled,
   MenuOptionGroup,
 } from "./index.styled";
-import { useBooks } from "@/hooks/useBooks";
 
-interface IProps {
+type FilterModalProps = {
   width: number;
   height: number;
   top: number;
   right: number;
   onToggleFilterModal: () => void;
-}
+};
 
 const FilterModal = ({
   width,
@@ -31,7 +35,7 @@ const FilterModal = ({
   top,
   right,
   onToggleFilterModal,
-}: IProps): React.ReactElement => {
+}: FilterModalProps): React.ReactElement => {
   const {
     isGridView,
     isSortNameStatus,
@@ -42,9 +46,10 @@ const FilterModal = ({
   } = useBooks();
 
   return (
-    <BackDropStyled onClick={onToggleFilterModal}>
-      <FilterModalStyled width={width} height={height} right={right} top={top}>
+    <BackDropStyled onClick={onToggleFilterModal} >
+      <FilterModalStyled width={width} height={height} right={right} top={top} data-testid="filter-modal">
         <MenuOptionStyled>Display Options</MenuOptionStyled>
+
         <MenuListStyled>
           <MenuOptionGroup>
             <Button
@@ -54,9 +59,11 @@ const FilterModal = ({
               borderColor={colors.athensGray}
               onClick={handleChangeGridView}
               disabled={isGridView}
+              data-testid="grid-button"
             />
             <OptionalTextStyled>grid</OptionalTextStyled>
           </MenuOptionGroup>
+
           <MenuOptionGroup>
             <Button
               isCircle
@@ -65,10 +72,12 @@ const FilterModal = ({
               borderColor={colors.athensGray}
               onClick={handleChangeGridView}
               disabled={!isGridView}
+              data-testid="list-button"
             />
             <OptionalTextStyled>list</OptionalTextStyled>
           </MenuOptionGroup>
         </MenuListStyled>
+
         <SortOptionStyled>
           <MenuOptionStyled>sort by</MenuOptionStyled>
           <Chip

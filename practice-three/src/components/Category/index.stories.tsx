@@ -11,6 +11,7 @@ export default {
     category: {
       defaultValue: category,
     },
+    onSelectCategory: { action: '1' }
   },
 } as ComponentMeta<typeof Category>;
 

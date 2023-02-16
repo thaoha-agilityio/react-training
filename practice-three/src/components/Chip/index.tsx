@@ -3,7 +3,7 @@ import Button from "../Button";
 
 import { ChipStyled, LabelStyled } from "./index.styled";
 
-interface IProps {
+type ChipProps = {
   label: string;
   color: string;
   width: number;
@@ -17,7 +17,7 @@ interface IProps {
   startAdornments?: ReactNode;
   endAdornments?: ReactNode;
   borderRadius?: number;
-  onClick?: () => void;
+  onClick: () => void;
 }
 
 const Chip = ({
@@ -31,7 +31,7 @@ const Chip = ({
   bgColor,
   onClick,
   ...rest
-}: IProps): React.ReactElement => {
+}: ChipProps): React.ReactElement => {
   return (
     <ChipStyled
       width={width}

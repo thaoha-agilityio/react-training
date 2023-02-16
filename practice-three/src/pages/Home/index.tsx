@@ -1,22 +1,21 @@
 import React, {
   ChangeEvent,
+  lazy,
+  Suspense,
   useCallback,
   useEffect,
   useState,
-  lazy,
-  Suspense,
 } from "react";
 import { ThemeProvider } from "styled-components";
 
 // Custom hooks
-import { useDebounce } from "@/hooks";
+import { useCategories, useDebounce } from "../../hooks";
 import { useBooks } from "../../hooks/useBooks";
+
 // Components
 import Header from "../../components/Header";
 import SubHeader from "./components/SubHeader";
 import Books from "./components/Books";
-import DetailModal from "../../components/Modal/DetailModal";
-import FilterModal from "../../components/Modal/FilterModal";
 import SideBar from "./components/SideBar";
 
 // Themes
@@ -29,23 +28,28 @@ import { KEY_NAME_ESC } from "../../constants/actions";
 // Styled
 import { MainContentStyled } from "./index.styled";
 
+// React lazy
+const DetailModal = lazy(() => import("../../components/Modal/DetailModal"));
+const FilterModal = lazy(() => import("../../components/Modal/FilterModal"));
+
 const Home = (): React.ReactElement => {
   const { searchBooks, getBookById, isGridView } = useBooks();
+
+  const { categories } = useCategories();
+
   const [isDarkTheme, setIsDarkTheme] = useState(false);
 
   const [inputValue, setInputValue] = useState<string>("");
   const debounceValue = useDebounce(inputValue);
 
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-
   const [selectedBookId, setSelectedBookId] = useState<string>("");
-
   const [isModalFilterOpen, setIsModalFilterOpen] = useState<boolean>(false);
 
   // Change dark-light mode
   const handleToggleTheme = useCallback(() => {
-    setIsDarkTheme(!isDarkTheme);
-  }, [isDarkTheme]);
+    setIsDarkTheme((prev) => !prev);
+  }, []);
 
   // Get value input
   const handleChangeInput = useCallback(
@@ -55,7 +59,9 @@ const Home = (): React.ReactElement => {
       setInputValue(value);
 
       // If remove all text then fetch data
-      if (value === "") await searchBooks(value);
+      if (value === "") {
+        await searchBooks(value);
+      }
     },
     []
   );
@@ -74,15 +80,18 @@ const Home = (): React.ReactElement => {
   // Set id when click item
   const handleSetSelectedBookId = useCallback((id: string) => {
     setSelectedBookId(id);
+    handleToggleModal();
   }, []);
 
   const handleToggleModal = useCallback((): void => {
     setIsModalOpen((prev) => !prev);
-  }, [isModalOpen]);
+  }, []);
 
   // Close detail modal by keyboard
   const handleCloseByKeyboard = useCallback((event: KeyboardEvent): void => {
-    if (event.keyCode === KEY_NAME_ESC) handleToggleModal();
+    if (event.keyCode === KEY_NAME_ESC) {
+      handleToggleModal();
+    }
   }, []);
 
   // Handle show/close filter component
@@ -100,32 +109,34 @@ const Home = (): React.ReactElement => {
         />
         <SubHeader onToggleFilterModal={handleToggleFilterModal} />
         <MainContentStyled>
-          <SideBar />
+          <SideBar categories={categories} />
           <Books
-            onShowModal={handleToggleModal}
             onSetSelectedBookId={handleSetSelectedBookId}
             isGridView={isGridView}
           />
         </MainContentStyled>
       </Container>
       {isModalOpen && (
-        <DetailModal
-          onCloseModal={handleToggleModal}
-          book={getBookById(selectedBookId)}
-          onCloseByKeyboard={handleCloseByKeyboard}
-          isDarkTheme={isDarkTheme}
-          onToggleTheme={handleToggleTheme}
-          isModalOpen={isModalOpen}
-        />
+        <Suspense>
+          <DetailModal
+            onCloseModal={handleToggleModal}
+            book={getBookById(selectedBookId)}
+            onCloseByKeyboard={handleCloseByKeyboard}
+            isDarkTheme={isDarkTheme}
+            onToggleTheme={handleToggleTheme}
+          />
+        </Suspense>
       )}
       {isModalFilterOpen && (
-        <FilterModal
-          width={268}
-          height={331}
-          top={20}
-          right={70}
-          onToggleFilterModal={handleToggleFilterModal}
-        />
+        <Suspense>
+          <FilterModal
+            width={268}
+            height={331}
+            top={22}
+            right={70}
+            onToggleFilterModal={handleToggleFilterModal}
+          />
+        </Suspense>
       )}
     </ThemeProvider>
   );

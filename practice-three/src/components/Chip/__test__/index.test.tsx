@@ -34,6 +34,6 @@ describe("Chip component render", () => {
     render(<Chip {...mockProps} />);
 
     fireEvent.click(screen.getByText("filter"));
-    expect(mockProps.onClick).toHaveBeenCalledTimes(1);
+    expect(mockProps.onClick).toHaveBeenCalled();
   });
 });

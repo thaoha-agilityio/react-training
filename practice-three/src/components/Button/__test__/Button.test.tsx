@@ -56,6 +56,7 @@ describe("testing button component", () => {
 
     fireEvent.click(button);
 
+    expect(button).toBeTruthy();
     expect(mockProps.onClick).toHaveBeenCalledTimes(1);
   });
 });

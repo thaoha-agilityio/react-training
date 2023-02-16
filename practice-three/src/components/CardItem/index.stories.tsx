@@ -11,7 +11,11 @@ export default {
     item: {
       defaultValue: book,
     },
-    onShowModal: { action: "click" },
+    isGridView: {
+      defaultValue: true,
+      control: { type: "boolean" },
+    },
+    onSetSelectedBookId: { action: "1" }
   },
 } as ComponentMeta<typeof CardItem>;
 

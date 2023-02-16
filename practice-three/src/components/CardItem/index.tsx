@@ -1,8 +1,8 @@
-import { useCallback } from "react";
+import { memo, useCallback } from "react";
 
 import Avatar from "../Avatar";
 
-import { IBook } from "@/types/book";
+import { IBook } from "../../types/book";
 
 import {
   CardItemStyled,
@@ -12,22 +12,19 @@ import {
   CardTitleStyled,
 } from "./index.styled";
 
-interface IProps {
-  item: IBook;
-  onShowModal: () => void;
-  onSetSelectedBookId: (id: string) => void;
+type CardItemProps = {
   isGridView: boolean;
+  item: IBook;
+  onSetSelectedBookId: (id: string) => void;
 }
 
 const CardItem = ({
   item: { id, avatar, name, author, published },
-  onShowModal,
   onSetSelectedBookId,
   isGridView,
-}: IProps): React.ReactElement => {
+}: CardItemProps): React.ReactElement => {
   const handleClick = useCallback((): void => {
     onSetSelectedBookId(id);
-    onShowModal();
   }, []);
 
   return (
@@ -54,4 +51,4 @@ const CardItem = ({
   );
 };
 
-export default CardItem;
+export default memo(CardItem);

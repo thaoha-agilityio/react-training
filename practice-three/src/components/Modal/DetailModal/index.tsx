@@ -25,14 +25,13 @@ import {
   EscapeTextStyled,
 } from "./index.styled";
 
-interface IProps {
+type DetailModalProps = {
   book: IBook;
   isDarkTheme: boolean;
-  isModalOpen: boolean;
   onCloseModal: () => void;
   onToggleTheme: () => void;
   onCloseByKeyboard: (event: KeyboardEvent) => void;
-}
+};
 
 const DetailModal = ({
   book: { name, avatar, author, description, published, publishers },
@@ -40,15 +39,14 @@ const DetailModal = ({
   onCloseByKeyboard,
   onToggleTheme,
   isDarkTheme,
-  isModalOpen,
-}: IProps): React.ReactElement => {
+}: DetailModalProps): React.ReactElement => {
   // Close modal by keyboard
   useEffect(() => {
     window.addEventListener("keydown", onCloseByKeyboard);
 
     // Remove event before closing modal
     return () => window.removeEventListener("keydown", onCloseByKeyboard);
-  }, [isModalOpen]);
+  }, []);
 
   return (
     <Backdrop>

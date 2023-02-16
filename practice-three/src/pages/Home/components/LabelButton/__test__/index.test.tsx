@@ -9,7 +9,7 @@ const mockProps = {
 };
 
 describe("testing button component", () => {
-  test("testing label button", () => {
+  test("should render a button with the correct styles", () => {
     render(<LabelButton aria-label="icon" {...mockProps} />);
     const button = screen.getByRole("button");
 

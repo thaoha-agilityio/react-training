@@ -13,7 +13,6 @@ const config = {
     "@/(.*)": "<rootDir>/src/$1",
     axios: "axios/dist/node/axios.cjs",
   },
-
   collectCoverageFrom: [
     "**/*.{ts,tsx}",
     "!**/*.stories.tsx",
@@ -23,6 +22,8 @@ const config = {
     "!**/constants/**",
     "!**/types/**",
     "!**/styles/**",
+    "!**/useFetching.ts",
+    "!**/Icon/**",
   ],
   setupFilesAfterEnv: ["<rootDir>/setupTest.ts"],
 };

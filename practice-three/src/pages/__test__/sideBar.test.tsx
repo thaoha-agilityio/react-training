@@ -1,9 +1,9 @@
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
-import { categories } from "../../../../../constants/mockData";
+import { categories } from "../../constants/mockData";
 
-import SideBar from "..";
+import SideBar from "../Home/components/SideBar";
 
 describe("Testing component SidebarCategories", () => {
   test("Should match data for sidebar component", () => {

@@ -2,7 +2,7 @@
 
 # Overview
 
-- This document provides information about React Practice one
+- This document provides information about React Practice three
 - Build a BookShelf Management Web Application
 
 # Target
@@ -20,7 +20,6 @@
 - Typescript: v4.8.3
 - Prettier: v2.7.1
 - EsLint: v8.2.0
-- HTML5/CSS3
 - Storybook: v6.5.15
 - SWR and axios for fetching data
 - Styled components
@@ -68,7 +67,7 @@
 
 - Step 2: Go to the folder `cd practice-three`
 
-- Step 3: Checkout branch `git checkout feat/practice-three`
+- Step 3: Checkout branch `git checkout feat/fix-issues`
 
 - Step 4: Install packages `pnpm install`
 

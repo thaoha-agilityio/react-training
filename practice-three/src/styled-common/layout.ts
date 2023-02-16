@@ -21,6 +21,11 @@ const ColumnCenterStyle = css`
   flex-direction: column;
 `;
 
+const ColumnBaselineStyle = css`
+  ${ColumnCenterStyle};
+  align-items: baseline;
+`;
+
 const JustifyBetweenStyle = css`
   ${AlignCenterStyle};
   justify-content: space-between;
@@ -38,4 +43,5 @@ export {
   JustifyBetweenStyle,
   ColumnCenterStyle,
   AlignBaseLineStyle,
+  ColumnBaselineStyle,
 };
