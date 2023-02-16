@@ -21,10 +21,6 @@ const CategoryContextValue: ICategoriesContext = {
 };
 
 describe("Testing SubHeader component", () => {
-  console.log(
-    "CategoryContextValue",
-    CategoryContextValue.getCategoryById(["1"])
-  );
   test("Ensure SubHeader render correctly", () => {
     render(
       <CategoriesContext.Provider value={CategoryContextValue}>
