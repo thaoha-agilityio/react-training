@@ -36,7 +36,7 @@ const Category = ({
     <CategoryWrapperStyled
       data-testid="category"
       onClick={handleSelectCategory}
-      isActive={!!selectedIds.includes(id)}
+      isActive={!!selectedIds?.includes(id)}
     >
       <CategoryStyled>
         <ThumbnailStyled bgColor={bgColor}>

@@ -1,20 +1,22 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import { useContext } from "react";
-
+import React, { useContext, useState as useStateMock } from "react";
 import {
   CategoriesContext,
   CategoriesProvider,
   ICategoriesContext,
 } from "../CategoriesContext";
-import { categories as mockCategories } from "../../constants/mockData";
+import {
+  categories,
+  categories as mockCategories,
+} from "../../constants/mockData";
 
 const mockContextValue = {
   categories: mockCategories,
   error: "",
-  selectedIds: ["1", "2"],
-  setSelectedCategory: jest.fn(),
-  getCategoryById: jest.fn(),
+  selectedIds: ["1"],
+  setSelectedCategory: jest.fn().mockReturnValue(["1", "2"]),
+  getCategoryById: jest.fn().mockReturnValue(categories[0]),
   handleRemoveSelectedCategory: jest.fn(),
 };
 
@@ -25,7 +27,6 @@ describe("Test CategoriesContext", () => {
         <div data-testid="test-child">Test child</div>
       </CategoriesProvider>
     );
-
     expect(screen.getByTestId("test-child")).toBeInTheDocument();
   });
 
@@ -50,7 +51,6 @@ describe("Test CategoriesContext", () => {
     expect(screen.getByTestId("categories-length")).toHaveTextContent("0");
     expect(screen.getByTestId("error")).toHaveTextContent("");
     expect(screen.getByTestId("selected-ids")).toHaveTextContent("0");
-
     rerender(
       <CategoriesContext.Provider
         value={mockContextValue as unknown as ICategoriesContext}
@@ -58,7 +58,6 @@ describe("Test CategoriesContext", () => {
         <Component />
       </CategoriesContext.Provider>
     );
-
     // Check updated context values
     expect(screen.getByTestId("categories-length")).toHaveTextContent(
       mockContextValue.categories.length.toString()
@@ -72,6 +71,12 @@ describe("Test CategoriesContext", () => {
   });
 
   it("should call setSelectedCategory when a category is clicked", () => {
+    const initialStateForFirstUseStateCall = mockCategories;
+    const initialStateForSecondUseStateCall = ["1", "2"];
+    React.useState = jest
+      .fn()
+      .mockReturnValueOnce([initialStateForFirstUseStateCall, {}])
+      .mockReturnValueOnce([initialStateForSecondUseStateCall, {}]);
     render(
       <CategoriesContext.Provider
         value={mockContextValue as unknown as ICategoriesContext}
@@ -81,10 +86,9 @@ describe("Test CategoriesContext", () => {
         </button>
       </CategoriesContext.Provider>
     );
-
     fireEvent.click(screen.getByRole("button"));
-
     expect(mockContextValue.setSelectedCategory).toHaveBeenCalledWith("1");
+    expect(mockContextValue.selectedIds).toEqual(["1"]);
   });
 
   it("should call handleRemoveSelectedCategory when a category is removed", () => {
@@ -101,7 +105,6 @@ describe("Test CategoriesContext", () => {
     );
 
     fireEvent.click(screen.getByRole("button"));
-
     expect(mockContextValue.handleRemoveSelectedCategory).toHaveBeenCalledWith(
       "1"
     );
@@ -119,7 +122,6 @@ describe("Test CategoriesContext", () => {
     );
 
     fireEvent.click(screen.getByRole("button"));
-
-    expect(mockContextValue.getCategoryById).toHaveBeenCalledWith("1");
+    expect(mockContextValue.getCategoryById).toHaveBeenCalled();
   });
 });

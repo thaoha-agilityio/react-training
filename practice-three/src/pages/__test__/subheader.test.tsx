@@ -1,10 +1,9 @@
-import { BooksContext, IBookContext } from "../../contexts/BooksContext";
+import { fireEvent, render, screen } from "@testing-library/react";
+import "@testing-library/jest-dom";
 import {
   CategoriesContext,
   ICategoriesContext,
 } from "../../contexts/CategoriesContext";
-import { render, screen } from "@testing-library/react";
-
 import SubHeader, { SubHeaderProps } from "../Home/components/SubHeader";
 import { categories } from "../../constants/mockData";
 
@@ -15,35 +14,27 @@ const mockProps: SubHeaderProps = {
 const CategoryContextValue: ICategoriesContext = {
   categories: categories,
   error: "",
-  selectedIds: [],
+  selectedIds: ["1"],
   setSelectedCategory: jest.fn(),
-  getCategoryById: jest.fn().mockReturnValueOnce(() => categories),
+  getCategoryById: jest.fn().mockReturnValue([categories[0]]),
   handleRemoveSelectedCategory: jest.fn(),
 };
 
-const BookContextValue: IBookContext = {
-  isGridView: true,
-  isSortNameStatus: true,
-  isSortYearStatus: false,
-  handleChangeGridView: jest.fn(),
-  handleSortByAlphabet: jest.fn(),
-  handleSortByReleaseYear: jest.fn(),
-  books: [],
-  error: "",
-  isLoading: false,
-  searchBooks: jest.fn(),
-  getBookById: jest.fn(),
-  handleFilterByCategories: jest.fn(),
-};
-
 describe("Testing SubHeader component", () => {
+  console.log(
+    "CategoryContextValue",
+    CategoryContextValue.getCategoryById(["1"])
+  );
   test("Ensure SubHeader render correctly", () => {
     render(
       <CategoriesContext.Provider value={CategoryContextValue}>
-        <BooksContext.Provider value={BookContextValue}>
-          <SubHeader {...mockProps} />
-        </BooksContext.Provider>
+        <SubHeader {...mockProps} />
       </CategoriesContext.Provider>
     );
+    const buttonCategory = screen.getAllByTestId("category");
+    fireEvent.click(buttonCategory[0]);
+
+    const chip = screen.getByTestId("chip");
+    expect(chip).toBeInTheDocument();
   });
 });

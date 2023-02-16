@@ -160,4 +160,21 @@ describe("Test BooksProvider", () => {
 
     expect(mockContextValue.handleFilterByCategories).toHaveBeenCalledTimes(1);
   });
+
+  it("should update books state when searchBooks is called", () => {
+    render(
+      <BooksContext.Provider
+        value={mockContextValue as unknown as IBookContext}
+      >
+        <input
+          type="text"
+          onChange={(e) => mockContextValue.searchBooks(e.target.value)}
+          placeholder="Search books"
+        />
+      </BooksContext.Provider>
+    );
+
+    const input = screen.getByPlaceholderText("Search books");
+    fireEvent.change(input, "Harry Potter");
+  });
 });

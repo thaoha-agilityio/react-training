@@ -1,6 +1,7 @@
 import React, {
   ChangeEvent,
   lazy,
+  Suspense,
   useCallback,
   useEffect,
   useState,
@@ -47,8 +48,8 @@ const Home = (): React.ReactElement => {
 
   // Change dark-light mode
   const handleToggleTheme = useCallback(() => {
-    setIsDarkTheme(!isDarkTheme);
-  }, [isDarkTheme]);
+    setIsDarkTheme((prev) => !prev);
+  }, []);
 
   // Get value input
   const handleChangeInput = useCallback(
@@ -84,7 +85,7 @@ const Home = (): React.ReactElement => {
 
   const handleToggleModal = useCallback((): void => {
     setIsModalOpen((prev) => !prev);
-  }, [isModalOpen]);
+  }, []);
 
   // Close detail modal by keyboard
   const handleCloseByKeyboard = useCallback((event: KeyboardEvent): void => {
@@ -116,22 +117,26 @@ const Home = (): React.ReactElement => {
         </MainContentStyled>
       </Container>
       {isModalOpen && (
-        <DetailModal
-          onCloseModal={handleToggleModal}
-          book={getBookById(selectedBookId)}
-          onCloseByKeyboard={handleCloseByKeyboard}
-          isDarkTheme={isDarkTheme}
-          onToggleTheme={handleToggleTheme}
-        />
+        <Suspense>
+          <DetailModal
+            onCloseModal={handleToggleModal}
+            book={getBookById(selectedBookId)}
+            onCloseByKeyboard={handleCloseByKeyboard}
+            isDarkTheme={isDarkTheme}
+            onToggleTheme={handleToggleTheme}
+          />
+        </Suspense>
       )}
       {isModalFilterOpen && (
-        <FilterModal
-          width={268}
-          height={331}
-          top={20}
-          right={70}
-          onToggleFilterModal={handleToggleFilterModal}
-        />
+        <Suspense>
+          <FilterModal
+            width={268}
+            height={331}
+            top={22}
+            right={70}
+            onToggleFilterModal={handleToggleFilterModal}
+          />
+        </Suspense>
       )}
     </ThemeProvider>
   );

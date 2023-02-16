@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "test": "react-scripts test"
+    "test": "react-scripts test",
+    "test:coverage": "jest --coverage"
   },
   "dependencies": {
     "axios": "0.27.2",
