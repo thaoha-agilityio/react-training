@@ -1,26 +1,26 @@
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { THUMBNAIL } from "@/constants/mockData";
+import { THUMBNAIL } from '@/constants/mockData';
 
-import Avatar from ".";
+import Avatar from '.';
 
 export default {
-  title: "Avatar",
+  title: 'Avatar',
   component: Avatar,
   argTypes: {
     width: {
       defaultValue: 200,
-      control: { type: "number" },
+      control: { type: 'number' },
     },
     height: {
       defaultValue: 200,
-      control: { type: "number" },
+      control: { type: 'number' },
     },
     url: {
       defaultValue: THUMBNAIL,
     },
     alt: {
-      defaultValue: "avatar",
+      defaultValue: 'avatar',
     },
     borderRadius: {
       defaultValue: 5,

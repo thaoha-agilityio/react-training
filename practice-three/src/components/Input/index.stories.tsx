@@ -1,16 +1,16 @@
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { SearchIcon } from "@/components/Icon";
+import { SearchIcon } from '@/components/Icon';
 
-import Input from ".";
+import Input from '.';
 
 export default {
-  title: "Input",
+  title: 'Input',
   component: Input,
   argTypes: {
     isCircle: {
       defaultValue: false,
-      control: { type: "boolean" },
+      control: { type: 'boolean' },
     },
     children: {
       defaultValue: <SearchIcon />,
@@ -28,7 +28,7 @@ export default {
       defaultValue: 30,
     },
     placeholder: {
-      defaultValue: "Search books",
+      defaultValue: 'Search books',
     },
   },
   parameters: {},

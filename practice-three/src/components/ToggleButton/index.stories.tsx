@@ -1,11 +1,11 @@
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { ListIcon, LightIcon } from "@/components/Icon";
+import { ListIcon, LightIcon } from '@/components/Icon';
 
-import ToggleButton from ".";
+import ToggleButton from '.';
 
 export default {
-  title: "ToggleButton",
+  title: 'ToggleButton',
   component: ToggleButton,
   argTypes: {
     icon: {
@@ -21,20 +21,18 @@ export default {
       defaultValue: 30,
     },
     textAlign: {
-      defaultValue: "left",
-      options: ["left", "right"],
-      control: { type: "radio" },
+      defaultValue: 'left',
+      options: ['left', 'right'],
+      control: { type: 'radio' },
     },
   },
   parameters: {
     actions: {
-      handles: ["click"],
+      handles: ['click'],
     },
   },
 } as ComponentMeta<typeof ToggleButton>;
 
-const Template: ComponentStory<typeof ToggleButton> = (args) => (
-  <ToggleButton {...args} />
-);
+const Template: ComponentStory<typeof ToggleButton> = (args) => <ToggleButton {...args} />;
 
 export const Basic = Template.bind({});

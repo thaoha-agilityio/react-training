@@ -1,11 +1,11 @@
-import { ComponentMeta, ComponentStory } from "@storybook/react";
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-import { categories } from "@/constants/mockData";
+import { categories } from '@/constants/mockData';
 
-import SideBar from ".";
+import SideBar from '.';
 
 export default {
-  title: "SideBar",
+  title: 'SideBar',
   component: SideBar,
   argTypes: {
     categories: {
@@ -14,8 +14,6 @@ export default {
   },
 } as ComponentMeta<typeof SideBar>;
 
-const Template: ComponentStory<typeof SideBar> = (args) => (
-  <SideBar {...args} />
-);
+const Template: ComponentStory<typeof SideBar> = (args) => <SideBar {...args} />;
 
 export const Default = Template.bind({});

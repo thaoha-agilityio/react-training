@@ -1,11 +1,11 @@
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { book } from "@/constants/mockData";
+import { book } from '@/constants/mockData';
 
-import CardItem from ".";
+import CardItem from '.';
 
 export default {
-  title: "CardItem",
+  title: 'CardItem',
   component: CardItem,
   argTypes: {
     item: {
@@ -13,14 +13,12 @@ export default {
     },
     isGridView: {
       defaultValue: true,
-      control: { type: "boolean" },
+      control: { type: 'boolean' },
     },
-    onSetSelectedBookId: { action: "1" }
+    onSetSelectedBookId: { action: '1' },
   },
 } as ComponentMeta<typeof CardItem>;
 
-const Template: ComponentStory<typeof CardItem> = (args) => (
-  <CardItem {...args} />
-);
+const Template: ComponentStory<typeof CardItem> = (args) => <CardItem {...args} />;
 
 export const Default = Template.bind({});

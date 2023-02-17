@@ -1,17 +1,17 @@
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { ListIcon, LightIcon, GridIcon } from "@/components/Icon";
-import { colors } from "@/themes";
+import { ListIcon, LightIcon, GridIcon } from '@/components/Icon';
+import { colors } from '@/themes';
 
-import Button from ".";
+import Button from '.';
 
 export default {
-  title: "Button",
+  title: 'Button',
   component: Button,
   argTypes: {
     isCircle: {
       defaultValue: false,
-      control: { type: "boolean" },
+      control: { type: 'boolean' },
     },
     icon: {
       defaultValue: <LightIcon />,
@@ -23,12 +23,12 @@ export default {
       defaultValue: 40,
     },
     bgColor: {
-      defaultValue: "transparent",
+      defaultValue: 'transparent',
     },
   },
   parameters: {
     actions: {
-      handles: ["click"],
+      handles: ['click'],
     },
   },
 } as ComponentMeta<typeof Button>;

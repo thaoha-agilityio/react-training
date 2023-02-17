@@ -1,17 +1,14 @@
-import {
-  CategoriesContext,
-  ICategoriesContext,
-} from "@/contexts/CategoriesContext";
-import { ComponentMeta, ComponentStory } from "@storybook/react";
-import { categories } from "@/constants/mockData";
-import SubHeader from ".";
+import { CategoriesContext, ICategoriesContext } from '@/contexts/CategoriesContext';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { categories } from '@/constants/mockData';
+import SubHeader from '.';
 
 export default {
-  title: "SubHeader",
+  title: 'SubHeader',
   component: SubHeader,
   argTypes: {
     ids: {
-      defaultValue: ["1", "2"],
+      defaultValue: ['1', '2'],
     },
   },
 } as ComponentMeta<typeof SubHeader>;
