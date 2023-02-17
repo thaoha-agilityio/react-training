@@ -9,19 +9,19 @@ const fontSizes = {
 };
 
 const lineHeights = {
-  xxs: "1",
-  tiny: "1.15",
-  xs: "1.2",
-  sm: "1.38",
-  md: "1.55",
-  lg: "1.7",
-  xl: "2",
+  xxs: '1',
+  tiny: '1.15',
+  xs: '1.2',
+  sm: '1.38',
+  md: '1.55',
+  lg: '1.7',
+  xl: '2',
 };
 
 const fontFamilies = {
-  primary: "Rubik",
-  secondary: "DM_Sans",
-  tertiary: "Noto_Sans",
+  primary: 'Rubik',
+  secondary: 'DM_Sans',
+  tertiary: 'Noto_Sans',
 };
 
 const fontWeights = {
