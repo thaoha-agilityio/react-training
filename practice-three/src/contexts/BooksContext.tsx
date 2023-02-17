@@ -1,20 +1,13 @@
-import {
-  createContext,
-  ReactNode,
-  useCallback,
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
+import { createContext, ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
 
-import { API_BASE_URL, API_PATH } from "../constants/api";
-import { book as defaultBook } from "../constants/mockData";
+import { API_BASE_URL, API_PATH } from '../constants/api';
+import { book as defaultBook } from '../constants/mockData';
 
-import { generateUrl } from "../utils/generateUrl";
+import { generateUrl } from '../utils/generateUrl';
 
-import { api } from "../services/APIRequest";
-import { IBook } from "../types/book";
-import { useFetching } from "../hooks/useFetching";
+import { api } from '../services/APIRequest';
+import { IBook } from '../types/book';
+import { useFetching } from '../hooks/useFetching';
 
 export interface IBookContext {
   books: IBook[];
@@ -55,14 +48,12 @@ export const BooksProvider = ({ children }: IBookProvider) => {
   } = useFetching<IBook[]>(`${API_BASE_URL}${API_PATH.BOOKS}`);
 
   useEffect(() => {
-    setBooks(items);
-  }, [!items, !error]);
+    if (items) setBooks(items);
+  }, [items]);
 
   // Search by call api
   const searchBooks = useCallback(async (input: string): Promise<void> => {
-    const result = await api.getData(
-      generateUrl({ key: "name", value: input })
-    );
+    const result = await api.getData(generateUrl({ key: 'name', value: input }));
 
     if (result.error) return setBooks([]);
 
@@ -88,7 +79,7 @@ export const BooksProvider = ({ children }: IBookProvider) => {
   const handleSortByAlphabet = useCallback((): void => {
     // Toggle sort desc <=> asc
     const result: IBook[] = books.sort((a, b) => {
-      return typeof a.name === "string" && typeof b.name === "string"
+      return typeof a.name === 'string' && typeof b.name === 'string'
         ? isSortNameStatus
           ? b.name.localeCompare(a.name)
           : a.name.localeCompare(b.name)
@@ -105,7 +96,7 @@ export const BooksProvider = ({ children }: IBookProvider) => {
   const handleSortByReleaseYear = useCallback((): void => {
     // Toggle sort desc <=> asc
     const result: IBook[] = books.sort((a, b) => {
-      return typeof a.published === "number" && typeof b.published === "number"
+      return typeof a.published === 'number' && typeof b.published === 'number'
         ? isSortYearStatus
           ? b.published - a.published
           : a.published - b.published
@@ -119,29 +110,24 @@ export const BooksProvider = ({ children }: IBookProvider) => {
   }, [books, isSortYearStatus]);
 
   // Filter by categories
-  const handleFilterByCategories = useCallback(
-    async (ids: string[]): Promise<void> => {
-      const result = await api.getData(
-        generateUrl({ key: "categoryId", value: ids })
-      );
+  const handleFilterByCategories = useCallback(async (ids: string[]): Promise<void> => {
+    const result = await api.getData(generateUrl({ key: 'categoryId', value: ids }));
 
-      if (result.error) return setBooks([]);
+    if (result.error) return setBooks([]);
 
-      setBooks(result.data);
-    },
-    []
-  );
+    setBooks(result.data);
+  }, []);
 
   const contextValue: IBookContext = useMemo(
     () => ({
       books: books || [],
       error,
       isLoading,
-      searchBooks,
-      getBookById,
       isGridView: isGridView,
       isSortNameStatus: isSortNameStatus,
       isSortYearStatus: isSortYearStatus,
+      searchBooks,
+      getBookById,
       handleChangeGridView,
       handleSortByReleaseYear,
       handleSortByAlphabet,
@@ -151,21 +137,17 @@ export const BooksProvider = ({ children }: IBookProvider) => {
       books,
       error,
       isLoading,
-      searchBooks,
-      getBookById,
       isGridView,
-      handleChangeGridView,
       isSortYearStatus,
       isSortNameStatus,
+      searchBooks,
+      getBookById,
+      handleChangeGridView,
       handleSortByAlphabet,
       handleSortByReleaseYear,
       handleFilterByCategories,
     ]
   );
 
-  return (
-    <BooksContext.Provider value={contextValue}>
-      {children}
-    </BooksContext.Provider>
-  );
+  return <BooksContext.Provider value={contextValue}>{children}</BooksContext.Provider>;
 };

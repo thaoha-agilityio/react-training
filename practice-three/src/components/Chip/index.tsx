@@ -1,7 +1,7 @@
-import { ReactNode } from "react";
-import Button from "../Button";
+import { ReactNode } from 'react';
+import Button from '../Button';
 
-import { ChipStyled, LabelStyled } from "./index.styled";
+import { ChipStyled, LabelStyled } from './index.styled';
 
 type ChipProps = {
   label: string;
@@ -18,7 +18,7 @@ type ChipProps = {
   endAdornments?: ReactNode;
   borderRadius?: number;
   onClick: () => void;
-}
+};
 
 const Chip = ({
   label,
@@ -33,22 +33,12 @@ const Chip = ({
   ...rest
 }: ChipProps): React.ReactElement => {
   return (
-    <ChipStyled
-      width={width}
-      height={height}
-      onClick={onClick}
-      bgColor={bgColor}
-      {...rest}
-    >
-      {startAdornments && (
-        <Button isCircle={false} icon={startAdornments} bgColor="transparent" />
-      )}
+    <ChipStyled width={width} height={height} onClick={onClick} bgColor={bgColor} {...rest}>
+      {startAdornments && <Button isCircle={false} icon={startAdornments} bgColor="transparent" />}
       <LabelStyled fontSize={fontSize} fontWeight={fontWeight}>
         {label}
       </LabelStyled>
-      {endAdornments && (
-        <Button isCircle={false} icon={endAdornments} bgColor="transparent" />
-      )}
+      {endAdornments && <Button isCircle={false} icon={endAdornments} bgColor="transparent" />}
     </ChipStyled>
   );
 };

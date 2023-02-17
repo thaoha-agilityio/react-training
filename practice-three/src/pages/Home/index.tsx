@@ -1,36 +1,29 @@
-import React, {
-  ChangeEvent,
-  lazy,
-  Suspense,
-  useCallback,
-  useEffect,
-  useState,
-} from "react";
-import { ThemeProvider } from "styled-components";
+import React, { ChangeEvent, lazy, Suspense, useCallback, useEffect, useState } from 'react';
+import { ThemeProvider } from 'styled-components';
 
 // Custom hooks
-import { useCategories, useDebounce } from "../../hooks";
-import { useBooks } from "../../hooks/useBooks";
+import { useCategories, useDebounce } from '../../hooks';
+import { useBooks } from '../../hooks/useBooks';
 
 // Components
-import Header from "../../components/Header";
-import SubHeader from "./components/SubHeader";
-import Books from "./components/Books";
-import SideBar from "./components/SideBar";
+import Header from '../../components/Header';
+import SubHeader from './components/SubHeader';
+import Books from './components/Books';
+import SideBar from './components/SideBar';
 
 // Themes
-import { darkTheme, lightTheme } from "../../themes";
-import { Container } from "../../styled-common";
+import { darkTheme, lightTheme } from '../../themes';
+import { Container } from '../../styled-common';
 
 // Constant
-import { KEY_NAME_ESC } from "../../constants/actions";
+import { KEY_NAME_ESC } from '../../constants/actions';
 
 // Styled
-import { MainContentStyled } from "./index.styled";
+import { MainContentStyled } from './index.styled';
 
 // React lazy
-const DetailModal = lazy(() => import("../../components/Modal/DetailModal"));
-const FilterModal = lazy(() => import("../../components/Modal/FilterModal"));
+const DetailModal = lazy(() => import('../../components/Modal/DetailModal'));
+const FilterModal = lazy(() => import('../../components/Modal/FilterModal'));
 
 const Home = (): React.ReactElement => {
   const { searchBooks, getBookById, isGridView } = useBooks();
@@ -39,11 +32,11 @@ const Home = (): React.ReactElement => {
 
   const [isDarkTheme, setIsDarkTheme] = useState(false);
 
-  const [inputValue, setInputValue] = useState<string>("");
+  const [inputValue, setInputValue] = useState<string>('');
   const debounceValue = useDebounce(inputValue);
 
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const [selectedBookId, setSelectedBookId] = useState<string>("");
+  const [selectedBookId, setSelectedBookId] = useState<string>('');
   const [isModalFilterOpen, setIsModalFilterOpen] = useState<boolean>(false);
 
   // Change dark-light mode
@@ -59,11 +52,11 @@ const Home = (): React.ReactElement => {
       setInputValue(value);
 
       // If remove all text then fetch data
-      if (value === "") {
+      if (value === '') {
         await searchBooks(value);
       }
     },
-    []
+    [searchBooks]
   );
 
   useEffect(() => {
@@ -75,7 +68,7 @@ const Home = (): React.ReactElement => {
     if (debounceValue) {
       fetchBooks();
     }
-  }, [debounceValue]); // Only call effect if debounced debounceValue changes
+  }, [debounceValue, searchBooks]); // Only call effect if debounced debounceValue changes
 
   // Set id when click item
   const handleSetSelectedBookId = useCallback((id: string) => {
@@ -88,11 +81,14 @@ const Home = (): React.ReactElement => {
   }, []);
 
   // Close detail modal by keyboard
-  const handleCloseByKeyboard = useCallback((event: KeyboardEvent): void => {
-    if (event.keyCode === KEY_NAME_ESC) {
-      handleToggleModal();
-    }
-  }, []);
+  const handleCloseByKeyboard = useCallback(
+    (event: KeyboardEvent): void => {
+      if (event.keyCode === KEY_NAME_ESC) {
+        handleToggleModal();
+      }
+    },
+    [handleToggleModal]
+  );
 
   // Handle show/close filter component
   const handleToggleFilterModal = useCallback(() => {
@@ -110,10 +106,7 @@ const Home = (): React.ReactElement => {
         <SubHeader onToggleFilterModal={handleToggleFilterModal} />
         <MainContentStyled>
           <SideBar categories={categories} />
-          <Books
-            onSetSelectedBookId={handleSetSelectedBookId}
-            isGridView={isGridView}
-          />
+          <Books onSetSelectedBookId={handleSetSelectedBookId} isGridView={isGridView} />
         </MainContentStyled>
       </Container>
       {isModalOpen && (

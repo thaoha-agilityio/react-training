@@ -1,7 +1,7 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode } from 'react';
 
-import { BooksProvider } from "./BooksContext";
-import { CategoriesProvider } from "./CategoriesContext";
+import { BooksProvider } from './BooksContext';
+import { CategoriesProvider } from './CategoriesContext';
 
 type AppProviderProps = {
   children: ReactNode;

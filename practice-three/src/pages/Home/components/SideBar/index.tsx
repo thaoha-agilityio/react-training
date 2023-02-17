@@ -1,15 +1,15 @@
-import { memo, useCallback } from "react";
-import { useCategories } from "../../../../hooks";
-import { useBooks } from "../../../../hooks/useBooks";
+import { memo, useCallback } from 'react';
+import { useCategories } from '../../../../hooks';
+import { useBooks } from '../../../../hooks/useBooks';
 
 // Component
-import Category from "../../../../components/Category";
+import Category from '../../../../components/Category';
 
 // Type
-import { ICategory } from "../../../../types/category";
+import { ICategory } from '../../../../types/category';
 
 // Styled
-import { CategoriesStyled, ParaphraseStyled } from "./index.styled";
+import { CategoriesStyled, ParaphraseStyled } from './index.styled';
 
 type SideBarProps = {
   categories: ICategory[];
@@ -27,21 +27,16 @@ const SideBar = ({ categories }: SideBarProps): React.ReactElement => {
       // Show books after filter
       handleFilterByCategories([...selectedIds, id]);
     },
-    [selectedIds]
+    [handleFilterByCategories, selectedIds, setSelectedCategory]
   );
 
   return (
     <CategoriesStyled data-testid="Sidebar">
       <>
-        <ParaphraseStyled>
-          A curated list of every book ever written
-        </ParaphraseStyled>
+        <ParaphraseStyled>A curated list of every book ever written</ParaphraseStyled>
         {categories?.map((category: ICategory) => (
           <div key={category.id}>
-            <Category
-              category={category}
-              onSelectCategory={handleSelectCategory}
-            />
+            <Category category={category} onSelectCategory={handleSelectCategory} />
           </div>
         ))}
       </>

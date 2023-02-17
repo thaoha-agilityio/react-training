@@ -1,15 +1,15 @@
-import { memo } from "react";
+import { memo } from 'react';
 
 // Components
-import Button from "../../Button";
-import Chip from "../../Chip";
-import { GridIcon, ListIcon, ArrowIcon } from "../../Icon";
+import Button from '../../Button';
+import Chip from '../../Chip';
+import { GridIcon, ListIcon, ArrowIcon } from '../../Icon';
 
 // Custom hooks
-import { useBooks } from "../../../hooks/useBooks";
+import { useBooks } from '../../../hooks/useBooks';
 
 // Theme
-import { colors } from "../../../themes";
+import { colors } from '../../../themes';
 
 import {
   BackDropStyled,
@@ -19,7 +19,7 @@ import {
   MenuOptionStyled,
   OptionalTextStyled,
   MenuOptionGroup,
-} from "./index.styled";
+} from './index.styled';
 
 type FilterModalProps = {
   width: number;
@@ -46,8 +46,14 @@ const FilterModal = ({
   } = useBooks();
 
   return (
-    <BackDropStyled onClick={onToggleFilterModal} >
-      <FilterModalStyled width={width} height={height} right={right} top={top} data-testid="filter-modal">
+    <BackDropStyled onClick={onToggleFilterModal}>
+      <FilterModalStyled
+        width={width}
+        height={height}
+        right={right}
+        top={top}
+        data-testid="filter-modal"
+      >
         <MenuOptionStyled>Display Options</MenuOptionStyled>
 
         <MenuListStyled>

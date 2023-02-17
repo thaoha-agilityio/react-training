@@ -1,9 +1,9 @@
-import { fireEvent, render, screen } from "@testing-library/react";
-import "@testing-library/jest-dom";
+import { fireEvent, render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
 
-import { book } from "../../../../constants/mockData";
+import { book } from '../../../../constants/mockData';
 
-import DetailModal from "..";
+import DetailModal from '..';
 
 const mockProps = {
   isDarkTheme: true,
@@ -21,33 +21,33 @@ const secondMockProps = {
   book: book,
 };
 
-describe("Testing component DetailModal", () => {
-  it("Should show detail book", () => {
+describe('Testing component DetailModal', () => {
+  it('should show detail book', () => {
     render(<DetailModal {...mockProps} />);
 
     expect(screen.getByText(book.name)).toBeInTheDocument();
   });
 
-  it("Should show detail book", () => {
+  it('Should show detail book', () => {
     render(<DetailModal {...secondMockProps} />);
 
     expect(screen.getByText(book.name)).toBeInTheDocument();
   });
 
-  it("calls onCloseModal when closeButton is clicked", () => {
+  it('calls onCloseModal when closeButton is clicked', () => {
     render(<DetailModal {...mockProps} />);
 
-    const button = screen.getByTestId("close-button");
+    const button = screen.getByTestId('close-button');
 
     fireEvent.click(button);
 
     expect(mockProps.onCloseModal).toHaveBeenCalledTimes(1);
   });
 
-  it("calls onToggleTheme when toggleButton component is clicked", () => {
+  it('calls onToggleTheme when toggleButton component is clicked', () => {
     render(<DetailModal {...mockProps} />);
 
-    const button = screen.getByTestId("toggle-button");
+    const button = screen.getByTestId('toggle-button');
 
     fireEvent.click(button);
 

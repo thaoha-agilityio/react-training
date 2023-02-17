@@ -1,9 +1,9 @@
-import { render, screen, fireEvent } from "@testing-library/react";
-import "@testing-library/jest-dom";
+import { render, screen, fireEvent } from '@testing-library/react';
+import '@testing-library/jest-dom';
 
-import { book } from "../../../constants/mockData";
+import { book } from '../../../constants/mockData';
 
-import CardItem from "..";
+import CardItem from '..';
 
 const mockProps = {
   isGridView: true,
@@ -11,19 +11,19 @@ const mockProps = {
   onSetSelectedBookId: jest.fn(),
 };
 
-describe("testing cardItem component", () => {
-  test("Should match data for card component", () => {
+describe('Testing cardItem component', () => {
+  test('should match data for card component', () => {
     render(<CardItem {...mockProps} />);
 
-    const book = screen.getByTestId("card-item");
+    const book = screen.getByTestId('card-item');
 
     expect(book).toBeInTheDocument();
   });
 
-  test("Should call onSetSelectedBookId when cardItem is clicked", () => {
+  test('Should call onSetSelectedBookId when cardItem is clicked', () => {
     render(<CardItem {...mockProps} />);
 
-    const book = screen.getByTestId("card-item");
+    const book = screen.getByTestId('card-item');
     fireEvent.click(book);
 
     expect(book).toBeInTheDocument();

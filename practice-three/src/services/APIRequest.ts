@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 const getData = async <T>(url: string): Promise<T | any> => {
   try {
@@ -6,7 +6,7 @@ const getData = async <T>(url: string): Promise<T | any> => {
 
     return {
       data: res.data,
-      error: "",
+      error: '',
     };
   } catch (error: any) {
     return {

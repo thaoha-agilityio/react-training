@@ -1,13 +1,13 @@
-import { memo, useEffect } from "react";
+import { memo, useEffect } from 'react';
 
-import Avatar from "../../Avatar";
-import Button from "../../Button";
-import ToggleButton from "../../ToggleButton";
-import LabelButton from "../../../pages/Home/components/LabelButton";
-import { DarkIcon, LightIcon, XmarkIcon } from "../../Icon";
+import Avatar from '../../Avatar';
+import Button from '../../Button';
+import ToggleButton from '../../ToggleButton';
+import LabelButton from '../../../pages/Home/components/LabelButton';
+import { DarkIcon, LightIcon, XmarkIcon } from '../../Icon';
 
-import { Backdrop } from "../../../styled-common";
-import { IBook } from "../../../types/book";
+import { Backdrop } from '../../../styled-common';
+import { IBook } from '../../../types/book';
 
 import {
   DetailModalStyled,
@@ -23,7 +23,7 @@ import {
   ModalFooterStyled,
   WrapperButtonStyled,
   EscapeTextStyled,
-} from "./index.styled";
+} from './index.styled';
 
 type DetailModalProps = {
   book: IBook;
@@ -42,11 +42,11 @@ const DetailModal = ({
 }: DetailModalProps): React.ReactElement => {
   // Close modal by keyboard
   useEffect(() => {
-    window.addEventListener("keydown", onCloseByKeyboard);
+    window.addEventListener('keydown', onCloseByKeyboard);
 
     // Remove event before closing modal
-    return () => window.removeEventListener("keydown", onCloseByKeyboard);
-  }, []);
+    return () => window.removeEventListener('keydown', onCloseByKeyboard);
+  }, [onCloseByKeyboard]);
 
   return (
     <Backdrop>
@@ -64,13 +64,7 @@ const DetailModal = ({
 
         <ModalBodyStyled>
           <ModalImageStyled>
-            <Avatar
-              url={avatar}
-              alt={name}
-              borderRadius={5}
-              width={201}
-              height={263}
-            />
+            <Avatar url={avatar} alt={name} borderRadius={5} width={201} height={263} />
           </ModalImageStyled>
           <DescriptionTextStyled>{description}</DescriptionTextStyled>
 
@@ -104,7 +98,7 @@ const DetailModal = ({
           <ToggleButton
             width={77}
             height={34}
-            textAlign={isDarkTheme ? "right" : "left"}
+            textAlign={isDarkTheme ? 'right' : 'left'}
             borderRadius={30}
             icon={isDarkTheme ? <DarkIcon /> : <LightIcon />}
             onClick={onToggleTheme}
