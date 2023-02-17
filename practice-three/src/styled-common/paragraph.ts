@@ -1,8 +1,8 @@
-import styled from "styled-components";
-import { colors, fonts } from "../themes";
+import styled from 'styled-components';
+import { colors, fonts } from '../themes';
 
 const NormalText = styled.p`
-  font: 400 14px/18px "Rubik";
+  font: 400 14px/18px 'Rubik';
   color: ${colors.bitter};
 `;
 
