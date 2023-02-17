@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import { colors, metrics } from "../../themes";
+import { colors, metrics } from '../../themes';
 
 interface StyledButtonProps {
   width: number;

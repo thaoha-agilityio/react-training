@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import { AlignCenterStyle, JustifyBetweenStyle } from "../../styled-common";
+import { AlignCenterStyle, JustifyBetweenStyle } from '../../styled-common';
 
 const HeaderStyled = styled.header`
   ${JustifyBetweenStyle};

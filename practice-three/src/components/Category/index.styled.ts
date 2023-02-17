@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import { JustifyBetweenStyle, AlignCenterStyle, P } from "../../styled-common";
-import { colors, fonts, metrics } from "../../themes";
+import { JustifyBetweenStyle, AlignCenterStyle, P } from '../../styled-common';
+import { colors, fonts, metrics } from '../../themes';
 
 type StyledThumbnailProps = {
   bgColor: string;

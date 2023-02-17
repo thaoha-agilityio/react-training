@@ -1,8 +1,8 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 // Themes
-import { P } from "../../../../styled-common";
-import { metrics } from "../../../../themes";
+import { P } from '../../../../styled-common';
+import { metrics } from '../../../../themes';
 
 const CategoriesStyled = styled.div`
   box-shadow: ${metrics.shadows.xxl};

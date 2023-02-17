@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import { metrics, fonts, colors } from "../../themes";
+import { metrics, fonts, colors } from '../../themes';
 
 interface StyledInputProps {
   borderRadius: number;
