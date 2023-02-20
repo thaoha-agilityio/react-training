@@ -25,7 +25,7 @@ const config = {
     '!**/useFetching.ts',
     '!**/Icon/**',
     '!**/themes/**',
-    '!**/setupTest.ts',
+    '!**/test/**',
   ],
   setupFilesAfterEnv: ['<rootDir>/setupTest.ts'],
 };

@@ -25,7 +25,7 @@ const Books = ({ isGridView, onSetSelectedBookId }: BooksProps): React.ReactElem
     <Spinner />
   ) : (
     <BooksStyled isGridView={isGridView} data-testById="books">
-      {books ? (
+      {books.length ? (
         books.map((item) => (
           <div key={item.id}>
             <CardItem
