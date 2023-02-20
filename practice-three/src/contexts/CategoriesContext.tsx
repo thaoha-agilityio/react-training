@@ -1,15 +1,8 @@
-import {
-  createContext,
-  ReactNode,
-  useCallback,
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
+import { createContext, ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
 
-import { API_BASE_URL, API_PATH } from "../constants/api";
-import { useFetching } from "../hooks/useFetching";
-import { ICategory } from "../types/category";
+import { API_BASE_URL, API_PATH } from '../constants/api';
+import { useFetching } from '../hooks/useFetching';
+import { ICategory } from '../types/category';
 
 export interface ICategoriesContext {
   categories: ICategory[];
@@ -25,9 +18,7 @@ type CategoriesProvider = {
 };
 
 // Create books context with initial value
-export const CategoriesContext = createContext<ICategoriesContext>(
-  {} as ICategoriesContext
-);
+export const CategoriesContext = createContext<ICategoriesContext>({} as ICategoriesContext);
 
 // Book provider
 export const CategoriesProvider = ({ children }: CategoriesProvider) => {
@@ -35,9 +26,11 @@ export const CategoriesProvider = ({ children }: CategoriesProvider) => {
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
 
   // Fetch data from server
-  const { data: items, error } = useFetching<ICategory[]>(
-    `${API_BASE_URL}${API_PATH.CATEGORIES}`
-  );
+  const { data: items, error } = useFetching<ICategory[]>(`${API_BASE_URL}${API_PATH.CATEGORIES}`);
+
+  useEffect(() => {
+    if (items) setCategories(items);
+  }, [items]);
 
   // Set categories id when click
   const setSelectedCategory = useCallback(
@@ -49,8 +42,7 @@ export const CategoriesProvider = ({ children }: CategoriesProvider) => {
 
   // Show categories name in sub heading
   const getCategoryById = useCallback(
-    (ids: string[]): ICategory[] =>
-      categories?.filter((item) => ids.some((id) => id === item.id)),
+    (ids: string[]): ICategory[] => categories?.filter((item) => ids.some((id) => id === item.id)),
     [categories]
   );
 
@@ -65,10 +57,6 @@ export const CategoriesProvider = ({ children }: CategoriesProvider) => {
     [selectedIds]
   );
 
-  useEffect(() => {
-    setCategories(items);
-  }, [!items]);
-
   const contextValue: ICategoriesContext = useMemo(
     () => ({
       categories: categories || [],
@@ -81,15 +69,12 @@ export const CategoriesProvider = ({ children }: CategoriesProvider) => {
     [
       categories,
       error,
+      selectedIds,
       setSelectedCategory,
       getCategoryById,
       handleRemoveSelectedCategory,
     ]
   );
 
-  return (
-    <CategoriesContext.Provider value={contextValue}>
-      {children}
-    </CategoriesContext.Provider>
-  );
+  return <CategoriesContext.Provider value={contextValue}>{children}</CategoriesContext.Provider>;
 };

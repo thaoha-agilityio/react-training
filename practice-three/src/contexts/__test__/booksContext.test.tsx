@@ -1,16 +1,10 @@
-import { useContext } from "react";
-import {
-  act,
-  fireEvent,
-  render,
-  renderHook,
-  screen,
-} from "@testing-library/react";
-import "@testing-library/jest-dom";
+import { useContext } from 'react';
+import { act, fireEvent, render, renderHook, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
 
-import { BooksContext, BooksProvider, IBookContext } from "../BooksContext";
-import { book } from "../../constants/mockData";
-import { ERROR_MESSAGE } from "../../constants/message";
+import { BooksContext, BooksProvider, IBookContext } from '../BooksContext';
+import { book } from '../../constants/mockData';
+import { ERROR_MESSAGE } from '../../constants/message';
 
 const mockContextValue = {
   books: [book],
@@ -27,18 +21,18 @@ const mockContextValue = {
   handleFilterByCategories: jest.fn(),
 };
 
-describe("Test BooksProvider", () => {
-  it("should render the children", () => {
+describe('Test BooksProvider', () => {
+  it('should render the children', () => {
     render(
       <BooksProvider>
         <div data-testid="test-child">Test child</div>
       </BooksProvider>
     );
 
-    expect(screen.getByTestId("test-child")).toBeInTheDocument();
+    expect(screen.getByTestId('test-child')).toBeInTheDocument();
   });
 
-  it("should provide context values to children", () => {
+  it('should provide context values to children', () => {
     const Component = () => {
       const { books, isLoading, error } = useContext(BooksContext);
       return (
@@ -57,115 +51,89 @@ describe("Test BooksProvider", () => {
     );
 
     // Check default values
-    expect(screen.getByTestId("books-length")).toHaveTextContent("0");
-    expect(screen.getByTestId("is-loading")).toHaveTextContent("true");
-    expect(screen.getByTestId("error")).toHaveTextContent("");
+    expect(screen.getByTestId('books-length')).toHaveTextContent('0');
+    expect(screen.getByTestId('is-loading')).toHaveTextContent('true');
+    expect(screen.getByTestId('error')).toHaveTextContent('');
 
     rerender(
-      <BooksContext.Provider
-        value={mockContextValue as unknown as IBookContext}
-      >
+      <BooksContext.Provider value={mockContextValue as unknown as IBookContext}>
         <Component />
       </BooksContext.Provider>
     );
 
     // Check updated context values
-    expect(screen.getByTestId("books-length")).toHaveTextContent(
+    expect(screen.getByTestId('books-length')).toHaveTextContent(
       mockContextValue.books.length.toString()
     );
-    expect(screen.getByTestId("is-loading")).toHaveTextContent(
+    expect(screen.getByTestId('is-loading')).toHaveTextContent(
       mockContextValue.isLoading.toString()
     );
-    expect(screen.getByTestId("error")).toHaveTextContent(
-      mockContextValue.error
-    );
+    expect(screen.getByTestId('error')).toHaveTextContent(mockContextValue.error);
   });
 
-  it("should call getBookById when a card item is clicked", () => {
+  it('should call getBookById when a card item is clicked', () => {
     render(
-      <BooksContext.Provider
-        value={mockContextValue as unknown as IBookContext}
-      >
-        <button onClick={() => mockContextValue.getBookById("1")}>
-          Selected card item
-        </button>
+      <BooksContext.Provider value={mockContextValue as unknown as IBookContext}>
+        <button onClick={() => mockContextValue.getBookById('1')}>Selected card item</button>
       </BooksContext.Provider>
     );
 
-    fireEvent.click(screen.getByRole("button"));
+    fireEvent.click(screen.getByRole('button'));
 
-    expect(mockContextValue.getBookById).toHaveBeenCalledWith("1");
+    expect(mockContextValue.getBookById).toHaveBeenCalledWith('1');
   });
 
-  it("should call handleChangeGridView when a button is clicked", () => {
+  it('should call handleChangeGridView when a button is clicked', () => {
     render(
-      <BooksContext.Provider
-        value={mockContextValue as unknown as IBookContext}
-      >
-        <button onClick={() => mockContextValue.handleChangeGridView()}>
-          List
-        </button>
+      <BooksContext.Provider value={mockContextValue as unknown as IBookContext}>
+        <button onClick={() => mockContextValue.handleChangeGridView()}>List</button>
       </BooksContext.Provider>
     );
 
-    fireEvent.click(screen.getByRole("button"));
+    fireEvent.click(screen.getByRole('button'));
 
     expect(mockContextValue.handleChangeGridView).toHaveBeenCalledWith();
   });
 
-  it("should call handleSortByAlphabet when a button is clicked", () => {
+  it('should call handleSortByAlphabet when a button is clicked', () => {
     render(
-      <BooksContext.Provider
-        value={mockContextValue as unknown as IBookContext}
-      >
-        <button onClick={() => mockContextValue.handleSortByAlphabet()}>
-          List
-        </button>
+      <BooksContext.Provider value={mockContextValue as unknown as IBookContext}>
+        <button onClick={() => mockContextValue.handleSortByAlphabet()}>List</button>
       </BooksContext.Provider>
     );
 
-    fireEvent.click(screen.getByRole("button"));
+    fireEvent.click(screen.getByRole('button'));
 
     expect(mockContextValue.handleSortByAlphabet).toHaveBeenCalledWith();
   });
 
-  it("should call handleSortByReleaseYear when a button is clicked", () => {
+  it('should call handleSortByReleaseYear when a button is clicked', () => {
     render(
-      <BooksContext.Provider
-        value={mockContextValue as unknown as IBookContext}
-      >
-        <button onClick={() => mockContextValue.handleSortByReleaseYear()}>
-          List
-        </button>
+      <BooksContext.Provider value={mockContextValue as unknown as IBookContext}>
+        <button onClick={() => mockContextValue.handleSortByReleaseYear()}>List</button>
       </BooksContext.Provider>
     );
 
-    fireEvent.click(screen.getByRole("button"));
+    fireEvent.click(screen.getByRole('button'));
 
     expect(mockContextValue.handleSortByReleaseYear).toHaveBeenCalledWith();
   });
 
-  it("should call handleFilterByCategories when a button is clicked", () => {
+  it('Should call handleFilterByCategories when a button is clicked', () => {
     render(
-      <BooksContext.Provider
-        value={mockContextValue as unknown as IBookContext}
-      >
-        <button onClick={() => mockContextValue.handleFilterByCategories("1")}>
-          List
-        </button>
+      <BooksContext.Provider value={mockContextValue as unknown as IBookContext}>
+        <button onClick={() => mockContextValue.handleFilterByCategories('1')}>List</button>
       </BooksContext.Provider>
     );
 
-    fireEvent.click(screen.getByRole("button"));
+    fireEvent.click(screen.getByRole('button'));
 
     expect(mockContextValue.handleFilterByCategories).toHaveBeenCalledTimes(1);
   });
 
-  it("should update books state when searchBooks is called", () => {
+  it('should update books state when searchBooks is called', () => {
     render(
-      <BooksContext.Provider
-        value={mockContextValue as unknown as IBookContext}
-      >
+      <BooksContext.Provider value={mockContextValue as unknown as IBookContext}>
         <input
           type="text"
           onChange={(e) => mockContextValue.searchBooks(e.target.value)}
@@ -174,7 +142,7 @@ describe("Test BooksProvider", () => {
       </BooksContext.Provider>
     );
 
-    const input = screen.getByPlaceholderText("Search books");
-    fireEvent.change(input, "Harry Potter");
+    const input = screen.getByPlaceholderText('Search books');
+    fireEvent.change(input, 'Harry Potter');
   });
 });

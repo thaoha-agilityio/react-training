@@ -1,13 +1,13 @@
-import { memo, useCallback } from "react";
-import { useCategories } from "../../../../hooks";
-import { useBooks } from "../../../../hooks/useBooks";
+import { memo, useCallback } from 'react';
+import { useCategories } from '../../../../hooks';
+import { useBooks } from '../../../../hooks/useBooks';
 // Components
-import Chip from "../../../../components/Chip";
-import { FilterIcon, XmarkIcon } from "../../../../components/Icon";
+import Chip from '../../../../components/Chip';
+import { FilterIcon, XmarkIcon } from '../../../../components/Icon';
 
 // Themes
-import { colors } from "../../../../themes";
-import ArrowRight from "../../../../assets/images/icons/arrow-right.svg";
+import { colors } from '../../../../themes';
+import ArrowRight from '../../../../assets/images/icons/arrow-right.svg';
 
 // Styled
 import {
@@ -15,17 +15,14 @@ import {
   TitleStyled,
   ShowCategoriesStyled,
   TotalBooksStyled,
-} from "./index.styled";
+} from './index.styled';
 
 export type SubHeaderProps = {
   onToggleFilterModal: () => void;
 };
 
-const SubHeader = ({
-  onToggleFilterModal,
-}: SubHeaderProps): React.ReactElement => {
-  const { selectedIds, getCategoryById, handleRemoveSelectedCategory } =
-    useCategories();
+const SubHeader = ({ onToggleFilterModal }: SubHeaderProps): React.ReactElement => {
+  const { selectedIds, getCategoryById, handleRemoveSelectedCategory } = useCategories();
 
   const { handleFilterByCategories, books, searchBooks } = useBooks();
 
@@ -40,7 +37,7 @@ const SubHeader = ({
 
       // Check currentId is empty then render initial books
       if (!currentId.length) {
-        searchBooks("");
+        searchBooks('');
 
         return;
       }

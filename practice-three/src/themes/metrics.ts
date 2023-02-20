@@ -7,7 +7,7 @@ const widths = {
   lg: 282,
   xl: 353,
   xxl: 485,
-  "3xl": 908,
+  '3xl': 908,
 };
 
 const heights = {
@@ -19,8 +19,8 @@ const heights = {
   lg: 202,
   xl: 213,
   xxl: 238,
-  "3xl": 331,
-  "4xl": 369,
+  '3xl': 331,
+  '4xl': 369,
 };
 
 const margins = {
@@ -41,17 +41,17 @@ const paddings = {
   lg: 15,
   xl: 20,
   xxl: 25,
-  "3xl": 40,
-  "4xl": 45,
+  '3xl': 40,
+  '4xl': 45,
 };
 
 const shadows = {
-  xs: "0 0 0 1px rgba(0, 0, 0, 0.05)",
-  sm: "0px 0px 3px rgba(0, 0, 0, 0.1)",
-  md: "0px 0px 4px rgba(0, 0, 0, 0.12)",
-  lg: "0px 1px 4px rgba(0, 0, 0, 0.1)",
-  xl: "0px 0px 2px rgba(0, 0, 0, 0.15)",
-  xxl: "0px 3px 2px rgba(0, 0, 0, 0.1)",
+  xs: '0 0 0 1px rgba(0, 0, 0, 0.05)',
+  sm: '0px 0px 3px rgba(0, 0, 0, 0.1)',
+  md: '0px 0px 4px rgba(0, 0, 0, 0.12)',
+  lg: '0px 1px 4px rgba(0, 0, 0, 0.1)',
+  xl: '0px 0px 2px rgba(0, 0, 0, 0.15)',
+  xxl: '0px 3px 2px rgba(0, 0, 0, 0.1)',
 };
 
 const borderRadius = {

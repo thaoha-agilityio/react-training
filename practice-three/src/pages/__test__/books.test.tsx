@@ -1,12 +1,9 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen } from '@testing-library/react';
 
-import Books, { BooksProps } from "../Home/components/Books";
-import { books, categories } from "../../constants/mockData";
-import { IBookContext, BooksContext } from "../../contexts/BooksContext";
-import {
-  ICategoriesContext,
-  CategoriesContext,
-} from "../../contexts/CategoriesContext";
+import Books, { BooksProps } from '../Home/components/Books';
+import { books, categories } from '../../constants/mockData';
+import { IBookContext, BooksContext } from '../../contexts/BooksContext';
+import { ICategoriesContext, CategoriesContext } from '../../contexts/CategoriesContext';
 
 const mockProps: BooksProps = {
   isGridView: true,
@@ -15,7 +12,7 @@ const mockProps: BooksProps = {
 
 const CategoryContextValue: ICategoriesContext = {
   categories: categories,
-  error: "",
+  error: '',
   selectedIds: [],
   setSelectedCategory: jest.fn(),
   getCategoryById: jest.fn().mockReturnValueOnce(() => categories),
@@ -30,7 +27,7 @@ const BookContextHaveValue: IBookContext = {
   handleSortByAlphabet: jest.fn(),
   handleSortByReleaseYear: jest.fn(),
   books: books.data,
-  error: "",
+  error: '',
   isLoading: false,
   searchBooks: jest.fn(),
   getBookById: jest.fn(),
@@ -45,15 +42,15 @@ const BookContextNotHaveValue: IBookContext = {
   handleSortByAlphabet: jest.fn(),
   handleSortByReleaseYear: jest.fn(),
   books: [],
-  error: "Error",
+  error: 'Error',
   isLoading: false,
   searchBooks: jest.fn(),
   getBookById: jest.fn(),
   handleFilterByCategories: jest.fn(),
 };
 
-describe("Testing Books component", () => {
-  test("should render the component with the correct", () => {
+describe('Testing Books component', () => {
+  test('Should render the component with the correct', () => {
     render(
       <CategoriesContext.Provider value={CategoryContextValue}>
         <BooksContext.Provider value={BookContextHaveValue}>
@@ -66,7 +63,7 @@ describe("Testing Books component", () => {
     expect(view).toBeTruthy();
   });
 
-  test("should render the error", () => {
+  test('should render the error', () => {
     render(
       <CategoriesContext.Provider value={CategoryContextValue}>
         <BooksContext.Provider value={BookContextNotHaveValue}>

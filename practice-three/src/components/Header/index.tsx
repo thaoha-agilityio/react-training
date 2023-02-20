@@ -1,15 +1,15 @@
-import { ChangeEvent, memo } from "react";
+import { ChangeEvent, memo } from 'react';
 
 // Component
-import Input from "../Input";
-import Button from "../Button";
-import { DarkIcon, LightIcon, SearchIcon } from "../Icon";
+import Input from '../Input';
+import Button from '../Button';
+import { DarkIcon, LightIcon, SearchIcon } from '../Icon';
 
 // Images
-import bookshelf from "../../assets/images/bookshelf.png";
-import logo from "../../assets/images/logo.png";
+import bookshelf from '../../assets/images/bookshelf.png';
+import logo from '../../assets/images/logo.png';
 
-import { HeaderStyled, LogoStyled, ActionWrapperStyled } from "./index.styled";
+import { HeaderStyled, LogoStyled, ActionWrapperStyled } from './index.styled';
 
 type HeaderProps = {
   isDarkTheme: boolean;
@@ -17,11 +17,7 @@ type HeaderProps = {
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
 };
 
-const Header = ({
-  isDarkTheme,
-  onToggleTheme,
-  onChange,
-}: HeaderProps): React.ReactElement => {
+const Header = ({ isDarkTheme, onToggleTheme, onChange }: HeaderProps): React.ReactElement => {
   return (
     <HeaderStyled>
       <LogoStyled>
@@ -30,15 +26,11 @@ const Header = ({
       </LogoStyled>
 
       <ActionWrapperStyled>
-        <Input
-          borderRadius={30}
-          pLeft={50}
-          children={<SearchIcon />}
-          placeholder="Search books"
-          onChange={onChange}
-        />
+        <Input borderRadius={30} pLeft={50} placeholder="Search books" onChange={onChange}>
+          <SearchIcon />
+        </Input>
         <Button
-          bgColor={"transparent"}
+          bgColor={'transparent'}
           icon={isDarkTheme ? <DarkIcon /> : <LightIcon />}
           onClick={onToggleTheme}
         />

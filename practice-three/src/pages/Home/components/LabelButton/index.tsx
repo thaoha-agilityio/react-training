@@ -1,4 +1,4 @@
-import { LabelButtonStyled } from "./index.styled";
+import { LabelButtonStyled } from './index.styled';
 
 interface IProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   text: string;

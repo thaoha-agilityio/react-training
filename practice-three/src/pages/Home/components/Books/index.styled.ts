@@ -1,11 +1,11 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 type BookProps = {
   isGridView: boolean;
 };
 
 export const BooksStyled = styled.div<BookProps>`
-  display: ${(props) => (props.isGridView ? "flex" : "inline-block")};
+  display: ${(props) => (props.isGridView ? 'flex' : 'inline-block')};
   gap: 32px;
   flex-wrap: wrap;
   padding: 33px 38px;

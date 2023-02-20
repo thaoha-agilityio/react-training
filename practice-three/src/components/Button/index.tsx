@@ -1,6 +1,6 @@
-import { ReactNode } from "react";
+import { ReactNode } from 'react';
 
-import { CircleButtonStyled, IconButtonStyled } from "./index.styled";
+import { CircleButtonStyled, IconButtonStyled } from './index.styled';
 
 interface IProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   isCircle?: boolean;
@@ -21,21 +21,11 @@ const Button = ({
 }: IProps): React.ReactElement => (
   <>
     {isCircle ? (
-      <CircleButtonStyled
-        width={width}
-        height={height}
-        bgColor={bgColor}
-        {...rest}
-      >
+      <CircleButtonStyled width={width} height={height} bgColor={bgColor} {...rest}>
         {icon}
       </CircleButtonStyled>
     ) : (
-      <IconButtonStyled
-        width={width}
-        height={height}
-        bgColor={bgColor}
-        {...rest}
-      >
+      <IconButtonStyled width={width} height={height} bgColor={bgColor} {...rest}>
         {icon}
       </IconButtonStyled>
     )}

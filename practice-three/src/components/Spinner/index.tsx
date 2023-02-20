@@ -1,6 +1,6 @@
-import styled, { keyframes } from "styled-components";
+import styled, { keyframes } from 'styled-components';
 
-import { colors } from "../../themes";
+import { colors } from '../../themes';
 
 const spinAnimation = keyframes`
   to {
@@ -26,7 +26,7 @@ const SpinnerStyled = styled.div`
 `;
 
 export const Spinner = (): React.ReactElement => (
-  <SpinnerContainer data-testid="spinner" >
+  <SpinnerContainer data-testid="spinner">
     <SpinnerStyled />
   </SpinnerContainer>
 );

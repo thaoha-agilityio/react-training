@@ -1,8 +1,8 @@
-import { memo, useCallback } from "react";
-import { useCategories } from "../../hooks";
+import { memo, useCallback } from 'react';
+import { useCategories } from '../../hooks';
 
 // Type
-import { ICategory } from "../../types/category";
+import { ICategory } from '../../types/category';
 
 // Styled
 import {
@@ -12,7 +12,7 @@ import {
   ThumbnailTextStyled,
   CategoryNameStyled,
   TotalStyled,
-} from "./index.styled";
+} from './index.styled';
 
 export type CategoryProps = {
   category: ICategory;
@@ -30,7 +30,7 @@ const Category = ({
     if (selectedIds.includes(id)) return;
 
     onSelectCategory(id);
-  }, [selectedIds]);
+  }, [id, onSelectCategory, selectedIds]);
 
   return (
     <CategoryWrapperStyled

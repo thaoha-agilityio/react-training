@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import { Backdrop, P } from "../../../styled-common";
-import { colors, metrics } from "../../../themes";
+import { Backdrop, P } from '../../../styled-common';
+import { colors, metrics } from '../../../themes';
 
 interface StyledModalProps {
   width: number;
@@ -24,11 +24,12 @@ const FilterModalStyled = styled.div<StyledModalProps>`
   border-radius: ${metrics.borderRadius.tiny}px;
   padding: 29px 21px;
   background-color: ${colors.white};
+  transform: translate(-224%, 50%);
   ::before {
-    content: " ";
+    content: ' ';
     width: 10px;
     height: 10px;
-    background-color: #fff;
+    background-color: ${colors.white};
     position: absolute;
     top: 0;
     right: 60px;

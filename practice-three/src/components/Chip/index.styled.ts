@@ -1,10 +1,7 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import { fonts, metrics } from "../../themes";
-import {
-  JustifyBetweenStyle,
-  CenterAllStyle,
-} from "../../styled-common/layout";
+import { fonts, metrics } from '../../themes';
+import { JustifyBetweenStyle, CenterAllStyle } from '../../styled-common/layout';
 
 interface StyledChipProps {
   width: number;
@@ -30,8 +27,7 @@ export const ChipStyled = styled.div<StyledChipProps>`
   ${(props) => props.pLeft && `padding-left:${props.pLeft}px`};
   ${(props) => props.pRight && `padding-right:${props.pRight}px`};
   ${(props) => props.bgColor && `background:${props.bgColor}`};
-  border-radius: ${(props) =>
-    `${props.borderRadius}px` || `${metrics.borderRadius.lg}px`};
+  border-radius: ${(props) => `${props.borderRadius}px` || `${metrics.borderRadius.lg}px`};
   gap: 13px;
   cursor: pointer;
 `;

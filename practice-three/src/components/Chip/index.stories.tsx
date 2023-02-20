@@ -1,21 +1,21 @@
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { colors } from "@/themes";
-import { FilterIcon, XmarkIcon, ArrowIcon } from "@/components/Icon";
+import { colors } from '@/themes';
+import { FilterIcon, XmarkIcon, ArrowIcon } from '@/components/Icon';
 
-import Chip from ".";
+import Chip from '.';
 
 export default {
-  title: "Chip",
+  title: 'Chip',
   component: Chip,
   argTypes: {
     width: {
       defaultValue: 116,
-      control: { type: "number" },
+      control: { type: 'number' },
     },
     height: {
       defaultValue: 45,
-      control: { type: "number" },
+      control: { type: 'number' },
     },
     color: {
       defaultValue: colors.comet,
@@ -25,7 +25,7 @@ export default {
     },
     flexLayout: {
       defaultValue: false,
-      control: { type: "boolean" },
+      control: { type: 'boolean' },
     },
     borderRadius: {
       defaultValue: 30,
@@ -37,7 +37,7 @@ export default {
       defaultValue: 15,
     },
     label: {
-      defaultValue: "Filter",
+      defaultValue: 'Filter',
     },
     startAdornments: {
       defaultValue: <FilterIcon />,
@@ -51,7 +51,7 @@ export default {
   },
   parameters: {
     actions: {
-      handles: ["click"],
+      handles: ['click'],
     },
   },
 } as ComponentMeta<typeof Chip>;
@@ -71,7 +71,7 @@ Deletable.args = {
   pLeft: 28,
   fontWeight: 500,
   onClick: () => {
-    alert("Close selected item");
+    alert('Close selected item');
   },
 };
 
@@ -80,7 +80,7 @@ Filter.args = {
   ...Filter.args,
   width: 225,
   height: 46,
-  label: "Alphabetical Order",
+  label: 'Alphabetical Order',
   fontSize: 13,
   color: colors.azureRadiance,
   flexLayout: true,

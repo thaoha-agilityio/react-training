@@ -1,10 +1,10 @@
-import { ComponentMeta, ComponentStory } from "@storybook/react";
-import { ChangeEvent } from "react";
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { ChangeEvent } from 'react';
 
-import Header from ".";
+import Header from '.';
 
 export default {
-  title: "Header",
+  title: 'Header',
   component: Header,
   argTypes: {},
 } as ComponentMeta<typeof Header>;
@@ -16,13 +16,13 @@ export const Default = Template.bind({});
 export const LightTheme = Template.bind({});
 LightTheme.args = {
   isDarkTheme: false,
-  onToggleTheme: () => { },
-  onChange: (event: ChangeEvent<HTMLInputElement>) => { },
+  onToggleTheme: () => console.log(123),
+  onChange: (event: ChangeEvent<HTMLInputElement>) => event.target.value,
 };
 
 export const DarkTheme = Template.bind({});
 DarkTheme.args = {
   isDarkTheme: true,
-  onToggleTheme: () => { },
-  onChange: (event: ChangeEvent<HTMLInputElement>) => { },
+  onToggleTheme: () => console.log(123),
+  onChange: (event: ChangeEvent<HTMLInputElement>) => event.target.value,
 };

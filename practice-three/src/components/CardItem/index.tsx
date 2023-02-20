@@ -1,8 +1,8 @@
-import { memo, useCallback } from "react";
+import { memo, useCallback } from 'react';
 
-import Avatar from "../Avatar";
+import Avatar from '../Avatar';
 
-import { IBook } from "../../types/book";
+import { IBook } from '../../types/book';
 
 import {
   CardItemStyled,
@@ -10,13 +10,13 @@ import {
   CardContentStyled,
   CardInfoStyled,
   CardTitleStyled,
-} from "./index.styled";
+} from './index.styled';
 
 type CardItemProps = {
   isGridView: boolean;
   item: IBook;
   onSetSelectedBookId: (id: string) => void;
-}
+};
 
 const CardItem = ({
   item: { id, avatar, name, author, published },
@@ -25,14 +25,10 @@ const CardItem = ({
 }: CardItemProps): React.ReactElement => {
   const handleClick = useCallback((): void => {
     onSetSelectedBookId(id);
-  }, []);
+  }, [id, onSetSelectedBookId]);
 
   return (
-    <CardItemStyled
-      data-testid="card-item"
-      onClick={handleClick}
-      isGridView={isGridView}
-    >
+    <CardItemStyled data-testid="card-item" onClick={handleClick} isGridView={isGridView}>
       <CardImgWrapperStyled isGridView={isGridView}>
         <Avatar
           url={avatar}

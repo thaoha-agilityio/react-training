@@ -1,6 +1,6 @@
-import { AvatarStyled } from "./index.styled";
+import { AvatarStyled } from './index.styled';
 
-import { THUMBNAIL } from "../../constants/mockData";
+import { THUMBNAIL } from '../../constants/mockData';
 
 type AvatarProps = {
   url: string;
@@ -8,7 +8,7 @@ type AvatarProps = {
   width?: number;
   height?: number;
   borderRadius: number;
-}
+};
 
 const Avatar = ({
   width = 201,
@@ -17,13 +17,7 @@ const Avatar = ({
   url = THUMBNAIL,
   borderRadius,
 }: AvatarProps): React.ReactElement => (
-  <AvatarStyled
-    src={url}
-    alt={alt}
-    borderRadius={borderRadius}
-    width={width}
-    height={height}
-  />
+  <AvatarStyled src={url} alt={alt} borderRadius={borderRadius} width={width} height={height} />
 );
 
 export default Avatar;

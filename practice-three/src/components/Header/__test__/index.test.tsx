@@ -1,7 +1,7 @@
-import { fireEvent, render, screen } from "@testing-library/react";
-import "@testing-library/jest-dom";
+import { fireEvent, render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
 
-import Header from "..";
+import Header from '..';
 
 const mockProps = {
   isDarkTheme: true,
@@ -9,14 +9,14 @@ const mockProps = {
   onChange: jest.fn(),
 };
 
-describe("Testing Header component", () => {
-  it("should render the component with the correct props", () => {
+describe('Testing Header component', () => {
+  it('Should render the component with the correct props', () => {
     const { getByPlaceholderText } = render(<Header {...mockProps} />);
 
-    const input = getByPlaceholderText("Search books");
+    const input = getByPlaceholderText('Search books');
     expect(input).toBeInTheDocument();
 
-    const button = screen.getByRole("button");
+    const button = screen.getByRole('button');
     fireEvent.click(button);
 
     expect(mockProps.onToggleTheme).toBeCalledTimes(1);

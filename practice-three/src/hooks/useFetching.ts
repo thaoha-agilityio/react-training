@@ -1,9 +1,9 @@
-import useSWRImmutable from "swr/immutable";
+import useSWRImmutable from 'swr/immutable';
 
 // API call
-import { api } from "../services/APIRequest";
+import { api } from '../services/APIRequest';
 
-export const useFetching = <T,>(
+export const useFetching = <T>(
   url: string
 ): {
   data: T;

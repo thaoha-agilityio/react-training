@@ -1,6 +1,6 @@
-import { ReactNode } from "react";
+import { ReactNode } from 'react';
 
-import { ToggleButtonStyled } from "./index.styled";
+import { ToggleButtonStyled } from './index.styled';
 
 interface IProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   bgColor?: string;
