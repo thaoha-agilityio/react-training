@@ -21,7 +21,6 @@
 - Prettier
 - Husky
 - Eslint
-- Stylint
 
 ## Target
 
@@ -30,17 +29,6 @@
 - App zustand for state management
 - Can use a react component lib
 - Score from lighthouse tools from 95 or higher
-
-## Technical
-
-- React: v18.2.0
-- Typescript: v4.8.3
-- Prettier: v2.7.1
-- EsLint: v8.2.0
-- Storybook: v6.5.15
-- SWR and axios for fetching data
-- Styled components
-- Unit testing with Jest, react-testing-library
 
 ## Requirements
 

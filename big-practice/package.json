@@ -12,6 +12,8 @@
     "prettier:write": "prettier --write \"**/*.{ts,tsx}\"",
     "lint:eslint": "eslint --ignore-path .eslintignore . --ext .js,.jsx,.ts,.tsx",
     "fix:eslint": "eslint --fix --ignore-path .eslintignore . --ext .js,.jsx,.ts,.tsx",
+    "jest": "jest --passWithNoTests",
+    "jest:watch": "jest --watch",
     "prepare": "cd ../ && husky install",
     "pre-commit-lint": "pnpm lint-staged",
     "pre-push-lint": "rm -rf dist/ && vite build"
@@ -61,7 +63,8 @@
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx}": [
       "npx prettier --write",
-      "eslint src/*.{js,jsx,ts,tsx} --fix-dry-run --no-error-on-unmatched-pattern"
+      "eslint src/*.{js,jsx,ts,tsx} --fix-dry-run --no-error-on-unmatched-pattern",
+      "pnpm run jest"
     ]
   }
 }
