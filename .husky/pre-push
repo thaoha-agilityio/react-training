@@ -1,0 +1,6 @@
+#!/bin/sh
+
+. "$(dirname -- "$0")/_/husky.sh"
+
+cd ./big-practice
+pnpm pre-push-lint
