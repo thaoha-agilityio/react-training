@@ -27,6 +27,7 @@ const buttonTheme = {
       fontSize: 'sm',
       fontWeight: 'bold',
       lineHeight: 'xs',
+      boxShadow: 'md',
       _hover: {
         bg: 'transparent',
       },
