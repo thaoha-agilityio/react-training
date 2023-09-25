@@ -1,4 +1,4 @@
-const CUSTOM_FONTSIZES = {
+const fontSizes = {
   xs: '12px',
   tiny: '13px',
   sm: '16px',
@@ -13,4 +13,4 @@ const CUSTOM_FONTSIZES = {
   '4xl': '52px',
 };
 
-export default CUSTOM_FONTSIZES;
+export default fontSizes;

@@ -2,7 +2,7 @@
  * Custom color palette
  * Following this document: https://chakra-ui.com/docs/styled-system/theme#colors
  */
-const CUSTOM_COLORS_PALETTE = {
+const colors = {
   yellow: {
     150: '#F9F1E7',
     200: '#FFF3E3',
@@ -18,9 +18,20 @@ const CUSTOM_COLORS_PALETTE = {
     500: '#333',
   },
 
+  red: {
+    300: '#FAE1DF',
+    400: '#DD3929',
+    800: '#9E2301',
+  },
+
+  green: {
+    300: '#DBF1DB',
+    400: '#0FA30C',
+  },
+
   white: '#fff',
 
   alto: 'rgba(0, 0, 0, 0.17)',
 };
 
-export default CUSTOM_COLORS_PALETTE;
+export default colors;

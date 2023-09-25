@@ -1,4 +1,4 @@
-const CUSTOM_FONTWEIGHT = {
+const fontWeights = {
   light: 300,
   normal: 400,
   medium: 500,
@@ -6,4 +6,4 @@ const CUSTOM_FONTWEIGHT = {
   bolder: 700,
 };
 
-export default CUSTOM_FONTWEIGHT;
+export default fontWeights;

@@ -1,4 +1,4 @@
-const avatarTheme = {
+const imageTheme = {
   sizes: {
     base: {
       width: '285px',
@@ -18,4 +18,4 @@ const avatarTheme = {
   },
 };
 
-export default avatarTheme;
+export default imageTheme;
