@@ -3,26 +3,45 @@ const buttonTheme = {
     fontWeight: 'normal',
     fontStyle: 'normal',
   },
-  sizes: {},
+  sizes: {
+    //TODO:set width, height, padding
+  },
   variants: {
     solid: {
       color: 'white',
-      background: 'yellow.250',
+      bg: 'yellow.250',
+      rounded: 'none',
+      _hover: {
+        bg: 'yellow.250',
+      },
+      _active: {
+        bg: 'yellow.250',
+      },
     },
+
     outline: {
-      background: 'white',
-      outlineColor: 'yellow.250',
+      bg: 'white',
+      borderColor: 'yellow.250',
+      rounded: 'none',
       color: 'yellow.250',
       fontSize: 'sm',
       fontWeight: 'bold',
       lineHeight: 'xs',
+      _hover: {
+        bg: 'transparent',
+      },
+      _active: {
+        bg: 'transparent',
+      },
     },
+
     colorPrimary: {
-      borderRadius: '15px',
+      rounded: '10px',
       outlineColor: 'gray.500',
       fontSize: 'md',
     },
   },
+
   defaultProps: {
     variant: 'outline',
   },
