@@ -1,21 +1,17 @@
 const imageTheme = {
   sizes: {
     base: {
-      width: '285px',
-      height: '301px',
+      w: '285px',
+      h: '301px',
     },
     md: {
-      width: '423px',
-      height: '500px',
+      w: '423px',
+      h: '500px',
     },
-    xs: { width: '105px', height: '105px' },
+    xs: { w: '105px', h: '105px' },
   },
 
-  baseStyle: {
-    default: {
-      borderWidth: '10px',
-    },
-  },
+  baseStyle: {},
 };
 
 export default imageTheme;
