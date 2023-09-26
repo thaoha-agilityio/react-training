@@ -7,7 +7,7 @@ type MenuItemProps = {
 
 export const MenuItem = ({ text, to = '/' }: MenuItemProps) => (
   <Link href={to}>
-    <Text fontSize='sm' color='gray.600'>
+    <Text fontSize={{ base: 'xs', md: 'sm' }} color='gray.600'>
       {text}
     </Text>
   </Link>

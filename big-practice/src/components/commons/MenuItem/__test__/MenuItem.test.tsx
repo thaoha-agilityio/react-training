@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { MenuItem } from '../index';
 
-describe('MenuItem', () => {
+describe('MenuItem component', () => {
   it('renders text and a link with default "/" as the href', () => {
     render(<MenuItem text='Home' />);
 
