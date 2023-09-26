@@ -1,5 +1,5 @@
 const fonts = {
-  heading: `boldFont, tahoma`,
+  heading: `boldFont, sans-serif`,
   body: `Poppins, sans-serif`,
 };
 
