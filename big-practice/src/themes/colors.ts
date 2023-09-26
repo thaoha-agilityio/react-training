@@ -30,7 +30,7 @@ const colors = {
     400: '#0FA30C',
   },
 
-  white: '#fff',
+  white: '#FFF',
 
   alto: 'rgba(0, 0, 0, 0.17)',
 };

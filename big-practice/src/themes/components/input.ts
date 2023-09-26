@@ -7,6 +7,7 @@ const inputTheme = {
       },
     },
   },
+
   variants: {
     outline: {
       field: {
@@ -16,6 +17,7 @@ const inputTheme = {
       },
     },
   },
+
   baseStyle: {
     field: {
       px: '20px',

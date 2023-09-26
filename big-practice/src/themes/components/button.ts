@@ -3,9 +3,11 @@ const buttonTheme = {
     fontWeight: 'normal',
     fontStyle: 'normal',
   },
+
   sizes: {
     //TODO:set width, height, padding
   },
+
   variants: {
     solid: {
       color: 'white',

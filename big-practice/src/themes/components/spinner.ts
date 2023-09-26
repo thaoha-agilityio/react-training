@@ -3,7 +3,7 @@ const spinnerTheme = {
     color: 'gray.300',
     mx: 'auto',
   },
-  variants: {
+  ts: {
     primary: {
       borderWidth: 2,
       speed: '0.8s',
