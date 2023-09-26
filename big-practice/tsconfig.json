@@ -17,8 +17,18 @@
     "noEmit": true,
     "baseUrl": "./",
     "paths": {
+      "@components": ["src/components"],
+      "@layouts": ["src/layouts"],
+      "@pages": ["src/pages"],
+      "@types": ["src/types"],
+      "@constants": ["src/constants"],
+      "@helpers": ["src/helpers"],
+      "@stores": ["src/stores"],
+      "@assets": ["src/assets"],
+      "@fonts": ["src/fonts"],
+      "@hooks": ["src/hooks"],
       "@*": ["src/*"]
     }
   },
-  "include": ["src/**/*", "node", "jest", "@testing-library/jest-dom"]
+  "include": ["src", "node", "jest", "@testing-library/jest-dom"]
 }
