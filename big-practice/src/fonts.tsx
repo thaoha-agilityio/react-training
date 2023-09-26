@@ -1,10 +1,10 @@
 import { Global } from '@emotion/react';
 
-import poppinsBold from '@assets/Poppins/Poppins-Bold.ttf';
-import poppinsLight from '@assets/Poppins/Poppins-Light.ttf';
-import poppinsMedium from '@assets/Poppins/Poppins-Medium.ttf';
-import poppinsRegular from '@assets/Poppins/Poppins-Regular.ttf';
-import poppinsSemiBold from '@assets/Poppins/Poppins-SemiBold.ttf';
+import poppinsBold from '@assets/fonts/Poppins/Poppins-Bold.ttf';
+import poppinsLight from '@assets/fonts/Poppins/Poppins-Light.ttf';
+import poppinsMedium from '@assets/fonts/Poppins/Poppins-Medium.ttf';
+import poppinsRegular from '@assets/fonts/Poppins/Poppins-Regular.ttf';
+import poppinsSemiBold from '@assets//fonts/Poppins/Poppins-SemiBold.ttf';
 
 const Fonts = () => (
   <Global
