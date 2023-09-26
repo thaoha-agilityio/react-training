@@ -5,12 +5,10 @@ type MenuItemProps = {
   to?: string;
 };
 
-export const MenuItem = ({ text, to = '/' }: MenuItemProps) => {
-  return (
-    <Link href={to}>
-      <Text fontSize='sm' color='gray.600'>
-        {text}
-      </Text>
-    </Link>
-  );
-};
+export const MenuItem = ({ text, to = '/' }: MenuItemProps) => (
+  <Link href={to}>
+    <Text fontSize='sm' color='gray.600'>
+      {text}
+    </Text>
+  </Link>
+);
