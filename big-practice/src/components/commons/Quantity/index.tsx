@@ -20,7 +20,7 @@ export const Quantity = ({ count = 1, onIncreaseProduct, onDecreaseProduct }: Qu
     <Button variant='unstyled' onClick={onIncreaseProduct}>
       +
     </Button>
-    <Text fontSize={{ base: 'xs', md: 'sm' }}>{+count}</Text>
+    <Text fontSize={{ base: 'xs', md: 'sm' }}>{count}</Text>
     <Button variant='unstyled' onClick={onDecreaseProduct}>
       -
     </Button>
