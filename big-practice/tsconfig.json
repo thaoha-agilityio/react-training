@@ -20,13 +20,13 @@
       "@components": ["src/components"],
       "@layouts": ["src/layouts"],
       "@pages": ["src/pages"],
-      "@types": ["src/types"],
       "@constants": ["src/constants"],
       "@helpers": ["src/helpers"],
       "@stores": ["src/stores"],
       "@assets": ["src/assets"],
       "@fonts": ["src/fonts"],
       "@hooks": ["src/hooks"],
+      "@types": ["src/types"],
       "@*": ["src/*"]
     }
   },

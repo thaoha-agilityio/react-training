@@ -43,6 +43,10 @@ const buttonTheme = {
       outlineColor: 'gray.500',
       fontSize: 'md',
     },
+
+    unstyled: {
+      fontSize: { base: 'xs', md: 'sm' },
+    },
   },
 
   defaultProps: {

@@ -23,16 +23,20 @@ const sizes = {
   md: definePartsStyle({
     container: {
       borderRadius: '0px',
-      w: '285px',
-      h: '446px',
+      w: { base: '180px', md: '285px' },
+      h: { base: '340px', md: '446px' },
       _hover: {
         opacity: 0.5,
       },
     },
     body: { p: 'none', h: '301px' },
     footer: {
-      pt: '16px',
+      px: '16px',
+      py: '16px',
       h: '145px',
+      fontSize: { base: 'xs', md: 'sm' },
+      color: 'gray.250',
+      fontWeight: 'bold',
     },
   }),
 };
