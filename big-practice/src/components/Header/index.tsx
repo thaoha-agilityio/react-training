@@ -1,6 +1,6 @@
-import { Flex, HStack, Link, Image, Heading } from '@chakra-ui/react';
+import { Flex, HStack, Link, Heading } from '@chakra-ui/react';
 
-import logo from '@assets/photos/logo.png';
+import FurniroLogo from '@assets/photos/logo';
 
 export const Header = () => {
   return (
@@ -9,7 +9,7 @@ export const Header = () => {
         <Flex>
           <Link href='/'>
             <HStack spacing='5px'>
-              <Image alt='logo' src={logo} />
+              <FurniroLogo />
               <Heading as='h2' fontSize='2xl'>
                 Furniro
               </Heading>
