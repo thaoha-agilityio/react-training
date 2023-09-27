@@ -24,6 +24,7 @@ const inputTheme = {
       h: '75px',
       _placeholder: {
         color: 'gray.100',
+        fontSize: { base: 'xs', md: 'tiny' },
       },
       _invalid: {
         color: 'red.400',
