@@ -7,7 +7,7 @@ type MenuProps = {
   menu: IMenuItem[];
 };
 
-export const MenuItem = ({ menu }: MenuProps) => (
+export const Menu = ({ menu }: MenuProps) => (
   <UnorderedList display='flex' listStyleType='none' gap='25px'>
     {menu.map((item) => (
       <ListItem key={item.title}>

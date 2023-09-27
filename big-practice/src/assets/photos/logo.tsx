@@ -1,13 +1,12 @@
-import { SVGProps } from 'react';
+import { Icon } from '@chakra-ui/react';
 
-const FurniroLogo = (props: SVGProps<SVGSVGElement>) => (
-  <svg
+export const FurniroLogo = () => (
+  <Icon
     xmlns='http://www.w3.org/2000/svg'
     xmlnsXlink='http://www.w3.org/1999/xlink'
-    width={50}
-    height={33}
+    width={{ base: '65px', md: '100px' }}
+    height={{ base: '23px', md: '33px' }}
     fill='none'
-    {...props}
   >
     <path fill='url(#a)' d='M0 .5h50v32H0z' />
     <defs>
@@ -21,6 +20,5 @@ const FurniroLogo = (props: SVGProps<SVGSVGElement>) => (
         height={1251}
       />
     </defs>
-  </svg>
+  </Icon>
 );
-export default FurniroLogo;
