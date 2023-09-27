@@ -1,14 +1,14 @@
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-import { MenuItem } from '../index';
+import { Menu } from '../index';
 import { MENU } from '@constants/menu';
 
 describe('Menu component', () => {
   it('renders a list of menu items with links', () => {
     render(
       <Router>
-        <MenuItem menu={MENU} />
+        <Menu menu={MENU} />
       </Router>,
     );
 
@@ -23,7 +23,7 @@ describe('Menu component', () => {
   it('renders the correct number of menu items', () => {
     render(
       <Router>
-        <MenuItem menu={MENU} />
+        <Menu menu={MENU} />
       </Router>,
     );
 
