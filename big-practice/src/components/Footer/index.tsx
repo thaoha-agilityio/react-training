@@ -34,16 +34,17 @@ export const Footer = () => {
           </Stack>
           <Stack fontSize={{ base: 'xs', md: 'sm' }} fontWeight='medium'>
             <Text color='gray.100'>Newsletter</Text>
-            <Flex mt='55px' gap='46px'>
+            <Flex mt='55px' gap='46px' flexDir={{ base: 'column', md: 'row' }}>
               <Box>
                 <Input
                   placeholder={PLACEHOLDER_MESSAGE.NEWSLETTER}
                   border='none'
-                  w='200px'
+                  w={{ base: '100px', md: '200px' }}
                   h='24px'
+                  pl='-1.5'
                   _focusVisible={{ border: 'none' }}
                 />
-                <Divider ml='20px' h='1px' color='gray.600' />
+                <Divider h='1px' color='gray.600' />
               </Box>
               <Link borderBottom='1px' _hover={{ pt: '0px' }}>
                 SUBSCRIBE
