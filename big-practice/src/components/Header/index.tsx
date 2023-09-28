@@ -9,13 +9,13 @@ import { Menu } from '@components/Menu';
 export const Header = () => {
   return (
     <header>
-      <Container maxW='1240px'>
+      <Container maxW='container.xl'>
         <Flex justifyContent='space-between' alignItems='center' py='30px'>
           <Flex>
             <Link to='/'>
               <HStack spacing='5px'>
                 <FurniroLogo />
-                <Heading as='h2' fontSize={{ base: 'xxl', md: '2xl' }}>
+                <Heading as='h1' fontSize={{ base: 'xxl', md: '2xl' }}>
                   Furniro
                 </Heading>
               </HStack>

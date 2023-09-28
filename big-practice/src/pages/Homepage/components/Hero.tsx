@@ -1,11 +1,19 @@
 import { Box, Button, Heading, Text } from '@chakra-ui/react';
 
-import hero from '@assets/photos/hero.png';
+// Images
+import banner from '@assets/photos/banner.png';
+import bannerWepb from '@assets/photos/banner.webp';
 
 export const Hero = () => (
   <section>
     <Box pos='relative' h={{ base: '500px', md: '1070px' }}>
-      <Box bgImage={`url(${hero})`} bgSize='cover' w='100%' height='100%' bgPos='center'></Box>
+      <Box
+        bgImage={[`url(${banner})`, `url(${bannerWepb})`]}
+        bgSize='cover'
+        w='100%'
+        height='100%'
+        bgPos='center'
+      ></Box>
 
       <Box
         w={{ base: '300px', md: '643px' }}
@@ -28,12 +36,11 @@ export const Hero = () => (
             new arrival
           </Text>
           <Heading
-            as='h1'
             textTransform='capitalize'
             color='yellow.250'
             textShadow={'0px 4px 4px rgba(0, 0, 0, 0.25)'}
             fontWeight='bolder'
-            fontSize={{ base: 'xxl', md: '4xl' }}
+            fontSize={{ base: 'xxl', md: '5xl' }}
           >
             discover our new collection
           </Heading>
