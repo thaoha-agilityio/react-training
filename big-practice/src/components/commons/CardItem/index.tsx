@@ -1,11 +1,14 @@
+import { memo } from 'react';
 import { Card, CardBody, CardFooter, Flex, Image, Heading, Text, Stack } from '@chakra-ui/react';
+
+// Types
 import { IProduct } from '@types';
 
 type CardItemProps = {
   item: IProduct;
 };
 
-export const CardItem = ({ item: { name, description, price, image } }: CardItemProps) => {
+export const CardItem = memo(({ item: { name, description, price, image } }: CardItemProps) => {
   return (
     <Flex>
       <Card>
@@ -30,4 +33,4 @@ export const CardItem = ({ item: { name, description, price, image } }: CardItem
       </Card>
     </Flex>
   );
-};
+});

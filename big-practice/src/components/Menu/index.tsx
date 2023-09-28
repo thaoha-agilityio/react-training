@@ -1,13 +1,17 @@
-import { ListItem, Text, UnorderedList } from '@chakra-ui/react';
+import { memo } from 'react';
 import { Link } from 'react-router-dom';
 
+// Components
+import { ListItem, Text, UnorderedList } from '@chakra-ui/react';
+
+// Types
 import { IMenuItem } from '@types';
 
 type MenuProps = {
   menu: IMenuItem[];
 };
 
-export const Menu = ({ menu }: MenuProps) => (
+export const Menu = memo(({ menu }: MenuProps) => (
   <UnorderedList display='flex' listStyleType='none' gap={{ base: '10px', md: '25px' }}>
     {menu.map((item) => (
       <ListItem key={item.title}>
@@ -19,4 +23,4 @@ export const Menu = ({ menu }: MenuProps) => (
       </ListItem>
     ))}
   </UnorderedList>
-);
+));
