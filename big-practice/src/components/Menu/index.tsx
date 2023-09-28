@@ -8,7 +8,7 @@ type MenuProps = {
 };
 
 export const Menu = ({ menu }: MenuProps) => (
-  <UnorderedList display='flex' listStyleType='none' gap='25px'>
+  <UnorderedList display='flex' listStyleType='none' gap={{ base: '10px', md: '25px' }}>
     {menu.map((item) => (
       <ListItem key={item.title}>
         <Link to={item.path}>
