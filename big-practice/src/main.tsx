@@ -11,7 +11,7 @@ import Fonts from '@fonts';
 // Components
 import { Header } from '@components/Header';
 import { Footer } from '@components/Footer';
-import { Home } from '@pages/Homepage/index';
+import { Home } from '@pages/home/index';
 
 const router = createBrowserRouter([
   {
