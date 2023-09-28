@@ -6,6 +6,7 @@ import colors from './colors';
 
 import fontSizes from './fontSizes';
 import fontWeights from './fontWeights';
+import fonts from './fonts';
 
 // Custom theme of Component
 import buttonTheme from './components/button';
@@ -26,6 +27,7 @@ const CHAKRA_THEME = {
     colors: colors,
     fontSizes: fontSizes,
     fontWeights: fontWeights,
+    fonts: fonts,
   }),
   styles: {
     global: {
