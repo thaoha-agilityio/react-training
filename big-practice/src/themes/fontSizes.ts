@@ -8,9 +8,9 @@ const fontSizes = {
   xxl: '25px',
   xl: '32px',
   '2xl': '36px',
-  '2xxl': '42px',
-  '3xl': '48px',
-  '4xl': '52px',
+  '3xl': '40px',
+  '4xl': '48px',
+  '5xl': '52px',
 };
 
 export default fontSizes;
