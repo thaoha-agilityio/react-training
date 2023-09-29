@@ -14,7 +14,7 @@ import CHAKRA_THEME from '@themes/index.js';
 // Components
 import { Header } from '@components/Header';
 import { Footer } from '@components/Footer';
-import { Home } from '@pages/home/index';
+import { Home } from '@pages/Home/index';
 
 const queryClient = new QueryClient();
 

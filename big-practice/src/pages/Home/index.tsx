@@ -1,5 +1,5 @@
 import PageLayout from '@layouts/PageLayout';
-import { Hero, BrowTheRange, FuniroFurniture, OurProducts } from './components';
+import { Hero, BrowTheRange, Adverse, OurProducts } from './components';
 
 export const Home = () => {
   return (
@@ -8,7 +8,7 @@ export const Home = () => {
       <PageLayout>
         <BrowTheRange />
         <OurProducts />
-        <FuniroFurniture />
+        <Adverse />
       </PageLayout>
     </>
   );
