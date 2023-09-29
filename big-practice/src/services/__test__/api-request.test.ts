@@ -14,16 +14,13 @@ describe('get function', () => {
   });
 
   it('handles an error when fetching data from an API', async () => {
-    (axios.get as jest.Mock).mockRejectedValue({ message: 'Network Error' });
+    const errorMessage = 'Network Error';
+    (axios.get as jest.Mock).mockRejectedValue(new Error(errorMessage));
 
     try {
       await api.getData('/products');
     } catch (error) {
-      // Check if the error is an AxiosError
-      if (axios.isAxiosError(error)) {
-        // You can access AxiosError properties here
-        expect(error.message).toEqual('Network Error');
-      }
+      expect((error as { message: string }).message).toBe(errorMessage);
     }
   });
 });

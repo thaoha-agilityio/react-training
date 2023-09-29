@@ -47,6 +47,19 @@ const buttonTheme = {
     unstyled: {
       fontSize: { base: 'xs', md: 'sm' },
     },
+
+    pagination: {
+      w: '60px',
+      h: '60px',
+      fontSize: 'md',
+      borderRadius: 'md',
+      color: 'gray.600',
+      bg: 'yellow.150',
+      _active: {
+        color: 'white',
+        bg: 'yellow.250',
+      },
+    },
   },
 
   defaultProps: {

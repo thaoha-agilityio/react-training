@@ -25,8 +25,6 @@ export const useFetchProducts = ({ pageParam = 1, limit }: FetchProducts) => {
     queryKey: [QUERY_KEYS.PRODUCTS],
     queryFn: async () =>
       await api.getData(`${URL.BASE}${URL.PRODUCTS}?page=${pageParam}&limit=${limit}`),
-    onSuccess(data: IProduct[]) {
-      setProducts(data);
-    },
+    onSuccess: (data: IProduct[]) => setProducts(data),
   });
 };
