@@ -1,11 +1,21 @@
-import { Button, Flex, Heading, Stack } from '@chakra-ui/react';
-import { Pagination } from '@components/Pagination';
+import { Button, Flex, Heading, Spinner, Stack, Text } from '@chakra-ui/react';
+
+// Components
 import { Products } from '@components/Products';
 
+// Constants
+import { LIMIT_PRODUCTS, ROUTES } from '@constants';
+
+// Custom hooks
+import { useFetchProducts } from '@hooks/useProduct';
+
+// Stores
 import { useProductStore } from '@stores';
+import { Link } from 'react-router-dom';
 
 export const OurProducts = () => {
   const products = useProductStore((state) => state.products);
+  const { isLoading, isError, error } = useFetchProducts({ limit: LIMIT_PRODUCTS });
 
   return (
     <section>
@@ -22,15 +32,17 @@ export const OurProducts = () => {
         </Heading>
         <Flex pt='32px' gap='32px' wrap='wrap' justifyContent='center'>
           {/* TODO: update latter */}
-          <Products products={products} />
+          {isError ? <Text>{error.isAxiosError}</Text> : <Products products={products} />}
+          {isLoading && <Spinner />}
         </Flex>
         <Flex pt='32px' justifyContent='center'>
-          <Button w='245px' h='48px'>
-            Show More
-          </Button>
+          <Link to={ROUTES.SHOP}>
+            <Button w='245px' h='48px'>
+              Show More
+            </Button>
+          </Link>
         </Flex>
       </Stack>
-      <Pagination />
     </section>
   );
 };

@@ -5,7 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 import { useProductStore } from '@stores';
 
 // Constants
-import { URL } from '@constants';
+import { QUERY_KEYS, URL } from '@constants';
 
 // Types
 import { IProduct } from '@types';
@@ -13,13 +13,18 @@ import { IProduct } from '@types';
 // Services
 import { api } from '@services/api-request';
 
-export const useFetchProducts = () => {
+type FetchProducts = {
+  pageParam?: number;
+  limit: string;
+};
+
+export const useFetchProducts = ({ pageParam = 1, limit }: FetchProducts) => {
   const setProducts = useProductStore((state) => state.setProducts);
-  console.log(setProducts);
 
   return useQuery<IProduct[], AxiosError>({
-    queryKey: ['post'],
-    queryFn: async () => await api.getData(`${URL.BASE}${URL.PRODUCTS}`),
+    queryKey: [QUERY_KEYS.PRODUCTS],
+    queryFn: async () =>
+      await api.getData(`${URL.BASE}${URL.PRODUCTS}?page=${pageParam}&limit=${limit}`),
     onSuccess(data: IProduct[]) {
       setProducts(data);
     },
