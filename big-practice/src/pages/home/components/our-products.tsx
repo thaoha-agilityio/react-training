@@ -1,6 +1,12 @@
 import { Button, Flex, Heading, Stack } from '@chakra-ui/react';
+import { Pagination } from '@components/Pagination';
+import { Products } from '@components/Products';
+
+import { useProductStore } from '@stores';
 
 export const OurProducts = () => {
+  const products = useProductStore((state) => state.products);
+
   return (
     <section>
       <Stack my='50px' justifyContent='center'>
@@ -16,6 +22,7 @@ export const OurProducts = () => {
         </Heading>
         <Flex pt='32px' gap='32px' wrap='wrap' justifyContent='center'>
           {/* TODO: update latter */}
+          <Products products={products} />
         </Flex>
         <Flex pt='32px' justifyContent='center'>
           <Button w='245px' h='48px'>
@@ -23,6 +30,7 @@ export const OurProducts = () => {
           </Button>
         </Flex>
       </Stack>
+      <Pagination />
     </section>
   );
 };
