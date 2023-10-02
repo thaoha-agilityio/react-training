@@ -1,13 +1,13 @@
 import { Box, Button, Heading, Text } from '@chakra-ui/react';
 
 // Images
-import banner from '@assets/photos/banner.png';
-import bannerWepb from '@assets/photos/banner.webp';
+import hero from '@assets/photos/hero.png';
+import heroWepb from '@assets/photos/hero.webp';
 
 export const Hero = () => (
   <Box as='section' pos='relative' h={{ base: '500px', md: '1070px' }}>
     <Box
-      bgImage={[`url(${banner})`, `url(${bannerWepb})`]}
+      bgImage={[`url(${hero})`, `url(${heroWepb})`]}
       bgSize='cover'
       w='100%'
       height='100%'

@@ -22,9 +22,10 @@ export const useFetchProducts = ({ pageParam = 1, limit }: FetchProducts) => {
   const setProducts = useProductStore((state) => state.setProducts);
 
   return useQuery<IProduct[], AxiosError>({
-    queryKey: [QUERY_KEYS.PRODUCTS],
+    queryKey: [QUERY_KEYS.PRODUCTS, pageParam],
     queryFn: async () =>
       await api.getData(`${URL.BASE}${URL.PRODUCTS}?page=${pageParam}&limit=${limit}`),
     onSuccess: (data: IProduct[]) => setProducts(data),
+    keepPreviousData: true,
   });
 };

@@ -1,7 +1,7 @@
 import PageLayout from '@layouts/PageLayout';
 import { Hero, BrowTheRange, Adverse, OurProducts } from './components';
 
-export const Home = () => {
+const Home = () => {
   return (
     <>
       <Hero />
@@ -13,3 +13,5 @@ export const Home = () => {
     </>
   );
 };
+
+export default Home;
