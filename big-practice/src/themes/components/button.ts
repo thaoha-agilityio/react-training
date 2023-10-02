@@ -12,6 +12,7 @@ const buttonTheme = {
     solid: {
       color: 'white',
       bg: 'yellow.250',
+      fontSize: { base: 'xs', md: 'sm' },
       rounded: 'none',
       _hover: {
         bg: 'yellow.250',

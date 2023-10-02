@@ -4,18 +4,21 @@ import { Spinner } from '@chakra-ui/react';
 
 // Routes
 import { Routers } from '@routers';
+import MainLayout from '@layouts/MainLayout';
 
 const App = () => {
   return (
     <Router>
       <Routes>
-        {Routers.map(({ path, element }: RouteObject) => (
-          <Route
-            key={path}
-            path={path}
-            element={<Suspense fallback={<Spinner />}>{element}</Suspense>}
-          />
-        ))}
+        <Route element={<MainLayout />}>
+          {Routers.map(({ path, element }: RouteObject) => (
+            <Route
+              key={path}
+              path={path}
+              element={<Suspense fallback={<Spinner />}>{element}</Suspense>}
+            />
+          ))}
+        </Route>
       </Routes>
     </Router>
   );

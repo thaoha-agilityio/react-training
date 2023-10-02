@@ -15,6 +15,7 @@ import cardTheme from './components/card';
 import inputTheme from './components/input';
 import formLabelTheme from './components/formLabel';
 import spinnerTheme from './components/spinner';
+import formErrorTheme from './components/formError';
 
 const CHAKRA_THEME = {
   ...extendTheme({
@@ -23,6 +24,7 @@ const CHAKRA_THEME = {
       Card: cardTheme,
       Input: inputTheme,
       FormLabel: formLabelTheme,
+      FormError: formErrorTheme,
       Spinner: spinnerTheme,
     },
     colors: colors,
