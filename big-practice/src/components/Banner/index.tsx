@@ -6,7 +6,11 @@ import { ChevronRightIcon } from '@chakra-ui/icons';
 // Images
 import banner from '@assets/photos/banner.png';
 import bannerWepb from '@assets/photos/banner.webp';
+
+// Types
 import { IMenuItem } from '@types';
+
+// Constants
 import { MENU } from '@constants';
 
 type BannerProps = {
