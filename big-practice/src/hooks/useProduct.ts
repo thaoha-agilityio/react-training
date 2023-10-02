@@ -1,5 +1,5 @@
 import { AxiosError } from 'axios';
-import { useQuery } from '@tanstack/react-query';
+import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
 
 // Stores
 import { useProductStore } from '@stores';
@@ -15,7 +15,7 @@ import { api } from '@services/api-request';
 
 type FetchProducts = {
   pageParam?: number;
-  limit: string;
+  limit: number;
 };
 
 export const useFetchProducts = ({ pageParam = 1, limit }: FetchProducts) => {
@@ -26,6 +26,17 @@ export const useFetchProducts = ({ pageParam = 1, limit }: FetchProducts) => {
     queryFn: async () =>
       await api.getData(`${URL.BASE}${URL.PRODUCTS}?page=${pageParam}&limit=${limit}`),
     onSuccess: (data: IProduct[]) => setProducts(data),
-    keepPreviousData: true,
   });
 };
+
+//  Custom hook to get Products with pagination
+export const useInfiniteProducts = (limit: number) =>
+  useInfiniteQuery<IProduct[], AxiosError>({
+    queryKey: [QUERY_KEYS.PRODUCTS],
+    queryFn: async ({ pageParam = 1 }) =>
+      await api.getData(`${URL.BASE}${URL.PRODUCTS}?page=${pageParam}&limit=${limit}`),
+    getNextPageParam: (lastPage, pages) => {
+      const nextPage = pages.length + 1;
+      return lastPage?.length > 0 && lastPage?.length === limit ? nextPage : undefined;
+    },
+  });
