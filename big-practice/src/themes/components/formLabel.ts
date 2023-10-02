@@ -1,6 +1,6 @@
 const formLabelTheme = {
   baseStyle: {
-    fontSize: { base: 'xs', md: 'sm' },
+    fontSize: { base: 'sm', md: 'md' },
     fontWeight: 'medium',
     color: 'gray.500',
   },

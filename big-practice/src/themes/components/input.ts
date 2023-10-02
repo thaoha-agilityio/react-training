@@ -21,7 +21,7 @@ const inputTheme = {
   baseStyle: {
     field: {
       px: '20px',
-      h: '75px',
+      h: { base: '50px', md: '75px' },
       _placeholder: {
         color: 'gray.100',
         fontSize: { base: 'xs', md: 'tiny' },
