@@ -10,6 +10,16 @@ export const getData = async <T>(url: string): Promise<T> => {
   }
 };
 
-const api = { getData };
+export const postData = async <T>({ item, url }: { item: T; url: string }): Promise<T> => {
+  try {
+    const response = await axios.post<T>(url, item);
+
+    return response.data;
+  } catch (error) {
+    throw error as AxiosError;
+  }
+};
+
+const api = { getData, postData };
 
 export { api };
