@@ -1,45 +1,24 @@
-import { Suspense, lazy } from 'react';
-import { Outlet, RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, RouteObject } from 'react-router-dom';
+import { Suspense } from 'react';
 import { Spinner } from '@chakra-ui/react';
 
-// Layouts
-import MainLayout from '@layouts/MainLayout';
-
-// Constants
-import { ROUTES } from '@constants';
-
-// components
-import { Home } from '@pages/Home';
-
-const Products = lazy(() => import('./pages/Products'));
-
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: (
-      <MainLayout>
-        <Outlet />
-      </MainLayout>
-    ),
-    children: [
-      {
-        element: <Home />,
-        index: true,
-      },
-      {
-        path: ROUTES.SHOP,
-        element: (
-          <Suspense fallback={<Spinner />}>
-            <Products />
-          </Suspense>
-        ),
-      },
-    ],
-  },
-]);
+// Routes
+import { Routers } from '@routers';
 
 const App = () => {
-  return <RouterProvider router={router} />;
+  return (
+    <Router>
+      <Routes>
+        {Routers.map(({ path, element }: RouteObject) => (
+          <Route
+            key={path}
+            path={path}
+            element={<Suspense fallback={<Spinner />}>{element}</Suspense>}
+          />
+        ))}
+      </Routes>
+    </Router>
+  );
 };
 
 export default App;
