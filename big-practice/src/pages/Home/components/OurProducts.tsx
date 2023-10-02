@@ -1,17 +1,16 @@
-import { Button, Flex, Heading, Spinner, Stack, Text } from '@chakra-ui/react';
+import { Flex, Heading, Spinner, Stack, Text } from '@chakra-ui/react';
 
 // Components
 import { Products } from '@components/Products';
 
 // Constants
-import { LIMIT_PRODUCTS, ROUTES } from '@constants';
+import { LIMIT_PRODUCTS } from '@constants';
 
 // Custom hooks
 import { useFetchProducts } from '@hooks/useProduct';
 
 // Stores
 import { useProductStore } from '@stores';
-import { Link } from 'react-router-dom';
 
 export const OurProducts = () => {
   const products = useProductStore((state) => state.products);
@@ -33,13 +32,6 @@ export const OurProducts = () => {
         {/* TODO: update latter */}
         {isError ? <Text>{error.isAxiosError}</Text> : <Products products={products} />}
         {isLoading && <Spinner />}
-      </Flex>
-      <Flex pt='32px' justifyContent='center'>
-        <Link to={ROUTES.SHOP}>
-          <Button w='245px' h='48px'>
-            Show More
-          </Button>
-        </Link>
       </Flex>
     </Stack>
   );
