@@ -4,3 +4,9 @@ export const MENU = [
   { title: 'About', path: '/' },
   { title: 'Contact', path: '/' },
 ];
+
+export const HELPS = [
+  { title: 'Payment Options', path: '/' },
+  { title: 'Returns', path: '/' },
+  { title: 'Privacy Policies', path: '/' },
+];

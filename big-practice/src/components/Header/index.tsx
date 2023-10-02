@@ -1,14 +1,19 @@
-import { Container, Flex, HStack, Heading } from '@chakra-ui/react';
+import { Box, Container, Flex, HStack, Heading } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 
+// Images
 import { FurniroLogo } from '@assets/photos/logo';
 import { AccountIcon, SearchIcon, HeartIcon, ShoppingCartIcon } from '@assets/icons';
+
+// Constants
 import { MENU } from '@constants/menu';
+
+// Components
 import { Menu } from '@components/Menu';
 
 export const Header = () => {
   return (
-    <header>
+    <Box as='header'>
       <Container maxW='container.xl'>
         <Flex justifyContent='space-between' alignItems='center' py='30px'>
           <Flex>
@@ -40,6 +45,6 @@ export const Header = () => {
           </HStack>
         </Flex>
       </Container>
-    </header>
+    </Box>
   );
 };

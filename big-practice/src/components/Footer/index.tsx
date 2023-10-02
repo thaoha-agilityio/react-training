@@ -1,38 +1,49 @@
-import { Box, Container, Divider, Flex, Heading, Input, Link, Stack, Text } from '@chakra-ui/react';
-import { PLACEHOLDER_MESSAGE } from '@constants';
+import { Link } from 'react-router-dom';
+
+import { Box, Container, Divider, Flex, Heading, Input, Stack, Text } from '@chakra-ui/react';
+
+// Constants
+import { MENU, HELPS, PLACEHOLDER_MESSAGE } from '@constants';
 
 export const Footer = () => {
   return (
-    <footer>
+    <Box as='footer'>
       <Divider />
-      <Container maxW='1240px'>
-        <Flex pt='48px' justifyContent='space-between'>
+      <Container maxW='1240px' display='flex' gap='48px' flexDir='column' pt='48px' pb='35px'>
+        <Flex
+          justifyContent='space-between'
+          fontSize={{ base: 'xs', md: 'sm' }}
+          fontWeight='medium'
+        >
           <Stack>
             <Heading fontSize={{ base: 'base', md: 'lg' }} fontWeight='bolder'>
               Funiro.
             </Heading>
-            <Text color='gray.100' fontSize={{ base: 'xs', md: 'sm' }} maxW='285px' mt='50px'>
+            <Text color='gray.100' maxW='285px' mt='50px'>
               400 University Drive Suite 200 Coral Gables, FL 33134 USA
             </Text>
           </Stack>
-          <Stack fontSize={{ base: 'xs', md: 'sm' }} fontWeight='medium'>
+          <Stack>
             <Text color='gray.100'>Links</Text>
             <Stack mt='55px' gap='46px'>
-              <Text>Home</Text>
-              <Text>Shop</Text>
-              <Text>About</Text>
-              <Text>Contact</Text>
+              {MENU.map((item) => (
+                <Link to={item.path} key={item.title}>
+                  {item.title}
+                </Link>
+              ))}
             </Stack>
           </Stack>
-          <Stack fontSize={{ base: 'xs', md: 'sm' }} fontWeight='medium'>
+          <Stack>
             <Text color='gray.100'>Helps</Text>
             <Stack mt='55px' gap='46px'>
-              <Text>Payment Options</Text>
-              <Text>Returns</Text>
-              <Text>Privacy Policies</Text>
+              {HELPS.map((item) => (
+                <Link to={item.path} key={item.title}>
+                  {item.title}
+                </Link>
+              ))}
             </Stack>
           </Stack>
-          <Stack fontSize={{ base: 'xs', md: 'sm' }} fontWeight='medium'>
+          <Stack>
             <Text color='gray.100'>Newsletter</Text>
             <Flex mt='55px' gap='46px' flexDir={{ base: 'column', md: 'row' }}>
               <Box>
@@ -46,17 +57,15 @@ export const Footer = () => {
                 />
                 <Divider h='1px' color='gray.600' />
               </Box>
-              <Link borderBottom='1px' _hover={{ pt: '0px' }}>
-                SUBSCRIBE
-              </Link>
+              <Box borderBottom='1px'>
+                <Link to='/'>SUBSCRIBE</Link>
+              </Box>
             </Flex>
           </Stack>
         </Flex>
-        <Divider pt='48px' />
-        <Text fontSize={{ base: 'xs', md: 'sm' }} pt='35px'>
-          2023 furino. All rights reverved
-        </Text>
+        <Divider />
+        <Text fontSize={{ base: 'xs', md: 'sm' }}>2023 furino. All rights reverved</Text>
       </Container>
-    </footer>
+    </Box>
   );
 };

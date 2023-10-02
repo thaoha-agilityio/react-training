@@ -1,14 +1,10 @@
-import { ReactNode } from 'react';
-import { Box, Container } from '@chakra-ui/react';
+import { memo } from 'react';
+import { ContainerProps, Container } from '@chakra-ui/react';
 
-const PageLayout = ({ children, h = '100%' }: { children: ReactNode; h?: string }) => {
-  return (
-    <>
-      <Box h={h} minH={{ base: '0', md: 'calc(100vh - 1000px)' }}>
-        <Container maxW='container.xl'>{children}</Container>
-      </Box>
-    </>
-  );
-};
+const PageLayout = ({ children, h = '100%', ...rest }: ContainerProps) => (
+  <Container maxW='container.xl' h={h} minH={{ base: '0', md: 'calc(100vh - 1000px)' }} {...rest}>
+    {children}
+  </Container>
+);
 
-export default PageLayout;
+export default memo(PageLayout);

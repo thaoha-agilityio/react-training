@@ -6,7 +6,7 @@ import bedroom from '@assets/photos/bedroom.png';
 import living from '@assets/photos/living.png';
 
 export const BrowTheRange = () => (
-  <section>
+  <Box as='section'>
     <Box textAlign='center' textShadow={'0px 4px 4px rgba(0, 0, 0, 0.25)'} mt='40px'>
       <Heading as='h3' fontSize={{ base: 'lg', md: 'xl' }} fontWeight='bold' color='gray.500'>
         Browse The Range
@@ -37,5 +37,5 @@ export const BrowTheRange = () => (
         <Text>Living</Text>
       </Stack>
     </Flex>
-  </section>
+  </Box>
 );
