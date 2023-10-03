@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import { Button, Container, Flex, Spinner, Stack, Text } from '@chakra-ui/react';
 
 // Components
@@ -46,6 +45,7 @@ const Products = () => {
                   <Button
                     w='245px'
                     h='48px'
+                    isLoading={isFetchingNextPage}
                     onClick={fetchNextPage}
                     disabled={!hasNextPage || isFetchingNextPage}
                   >
@@ -61,4 +61,4 @@ const Products = () => {
   );
 };
 
-export default memo(Products);
+export default Products;

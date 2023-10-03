@@ -1,5 +1,5 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { useCallback, useMemo } from 'react';
+import { memo, useCallback, useMemo } from 'react';
 import {
   Box,
   FormControl,
@@ -37,7 +37,7 @@ type FormProps = {
   onSubmitProduct: (value: IProduct) => void;
 };
 
-export const Form = ({ title, onSubmitProduct, errorMessage, successMessage }: FormProps) => {
+const Form = ({ title, onSubmitProduct, errorMessage, successMessage }: FormProps) => {
   const {
     register,
     handleSubmit,
@@ -178,3 +178,5 @@ export const Form = ({ title, onSubmitProduct, errorMessage, successMessage }: F
     </Box>
   );
 };
+
+export default memo(Form);

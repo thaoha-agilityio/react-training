@@ -17,7 +17,7 @@ import { IProduct } from '@types';
 
 // Components
 import { Banner } from '@components/Banner';
-import { Form } from '@components/Form';
+import Form from '@components/Form';
 
 const AddProduct = () => {
   const { mutate } = useMutationPostProduct();
