@@ -1,3 +1,5 @@
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { memo, useCallback, useMemo } from 'react';
 import {
   Box,
   FormControl,
@@ -9,60 +11,104 @@ import {
   Stack,
 } from '@chakra-ui/react';
 
-import { useForm } from 'react-hook-form';
+//Component
+import Notification from '@components/Notification';
 
 // Icon
 import { AddImageIcon } from '@assets/icons';
 
 // Types
 import { IProduct } from '@types';
-import { VALIDATE_MESSAGE } from '@constants';
+
+// Constants
+import { ERROR_MESSAGES, REGEX, STATUSES } from '@constants';
+
+// Helpers
+import { convertBase64 } from '@helpers';
+
+interface FormInput extends Omit<IProduct, 'image'> {
+  image: File[];
+}
 
 type FormProps = {
   title: string;
+  errorMessage?: string;
+  successMessage?: string;
+  onSubmitProduct: (value: IProduct) => void;
 };
 
-export const Form = ({ title }: FormProps) => {
+const Form = ({ title, onSubmitProduct, errorMessage, successMessage }: FormProps) => {
   const {
     register,
+    handleSubmit,
     formState: { errors, isSubmitting },
-  } = useForm<IProduct>();
+  } = useForm<FormInput>({ mode: 'onSubmit' });
 
-  const schema = {
-    name: {
-      required: VALIDATE_MESSAGE.FIELD_REQUIRED('Name'),
-    },
-    category: {
-      required: VALIDATE_MESSAGE.FIELD_REQUIRED('Category'),
-    },
-    description: {
-      require: VALIDATE_MESSAGE.FIELD_REQUIRED('Description'),
-      maxLength: {
-        value: 50,
-        message: VALIDATE_MESSAGE.STRING_LIMIT,
+  // Validate
+  const schema = useMemo(
+    () => ({
+      name: {
+        required: ERROR_MESSAGES.FIELD_REQUIRED('Name'),
       },
-    },
-    price: {
-      require: VALIDATE_MESSAGE.FIELD_REQUIRED('Price'),
-      min: {
-        value: 1,
-        message: VALIDATE_MESSAGE.PRICE_INVALID,
+      category: {
+        required: ERROR_MESSAGES.FIELD_REQUIRED('Category'),
       },
-    },
-  };
+      description: {
+        required: ERROR_MESSAGES.FIELD_REQUIRED('Description'),
+        maxLength: {
+          value: 50,
+          message: ERROR_MESSAGES.STRING_LIMIT,
+        },
+      },
+      price: {
+        required: ERROR_MESSAGES.FIELD_REQUIRED('Price'),
+        min: {
+          value: 1,
+          message: ERROR_MESSAGES.MIN_PRICE,
+        },
+        pattern: {
+          value: REGEX.CHECK_NUMBER,
+          message: ERROR_MESSAGES.PRICE_INVALID,
+        },
+      },
+      image: {
+        required: ERROR_MESSAGES.FIELD_REQUIRED('Image'),
+        pattern: {
+          value: REGEX.CHECK_URL,
+          message: ERROR_MESSAGES.IMAGE_INVALID,
+        },
+      },
+    }),
+    [],
+  );
+
+  const onSubmit: SubmitHandler<FormInput> = useCallback(async (data) => {
+    const urlImage = await convertBase64(data.image[0]);
+    if (urlImage) {
+      const product = {
+        ...data,
+        image: urlImage,
+      };
+      onSubmitProduct(product);
+    }
+  }, []);
 
   return (
     <Box mt='90px'>
+      {successMessage && !errorMessage && (
+        <Notification status={STATUSES.SUCCESS} message={successMessage} />
+      )}
+
       <Text fontSize={{ base: 'lg', md: '2xl' }} fontWeight='bold' textAlign='center'>
         {title}
       </Text>
 
-      <Box as='form'>
+      <Box as='form' onSubmit={handleSubmit(onSubmit)}>
         <Stack spacing='30px' w={{ base: '300px', md: '600px' }} m='auto' py='60px'>
           <FormControl isInvalid={!!errors.name}>
             <FormLabel>Product Name</FormLabel>
             <Input id='name' aria-label='enter product name' {...register('name', schema.name)} />
-            <FormErrorMessage>{errors.name && errors.name.message}</FormErrorMessage>
+            <FormErrorMessage>{errors.name?.message}</FormErrorMessage>
           </FormControl>
 
           <FormControl isInvalid={!!errors.category}>
@@ -72,7 +118,7 @@ export const Form = ({ title }: FormProps) => {
               aria-label='enter category'
               {...register('category', schema.category)}
             />
-            <FormErrorMessage> {errors.category && errors.category.message}</FormErrorMessage>
+            <FormErrorMessage> {errors.category?.message}</FormErrorMessage>
           </FormControl>
 
           <FormControl isInvalid={!!errors.description}>
@@ -82,20 +128,20 @@ export const Form = ({ title }: FormProps) => {
               aria-label='enter description'
               {...register('description', schema.description)}
             />
-            <FormErrorMessage>{errors.description && errors.description.message}</FormErrorMessage>
+            <FormErrorMessage>{errors.description?.message}</FormErrorMessage>
           </FormControl>
 
           <FormControl isInvalid={!!errors.price}>
             <FormLabel>Price</FormLabel>
             <Input id='price' {...register('price', schema.price)} />
-            <FormErrorMessage>{errors.price && errors.price.message}</FormErrorMessage>
+            <FormErrorMessage>{errors.price?.message}</FormErrorMessage>
           </FormControl>
 
           <FormControl isInvalid={!!errors.image}>
             <FormLabel>Image</FormLabel>
             <Box pos='relative'>
               <Input
-                name='image'
+                id='image'
                 type='file'
                 accept='image/*'
                 opacity={0}
@@ -103,24 +149,27 @@ export const Form = ({ title }: FormProps) => {
                 top={0}
                 left={0}
                 zIndex={2}
+                cursor='pointer'
+                w={{ base: '180px', md: '237px' }}
+                {...register('image', schema.image)}
               />
               <Button bg='yellow.150' variant='outline' rounded='xs'>
                 <AddImageIcon />
                 Choose file
               </Button>
             </Box>
-
-            <FormErrorMessage></FormErrorMessage>
+            <FormErrorMessage>{errors.image?.message}</FormErrorMessage>
           </FormControl>
+
           <Button
             type='submit'
             isLoading={isSubmitting}
             variant='solid'
             color='white'
-            mt='49px'
+            mt='30px'
             borderRadius='xs'
-            w={{ base: '180px', md: '237px' }}
             h={{ base: '40px', md: '55px' }}
+            w={{ base: '180px', md: '237px' }}
           >
             Submit
           </Button>
@@ -129,3 +178,5 @@ export const Form = ({ title }: FormProps) => {
     </Box>
   );
 };
+
+export default memo(Form);

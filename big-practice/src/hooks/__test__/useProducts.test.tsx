@@ -7,14 +7,14 @@ import { useFetchProducts, useInfiniteProducts } from '../useProduct';
 import { LIMIT_PRODUCTS, MOCK_PRODUCTS } from '@constants';
 
 // Services
-import { api } from '@services/api-request';
+import { api } from '@services/APIRequest';
 
 // Helpers
 import { wrapper } from '@helpers';
 
-jest.mock('@services/api-request', () => ({
+jest.mock('@services/APIRequest', () => ({
   __esModule: true,
-  ...jest.requireActual('@services/api-request'),
+  ...jest.requireActual('@services/APIRequest'),
 }));
 
 describe('Test useFetchProduct', () => {
