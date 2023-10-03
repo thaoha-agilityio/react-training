@@ -16,6 +16,8 @@ import inputTheme from './components/input';
 import formLabelTheme from './components/formLabel';
 import spinnerTheme from './components/spinner';
 import formErrorTheme from './components/formError';
+import textTheme from './components/text';
+import headingTheme from './components/heading';
 
 const CHAKRA_THEME = {
   ...extendTheme({
@@ -26,6 +28,8 @@ const CHAKRA_THEME = {
       FormLabel: formLabelTheme,
       FormError: formErrorTheme,
       Spinner: spinnerTheme,
+      Text: textTheme,
+      Heading: headingTheme,
     },
     colors: colors,
     fontSizes: fontSizes,
