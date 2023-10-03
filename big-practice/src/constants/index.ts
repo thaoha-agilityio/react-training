@@ -4,3 +4,5 @@ export * from './url';
 export * from './mock-data';
 export * from './routers';
 export * from './query-key';
+export * from './types';
+export * from './regex';

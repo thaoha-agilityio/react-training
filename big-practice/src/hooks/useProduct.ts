@@ -1,8 +1,8 @@
 import { AxiosError } from 'axios';
-import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
+import { useInfiniteQuery, useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
 // Stores
-import { useProductStore } from '@stores';
+import { useMessageStores, useProductStore } from '@stores';
 
 // Constants
 import { QUERY_KEYS, URL } from '@constants';
@@ -11,7 +11,7 @@ import { QUERY_KEYS, URL } from '@constants';
 import { IProduct } from '@types';
 
 // Services
-import { api } from '@services/api-request';
+import { api } from '@services/APIRequest';
 
 type FetchProducts = {
   pageParam?: number;
@@ -21,11 +21,14 @@ type FetchProducts = {
 export const useFetchProducts = ({ pageParam = 1, limit }: FetchProducts) => {
   const setProducts = useProductStore((state) => state.setProducts);
 
+  const setErrorMessage = useMessageStores((state) => state.setErrorMessage);
+
   return useQuery<IProduct[], AxiosError>({
     queryKey: [QUERY_KEYS.PRODUCTS, pageParam],
     queryFn: async () =>
       await api.getData(`${URL.BASE}${URL.PRODUCTS}?page=${pageParam}&limit=${limit}`),
     onSuccess: (data: IProduct[]) => setProducts(data),
+    onError: (error) => setErrorMessage(error.message),
   });
 };
 
@@ -40,3 +43,16 @@ export const useInfiniteProducts = (limit: number) =>
       return lastPage?.length > 0 && lastPage?.length === limit ? nextPage : undefined;
     },
   });
+
+//  Custom hook post product
+export const useMutationPostProduct = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation<Omit<IProduct, 'id'>, AxiosError, Omit<IProduct, 'id'>>({
+    mutationFn: async (product) =>
+      await api.postData({ item: product, url: `${URL.BASE}${URL.PRODUCTS}` }),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.PRODUCTS] });
+    },
+  });
+};
