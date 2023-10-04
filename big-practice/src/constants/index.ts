@@ -6,3 +6,4 @@ export * from './routers';
 export * from './query-key';
 export * from './types';
 export * from './regex';
+export * from './upload';
