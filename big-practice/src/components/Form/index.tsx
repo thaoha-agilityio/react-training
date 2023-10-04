@@ -107,6 +107,7 @@ const Form = ({ title, onSubmitProduct, errorMessage, successMessage }: FormProp
         <Notification status={STATUSES.SUCCESS} message={successMessage} />
       )}
 
+      {errorMessage && <Notification status={STATUSES.ERROR} message={errorMessage} />}
       <Text fontSize={{ base: 'lg', md: '2xl' }} fontWeight='bold' textAlign='center'>
         {title}
       </Text>
