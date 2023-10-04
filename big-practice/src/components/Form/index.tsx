@@ -21,7 +21,7 @@ import { AddImageIcon } from '@assets/icons';
 import { IProduct } from '@types';
 
 // Constants
-import { ERROR_MESSAGES, REGEX, STATUSES } from '@constants';
+import { ERROR_MESSAGES, REGEX, STATUSES, MAXIMUM_FILE_SIZE } from '@constants';
 
 // Helpers
 import { convertBase64 } from '@helpers';
@@ -76,6 +76,14 @@ const Form = ({ title, onSubmitProduct, errorMessage, successMessage }: FormProp
         pattern: {
           value: REGEX.CHECK_URL,
           message: ERROR_MESSAGES.IMAGE_INVALID,
+        },
+        validate: (value: File[]) => {
+          const file = value[0];
+          if (file.size >= MAXIMUM_FILE_SIZE) {
+            return ERROR_MESSAGES.MAXIMUM_FILE_SIZE;
+          }
+
+          return;
         },
       },
     }),

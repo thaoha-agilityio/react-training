@@ -42,7 +42,9 @@ const buttonTheme = {
     colorPrimary: {
       rounded: '10px',
       outlineColor: 'gray.500',
-      fontSize: 'md',
+      fontSize: { base: 'base', md: 'md' },
+      w: { base: '120px', md: '200px' },
+      h: { base: '40px', md: '60px' },
     },
 
     unstyled: {

@@ -3,7 +3,7 @@ import { defineStyleConfig } from '@chakra-ui/react';
 
 const textTheme = defineStyleConfig({
   baseStyle: {
-    color: 'gray.500',
+    color: 'gray.600',
   },
 
   variants: {
@@ -18,6 +18,13 @@ const textTheme = defineStyleConfig({
     tertiary: {
       fontSize: { base: 'sm', md: 'md' },
       color: 'gray.200',
+    },
+    title: {
+      fontSize: { base: 'xl', md: '42px' },
+    },
+    detail: {
+      fontSize: { base: 'xs', md: 'sm' },
+      color: 'gray.150',
     },
   },
 

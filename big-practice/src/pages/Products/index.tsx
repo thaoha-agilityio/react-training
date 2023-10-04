@@ -1,14 +1,15 @@
 import { Button, Container, Flex, Spinner, Stack, Text } from '@chakra-ui/react';
 
 // Components
-import { Banner } from '@components/Banner';
+import Banner from '@components/Banner';
 import { CardItem } from '@components/CardItem';
 
 // Constants
-import { LIMIT_PRODUCTS, MENU } from '@constants';
+import { LIMIT_PRODUCTS, ROUTES } from '@constants';
 
 // Hooks
 import { useInfiniteProducts } from '@hooks';
+import { IMenuItem } from '@types';
 
 const Products = () => {
   const {
@@ -21,9 +22,21 @@ const Products = () => {
     isFetchingNextPage,
   } = useInfiniteProducts(LIMIT_PRODUCTS);
 
+  // Define breadcrumbs data for navigation
+  const dataCrumbs: IMenuItem[] = [
+    {
+      title: 'Home',
+      path: ROUTES.HOMEPAGE,
+    },
+    {
+      title: 'Shop',
+      path: ROUTES.ADD_PRODUCT,
+    },
+  ];
+
   return (
     <>
-      <Banner title={MENU[1].title} breadcrumbItems={MENU[1]} />
+      <Banner title='Shop' crumbs={dataCrumbs} />
       <Container maxW='container.xl'>
         <Stack m='auto' spacing='40px' py='30px'>
           {isError ? (
