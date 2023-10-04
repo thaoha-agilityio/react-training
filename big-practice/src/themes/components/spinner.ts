@@ -1,18 +1,20 @@
-const spinnerTheme = {
+import { defineStyleConfig } from '@chakra-ui/react';
+
+const spinnerTheme = defineStyleConfig({
   baseStyle: {
-    color: 'gray.300',
-    mx: 'auto',
+    color: 'gray.200',
+    m: 'auto',
   },
-  ts: {
+  variants: {
     primary: {
       borderWidth: 2,
       speed: '0.8s',
     },
     secondary: {
-      borderWidth: 4,
-      speed: '0.5s',
+      color: 'yellow.250',
+      size: 'xl',
     },
   },
-};
+});
 
 export default spinnerTheme;

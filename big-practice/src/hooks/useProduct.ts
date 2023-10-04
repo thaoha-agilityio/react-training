@@ -56,3 +56,16 @@ export const useMutationPostProduct = () => {
     },
   });
 };
+
+// Custom hook fetch product
+export const useFetchProductDetail = (id: string) => {
+  const setProduct = useProductStore((state) => state.setProduct);
+  const setErrorMessage = useMessageStores((state) => state.setErrorMessage);
+
+  return useQuery<IProduct, AxiosError>({
+    queryKey: [QUERY_KEYS.PRODUCT + id],
+    queryFn: async () => await api.getData(`${URL.BASE}${URL.PRODUCTS}/${id}`),
+    onSuccess: (data: IProduct) => setProduct(data),
+    onError: (error) => setErrorMessage(error.message),
+  });
+};

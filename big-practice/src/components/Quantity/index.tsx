@@ -3,8 +3,8 @@ import { Button, Flex, Text } from '@chakra-ui/react';
 
 type QuantityProps = {
   count?: number;
-  onIncreaseProduct: () => void;
-  onDecreaseProduct: () => void;
+  onIncreaseProduct?: () => void;
+  onDecreaseProduct?: () => void;
 };
 
 export const Quantity = memo(
