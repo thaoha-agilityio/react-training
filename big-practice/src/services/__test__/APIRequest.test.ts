@@ -75,4 +75,26 @@ describe('API request', () => {
       expect((error as { message: string }).message).toBe(errorMessage);
     }
   });
+
+  it('should make a DELETE request and return response data', async () => {
+    (axios.delete as jest.Mock).mockResolvedValue({
+      status: 200,
+      data: [],
+    });
+
+    const response = await api.deleteData<string>('/products/1');
+
+    expect(response).toEqual([]);
+  });
+
+  it('should handle DELETE request errors', async () => {
+    const errorMessage = 'Resource not found';
+    (axios.delete as jest.Mock).mockRejectedValue(new Error(errorMessage));
+
+    try {
+      await await api.deleteData<IProduct>('/products/1');
+    } catch (error) {
+      expect((error as { message: string }).message).toBe(errorMessage);
+    }
+  });
 });

@@ -20,4 +20,22 @@ describe('Test useMessageStores', () => {
     act(() => result.current.setErrorMessage('Error'));
     expect(result.current.errorMessage).toEqual('Error');
   });
+
+  it('Should reset value of message when clear success message', () => {
+    const { result } = renderHook(() => useMessageStores());
+
+    act(() => result.current.setSuccessMessage('Success'));
+    act(() => result.current.clearSuccessMessage());
+
+    expect(result.current.successMessage).toEqual('');
+  });
+
+  it('Should reset value of message when clear Error message', () => {
+    const { result } = renderHook(() => useMessageStores());
+
+    act(() => result.current.setSuccessMessage('Success'));
+    act(() => result.current.clearErrorMessage());
+
+    expect(result.current.errorMessage).toEqual('');
+  });
 });

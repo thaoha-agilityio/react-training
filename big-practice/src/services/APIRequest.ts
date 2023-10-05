@@ -40,6 +40,6 @@ export const deleteData = async <T>(url: string): Promise<T> => {
   }
 };
 
-const api = { getData, postData, putData };
+const api = { getData, postData, putData, deleteData };
 
 export { api };
