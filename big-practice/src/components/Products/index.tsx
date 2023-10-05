@@ -24,6 +24,13 @@ export const Products = memo(({ products }: ProductsProps) => {
     [navigate],
   );
 
+  const handleShowEditForm = useCallback(
+    (id: string) => {
+      navigate(ROUTES.EDIT_PRODUCT_PARAMS + id);
+    },
+    [navigate],
+  );
+
   return (
     <Flex pt='32px' gap='32px' wrap='wrap' justifyContent='center' data-testid='products'>
       {products.map((product: IProduct) => (
@@ -31,6 +38,7 @@ export const Products = memo(({ products }: ProductsProps) => {
           key={product.id}
           item={product}
           onShowDetail={() => handleShowDetail(product.id)}
+          onShowEditForm={() => handleShowEditForm(product.id)}
         />
       ))}
     </Flex>

@@ -13,15 +13,21 @@ import CHAKRA_THEME from '@themes/index.js';
 // Components
 import App from '@App';
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <Fonts />
-      <ChakraProvider theme={CHAKRA_THEME}>
-        <App />
-      </ChakraProvider>
-    </QueryClientProvider>
-  </React.StrictMode>,
+  // <React.StrictMode>
+  <QueryClientProvider client={queryClient}>
+    <Fonts />
+    <ChakraProvider theme={CHAKRA_THEME}>
+      <App />
+    </ChakraProvider>
+  </QueryClientProvider>,
+  // </React.StrictMode>,
 );

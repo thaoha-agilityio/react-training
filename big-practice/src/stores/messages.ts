@@ -5,6 +5,8 @@ export interface StoresType {
   errorMessage: string;
   setSuccessMessage: (message: string) => void;
   setErrorMessage: (message: string) => void;
+  clearErrorMessage: () => void;
+  clearSuccessMessage: () => void;
 }
 
 export const useMessageStores = create<StoresType>((set) => ({
@@ -12,4 +14,10 @@ export const useMessageStores = create<StoresType>((set) => ({
   errorMessage: '',
   setSuccessMessage: (message: string) => set(() => ({ successMessage: message })),
   setErrorMessage: (message: string) => set(() => ({ errorMessage: message })),
+  clearErrorMessage: () => {
+    set({ errorMessage: '' });
+  },
+  clearSuccessMessage: () => {
+    set({ successMessage: '' });
+  },
 }));

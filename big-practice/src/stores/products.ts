@@ -11,7 +11,7 @@ type ProductState = {
 
 type ProductActions = {
   setProducts: (Products: IProduct[]) => void;
-  setProduct: (Products: IProduct) => void;
+  setProduct: (Product: IProduct) => void;
   addProduct: (value: IProduct) => void;
 };
 

@@ -1,10 +1,11 @@
+import { useNavigate } from 'react-router-dom';
 import { useCallback } from 'react';
 
 // Layouts
 import PageLayout from '@layouts/PageLayout';
 
 // Constants
-import { MENU, ROUTES, SUCCESS_MESSAGES } from '@constants';
+import { CRUMBS, MENU, ROUTES, SUCCESS_MESSAGES } from '@constants';
 
 // Hooks
 import { useMutationPostProduct } from '@hooks';
@@ -13,37 +14,45 @@ import { useMutationPostProduct } from '@hooks';
 import { useMessageStores } from '@stores';
 
 // Types
-import { IMenuItem, IProduct } from '@types';
+import { IProduct } from '@types';
 
 // Components
 import Banner from '@components/Banner';
 import Form from '@components/Form';
 
 const AddProduct = () => {
+  const navigate = useNavigate();
+
   // Get the mutate from useMutationPostProduct hook
-  const { mutate } = useMutationPostProduct();
+  const { mutate, isLoading } = useMutationPostProduct();
 
   // Get message to
-  const { setErrorMessage, setSuccessMessage, successMessage, errorMessage } = useMessageStores();
+  const { setErrorMessage, setSuccessMessage, errorMessage, clearErrorMessage } =
+    useMessageStores();
 
   // Handle the submission of the product form
   const handleAddProduct = useCallback(
     (value: IProduct) => {
-      mutate(
+      const { id, name, image, category, price } = value;
+
+      return mutate(
         {
-          name: value.name,
-          category: value.category,
-          description: value.description,
-          price: value.price,
-          image: value.image,
+          ...value,
+          id,
+          name,
+          image,
+          category,
+          price,
         },
         {
           onError: (error) => {
             setErrorMessage(error.message);
-            console.log(error.message);
           },
-          onSuccess: () => {
+          onSuccess: (res) => {
+            clearErrorMessage();
             setSuccessMessage(SUCCESS_MESSAGES.ADDED(value.name));
+
+            navigate(ROUTES.DETAIL_PRODUCT_PARAMS + res.id);
           },
         },
       );
@@ -51,27 +60,15 @@ const AddProduct = () => {
     [mutate, setErrorMessage, setSuccessMessage],
   );
 
-  // Define breadcrumbs data for navigation
-  const dataCrumbs: IMenuItem[] = [
-    {
-      title: 'Home',
-      path: ROUTES.HOMEPAGE,
-    },
-    {
-      title: 'Add Product',
-      path: ROUTES.ADD_PRODUCT,
-    },
-  ];
-
   return (
     <>
-      <Banner title='Add Product' crumbs={dataCrumbs} />
+      <Banner title='Add Product' crumbs={CRUMBS} />
       <PageLayout>
         <Form
+          isLoading={isLoading}
           title={MENU[2].title}
           onSubmitProduct={handleAddProduct}
           errorMessage={errorMessage}
-          successMessage={successMessage}
         />
       </PageLayout>
     </>

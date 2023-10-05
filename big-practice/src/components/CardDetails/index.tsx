@@ -1,14 +1,36 @@
+import { memo, useEffect } from 'react';
 import { Box, Button, Flex, Image, Stack, Text } from '@chakra-ui/react';
+
+// Components
 import { Quantity } from '@components/Quantity';
+import Notification from '@components/Notification';
+
+// Types
 import { IProduct } from '@types';
+
+// Constants
+import { STATUSES } from '@constants';
+import { useMessageStores } from '@stores';
 
 type CardDetailProps = {
   card: IProduct;
 };
 
 const CardDetails = ({ card: { name, description, price, image } }: CardDetailProps) => {
+  // Get message form store
+  const { clearSuccessMessage, successMessage, errorMessage } = useMessageStores();
+
+  // Clear message when component unMount
+  useEffect(() => {
+    return () => clearSuccessMessage();
+  }, [clearSuccessMessage]);
+
   return (
     <Box as='main' py='35px'>
+      {successMessage && !errorMessage && (
+        <Notification status={STATUSES.SUCCESS} message={successMessage} />
+      )}
+
       <Flex justifyContent='space-around' gap='10px'>
         <Stack>
           <Image w='424px' h={{ base: '350px', md: '500px' }} alt='card-image' src={image} />
@@ -51,4 +73,4 @@ const CardDetails = ({ card: { name, description, price, image } }: CardDetailPr
   );
 };
 
-export default CardDetails;
+export default memo(CardDetails);
