@@ -13,12 +13,18 @@ import {
   useToast,
 } from '@chakra-ui/react';
 import { DeleteIcon, EditIcon } from '@chakra-ui/icons';
+import ConfirmModal from '@components/ConfirmModal';
 
 // Types
 import { IProduct } from '@types';
-import ConfirmModal from '@components/ConfirmModal';
+
+// Hooks
 import { useMutationDeleteProduct } from '@hooks';
+
+// Stores
 import { useMessageStores } from '@stores';
+
+// Constants
 import { SUCCESS_MESSAGES } from '@constants';
 
 type CardItemProps = {
