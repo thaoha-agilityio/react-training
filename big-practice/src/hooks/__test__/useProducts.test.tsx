@@ -1,7 +1,7 @@
 import { renderHook, waitFor } from '@testing-library/react';
 
 // Hooks
-import { useFetchProducts, useInfiniteProducts } from '../useProduct';
+import { useFetchProducts, useInfiniteProducts, useMutationDeleteProduct } from '../useProduct';
 
 // Constants
 import { LIMIT_PRODUCTS, MOCK_PRODUCTS } from '@constants';
@@ -72,6 +72,19 @@ describe('Test useInfiniteProducts', () => {
       expect(result.current.data?.pages).toEqual(undefined);
       expect(result.current.isSuccess).toEqual(false);
       expect(result.current.error?.message).toEqual('Error');
+    });
+  });
+});
+
+describe('Test useMutationDeleteProduct', () => {
+  it('Should return data and isSuccess is true when call useMutationDeleteProduct success', async () => {
+    jest.spyOn(api, 'deleteData').mockResolvedValue('1');
+
+    const { result } = renderHook(() => useMutationDeleteProduct(), { wrapper });
+    result.current.mutate('1');
+
+    await waitFor(() => {
+      expect(result.current.isSuccess).toEqual(true);
     });
   });
 });

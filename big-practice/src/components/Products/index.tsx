@@ -17,6 +17,7 @@ type ProductsProps = {
 export const Products = memo(({ products }: ProductsProps) => {
   const navigate = useNavigate();
 
+  // Handle navigate to detail page
   const handleShowDetail = useCallback(
     (id: string) => {
       navigate(ROUTES.DETAIL_PRODUCT_PARAMS + id);
@@ -24,6 +25,7 @@ export const Products = memo(({ products }: ProductsProps) => {
     [navigate],
   );
 
+  // Handle navigate to edit page
   const handleShowEditForm = useCallback(
     (id: string) => {
       navigate(ROUTES.EDIT_PRODUCT_PARAMS + id);
