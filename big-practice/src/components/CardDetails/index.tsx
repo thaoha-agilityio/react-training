@@ -23,7 +23,7 @@ const CardDetails = ({ card: { name, description, price, image } }: CardDetailPr
   // Clear message when component unMount
   useEffect(() => {
     return () => clearSuccessMessage();
-  }, [clearSuccessMessage]);
+  }, []);
 
   return (
     <Box as='main' py='35px'>

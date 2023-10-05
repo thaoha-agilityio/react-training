@@ -27,7 +27,7 @@ import { ERROR_MESSAGES, REGEX, STATUSES, MAXIMUM_FILE_SIZE } from '@constants';
 import { convertBase64 } from '@helpers';
 
 interface FormInput extends Omit<IProduct, 'image'> {
-  image: File[];
+  image: File[] | [];
 }
 
 type FormProps = {
@@ -82,7 +82,7 @@ const Form = ({ isLoading, title, onSubmitProduct, errorMessage, product }: Form
         ...((!product?.image || watch('image')) && {
           validate: (value: File[]) => {
             const file = value[0];
-            if (file.size >= MAXIMUM_FILE_SIZE) {
+            if (file && file.size >= MAXIMUM_FILE_SIZE) {
               return ERROR_MESSAGES.MAXIMUM_FILE_SIZE;
             }
 
