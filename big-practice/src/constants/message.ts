@@ -14,4 +14,5 @@ export const ERROR_MESSAGES = {
 
 export const SUCCESS_MESSAGES = {
   ADDED: (name: string) => `${name} was added successfully.`,
+  EDITED: (name: string) => `${name} was edited successfully.`,
 };

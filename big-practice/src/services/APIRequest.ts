@@ -20,6 +20,26 @@ export const postData = async <T>({ item, url }: { item: T; url: string }): Prom
   }
 };
 
-const api = { getData, postData };
+export const putData = async <T>({ item, url }: { item: Partial<T>; url: string }): Promise<T> => {
+  try {
+    const response = await axios.put<T>(url, item);
+
+    return response.data;
+  } catch (error) {
+    throw error as AxiosError;
+  }
+};
+
+export const deleteData = async <T>(url: string): Promise<T> => {
+  try {
+    const response = await axios.delete<T>(url);
+
+    return response.data;
+  } catch (error) {
+    throw error as AxiosError;
+  }
+};
+
+const api = { getData, postData, putData };
 
 export { api };

@@ -9,6 +9,7 @@ const Home = lazy(() => import('@pages/Home'));
 const Products = lazy(() => import('@pages/Products'));
 const AddProduct = lazy(() => import('@pages/AddProduct'));
 const ProductDetails = lazy(() => import('@pages/ProductDetails'));
+const EditProduct = lazy(() => import('@pages/EditProduct'));
 
 export const Routers: RouteObject[] = [
   {
@@ -26,5 +27,9 @@ export const Routers: RouteObject[] = [
   {
     path: ROUTES.DETAIL_PRODUCT,
     element: <ProductDetails />,
+  },
+  {
+    path: ROUTES.EDIT_PRODUCT,
+    element: <EditProduct />,
   },
 ];

@@ -27,22 +27,24 @@ import { ERROR_MESSAGES, REGEX, STATUSES, MAXIMUM_FILE_SIZE } from '@constants';
 import { convertBase64 } from '@helpers';
 
 interface FormInput extends Omit<IProduct, 'image'> {
-  image: File[];
+  image: File[] | [];
 }
 
 type FormProps = {
+  isLoading?: boolean;
   title: string;
   errorMessage?: string;
-  successMessage?: string;
+  product?: IProduct;
   onSubmitProduct: (value: IProduct) => void;
 };
 
-const Form = ({ title, onSubmitProduct, errorMessage, successMessage }: FormProps) => {
+const Form = ({ isLoading, title, onSubmitProduct, errorMessage, product }: FormProps) => {
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
-  } = useForm<FormInput>({ mode: 'onSubmit' });
+    watch,
+    formState: { errors },
+  } = useForm<FormInput>({ defaultValues: { ...product, image: [] }, mode: 'onSubmit' });
 
   // Validate
   const schema = useMemo(
@@ -72,26 +74,29 @@ const Form = ({ title, onSubmitProduct, errorMessage, successMessage }: FormProp
         },
       },
       image: {
-        required: ERROR_MESSAGES.FIELD_REQUIRED('Image'),
+        required: product?.image ? false : ERROR_MESSAGES.FIELD_REQUIRED('Image'),
         pattern: {
           value: REGEX.CHECK_URL,
           message: ERROR_MESSAGES.IMAGE_INVALID,
         },
-        validate: (value: File[]) => {
-          const file = value[0];
-          if (file.size >= MAXIMUM_FILE_SIZE) {
-            return ERROR_MESSAGES.MAXIMUM_FILE_SIZE;
-          }
+        ...((!product?.image || watch('image')) && {
+          validate: (value: File[]) => {
+            const file = value[0];
+            if (file && file.size >= MAXIMUM_FILE_SIZE) {
+              return ERROR_MESSAGES.MAXIMUM_FILE_SIZE;
+            }
 
-          return;
-        },
+            return;
+          },
+        }),
       },
     }),
-    [],
+    [product?.image],
   );
 
   const onSubmit: SubmitHandler<FormInput> = useCallback(async (data) => {
-    const urlImage = await convertBase64(data.image[0]);
+    const urlImage = data?.image?.[0] ? await convertBase64(data.image?.[0]) : product?.image || '';
+
     if (urlImage) {
       const product = {
         ...data,
@@ -103,10 +108,6 @@ const Form = ({ title, onSubmitProduct, errorMessage, successMessage }: FormProp
 
   return (
     <Box mt='90px'>
-      {successMessage && !errorMessage && (
-        <Notification status={STATUSES.SUCCESS} message={successMessage} />
-      )}
-
       {errorMessage && <Notification status={STATUSES.ERROR} message={errorMessage} />}
       <Text fontSize={{ base: 'lg', md: '2xl' }} fontWeight='bold' textAlign='center'>
         {title}
@@ -151,6 +152,7 @@ const Form = ({ title, onSubmitProduct, errorMessage, successMessage }: FormProp
             <Box pos='relative'>
               <Input
                 id='image'
+                // name='image'
                 type='file'
                 accept='image/*'
                 opacity={0}
@@ -170,7 +172,7 @@ const Form = ({ title, onSubmitProduct, errorMessage, successMessage }: FormProp
 
           <Button
             type='submit'
-            isLoading={isSubmitting}
+            isLoading={isLoading}
             variant='solid'
             color='white'
             mt='30px'

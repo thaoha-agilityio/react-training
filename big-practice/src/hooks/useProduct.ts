@@ -48,11 +48,13 @@ export const useInfiniteProducts = (limit: number) =>
 export const useMutationPostProduct = () => {
   const queryClient = useQueryClient();
 
-  return useMutation<Omit<IProduct, 'id'>, AxiosError, Omit<IProduct, 'id'>>({
+  return useMutation<IProduct, AxiosError, IProduct>({
     mutationFn: async (product) =>
       await api.postData({ item: product, url: `${URL.BASE}${URL.PRODUCTS}` }),
-    onSuccess: () => {
+    onSuccess: (response) => {
       queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.PRODUCTS] });
+
+      return response;
     },
   });
 };
@@ -60,12 +62,27 @@ export const useMutationPostProduct = () => {
 // Custom hook fetch product
 export const useFetchProductDetail = (id: string) => {
   const setProduct = useProductStore((state) => state.setProduct);
-  const setErrorMessage = useMessageStores((state) => state.setErrorMessage);
+  const { setErrorMessage } = useMessageStores();
 
   return useQuery<IProduct, AxiosError>({
     queryKey: [QUERY_KEYS.PRODUCT + id],
     queryFn: async () => await api.getData(`${URL.BASE}${URL.PRODUCTS}/${id}`),
     onSuccess: (data: IProduct) => setProduct(data),
     onError: (error) => setErrorMessage(error.message),
+  });
+};
+
+// Custom hook edit product
+export const useMutationEditProduct = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation<IProduct, AxiosError, IProduct>({
+    mutationFn: async (product) => {
+      const { id } = product;
+      return await api.putData({ item: product, url: `${URL.BASE}${URL.PRODUCTS}/${id}` });
+    },
+    onSuccess: (res) => {
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.PRODUCTS + res.id] });
+    },
   });
 };

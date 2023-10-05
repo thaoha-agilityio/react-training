@@ -23,8 +23,8 @@ const Notification = ({ status, message }: NotificationProps) => {
 
   return (
     isVisible && (
-      <Box py='24px' m='auto' maxW={{ base: '350px', md: '600px' }}>
-        <Alert status={status} justifyContent='space-between'>
+      <Box py='24px' maxW='1044px' m='auto'>
+        <Alert status={status} justifyContent='space-between' borderRadius='xs'>
           <Flex>
             <AlertIcon />
             <AlertTitle textTransform='capitalize'>{status}</AlertTitle>
