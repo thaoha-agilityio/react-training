@@ -14,10 +14,8 @@ type CardItemProps = {
   cart: ICart;
 };
 
-const CartItem = ({ cart }: CardItemProps) => {
-  const { productId, quantity } = cart || {};
-
-  const { data: products } = useFetchProducts({ limit: 10 });
+const CartItem = ({ cart: { productId, quantity } }: CardItemProps) => {
+  const { data: products } = useFetchProducts();
 
   const [productCard, setProductCard] = useState<IProduct>();
   const { image, price, name } = productCard || {};
@@ -27,14 +25,14 @@ const CartItem = ({ cart }: CardItemProps) => {
     const product = products?.find((item: IProduct) => item.id === productId);
 
     setProductCard(product);
-  }, []);
+  }, [productId, products]);
 
   //Handle total amount for each product
   const subTotal = useMemo(() => (price ? price * quantity : 0), [price, quantity]);
 
   useEffect(() => {
     getCartByProductId();
-  }, []);
+  }, [getCartByProductId]);
 
   return (
     <Flex justifyContent='space-between' alignItems='center'>
