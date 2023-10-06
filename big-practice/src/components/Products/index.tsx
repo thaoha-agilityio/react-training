@@ -1,3 +1,4 @@
+import { InfiniteData } from '@tanstack/react-query';
 import { memo, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -11,10 +12,10 @@ import { IProduct } from '@types';
 import { ROUTES } from '@constants';
 
 type ProductsProps = {
-  products: IProduct[];
+  products: InfiniteData<IProduct[]> | undefined;
 };
 
-export const Products = memo(({ products }: ProductsProps) => {
+const Products = ({ products }: ProductsProps) => {
   const navigate = useNavigate();
 
   // Handle navigate to detail page
@@ -34,15 +35,28 @@ export const Products = memo(({ products }: ProductsProps) => {
   );
 
   return (
-    <Flex pt='32px' gap='32px' wrap='wrap' justifyContent='center' data-testid='products'>
-      {products.map((product: IProduct) => (
-        <CardItem
-          key={product.id}
-          item={product}
-          onShowDetail={() => handleShowDetail(product.id)}
-          onShowEditForm={() => handleShowEditForm(product.id)}
-        />
+    <>
+      {products?.pages.map((items: IProduct[], index: number) => (
+        <Flex
+          key={index}
+          pt='32px'
+          gap='32px'
+          wrap='wrap'
+          justifyContent='center'
+          data-testid='products'
+        >
+          {items.map((product: IProduct) => (
+            <CardItem
+              key={product.id}
+              item={product}
+              onShowDetail={() => handleShowDetail(product.id)}
+              onShowEditForm={() => handleShowEditForm(product.id)}
+            />
+          ))}
+        </Flex>
       ))}
-    </Flex>
+    </>
   );
-});
+};
+
+export default memo(Products);
