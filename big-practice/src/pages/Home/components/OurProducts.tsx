@@ -1,20 +1,16 @@
 import { Flex, Heading, Spinner, Stack, Text } from '@chakra-ui/react';
 
 // Components
-import { Products } from '@components/Products';
+import Products from '@components/Products';
 
 // Constants
 import { LIMIT_PRODUCTS } from '@constants';
 
 // Custom hooks
-import { useFetchProducts } from '@hooks/useProduct';
-
-// Stores
-import { useProductStore } from '@stores';
+import { useInfiniteProducts } from '@hooks/useProduct';
 
 export const OurProducts = () => {
-  const products = useProductStore((state) => state.products);
-  const { isLoading, isError, error } = useFetchProducts({ limit: LIMIT_PRODUCTS });
+  const { data: products, isLoading, isError, error } = useInfiniteProducts(LIMIT_PRODUCTS);
 
   return (
     <Stack as='section' my='50px' justifyContent='center'>
@@ -30,7 +26,7 @@ export const OurProducts = () => {
       </Heading>
       <Flex pt='32px' gap='32px' wrap='wrap' justifyContent='center'>
         {/* TODO: update latter */}
-        {isError ? <Text>{error.isAxiosError}</Text> : <Products products={products} />}
+        {isError ? <Text>{error.message}</Text> : <Products products={products} />}
         {isLoading && <Spinner />}
       </Flex>
     </Stack>
