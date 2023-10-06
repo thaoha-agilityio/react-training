@@ -32,10 +32,10 @@ const buttonTheme = {
       lineHeight: 'xs',
       boxShadow: 'md',
       _hover: {
-        bg: 'transparent',
+        bg: 'white',
       },
       _active: {
-        bg: 'transparent',
+        bg: 'white',
       },
     },
 

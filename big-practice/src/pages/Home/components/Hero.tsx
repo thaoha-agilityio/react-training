@@ -21,7 +21,8 @@ export const Hero = () => (
       bg='yellow.200'
       border='1px solid'
       pos='absolute'
-      right='23%'
+      transform={{ base: 'translateX(-50%)', lg: 'translateX(0%)' }}
+      left='50%'
       top='37%'
     >
       <Box pl='40px' pt={{ base: '25px', md: '62px' }}>

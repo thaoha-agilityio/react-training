@@ -25,10 +25,6 @@ const sizes = {
       borderRadius: '0px',
       w: { base: '180px', md: '285px' },
       h: { base: '340px', md: '446px' },
-      // _hover: {
-      //   opacity: 0.72,
-      //   bg: 'gray.250',
-      // },
     },
     body: {
       p: 'none',

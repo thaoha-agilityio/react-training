@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { memo, useCallback } from 'react';
 import {
   Card,
@@ -11,6 +12,8 @@ import {
   IconButton,
   useDisclosure,
   useToast,
+  Button,
+  Box,
 } from '@chakra-ui/react';
 import { DeleteIcon, EditIcon } from '@chakra-ui/icons';
 import ConfirmModal from '@components/ConfirmModal';
@@ -25,7 +28,7 @@ import { useMutationDeleteProduct } from '@hooks';
 import { useMessageStores } from '@stores';
 
 // Constants
-import { SUCCESS_MESSAGES } from '@constants';
+import { ROUTES, SUCCESS_MESSAGES } from '@constants';
 
 type CardItemProps = {
   item: IProduct;
@@ -83,32 +86,58 @@ export const CardItem = memo(
     };
 
     return (
-      <Flex>
+      <Flex pos='relative'>
         <Card>
-          <CardBody pos='relative'>
+          <CardBody role='group'>
             <Image src={image} alt='card-item' />
-            <Flex
-              gap={2}
+            <Box
+              zIndex={1}
               pos='absolute'
-              top={2}
-              right={2}
+              bgColor='gray.250'
+              opacity={0.72}
+              top={0}
+              right={0}
+              left={0}
+              bottom={0}
+              _groupHover={{ display: 'block' }}
+              display='none'
+            />
+            <Stack
+              zIndex={9}
+              pos='absolute'
+              top='160px'
+              right='40px'
               _groupHover={{ display: 'flex' }}
-              // display='none'
+              display='none'
             >
-              <IconButton
-                aria-label='delete-card'
-                icon={<DeleteIcon />}
-                rounded='xs'
-                onClick={onOpen}
-              />
-              <IconButton
-                aria-label='delete-card'
-                icon={<EditIcon />}
-                rounded='xs'
-                variant='solid'
-                onClick={handleShowEditForm}
-              />
-            </Flex>
+              <Button w='202px' h='48px' as={Link} to={ROUTES.SHOPPING_CART}>
+                Add to cart
+              </Button>
+
+              <Flex gap='35px' zIndex={50} justifyContent='center'>
+                <Flex alignItems='baseline'>
+                  <IconButton
+                    variant='unstyled'
+                    aria-label='delete-card'
+                    icon={<DeleteIcon />}
+                    rounded='xs'
+                    onClick={onOpen}
+                    color='white'
+                  />
+                  <Text color='white'>Delete</Text>
+                </Flex>
+                <Flex alignItems='baseline' color='white'>
+                  <IconButton
+                    aria-label='delete-card'
+                    icon={<EditIcon />}
+                    rounded='xs'
+                    variant='unstyled'
+                    onClick={handleShowEditForm}
+                  />
+                  <Text color='white'>Edit</Text>
+                </Flex>
+              </Flex>
+            </Stack>
           </CardBody>
           <CardFooter onClick={handleShowDetail}>
             <Stack spacing='8px' maxW={{ base: '160px', md: '260px' }}>
