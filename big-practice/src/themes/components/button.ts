@@ -27,15 +27,15 @@ const buttonTheme = {
       borderColor: 'yellow.250',
       rounded: 'none',
       color: 'yellow.250',
-      fontSize: 'sm',
+      fontSize: { base: 'xs', md: 'sm' },
       fontWeight: 'bold',
       lineHeight: 'xs',
       boxShadow: 'md',
       _hover: {
-        bg: 'transparent',
+        bg: 'white',
       },
       _active: {
-        bg: 'transparent',
+        bg: 'white',
       },
     },
 

@@ -20,7 +20,7 @@ const textTheme = defineStyleConfig({
       color: 'gray.200',
     },
     title: {
-      fontSize: { base: 'xl', md: '42px' },
+      fontSize: { base: 'lg', md: 'xl' },
     },
     detail: {
       fontSize: { base: 'xs', md: 'sm' },

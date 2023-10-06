@@ -12,10 +12,9 @@ type ProductState = {
 type ProductActions = {
   setProducts: (Products: IProduct[]) => void;
   setProduct: (Product: IProduct) => void;
-  addProduct: (value: IProduct) => void;
 };
 
-export const useProductStore = create<ProductState & ProductActions>((set, get) => ({
+export const useProductStore = create<ProductState & ProductActions>((set) => ({
   products: [],
   product: INITIAL_PRODUCT,
   setProducts: (products: IProduct[]) => {
@@ -24,5 +23,4 @@ export const useProductStore = create<ProductState & ProductActions>((set, get) 
   setProduct: (product: IProduct) => {
     set({ product });
   },
-  addProduct: (value: IProduct) => set(() => ({ products: [...get().products, value] })),
 }));

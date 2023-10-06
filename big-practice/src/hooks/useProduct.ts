@@ -51,10 +51,8 @@ export const useMutationPostProduct = () => {
   return useMutation<IProduct, AxiosError, IProduct>({
     mutationFn: async (product) =>
       await api.postData({ item: product, url: `${URL.BASE}${URL.PRODUCTS}` }),
-    onSuccess: (response) => {
-      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.PRODUCTS] });
-
-      return response;
+    onSuccess: (res) => {
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.PRODUCTS + res.id] });
     },
   });
 };
@@ -83,6 +81,18 @@ export const useMutationEditProduct = () => {
     },
     onSuccess: (res) => {
       queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.PRODUCTS + res.id] });
+    },
+  });
+};
+
+// Custom hook delete product
+export const useMutationDeleteProduct = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation<string, AxiosError, string>({
+    mutationFn: async (id: string) => await api.deleteData(`${URL.BASE}${URL.PRODUCTS}/${id}`),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.PRODUCTS] });
     },
   });
 };

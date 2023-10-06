@@ -31,3 +31,14 @@ export const CRUMBS = [
     path: ROUTES.ADD_PRODUCT,
   },
 ];
+
+export const CART_CRUMBS = [
+  {
+    title: 'Home',
+    path: ROUTES.HOMEPAGE,
+  },
+  {
+    title: 'Cart',
+    path: ROUTES.SHOPPING_CART,
+  },
+];

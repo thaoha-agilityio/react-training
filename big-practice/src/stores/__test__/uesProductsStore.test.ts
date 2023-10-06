@@ -16,15 +16,6 @@ describe('Testing for useCountStore', () => {
     expect(result.current.products).toEqual(MOCK_PRODUCTS);
   });
 
-  it('should add more value when add product', () => {
-    const { result } = renderHook(() => useProductStore());
-
-    result.current.setProducts(MOCK_PRODUCTS);
-    result.current.addProduct(MOCK_PRODUCTS[0]);
-
-    expect(result.current.products).toEqual([...MOCK_PRODUCTS, MOCK_PRODUCTS[0]]);
-  });
-
   it('should initialize with an empty products object', () => {
     const { result } = renderHook(() => useProductStore());
     expect(result.current.product).toEqual(INITIAL_PRODUCT);
