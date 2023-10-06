@@ -1,13 +1,38 @@
-import { DeleteIcon } from '@assets/icons';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Box, Flex, IconButton, Image, Text } from '@chakra-ui/react';
-import { IProductCart } from '@types';
+
+//  Icons
+import { DeleteIcon } from '@assets/icons';
+
+// Types
+import { ICart, IProduct } from '@types';
+
+//  Stores
+import { useFetchProducts } from '@hooks';
 
 type CardItemProps = {
-  productCard: IProductCart;
+  cart: ICart;
 };
 
-const CartItem = ({ productCard }: CardItemProps) => {
-  const { image, price, name, quantity } = productCard || {};
+const CartItem = ({ cart: { productId, quantity } }: CardItemProps) => {
+  const { data: products } = useFetchProducts();
+
+  const [productCard, setProductCard] = useState<IProduct>();
+  const { image, price, name } = productCard || {};
+
+  // Find product
+  const getCartByProductId = useCallback(() => {
+    const product = products?.find((item: IProduct) => item.id === productId);
+
+    setProductCard(product);
+  }, [productId, products]);
+
+  //Handle total amount for each product
+  const subTotal = useMemo(() => (price ? price * quantity : 0), [price, quantity]);
+
+  useEffect(() => {
+    getCartByProductId();
+  }, [getCartByProductId]);
 
   return (
     <Flex justifyContent='space-between' alignItems='center'>
@@ -19,7 +44,7 @@ const CartItem = ({ productCard }: CardItemProps) => {
       <Text border='1px solid' borderRadius='xs' w='32px' h='32px' textAlign='center' pt='5px'>
         {quantity}
       </Text>
-      <Text>Rs. 250,000.00</Text>
+      <Text>Rs. {subTotal}</Text>
       <IconButton variant='unstyled' aria-label='delete-btn' icon={<DeleteIcon />} />
     </Flex>
   );

@@ -7,6 +7,12 @@ export const INITIAL_PRODUCT = {
   price: 0,
 };
 
+export const INITIAL_CART = {
+  cartId: '',
+  productId: '',
+  quantity: 0,
+};
+
 export const LIMIT_PRODUCTS = 8;
 
 export const MOCK_PRODUCTS = [

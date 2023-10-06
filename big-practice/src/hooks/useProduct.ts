@@ -13,20 +13,14 @@ import { IProduct } from '@types';
 // Services
 import { api } from '@services/APIRequest';
 
-type FetchProducts = {
-  pageParam?: number;
-  limit: number;
-};
-
-export const useFetchProducts = ({ pageParam = 1, limit }: FetchProducts) => {
+export const useFetchProducts = () => {
   const setProducts = useProductStore((state) => state.setProducts);
 
   const setErrorMessage = useMessageStores((state) => state.setErrorMessage);
 
   return useQuery<IProduct[], AxiosError>({
-    queryKey: [QUERY_KEYS.PRODUCTS, pageParam],
-    queryFn: async () =>
-      await api.getData(`${URL.BASE}${URL.PRODUCTS}?page=${pageParam}&limit=${limit}`),
+    queryKey: [QUERY_KEYS.PRODUCTS],
+    queryFn: async () => await api.getData(`${URL.BASE}${URL.PRODUCTS}`),
     onSuccess: (data: IProduct[]) => setProducts(data),
     onError: (error) => setErrorMessage(error.message),
   });

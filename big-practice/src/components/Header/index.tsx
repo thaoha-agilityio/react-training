@@ -6,7 +6,7 @@ import { FurniroLogo } from '@assets/photos/logo';
 import { AccountIcon, SearchIcon, HeartIcon, ShoppingCartIcon } from '@assets/icons';
 
 // Constants
-import { MENU } from '@constants/menu';
+import { ROUTES, MENU } from '@constants';
 
 // Components
 import { Menu } from '@components/Menu';
@@ -39,7 +39,7 @@ export const Header = () => {
             <Link to='/'>
               <HeartIcon />
             </Link>
-            <Link to='/'>
+            <Link to={ROUTES.SHOPPING_CART}>
               <ShoppingCartIcon />
             </Link>
           </HStack>
