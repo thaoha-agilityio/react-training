@@ -1,26 +1,37 @@
 import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
 
 // Types
 import { ICart } from '@types';
-import { INITIAL_CART } from '@constants';
+
+//  Constants
+import { CART_STORE } from '@constants';
 
 type CartState = {
   carts: ICart[];
-  cart: ICart;
 };
 
 type CartActions = {
   setCarts: (carts: ICart[]) => void;
-  setCart: (cart: ICart) => void;
+  deleteCart: (id: string) => void;
 };
 
-export const useCartStore = create<CartState & CartActions>((set) => ({
-  carts: [],
-  cart: INITIAL_CART,
-  setCarts: (carts: ICart[]) => {
-    set({ carts });
-  },
-  setCart: (cart: ICart) => {
-    set({ cart });
-  },
-}));
+export const useCartStore = create<CartState & CartActions>()(
+  persist(
+    (set) => ({
+      carts: [],
+      setCarts: (carts: ICart[]) => {
+        set({ carts });
+      },
+      deleteCart: (cartId: string) => {
+        // Filter out the cart with the specified ID
+        set((state) => ({
+          carts: state.carts.filter((cart) => cart.id !== cartId),
+        }));
+      },
+    }),
+    {
+      name: CART_STORE, // name of the item in the storage
+    },
+  ),
+);

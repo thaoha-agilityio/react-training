@@ -16,4 +16,7 @@ export const SUCCESS_MESSAGES = {
   ADDED: (name: string) => `${name} was added successfully.`,
   EDITED: (name: string) => `${name} was edited successfully.`,
   DELETED: 'Product was deleted successfully.',
+  ADD_TO_CART: 'Product has been added to cart',
 };
+
+export const NOTICE_MESSAGE = 'No records to display';

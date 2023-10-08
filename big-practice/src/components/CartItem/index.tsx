@@ -1,38 +1,26 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
-import { Box, Flex, IconButton, Image, Text } from '@chakra-ui/react';
+import { useMemo } from 'react';
+import { Box, Flex, IconButton, Image, Text, useDisclosure } from '@chakra-ui/react';
 
 //  Icons
 import { DeleteIcon } from '@assets/icons';
 
 // Types
-import { ICart, IProduct } from '@types';
+import { ICart } from '@types';
 
-//  Stores
-import { useFetchProducts } from '@hooks';
+//  Component
+import ConfirmModal from '@components/ConfirmModal';
 
 type CardItemProps = {
   cart: ICart;
+  onDeleteCart: () => void;
 };
 
-const CartItem = ({ cart: { productId, quantity } }: CardItemProps) => {
-  const { data: products } = useFetchProducts();
-
-  const [productCard, setProductCard] = useState<IProduct>();
-  const { image, price, name } = productCard || {};
-
-  // Find product
-  const getCartByProductId = useCallback(() => {
-    const product = products?.find((item: IProduct) => item.id === productId);
-
-    setProductCard(product);
-  }, [productId, products]);
+const CartItem = ({ cart: { image, price, name, quantity }, onDeleteCart }: CardItemProps) => {
+  // Initialize isOpen, onOpen, and onClose from useDisclosure
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   //Handle total amount for each product
   const subTotal = useMemo(() => (price ? price * quantity : 0), [price, quantity]);
-
-  useEffect(() => {
-    getCartByProductId();
-  }, [getCartByProductId]);
 
   return (
     <Flex justifyContent='space-between' alignItems='center'>
@@ -45,7 +33,22 @@ const CartItem = ({ cart: { productId, quantity } }: CardItemProps) => {
         {quantity}
       </Text>
       <Text>Rs. {subTotal}</Text>
-      <IconButton variant='unstyled' aria-label='delete-btn' icon={<DeleteIcon />} />
+      <IconButton
+        variant='unstyled'
+        aria-label='delete-btn'
+        icon={<DeleteIcon />}
+        onClick={onOpen}
+      />
+
+      <ConfirmModal
+        isOpen={isOpen}
+        title='Delete Confirmation'
+        textCancel='Cancel'
+        textSubmit='Yes, Delete'
+        text='Are you sure you want to delete this item?'
+        onClose={onClose}
+        onSubmit={onDeleteCart}
+      />
     </Flex>
   );
 };

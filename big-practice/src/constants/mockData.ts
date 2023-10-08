@@ -8,7 +8,6 @@ export const INITIAL_PRODUCT = {
 };
 
 export const INITIAL_CART = {
-  cartId: '',
   productId: '',
   quantity: 0,
 };

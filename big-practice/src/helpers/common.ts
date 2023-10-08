@@ -18,3 +18,6 @@ export const convertBase64 = (file: File): Promise<string | null> => {
     fileReader.onerror = (error) => reject(error);
   });
 };
+
+// formats this number using fixed-point notation.
+export const formatPrice = (price: number) => price.toFixed(2);

@@ -3,9 +3,6 @@ import { Flex, Heading, Spinner, Stack, Text } from '@chakra-ui/react';
 // Components
 import { Products } from '@components/Products';
 
-// Constants
-import { LIMIT_PRODUCTS } from '@constants';
-
 // Custom hooks
 import { useFetchProducts } from '@hooks/useProduct';
 
@@ -14,7 +11,7 @@ import { useProductStore } from '@stores';
 
 export const OurProducts = () => {
   const products = useProductStore((state) => state.products);
-  const { isLoading, isError, error } = useFetchProducts({ limit: LIMIT_PRODUCTS });
+  const { isLoading, isError, error } = useFetchProducts();
 
   return (
     <Stack as='section' my='50px' justifyContent='center'>

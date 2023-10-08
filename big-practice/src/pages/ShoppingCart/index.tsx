@@ -1,3 +1,4 @@
+import { shallow } from 'zustand/shallow';
 import { Button, Flex, Stack, Text } from '@chakra-ui/react';
 
 // Components
@@ -8,20 +9,16 @@ import CartItem from '@components/CartItem';
 import PageLayout from '@layouts/PageLayout';
 
 // Constants
-import { CART_CRUMBS } from '@constants';
+import { CART_CRUMBS, NOTICE_MESSAGE } from '@constants';
 
 //  Stores
 import { useCartStore } from '@stores';
-
-// Hooks
-import { useFetchCarts } from '@hooks';
 
 // Types
 import { ICart } from '@types';
 
 const ShoppingCart = () => {
-  const carts = useCartStore((state) => state.carts);
-  const { isError, error } = useFetchCarts();
+  const [carts, deleteCart] = useCartStore((state) => [state.carts, state.deleteCart], shallow);
 
   return (
     <>
@@ -43,10 +40,12 @@ const ShoppingCart = () => {
               <Text>Subtotal</Text>
             </Flex>
 
-            {isError ? (
-              <Text>{error.isAxiosError}</Text>
+            {!carts.length ? (
+              <Text>{NOTICE_MESSAGE}</Text>
             ) : (
-              carts.map((cart: ICart) => <CartItem cart={cart} key={cart.cartId} />)
+              carts.map((cart: ICart) => (
+                <CartItem cart={cart} key={cart.id} onDeleteCart={() => deleteCart(cart.id)} />
+              ))
             )}
           </Stack>
           <Stack w='393px' h='390px' bg='yellow.150' alignItems='center' pt='10px' pb='60px'>

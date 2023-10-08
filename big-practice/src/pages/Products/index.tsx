@@ -59,7 +59,7 @@ const Products = () => {
                     w='245px'
                     h='48px'
                     isLoading={isFetchingNextPage}
-                    onClick={fetchNextPage}
+                    onClick={() => fetchNextPage()}
                     disabled={!hasNextPage || isFetchingNextPage}
                   >
                     Show More

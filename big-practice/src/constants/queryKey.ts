@@ -4,3 +4,5 @@ export const QUERY_KEYS = {
   CARTS: 'carts',
   CART: 'cart',
 };
+
+export const CART_STORE = 'CART_STORE';
