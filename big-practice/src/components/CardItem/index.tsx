@@ -70,6 +70,7 @@ export const CardItem = memo(
                   <IconButton
                     variant='unstyled'
                     aria-label='delete-card'
+                    data-testid='delete-btn'
                     icon={<DeleteIcon />}
                     rounded='xs'
                     onClick={onOpen}
@@ -78,7 +79,8 @@ export const CardItem = memo(
                   <Text color='white'>Delete</Text>
 
                   <IconButton
-                    aria-label='delete-card'
+                    aria-label='edit-card'
+                    data-testid='edit-btn'
                     icon={<EditIcon />}
                     rounded='xs'
                     variant='unstyled'
@@ -89,6 +91,7 @@ export const CardItem = memo(
 
                   <IconButton
                     aria-label='info-card'
+                    data-testid='detail-btn'
                     icon={<InfoIcon />}
                     rounded='xs'
                     variant='unstyled'

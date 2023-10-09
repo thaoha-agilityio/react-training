@@ -20,7 +20,7 @@ const CartItem = ({ cart: { image, price, name, quantity }, onDeleteCart }: Card
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   //Handle total amount for each product
-  const subTotal = useMemo(() => (price ? price * quantity : 0), [price, quantity]);
+  const subTotal = useMemo(() => price * quantity, [price, quantity]);
 
   return (
     <Flex justifyContent='space-between' alignItems='center'>

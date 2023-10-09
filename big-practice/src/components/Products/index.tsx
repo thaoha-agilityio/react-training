@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { memo, useCallback } from 'react';
 import { shallow } from 'zustand/shallow';
 
@@ -13,7 +14,6 @@ import { IProduct } from '@types';
 import { useCartStore, useMessageStores } from '@stores';
 import { ROUTES, STATUSES, SUCCESS_MESSAGES } from '@constants';
 import { useMutationDeleteProduct, useCustomToast } from '@hooks';
-import { useNavigate } from 'react-router-dom';
 
 type ProductsProps = {
   products: IProduct[];

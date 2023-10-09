@@ -2,14 +2,14 @@ import { render } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 //Constants
-import { MENU } from '@constants';
+import { DATA_CRUMBS } from '@constants';
 
 // Component
-import { Banner } from '../index';
+import Banner from '../index';
 
 const bannerProps = {
   title: 'Shop',
-  breadcrumbItems: MENU[1],
+  crumbs: DATA_CRUMBS,
 };
 
 describe('Banner Component', () => {
@@ -21,7 +21,7 @@ describe('Banner Component', () => {
     );
 
     const titleElement = getByTestId('title');
-    expect(titleElement.textContent).toEqual(bannerProps.title);
+    expect(titleElement).toHaveTextContent(bannerProps.title);
   });
 
   it('displays the breadcrumb correctly', () => {
@@ -31,6 +31,6 @@ describe('Banner Component', () => {
       </Router>,
     );
     const titleElement = getByTestId('breadcrumb-item');
-    expect(titleElement.textContent).toEqual(bannerProps.title);
+    expect(titleElement.textContent).toEqual('Edit Product');
   });
 });

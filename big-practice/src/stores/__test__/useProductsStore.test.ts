@@ -1,8 +1,12 @@
-import { INITIAL_PRODUCT, MOCK_PRODUCTS } from '@constants';
-import { useProductStore } from '@stores/products';
 import { renderHook } from '@testing-library/react-hooks';
 
-describe('Testing for useCountStore', () => {
+// Constants
+import { INITIAL_PRODUCT, MOCK_PRODUCTS } from '@constants';
+
+// Stores
+import { useProductStore } from '@stores';
+
+describe('Testing for useProductStore', () => {
   it('should initialize with an empty products array', () => {
     const { result } = renderHook(() => useProductStore());
     expect(result.current.products).toEqual([]);

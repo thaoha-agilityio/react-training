@@ -1,4 +1,4 @@
-import { convertBase64 } from '@helpers';
+import { convertBase64, formatPrice } from '@helpers';
 
 describe('Testing convertBase64', () => {
   it('Should resolve with a base64 url when given a valid file', async () => {
@@ -17,5 +17,19 @@ describe('Testing convertBase64', () => {
       expect(error).toBeInstanceOf(Error);
       expect((error as { message: string }).message).toBe('Unsupported result type');
     }
+  });
+});
+
+describe('formatPrice', () => {
+  it('should format a positive number to two decimal places', () => {
+    const price = 10.12345;
+    const formattedPrice = formatPrice(price);
+    expect(formattedPrice).toBe('10.12');
+  });
+
+  it('should format a negative number to two decimal places', () => {
+    const price = -5.6789;
+    const formattedPrice = formatPrice(price);
+    expect(formattedPrice).toBe('-5.68');
   });
 });
