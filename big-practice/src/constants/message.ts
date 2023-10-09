@@ -1,5 +1,10 @@
 export const PLACEHOLDER_MESSAGE = {
   NEWSLETTER: 'Enter Your Email Address',
+  NAME: 'Product name',
+  CATEGORY: 'Category',
+  DESCRIPTION: 'Description',
+  PRICE: 'Price',
+  IMAGE: 'Image',
 };
 
 export const ERROR_MESSAGES = {

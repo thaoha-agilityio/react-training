@@ -18,7 +18,7 @@ import { AddImageIcon } from '@assets/icons';
 import { IProduct } from '@types';
 
 // Constants
-import { ERROR_MESSAGES, REGEX, MAXIMUM_FILE_SIZE } from '@constants';
+import { ERROR_MESSAGES, REGEX, MAXIMUM_FILE_SIZE, PLACEHOLDER_MESSAGE } from '@constants';
 
 // Helpers
 import { convertBase64 } from '@helpers';
@@ -113,7 +113,12 @@ const Form = ({ isLoading, title, onSubmitProduct, product }: FormProps) => {
         <Stack spacing='30px' w={{ base: '300px', md: '600px' }} m='auto' py='60px'>
           <FormControl isInvalid={!!errors.name}>
             <FormLabel>Product Name</FormLabel>
-            <Input id='name' aria-label='enter product name' {...register('name', schema.name)} />
+            <Input
+              id='name'
+              aria-label='enter product name'
+              placeholder={PLACEHOLDER_MESSAGE.NAME}
+              {...register('name', schema.name)}
+            />
             <FormErrorMessage>{errors.name?.message}</FormErrorMessage>
           </FormControl>
 
@@ -122,6 +127,7 @@ const Form = ({ isLoading, title, onSubmitProduct, product }: FormProps) => {
             <Input
               id='category'
               aria-label='enter category'
+              placeholder={PLACEHOLDER_MESSAGE.CATEGORY}
               {...register('category', schema.category)}
             />
             <FormErrorMessage> {errors.category?.message}</FormErrorMessage>
@@ -132,6 +138,7 @@ const Form = ({ isLoading, title, onSubmitProduct, product }: FormProps) => {
             <Input
               id='description'
               aria-label='enter description'
+              placeholder={PLACEHOLDER_MESSAGE.DESCRIPTION}
               {...register('description', schema.description)}
             />
             <FormErrorMessage>{errors.description?.message}</FormErrorMessage>
@@ -139,7 +146,12 @@ const Form = ({ isLoading, title, onSubmitProduct, product }: FormProps) => {
 
           <FormControl isInvalid={!!errors.price}>
             <FormLabel>Price</FormLabel>
-            <Input id='price' {...register('price', schema.price)} />
+            <Input
+              id='price'
+              aria-label='enter price'
+              placeholder={PLACEHOLDER_MESSAGE.PRICE}
+              {...register('price', schema.price)}
+            />
             <FormErrorMessage>{errors.price?.message}</FormErrorMessage>
           </FormControl>
 
@@ -148,6 +160,8 @@ const Form = ({ isLoading, title, onSubmitProduct, product }: FormProps) => {
             <Box pos='relative'>
               <Input
                 id='image'
+                placeholder={PLACEHOLDER_MESSAGE.IMAGE}
+                aria-label='upload file'
                 type='file'
                 accept='image/*'
                 opacity={0}

@@ -18,6 +18,7 @@ jest.mock('react-router-dom', () => ({
   useNavigate: () => mockNavigate,
 }));
 
+// Mock services
 jest.mock('@services/APIRequest', () => ({
   __esModule: true,
   ...jest.requireActual('@services/APIRequest'),
@@ -82,6 +83,18 @@ describe('Products Component', () => {
     const submitBtn = getByText('Yes, Delete');
     act(() => {
       fireEvent.click(submitBtn);
+    });
+  });
+
+  it('should call handleAddToCart when add to cart button is clicked', async () => {
+    // jest.spyOn(stores, 'useCartStore').mockReturnValue({
+    //   carts: [],
+    // });
+    const { getByText } = renderWithRouterAndQuery(<Products products={[MOCK_PRODUCTS[2]]} />);
+    act(() => {
+      // Click deleteBtn
+      const addToCartBtn = getByText('Add to cart');
+      fireEvent.click(addToCartBtn);
     });
   });
 });
