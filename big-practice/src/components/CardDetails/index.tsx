@@ -1,36 +1,29 @@
-import { memo, useEffect } from 'react';
+import { memo } from 'react';
 import { Box, Button, Flex, Image, Stack, Text } from '@chakra-ui/react';
 
 // Components
 import { Quantity } from '@components/Quantity';
-import Notification from '@components/Notification';
 
 // Types
 import { IProduct } from '@types';
 
-// Constants
-import { STATUSES } from '@constants';
-import { useMessageStores } from '@stores';
-
 type CardDetailProps = {
   card: IProduct;
+  count: number;
+  onAddToCart: () => void;
+  onIncreaseProduct: () => void;
+  onDecreaseProduct: () => void;
 };
 
-const CardDetails = ({ card: { name, description, price, image } }: CardDetailProps) => {
-  // Get message form store
-  const { clearSuccessMessage, successMessage, errorMessage } = useMessageStores();
-
-  // Clear message when component unMount
-  useEffect(() => {
-    return () => clearSuccessMessage();
-  }, []);
-
+const CardDetails = ({
+  card: { name, description, price, image, category },
+  count,
+  onAddToCart,
+  onIncreaseProduct,
+  onDecreaseProduct,
+}: CardDetailProps) => {
   return (
     <Box as='main' py='35px'>
-      {successMessage && !errorMessage && (
-        <Notification status={STATUSES.SUCCESS} message={successMessage} />
-      )}
-
       <Flex justifyContent='space-around' gap='10px'>
         <Stack>
           <Image w='424px' h={{ base: '350px', md: '500px' }} alt='card-image' src={image} />
@@ -44,8 +37,14 @@ const CardDetails = ({ card: { name, description, price, image } }: CardDetailPr
           </Text>
           <Text fontSize='tiny'>{description}</Text>
           <Flex justifyContent='space-between' gap='10px' alignContent='baseline'>
-            <Quantity />
-            <Button variant='colorPrimary'>Add To Cart</Button>
+            <Quantity
+              onDecreaseProduct={onDecreaseProduct}
+              onIncreaseProduct={onIncreaseProduct}
+              count={count}
+            />
+            <Button variant='colorPrimary' onClick={onAddToCart}>
+              Add To Cart
+            </Button>
           </Flex>
           <Stack borderTop='1px' borderColor='gray.350' pt='40px'>
             <Flex gap='20px'>
@@ -58,7 +57,7 @@ const CardDetails = ({ card: { name, description, price, image } }: CardDetailPr
               <Text variant='detail' w='75px'>
                 Category
               </Text>
-              <Text variant='detail'>: Sofas</Text>
+              <Text variant='detail'>: {category}</Text>
             </Flex>
             <Flex gap='20px'>
               <Text variant='detail' w='75px'>

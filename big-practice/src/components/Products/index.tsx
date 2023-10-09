@@ -1,6 +1,6 @@
-import { InfiniteData } from '@tanstack/react-query';
-import { memo, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { memo, useCallback } from 'react';
+import { shallow } from 'zustand/shallow';
 
 import { Flex } from '@chakra-ui/react';
 
@@ -9,14 +9,44 @@ import { CardItem } from '@components/CardItem';
 
 // Types
 import { IProduct } from '@types';
-import { ROUTES } from '@constants';
+
+// Stores
+import { useCartStore, useMessageStores } from '@stores';
+import { ROUTES, STATUSES, SUCCESS_MESSAGES } from '@constants';
+import { useMutationDeleteProduct, useCustomToast } from '@hooks';
 
 type ProductsProps = {
-  products: InfiniteData<IProduct[]> | undefined;
+  products: IProduct[];
 };
 
-const Products = ({ products }: ProductsProps) => {
+export const Products = memo(({ products }: ProductsProps) => {
+  const [carts, setCarts] = useCartStore((state) => [state.carts, state.setCarts], shallow);
+
+  const { showToast } = useCustomToast();
+
+  // Initialize navigate function
   const navigate = useNavigate();
+
+  // Get the mutate from useMutationDeleteProduct hook
+  const { mutate: deleteProduct, isLoading } = useMutationDeleteProduct();
+
+  // Get message from store
+  const { setErrorMessage } = useMessageStores();
+
+  // handle Delete Item
+  const handleDeleteItem = useCallback(
+    (id: string) => {
+      return deleteProduct(id, {
+        onError: (error) => {
+          setErrorMessage(error.message);
+        },
+        onSuccess: () => {
+          showToast(STATUSES.SUCCESS, SUCCESS_MESSAGES.DELETED);
+        },
+      });
+    },
+    [deleteProduct, setErrorMessage],
+  );
 
   // Handle navigate to detail page
   const handleShowDetail = useCallback(
@@ -34,29 +64,40 @@ const Products = ({ products }: ProductsProps) => {
     [navigate],
   );
 
-  return (
-    <>
-      {products?.pages.map((items: IProduct[], index: number) => (
-        <Flex
-          key={index}
-          pt='32px'
-          gap='32px'
-          wrap='wrap'
-          justifyContent='center'
-          data-testid='products'
-        >
-          {items.map((product: IProduct) => (
-            <CardItem
-              key={product.id}
-              item={product}
-              onShowDetail={() => handleShowDetail(product.id)}
-              onShowEditForm={() => handleShowEditForm(product.id)}
-            />
-          ))}
-        </Flex>
-      ))}
-    </>
+  // Handle add product to cart
+  const handleAddToCart = useCallback(
+    (product: IProduct) => {
+      const existedProductIndex = carts?.findIndex((cart) => cart.id === product.id);
+
+      if (existedProductIndex !== -1) {
+        const newCarts = [...carts];
+        newCarts[existedProductIndex].quantity += 1;
+
+        setCarts(newCarts);
+      } else {
+        setCarts([...carts, { ...product, quantity: 1 }]);
+      }
+
+      showToast(STATUSES.SUCCESS, SUCCESS_MESSAGES.ADD_TO_CART);
+    },
+    [carts, setCarts],
   );
-};
+
+  return (
+    <Flex pt='32px' gap='32px' wrap='wrap' justifyContent='center' data-testid='products'>
+      {products.map((product: IProduct) => (
+        <CardItem
+          isLoading={isLoading}
+          key={product.id}
+          item={product}
+          onDeleteItem={() => handleDeleteItem(product.id)}
+          onShowDetailItem={() => handleShowDetail(product.id)}
+          onEditItem={() => handleShowEditForm(product.id)}
+          onAddToCart={() => handleAddToCart(product)}
+        />
+      ))}
+    </Flex>
+  );
+});
 
 export default memo(Products);

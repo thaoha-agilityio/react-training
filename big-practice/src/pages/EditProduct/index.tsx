@@ -10,7 +10,7 @@ import Form from '@components/Form';
 import PageLayout from '@layouts/PageLayout';
 
 // Constants
-import { DATA_CRUMBS, ROUTES, SUCCESS_MESSAGES } from '@constants';
+import { DATA_CRUMBS, ROUTES, STATUSES, SUCCESS_MESSAGES } from '@constants';
 
 // Hooks
 import { useFetchProductDetail, useMutationEditProduct } from '@hooks';
@@ -20,10 +20,12 @@ import { useMessageStores } from '@stores';
 
 // Types
 import { IProduct } from '@types';
+import { useCustomToast } from '@hooks';
 
 const EditProduct = () => {
   const navigate = useNavigate();
   const { uuid = '' } = useParams();
+  const { showToast } = useCustomToast();
 
   // Get the mutate from useMutationEditProduct hook
   const { mutate, isLoading } = useMutationEditProduct();
@@ -54,6 +56,7 @@ const EditProduct = () => {
             setSuccessMessage(SUCCESS_MESSAGES.EDITED(name));
 
             navigate(ROUTES.DETAIL_PRODUCT_PARAMS + res.id);
+            showToast(STATUSES.SUCCESS, SUCCESS_MESSAGES.EDITED(name));
           },
         },
       );

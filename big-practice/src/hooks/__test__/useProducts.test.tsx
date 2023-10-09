@@ -4,7 +4,7 @@ import { renderHook, waitFor } from '@testing-library/react';
 import { useFetchProducts, useInfiniteProducts, useMutationDeleteProduct } from '../useProduct';
 
 // Constants
-import { LIMIT_PRODUCTS, MOCK_PRODUCTS } from '@constants';
+import { MOCK_PRODUCTS } from '@constants';
 
 // Services
 import { api } from '@services/APIRequest';
@@ -20,7 +20,7 @@ jest.mock('@services/APIRequest', () => ({
 describe('Test useFetchProduct', () => {
   it('should fetch products and call setProducts', async () => {
     jest.spyOn(api, 'getData').mockResolvedValue(MOCK_PRODUCTS);
-    const { result } = renderHook(() => useFetchProducts({ limit: LIMIT_PRODUCTS }), { wrapper });
+    const { result } = renderHook(() => useFetchProducts(), { wrapper });
 
     await waitFor(() => {
       expect(result.current.data).toEqual(MOCK_PRODUCTS);
@@ -30,7 +30,7 @@ describe('Test useFetchProduct', () => {
 
   it('Should return error and isSuccess is false when call useFetchProduct failed', async () => {
     jest.spyOn(api, 'getData').mockRejectedValue(new Error('Error'));
-    const { result } = renderHook(() => useFetchProducts({ limit: LIMIT_PRODUCTS }), { wrapper });
+    const { result } = renderHook(() => useFetchProducts(), { wrapper });
 
     await waitFor(() => {
       expect(result.current.data).toEqual(undefined);
@@ -38,10 +38,7 @@ describe('Test useFetchProduct', () => {
       expect(result.current.error?.message).toEqual('Error');
     });
   });
-});
 
-// Test useInfiniteProducts hooks
-describe('Test useInfiniteProducts', () => {
   it('Should return data and isSuccess is true when call useInfiniteProducts success', async () => {
     const mockProductsMoreThan10 = [
       ...Array.from({ length: 12 }, (_, index) => ({
@@ -74,9 +71,7 @@ describe('Test useInfiniteProducts', () => {
       expect(result.current.error?.message).toEqual('Error');
     });
   });
-});
 
-describe('Test useMutationDeleteProduct', () => {
   it('Should return data and isSuccess is true when call useMutationDeleteProduct success', async () => {
     jest.spyOn(api, 'deleteData').mockResolvedValue('1');
 

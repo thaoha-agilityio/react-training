@@ -1,2 +1,2 @@
 export * from './useProduct';
-export * from './useCart';
+export * from './useCustomToast';

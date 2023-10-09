@@ -11,9 +11,6 @@ import {
   Stack,
 } from '@chakra-ui/react';
 
-//Component
-import Notification from '@components/Notification';
-
 // Icon
 import { AddImageIcon } from '@assets/icons';
 
@@ -21,7 +18,7 @@ import { AddImageIcon } from '@assets/icons';
 import { IProduct } from '@types';
 
 // Constants
-import { ERROR_MESSAGES, REGEX, STATUSES, MAXIMUM_FILE_SIZE } from '@constants';
+import { ERROR_MESSAGES, REGEX, MAXIMUM_FILE_SIZE } from '@constants';
 
 // Helpers
 import { convertBase64 } from '@helpers';
@@ -38,7 +35,7 @@ type FormProps = {
   onSubmitProduct: (value: IProduct) => void;
 };
 
-const Form = ({ isLoading, title, onSubmitProduct, errorMessage, product }: FormProps) => {
+const Form = ({ isLoading, title, onSubmitProduct, product }: FormProps) => {
   const {
     register,
     handleSubmit,
@@ -108,7 +105,6 @@ const Form = ({ isLoading, title, onSubmitProduct, errorMessage, product }: Form
 
   return (
     <Box mt='90px'>
-      {errorMessage && <Notification status={STATUSES.ERROR} message={errorMessage} />}
       <Text fontSize={{ base: 'lg', md: '2xl' }} fontWeight='bold' textAlign='center'>
         {title}
       </Text>
@@ -152,7 +148,6 @@ const Form = ({ isLoading, title, onSubmitProduct, errorMessage, product }: Form
             <Box pos='relative'>
               <Input
                 id='image'
-                // name='image'
                 type='file'
                 accept='image/*'
                 opacity={0}

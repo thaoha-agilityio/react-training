@@ -2,16 +2,15 @@ import { Button, Container, Flex, Spinner, Stack, Text } from '@chakra-ui/react'
 
 // Components
 import Banner from '@components/Banner';
-import Products from '@components/Products';
+import { CardItem } from '@components/CardItem';
 
 // Constants
-import { LIMIT_PRODUCTS, ROUTES } from '@constants';
+import { LIMIT_PRODUCTS, SHOP_CRUMBS } from '@constants';
 
 // Hooks
 import { useInfiniteProducts } from '@hooks';
-import { IMenuItem } from '@types';
 
-const ProductList = () => {
+const Products = () => {
   const {
     data: products,
     fetchNextPage,
@@ -22,21 +21,9 @@ const ProductList = () => {
     isFetchingNextPage,
   } = useInfiniteProducts(LIMIT_PRODUCTS);
 
-  // Define breadcrumbs data for navigation
-  const dataCrumbs: IMenuItem[] = [
-    {
-      title: 'Home',
-      path: ROUTES.HOMEPAGE,
-    },
-    {
-      title: 'Shop',
-      path: ROUTES.ADD_PRODUCT,
-    },
-  ];
-
   return (
     <>
-      <Banner title='Shop' crumbs={dataCrumbs} />
+      <Banner title='Shop' crumbs={SHOP_CRUMBS} />
       <Container maxW='container.xl'>
         <Stack m='auto' spacing='40px' py='30px'>
           {isError ? (
@@ -44,7 +31,13 @@ const ProductList = () => {
           ) : (
             <>
               {/* TODO: update latter */}
-              <Products products={products} />
+              {products?.pages.map((item, index) => (
+                <Flex pt='32px' gap='32px' wrap='wrap' justifyContent='center' key={index}>
+                  {item.map((product) => (
+                    <CardItem key={product.id} item={product} />
+                  ))}
+                </Flex>
+              ))}
 
               {isLoading && <Spinner />}
               {hasNextPage && (
@@ -68,4 +61,4 @@ const ProductList = () => {
   );
 };
 
-export default ProductList;
+export default Products;

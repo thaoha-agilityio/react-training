@@ -8,7 +8,6 @@ export const INITIAL_PRODUCT = {
 };
 
 export const INITIAL_CART = {
-  cartId: '',
   productId: '',
   quantity: 0,
 };
@@ -119,5 +118,27 @@ export const MOCK_PRODUCTS = [
     category: 'category 3',
     description: 'description',
     id: '3',
+  },
+];
+
+export const MOCK_CARTS = [
+  {
+    name: 'name 1',
+    image: 'https://rnb.scene7.com/is/image/roomandboard/MHH_Liv_ES1021_0523?size=900,900&scl=1',
+    price: 8,
+    category: 'category 1',
+    id: '1',
+    description: 'description',
+    quantity: 2,
+  },
+  {
+    name: 'name 2',
+    image:
+      'https://assets.weimgs.com/weimgs/rk/images/wcm/products/202338/0005/eddy-sofa-60-94-q.jpg',
+    price: 100,
+    category: 'category 2',
+    id: '2',
+    description: 'description',
+    quantity: 2,
   },
 ];

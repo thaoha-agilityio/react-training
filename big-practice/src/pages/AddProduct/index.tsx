@@ -5,10 +5,10 @@ import { useCallback } from 'react';
 import PageLayout from '@layouts/PageLayout';
 
 // Constants
-import { CRUMBS, MENU, ROUTES, SUCCESS_MESSAGES } from '@constants';
+import { ADD_PRODUCT_CRUMBS, MENU, ROUTES, STATUSES, SUCCESS_MESSAGES } from '@constants';
 
 // Hooks
-import { useMutationPostProduct } from '@hooks';
+import { useCustomToast, useMutationPostProduct } from '@hooks';
 
 // Stores
 import { useMessageStores } from '@stores';
@@ -22,13 +22,13 @@ import Form from '@components/Form';
 
 const AddProduct = () => {
   const navigate = useNavigate();
+  const { showToast } = useCustomToast();
 
   // Get the mutate from useMutationPostProduct hook
   const { mutate, isLoading } = useMutationPostProduct();
 
   // Get message to
-  const { setErrorMessage, setSuccessMessage, errorMessage, clearErrorMessage } =
-    useMessageStores();
+  const { setErrorMessage } = useMessageStores();
 
   // Handle the submission of the product form
   const handleAddProduct = useCallback(
@@ -49,27 +49,20 @@ const AddProduct = () => {
             setErrorMessage(error.message);
           },
           onSuccess: (res) => {
-            clearErrorMessage();
-            setSuccessMessage(SUCCESS_MESSAGES.ADDED(value.name));
-
             navigate(ROUTES.DETAIL_PRODUCT_PARAMS + res.id);
+            showToast(STATUSES.SUCCESS, SUCCESS_MESSAGES.EDITED(res.name));
           },
         },
       );
     },
-    [mutate, setErrorMessage, setSuccessMessage],
+    [mutate, setErrorMessage],
   );
 
   return (
     <>
-      <Banner title='Add Product' crumbs={CRUMBS} />
+      <Banner title='Add Product' crumbs={ADD_PRODUCT_CRUMBS} />
       <PageLayout>
-        <Form
-          isLoading={isLoading}
-          title={MENU[2].title}
-          onSubmitProduct={handleAddProduct}
-          errorMessage={errorMessage}
-        />
+        <Form isLoading={isLoading} title={MENU[2].title} onSubmitProduct={handleAddProduct} />
       </PageLayout>
     </>
   );
