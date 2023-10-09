@@ -1,12 +1,12 @@
 import { Flex, Heading, Spinner, Stack, Text } from '@chakra-ui/react';
 
 // Components
-import { Products } from '@components/Products';
+import Products from '@components/Products';
 
 // Custom hooks
 import { useFetchProducts } from '@hooks/useProduct';
 
-// Stores
+//  Stores
 import { useProductStore } from '@stores';
 
 export const OurProducts = () => {
@@ -27,7 +27,7 @@ export const OurProducts = () => {
       </Heading>
       <Flex pt='32px' gap='32px' wrap='wrap' justifyContent='center'>
         {/* TODO: update latter */}
-        {isError ? <Text>{error.isAxiosError}</Text> : <Products products={products} />}
+        {isError ? <Text>{error.message}</Text> : <Products products={products} />}
         {isLoading && <Spinner />}
       </Flex>
     </Stack>

@@ -99,3 +99,5 @@ export const Products = memo(({ products }: ProductsProps) => {
     </Flex>
   );
 });
+
+export default memo(Products);
