@@ -5,7 +5,7 @@ import { useCallback } from 'react';
 import PageLayout from '@layouts/PageLayout';
 
 // Constants
-import { CRUMBS, MENU, ROUTES, STATUSES, SUCCESS_MESSAGES } from '@constants';
+import { ADD_PRODUCT_CRUMBS, MENU, ROUTES, STATUSES, SUCCESS_MESSAGES } from '@constants';
 
 // Hooks
 import { useCustomToast, useMutationPostProduct } from '@hooks';
@@ -60,7 +60,7 @@ const AddProduct = () => {
 
   return (
     <>
-      <Banner title='Add Product' crumbs={CRUMBS} />
+      <Banner title='Add Product' crumbs={ADD_PRODUCT_CRUMBS} />
       <PageLayout>
         <Form isLoading={isLoading} title={MENU[2].title} onSubmitProduct={handleAddProduct} />
       </PageLayout>

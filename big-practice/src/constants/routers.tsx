@@ -21,7 +21,7 @@ export const DATA_CRUMBS = [
 ];
 
 // Define breadcrumbs data for navigation
-export const CRUMBS = [
+export const ADD_PRODUCT_CRUMBS = [
   {
     title: 'Home',
     path: ROUTES.HOMEPAGE,
@@ -40,5 +40,17 @@ export const CART_CRUMBS = [
   {
     title: 'Cart',
     path: ROUTES.SHOPPING_CART,
+  },
+];
+
+// Define breadcrumbs data for navigation
+export const SHOP_CRUMBS = [
+  {
+    title: 'Home',
+    path: ROUTES.HOMEPAGE,
+  },
+  {
+    title: 'Shop',
+    path: ROUTES.ADD_PRODUCT,
   },
 ];
