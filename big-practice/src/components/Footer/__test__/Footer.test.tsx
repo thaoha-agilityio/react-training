@@ -2,7 +2,7 @@ import { render } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 import { PLACEHOLDER_MESSAGE } from '@constants';
-import { Footer } from '../index';
+import Footer from '../index';
 
 describe('Footer Component', () => {
   it('renders the footer correctly', () => {

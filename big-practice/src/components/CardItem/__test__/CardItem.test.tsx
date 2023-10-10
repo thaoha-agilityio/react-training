@@ -4,7 +4,7 @@ import { useDisclosure } from '@chakra-ui/react';
 //  Constants
 import { MOCK_PRODUCTS } from '@constants';
 
-import { CardItem } from '../index';
+import CardItem from '../index';
 
 const mockProps = {
   item: MOCK_PRODUCTS[1],

@@ -2,7 +2,7 @@ import { Button, Container, Flex, Spinner, Stack, Text } from '@chakra-ui/react'
 
 // Components
 import Banner from '@components/Banner';
-import { CardItem } from '@components/CardItem';
+import CardItem from '@components/CardItem';
 
 // Constants
 import { LIMIT_PRODUCTS, SHOP_CRUMBS } from '@constants';

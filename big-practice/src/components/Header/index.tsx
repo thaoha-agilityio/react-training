@@ -9,9 +9,9 @@ import { AccountIcon, SearchIcon, HeartIcon, ShoppingCartIcon } from '@assets/ic
 import { ROUTES, MENU } from '@constants';
 
 // Components
-import { Menu } from '@components/Menu';
+import Menu from '@components/Menu';
 
-export const Header = () => {
+const Header = () => {
   return (
     <Box as='header'>
       <Container maxW='container.xl'>
@@ -48,3 +48,5 @@ export const Header = () => {
     </Box>
   );
 };
+
+export default Header;

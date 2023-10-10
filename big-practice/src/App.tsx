@@ -3,7 +3,7 @@ import { Suspense } from 'react';
 import { Spinner } from '@chakra-ui/react';
 
 // Routes
-import { Routers } from '@routers';
+import { Routers } from '@routes';
 import MainLayout from '@layouts/MainLayout';
 
 const App = () => {

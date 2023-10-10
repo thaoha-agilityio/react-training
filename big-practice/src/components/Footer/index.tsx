@@ -5,7 +5,7 @@ import { Box, Container, Divider, Flex, Heading, Input, Stack, Text } from '@cha
 // Constants
 import { MENU, HELPS, PLACEHOLDER_MESSAGE } from '@constants';
 
-export const Footer = () => {
+const Footer = () => {
   return (
     <Box as='footer'>
       <Divider />
@@ -69,3 +69,5 @@ export const Footer = () => {
     </Box>
   );
 };
+
+export default Footer;
