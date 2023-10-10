@@ -11,7 +11,7 @@ type MenuProps = {
   menu: IMenuItem[];
 };
 
-export const Menu = memo(({ menu }: MenuProps) => (
+const Menu = ({ menu }: MenuProps) => (
   <UnorderedList display='flex' listStyleType='none' gap={{ base: '10px', md: '25px' }}>
     {menu.map((item) => (
       <ListItem key={item.title}>
@@ -23,4 +23,6 @@ export const Menu = memo(({ menu }: MenuProps) => (
       </ListItem>
     ))}
   </UnorderedList>
-));
+);
+
+export default memo(Menu);

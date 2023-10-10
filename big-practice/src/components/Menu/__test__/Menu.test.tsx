@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-import { Menu } from '../index';
+import Menu from '../index';
 import { MENU } from '@constants/menu';
 
 describe('Menu component', () => {

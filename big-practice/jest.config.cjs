@@ -33,7 +33,11 @@ module.exports = {
     '!**/mocks/**',
     '!**/constants/**',
     '!**/types/**',
+    '!**/themes/**',
     '!src/main.tsx',
     '!src/assets/index.ts',
+    '!src/assets/icons/**',
+    '!src/components/fonts.tsx',
+    '!src/routes/**',
   ],
 };

@@ -28,7 +28,7 @@ type CardItemProps = {
   onAddToCart: () => void;
 };
 
-export const CardItem = memo(
+const CardItem = memo(
   ({ item, onAddToCart, onDeleteItem, onEditItem, onShowDetailItem, isLoading }: CardItemProps) => {
     const { name, description, price, image } = item;
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -133,3 +133,5 @@ export const CardItem = memo(
     );
   },
 );
+
+export default memo(CardItem);

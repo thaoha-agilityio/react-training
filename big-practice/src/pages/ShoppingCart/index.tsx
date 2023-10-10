@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { shallow } from 'zustand/shallow';
 import { Button, Flex, Stack, Text } from '@chakra-ui/react';
 
@@ -17,8 +18,17 @@ import { useCartStore } from '@stores';
 // Types
 import { ICart } from '@types';
 
+// Helper
+import { formatPrice } from '@helpers';
+
 const ShoppingCart = () => {
   const [carts, deleteCart] = useCartStore((state) => [state.carts, state.deleteCart], shallow);
+
+  const getTotalPrice = useMemo(
+    (): number =>
+      carts.reduce((totalPrice: number, cart) => totalPrice + cart.price * cart.quantity, 0),
+    [carts],
+  );
 
   return (
     <>
@@ -54,14 +64,10 @@ const ShoppingCart = () => {
             </Text>
             <Flex w='240px' m='auto' wrap='wrap' gap='40px' alignItems='baseline'>
               <Text variant='primary' fontWeight='medium'>
-                Subtotal
-              </Text>
-              <Text variant='detail'>Rs. 250,000.00</Text>
-              <Text variant='primary' fontWeight='medium'>
                 Total
               </Text>
               <Text variant='tertiary' color='yellow.250' fontWeight='medium'>
-                Rs. 250,000.00
+                Rs. {formatPrice(getTotalPrice)}
               </Text>
             </Flex>
             <Button variant='colorPrimary' rounded='xl'>

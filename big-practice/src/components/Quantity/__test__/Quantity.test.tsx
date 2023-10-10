@@ -1,6 +1,6 @@
 import { render, fireEvent, screen } from '@testing-library/react';
 
-import { Quantity } from '../index';
+import Quantity from '../index';
 
 const mockProps = {
   onIncreaseProduct: jest.fn(),

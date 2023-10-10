@@ -5,7 +5,7 @@ import { shallow } from 'zustand/shallow';
 import { Flex } from '@chakra-ui/react';
 
 // Components
-import { CardItem } from '@components/CardItem';
+import CardItem from '@components/CardItem';
 
 // Types
 import { IProduct } from '@types';

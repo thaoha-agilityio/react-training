@@ -2,7 +2,7 @@ import { memo } from 'react';
 import { Box, Button, Flex, Image, Stack, Text } from '@chakra-ui/react';
 
 // Components
-import { Quantity } from '@components/Quantity';
+import Quantity from '@components/Quantity';
 
 // Types
 import { IProduct } from '@types';

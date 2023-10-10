@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { Header } from '../index';
+import Header from '../index';
 
 describe('Header component', () => {
   it('renders the logo and menu items', () => {
