@@ -1,7 +1,14 @@
 import { renderHook, waitFor } from '@testing-library/react';
 
 // Hooks
-import { useFetchProducts, useInfiniteProducts, useMutationDeleteProduct } from '../useProduct';
+import {
+  useFetchProductDetail,
+  useFetchProducts,
+  useInfiniteProducts,
+  useMutationDeleteProduct,
+  useMutationEditProduct,
+  useMutationPostProduct,
+} from '../useProduct';
 
 // Constants
 import { MOCK_PRODUCTS } from '@constants';
@@ -28,7 +35,7 @@ describe('Test useFetchProduct', () => {
     });
   });
 
-  it('Should return error and isSuccess is false when call useFetchProduct failed', async () => {
+  it('Should return error is false when call useFetchProduct failed', async () => {
     jest.spyOn(api, 'getData').mockRejectedValue(new Error('Error'));
     const { result } = renderHook(() => useFetchProducts(), { wrapper });
 
@@ -51,7 +58,7 @@ describe('Test useFetchProduct', () => {
     const { result } = renderHook(() => useInfiniteProducts(10), { wrapper });
 
     await waitFor(() => {
-      expect(result.current.data?.pages[0]).toEqual(mockProductsMoreThan10);
+      expect(result.current.data[0]).toEqual(mockProductsMoreThan10);
       expect(result.current.isSuccess).toEqual(true);
     });
 
@@ -66,7 +73,7 @@ describe('Test useFetchProduct', () => {
     const { result } = renderHook(() => useInfiniteProducts(2), { wrapper });
 
     await waitFor(() => {
-      expect(result.current.data?.pages).toEqual(undefined);
+      expect(result.current.data[0]).toEqual(undefined);
       expect(result.current.isSuccess).toEqual(false);
       expect(result.current.error?.message).toEqual('Error');
     });
@@ -80,6 +87,77 @@ describe('Test useFetchProduct', () => {
 
     await waitFor(() => {
       expect(result.current.isSuccess).toEqual(true);
+    });
+  });
+
+  it('Should return data when call useFetchProductDetail success', async () => {
+    jest.spyOn(api, 'getData').mockResolvedValue(MOCK_PRODUCTS[0]);
+    const { result } = renderHook(() => useFetchProductDetail('1'), { wrapper });
+
+    await waitFor(() => {
+      expect(result.current.data).toEqual(MOCK_PRODUCTS[0]);
+      expect(result.current.isSuccess).toEqual(true);
+    });
+  });
+
+  it('Should return error when call useFetchProductDetail failed', async () => {
+    jest.spyOn(api, 'getData').mockRejectedValue(new Error('Error'));
+    const { result } = renderHook(() => useFetchProductDetail('1'), { wrapper });
+
+    await waitFor(() => {
+      expect(result.current.data).toEqual(undefined);
+      expect(result.current.isSuccess).toEqual(false);
+      expect(result.current.error?.message).toEqual('Error');
+    });
+  });
+
+  it('Should return data when call useMutationEditProduct success', async () => {
+    jest.spyOn(api, 'putData').mockResolvedValue(MOCK_PRODUCTS[0]);
+    const { result } = renderHook(() => useMutationEditProduct(), { wrapper });
+
+    result.current.mutate(MOCK_PRODUCTS[0]);
+
+    await waitFor(() => {
+      expect(result.current.data).toEqual(MOCK_PRODUCTS[0]);
+      expect(result.current.isSuccess).toEqual(true);
+    });
+  });
+
+  it('Should return error when call useMutationEditProduct error', async () => {
+    jest.spyOn(api, 'putData').mockRejectedValue(new Error('Error'));
+    const { result } = renderHook(() => useMutationEditProduct(), { wrapper });
+
+    result.current.mutate(MOCK_PRODUCTS[0]);
+
+    await waitFor(() => {
+      expect(result.current.data).toEqual(undefined);
+      expect(result.current.isSuccess).toEqual(false);
+      expect(result.current.error?.message).toEqual('Error');
+    });
+  });
+
+  it('Should return data when call useMutationPostProduct success', async () => {
+    jest.spyOn(api, 'postData').mockResolvedValue(MOCK_PRODUCTS[0]);
+    const { result } = renderHook(() => useMutationPostProduct(), { wrapper });
+
+    result.current.mutate(MOCK_PRODUCTS[0]);
+
+    await waitFor(() => {
+      expect(result.current.data).toEqual(MOCK_PRODUCTS[0]);
+      expect(result.current.isSuccess).toEqual(true);
+    });
+  });
+
+  it('Should return error when call useMutationPostProduct error', async () => {
+    jest.spyOn(api, 'postData').mockRejectedValue(new Error('Error'));
+    const { result } = renderHook(() => useMutationPostProduct(), { wrapper });
+
+    result.current.mutate(MOCK_PRODUCTS[0]);
+
+    await waitFor(() => {
+      expect(result.current.data).toEqual(undefined);
+      expect(result.current.isSuccess).toEqual(false);
+      expect(result.current.error?.message).toEqual('Error');
     });
   });
 });

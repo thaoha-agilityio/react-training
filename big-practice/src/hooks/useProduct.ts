@@ -27,8 +27,8 @@ export const useFetchProducts = () => {
 };
 
 //  Custom hook to get Products with pagination
-export const useInfiniteProducts = (limit: number) =>
-  useInfiniteQuery<IProduct[], AxiosError>({
+export const useInfiniteProducts = (limit: number) => {
+  const { data, ...rest } = useInfiniteQuery<IProduct[], AxiosError>({
     queryKey: [QUERY_KEYS.PRODUCTS],
     queryFn: async ({ pageParam = 1 }) =>
       await api.getData(`${URL.BASE}${URL.PRODUCTS}?page=${pageParam}&limit=${limit}`),
@@ -38,6 +38,11 @@ export const useInfiniteProducts = (limit: number) =>
     },
   });
 
+  return {
+    data: data?.pages || [],
+    ...rest,
+  };
+};
 //  Custom hook post product
 export const useMutationPostProduct = () => {
   const queryClient = useQueryClient();

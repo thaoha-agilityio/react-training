@@ -61,7 +61,7 @@ const ProductDetails = () => {
     }
 
     showToast(STATUSES.SUCCESS, SUCCESS_MESSAGES.ADD_TO_CART);
-  }, [carts, count, product, setCarts, uuid]);
+  }, [carts, count, product, setCarts, showToast, uuid]);
 
   return (
     <>

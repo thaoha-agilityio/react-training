@@ -1,8 +1,8 @@
 import { Button, Container, Flex, Spinner, Stack, Text } from '@chakra-ui/react';
+import { Products } from '@components';
 
 // Components
 import Banner from '@components/Banner';
-import CardItem from '@components/CardItem';
 
 // Constants
 import { LIMIT_PRODUCTS, SHOP_CRUMBS } from '@constants';
@@ -10,7 +10,7 @@ import { LIMIT_PRODUCTS, SHOP_CRUMBS } from '@constants';
 // Hooks
 import { useInfiniteProducts } from '@hooks';
 
-const Products = () => {
+const Shop = () => {
   const {
     data: products,
     fetchNextPage,
@@ -31,13 +31,7 @@ const Products = () => {
           ) : (
             <>
               {/* TODO: update latter */}
-              {products?.pages.map((item, index) => (
-                <Flex pt='32px' gap='32px' wrap='wrap' justifyContent='center' key={index}>
-                  {item.map((product) => (
-                    <CardItem key={product.id} item={product} />
-                  ))}
-                </Flex>
-              ))}
+              <Products products={products} />
 
               {isLoading && <Spinner />}
               {hasNextPage && (
@@ -61,4 +55,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default Shop;

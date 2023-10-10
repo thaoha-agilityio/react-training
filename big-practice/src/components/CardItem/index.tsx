@@ -8,7 +8,6 @@ import {
   Heading,
   Text,
   Stack,
-  IconButton,
   useDisclosure,
   Button,
   Box,
@@ -66,39 +65,36 @@ const CardItem = memo(
               </Button>
 
               <Flex gap='35px' zIndex={50} justifyContent='center'>
-                <Flex alignItems='baseline'>
-                  <IconButton
-                    variant='unstyled'
-                    aria-label='delete-card'
-                    data-testid='delete-btn'
-                    icon={<DeleteIcon />}
-                    rounded='xs'
-                    onClick={onOpen}
+                <Flex alignItems='baseline' gap={'20px'}>
+                  <Button
+                    leftIcon={<DeleteIcon />}
                     color='white'
-                  />
-                  <Text color='white'>Delete</Text>
+                    data-testid='delete-btn'
+                    variant='unstyled'
+                    onClick={onOpen}
+                  >
+                    Delete
+                  </Button>
 
-                  <IconButton
-                    aria-label='edit-card'
+                  <Button
+                    leftIcon={<EditIcon />}
+                    color='white'
                     data-testid='edit-btn'
-                    icon={<EditIcon />}
-                    rounded='xs'
                     variant='unstyled'
                     onClick={onEditItem}
-                    color='white'
-                  />
-                  <Text color='white'>Edit</Text>
+                  >
+                    Edit
+                  </Button>
 
-                  <IconButton
-                    aria-label='info-card'
+                  <Button
+                    leftIcon={<InfoIcon />}
+                    color='white'
                     data-testid='detail-btn'
-                    icon={<InfoIcon />}
-                    rounded='xs'
                     variant='unstyled'
                     onClick={onShowDetailItem}
-                    color='white'
-                  />
-                  <Text color='white'>Detail</Text>
+                  >
+                    Detail
+                  </Button>
                 </Flex>
               </Flex>
             </Flex>
