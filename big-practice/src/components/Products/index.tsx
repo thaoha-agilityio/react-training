@@ -16,7 +16,7 @@ import { ROUTES, STATUSES, SUCCESS_MESSAGES } from '@constants';
 import { useMutationDeleteProduct, useCustomToast } from '@hooks';
 
 type ProductsProps = {
-  products: IProduct[];
+  products: IProduct[][];
 };
 
 export const Products = memo(({ products }: ProductsProps) => {
@@ -80,21 +80,25 @@ export const Products = memo(({ products }: ProductsProps) => {
 
       showToast(STATUSES.SUCCESS, SUCCESS_MESSAGES.ADD_TO_CART);
     },
-    [carts, setCarts],
+    [carts, setCarts, showToast],
   );
 
   return (
     <Flex pt='32px' gap='32px' wrap='wrap' justifyContent='center' data-testid='products'>
-      {products.map((product: IProduct) => (
-        <CardItem
-          isLoading={isLoading}
-          key={product.id}
-          item={product}
-          onDeleteItem={() => handleDeleteItem(product.id)}
-          onShowDetailItem={() => handleShowDetail(product.id)}
-          onEditItem={() => handleShowEditForm(product.id)}
-          onAddToCart={() => handleAddToCart(product)}
-        />
+      {products.map((item, index) => (
+        <Flex pt='32px' gap='32px' wrap='wrap' justifyContent='center' key={index}>
+          {item.map((product) => (
+            <CardItem
+              isLoading={isLoading}
+              key={product.id}
+              item={product}
+              onDeleteItem={() => handleDeleteItem(product.id)}
+              onShowDetailItem={() => handleShowDetail(product.id)}
+              onEditItem={() => handleShowEditForm(product.id)}
+              onAddToCart={() => handleAddToCart(product)}
+            />
+          ))}
+        </Flex>
       ))}
     </Flex>
   );

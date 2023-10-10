@@ -39,5 +39,6 @@ module.exports = {
     '!src/assets/icons/**',
     '!src/components/fonts.tsx',
     '!src/routes/**',
+    '!src/helpers/testUtils.tsx',
   ],
 };

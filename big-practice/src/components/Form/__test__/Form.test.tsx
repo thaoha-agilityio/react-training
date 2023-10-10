@@ -53,7 +53,7 @@ describe('Form component', () => {
     expect(errorMessage).toBeInTheDocument();
   });
 
-  it('submits the form with valid data', () => {
+  it('submits the form with valid data', async () => {
     const { submitBtn, imageInput, nameInput, categoryInput, descriptionInput, priceInput } =
       setup();
 
@@ -61,11 +61,24 @@ describe('Form component', () => {
     fireEvent.change(categoryInput, { target: { value: 'Test Category' } });
     fireEvent.change(descriptionInput, { target: { value: 'Test Description' } });
     fireEvent.change(priceInput, { target: { value: '10.99' } });
-    const imageFile = new File(['(binarydata)'], 'test.png', { type: 'image/png' });
-    fireEvent.change(imageInput, { target: { files: [imageFile] } });
+
+    // Upload file
+
+    const file = new File(['foo'], 'foo.jpeg', {
+      type: 'image/jpeg',
+    });
+
+    fireEvent.change(imageInput, { target: { files: [file] } });
+
+    console.log((imageInput as HTMLInputElement).files);
 
     // Click submit button
     fireEvent.click(submitBtn);
+
+    const errorMessage = await waitFor(() =>
+      screen.getByText(ERROR_MESSAGES.FIELD_REQUIRED('Image')),
+    );
+    expect(errorMessage).toBeInTheDocument();
   });
 
   it('should display detail value', () => {

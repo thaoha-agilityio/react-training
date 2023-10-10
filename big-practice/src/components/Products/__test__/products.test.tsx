@@ -26,13 +26,13 @@ jest.mock('@services/APIRequest', () => ({
 
 describe('Products Component', () => {
   it('should render a list of products', () => {
-    const { getByTestId } = renderWithRouterAndQuery(<Products products={MOCK_PRODUCTS} />);
+    const { getByTestId } = renderWithRouterAndQuery(<Products products={[MOCK_PRODUCTS]} />);
 
     expect(getByTestId('products')).toBeInTheDocument();
   });
 
   it('should navigates to detail page when a detail button is clicked', () => {
-    const { getByTestId } = renderWithRouterAndQuery(<Products products={[MOCK_PRODUCTS[0]]} />);
+    const { getByTestId } = renderWithRouterAndQuery(<Products products={[[MOCK_PRODUCTS[0]]]} />);
 
     const detailBtn = getByTestId('detail-btn');
     fireEvent.click(detailBtn);
@@ -41,7 +41,7 @@ describe('Products Component', () => {
   });
 
   it('should navigates to edit page when a edit button is clicked', () => {
-    const { getByTestId } = renderWithRouterAndQuery(<Products products={[MOCK_PRODUCTS[0]]} />);
+    const { getByTestId } = renderWithRouterAndQuery(<Products products={[[MOCK_PRODUCTS[0]]]} />);
 
     const editBtn = getByTestId('edit-btn');
     fireEvent.click(editBtn);
@@ -52,7 +52,7 @@ describe('Products Component', () => {
   it('should call handleDeleteItem success when delete button is clicked', async () => {
     jest.spyOn(api, 'deleteData').mockResolvedValue('1');
     const { getByTestId, getByText } = renderWithRouterAndQuery(
-      <Products products={[MOCK_PRODUCTS[0]]} />,
+      <Products products={[[MOCK_PRODUCTS[0]]]} />,
     );
 
     act(() => {
@@ -71,7 +71,7 @@ describe('Products Component', () => {
     jest.spyOn(api, 'deleteData').mockRejectedValue(new Error('Error'));
 
     const { getByTestId, getByText } = renderWithRouterAndQuery(
-      <Products products={[MOCK_PRODUCTS[0]]} />,
+      <Products products={[[MOCK_PRODUCTS[0]]]} />,
     );
 
     act(() => {
@@ -90,7 +90,7 @@ describe('Products Component', () => {
     // jest.spyOn(stores, 'useCartStore').mockReturnValue({
     //   carts: [],
     // });
-    const { getByText } = renderWithRouterAndQuery(<Products products={[MOCK_PRODUCTS[2]]} />);
+    const { getByText } = renderWithRouterAndQuery(<Products products={[[MOCK_PRODUCTS[2]]]} />);
     act(() => {
       // Click deleteBtn
       const addToCartBtn = getByText('Add to cart');

@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import { Outlet } from 'react-router-dom';
 
 //  Components
@@ -13,4 +12,4 @@ const MainLayout = () => (
   </>
 );
 
-export default memo(MainLayout);
+export default MainLayout;
