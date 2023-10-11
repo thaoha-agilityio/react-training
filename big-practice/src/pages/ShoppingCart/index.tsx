@@ -33,20 +33,20 @@ const ShoppingCart = () => {
     <>
       <Banner title='Cart' crumbs={CART_CRUMBS} />
       <PageLayout>
-        <Flex justifyContent='space-between' py='30px'>
+        <Flex justifyContent='space-between' py='30px' wrap='wrap'>
           <Stack spacing='50px'>
             <Flex
-              w='817px'
+              w={{ base: '370px', md: '817px' }}
               h='55px'
               bg='yellow.150'
               justifyContent='space-evenly'
               alignItems='center'
-              pl='70px'
+              pl={{ base: '30px', md: '70px' }}
             >
-              <Text>Product</Text>
-              <Text>Price</Text>
-              <Text>Quantity</Text>
-              <Text>Subtotal</Text>
+              <Text variant='primary'>Product</Text>
+              <Text variant='primary'>Price</Text>
+              <Text variant='primary'>Quantity</Text>
+              <Text variant='primary'>Subtotal</Text>
             </Flex>
 
             {!carts.length ? (
@@ -57,7 +57,15 @@ const ShoppingCart = () => {
               ))
             )}
           </Stack>
-          <Stack w='393px' h='390px' bg='yellow.150' alignItems='center' pt='10px' pb='60px'>
+          <Stack
+            w={{ base: '200px', md: '393px' }}
+            h={{ base: '180px', md: '390px' }}
+            bg='yellow.150'
+            alignItems='center'
+            pt='10px'
+            pb='60px'
+            mt={{ base: '20px', md: '0px' }}
+          >
             <Text variant='title' fontWeight='bold'>
               Cart Totals
             </Text>

@@ -27,7 +27,7 @@ const CartItem = ({ cart: { id, image, price, name, quantity }, onDeleteCart }: 
   }, [id, onDeleteCart]);
 
   return (
-    <Flex alignItems='center' gap='50px'>
+    <Flex alignItems='center' gap={{ base: '20px', md: '50px' }} pt='20px'>
       <Box>
         <Image w='111px' h='90px' rounded='xs' src={image} alt='image-product' />
       </Box>
@@ -35,7 +35,7 @@ const CartItem = ({ cart: { id, image, price, name, quantity }, onDeleteCart }: 
         {name}
       </Text>
       <Text variant='cart'>Rs. {price}</Text>
-      <Box w='100px'>
+      <Box w={{ base: '50px', md: '100px' }}>
         <Text border='1px solid' borderRadius='xs' w='32px' h='32px' textAlign='center' pt='5px'>
           {quantity}
         </Text>

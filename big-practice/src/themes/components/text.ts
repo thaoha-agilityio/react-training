@@ -20,17 +20,18 @@ const textTheme = defineStyleConfig({
       color: 'gray.200',
     },
     title: {
-      fontSize: { base: 'lg', md: 'xl' },
+      fontSize: { base: 'md', md: 'xl' },
     },
     detail: {
       fontSize: { base: 'xs', md: 'sm' },
       color: 'gray.150',
     },
     cart: {
+      fontSize: { base: 'xs', md: 'sm' },
       overflow: 'hidden',
       whiteSpace: 'nowrap',
       textOverflow: 'ellipsis',
-      width: '100px',
+      w: { base: '30px', md: '100px' },
     },
   },
 
