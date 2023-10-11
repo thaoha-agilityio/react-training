@@ -1,5 +1,6 @@
 import { Box, Container, Flex, HStack, Heading } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
+import { shallow } from 'zustand/shallow';
 
 // Images
 import { FurniroLogo } from '@assets/photos/logo';
@@ -10,8 +11,11 @@ import { ROUTES, MENU } from '@constants';
 
 // Components
 import Menu from '@components/Menu';
+import { useCartStore } from '@stores';
 
 const Header = () => {
+  const [carts] = useCartStore((state) => [state.carts, state.setCarts], shallow);
+
   return (
     <Box as='header'>
       <Container maxW='container.xl'>
@@ -39,9 +43,25 @@ const Header = () => {
             <Link to='/'>
               <HeartIcon />
             </Link>
-            <Link to={ROUTES.SHOPPING_CART}>
-              <ShoppingCartIcon />
-            </Link>
+            <Box pos='relative'>
+              <Link to={ROUTES.SHOPPING_CART}>
+                <ShoppingCartIcon />
+                <Box
+                  pos='absolute'
+                  color='gray.600'
+                  bg='yellow.250'
+                  rounded='50%'
+                  w='20px'
+                  h='19px'
+                  textAlign='center'
+                  top='15px'
+                  left='14px'
+                  fontSize='xs'
+                >
+                  {carts.length}
+                </Box>
+              </Link>
+            </Box>
           </HStack>
         </Flex>
       </Container>

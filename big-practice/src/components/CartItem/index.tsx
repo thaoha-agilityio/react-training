@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from 'react';
+import { memo, useCallback, useMemo } from 'react';
 import { Box, Flex, IconButton, Image, Text, useDisclosure } from '@chakra-ui/react';
 
 //  Icons
@@ -10,12 +10,12 @@ import { ICart } from '@types';
 //  Component
 import ConfirmModal from '@components/ConfirmModal';
 
-type CardItemProps = {
+type CartItemProps = {
   cart: ICart;
   onDeleteCart: (id: string) => void;
 };
 
-const CartItem = ({ cart: { id, image, price, name, quantity }, onDeleteCart }: CardItemProps) => {
+const CartItem = ({ cart: { id, image, price, name, quantity }, onDeleteCart }: CartItemProps) => {
   // Initialize isOpen, onOpen, and onClose from useDisclosure
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -62,4 +62,4 @@ const CartItem = ({ cart: { id, image, price, name, quantity }, onDeleteCart }: 
   );
 };
 
-export default CartItem;
+export default memo(CartItem);
