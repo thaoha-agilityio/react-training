@@ -26,6 +26,12 @@ const textTheme = defineStyleConfig({
       fontSize: { base: 'xs', md: 'sm' },
       color: 'gray.150',
     },
+    cart: {
+      overflow: 'hidden',
+      whiteSpace: 'nowrap',
+      textOverflow: 'ellipsis',
+      width: '100px',
+    },
   },
 
   defaultProps: {

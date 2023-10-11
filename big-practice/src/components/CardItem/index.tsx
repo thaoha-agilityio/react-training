@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo, useCallback } from 'react';
 import {
   Card,
   CardBody,
@@ -21,16 +21,32 @@ import { IProduct } from '@types';
 type CardItemProps = {
   item: IProduct;
   isLoading?: boolean;
-  onDeleteItem: () => void;
-  onEditItem: () => void;
-  onShowDetailItem: () => void;
-  onAddToCart: () => void;
+  onDeleteItem: (id: string) => void;
+  onEditItem: (id: string) => void;
+  onShowDetailItem: (id: string) => void;
+  onAddToCart: (product: IProduct) => void;
 };
 
 const CardItem = memo(
   ({ item, onAddToCart, onDeleteItem, onEditItem, onShowDetailItem, isLoading }: CardItemProps) => {
-    const { name, description, price, image } = item;
+    const { id, name, description, price, image } = item;
     const { isOpen, onOpen, onClose } = useDisclosure();
+
+    const handleDeleteItem = useCallback(() => {
+      onDeleteItem(id);
+    }, [id, onDeleteItem]);
+
+    const handleAddToCart = useCallback(() => {
+      onAddToCart(item);
+    }, [item, onAddToCart]);
+
+    const handleShowDetail = useCallback(() => {
+      onShowDetailItem(id);
+    }, [id, onShowDetailItem]);
+
+    const handleShowEditForm = useCallback(() => {
+      onEditItem(id);
+    }, [id, onEditItem]);
 
     return (
       <Flex pos='relative'>
@@ -60,7 +76,7 @@ const CardItem = memo(
               alignItems='center'
               gap='10px'
             >
-              <Button w='202px' h='48px' onClick={onAddToCart}>
+              <Button w='202px' h='48px' onClick={handleAddToCart}>
                 Add to cart
               </Button>
 
@@ -81,7 +97,7 @@ const CardItem = memo(
                     color='white'
                     data-testid='edit-btn'
                     variant='unstyled'
-                    onClick={onEditItem}
+                    onClick={handleShowEditForm}
                   >
                     Edit
                   </Button>
@@ -91,7 +107,7 @@ const CardItem = memo(
                     color='white'
                     data-testid='detail-btn'
                     variant='unstyled'
-                    onClick={onShowDetailItem}
+                    onClick={handleShowDetail}
                   >
                     Detail
                   </Button>
@@ -122,7 +138,7 @@ const CardItem = memo(
           textSubmit='Yes, Delete'
           text='Are you sure you want to delete this item?'
           onClose={onClose}
-          onSubmit={onDeleteItem}
+          onSubmit={handleDeleteItem}
           isLoading={isLoading}
         />
       </Flex>

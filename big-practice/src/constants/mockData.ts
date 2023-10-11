@@ -46,7 +46,7 @@ export const MOCK_PRODUCTS = [
     image: 'https://rnb.scene7.com/is/image/roomandboard/MHH_Liv_ES1021_0523?size=900,900&scl=1',
     price: 8,
     category: 'category 1',
-    id: '1',
+    id: '4',
     description: 'description',
   },
   {
@@ -55,7 +55,7 @@ export const MOCK_PRODUCTS = [
       'https://assets.weimgs.com/weimgs/rk/images/wcm/products/202338/0005/eddy-sofa-60-94-q.jpg',
     price: 100,
     category: 'category 2',
-    id: '2',
+    id: '5',
     description: 'description',
   },
   {
@@ -65,7 +65,7 @@ export const MOCK_PRODUCTS = [
     price: 15,
     category: 'category 3',
     description: 'description',
-    id: '3',
+    id: '6',
   },
   {
     name: 'name 1',
@@ -81,7 +81,7 @@ export const MOCK_PRODUCTS = [
       'https://assets.weimgs.com/weimgs/rk/images/wcm/products/202338/0005/eddy-sofa-60-94-q.jpg',
     price: 100,
     category: 'category 2',
-    id: '2',
+    id: '7',
     description: 'description',
   },
   {
@@ -91,7 +91,7 @@ export const MOCK_PRODUCTS = [
     price: 15,
     category: 'category 3',
     description: 'description',
-    id: '3',
+    id: '8',
   },
   {
     name: 'name 1',
@@ -107,7 +107,7 @@ export const MOCK_PRODUCTS = [
       'https://assets.weimgs.com/weimgs/rk/images/wcm/products/202338/0005/eddy-sofa-60-94-q.jpg',
     price: 100,
     category: 'category 2',
-    id: '2',
+    id: '29',
     description: 'description',
   },
   {
@@ -117,7 +117,7 @@ export const MOCK_PRODUCTS = [
     price: 15,
     category: 'category 3',
     description: 'description',
-    id: '3',
+    id: '38',
   },
 ];
 
