@@ -105,8 +105,8 @@ describe('Products Component', () => {
 
   it('should update cart when existing product', async () => {
     jest.spyOn(stores, 'useCartStore').mockImplementation(() => ({
-      carts: MOCK_CARTS,
-      setCarts: jest.fn(),
+      cart: MOCK_CARTS,
+      setCart: jest.fn(),
     }));
 
     const { getAllByText } = renderWithRouterAndQuery(<Products products={[MOCK_PRODUCTS]} />);

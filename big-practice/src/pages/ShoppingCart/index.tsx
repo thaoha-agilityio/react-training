@@ -21,12 +21,12 @@ import { ICart } from '@types';
 import { formatPrice } from '@helpers';
 
 const ShoppingCart = () => {
-  const { carts, deleteCart } = useCartStore();
+  const { cart, deleteCart } = useCartStore();
 
   const getTotalPrice = useMemo(
     (): number =>
-      carts.reduce((totalPrice: number, cart) => totalPrice + cart.price * cart.quantity, 0),
-    [carts],
+      cart.reduce((totalPrice: number, cart) => totalPrice + cart.price * cart.quantity, 0),
+    [cart],
   );
 
   return (
@@ -49,10 +49,10 @@ const ShoppingCart = () => {
               <Text variant='primary'>Subtotal</Text>
             </Flex>
 
-            {!carts.length ? (
+            {!cart.length ? (
               <Text>{NOTICE_MESSAGE}</Text>
             ) : (
-              carts.map((cart: ICart) => (
+              cart.map((cart: ICart) => (
                 <CartItem cart={cart} key={cart.id} onDeleteCart={deleteCart} />
               ))
             )}

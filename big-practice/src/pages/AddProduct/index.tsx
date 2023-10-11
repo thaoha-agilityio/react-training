@@ -55,7 +55,7 @@ const AddProduct = () => {
         },
       );
     },
-    [mutate, setErrorMessage],
+    [mutate],
   );
 
   return (

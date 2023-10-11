@@ -1,5 +1,4 @@
 import { useCallback, useState } from 'react';
-import { shallow } from 'zustand/shallow';
 import { useParams } from 'react-router-dom';
 import { Box, Spinner } from '@chakra-ui/react';
 
@@ -29,7 +28,8 @@ const ProductDetails = () => {
   const { isFetching } = useFetchProductDetail(uuid);
 
   // Get carts from carts store
-  const [carts, setCarts] = useCartStore((state) => [state.carts, state.setCarts], shallow);
+  // const [carts, setCarts] = useCartStore((state) => [state.cart, state.setCart], shallow);
+  const { cart, setCart } = useCartStore();
 
   const product = useProductStore((state) => state.product);
   const [count, setCount] = useState<number>(1);
@@ -49,19 +49,19 @@ const ProductDetails = () => {
   // Handle add product to cart
   const handleAddToCart = useCallback(() => {
     // Check if the product with the given 'uuid' already exists in the cart
-    const existedProductIndex = carts?.findIndex((cart) => cart.id === uuid);
+    const existedProductIndex = cart?.findIndex((cart) => cart.id === uuid);
 
     if (existedProductIndex !== -1) {
-      const newCarts = [...carts];
-      newCarts[existedProductIndex].quantity += count;
+      const newCart = [...cart];
+      newCart[existedProductIndex].quantity += count;
 
-      setCarts(newCarts);
+      setCart(newCart);
     } else {
-      setCarts([...carts, { ...product, quantity: count }]);
+      setCart([...cart, { ...product, quantity: count }]);
     }
 
     showToast(STATUSES.SUCCESS, SUCCESS_MESSAGES.ADD_TO_CART);
-  }, [carts, count, product, setCarts, showToast, uuid]);
+  }, [cart, uuid, count]);
 
   return (
     <>

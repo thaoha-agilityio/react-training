@@ -19,7 +19,7 @@ type ProductsProps = {
 };
 
 export const Products = memo(({ products }: ProductsProps) => {
-  const { carts, setCarts } = useCartStore();
+  const { cart, setCart } = useCartStore();
   const { showToast } = useCustomToast();
 
   // Initialize navigate function
@@ -32,53 +32,44 @@ export const Products = memo(({ products }: ProductsProps) => {
   const { setErrorMessage } = useMessageStores();
 
   // handle Delete Item
-  const handleDeleteItem = useCallback(
-    (id: string) => {
-      return deleteProduct(id, {
-        onError: (error) => {
-          setErrorMessage(error.message);
-        },
-        onSuccess: () => {
-          showToast(STATUSES.SUCCESS, SUCCESS_MESSAGES.DELETED);
-        },
-      });
-    },
-    [deleteProduct, setErrorMessage],
-  );
+  const handleDeleteItem = useCallback((id: string) => {
+    return deleteProduct(id, {
+      onError: (error) => {
+        setErrorMessage(error.message);
+      },
+      onSuccess: () => {
+        showToast(STATUSES.SUCCESS, SUCCESS_MESSAGES.DELETED);
+      },
+    });
+  }, []);
 
   // Handle navigate to detail page
-  const handleShowDetail = useCallback(
-    (id: string) => {
-      navigate(ROUTES.DETAIL_PRODUCT_PARAMS + id);
-    },
-    [navigate],
-  );
+  const handleShowDetail = useCallback((id: string) => {
+    navigate(ROUTES.DETAIL_PRODUCT_PARAMS + id);
+  }, []);
 
   // Handle navigate to edit page
-  const handleShowEditForm = useCallback(
-    (id: string) => {
-      navigate(ROUTES.EDIT_PRODUCT_PARAMS + id);
-    },
-    [navigate],
-  );
+  const handleShowEditForm = useCallback((id: string) => {
+    navigate(ROUTES.EDIT_PRODUCT_PARAMS + id);
+  }, []);
 
   // Handle add product to cart
   const handleAddToCart = useCallback(
     (product: IProduct) => {
-      const existedProductIndex = carts?.findIndex((cart) => cart.id === product.id);
+      const existedProductIndex = cart?.findIndex((cart) => cart.id === product.id);
 
       if (existedProductIndex !== -1) {
-        const newCarts = [...carts];
+        const newCarts = [...cart];
         newCarts[existedProductIndex].quantity += 1;
 
-        setCarts(newCarts);
+        setCart(newCarts);
       } else {
-        setCarts([...carts, { ...product, quantity: 1 }]);
+        setCart([...cart, { ...product, quantity: 1 }]);
       }
 
       showToast(STATUSES.SUCCESS, SUCCESS_MESSAGES.ADD_TO_CART);
     },
-    [carts, setCarts, showToast],
+    [cart],
   );
 
   return (

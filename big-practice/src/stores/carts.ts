@@ -8,25 +8,25 @@ import { ICart } from '@types';
 import { CART_STORE } from '@constants';
 
 type CartState = {
-  carts: ICart[];
+  cart: ICart[];
 };
 
 type CartActions = {
-  setCarts: (carts: ICart[]) => void;
+  setCart: (carts: ICart[]) => void;
   deleteCart: (id: string) => void;
 };
 
 export const useCartStore = create<CartState & CartActions>()(
   persist(
     (set) => ({
-      carts: [],
-      setCarts: (carts: ICart[]) => {
-        set({ carts });
+      cart: [],
+      setCart: (cart: ICart[]) => {
+        set({ cart });
       },
       deleteCart: (cartId: string) => {
         // Filter out the cart with the specified ID
         set((state) => ({
-          carts: state.carts.filter((cart) => cart.id !== cartId),
+          cart: state.cart.filter((cart) => cart.id !== cartId),
         }));
       },
     }),

@@ -142,3 +142,12 @@ export const MOCK_CARTS = [
     quantity: 2,
   },
 ];
+
+export const MOCK_PRODUCT = {
+  name: 'name 1',
+  image: 'https://rnb.scene7.com/is/image/roomandboard/MHH_Liv_ES1021_0523?size=900,900&scl=1',
+  price: 8,
+  category: 'category 1',
+  id: '100',
+  description: 'description',
+};

@@ -9,15 +9,15 @@ import { useCartStore } from '@stores';
 describe('Testing for useCartStore', () => {
   it('should initialize with an empty carts array', () => {
     const { result } = renderHook(() => useCartStore());
-    expect(result.current.carts).toEqual([]);
+    expect(result.current.cart).toEqual([]);
   });
 
   it('should set carts correctly', () => {
     const { result } = renderHook(() => useCartStore());
 
-    result.current.setCarts(MOCK_CARTS);
+    result.current.setCart(MOCK_CARTS);
 
-    expect(result.current.carts).toEqual(MOCK_CARTS);
+    expect(result.current.cart).toEqual(MOCK_CARTS);
   });
 
   it('should set product correctly', () => {
@@ -25,6 +25,6 @@ describe('Testing for useCartStore', () => {
 
     result.current.deleteCart('1');
 
-    expect(result.current.carts).toEqual([MOCK_CARTS[1]]);
+    expect(result.current.cart).toEqual([MOCK_CARTS[1]]);
   });
 });

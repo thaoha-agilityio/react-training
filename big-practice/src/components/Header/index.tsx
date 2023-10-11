@@ -14,7 +14,7 @@ import Menu from '@components/Menu';
 import { useCartStore } from '@stores';
 
 const Header = () => {
-  const [carts] = useCartStore((state) => [state.carts, state.setCarts], shallow);
+  const [cart] = useCartStore((state) => [state.cart, state.setCart], shallow);
 
   return (
     <Box as='header'>
@@ -58,7 +58,7 @@ const Header = () => {
                   left='14px'
                   fontSize='xs'
                 >
-                  {carts.length}
+                  {cart.length}
                 </Box>
               </Link>
             </Box>

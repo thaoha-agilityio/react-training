@@ -22,7 +22,7 @@ describe('ShoppingCart component', () => {
 
   it('displays a message when the cart is empty', () => {
     jest.spyOn(stores, 'useCartStore').mockImplementation(() => ({
-      carts: [],
+      cart: [],
       deleteCart: jest.fn(),
     }));
 
@@ -33,7 +33,7 @@ describe('ShoppingCart component', () => {
 
   it('calculates and displays the total price', () => {
     jest.spyOn(stores, 'useCartStore').mockImplementation(() => ({
-      carts: MOCK_CARTS,
+      cart: MOCK_CARTS,
       deleteCart: jest.fn(),
     }));
 
@@ -45,7 +45,7 @@ describe('ShoppingCart component', () => {
 
   it('should deleteCart function is called', () => {
     jest.spyOn(stores, 'useCartStore').mockImplementation(() => ({
-      carts: MOCK_CARTS,
+      cart: MOCK_CARTS,
       deleteCart: jest.fn(),
     }));
 
