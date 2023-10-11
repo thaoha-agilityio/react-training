@@ -9,6 +9,7 @@ export const ROUTES = {
   SHOPPING_CART: '/shopping-cart',
 };
 
+// Define breadcrumbs data for navigation
 export const DATA_CRUMBS = [
   {
     title: 'Home',
@@ -20,7 +21,6 @@ export const DATA_CRUMBS = [
   },
 ];
 
-// Define breadcrumbs data for navigation
 export const ADD_PRODUCT_CRUMBS = [
   {
     title: 'Home',
@@ -43,7 +43,6 @@ export const CART_CRUMBS = [
   },
 ];
 
-// Define breadcrumbs data for navigation
 export const SHOP_CRUMBS = [
   {
     title: 'Home',
