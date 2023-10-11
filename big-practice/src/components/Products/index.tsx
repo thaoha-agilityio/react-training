@@ -11,8 +11,14 @@ import { IProduct } from '@types';
 
 // Stores
 import { useCartStore, useMessageStores } from '@stores';
-import { ROUTES, STATUSES, SUCCESS_MESSAGES } from '@constants';
+
+import { ROUTES, SUCCESS_MESSAGES } from '@constants';
+
+// Hooks
 import { useMutationDeleteProduct, useCustomToast } from '@hooks';
+
+// Constants
+import { STATUSES } from '@types';
 
 type ProductsProps = {
   products: IProduct[][];

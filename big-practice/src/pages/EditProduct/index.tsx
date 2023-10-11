@@ -10,7 +10,7 @@ import Form from '@components/Form';
 import PageLayout from '@layouts/PageLayout';
 
 // Constants
-import { DATA_CRUMBS, ROUTES, STATUSES, SUCCESS_MESSAGES } from '@constants';
+import { DATA_CRUMBS, ROUTES, SUCCESS_MESSAGES } from '@constants';
 
 // Hooks
 import { useFetchProductDetail, useMutationEditProduct } from '@hooks';
@@ -19,7 +19,7 @@ import { useFetchProductDetail, useMutationEditProduct } from '@hooks';
 import { useMessageStores } from '@stores';
 
 // Types
-import { IProduct } from '@types';
+import { IProduct, STATUSES } from '@types';
 import { useCustomToast } from '@hooks';
 
 const EditProduct = () => {

@@ -15,7 +15,10 @@ import PageLayout from '@layouts/PageLayout';
 import { useCartStore, useProductStore } from '@stores';
 
 // Constants
-import { STATUSES, SUCCESS_MESSAGES } from '@constants';
+import { SUCCESS_MESSAGES } from '@constants';
+
+// types
+import { STATUSES } from '@types';
 
 const ProductDetails = () => {
   // Get the 'uuid' parameter from the url
