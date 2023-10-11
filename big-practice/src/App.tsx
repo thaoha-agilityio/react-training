@@ -1,26 +1,51 @@
 import { BrowserRouter as Router, Route, Routes, RouteObject } from 'react-router-dom';
 import { Suspense } from 'react';
-import { Spinner } from '@chakra-ui/react';
+import { ChakraProvider, Spinner } from '@chakra-ui/react';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+// Fonts
+import Fonts from '@components/fonts';
 
 // Routes
 import { Routers } from '@routes';
+
+// Custom themes
+import CHAKRA_THEME from '@themes';
+
+// Components
+import { ErrorBoundary } from '@components';
 import MainLayout from '@layouts/MainLayout';
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
 const App = () => {
   return (
-    <Router>
-      <Routes>
-        <Route element={<MainLayout />}>
-          {Routers.map(({ path, element }: RouteObject) => (
-            <Route
-              key={path}
-              path={path}
-              element={<Suspense fallback={<Spinner />}>{element}</Suspense>}
-            />
-          ))}
-        </Route>
-      </Routes>
-    </Router>
+    <QueryClientProvider client={queryClient}>
+      <Fonts />
+      <ChakraProvider theme={CHAKRA_THEME}>
+        <ErrorBoundary fallback={<p>Something went wrong</p>}>
+          <Router>
+            <Routes>
+              <Route element={<MainLayout />}>
+                {Routers.map(({ path, element }: RouteObject) => (
+                  <Route
+                    key={path}
+                    path={path}
+                    element={<Suspense fallback={<Spinner />}>{element}</Suspense>}
+                  />
+                ))}
+              </Route>
+            </Routes>
+          </Router>
+        </ErrorBoundary>
+      </ChakraProvider>
+    </QueryClientProvider>
   );
 };
 

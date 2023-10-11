@@ -18,9 +18,8 @@ describe('Testing convertBase64', () => {
       expect((error as { message: string }).message).toBe('Unsupported result type');
     }
   });
-});
 
-describe('formatPrice', () => {
+  //  Testing formatPrice function
   it('should format a positive number to two decimal places', () => {
     const price = 10.12345;
     const formattedPrice = formatPrice(price);

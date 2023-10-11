@@ -1,5 +1,4 @@
 import { useMemo } from 'react';
-import { shallow } from 'zustand/shallow';
 import { Button, Flex, Stack, Text } from '@chakra-ui/react';
 
 // Components
@@ -22,7 +21,7 @@ import { ICart } from '@types';
 import { formatPrice } from '@helpers';
 
 const ShoppingCart = () => {
-  const [carts, deleteCart] = useCartStore((state) => [state.carts, state.deleteCart], shallow);
+  const { carts, deleteCart } = useCartStore();
 
   const getTotalPrice = useMemo(
     (): number =>
@@ -54,7 +53,7 @@ const ShoppingCart = () => {
               <Text>{NOTICE_MESSAGE}</Text>
             ) : (
               carts.map((cart: ICart) => (
-                <CartItem cart={cart} key={cart.id} onDeleteCart={() => deleteCart(cart.id)} />
+                <CartItem cart={cart} key={cart.id} onDeleteCart={deleteCart} />
               ))
             )}
           </Stack>

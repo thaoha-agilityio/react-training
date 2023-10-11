@@ -1,7 +1,7 @@
 import { act, fireEvent } from '@testing-library/react';
 
 //  Constants
-import { MOCK_PRODUCTS, ROUTES } from '@constants';
+import { MOCK_CARTS, MOCK_PRODUCTS, ROUTES } from '@constants';
 
 // Hooks
 import { renderWithRouterAndQuery } from '@helpers';
@@ -10,6 +10,14 @@ import { renderWithRouterAndQuery } from '@helpers';
 import { api } from '@services/APIRequest';
 
 import { Products } from '..';
+
+// Stores
+import * as stores from '@stores';
+
+jest.mock('@stores', () => ({
+  __esModule: true,
+  ...jest.requireActual('@stores'),
+}));
 
 // Mock the useNavigate hook
 const mockNavigate = jest.fn();
@@ -32,33 +40,33 @@ describe('Products Component', () => {
   });
 
   it('should navigates to detail page when a detail button is clicked', () => {
-    const { getByTestId } = renderWithRouterAndQuery(<Products products={[[MOCK_PRODUCTS[0]]]} />);
+    const { getAllByTestId } = renderWithRouterAndQuery(<Products products={[MOCK_PRODUCTS]} />);
 
-    const detailBtn = getByTestId('detail-btn');
-    fireEvent.click(detailBtn);
+    const detailBtn = getAllByTestId('detail-btn');
+    fireEvent.click(detailBtn[0]);
 
     expect(mockNavigate).toHaveBeenCalledWith(ROUTES.DETAIL_PRODUCT_PARAMS + MOCK_PRODUCTS[0].id);
   });
 
   it('should navigates to edit page when a edit button is clicked', () => {
-    const { getByTestId } = renderWithRouterAndQuery(<Products products={[[MOCK_PRODUCTS[0]]]} />);
+    const { getAllByTestId } = renderWithRouterAndQuery(<Products products={[MOCK_PRODUCTS]} />);
 
-    const editBtn = getByTestId('edit-btn');
-    fireEvent.click(editBtn);
+    const editBtn = getAllByTestId('edit-btn');
+    fireEvent.click(editBtn[0]);
 
     expect(mockNavigate).toHaveBeenCalledWith(ROUTES.EDIT_PRODUCT_PARAMS + MOCK_PRODUCTS[0].id);
   });
 
   it('should call handleDeleteItem success when delete button is clicked', async () => {
     jest.spyOn(api, 'deleteData').mockResolvedValue('1');
-    const { getByTestId, getByText } = renderWithRouterAndQuery(
-      <Products products={[[MOCK_PRODUCTS[0]]]} />,
+    const { getAllByTestId, getByText } = renderWithRouterAndQuery(
+      <Products products={[MOCK_PRODUCTS]} />,
     );
 
     act(() => {
       // Click deleteBtn
-      const deleteBtn = getByTestId('delete-btn');
-      fireEvent.click(deleteBtn);
+      const deleteBtn = getAllByTestId('delete-btn');
+      fireEvent.click(deleteBtn[0]);
     });
 
     act(() => {
@@ -87,14 +95,25 @@ describe('Products Component', () => {
   });
 
   it('should call handleAddToCart when add to cart button is clicked', async () => {
-    // jest.spyOn(stores, 'useCartStore').mockReturnValue({
-    //   carts: [],
-    // });
-    const { getByText } = renderWithRouterAndQuery(<Products products={[[MOCK_PRODUCTS[2]]]} />);
+    const { getAllByText } = renderWithRouterAndQuery(<Products products={[MOCK_PRODUCTS]} />);
     act(() => {
       // Click deleteBtn
-      const addToCartBtn = getByText('Add to cart');
-      fireEvent.click(addToCartBtn);
+      const addToCartBtn = getAllByText('Add to cart');
+      fireEvent.click(addToCartBtn[1]);
+    });
+  });
+
+  it('should update cart when existing product', async () => {
+    jest.spyOn(stores, 'useCartStore').mockImplementation(() => ({
+      carts: MOCK_CARTS,
+      setCarts: jest.fn(),
+    }));
+
+    const { getAllByText } = renderWithRouterAndQuery(<Products products={[MOCK_PRODUCTS]} />);
+    act(() => {
+      // Click deleteBtn
+      const addToCartBtn = getAllByText('Add to cart');
+      fireEvent.click(addToCartBtn[0]);
     });
   });
 });

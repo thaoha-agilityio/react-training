@@ -1,6 +1,5 @@
 import { useNavigate } from 'react-router-dom';
 import { memo, useCallback } from 'react';
-import { shallow } from 'zustand/shallow';
 
 import { Flex } from '@chakra-ui/react';
 
@@ -20,8 +19,7 @@ type ProductsProps = {
 };
 
 export const Products = memo(({ products }: ProductsProps) => {
-  const [carts, setCarts] = useCartStore((state) => [state.carts, state.setCarts], shallow);
-
+  const { carts, setCarts } = useCartStore();
   const { showToast } = useCustomToast();
 
   // Initialize navigate function
@@ -92,10 +90,10 @@ export const Products = memo(({ products }: ProductsProps) => {
               isLoading={isLoading}
               key={product.id}
               item={product}
-              onDeleteItem={() => handleDeleteItem(product.id)}
-              onShowDetailItem={() => handleShowDetail(product.id)}
-              onEditItem={() => handleShowEditForm(product.id)}
-              onAddToCart={() => handleAddToCart(product)}
+              onDeleteItem={handleDeleteItem}
+              onShowDetailItem={handleShowDetail}
+              onEditItem={handleShowEditForm}
+              onAddToCart={handleAddToCart}
             />
           ))}
         </Flex>
