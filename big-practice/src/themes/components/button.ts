@@ -48,7 +48,7 @@ const buttonTheme = {
     },
 
     unstyled: {
-      fontSize: { base: 'xs', md: 'sm' },
+      fontSize: { base: '11px', md: 'sm' },
     },
 
     pagination: {

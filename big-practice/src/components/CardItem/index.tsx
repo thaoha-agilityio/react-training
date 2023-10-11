@@ -68,20 +68,24 @@ const CardItem = memo(
             <Flex
               zIndex={9}
               pos='absolute'
-              top='160px'
-              right='20px'
+              top={{ base: '120px', md: '160px' }}
+              right={{ base: '6px', md: '10px' }}
               _groupHover={{ display: 'flex' }}
               display='none'
               flexDir='column'
               alignItems='center'
               gap='10px'
             >
-              <Button w='202px' h='48px' onClick={handleAddToCart}>
+              <Button
+                w={{ base: '120', md: '202px' }}
+                h={{ base: '30px', md: '48px' }}
+                onClick={handleAddToCart}
+              >
                 Add to cart
               </Button>
 
               <Flex gap='35px' zIndex={50} justifyContent='center'>
-                <Flex alignItems='baseline' gap={'20px'}>
+                <Flex alignItems='baseline' gap={{ base: '10px', md: '35px' }}>
                   <Button
                     leftIcon={<DeleteIcon />}
                     color='white'
