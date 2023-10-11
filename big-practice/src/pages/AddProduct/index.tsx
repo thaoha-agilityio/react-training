@@ -5,7 +5,7 @@ import { useCallback } from 'react';
 import PageLayout from '@layouts/PageLayout';
 
 // Constants
-import { ADD_PRODUCT_CRUMBS, MENU, ROUTES, STATUSES, SUCCESS_MESSAGES } from '@constants';
+import { ADD_PRODUCT_CRUMBS, MENU, ROUTES, SUCCESS_MESSAGES } from '@constants';
 
 // Hooks
 import { useCustomToast, useMutationPostProduct } from '@hooks';
@@ -14,7 +14,7 @@ import { useCustomToast, useMutationPostProduct } from '@hooks';
 import { useMessageStores } from '@stores';
 
 // Types
-import { IProduct } from '@types';
+import { IProduct, STATUSES } from '@types';
 
 // Components
 import Banner from '@components/Banner';
