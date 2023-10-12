@@ -46,20 +46,23 @@ const Header = () => {
             <Box pos='relative'>
               <Link to={ROUTES.SHOPPING_CART}>
                 <ShoppingCartIcon />
-                <Box
-                  pos='absolute'
-                  color='gray.600'
-                  bg='yellow.250'
-                  rounded='50%'
-                  w='20px'
-                  h='19px'
-                  textAlign='center'
-                  top='15px'
-                  left='14px'
-                  fontSize='xs'
-                >
-                  {cart.length}
-                </Box>
+
+                {cart.length > 0 && (
+                  <Box
+                    pos='absolute'
+                    color='gray.600'
+                    bg='yellow.250'
+                    rounded='50%'
+                    w='20px'
+                    h='19px'
+                    textAlign='center'
+                    top='15px'
+                    left='14px'
+                    fontSize='xs'
+                  >
+                    {cart.length}
+                  </Box>
+                )}
               </Link>
             </Box>
           </HStack>
