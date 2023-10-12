@@ -1,25 +1,99 @@
-import { Button, Container, Flex, Spinner, Stack, Text } from '@chakra-ui/react';
-import { Products } from '@components';
+import { useCallback, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Button, Container, Flex, Spinner, Stack, Text, useDisclosure } from '@chakra-ui/react';
+
+import { ConfirmModal, Products } from '@components';
 
 // Components
 import Banner from '@components/Banner';
 
 // Constants
-import { LIMIT_PRODUCTS, SHOP_CRUMBS } from '@constants';
+import { LIMIT_PRODUCTS, SHOP_CRUMBS, ROUTES, SUCCESS_MESSAGES } from '@constants';
 
 // Hooks
-import { useInfiniteProducts } from '@hooks';
+import { useInfiniteProducts, useMutationDeleteProduct, useCustomToast } from '@hooks';
+
+// Stores
+import { useCartStore, useMessageStores } from '@stores';
+
+// Constants
+import { IProduct, STATUSES } from '@types';
 
 const Shop = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [selectedId, setSelectedId] = useState('');
+
   const {
     data: products,
     fetchNextPage,
     hasNextPage,
-    isLoading,
+    isLoading: isLoadingProduct,
     isError,
     error,
     isFetchingNextPage,
   } = useInfiniteProducts(LIMIT_PRODUCTS);
+
+  const { cart, setCart } = useCartStore();
+  const { showToast } = useCustomToast();
+
+  // Initialize navigate function
+  const navigate = useNavigate();
+
+  // Get the mutate from useMutationDeleteProduct hook
+  const { mutate: deleteProduct, isLoading: isLoadingSubmit } = useMutationDeleteProduct();
+
+  // Get message from store
+  const { setErrorMessage } = useMessageStores();
+
+  const handleOpen = useCallback(
+    (id: string) => {
+      onOpen();
+      setSelectedId(id);
+    },
+    [onOpen],
+  );
+
+  // handle Delete Item
+  const handleDeleteItem = useCallback(() => {
+    return deleteProduct(selectedId, {
+      onError: (error) => {
+        setErrorMessage(error.message);
+      },
+      onSuccess: () => {
+        onClose();
+        showToast(STATUSES.SUCCESS, SUCCESS_MESSAGES.DELETED);
+      },
+    });
+  }, [deleteProduct, selectedId, setErrorMessage, showToast]);
+
+  // Handle navigate to detail page
+  const handleShowDetail = useCallback((id: string) => {
+    navigate(ROUTES.DETAIL_PRODUCT_PARAMS + id);
+  }, []);
+
+  // Handle navigate to edit page
+  const handleShowEditForm = useCallback((id: string) => {
+    navigate(ROUTES.EDIT_PRODUCT_PARAMS + id);
+  }, []);
+
+  // Handle add product to cart
+  const handleAddToCart = useCallback(
+    (product: IProduct) => {
+      const existedProductIndex = cart?.findIndex((cart) => cart.id === product.id);
+
+      if (existedProductIndex !== -1) {
+        const newCarts = [...cart];
+        newCarts[existedProductIndex].quantity += 1;
+
+        setCart(newCarts);
+      } else {
+        setCart([...cart, { ...product, quantity: 1 }]);
+      }
+
+      showToast(STATUSES.SUCCESS, SUCCESS_MESSAGES.ADD_TO_CART);
+    },
+    [cart],
+  );
 
   return (
     <>
@@ -31,9 +105,15 @@ const Shop = () => {
           ) : (
             <>
               {/* TODO: update latter */}
-              <Products products={products} />
+              <Products
+                products={products}
+                onAddToCart={handleAddToCart}
+                onShowDetailItem={handleShowDetail}
+                onEditItem={handleShowEditForm}
+                onOpen={handleOpen}
+              />
 
-              {isLoading && <Spinner />}
+              {isLoadingProduct && <Spinner />}
               {hasNextPage && (
                 <Flex justifyContent='center'>
                   <Button
@@ -51,6 +131,16 @@ const Shop = () => {
           )}
         </Stack>
       </Container>
+      <ConfirmModal
+        isOpen={isOpen}
+        title='Delete Confirmation'
+        textCancel='Cancel'
+        textSubmit='Yes, Delete'
+        text='Are you sure you want to delete this item?'
+        onClose={onClose}
+        onSubmit={handleDeleteItem}
+        isLoading={isLoadingSubmit}
+      />
     </>
   );
 };
