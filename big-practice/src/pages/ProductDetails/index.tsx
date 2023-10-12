@@ -4,12 +4,10 @@ import { Box, Spinner } from '@chakra-ui/react';
 
 // Components
 import CardDetails from '@components/CardDetails';
+import Container from '@components/Container';
 
 // Hooks
 import { useCustomToast, useFetchProductDetail } from '@hooks';
-
-// Layouts
-import PageLayout from '@layouts/PageLayout';
 
 // Stores
 import { useCartStore, useProductStore } from '@stores';
@@ -69,7 +67,7 @@ const ProductDetails = () => {
   return (
     <>
       <Box bg='yellow.150' w='full' h='100px'></Box>
-      <PageLayout>
+      <Container>
         {isFetching ? (
           <Box textAlign='center' pt='20px'>
             <Spinner variant='secondary' />
@@ -83,7 +81,7 @@ const ProductDetails = () => {
             count={count}
           />
         )}
-      </PageLayout>
+      </Container>
     </>
   );
 };

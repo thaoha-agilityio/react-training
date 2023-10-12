@@ -5,9 +5,7 @@ import { Box, Spinner } from '@chakra-ui/react';
 // Components
 import Banner from '@components/Banner';
 import Form from '@components/Form';
-
-// Layouts
-import PageLayout from '@layouts/PageLayout';
+import Container from '@components/Container';
 
 // Constants
 import { DATA_CRUMBS, ROUTES, SUCCESS_MESSAGES } from '@constants';
@@ -69,7 +67,7 @@ const EditProduct = () => {
   return (
     <>
       <Banner title='Edit Product' crumbs={DATA_CRUMBS} />
-      <PageLayout>
+      <Container>
         <Box as='main' pt='30px'>
           {isFetching ? (
             <Box textAlign='center'>
@@ -85,7 +83,7 @@ const EditProduct = () => {
             />
           )}
         </Box>
-      </PageLayout>
+      </Container>
     </>
   );
 };

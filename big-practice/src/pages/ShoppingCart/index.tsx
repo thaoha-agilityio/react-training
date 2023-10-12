@@ -6,7 +6,7 @@ import Banner from '@components/Banner';
 import CartItem from '@components/CartItem';
 
 // Layout
-import PageLayout from '@layouts/PageLayout';
+import Container from '@components/Container';
 
 // Constants
 import { CART_CRUMBS, NOTICE_MESSAGE } from '@constants';
@@ -32,7 +32,7 @@ const ShoppingCart = () => {
   return (
     <>
       <Banner title='Cart' crumbs={CART_CRUMBS} />
-      <PageLayout>
+      <Container>
         <Flex justifyContent='space-between' py='30px' wrap='wrap'>
           <Stack spacing='50px'>
             <Flex
@@ -82,7 +82,7 @@ const ShoppingCart = () => {
             </Button>
           </Stack>
         </Flex>
-      </PageLayout>
+      </Container>
     </>
   );
 };

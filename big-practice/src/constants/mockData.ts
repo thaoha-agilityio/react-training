@@ -1,3 +1,5 @@
+import { createId } from '@helpers';
+
 export const INITIAL_PRODUCT = {
   id: '',
   name: '',
@@ -20,7 +22,7 @@ export const MOCK_PRODUCTS = [
     image: 'https://rnb.scene7.com/is/image/roomandboard/MHH_Liv_ES1021_0523?size=900,900&scl=1',
     price: 8,
     category: 'category 1',
-    id: '1',
+    id: createId(),
     description: 'description',
   },
   {
@@ -39,14 +41,14 @@ export const MOCK_PRODUCTS = [
     price: 15,
     category: 'category 3',
     description: 'description',
-    id: '3',
+    id: createId(),
   },
   {
     name: 'name 1',
     image: 'https://rnb.scene7.com/is/image/roomandboard/MHH_Liv_ES1021_0523?size=900,900&scl=1',
     price: 8,
     category: 'category 1',
-    id: '4',
+    id: createId(),
     description: 'description',
   },
   {
@@ -55,7 +57,7 @@ export const MOCK_PRODUCTS = [
       'https://assets.weimgs.com/weimgs/rk/images/wcm/products/202338/0005/eddy-sofa-60-94-q.jpg',
     price: 100,
     category: 'category 2',
-    id: '5',
+    id: createId(),
     description: 'description',
   },
   {
@@ -65,14 +67,14 @@ export const MOCK_PRODUCTS = [
     price: 15,
     category: 'category 3',
     description: 'description',
-    id: '6',
+    id: createId(),
   },
   {
     name: 'name 1',
     image: 'https://rnb.scene7.com/is/image/roomandboard/MHH_Liv_ES1021_0523?size=900,900&scl=1',
     price: 8,
     category: 'category 1',
-    id: '1',
+    id: createId(),
     description: 'description',
   },
   {
@@ -91,14 +93,14 @@ export const MOCK_PRODUCTS = [
     price: 15,
     category: 'category 3',
     description: 'description',
-    id: '8',
+    id: createId(),
   },
   {
     name: 'name 1',
     image: 'https://rnb.scene7.com/is/image/roomandboard/MHH_Liv_ES1021_0523?size=900,900&scl=1',
     price: 8,
     category: 'category 1',
-    id: '1',
+    id: createId(),
     description: 'description',
   },
   {
