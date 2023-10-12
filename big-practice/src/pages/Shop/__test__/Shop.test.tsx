@@ -1,4 +1,5 @@
-import { act, fireEvent } from '@testing-library/react';
+import { useDisclosure } from '@chakra-ui/react';
+import { act, fireEvent, renderHook } from '@testing-library/react';
 
 //  Constants
 import { MOCK_CARTS, MOCK_PRODUCTS, ROUTES } from '@constants';
@@ -121,11 +122,26 @@ describe('Shop component', () => {
       setCart: jest.fn(),
     }));
 
-    const { getAllByText } = renderWithRouterAndQuery(<Shop />);
+    const { getAllByText, getByText } = renderWithRouterAndQuery(<Shop />);
     act(() => {
       // Click deleteBtn
       const addToCartBtn = getAllByText('Add to cart');
       fireEvent.click(addToCartBtn[1]);
     });
+
+    const showMoreBtn = getByText('Show More');
+    fireEvent.click(showMoreBtn);
+  });
+
+  it('should render ConfirmModal component', () => {
+    const { result } = renderHook(() => useDisclosure());
+    const { getAllByTestId, getByText } = renderWithRouterAndQuery(<Shop />);
+
+    const deleteBtn = getAllByTestId('delete-btn');
+    fireEvent.click(deleteBtn[0]);
+    expect(result.current.onOpen).toBeTruthy();
+
+    const cancelBtn = getByText('Cancel');
+    fireEvent.click(cancelBtn);
   });
 });

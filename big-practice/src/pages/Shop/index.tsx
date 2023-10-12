@@ -107,6 +107,7 @@ const Shop = () => {
               {/* TODO: update latter */}
               <Products
                 products={products}
+                isAction
                 onAddToCart={handleAddToCart}
                 onShowDetailItem={handleShowDetail}
                 onEditItem={handleShowEditForm}
