@@ -1,5 +1,4 @@
-import { fireEvent, render, renderHook } from '@testing-library/react';
-import { useDisclosure } from '@chakra-ui/react';
+import { fireEvent, render } from '@testing-library/react';
 
 //  Constants
 import { MOCK_PRODUCTS } from '@constants';
@@ -8,8 +7,7 @@ import CardItem from '../index';
 
 const mockProps = {
   item: MOCK_PRODUCTS[1],
-  isLoading: false,
-  onDeleteItem: jest.fn(),
+  onOpen: jest.fn(),
   onEditItem: jest.fn(),
   onShowDetailItem: jest.fn(),
   onAddToCart: jest.fn(),
@@ -29,7 +27,9 @@ describe('CardItem Component', () => {
   it('should call functions when button is clicked', () => {
     const { getByTestId, getByText } = render(<CardItem {...mockProps} />);
 
-    expect(getByTestId('delete-btn')).toBeInTheDocument();
+    const deleteBtn = getByTestId('delete-btn');
+    fireEvent.click(deleteBtn);
+    expect(mockProps.onOpen).toHaveBeenCalled();
 
     // onEditItem was called
     const editBtn = getByTestId('edit-btn');
@@ -45,17 +45,5 @@ describe('CardItem Component', () => {
     const addToCartBtn = getByText('Add to cart');
     fireEvent.click(addToCartBtn);
     expect(mockProps.onAddToCart).toHaveBeenCalled();
-  });
-
-  it('should ConfirmModal component', () => {
-    const { result } = renderHook(() => useDisclosure());
-    const { getByTestId, getByText } = render(<CardItem {...mockProps} />);
-
-    const deleteBtn = getByTestId('delete-btn');
-    fireEvent.click(deleteBtn);
-    expect(result.current.onOpen).toBeTruthy();
-
-    const cancelBtn = getByText('Cancel');
-    fireEvent.click(cancelBtn);
   });
 });
