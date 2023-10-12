@@ -9,18 +9,16 @@ import { IProduct } from '@types';
 
 type CardDetailProps = {
   card: IProduct;
-  count: number;
+  initialCount: number;
   onAddToCart: () => void;
-  onIncreaseProduct: () => void;
-  onDecreaseProduct: () => void;
+  onQuantityChange: (qty: number) => void;
 };
 
 const CardDetails = ({
   card: { name, description, price, image, category },
-  count,
+  initialCount,
   onAddToCart,
-  onIncreaseProduct,
-  onDecreaseProduct,
+  onQuantityChange,
 }: CardDetailProps) => {
   return (
     <Box as='main' py='35px'>
@@ -37,11 +35,7 @@ const CardDetails = ({
           </Text>
           <Text fontSize='tiny'>{description}</Text>
           <Flex justifyContent='space-between' gap='10px' alignContent='baseline'>
-            <Quantity
-              onDecreaseProduct={onDecreaseProduct}
-              onIncreaseProduct={onIncreaseProduct}
-              count={count}
-            />
+            <Quantity onQuantityChange={onQuantityChange} initialCount={initialCount} />
             <Button variant='colorPrimary' onClick={onAddToCart}>
               Add To Cart
             </Button>
