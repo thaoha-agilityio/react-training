@@ -2,10 +2,10 @@ import { useNavigate } from 'react-router-dom';
 import { useCallback } from 'react';
 
 // Layouts
-import PageLayout from '@layouts/PageLayout';
+import Container from '@components/Container';
 
 // Constants
-import { ADD_PRODUCT_CRUMBS, MENU, ROUTES, STATUSES, SUCCESS_MESSAGES } from '@constants';
+import { ADD_PRODUCT_CRUMBS, MENU, ROUTES, SUCCESS_MESSAGES } from '@constants';
 
 // Hooks
 import { useCustomToast, useMutationPostProduct } from '@hooks';
@@ -14,7 +14,7 @@ import { useCustomToast, useMutationPostProduct } from '@hooks';
 import { useMessageStores } from '@stores';
 
 // Types
-import { IProduct } from '@types';
+import { IProduct, STATUSES } from '@types';
 
 // Components
 import Banner from '@components/Banner';
@@ -61,9 +61,9 @@ const AddProduct = () => {
   return (
     <>
       <Banner title='Add Product' crumbs={ADD_PRODUCT_CRUMBS} />
-      <PageLayout>
+      <Container>
         <Form isLoading={isLoading} title={MENU[2].title} onSubmitProduct={handleAddProduct} />
-      </PageLayout>
+      </Container>
     </>
   );
 };

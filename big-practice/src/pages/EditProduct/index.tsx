@@ -5,12 +5,10 @@ import { Box, Spinner } from '@chakra-ui/react';
 // Components
 import Banner from '@components/Banner';
 import Form from '@components/Form';
-
-// Layouts
-import PageLayout from '@layouts/PageLayout';
+import Container from '@components/Container';
 
 // Constants
-import { DATA_CRUMBS, ROUTES, STATUSES, SUCCESS_MESSAGES } from '@constants';
+import { DATA_CRUMBS, ROUTES, SUCCESS_MESSAGES } from '@constants';
 
 // Hooks
 import { useFetchProductDetail, useMutationEditProduct } from '@hooks';
@@ -19,7 +17,7 @@ import { useFetchProductDetail, useMutationEditProduct } from '@hooks';
 import { useMessageStores } from '@stores';
 
 // Types
-import { IProduct } from '@types';
+import { IProduct, STATUSES } from '@types';
 import { useCustomToast } from '@hooks';
 
 const EditProduct = () => {
@@ -69,7 +67,7 @@ const EditProduct = () => {
   return (
     <>
       <Banner title='Edit Product' crumbs={DATA_CRUMBS} />
-      <PageLayout>
+      <Container>
         <Box as='main' pt='30px'>
           {isFetching ? (
             <Box textAlign='center'>
@@ -85,7 +83,7 @@ const EditProduct = () => {
             />
           )}
         </Box>
-      </PageLayout>
+      </Container>
     </>
   );
 };

@@ -4,18 +4,19 @@ import { Box, Spinner } from '@chakra-ui/react';
 
 // Components
 import CardDetails from '@components/CardDetails';
+import Container from '@components/Container';
 
 // Hooks
 import { useCustomToast, useFetchProductDetail } from '@hooks';
-
-// Layouts
-import PageLayout from '@layouts/PageLayout';
 
 // Stores
 import { useCartStore, useProductStore } from '@stores';
 
 // Constants
-import { STATUSES, SUCCESS_MESSAGES } from '@constants';
+import { SUCCESS_MESSAGES } from '@constants';
+
+// types
+import { STATUSES } from '@types';
 
 const ProductDetails = () => {
   // Get the 'uuid' parameter from the url
@@ -28,22 +29,14 @@ const ProductDetails = () => {
   const { isFetching } = useFetchProductDetail(uuid);
 
   // Get carts from carts store
-  // const [carts, setCarts] = useCartStore((state) => [state.cart, state.setCart], shallow);
   const { cart, setCart } = useCartStore();
 
   const product = useProductStore((state) => state.product);
+
   const [count, setCount] = useState<number>(1);
 
-  // handle Decrease Product
-  const handleDecreaseProduct = useCallback(() => {
-    if (count <= 1) return;
-    setCount((prev) => prev - 1);
-  }, [count]);
-
-  // handle Increase Product
-
-  const handleIncreaseProduct = useCallback(() => {
-    setCount((prev) => prev + 1);
+  const handleChangeQuantity = useCallback((qty: number) => {
+    setCount(qty);
   }, []);
 
   // Handle add product to cart
@@ -61,12 +54,12 @@ const ProductDetails = () => {
     }
 
     showToast(STATUSES.SUCCESS, SUCCESS_MESSAGES.ADD_TO_CART);
-  }, [cart, uuid, count]);
+  }, [cart, count, setCart, uuid]);
 
   return (
     <>
       <Box bg='yellow.150' w='full' h='100px'></Box>
-      <PageLayout>
+      <Container>
         {isFetching ? (
           <Box textAlign='center' pt='20px'>
             <Spinner variant='secondary' />
@@ -75,12 +68,11 @@ const ProductDetails = () => {
           <CardDetails
             card={product}
             onAddToCart={handleAddToCart}
-            onDecreaseProduct={handleDecreaseProduct}
-            onIncreaseProduct={handleIncreaseProduct}
-            count={count}
+            initialCount={count}
+            onQuantityChange={handleChangeQuantity}
           />
         )}
-      </PageLayout>
+      </Container>
     </>
   );
 };

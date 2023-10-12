@@ -1,7 +1,7 @@
 import { renderHook } from '@testing-library/react-hooks';
 
-// const
-import { STATUSES } from '@constants';
+// types
+import { STATUSES } from '@types';
 
 import { useCustomToast } from '../useCustomToast';
 

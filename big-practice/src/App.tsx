@@ -4,7 +4,7 @@ import { ChakraProvider, Spinner } from '@chakra-ui/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 // Fonts
-import Fonts from '@components/fonts';
+import Fonts from '@themes/components/fonts';
 
 // Routes
 import { Routers } from '@routes';

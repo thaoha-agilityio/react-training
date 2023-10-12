@@ -21,3 +21,7 @@ export const convertBase64 = (file: File): Promise<string | null> => {
 
 // formats this number using fixed-point notation.
 export const formatPrice = (price: number) => price.toFixed(2);
+
+export const createId = (): string => {
+  return new Date().getTime().toString();
+};

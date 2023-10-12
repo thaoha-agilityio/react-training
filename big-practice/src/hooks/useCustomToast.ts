@@ -1,7 +1,7 @@
 import { useToast, UseToastOptions } from '@chakra-ui/react';
 
-// constants
-import { STATUSES } from '@constants';
+// types
+import { STATUSES } from '@types';
 
 type CustomToastHook = {
   showToast: (status: STATUSES, message: string, options?: UseToastOptions) => void;

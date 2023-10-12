@@ -1,4 +1,4 @@
-import { convertBase64, formatPrice } from '@helpers';
+import { convertBase64, createId, formatPrice } from '@helpers';
 
 describe('Testing convertBase64', () => {
   it('Should resolve with a base64 url when given a valid file', async () => {
@@ -30,5 +30,11 @@ describe('Testing convertBase64', () => {
     const price = -5.6789;
     const formattedPrice = formatPrice(price);
     expect(formattedPrice).toBe('-5.68');
+  });
+
+  // Testing create id
+  it('should return a string', () => {
+    const id = createId();
+    expect(typeof id).toBe('string');
   });
 });

@@ -1,15 +1,15 @@
-import PageLayout from '@layouts/PageLayout';
+import Container from '@components/Container';
 import { Hero, BrowTheRange, Adverse, OurProducts } from './components';
 
 const Home = () => {
   return (
     <>
       <Hero />
-      <PageLayout>
+      <Container>
         <BrowTheRange />
         <OurProducts />
         <Adverse />
-      </PageLayout>
+      </Container>
     </>
   );
 };
