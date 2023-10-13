@@ -8,51 +8,55 @@ import {
   Heading,
   Text,
   Stack,
-  useDisclosure,
   Button,
   Box,
 } from '@chakra-ui/react';
 import { DeleteIcon, EditIcon, InfoIcon } from '@chakra-ui/icons';
-import ConfirmModal from '@components/ConfirmModal';
 
 // Types
 import { IProduct } from '@types';
 
 type CardItemProps = {
   item: IProduct;
-  isLoading?: boolean;
-  onDeleteItem: (id: string) => void;
+  isAction?: boolean;
   onEditItem: (id: string) => void;
   onShowDetailItem: (id: string) => void;
   onAddToCart: (product: IProduct) => void;
+  onOpen: (id: string) => void;
 };
 
-const CardItem = memo(
-  ({ item, onAddToCart, onDeleteItem, onEditItem, onShowDetailItem, isLoading }: CardItemProps) => {
-    const { id, name, description, price, image } = item;
-    const { isOpen, onOpen, onClose } = useDisclosure();
+const CardItem = ({
+  item,
+  onAddToCart,
+  onEditItem,
+  onShowDetailItem,
+  onOpen,
+  isAction,
+}: CardItemProps) => {
+  const { id, name, description, price, image } = item;
 
-    const handleDeleteItem = useCallback(() => {
-      onDeleteItem(id);
-    }, [id, onDeleteItem]);
+  const handleOpen = useCallback(() => {
+    onOpen(id);
+  }, [id]);
 
-    const handleAddToCart = useCallback(() => {
-      onAddToCart(item);
-    }, [item, onAddToCart]);
+  const handleAddToCart = useCallback(() => {
+    onAddToCart(item);
+  }, [item]);
 
-    const handleShowDetail = useCallback(() => {
-      onShowDetailItem(id);
-    }, [id, onShowDetailItem]);
+  const handleShowDetail = useCallback(() => {
+    onShowDetailItem(id);
+  }, [id]);
 
-    const handleShowEditForm = useCallback(() => {
-      onEditItem(id);
-    }, [id, onEditItem]);
+  const handleShowEditForm = useCallback(() => {
+    onEditItem(id);
+  }, [id]);
 
-    return (
-      <Flex pos='relative'>
-        <Card>
-          <CardBody role='group'>
-            <Image src={image} alt='card-item' />
+  return (
+    <Flex pos='relative'>
+      <Card>
+        <CardBody role='group'>
+          <Image src={image} alt='card-item' />
+          <Box display={isAction ? 'block' : 'none'}>
             <Box
               zIndex={1}
               pos='absolute'
@@ -91,7 +95,7 @@ const CardItem = memo(
                     color='white'
                     data-testid='delete-btn'
                     variant='unstyled'
-                    onClick={onOpen}
+                    onClick={handleOpen}
                   >
                     Delete
                   </Button>
@@ -118,36 +122,26 @@ const CardItem = memo(
                 </Flex>
               </Flex>
             </Flex>
-          </CardBody>
-          <CardFooter>
-            <Stack spacing='8px' maxW={{ base: '160px', md: '260px' }}>
-              <Heading fontSize={{ base: 'base', md: 'lg' }}>{name}</Heading>
-              <Text
-                color='gray.150'
-                fontWeight='medium'
-                overflow='hidden'
-                whiteSpace='nowrap'
-                textOverflow='ellipsis'
-              >
-                {description}
-              </Text>
-              <Text fontSize={{ base: 'tiny', md: 'md' }}>Rp {price}</Text>
-            </Stack>
-          </CardFooter>
-        </Card>
-        <ConfirmModal
-          isOpen={isOpen}
-          title='Delete Confirmation'
-          textCancel='Cancel'
-          textSubmit='Yes, Delete'
-          text='Are you sure you want to delete this item?'
-          onClose={onClose}
-          onSubmit={handleDeleteItem}
-          isLoading={isLoading}
-        />
-      </Flex>
-    );
-  },
-);
+          </Box>
+        </CardBody>
+        <CardFooter>
+          <Stack spacing='8px' maxW={{ base: '160px', md: '260px' }}>
+            <Heading fontSize={{ base: 'base', md: 'lg' }}>{name}</Heading>
+            <Text
+              color='gray.150'
+              fontWeight='medium'
+              overflow='hidden'
+              whiteSpace='nowrap'
+              textOverflow='ellipsis'
+            >
+              {description}
+            </Text>
+            <Text fontSize={{ base: 'tiny', md: 'md' }}>Rp {price}</Text>
+          </Stack>
+        </CardFooter>
+      </Card>
+    </Flex>
+  );
+};
 
 export default memo(CardItem);

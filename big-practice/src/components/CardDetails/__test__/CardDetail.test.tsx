@@ -6,10 +6,9 @@ import CardDetails from '../index';
 
 const mockProps = {
   card: MOCK_PRODUCTS[0],
-  count: 2,
+  initialCount: 2,
   onAddToCart: jest.fn(),
-  onIncreaseProduct: jest.fn(),
-  onDecreaseProduct: jest.fn(),
+  onQuantityChange: jest.fn(),
 };
 
 describe('CardDetails component', () => {
@@ -32,6 +31,4 @@ describe('CardDetails component', () => {
     // Verify that onAddToCart was called
     expect(mockProps.onAddToCart).toHaveBeenCalled();
   });
-
-  // You can add more test cases as needed
 });
