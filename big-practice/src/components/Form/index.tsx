@@ -41,7 +41,11 @@ const Form = ({ isLoading, title, onSubmitProduct, product }: FormProps) => {
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm<FormInput>({ defaultValues: { ...product, image: [] }, mode: 'onSubmit' });
+  } = useForm<FormInput>({
+    defaultValues: { ...product, image: [] },
+    mode: 'onSubmit',
+    reValidateMode: 'onSubmit',
+  });
 
   // Validate
   const schema = useMemo(

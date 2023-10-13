@@ -11,10 +11,10 @@ import { IProduct } from '@types';
 type ProductsProps = {
   products: IProduct[][];
   isAction?: boolean;
-  onOpen: (id: string) => void;
-  onEditItem: (id: string) => void;
-  onShowDetailItem: (id: string) => void;
-  onAddToCart: (product: IProduct) => void;
+  onOpen?: (id: string) => void;
+  onEditItem?: (id: string) => void;
+  onShowDetailItem?: (id: string) => void;
+  onAddToCart?: (product: IProduct) => void;
 };
 
 export const Products = memo(
