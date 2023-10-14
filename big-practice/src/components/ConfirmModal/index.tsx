@@ -40,7 +40,6 @@ const ConfirmModal = ({
       <ModalBody>
         <Text variant='primary'>{text}</Text>
       </ModalBody>
-
       <ModalFooter>
         <Button mr={3} onClick={onClose} rounded='xs'>
           {textCancel}

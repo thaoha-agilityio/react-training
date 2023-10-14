@@ -1,3 +1,4 @@
+import { shallow } from 'zustand/shallow';
 import { memo, useCallback, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Box, Spinner } from '@chakra-ui/react';
@@ -17,9 +18,8 @@ import { SUCCESS_MESSAGES } from '@constants';
 
 // types
 import { STATUSES } from '@types';
-import { shallow } from 'zustand/shallow';
 
-const ProductDetails = () => {
+const ProductDetails = (): JSX.Element => {
   // Get the 'uuid' parameter from the url
   const { uuid = '' } = useParams();
 
@@ -40,7 +40,6 @@ const ProductDetails = () => {
     setCount(qty);
   }, []);
   const [cart, setCart] = useCartStore((state) => [state.cart, state.setCart], shallow);
-  console.log('product detail');
 
   // Handle add product to cart
   const handleAddToCart = useCallback(() => {

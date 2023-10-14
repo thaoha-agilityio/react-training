@@ -15,7 +15,7 @@ type BannerProps = {
   crumbs: IMenuItem[];
 };
 
-const Banner = ({ title, crumbs }: BannerProps) => {
+const Banner = ({ title, crumbs }: BannerProps): JSX.Element => {
   const renderBreadcrumbItem = useMemo(
     (): JSX.Element[] =>
       crumbs.map<JSX.Element>((crumb, index, { length }) => {

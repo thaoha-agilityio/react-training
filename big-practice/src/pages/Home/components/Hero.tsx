@@ -4,7 +4,7 @@ import { Box, Button, Heading, Text } from '@chakra-ui/react';
 import hero from '@assets/photos/hero.png';
 import heroWepb from '@assets/photos/hero.webp';
 
-export const Hero = () => (
+export const Hero = (): JSX.Element => (
   <Box as='section' pos='relative' h={{ base: '500px', md: '1070px' }}>
     <Box
       bgImage={[`url(${hero})`, `url(${heroWepb})`]}
@@ -45,19 +45,19 @@ export const Hero = () => (
           discover our new collection
         </Heading>
         <Text
+          variant='primary'
           fontWeight='bold'
           lineHeight='sm'
           pt='17px'
           py={{ base: '10px', md: '36px' }}
-          fontSize={{ base: 'xs', md: 'base' }}
         >
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec
           ullamcorper mattis.
         </Text>
         <Button
+          variant='solid'
           textTransform='uppercase'
           fontWeight='bolder'
-          variant='solid'
           w={{ base: '100px', md: '222px' }}
           h={{ base: '30px', md: '74px' }}
           fontSize={{ base: 'tiny', md: 'base' }}

@@ -21,7 +21,7 @@ import { ICart } from '@types';
 // Helper
 import { formatPrice } from '@helpers';
 
-const ShoppingCart = () => {
+const ShoppingCart = (): JSX.Element => {
   // Initialize isOpen, onOpen, and onClose from useDisclosure
   const { isOpen, onOpen, onClose } = useDisclosure();
 

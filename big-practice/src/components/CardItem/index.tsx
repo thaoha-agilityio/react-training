@@ -28,12 +28,12 @@ type CardItemProps = {
 
 const CardItem = ({
   item,
+  isAction,
   onAddToCart,
   onEditItem,
   onShowDetailItem,
   onOpen,
-  isAction,
-}: CardItemProps) => {
+}: CardItemProps): JSX.Element => {
   const { id, name, description, price, image } = item;
 
   const handleOpen = useCallback(() => {

@@ -12,7 +12,10 @@ type CartItemProps = {
   onOpen: (id: string) => void;
 };
 
-const CartItem = ({ cart: { id, image, price, name, quantity }, onOpen }: CartItemProps) => {
+const CartItem = ({
+  cart: { id, image, price, name, quantity },
+  onOpen,
+}: CartItemProps): JSX.Element => {
   //Handle total amount for each product
   const subTotal = useMemo(() => price * quantity, [price, quantity]);
 

@@ -5,7 +5,7 @@ import { Box, Container, Divider, Flex, Heading, Input, Stack, Text } from '@cha
 // Constants
 import { MENU, HELPS, PLACEHOLDER_MESSAGE } from '@constants';
 
-const Footer = () => (
+const Footer = (): JSX.Element => (
   <Box as='footer'>
     <Divider />
     <Container maxW='1240px' display='flex' gap='48px' flexDir='column' pt='48px' pb='35px'>

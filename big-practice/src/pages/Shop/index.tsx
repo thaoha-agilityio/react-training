@@ -19,7 +19,7 @@ import { useCartStore, useMessageStores } from '@stores';
 // Constants
 import { IProduct, STATUSES } from '@types';
 
-const Shop = () => {
+const Shop = (): JSX.Element => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [selectedId, setSelectedId] = useState('');
 

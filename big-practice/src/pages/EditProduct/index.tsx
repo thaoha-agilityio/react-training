@@ -20,7 +20,7 @@ import { useMessageStores } from '@stores';
 import { IProduct, STATUSES } from '@types';
 import { useCustomToast } from '@hooks';
 
-const EditProduct = () => {
+const EditProduct = (): JSX.Element => {
   const navigate = useNavigate();
   const { uuid = '' } = useParams();
   const { showToast } = useCustomToast();

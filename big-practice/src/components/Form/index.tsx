@@ -35,7 +35,7 @@ type FormProps = {
   onSubmitProduct: (value: IProduct) => void;
 };
 
-const Form = ({ isLoading, title, onSubmitProduct, product }: FormProps) => {
+const Form = ({ isLoading, title, onSubmitProduct, product }: FormProps): JSX.Element => {
   const {
     register,
     handleSubmit,

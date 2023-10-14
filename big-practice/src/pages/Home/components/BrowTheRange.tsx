@@ -5,7 +5,7 @@ import dining from '@assets/photos/dining.png';
 import bedroom from '@assets/photos/bedroom.png';
 import living from '@assets/photos/living.png';
 
-export const BrowTheRange = () => (
+export const BrowTheRange = (): JSX.Element => (
   <Box as='section'>
     <Box textAlign='center' textShadow={'0px 4px 4px rgba(0, 0, 0, 0.25)'} mt='40px'>
       <Heading as='h3' fontSize={{ base: 'lg', md: 'xl' }} fontWeight='bold' color='gray.500'>
