@@ -13,8 +13,8 @@ import { ROUTES, MENU } from '@constants';
 import Menu from '@components/Menu';
 import { useCartStore } from '@stores';
 
-const Header = () => {
-  const [cart] = useCartStore((state) => [state.cart, state.setCart], shallow);
+const Header = (): JSX.Element => {
+  const [cart] = useCartStore((state) => [state.cart], shallow);
 
   return (
     <Box as='header'>

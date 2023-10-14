@@ -7,7 +7,7 @@ import { LIMIT_PRODUCTS } from '@constants';
 // Custom hooks
 import { useInfiniteProducts } from '@hooks/useProduct';
 
-export const OurProducts = () => {
+export const OurProducts = (): JSX.Element => {
   const { data: products, isLoading, isError, error } = useInfiniteProducts(LIMIT_PRODUCTS);
 
   return (

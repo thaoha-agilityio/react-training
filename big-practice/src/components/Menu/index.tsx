@@ -11,7 +11,7 @@ type MenuProps = {
   menu: IMenuItem[];
 };
 
-const Menu = ({ menu }: MenuProps) => (
+const Menu = ({ menu }: MenuProps): JSX.Element => (
   <UnorderedList display='flex' listStyleType='none' gap={{ base: '10px', md: '25px' }}>
     {menu.map((item) => (
       <ListItem key={item.title}>

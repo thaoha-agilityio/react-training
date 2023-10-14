@@ -20,7 +20,7 @@ import { IProduct, STATUSES } from '@types';
 import Banner from '@components/Banner';
 import Form from '@components/Form';
 
-const AddProduct = () => {
+const AddProduct = (): JSX.Element => {
   const navigate = useNavigate();
   const { showToast } = useCustomToast();
 

@@ -1,4 +1,5 @@
 import { memo, useCallback } from 'react';
+import isEqual from 'react-fast-compare';
 import {
   Card,
   CardBody,
@@ -19,37 +20,37 @@ import { IProduct } from '@types';
 type CardItemProps = {
   item: IProduct;
   isAction?: boolean;
-  onEditItem: (id: string) => void;
-  onShowDetailItem: (id: string) => void;
-  onAddToCart: (product: IProduct) => void;
-  onOpen: (id: string) => void;
+  onEditItem?: (id: string) => void;
+  onShowDetailItem?: (id: string) => void;
+  onAddToCart?: (product: IProduct) => void;
+  onOpen?: (id: string) => void;
 };
 
 const CardItem = ({
   item,
+  isAction,
   onAddToCart,
   onEditItem,
   onShowDetailItem,
   onOpen,
-  isAction,
-}: CardItemProps) => {
+}: CardItemProps): JSX.Element => {
   const { id, name, description, price, image } = item;
 
   const handleOpen = useCallback(() => {
-    onOpen(id);
-  }, [id]);
+    onOpen?.(id);
+  }, [id, onOpen]);
 
   const handleAddToCart = useCallback(() => {
-    onAddToCart(item);
-  }, [item]);
+    onAddToCart?.(item);
+  }, [item, onAddToCart]);
 
   const handleShowDetail = useCallback(() => {
-    onShowDetailItem(id);
-  }, [id]);
+    onShowDetailItem?.(id);
+  }, [id, onShowDetailItem]);
 
   const handleShowEditForm = useCallback(() => {
-    onEditItem(id);
-  }, [id]);
+    onEditItem?.(id);
+  }, [id, onEditItem]);
 
   return (
     <Flex pos='relative'>
@@ -144,4 +145,4 @@ const CardItem = ({
   );
 };
 
-export default memo(CardItem);
+export default memo(CardItem, isEqual);

@@ -31,30 +31,25 @@ const ConfirmModal = ({
   onSubmit,
   isOpen,
   onClose,
-}: ConfirmModalProps) => {
-  return (
-    <>
-      <Modal isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader fontSize={{ base: 'md', md: 'xl' }}>{title}</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>
-            <Text variant='primary'>{text}</Text>
-          </ModalBody>
-
-          <ModalFooter>
-            <Button mr={3} onClick={onClose} rounded='xs'>
-              {textCancel}
-            </Button>
-            <Button variant='solid' rounded='xs' onClick={onSubmit} isLoading={isLoading}>
-              {textSubmit}
-            </Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
-    </>
-  );
-};
+}: ConfirmModalProps) => (
+  <Modal isOpen={isOpen} onClose={onClose}>
+    <ModalOverlay />
+    <ModalContent>
+      <ModalHeader fontSize={{ base: 'md', md: 'xl' }}>{title}</ModalHeader>
+      <ModalCloseButton />
+      <ModalBody>
+        <Text variant='primary'>{text}</Text>
+      </ModalBody>
+      <ModalFooter>
+        <Button mr={3} onClick={onClose} rounded='xs'>
+          {textCancel}
+        </Button>
+        <Button variant='solid' rounded='xs' onClick={onSubmit} isLoading={isLoading}>
+          {textSubmit}
+        </Button>
+      </ModalFooter>
+    </ModalContent>
+  </Modal>
+);
 
 export default memo(ConfirmModal);

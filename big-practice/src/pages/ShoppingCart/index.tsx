@@ -1,9 +1,10 @@
-import { useMemo } from 'react';
-import { Button, Flex, Stack, Text } from '@chakra-ui/react';
+import { memo, useCallback, useMemo, useState } from 'react';
+import { Button, Flex, Stack, Text, useDisclosure } from '@chakra-ui/react';
 
 // Components
 import Banner from '@components/Banner';
 import CartItem from '@components/CartItem';
+import ConfirmModal from '@components/ConfirmModal';
 
 // Layout
 import Container from '@components/Container';
@@ -20,10 +21,30 @@ import { ICart } from '@types';
 // Helper
 import { formatPrice } from '@helpers';
 
-const ShoppingCart = () => {
+const ShoppingCart = (): JSX.Element => {
+  // Initialize isOpen, onOpen, and onClose from useDisclosure
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const [selectedId, setSelectedId] = useState<string>('');
+
   const { cart, deleteCart } = useCartStore();
 
-  const getTotalPrice = useMemo(
+  const handleOpen = useCallback(
+    (id: string) => {
+      onOpen();
+      setSelectedId(id);
+    },
+    [onOpen],
+  );
+
+  const handleDeleteCart = useCallback(() => {
+    deleteCart(selectedId);
+
+    // Close confirm modal
+    onClose();
+  }, [deleteCart, selectedId]);
+
+  const totalPrice = useMemo(
     (): number =>
       cart.reduce((totalPrice: number, cart) => totalPrice + cart.price * cart.quantity, 0),
     [cart],
@@ -52,9 +73,7 @@ const ShoppingCart = () => {
             {!cart.length ? (
               <Text>{NOTICE_MESSAGE}</Text>
             ) : (
-              cart.map((cart: ICart) => (
-                <CartItem cart={cart} key={cart.id} onDeleteCart={deleteCart} />
-              ))
+              cart.map((cart: ICart) => <CartItem cart={cart} key={cart.id} onOpen={handleOpen} />)
             )}
           </Stack>
           <Stack
@@ -74,7 +93,7 @@ const ShoppingCart = () => {
                 Total
               </Text>
               <Text variant='tertiary' color='yellow.250' fontWeight='medium'>
-                Rs. {formatPrice(getTotalPrice)}
+                Rs. {formatPrice(totalPrice)}
               </Text>
             </Flex>
             <Button variant='colorPrimary' rounded='xl'>
@@ -83,8 +102,17 @@ const ShoppingCart = () => {
           </Stack>
         </Flex>
       </Container>
+      <ConfirmModal
+        isOpen={isOpen}
+        title='Delete Confirmation'
+        textCancel='Cancel'
+        textSubmit='Yes, Delete'
+        text='Are you sure you want to delete this item?'
+        onClose={onClose}
+        onSubmit={handleDeleteCart}
+      />
     </>
   );
 };
 
-export default ShoppingCart;
+export default memo(ShoppingCart);

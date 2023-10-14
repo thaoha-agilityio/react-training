@@ -3,7 +3,7 @@ import { Box, Flex, Heading, Image } from '@chakra-ui/react';
 // Images
 import adverse from '@assets/photos/adverse.png';
 
-export const Adverse = () => (
+export const Adverse = (): JSX.Element => (
   <Box my='50px' as='section'>
     <Flex justifyContent='center'>
       <Heading

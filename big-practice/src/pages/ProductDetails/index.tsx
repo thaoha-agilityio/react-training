@@ -1,4 +1,5 @@
-import { useCallback, useState } from 'react';
+import { shallow } from 'zustand/shallow';
+import { memo, useCallback, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Box, Spinner } from '@chakra-ui/react';
 
@@ -18,7 +19,7 @@ import { SUCCESS_MESSAGES } from '@constants';
 // types
 import { STATUSES } from '@types';
 
-const ProductDetails = () => {
+const ProductDetails = (): JSX.Element => {
   // Get the 'uuid' parameter from the url
   const { uuid = '' } = useParams();
 
@@ -29,7 +30,7 @@ const ProductDetails = () => {
   const { isFetching } = useFetchProductDetail(uuid);
 
   // Get carts from carts store
-  const { cart, setCart } = useCartStore();
+  // const { cart, setCart } = useCartStore();
 
   const product = useProductStore((state) => state.product);
 
@@ -38,6 +39,7 @@ const ProductDetails = () => {
   const handleChangeQuantity = useCallback((qty: number) => {
     setCount(qty);
   }, []);
+  const [cart, setCart] = useCartStore((state) => [state.cart, state.setCart], shallow);
 
   // Handle add product to cart
   const handleAddToCart = useCallback(() => {
@@ -77,4 +79,4 @@ const ProductDetails = () => {
   );
 };
 
-export default ProductDetails;
+export default memo(ProductDetails);

@@ -1,4 +1,5 @@
 import { memo } from 'react';
+import isEqual from 'react-fast-compare';
 
 import { Flex } from '@chakra-ui/react';
 
@@ -11,41 +12,37 @@ import { IProduct } from '@types';
 type ProductsProps = {
   products: IProduct[][];
   isAction?: boolean;
-  onOpen: (id: string) => void;
-  onEditItem: (id: string) => void;
-  onShowDetailItem: (id: string) => void;
-  onAddToCart: (product: IProduct) => void;
+  onOpen?: (id: string) => void;
+  onEditItem?: (id: string) => void;
+  onShowDetailItem?: (id: string) => void;
+  onAddToCart?: (product: IProduct) => void;
 };
 
-export const Products = memo(
-  ({
-    products,
-    onAddToCart,
-    onEditItem,
-    onShowDetailItem,
-    onOpen,
-    isAction = false,
-  }: ProductsProps) => {
-    return (
-      <Flex pt='32px' gap='32px' wrap='wrap' justifyContent='center' data-testid='products'>
-        {products.map((item, index) => (
-          <Flex pt='32px' gap='32px' wrap='wrap' justifyContent='center' key={index}>
-            {item.map((product) => (
-              <CardItem
-                isAction={isAction}
-                key={product.id}
-                item={product}
-                onShowDetailItem={onShowDetailItem}
-                onEditItem={onEditItem}
-                onAddToCart={onAddToCart}
-                onOpen={onOpen}
-              />
-            ))}
-          </Flex>
+export const Products = ({
+  products,
+  onAddToCart,
+  onEditItem,
+  onShowDetailItem,
+  onOpen,
+  isAction = false,
+}: ProductsProps): JSX.Element => (
+  <Flex pt='32px' gap='32px' wrap='wrap' justifyContent='center' data-testid='products'>
+    {products.map((item, index) => (
+      <Flex pt='32px' gap='32px' wrap='wrap' justifyContent='center' key={index}>
+        {item.map((product) => (
+          <CardItem
+            isAction={isAction}
+            key={product.id}
+            item={product}
+            onShowDetailItem={onShowDetailItem}
+            onEditItem={onEditItem}
+            onAddToCart={onAddToCart}
+            onOpen={onOpen}
+          />
         ))}
       </Flex>
-    );
-  },
+    ))}
+  </Flex>
 );
 
-export default memo(Products);
+export default memo(Products, isEqual);

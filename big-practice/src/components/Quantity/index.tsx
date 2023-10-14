@@ -6,7 +6,7 @@ type QuantityProps = {
   onQuantityChange: (qty: number) => void;
 };
 
-const Quantity = ({ initialCount, onQuantityChange }: QuantityProps) => {
+const Quantity = ({ initialCount, onQuantityChange }: QuantityProps): JSX.Element => {
   const [count, setCount] = useState(initialCount);
 
   const handleIncrease = useCallback(() => {
