@@ -14,7 +14,7 @@ import Menu from '@components/Menu';
 import { useCartStore } from '@stores';
 
 const Header = () => {
-  const [cart] = useCartStore((state) => [state.cart, state.setCart], shallow);
+  const [cart] = useCartStore((state) => [state.cart], shallow);
 
   return (
     <Box as='header'>

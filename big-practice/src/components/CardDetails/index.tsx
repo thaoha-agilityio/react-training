@@ -1,5 +1,6 @@
 import { memo } from 'react';
 import { Box, Button, Flex, Image, Stack, Text } from '@chakra-ui/react';
+import isEqual from 'react-fast-compare';
 
 // Components
 import Quantity from '@components/Quantity';
@@ -21,7 +22,7 @@ const CardDetails = ({
   onQuantityChange,
 }: CardDetailProps) => {
   return (
-    <Box as='main' py='35px'>
+    <Box py='35px'>
       <Flex justifyContent='space-around' gap='10px'>
         <Stack>
           <Image w='424px' h={{ base: '350px', md: '500px' }} alt='card-image' src={image} />
@@ -66,4 +67,4 @@ const CardDetails = ({
   );
 };
 
-export default memo(CardDetails);
+export default memo(CardDetails, isEqual);

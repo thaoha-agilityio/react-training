@@ -7,7 +7,7 @@ import CartItem from '../index';
 
 const mockProps = {
   cart: MOCK_CARTS[0],
-  onDeleteCart: jest.fn(),
+  onOpen: jest.fn(),
 };
 
 describe('CartItem Component', () => {
@@ -23,13 +23,11 @@ describe('CartItem Component', () => {
   });
 
   it('should call onDeleteCart functions when button is clicked', () => {
-    const { getByRole, getByText } = render(<CartItem {...mockProps} />);
+    const { getByRole } = render(<CartItem {...mockProps} />);
 
     // Click open Modal
     fireEvent.click(getByRole('button'));
 
-    const deleteBtn = getByText('Yes, Delete');
-    fireEvent.click(deleteBtn);
-    expect(mockProps.onDeleteCart).toHaveBeenCalled();
+    expect(mockProps.onOpen).toHaveBeenCalled();
   });
 });

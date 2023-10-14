@@ -1,4 +1,5 @@
 import { memo } from 'react';
+import isEqual from 'react-fast-compare';
 
 import { Flex } from '@chakra-ui/react';
 
@@ -48,4 +49,4 @@ export const Products = memo(
   },
 );
 
-export default memo(Products);
+export default memo(Products, isEqual);

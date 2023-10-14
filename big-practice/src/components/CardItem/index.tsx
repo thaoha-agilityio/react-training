@@ -1,4 +1,5 @@
 import { memo, useCallback } from 'react';
+import isEqual from 'react-fast-compare';
 import {
   Card,
   CardBody,
@@ -144,4 +145,4 @@ const CardItem = ({
   );
 };
 
-export default memo(CardItem);
+export default memo(CardItem, isEqual);

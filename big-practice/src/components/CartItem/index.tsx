@@ -1,5 +1,5 @@
 import { memo, useCallback, useMemo } from 'react';
-import { Box, Flex, IconButton, Image, Text, useDisclosure } from '@chakra-ui/react';
+import { Box, Flex, IconButton, Image, Text } from '@chakra-ui/react';
 
 //  Icons
 import { DeleteIcon } from '@assets/icons';
@@ -7,24 +7,18 @@ import { DeleteIcon } from '@assets/icons';
 // Types
 import { ICart } from '@types';
 
-//  Component
-import ConfirmModal from '@components/ConfirmModal';
-
 type CartItemProps = {
   cart: ICart;
-  onDeleteCart: (id: string) => void;
+  onOpen: (id: string) => void;
 };
 
-const CartItem = ({ cart: { id, image, price, name, quantity }, onDeleteCart }: CartItemProps) => {
-  // Initialize isOpen, onOpen, and onClose from useDisclosure
-  const { isOpen, onOpen, onClose } = useDisclosure();
-
+const CartItem = ({ cart: { id, image, price, name, quantity }, onOpen }: CartItemProps) => {
   //Handle total amount for each product
   const subTotal = useMemo(() => price * quantity, [price, quantity]);
 
-  const handleDeleteCart = useCallback(() => {
-    onDeleteCart(id);
-  }, [id, onDeleteCart]);
+  const handleOpen = useCallback(() => {
+    onOpen(id);
+  }, [id, onOpen]);
 
   return (
     <Flex alignItems='center' gap={{ base: '20px', md: '50px' }} pt='20px'>
@@ -46,17 +40,7 @@ const CartItem = ({ cart: { id, image, price, name, quantity }, onDeleteCart }: 
         aria-label='delete-btn'
         data-testid='delete-btn'
         icon={<DeleteIcon />}
-        onClick={onOpen}
-      />
-
-      <ConfirmModal
-        isOpen={isOpen}
-        title='Delete Confirmation'
-        textCancel='Cancel'
-        textSubmit='Yes, Delete'
-        text='Are you sure you want to delete this item?'
-        onClose={onClose}
-        onSubmit={handleDeleteCart}
+        onClick={handleOpen}
       />
     </Flex>
   );
