@@ -11,7 +11,7 @@ import Container from '@components/Container';
 import { useCustomToast, useFetchProductDetail } from '@hooks';
 
 // Stores
-import { useCartStore, useProductStore } from '@stores';
+import { useCartStore } from '@stores';
 
 // Constants
 import { SUCCESS_MESSAGES } from '@constants';
@@ -27,12 +27,10 @@ const ProductDetails = (): JSX.Element => {
   const { showToast } = useCustomToast();
 
   // Fetch product details and check if data is being fetched
-  const { isFetching } = useFetchProductDetail(uuid);
+  const { data: product, isFetching } = useFetchProductDetail(uuid);
 
   // Get carts from carts store
   const [cart, setCart] = useCartStore((state) => [state.cart, state.setCart], shallow);
-
-  const product = useProductStore((state) => state.product);
 
   const [count, setCount] = useState<number>(1);
 
@@ -55,7 +53,7 @@ const ProductDetails = (): JSX.Element => {
     }
 
     showToast(STATUSES.SUCCESS, SUCCESS_MESSAGES.ADD_TO_CART);
-  }, [cart, count, setCart, uuid]);
+  }, [cart, count, product, uuid]);
 
   return (
     <>

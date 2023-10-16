@@ -5,7 +5,7 @@ import { useInfiniteQuery, useMutation, useQuery, useQueryClient } from '@tansta
 import { useProductStore } from '@stores';
 
 // Constants
-import { QUERY_KEYS, URL } from '@constants';
+import { INITIAL_PRODUCT, QUERY_KEYS, URL } from '@constants';
 
 // Types
 import { IProduct } from '@types';
@@ -57,13 +57,12 @@ export const useMutationPostProduct = () => {
 
 // Custom hook fetch product
 export const useFetchProductDetail = (id: string) => {
-  const setProduct = useProductStore((state) => state.setProduct);
-
   return useQuery<IProduct, AxiosError>({
     queryKey: [QUERY_KEYS.PRODUCT + id],
     queryFn: async () => await api.getData(`${URL.BASE}${URL.PRODUCTS}/${id}`),
-    onSuccess: (data: IProduct) => setProduct(data),
+    onSuccess: (res: IProduct) => res,
     onError: (error) => error.message,
+    initialData: INITIAL_PRODUCT,
   });
 };
 
