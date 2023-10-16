@@ -1,5 +1,6 @@
 import { memo } from 'react';
 import { Link } from 'react-router-dom';
+import isEqual from 'react-fast-compare';
 
 // Components
 import { ListItem, Text, UnorderedList } from '@chakra-ui/react';
@@ -25,4 +26,4 @@ const Menu = ({ menu }: MenuProps): JSX.Element => (
   </UnorderedList>
 );
 
-export default memo(Menu);
+export default memo(Menu, isEqual);

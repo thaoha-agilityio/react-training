@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { useCallback } from 'react';
+import { memo, useCallback } from 'react';
 
 // Layouts
 import Container from '@components/Container';
@@ -68,4 +68,4 @@ const AddProduct = (): JSX.Element => {
   );
 };
 
-export default AddProduct;
+export default memo(AddProduct);
