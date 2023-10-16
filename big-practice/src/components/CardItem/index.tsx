@@ -5,7 +5,6 @@ import {
   CardBody,
   CardFooter,
   Flex,
-  Image,
   Heading,
   Text,
   Stack,
@@ -56,7 +55,9 @@ const CardItem = ({
     <Flex pos='relative'>
       <Card>
         <CardBody role='group'>
-          <Image src={image} alt='card-item' />
+          <Box w={{ base: '180px', md: '285px' }}>
+            <img src={image} alt='card-item' width='100%' height='100%' />
+          </Box>
           <Box display={isAction ? 'block' : 'none'}>
             <Box
               zIndex={1}

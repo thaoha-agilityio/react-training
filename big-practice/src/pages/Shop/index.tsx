@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { memo, useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button, Container, Flex, Spinner, Stack, Text, useDisclosure } from '@chakra-ui/react';
 
@@ -14,10 +14,11 @@ import { LIMIT_PRODUCTS, SHOP_CRUMBS, ROUTES, SUCCESS_MESSAGES } from '@constant
 import { useInfiniteProducts, useMutationDeleteProduct, useCustomToast } from '@hooks';
 
 // Stores
-import { useCartStore, useMessageStores } from '@stores';
+import { useCartStore } from '@stores';
 
 // Constants
 import { IProduct, STATUSES } from '@types';
+import { shallow } from 'zustand/shallow';
 
 const Shop = (): JSX.Element => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -33,7 +34,9 @@ const Shop = (): JSX.Element => {
     isFetchingNextPage,
   } = useInfiniteProducts(LIMIT_PRODUCTS);
 
-  const { cart, setCart } = useCartStore();
+  // const { cart, setCart } = useCartStore();
+  const [cart, setCart] = useCartStore((state) => [state.cart, state.setCart], shallow);
+
   const { showToast } = useCustomToast();
 
   // Initialize navigate function
@@ -41,9 +44,6 @@ const Shop = (): JSX.Element => {
 
   // Get the mutate from useMutationDeleteProduct hook
   const { mutate: deleteProduct, isLoading: isLoadingSubmit } = useMutationDeleteProduct();
-
-  // Get message from store
-  const { setErrorMessage } = useMessageStores();
 
   const handleOpen = useCallback(
     (id: string) => {
@@ -57,14 +57,14 @@ const Shop = (): JSX.Element => {
   const handleDeleteItem = useCallback(() => {
     return deleteProduct(selectedId, {
       onError: (error) => {
-        setErrorMessage(error.message);
+        showToast(STATUSES.ERROR, error.message);
       },
       onSuccess: () => {
         onClose();
         showToast(STATUSES.SUCCESS, SUCCESS_MESSAGES.DELETED);
       },
     });
-  }, [deleteProduct, selectedId, setErrorMessage, showToast]);
+  }, [deleteProduct, selectedId]);
 
   // Handle navigate to detail page
   const handleShowDetail = useCallback((id: string) => {
@@ -146,4 +146,4 @@ const Shop = (): JSX.Element => {
   );
 };
 
-export default Shop;
+export default memo(Shop);

@@ -30,7 +30,7 @@ const ProductDetails = (): JSX.Element => {
   const { isFetching } = useFetchProductDetail(uuid);
 
   // Get carts from carts store
-  // const { cart, setCart } = useCartStore();
+  const [cart, setCart] = useCartStore((state) => [state.cart, state.setCart], shallow);
 
   const product = useProductStore((state) => state.product);
 
@@ -39,7 +39,6 @@ const ProductDetails = (): JSX.Element => {
   const handleChangeQuantity = useCallback((qty: number) => {
     setCount(qty);
   }, []);
-  const [cart, setCart] = useCartStore((state) => [state.cart, state.setCart], shallow);
 
   // Handle add product to cart
   const handleAddToCart = useCallback(() => {
