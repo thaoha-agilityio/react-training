@@ -50,6 +50,9 @@ dependencies:
   react-router-dom:
     specifier: 6.12.1
     version: 6.12.1(react-dom@18.2.0)(react@18.2.0)
+  vite-plugin-sitemap:
+    specifier: ^0.4.2
+    version: 0.4.2
   zustand:
     specifier: ^4.4.1
     version: 4.4.1(@types/react@18.2.15)(react@18.2.0)
@@ -7651,6 +7654,10 @@ packages:
     dependencies:
       vite: 4.4.5(@types/node@20.3.1)
     dev: true
+
+  /vite-plugin-sitemap@0.4.2:
+    resolution: {integrity: sha512-xNTYPcNW+XthOJqI459DYyCZ6nPDKpnFFnvMHVlshtDn+UUp1y37HgmvmWEsCdLp0LZILnzHfrjVrH44V2krAg==}
+    dev: false
 
   /vite-tsconfig-paths@4.2.0(typescript@5.2.2)(vite@4.4.5):
     resolution: {integrity: sha512-jGpus0eUy5qbbMVGiTxCL1iB9ZGN6Bd37VGLJU39kTDD6ZfULTTb1bcc5IeTWqWJKiWV5YihCaibeASPiGi8kw==}
