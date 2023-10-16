@@ -28,14 +28,13 @@ const EditProduct = (): JSX.Element => {
   // Handle the submission of the product form
   const handleAddProduct = useCallback(
     (value: IProduct) => {
-      const { id, name, image, category, price } = value;
+      const { id, name, image, price } = value;
       return mutate(
         {
           ...value,
           id,
           name,
           image,
-          category,
           price,
         },
         {
