@@ -1,6 +1,5 @@
-import { IProduct } from './product';
-
 // Types for cart
-export interface ICart extends IProduct {
+export interface ICart {
+  productId: string;
   quantity: number;
 }

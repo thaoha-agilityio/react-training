@@ -40,7 +40,7 @@ const Form = ({ isLoading, title, onSubmitProduct, product }: FormProps): JSX.El
     register,
     handleSubmit,
     watch,
-    formState: { errors },
+    formState: { errors, isDirty },
   } = useForm<FormInput>({
     defaultValues: { ...product, image: [] },
     mode: 'onSubmit',
@@ -52,9 +52,6 @@ const Form = ({ isLoading, title, onSubmitProduct, product }: FormProps): JSX.El
     () => ({
       name: {
         required: ERROR_MESSAGES.FIELD_REQUIRED('Name'),
-      },
-      category: {
-        required: ERROR_MESSAGES.FIELD_REQUIRED('Category'),
       },
       description: {
         required: ERROR_MESSAGES.FIELD_REQUIRED('Description'),
@@ -126,17 +123,6 @@ const Form = ({ isLoading, title, onSubmitProduct, product }: FormProps): JSX.El
             <FormErrorMessage>{errors.name?.message}</FormErrorMessage>
           </FormControl>
 
-          <FormControl isInvalid={!!errors.category}>
-            <FormLabel>Category</FormLabel>
-            <Input
-              id='category'
-              aria-label='enter category'
-              placeholder={PLACEHOLDER_MESSAGE.CATEGORY}
-              {...register('category', schema.category)}
-            />
-            <FormErrorMessage> {errors.category?.message}</FormErrorMessage>
-          </FormControl>
-
           <FormControl isInvalid={!!errors.description}>
             <FormLabel>Description</FormLabel>
             <Input
@@ -186,6 +172,7 @@ const Form = ({ isLoading, title, onSubmitProduct, product }: FormProps): JSX.El
           <Button
             type='submit'
             isLoading={isLoading}
+            isDisabled={!isDirty}
             variant='solid'
             color='white'
             mt='30px'

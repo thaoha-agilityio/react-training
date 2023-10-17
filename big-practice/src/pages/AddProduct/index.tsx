@@ -10,9 +10,6 @@ import { ADD_PRODUCT_CRUMBS, MENU, ROUTES, SUCCESS_MESSAGES } from '@constants';
 // Hooks
 import { useCustomToast, useMutationPostProduct } from '@hooks';
 
-// Stores
-import { useMessageStores } from '@stores';
-
 // Types
 import { IProduct, STATUSES } from '@types';
 
@@ -27,13 +24,10 @@ const AddProduct = (): JSX.Element => {
   // Get the mutate from useMutationPostProduct hook
   const { mutate, isLoading } = useMutationPostProduct();
 
-  // Get message to
-  const { setErrorMessage } = useMessageStores();
-
   // Handle the submission of the product form
   const handleAddProduct = useCallback(
     (value: IProduct) => {
-      const { id, name, image, category, price } = value;
+      const { id, name, image, price } = value;
 
       return mutate(
         {
@@ -41,12 +35,11 @@ const AddProduct = (): JSX.Element => {
           id,
           name,
           image,
-          category,
           price,
         },
         {
           onError: (error) => {
-            setErrorMessage(error.message);
+            showToast(STATUSES.ERROR, error.message);
           },
           onSuccess: (res) => {
             navigate(ROUTES.DETAIL_PRODUCT_PARAMS + res.id);

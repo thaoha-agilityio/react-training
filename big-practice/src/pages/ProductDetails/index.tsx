@@ -11,7 +11,7 @@ import Container from '@components/Container';
 import { useCustomToast, useFetchProductDetail } from '@hooks';
 
 // Stores
-import { useCartStore, useProductStore } from '@stores';
+import { useCartStore } from '@stores';
 
 // Constants
 import { SUCCESS_MESSAGES } from '@constants';
@@ -27,12 +27,10 @@ const ProductDetails = (): JSX.Element => {
   const { showToast } = useCustomToast();
 
   // Fetch product details and check if data is being fetched
-  const { isFetching } = useFetchProductDetail(uuid);
+  const { data: product, isFetching } = useFetchProductDetail(uuid);
 
   // Get carts from carts store
   const [cart, setCart] = useCartStore((state) => [state.cart, state.setCart], shallow);
-
-  const product = useProductStore((state) => state.product);
 
   const [count, setCount] = useState<number>(1);
 
@@ -43,7 +41,7 @@ const ProductDetails = (): JSX.Element => {
   // Handle add product to cart
   const handleAddToCart = useCallback(() => {
     // Check if the product with the given 'uuid' already exists in the cart
-    const existedProductIndex = cart?.findIndex((cart) => cart.id === uuid);
+    const existedProductIndex = cart?.findIndex((cart) => cart.productId === uuid);
 
     if (existedProductIndex !== -1) {
       const newCart = [...cart];
@@ -51,11 +49,11 @@ const ProductDetails = (): JSX.Element => {
 
       setCart(newCart);
     } else {
-      setCart([...cart, { ...product, quantity: count }]);
+      setCart([...cart, { productId: uuid, quantity: count }]);
     }
 
     showToast(STATUSES.SUCCESS, SUCCESS_MESSAGES.ADD_TO_CART);
-  }, [cart, count, setCart, uuid]);
+  }, [cart, count, uuid]);
 
   return (
     <>

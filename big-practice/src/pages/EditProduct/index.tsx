@@ -13,9 +13,6 @@ import { DATA_CRUMBS, ROUTES, SUCCESS_MESSAGES } from '@constants';
 // Hooks
 import { useFetchProductDetail, useMutationEditProduct } from '@hooks';
 
-// Stores
-import { useMessageStores } from '@stores';
-
 // Types
 import { IProduct, STATUSES } from '@types';
 import { useCustomToast } from '@hooks';
@@ -28,38 +25,30 @@ const EditProduct = (): JSX.Element => {
   // Get the mutate from useMutationEditProduct hook
   const { mutate, isLoading } = useMutationEditProduct();
 
-  // Get message to store
-  const { setErrorMessage, setSuccessMessage, errorMessage, clearErrorMessage } =
-    useMessageStores();
-
   // Handle the submission of the product form
   const handleAddProduct = useCallback(
     (value: IProduct) => {
-      const { id, name, image, category, price } = value;
+      const { id, name, image, price } = value;
       return mutate(
         {
           ...value,
           id,
           name,
           image,
-          category,
           price,
         },
         {
           onError: (error) => {
-            setErrorMessage(error.message);
+            showToast(STATUSES.ERROR, error.message);
           },
           onSuccess: (res) => {
-            clearErrorMessage();
-            setSuccessMessage(SUCCESS_MESSAGES.EDITED(name));
-
             navigate(ROUTES.DETAIL_PRODUCT_PARAMS + res.id);
             showToast(STATUSES.SUCCESS, SUCCESS_MESSAGES.EDITED(name));
           },
         },
       );
     },
-    [mutate, setErrorMessage, setSuccessMessage],
+    [mutate],
   );
 
   const { data: product, isFetching } = useFetchProductDetail(uuid);
@@ -78,7 +67,6 @@ const EditProduct = (): JSX.Element => {
               title='Edit Product'
               product={product}
               onSubmitProduct={handleAddProduct}
-              errorMessage={errorMessage}
               isLoading={isLoading}
             />
           )}

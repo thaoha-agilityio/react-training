@@ -1,3 +1,4 @@
+import { shallow } from 'zustand/shallow';
 import { memo, useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button, Container, Flex, Spinner, Stack, Text, useDisclosure } from '@chakra-ui/react';
@@ -18,7 +19,6 @@ import { useCartStore } from '@stores';
 
 // Constants
 import { IProduct, STATUSES } from '@types';
-import { shallow } from 'zustand/shallow';
 
 const Shop = (): JSX.Element => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -34,7 +34,6 @@ const Shop = (): JSX.Element => {
     isFetchingNextPage,
   } = useInfiniteProducts(LIMIT_PRODUCTS);
 
-  // const { cart, setCart } = useCartStore();
   const [cart, setCart] = useCartStore((state) => [state.cart, state.setCart], shallow);
 
   const { showToast } = useCustomToast();
@@ -79,7 +78,7 @@ const Shop = (): JSX.Element => {
   // Handle add product to cart
   const handleAddToCart = useCallback(
     (product: IProduct) => {
-      const existedProductIndex = cart?.findIndex((cart) => cart.id === product.id);
+      const existedProductIndex = cart?.findIndex((cart) => cart.productId === product.id);
 
       if (existedProductIndex !== -1) {
         const newCarts = [...cart];
@@ -87,7 +86,7 @@ const Shop = (): JSX.Element => {
 
         setCart(newCarts);
       } else {
-        setCart([...cart, { ...product, quantity: 1 }]);
+        setCart([...cart, { productId: product.id, quantity: 1 }]);
       }
 
       showToast(STATUSES.SUCCESS, SUCCESS_MESSAGES.ADD_TO_CART);
