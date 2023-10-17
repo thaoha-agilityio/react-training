@@ -20,7 +20,7 @@ export const useCartStore = create<CartState & CartActions>()((set) => ({
   deleteCart: (cartId: string) => {
     // Filter out the cart with the specified ID
     set((state) => ({
-      cart: state.cart.filter((cart) => cart.id !== cartId),
+      cart: state.cart.filter((cart) => cart.productId !== cartId),
     }));
   },
 }));

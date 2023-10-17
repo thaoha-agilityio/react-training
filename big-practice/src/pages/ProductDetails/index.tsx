@@ -41,7 +41,7 @@ const ProductDetails = (): JSX.Element => {
   // Handle add product to cart
   const handleAddToCart = useCallback(() => {
     // Check if the product with the given 'uuid' already exists in the cart
-    const existedProductIndex = cart?.findIndex((cart) => cart.id === uuid);
+    const existedProductIndex = cart?.findIndex((cart) => cart.productId === uuid);
 
     if (existedProductIndex !== -1) {
       const newCart = [...cart];
@@ -49,11 +49,11 @@ const ProductDetails = (): JSX.Element => {
 
       setCart(newCart);
     } else {
-      setCart([...cart, { ...product, quantity: count }]);
+      setCart([...cart, { productId: uuid, quantity: count }]);
     }
 
     showToast(STATUSES.SUCCESS, SUCCESS_MESSAGES.ADD_TO_CART);
-  }, [cart, count, product, uuid]);
+  }, [cart, count, uuid]);
 
   return (
     <>

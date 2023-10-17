@@ -1,3 +1,4 @@
+import { shallow } from 'zustand/shallow';
 import { memo, useCallback, useMemo, useState } from 'react';
 import { Button, Flex, Stack, Text, useDisclosure } from '@chakra-ui/react';
 
@@ -13,7 +14,7 @@ import Container from '@components/Container';
 import { CART_CRUMBS, NOTICE_MESSAGE } from '@constants';
 
 //  Stores
-import { useCartStore } from '@stores';
+import { useCartStore, useProductStore } from '@stores';
 
 // Types
 import { ICart } from '@types';
@@ -27,7 +28,9 @@ const ShoppingCart = (): JSX.Element => {
 
   const [selectedId, setSelectedId] = useState<string>('');
 
-  const { cart, deleteCart } = useCartStore();
+  const [cart, deleteCart] = useCartStore((state) => [state.cart, state.deleteCart], shallow);
+
+  const [products] = useProductStore((state) => [state.products], shallow);
 
   const handleOpen = useCallback(
     (id: string) => {
@@ -44,11 +47,19 @@ const ShoppingCart = (): JSX.Element => {
     onClose();
   }, [deleteCart, selectedId]);
 
-  const totalPrice = useMemo(
-    (): number =>
-      cart.reduce((totalPrice: number, cart) => totalPrice + cart.price * cart.quantity, 0),
-    [cart],
-  );
+  const totalPrice = useMemo(() => {
+    // Use the reduce function to calculate the total price
+    return cart.reduce((totalPrice, cartItem) => {
+      const product = products.find((product) => product.id === cartItem.productId);
+
+      if (product) {
+        const productPrice = product.price;
+        return totalPrice + productPrice * cartItem.quantity;
+      }
+
+      return totalPrice;
+    }, 0);
+  }, [cart, products]);
 
   const renderCheckout = useMemo(() => {
     return (
@@ -107,7 +118,9 @@ const ShoppingCart = (): JSX.Element => {
             {!cart.length ? (
               <Text>{NOTICE_MESSAGE}</Text>
             ) : (
-              cart.map((cart: ICart) => <CartItem cart={cart} key={cart.id} onOpen={handleOpen} />)
+              cart.map((cart: ICart) => (
+                <CartItem cart={cart} key={cart.productId} onOpen={handleOpen} />
+              ))
             )}
           </Stack>
           {renderCheckout}

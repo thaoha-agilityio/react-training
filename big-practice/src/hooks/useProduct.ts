@@ -13,6 +13,9 @@ import { IProduct } from '@types';
 // Services
 import { api } from '@services/APIRequest';
 
+// Helper
+import { flattenArray } from '@helpers';
+
 export const useFetchProducts = () => {
   const setProducts = useProductStore((state) => state.setProducts);
 
@@ -36,7 +39,10 @@ export const useInfiniteProducts = (limit: number) => {
       const nextPage = pages.length + 1;
       return lastPage?.length > 0 && lastPage?.length === limit ? nextPage : undefined;
     },
-    onSuccess: (data) => setProducts(data.pages[0]),
+    onSuccess: ({ pages }) => {
+      const result = flattenArray(pages);
+      setProducts(result);
+    },
   });
 
   return {
