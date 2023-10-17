@@ -31,13 +31,13 @@ const Header = (): JSX.Element => (
         <Menu menu={MENU} />
 
         <HStack spacing={{ base: '15px', md: '45px' }} display={{ base: 'none', md: 'flex' }}>
-          <Link to='/'>
+          <Link to='/' aria-label='Account'>
             <AccountIcon />
           </Link>
-          <Link to='/'>
+          <Link to='/' aria-label='Search'>
             <SearchIcon />
           </Link>
-          <Link to='/'>
+          <Link to='/' aria-label='Heart'>
             <HeartIcon />
           </Link>
           <ShoppingCart />

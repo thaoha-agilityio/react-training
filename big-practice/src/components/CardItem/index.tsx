@@ -10,6 +10,7 @@ import {
   Stack,
   Button,
   Box,
+  Image,
 } from '@chakra-ui/react';
 import { DeleteIcon, EditIcon, InfoIcon } from '@chakra-ui/icons';
 
@@ -56,7 +57,7 @@ const CardItem = ({
       <Card>
         <CardBody role='group'>
           <Box w={{ base: '180px', md: '285px' }}>
-            <img src={image} alt='card-item' width='100%' height='100%' />
+            <Image src={image} alt='card-item' width='100%' height='100%' />
           </Box>
           <Box display={isAction ? 'block' : 'none'}>
             <Box
