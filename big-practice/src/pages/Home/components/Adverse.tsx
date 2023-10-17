@@ -19,6 +19,6 @@ export const Adverse = (): JSX.Element => (
         #FuniroFurniture
       </Heading>
     </Flex>
-    <Image src={adverse} alt='adverse' />
+    <Image src={adverse} alt='adverse' width='100%' height='100%' />
   </Box>
 );

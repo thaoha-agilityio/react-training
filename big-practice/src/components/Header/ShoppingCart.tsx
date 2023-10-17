@@ -17,7 +17,7 @@ const ShoppingCart = () => {
 
   return (
     <Box pos='relative'>
-      <Link to={ROUTES.SHOPPING_CART}>
+      <Link to={ROUTES.SHOPPING_CART} aria-label='Cart'>
         <ShoppingCartIcon />
 
         {cart.length > 0 && (
