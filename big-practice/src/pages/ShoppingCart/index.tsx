@@ -11,7 +11,7 @@ import ConfirmModal from '@components/ConfirmModal';
 import Container from '@components/Container';
 
 // Constants
-import { CART_CRUMBS, NOTICE_MESSAGE } from '@constants';
+import { CART_CRUMBS, EMPTY_CART_MESSAGE } from '@constants';
 
 //  Stores
 import { useCartStore, useProductStore } from '@stores';
@@ -116,7 +116,7 @@ const ShoppingCart = (): JSX.Element => {
           <Stack spacing='50px'>
             {renderCartTitle}
             {!cart.length ? (
-              <Text>{NOTICE_MESSAGE}</Text>
+              <Text>{EMPTY_CART_MESSAGE}</Text>
             ) : (
               cart.map((cart: ICart) => (
                 <CartItem cart={cart} key={cart.productId} onOpen={handleOpen} />

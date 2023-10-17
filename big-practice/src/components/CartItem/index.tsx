@@ -7,7 +7,11 @@ import { DeleteIcon } from '@assets/icons';
 
 // Types
 import { ICart, IProduct } from '@types';
+
+// Stores
 import { useProductStore } from '@stores';
+
+// Constants
 import { INITIAL_PRODUCT } from '@constants';
 
 type CartItemProps = {

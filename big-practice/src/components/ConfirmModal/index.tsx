@@ -28,8 +28,8 @@ const ConfirmModal = ({
   textCancel,
   textSubmit,
   isLoading,
-  onSubmit,
   isOpen,
+  onSubmit,
   onClose,
 }: ConfirmModalProps) => (
   <Modal isOpen={isOpen} onClose={onClose}>
