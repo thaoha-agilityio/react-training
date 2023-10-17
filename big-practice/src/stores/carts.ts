@@ -17,10 +17,10 @@ export const useCartStore = create<CartState & CartActions>()((set) => ({
   setCart: (cart: ICart[]) => {
     set({ cart });
   },
-  deleteCart: (cartId: string) => {
+  deleteCart: (productId: string) => {
     // Filter out the cart with the specified ID
     set((state) => ({
-      cart: state.cart.filter((cart) => cart.productId !== cartId),
+      cart: state.cart.filter((cart) => cart.productId !== productId),
     }));
   },
 }));

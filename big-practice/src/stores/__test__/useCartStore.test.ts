@@ -1,4 +1,4 @@
-import { renderHook } from '@testing-library/react-hooks';
+import { act, renderHook } from '@testing-library/react-hooks';
 
 // Constants
 import { MOCK_CARTS } from '@constants';
@@ -9,13 +9,16 @@ import { useCartStore } from '@stores';
 describe('Testing for useCartStore', () => {
   it('should initialize with an empty carts array', () => {
     const { result } = renderHook(() => useCartStore());
+
     expect(result.current.cart).toEqual([]);
   });
 
   it('should set carts correctly', () => {
     const { result } = renderHook(() => useCartStore());
 
-    result.current.setCart(MOCK_CARTS);
+    act(() => {
+      result.current.setCart(MOCK_CARTS);
+    });
 
     expect(result.current.cart).toEqual(MOCK_CARTS);
   });
@@ -23,7 +26,10 @@ describe('Testing for useCartStore', () => {
   it('should set product correctly', () => {
     const { result } = renderHook(() => useCartStore());
 
-    result.current.deleteCart('1');
+    act(() => {
+      result.current.setCart(MOCK_CARTS);
+      result.current.deleteCart('1');
+    });
 
     expect(result.current.cart).toEqual([MOCK_CARTS[1]]);
   });
