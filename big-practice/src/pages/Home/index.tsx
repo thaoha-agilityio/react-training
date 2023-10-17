@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import Container from '@components/Container';
 import { Hero, BrowTheRange, Adverse } from './components';
 
@@ -42,4 +41,4 @@ const Home = () => {
   );
 };
 
-export default memo(Home);
+export default Home;

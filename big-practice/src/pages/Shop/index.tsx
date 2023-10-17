@@ -1,5 +1,5 @@
 import { shallow } from 'zustand/shallow';
-import { memo, useCallback, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button, Container, Flex, Spinner, Stack, Text, useDisclosure } from '@chakra-ui/react';
 
@@ -145,4 +145,4 @@ const Shop = (): JSX.Element => {
   );
 };
 
-export default memo(Shop);
+export default Shop;

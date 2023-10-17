@@ -1,5 +1,5 @@
 import { shallow } from 'zustand/shallow';
-import { memo, useCallback, useMemo, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { Button, Flex, Stack, Text, useDisclosure } from '@chakra-ui/react';
 
 // Components
@@ -139,4 +139,4 @@ const ShoppingCart = (): JSX.Element => {
   );
 };
 
-export default memo(ShoppingCart);
+export default ShoppingCart;

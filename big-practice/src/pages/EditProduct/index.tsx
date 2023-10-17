@@ -1,4 +1,4 @@
-import { memo, useCallback } from 'react';
+import { useCallback } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Box, Spinner } from '@chakra-ui/react';
 
@@ -76,4 +76,4 @@ const EditProduct = (): JSX.Element => {
   );
 };
 
-export default memo(EditProduct);
+export default EditProduct;

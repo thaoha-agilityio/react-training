@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import { Box, Container, Flex, HStack, Heading } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 
@@ -48,4 +47,4 @@ const Header = (): JSX.Element => (
   </Box>
 );
 
-export default memo(Header);
+export default Header;

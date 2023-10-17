@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import { Link } from 'react-router-dom';
 
 import { Box, Container, Divider, Flex, Heading, Input, Stack, Text } from '@chakra-ui/react';
@@ -65,4 +64,4 @@ const Footer = (): JSX.Element => (
   </Box>
 );
 
-export default memo(Footer);
+export default Footer;
