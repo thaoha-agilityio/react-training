@@ -27,7 +27,7 @@ const ProductDetails = (): JSX.Element => {
   const { showToast } = useCustomToast();
 
   // Fetch product details and check if data is being fetched
-  const { data: product, isFetching } = useFetchProductDetail(uuid);
+  const { data: product, isLoading } = useFetchProductDetail(uuid);
 
   // Get carts from carts store
   const [cart, setCart] = useCartStore((state) => [state.cart, state.setCart], shallow);
@@ -59,7 +59,7 @@ const ProductDetails = (): JSX.Element => {
     <>
       <Box bg='yellow.150' w='full' h='100px'></Box>
       <Container>
-        {isFetching ? (
+        {isLoading ? (
           <Box textAlign='center' pt='20px'>
             <Spinner variant='secondary' />
           </Box>

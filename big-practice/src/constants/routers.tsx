@@ -12,8 +12,8 @@ export const ROUTES = {
 // Define breadcrumbs data for navigation
 export const DATA_CRUMBS = [
   {
-    title: 'Home',
-    path: ROUTES.HOMEPAGE,
+    title: 'Shop',
+    path: ROUTES.SHOP,
   },
   {
     title: 'Edit Product',

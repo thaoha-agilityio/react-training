@@ -16,17 +16,6 @@ import { api } from '@services/APIRequest';
 // Helper
 import { flattenArray } from '@helpers';
 
-export const useFetchProducts = () => {
-  const setProducts = useProductStore((state) => state.setProducts);
-
-  return useQuery<IProduct[], AxiosError>({
-    queryKey: [QUERY_KEYS.PRODUCTS],
-    queryFn: async () => await api.getData(`${URL.BASE}${URL.PRODUCTS}`),
-    onSuccess: (data: IProduct[]) => setProducts(data),
-    onError: (error) => error.message,
-  });
-};
-
 //  Custom hook to get Products with pagination
 export const useInfiniteProducts = (limit: number) => {
   const setProducts = useProductStore((state) => state.setProducts);
@@ -56,20 +45,20 @@ export const useMutationPostProduct = () => {
   return useMutation<IProduct, AxiosError, IProduct>({
     mutationFn: async (product) =>
       await api.postData({ item: product, url: `${URL.BASE}${URL.PRODUCTS}` }),
-    onSuccess: (res: IProduct) => res,
-    onError: (error) => error.message,
   });
 };
 
 // Custom hook fetch product
 export const useFetchProductDetail = (id: string) => {
-  return useQuery<IProduct, AxiosError>({
+  const { data, ...rest } = useQuery<IProduct, AxiosError>({
     queryKey: [QUERY_KEYS.PRODUCT + id],
     queryFn: async () => await api.getData(`${URL.BASE}${URL.PRODUCTS}/${id}`),
-    onSuccess: (res: IProduct) => res,
-    onError: (error) => error.message,
-    initialData: INITIAL_PRODUCT,
   });
+
+  return {
+    data: data || INITIAL_PRODUCT,
+    ...rest,
+  };
 };
 
 // Custom hook edit product
@@ -79,8 +68,6 @@ export const useMutationEditProduct = () => {
       const { id } = product;
       return await api.putData({ item: product, url: `${URL.BASE}${URL.PRODUCTS}/${id}` });
     },
-    onSuccess: (res: IProduct) => res,
-    onError: (error) => error.message,
   });
 };
 

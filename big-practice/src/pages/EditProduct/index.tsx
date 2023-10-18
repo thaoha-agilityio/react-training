@@ -11,16 +11,18 @@ import Container from '@components/Container';
 import { DATA_CRUMBS, ROUTES, SUCCESS_MESSAGES } from '@constants';
 
 // Hooks
-import { useFetchProductDetail, useMutationEditProduct } from '@hooks';
+import { useFetchProductDetail, useMutationEditProduct, useCustomToast } from '@hooks';
 
 // Types
 import { IProduct, STATUSES } from '@types';
-import { useCustomToast } from '@hooks';
 
 const EditProduct = (): JSX.Element => {
   const navigate = useNavigate();
   const { uuid = '' } = useParams();
   const { showToast } = useCustomToast();
+
+  // Get the data from useFetchProductDetail hook
+  const { data: product, isFetching: isLoadingProduct } = useFetchProductDetail(uuid);
 
   // Get the mutate from useMutationEditProduct hook
   const { mutate, isLoading } = useMutationEditProduct();
@@ -51,14 +53,12 @@ const EditProduct = (): JSX.Element => {
     [mutate],
   );
 
-  const { data: product, isFetching } = useFetchProductDetail(uuid);
-
   return (
     <>
       <Banner title='Edit Product' crumbs={DATA_CRUMBS} />
       <Container>
         <Box as='main' pt='30px'>
-          {isFetching ? (
+          {isLoadingProduct ? (
             <Box textAlign='center'>
               <Spinner variant='secondary' />
             </Box>
