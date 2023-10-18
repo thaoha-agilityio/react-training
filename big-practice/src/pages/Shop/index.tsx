@@ -31,7 +31,7 @@ const Shop = (): JSX.Element => {
     fetchNextPage,
   } = useInfiniteProducts(LIMIT_PRODUCTS);
 
-  const [cart, setCart] = useCartStore((state) => [state.cart, state.setCart], shallow);
+  const [addToCart] = useCartStore((state) => [state.addToCart], shallow);
 
   const { showToast } = useCustomToast();
 
@@ -41,13 +41,11 @@ const Shop = (): JSX.Element => {
   // Get the mutate from useMutationDeleteProduct hook
   const { mutate: deleteProduct, isLoading: isLoadingSubmit } = useMutationDeleteProduct();
 
-  const handleOpen = useCallback(
-    (id: string) => {
-      onOpen();
-      setSelectedId(id);
-    },
-    [onOpen],
-  );
+  // Handle open Modal
+  const handleOpen = useCallback((id: string) => {
+    onOpen();
+    setSelectedId(id);
+  }, []);
 
   // handle Delete Item
   const handleDeleteItem = useCallback(() => {
@@ -60,7 +58,7 @@ const Shop = (): JSX.Element => {
         showToast(STATUSES.SUCCESS, SUCCESS_MESSAGES.DELETED);
       },
     });
-  }, [deleteProduct, selectedId]);
+  }, [selectedId]);
 
   // Handle navigate to detail page
   const handleShowDetail = useCallback((id: string) => {
@@ -73,23 +71,10 @@ const Shop = (): JSX.Element => {
   }, []);
 
   // Handle add product to cart
-  const handleAddToCart = useCallback(
-    (product: IProduct) => {
-      const existedProductIndex = cart.findIndex((cart) => cart.productId === product.id);
-
-      if (existedProductIndex !== -1) {
-        const newCarts = [...cart];
-        newCarts[existedProductIndex].quantity += 1;
-
-        setCart(newCarts);
-      } else {
-        setCart([...cart, { productId: product.id, quantity: 1 }]);
-      }
-
-      showToast(STATUSES.SUCCESS, SUCCESS_MESSAGES.ADD_TO_CART);
-    },
-    [cart],
-  );
+  const handleAddToCart = useCallback((product: IProduct) => {
+    addToCart(product.id);
+    showToast(STATUSES.SUCCESS, SUCCESS_MESSAGES.ADD_TO_CART);
+  }, []);
 
   return (
     <>

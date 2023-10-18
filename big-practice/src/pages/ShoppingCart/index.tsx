@@ -113,7 +113,7 @@ const ShoppingCart = (): JSX.Element => {
       <Banner title='Cart' crumbs={CART_CRUMBS} />
       <Container>
         <Flex justifyContent='space-between' py='30px' wrap='wrap'>
-          <Stack spacing='50px'>
+          <Stack spacing='50px' pb='20px'>
             {renderCartTitle}
             {!cart.length ? (
               <Text>{NO_RESULT.CART}</Text>

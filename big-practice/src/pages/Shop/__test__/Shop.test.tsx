@@ -2,7 +2,7 @@ import { act, fireEvent, renderHook } from '@testing-library/react';
 import { useDisclosure } from '@chakra-ui/react';
 
 //  Constants
-import { MOCK_CARTS, MOCK_PRODUCTS, ROUTES } from '@constants';
+import { MOCK_CARTS, MOCK_PRODUCTS, NO_RESULT, ROUTES } from '@constants';
 
 // Hooks
 import { renderWithRouterAndQuery } from '@helpers';
@@ -50,7 +50,7 @@ describe('Shop component', () => {
 
     stores.useCartStore.setState({
       cart: MOCK_CARTS,
-      setCart: jest.fn(),
+      addToCart: jest.fn(),
     });
   });
 
@@ -58,6 +58,15 @@ describe('Shop component', () => {
     const { container } = renderWithRouterAndQuery(<Shop />);
 
     expect(container).toBeInTheDocument();
+  });
+
+  it('should render message if the list is empty', () => {
+    (jest.spyOn(hooks, 'useInfiniteProducts') as jest.Mock).mockImplementation(() => ({
+      data: [],
+    }));
+    const { getByText } = renderWithRouterAndQuery(<Shop />);
+
+    expect(getByText(NO_RESULT.PRODUCTS)).toBeInTheDocument();
   });
 
   it('should navigates to detail page when a detail button is clicked', () => {
