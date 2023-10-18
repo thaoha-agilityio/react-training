@@ -8,7 +8,7 @@ import { ConfirmModal, Products } from '@components';
 import Banner from '@components/Banner';
 
 // Constants
-import { LIMIT_PRODUCTS, SHOP_CRUMBS, ROUTES, SUCCESS_MESSAGES } from '@constants';
+import { LIMIT_PRODUCTS, SHOP_CRUMBS, ROUTES, SUCCESS_MESSAGES, NO_RESULT } from '@constants';
 
 // Hooks
 import { useInfiniteProducts, useMutationDeleteProduct, useCustomToast } from '@hooks';
@@ -25,12 +25,10 @@ const Shop = (): JSX.Element => {
 
   const {
     data: products,
-    fetchNextPage,
     hasNextPage,
     isLoading: isLoadingProduct,
-    isError,
-    error,
     isFetchingNextPage,
+    fetchNextPage,
   } = useInfiniteProducts(LIMIT_PRODUCTS);
 
   const [cart, setCart] = useCartStore((state) => [state.cart, state.setCart], shallow);
@@ -98,8 +96,8 @@ const Shop = (): JSX.Element => {
       <Banner title='Shop' crumbs={SHOP_CRUMBS} />
       <Container maxW='container.xl'>
         <Stack m='auto' spacing='40px' py='30px'>
-          {isError ? (
-            <Text>{error.message}</Text>
+          {!products.length ? (
+            <Text>{NO_RESULT.PRODUCTS}</Text>
           ) : (
             <>
               {/* TODO: update latter */}
@@ -130,16 +128,19 @@ const Shop = (): JSX.Element => {
           )}
         </Stack>
       </Container>
-      <ConfirmModal
-        isOpen={isOpen}
-        title='Delete Confirmation'
-        textCancel='Cancel'
-        textSubmit='Yes, Delete'
-        text='Are you sure you want to delete this item?'
-        onClose={onClose}
-        onSubmit={handleDeleteItem}
-        isLoading={isLoadingSubmit}
-      />
+
+      {isOpen && (
+        <ConfirmModal
+          isOpen={isOpen}
+          title='Delete Confirmation'
+          textCancel='Cancel'
+          textSubmit='Yes, Delete'
+          text='Are you sure you want to delete this item?'
+          onClose={onClose}
+          onSubmit={handleDeleteItem}
+          isLoading={isLoadingSubmit}
+        />
+      )}
     </>
   );
 };

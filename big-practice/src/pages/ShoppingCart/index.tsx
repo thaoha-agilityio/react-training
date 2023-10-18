@@ -11,7 +11,7 @@ import ConfirmModal from '@components/ConfirmModal';
 import Container from '@components/Container';
 
 // Constants
-import { CART_CRUMBS, EMPTY_CART_MESSAGE } from '@constants';
+import { CART_CRUMBS, NO_RESULT } from '@constants';
 
 //  Stores
 import { useCartStore, useProductStore } from '@stores';
@@ -116,7 +116,7 @@ const ShoppingCart = (): JSX.Element => {
           <Stack spacing='50px'>
             {renderCartTitle}
             {!cart.length ? (
-              <Text>{EMPTY_CART_MESSAGE}</Text>
+              <Text>{NO_RESULT.CART}</Text>
             ) : (
               cart.map((cart: ICart) => (
                 <CartItem cart={cart} key={cart.productId} onOpen={handleOpen} />
@@ -126,15 +126,18 @@ const ShoppingCart = (): JSX.Element => {
           {renderCheckout}
         </Flex>
       </Container>
-      <ConfirmModal
-        isOpen={isOpen}
-        title='Delete Confirmation'
-        textCancel='Cancel'
-        textSubmit='Yes, Delete'
-        text='Are you sure you want to delete this item?'
-        onClose={onClose}
-        onSubmit={handleDeleteCart}
-      />
+
+      {isOpen && (
+        <ConfirmModal
+          isOpen={isOpen}
+          title='Delete Confirmation'
+          textCancel='Cancel'
+          textSubmit='Yes, Delete'
+          text='Are you sure you want to delete this item?'
+          onClose={onClose}
+          onSubmit={handleDeleteCart}
+        />
+      )}
     </>
   );
 };

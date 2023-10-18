@@ -24,4 +24,7 @@ export const SUCCESS_MESSAGES = {
   ADD_TO_CART: 'Product has been added to cart',
 };
 
-export const EMPTY_CART_MESSAGE = 'Your shopping cart is empty.';
+export const NO_RESULT = {
+  CART: 'Your shopping cart is empty.',
+  PRODUCTS: 'No item to display',
+};
