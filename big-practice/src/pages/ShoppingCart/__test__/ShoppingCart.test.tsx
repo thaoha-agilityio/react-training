@@ -2,18 +2,23 @@
 import { fireEvent, renderWithRouterAndQuery } from '@helpers';
 
 // Constants
-import { MOCK_CARTS, NOTICE_MESSAGE } from '@constants';
+import { MOCK_CARTS, EMPTY_CART_MESSAGE, MOCK_PRODUCTS } from '@constants';
 import ShoppingCart from '..';
 
 // Stores
 import * as stores from '@stores';
 
-jest.mock('@stores', () => ({
-  __esModule: true,
-  ...jest.requireActual('@stores'),
-}));
-
 describe('ShoppingCart component', () => {
+  beforeEach(() => {
+    stores.useCartStore.setState({
+      cart: MOCK_CARTS,
+      setCart: jest.fn(),
+    });
+    stores.useProductStore.setState({
+      products: MOCK_PRODUCTS,
+    });
+  });
+
   it('should render component correctly', () => {
     const { container } = renderWithRouterAndQuery(<ShoppingCart />);
 
@@ -21,38 +26,31 @@ describe('ShoppingCart component', () => {
   });
 
   it('displays a message when the cart is empty', () => {
-    jest.spyOn(stores, 'useCartStore').mockImplementation(() => ({
+    stores.useCartStore.setState({
       cart: [],
-      deleteCart: jest.fn(),
-    }));
+      setCart: jest.fn(),
+    });
 
     const { getByText } = renderWithRouterAndQuery(<ShoppingCart />);
 
-    expect(getByText(NOTICE_MESSAGE)).toBeInTheDocument();
+    expect(getByText(EMPTY_CART_MESSAGE)).toBeInTheDocument();
   });
 
   it('calculates and displays the total price', () => {
-    jest.spyOn(stores, 'useCartStore').mockImplementation(() => ({
-      cart: MOCK_CARTS,
-      deleteCart: jest.fn(),
-    }));
-
     const { getByText } = renderWithRouterAndQuery(<ShoppingCart />);
 
     // Ensure that the total price is displayed correctly
-    expect(getByText('Rs. 216.00')).toBeInTheDocument();
+    expect(getByText('Rs. 30.00')).toBeInTheDocument();
   });
 
   it('should deleteCart function is called', () => {
-    jest.spyOn(stores, 'useCartStore').mockImplementation(() => ({
-      cart: MOCK_CARTS,
-      deleteCart: jest.fn(),
-    }));
+    const { getAllByTestId, getByText } = renderWithRouterAndQuery(<ShoppingCart />);
 
-    const { getAllByTestId } = renderWithRouterAndQuery(<ShoppingCart />);
-
+    // Show confirm modal
     const deleteBtn = getAllByTestId('delete-btn');
-
     fireEvent.click(deleteBtn[0]);
+
+    const submitBtn = getByText('Yes, Delete');
+    fireEvent.click(submitBtn);
   });
 });

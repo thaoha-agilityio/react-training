@@ -27,6 +27,22 @@ jest.mock('react-router-dom', () => ({
 }));
 
 describe('ProductDetails component', () => {
+  beforeEach(() => {
+    (jest.spyOn(reactRouter, 'useParams') as jest.Mock).mockImplementation(() => ({
+      uuid: MOCK_PRODUCTS[3].id,
+    }));
+
+    (jest.spyOn(hooks, 'useFetchProductDetail') as jest.Mock).mockImplementation(() => ({
+      data: MOCK_PRODUCTS[3],
+      isFetching: false,
+    }));
+
+    stores.useCartStore.setState({
+      cart: MOCK_CARTS,
+      setCart: jest.fn(),
+    });
+  });
+
   it('should render component correctly', () => {
     const { container } = renderWithRouterAndQuery(<ProductDetails />);
 
@@ -34,18 +50,6 @@ describe('ProductDetails component', () => {
   });
 
   it('should update quantity if existed product in cart', async () => {
-    (jest.spyOn(reactRouter, 'useParams') as jest.Mock).mockImplementation(() => ({
-      uuid: MOCK_PRODUCTS[0].id,
-    }));
-    (jest.spyOn(hooks, 'useFetchProductDetail') as jest.Mock).mockImplementation(() => ({
-      data: MOCK_PRODUCTS[0],
-      isFetching: false,
-    }));
-    jest.spyOn(stores, 'useCartStore').mockImplementation(() => ({
-      cart: MOCK_CARTS,
-      setCart: jest.fn,
-    }));
-
     const { getByText } = renderWithRouterAndQuery(<ProductDetails />);
 
     const addToCartBtn = getByText('Add To Cart');
@@ -61,10 +65,6 @@ describe('ProductDetails component', () => {
     (jest.spyOn(hooks, 'useFetchProductDetail') as jest.Mock).mockImplementation(() => ({
       data: MOCK_PRODUCT,
       isFetching: false,
-    }));
-    jest.spyOn(stores, 'useCartStore').mockImplementation(() => ({
-      cart: MOCK_CARTS,
-      setCart: jest.fn,
     }));
 
     const { getByText } = renderWithRouterAndQuery(<ProductDetails />);
@@ -85,6 +85,8 @@ describe('ProductDetails component', () => {
 
     const increaseBtn = getByText('+');
     fireEvent.click(increaseBtn);
+
+    expect(getByText('2')).toBeInTheDocument();
   });
 
   it('should handleDecreaseProduct function is called', async () => {
@@ -102,5 +104,6 @@ describe('ProductDetails component', () => {
     fireEvent.click(increaseBtn);
 
     fireEvent.click(decreaseBtn);
+    expect(getByText('1')).toBeInTheDocument();
   });
 });
