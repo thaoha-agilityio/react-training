@@ -13,7 +13,6 @@ describe('Form component', () => {
     const { getByPlaceholderText, getByText } = render(<Form {...mockProps} />);
 
     const nameInput = getByPlaceholderText(PLACEHOLDER_MESSAGE.NAME);
-    const categoryInput = getByPlaceholderText(PLACEHOLDER_MESSAGE.CATEGORY);
     const descriptionInput = getByPlaceholderText(PLACEHOLDER_MESSAGE.DESCRIPTION);
     const priceInput = getByPlaceholderText(PLACEHOLDER_MESSAGE.PRICE);
     const imageInput = getByPlaceholderText(PLACEHOLDER_MESSAGE.IMAGE);
@@ -21,7 +20,6 @@ describe('Form component', () => {
 
     return {
       nameInput,
-      categoryInput,
       descriptionInput,
       imageInput,
       priceInput,
@@ -54,11 +52,9 @@ describe('Form component', () => {
   });
 
   it('submits the form with valid data', async () => {
-    const { submitBtn, imageInput, nameInput, categoryInput, descriptionInput, priceInput } =
-      setup();
+    const { submitBtn, imageInput, nameInput, descriptionInput, priceInput } = setup();
 
     fireEvent.change(nameInput, { target: { value: 'Test Product' } });
-    fireEvent.change(categoryInput, { target: { value: 'Test Category' } });
     fireEvent.change(descriptionInput, { target: { value: 'Test Description' } });
     fireEvent.change(priceInput, { target: { value: '10.99' } });
 
