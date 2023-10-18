@@ -1,1 +1,1 @@
-export const MAXIMUM_FILE_SIZE = 100 * 1024; // 100 KB
+export const MAXIMUM_FILE_SIZE = 80 * 1024; // 80 KB

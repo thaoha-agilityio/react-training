@@ -14,7 +14,7 @@ export const ERROR_MESSAGES = {
   DESCRIPTION_INVALID: 'Description is invalid',
   STRING_LIMIT: 'This field allows maximum 50 characters',
   IMAGE_INVALID: 'Incorrect image file format',
-  MAXIMUM_FILE_SIZE: 'The image size must be less than or equal to 100KB.',
+  MAXIMUM_FILE_SIZE: 'The image size must be less than or equal to 80KB.',
 };
 
 export const SUCCESS_MESSAGES = {
