@@ -11,7 +11,7 @@ import {
 } from '../useProduct';
 
 // Constants
-import { MOCK_PRODUCTS } from '@constants';
+import { INITIAL_PRODUCT, MOCK_PRODUCTS } from '@constants';
 
 // Services
 import { api } from '@services/APIRequest';
@@ -105,7 +105,7 @@ describe('Test useFetchProduct', () => {
     const { result } = renderHook(() => useFetchProductDetail('1'), { wrapper });
 
     await waitFor(() => {
-      expect(result.current.data).toEqual(undefined);
+      expect(result.current.data).toEqual(INITIAL_PRODUCT);
       expect(result.current.isSuccess).toEqual(false);
       expect(result.current.error?.message).toEqual('Error');
     });

@@ -1,5 +1,5 @@
-import { useDisclosure } from '@chakra-ui/react';
 import { act, fireEvent, renderHook } from '@testing-library/react';
+import { useDisclosure } from '@chakra-ui/react';
 
 //  Constants
 import { MOCK_CARTS, MOCK_PRODUCTS, ROUTES } from '@constants';
@@ -17,11 +17,6 @@ import * as stores from '@stores';
 import * as hooks from '@hooks';
 
 import Shop from '..';
-
-jest.mock('@stores', () => ({
-  __esModule: true,
-  ...jest.requireActual('@stores'),
-}));
 
 // Mock the useNavigate hook
 const mockNavigate = jest.fn();
@@ -43,14 +38,22 @@ jest.mock('@hooks', () => ({
 }));
 
 describe('Shop component', () => {
-  jest.spyOn(api, 'getData').mockResolvedValue([MOCK_PRODUCTS]);
+  beforeEach(() => {
+    jest.spyOn(api, 'getData').mockResolvedValue([MOCK_PRODUCTS]);
 
-  (jest.spyOn(hooks, 'useInfiniteProducts') as jest.Mock).mockImplementation(() => ({
-    data: [MOCK_PRODUCTS],
-    isFetching: false,
-    hasNextPage: true,
-    fetchNextPage: jest.fn(),
-  }));
+    (jest.spyOn(hooks, 'useInfiniteProducts') as jest.Mock).mockImplementation(() => ({
+      data: [MOCK_PRODUCTS],
+      isFetching: false,
+      hasNextPage: true,
+      fetchNextPage: jest.fn(),
+    }));
+
+    stores.useCartStore.setState({
+      cart: MOCK_CARTS,
+      setCart: jest.fn(),
+    });
+  });
+
   it('should render component correctly', () => {
     const { container } = renderWithRouterAndQuery(<Shop />);
 
@@ -112,21 +115,16 @@ describe('Shop component', () => {
     act(() => {
       // Click deleteBtn
       const addToCartBtn = getAllByText('Add to cart');
-      fireEvent.click(addToCartBtn[1]);
+      fireEvent.click(addToCartBtn[0]);
     });
   });
 
   it('should update cart when existing product', async () => {
-    jest.spyOn(stores, 'useCartStore').mockImplementation(() => ({
-      cart: MOCK_CARTS,
-      setCart: jest.fn(),
-    }));
-
     const { getAllByText, getByText } = renderWithRouterAndQuery(<Shop />);
     act(() => {
       // Click deleteBtn
       const addToCartBtn = getAllByText('Add to cart');
-      fireEvent.click(addToCartBtn[1]);
+      fireEvent.click(addToCartBtn[3]);
     });
 
     const showMoreBtn = getByText('Show More');
