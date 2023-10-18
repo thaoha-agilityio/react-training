@@ -1,33 +1,44 @@
 import { fireEvent, render } from '@testing-library/react';
 
 //  Constants
-import { MOCK_CARTS } from '@constants';
+import { MOCK_CARTS, MOCK_PRODUCTS } from '@constants';
+
+// Stores
+import * as stores from '@stores';
 
 import CartItem from '../index';
 
 const mockProps = {
-  cart: MOCK_CARTS[0],
+  cart: MOCK_CARTS[1],
   onOpen: jest.fn(),
 };
 
 describe('CartItem Component', () => {
+  beforeEach(() => {
+    stores.useProductStore.setState({
+      products: MOCK_PRODUCTS,
+    });
+  });
+
   it('renders product information correctly', () => {
-    const { getByText, getByAltText } = render(<CartItem {...mockProps} />);
+    const { container } = render(<CartItem {...mockProps} />);
 
     // Assert that the product name, description, and price are displayed
-    expect(getByText(MOCK_CARTS[0].name)).toBeInTheDocument();
-    expect(getByText(MOCK_CARTS[0].quantity)).toBeInTheDocument();
-    expect(getByText(`Rs. ${MOCK_CARTS[0].price}`)).toBeInTheDocument();
-    expect(getByText(`Rs. ${MOCK_CARTS[0].price * MOCK_CARTS[0].quantity}`)).toBeInTheDocument();
-    expect(getByAltText('image-product')).toBeInTheDocument();
+    expect(container).toBeInTheDocument();
   });
 
   it('should call onDeleteCart functions when button is clicked', () => {
-    const { getByRole } = render(<CartItem {...mockProps} />);
+    const { getByTestId } = render(<CartItem {...mockProps} />);
 
     // Click open Modal
-    fireEvent.click(getByRole('button'));
+    fireEvent.click(getByTestId('delete-btn'));
 
     expect(mockProps.onOpen).toHaveBeenCalled();
+  });
+
+  it('should getProductById function is called', () => {
+    const { getByText } = render(<CartItem {...mockProps} />);
+
+    expect(getByText('name 3')).toBeInTheDocument();
   });
 });

@@ -3,9 +3,8 @@ import { useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button, Container, Flex, Spinner, Stack, Text, useDisclosure } from '@chakra-ui/react';
 
-import { ConfirmModal, Products } from '@components';
-
 // Components
+import { ConfirmModal, Products } from '@components';
 import Banner from '@components/Banner';
 
 // Constants
@@ -78,7 +77,7 @@ const Shop = (): JSX.Element => {
   // Handle add product to cart
   const handleAddToCart = useCallback(
     (product: IProduct) => {
-      const existedProductIndex = cart?.findIndex((cart) => cart.productId === product.id);
+      const existedProductIndex = cart.findIndex((cart) => cart.productId === product.id);
 
       if (existedProductIndex !== -1) {
         const newCarts = [...cart];

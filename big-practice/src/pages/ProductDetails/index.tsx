@@ -41,7 +41,7 @@ const ProductDetails = (): JSX.Element => {
   // Handle add product to cart
   const handleAddToCart = useCallback(() => {
     // Check if the product with the given 'uuid' already exists in the cart
-    const existedProductIndex = cart?.findIndex((cart) => cart.productId === uuid);
+    const existedProductIndex = cart.findIndex((cart) => cart.productId === uuid);
 
     if (existedProductIndex !== -1) {
       const newCart = [...cart];

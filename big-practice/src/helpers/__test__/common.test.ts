@@ -1,4 +1,4 @@
-import { convertBase64, createId, formatPrice } from '@helpers';
+import { convertBase64, createId, flattenArray, formatPrice } from '@helpers';
 
 describe('Testing convertBase64', () => {
   it('Should resolve with a base64 url when given a valid file', async () => {
@@ -36,5 +36,17 @@ describe('Testing convertBase64', () => {
   it('should return a string', () => {
     const id = createId();
     expect(typeof id).toBe('string');
+  });
+
+  // Testing Flattens an array of arrays into a single array
+  it('should flatten an array with nested arrays', () => {
+    const nestedArray = [
+      [1, 2, 3],
+      [4, 5],
+    ];
+
+    const flattened = flattenArray(nestedArray);
+    const expected = [1, 2, 3, 4, 5];
+    expect(flattened).toEqual(expected);
   });
 });
