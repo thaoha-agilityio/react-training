@@ -26,7 +26,7 @@
 
 - Unit test coverage should be greater than 80%
 - Apply React query for fetching data
-- App zustand for state management
+- Apply zustand for state management
 - Can use a react component lib
 - Score from lighthouse tools from 95 or higher
 
@@ -37,7 +37,7 @@
 ## Overview app feature
 
 - Users can see the existing furniture list
-- The list will show 16 items each page
+- The list will show 8 items each page
 - Users can add new furniture when click Add button
 - Users can see detailed furniture
 - Users can delete furniture
