@@ -1,3 +1,4 @@
+import isEqual from 'react-fast-compare';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { memo, useCallback, useMemo } from 'react';
 import {
@@ -188,4 +189,4 @@ const Form = ({ isLoading, title, onSubmitProduct, product }: FormProps): JSX.El
   );
 };
 
-export default memo(Form);
+export default memo(Form, isEqual);

@@ -1,3 +1,4 @@
+import isEqual from 'react-fast-compare';
 import { memo, useCallback, useMemo } from 'react';
 import { Box, Flex, IconButton, Image, Text } from '@chakra-ui/react';
 
@@ -8,8 +9,8 @@ import { DeleteIcon } from '@assets/icons';
 import { IProductCart } from '@types';
 
 type CartItemProps = {
-  onOpen: (id: string) => void;
   cartItem: IProductCart;
+  onOpen: (id: string) => void;
 };
 
 const CartItem = ({
@@ -50,4 +51,4 @@ const CartItem = ({
   );
 };
 
-export default memo(CartItem);
+export default memo(CartItem, isEqual);
