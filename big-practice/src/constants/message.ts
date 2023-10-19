@@ -14,7 +14,7 @@ export const ERROR_MESSAGES = {
   DESCRIPTION_INVALID: 'Description is invalid',
   STRING_LIMIT: 'This field allows maximum 50 characters',
   IMAGE_INVALID: 'Incorrect image file format',
-  MAXIMUM_FILE_SIZE: 'The image size must be less than or equal to 100KB.',
+  MAXIMUM_FILE_SIZE: 'The image size must be less than or equal to 80KB.',
 };
 
 export const SUCCESS_MESSAGES = {
@@ -24,4 +24,7 @@ export const SUCCESS_MESSAGES = {
   ADD_TO_CART: 'Product has been added to cart',
 };
 
-export const EMPTY_CART_MESSAGE = 'Your shopping cart is empty.';
+export const NO_RESULT = {
+  CART: 'Your shopping cart is empty.',
+  PRODUCTS: 'No item to display',
+};

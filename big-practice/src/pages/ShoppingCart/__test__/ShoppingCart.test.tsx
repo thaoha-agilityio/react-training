@@ -2,7 +2,7 @@
 import { fireEvent, renderWithRouterAndQuery } from '@helpers';
 
 // Constants
-import { MOCK_CARTS, EMPTY_CART_MESSAGE, MOCK_PRODUCTS } from '@constants';
+import { MOCK_CARTS, NO_RESULT, MOCK_PRODUCTS } from '@constants';
 import ShoppingCart from '..';
 
 // Stores
@@ -33,7 +33,7 @@ describe('ShoppingCart component', () => {
 
     const { getByText } = renderWithRouterAndQuery(<ShoppingCart />);
 
-    expect(getByText(EMPTY_CART_MESSAGE)).toBeInTheDocument();
+    expect(getByText(NO_RESULT.CART)).toBeInTheDocument();
   });
 
   it('calculates and displays the total price', () => {

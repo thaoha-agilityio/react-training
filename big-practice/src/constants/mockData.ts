@@ -13,6 +13,15 @@ export const INITIAL_CART = {
   quantity: 0,
 };
 
+export const INITIAL_PRODUCT_CART = {
+  id: '',
+  name: '',
+  image: '',
+  description: '',
+  price: 0,
+  quantity: 0,
+};
+
 export const LIMIT_PRODUCTS = 8;
 
 export const MOCK_PRODUCTS = [
@@ -63,4 +72,14 @@ export const MOCK_CARTS = [
 export const MOCK_PRODUCT = {
   id: '100',
   quantity: 2,
+};
+
+export const MOCK_PRODUCT_CART = {
+  id: '1',
+  name: 'name 3',
+  image:
+    'https://assets.weimgs.com/weimgs/rk/images/wcm/products/202328/0001/haven-2-piece-bumper-chaise-sectional-106-113-1-q.jpg',
+  price: 15,
+  description: 'description',
+  quantity: 0,
 };

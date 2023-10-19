@@ -1,5 +1,6 @@
 import { memo, useMemo } from 'react';
 import { Link } from 'react-router-dom';
+import isEqual from 'react-fast-compare';
 import { Box, Breadcrumb, BreadcrumbItem, Text, BreadcrumbLink, VStack } from '@chakra-ui/react';
 import { ChevronRightIcon } from '@chakra-ui/icons';
 
@@ -58,4 +59,4 @@ const Banner = ({ title, crumbs }: BannerProps): JSX.Element => {
   );
 };
 
-export default memo(Banner);
+export default memo(Banner, isEqual);

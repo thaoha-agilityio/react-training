@@ -1,56 +1,38 @@
-import { shallow } from 'zustand/shallow';
-import { memo, useCallback, useEffect, useMemo, useState } from 'react';
+import { memo, useCallback, useMemo } from 'react';
 import { Box, Flex, IconButton, Image, Text } from '@chakra-ui/react';
 
 //  Icons
 import { DeleteIcon } from '@assets/icons';
 
 // Types
-import { ICart, IProduct } from '@types';
-
-// Stores
-import { useProductStore } from '@stores';
-
-// Constants
-import { INITIAL_PRODUCT } from '@constants';
+import { IProductCart } from '@types';
 
 type CartItemProps = {
-  cart: ICart;
   onOpen: (id: string) => void;
+  cartItem: IProductCart;
 };
 
-const CartItem = ({ cart: { productId, quantity }, onOpen }: CartItemProps): JSX.Element => {
-  const [products] = useProductStore((state) => [state.products], shallow);
-
-  const [product, setProduct] = useState<IProduct>(INITIAL_PRODUCT);
-
-  // get the product from the store by productId
-  const getCartBytId = useCallback(() => {
-    const currentProduct = products.find((product) => product.id === productId);
-
-    if (currentProduct) setProduct(currentProduct);
-  }, [productId, products]);
-
+const CartItem = ({
+  onOpen,
+  cartItem: { id, image, name, price, quantity },
+}: CartItemProps): JSX.Element => {
   //Handle total amount for each product
-  const subTotal = useMemo(() => product.price * quantity, [product.price, quantity]);
+  const subTotal = useMemo(() => price * quantity, [price, quantity]);
 
+  // Handle open confirm modal
   const handleOpen = useCallback(() => {
-    onOpen(productId);
-  }, [productId, onOpen]);
-
-  useEffect(() => {
-    getCartBytId();
-  }, [getCartBytId]);
+    onOpen(id);
+  }, [id, onOpen]);
 
   return (
     <Flex alignItems='center' gap={{ base: '20px', md: '50px' }} pt='20px'>
       <Box>
-        <Image w='111px' h='90px' rounded='xs' src={product.image} alt='image-product' />
+        <Image w='111px' h='90px' rounded='xs' src={image} alt='image-product' />
       </Box>
       <Text variant='cart' width='130px'>
-        {product.name}
+        {name}
       </Text>
-      <Text variant='cart'>Rs. {product.price}</Text>
+      <Text variant='cart'>Rs. {price}</Text>
       <Box w={{ base: '50px', md: '100px' }}>
         <Text border='1px solid' borderRadius='xs' w='32px' h='32px' textAlign='center' pt='5px'>
           {quantity}

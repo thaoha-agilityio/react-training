@@ -1,4 +1,3 @@
-import { shallow } from 'zustand/shallow';
 import { memo } from 'react';
 import { Box } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
@@ -9,18 +8,17 @@ import { ShoppingCartIcon } from '@assets/icons';
 // Constants
 import { ROUTES } from '@constants';
 
-// Stores
-import { useCartStore } from '@stores';
+type ShoppingCartProps = {
+  numberOfItems: number;
+};
 
-const ShoppingCart = () => {
-  const [cart] = useCartStore((state) => [state.cart], shallow);
-
+const ShoppingCart = ({ numberOfItems }: ShoppingCartProps): JSX.Element => {
   return (
     <Box pos='relative'>
       <Link to={ROUTES.SHOPPING_CART} aria-label='Cart'>
         <ShoppingCartIcon />
 
-        {cart.length > 0 && (
+        {numberOfItems > 0 && (
           <Box
             pos='absolute'
             color='gray.600'
@@ -33,7 +31,7 @@ const ShoppingCart = () => {
             left='14px'
             fontSize='xs'
           >
-            {cart.length}
+            {numberOfItems}
           </Box>
         )}
       </Link>

@@ -39,7 +39,7 @@ describe('ProductDetails component', () => {
 
     stores.useCartStore.setState({
       cart: MOCK_CARTS,
-      setCart: jest.fn(),
+      addToCart: jest.fn(),
     });
   });
 

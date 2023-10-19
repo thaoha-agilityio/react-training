@@ -11,13 +11,13 @@ import ConfirmModal from '@components/ConfirmModal';
 import Container from '@components/Container';
 
 // Constants
-import { CART_CRUMBS, EMPTY_CART_MESSAGE } from '@constants';
+import { CART_CRUMBS, INITIAL_PRODUCT_CART, NO_RESULT } from '@constants';
 
 //  Stores
 import { useCartStore, useProductStore } from '@stores';
 
 // Types
-import { ICart } from '@types';
+import { ICart, IProductCart } from '@types';
 
 // Helper
 import { formatPrice } from '@helpers';
@@ -28,10 +28,31 @@ const ShoppingCart = (): JSX.Element => {
 
   const [selectedId, setSelectedId] = useState<string>('');
 
+  // Get cart, deleteCart from store
   const [cart, deleteCart] = useCartStore((state) => [state.cart, state.deleteCart], shallow);
 
+  // Get products from store
   const [products] = useProductStore((state) => [state.products], shallow);
 
+  // Render cart product
+  const getProductCart = useCallback(
+    (cart: ICart): IProductCart => {
+      const product = products.find((product) => product.id === cart.productId);
+
+      // If the product is not found, return an initial product cart
+      if (!product) return INITIAL_PRODUCT_CART;
+
+      const productCart = {
+        ...product,
+        quantity: cart.quantity,
+      };
+
+      return productCart;
+    },
+    [products],
+  );
+
+  // Handle open confirm modal
   const handleOpen = useCallback(
     (id: string) => {
       onOpen();
@@ -40,6 +61,7 @@ const ShoppingCart = (): JSX.Element => {
     [onOpen],
   );
 
+  // Handle delete cart
   const handleDeleteCart = useCallback(() => {
     deleteCart(selectedId);
 
@@ -47,8 +69,8 @@ const ShoppingCart = (): JSX.Element => {
     onClose();
   }, [deleteCart, selectedId]);
 
+  // Calculate the total price
   const totalPrice = useMemo(() => {
-    // Use the reduce function to calculate the total price
     return cart.reduce((totalPrice, cartItem) => {
       const product = products.find((product) => product.id === cartItem.productId);
 
@@ -61,6 +83,7 @@ const ShoppingCart = (): JSX.Element => {
     }, 0);
   }, [cart, products]);
 
+  // render checkOut
   const renderCheckout = useMemo(() => {
     return (
       <Stack
@@ -90,6 +113,7 @@ const ShoppingCart = (): JSX.Element => {
     );
   }, [totalPrice]);
 
+  // render CartTile
   const renderCartTitle = useMemo(() => {
     return (
       <Flex
@@ -113,28 +137,35 @@ const ShoppingCart = (): JSX.Element => {
       <Banner title='Cart' crumbs={CART_CRUMBS} />
       <Container>
         <Flex justifyContent='space-between' py='30px' wrap='wrap'>
-          <Stack spacing='50px'>
+          <Stack spacing='50px' pb='20px'>
             {renderCartTitle}
             {!cart.length ? (
-              <Text>{EMPTY_CART_MESSAGE}</Text>
+              <Text>{NO_RESULT.CART}</Text>
             ) : (
               cart.map((cart: ICart) => (
-                <CartItem cart={cart} key={cart.productId} onOpen={handleOpen} />
+                <CartItem
+                  key={cart.productId}
+                  onOpen={handleOpen}
+                  cartItem={getProductCart(cart)}
+                />
               ))
             )}
           </Stack>
           {renderCheckout}
         </Flex>
       </Container>
-      <ConfirmModal
-        isOpen={isOpen}
-        title='Delete Confirmation'
-        textCancel='Cancel'
-        textSubmit='Yes, Delete'
-        text='Are you sure you want to delete this item?'
-        onClose={onClose}
-        onSubmit={handleDeleteCart}
-      />
+
+      {isOpen && (
+        <ConfirmModal
+          isOpen={isOpen}
+          title='Delete Confirmation'
+          textCancel='Cancel'
+          textSubmit='Yes, Delete'
+          text='Are you sure you want to delete this item?'
+          onClose={onClose}
+          onSubmit={handleDeleteCart}
+        />
+      )}
     </>
   );
 };

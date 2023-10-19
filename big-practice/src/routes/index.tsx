@@ -3,10 +3,9 @@ import { RouteObject } from 'react-router-dom';
 
 // Constants
 import { ROUTES } from '@constants';
-import Home from '@pages/Home';
 
 // Pages
-// const Home = lazy(() => import('@pages/Home'));
+const Home = lazy(() => import('@pages/Home'));
 const Shop = lazy(() => import('@pages/Shop'));
 const AddProduct = lazy(() => import('@pages/AddProduct'));
 const ProductDetails = lazy(() => import('@pages/ProductDetails'));

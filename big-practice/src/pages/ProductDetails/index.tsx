@@ -27,10 +27,10 @@ const ProductDetails = (): JSX.Element => {
   const { showToast } = useCustomToast();
 
   // Fetch product details and check if data is being fetched
-  const { data: product, isFetching } = useFetchProductDetail(uuid);
+  const { data: product, isLoading } = useFetchProductDetail(uuid);
 
   // Get carts from carts store
-  const [cart, setCart] = useCartStore((state) => [state.cart, state.setCart], shallow);
+  const [addToCart] = useCartStore((state) => [state.addToCart], shallow);
 
   const [count, setCount] = useState<number>(1);
 
@@ -40,26 +40,15 @@ const ProductDetails = (): JSX.Element => {
 
   // Handle add product to cart
   const handleAddToCart = useCallback(() => {
-    // Check if the product with the given 'uuid' already exists in the cart
-    const existedProductIndex = cart.findIndex((cart) => cart.productId === uuid);
-
-    if (existedProductIndex !== -1) {
-      const newCart = [...cart];
-      newCart[existedProductIndex].quantity += count;
-
-      setCart(newCart);
-    } else {
-      setCart([...cart, { productId: uuid, quantity: count }]);
-    }
-
+    addToCart(uuid, count);
     showToast(STATUSES.SUCCESS, SUCCESS_MESSAGES.ADD_TO_CART);
-  }, [cart, count, uuid]);
+  }, [count, uuid]);
 
   return (
     <>
       <Box bg='yellow.150' w='full' h='100px'></Box>
       <Container>
-        {isFetching ? (
+        {isLoading ? (
           <Box textAlign='center' pt='20px'>
             <Spinner variant='secondary' />
           </Box>

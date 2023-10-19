@@ -1,7 +1,7 @@
 import { fireEvent, render } from '@testing-library/react';
 
 //  Constants
-import { MOCK_CARTS, MOCK_PRODUCTS } from '@constants';
+import { MOCK_PRODUCTS, MOCK_PRODUCT_CART } from '@constants';
 
 // Stores
 import * as stores from '@stores';
@@ -9,7 +9,7 @@ import * as stores from '@stores';
 import CartItem from '../index';
 
 const mockProps = {
-  cart: MOCK_CARTS[1],
+  cartItem: MOCK_PRODUCT_CART,
   onOpen: jest.fn(),
 };
 
