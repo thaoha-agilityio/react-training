@@ -1,9 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useCallback } from 'react';
 
-// Layouts
-import Container from '@components/Container';
-
 // Constants
 import { ADD_PRODUCT_CRUMBS, MENU, ROUTES, SUCCESS_MESSAGES } from '@constants';
 
@@ -16,6 +13,7 @@ import { IProduct, STATUSES } from '@types';
 // Components
 import Banner from '@components/Banner';
 import Form from '@components/Form';
+import { Container } from '@chakra-ui/react';
 
 const AddProduct = (): JSX.Element => {
   const navigate = useNavigate();

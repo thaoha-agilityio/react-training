@@ -79,7 +79,7 @@ const Shop = (): JSX.Element => {
   return (
     <>
       <Banner title='Shop' crumbs={SHOP_CRUMBS} />
-      <Container maxW='container.xl'>
+      <Container>
         <Stack m='auto' spacing='40px' py='30px'>
           {!products.length ? (
             <Text>{NO_RESULT.PRODUCTS}</Text>

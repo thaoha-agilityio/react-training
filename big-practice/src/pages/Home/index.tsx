@@ -1,7 +1,5 @@
-import Container from '@components/Container';
+import { Container, Flex, Heading, Spinner, Stack, Text } from '@chakra-ui/react';
 import { Hero, BrowTheRange, Adverse } from './components';
-
-import { Flex, Heading, Spinner, Stack, Text } from '@chakra-ui/react';
 
 // Components
 import Products from '@components/Products';

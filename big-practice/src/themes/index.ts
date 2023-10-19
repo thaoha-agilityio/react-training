@@ -18,6 +18,7 @@ import spinnerTheme from './components/spinner';
 import formErrorTheme from './components/formError';
 import textTheme from './components/text';
 import headingTheme from './components/heading';
+import containerTheme from './components/container';
 
 const CHAKRA_THEME = {
   ...extendTheme({
@@ -30,6 +31,7 @@ const CHAKRA_THEME = {
       Spinner: spinnerTheme,
       Text: textTheme,
       Heading: headingTheme,
+      Container: containerTheme,
     },
     colors: colors,
     fontSizes: fontSizes,

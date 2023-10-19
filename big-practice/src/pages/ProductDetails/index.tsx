@@ -1,11 +1,10 @@
 import { shallow } from 'zustand/shallow';
 import { useCallback, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Box, Spinner } from '@chakra-ui/react';
+import { Box, Container, Spinner } from '@chakra-ui/react';
 
 // Components
 import CardDetails from '@components/CardDetails';
-import Container from '@components/Container';
 
 // Hooks
 import { useCustomToast, useFetchProductDetail } from '@hooks';

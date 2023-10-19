@@ -1,11 +1,10 @@
 import { useCallback } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Box, Spinner } from '@chakra-ui/react';
+import { Box, Spinner, Container } from '@chakra-ui/react';
 
 // Components
 import Banner from '@components/Banner';
 import Form from '@components/Form';
-import Container from '@components/Container';
 
 // Constants
 import { DATA_CRUMBS, ROUTES, SUCCESS_MESSAGES } from '@constants';

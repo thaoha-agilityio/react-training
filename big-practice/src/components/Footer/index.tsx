@@ -8,7 +8,7 @@ import { MENU, HELPS, PLACEHOLDER_MESSAGE } from '@constants';
 const Footer = (): JSX.Element => (
   <Box as='footer'>
     <Divider />
-    <Container maxW='1240px' display='flex' gap='48px' flexDir='column' pt='48px' pb='35px'>
+    <Container display='flex' gap='48px' flexDir='column' pt='48px' pb='35px'>
       <Flex justifyContent='space-between' fontSize={{ base: 'xs', md: 'sm' }} fontWeight='medium'>
         <Stack>
           <Heading fontSize={{ base: 'base', md: 'lg' }} fontWeight='bolder'>

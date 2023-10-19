@@ -1,14 +1,11 @@
 import { shallow } from 'zustand/shallow';
 import { useCallback, useMemo, useState } from 'react';
-import { Button, Flex, Stack, Text, useDisclosure } from '@chakra-ui/react';
+import { Button, Container, Flex, Stack, Text, useDisclosure } from '@chakra-ui/react';
 
 // Components
 import Banner from '@components/Banner';
 import CartItem from '@components/CartItem';
 import ConfirmModal from '@components/ConfirmModal';
-
-// Layout
-import Container from '@components/Container';
 
 // Constants
 import { CART_CRUMBS, INITIAL_PRODUCT_CART, NO_RESULT } from '@constants';
