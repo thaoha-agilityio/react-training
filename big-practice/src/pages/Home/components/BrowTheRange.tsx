@@ -27,15 +27,15 @@ export const BrowTheRange = memo(
         textShadow={'0px 4px 4px rgba(0, 0, 0, 0.25)'}
       >
         <Stack w='480px' textAlign='center'>
-          <Image src={dining} borderRadius='xl' alt='dining' />
+          <Image src={dining} borderRadius='xl' alt='dining' w='100%' h='100%' />
           <Text>Dining</Text>
         </Stack>
         <Stack w='480px' textAlign='center'>
-          <Image src={bedroom} borderRadius='xl' alt='bedroom' />
+          <Image src={bedroom} borderRadius='xl' alt='bedroom' w='100%' h='100%' />
           <Text>Bedroom</Text>
         </Stack>
         <Stack w='480px' textAlign='center'>
-          <Image src={living} borderRadius='xl' alt='living' />
+          <Image src={living} borderRadius='xl' alt='living' w='100%' h='100%' />
           <Text>Living</Text>
         </Stack>
       </Flex>
