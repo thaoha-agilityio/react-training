@@ -28,14 +28,8 @@ export const Hero = memo(
         top='37%'
       >
         <Box pl='40px' pt={{ base: '25px', md: '62px' }}>
-          <Text
-            textTransform='uppercase'
-            letterSpacing='3px'
-            fontSize='sm'
-            color='secondary.500'
-            fontWeight='bold'
-          >
-            new arrival
+          <Text letterSpacing='3px' fontSize='sm' color='secondary.500' fontWeight='bold'>
+            New Arrival
           </Text>
           <Heading
             textTransform='capitalize'

@@ -11,22 +11,22 @@ const buttonTheme = {
   variants: {
     solid: {
       color: 'white',
-      bg: 'yellow.250',
+      bg: 'primary.250',
       fontSize: { base: 'xs', md: 'sm' },
       rounded: 'none',
       _hover: {
-        bg: 'yellow.250',
+        bg: 'primary.250',
       },
       _active: {
-        bg: 'yellow.250',
+        bg: 'primary.250',
       },
     },
 
     outline: {
       bg: 'white',
-      borderColor: 'yellow.250',
+      borderColor: 'primary.250',
       rounded: 'none',
-      color: 'yellow.250',
+      color: 'primary.250',
       fontSize: { base: 'xs', md: 'sm' },
       fontWeight: 'bold',
       lineHeight: 'xs',
@@ -57,10 +57,10 @@ const buttonTheme = {
       fontSize: 'md',
       borderRadius: 'md',
       color: 'secondary.600',
-      bg: 'yellow.150',
+      bg: 'primary.150',
       _active: {
         color: 'white',
-        bg: 'yellow.250',
+        bg: 'primary.250',
       },
     },
   },

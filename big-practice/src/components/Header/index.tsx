@@ -4,7 +4,7 @@ import { Container, Flex, HStack, Heading } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 
 // Images
-import { FurniroLogo } from '@assets/photos/logo';
+import { FurniroLogo } from '@assets/icons/logo';
 import { AccountIcon, SearchIcon, HeartIcon } from '@assets/icons';
 
 // Constants
@@ -27,7 +27,7 @@ const Header = (): JSX.Element => {
           <Link to='/'>
             <HStack spacing='5px'>
               <FurniroLogo />
-              <Heading as='h1' fontSize={{ base: 'xxl', md: '2xl' }}>
+              <Heading as='h1' variant='tertiary' textShadow='0px 4px 4px rgba(0, 0, 0, 0.25)'>
                 Furniro
               </Heading>
             </HStack>
