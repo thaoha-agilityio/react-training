@@ -15,7 +15,7 @@ const baseStyle = definePartsStyle({
   },
 
   footer: {
-    bg: 'gray.50',
+    bg: 'secondary.50',
   },
 });
 
@@ -35,7 +35,7 @@ const sizes = {
       py: '16px',
       h: '145px',
       fontSize: { base: 'xs', md: 'sm' },
-      color: 'gray.250',
+      color: 'secondary.250',
       fontWeight: 'bold',
     },
   }),

@@ -23,7 +23,7 @@ const CardDetails = ({
 }: CardDetailProps): JSX.Element => {
   const renderInfoProduct = useMemo(() => {
     return (
-      <Stack borderTop='1px' borderColor='gray.350' pt='40px'>
+      <Stack borderTop='1px' borderColor='secondary.350' pt='40px'>
         <Flex gap='20px'>
           <Box w='75px'>
             <Text variant='detail'>SKU</Text>
@@ -56,7 +56,7 @@ const CardDetails = ({
           <Text variant='title' textTransform='capitalize'>
             {name}
           </Text>
-          <Text variant='secondary' color='gray.100'>
+          <Text variant='secondary' color='secondary.100'>
             Rs. {price}
           </Text>
           <Text fontSize='tiny'>{description}</Text>

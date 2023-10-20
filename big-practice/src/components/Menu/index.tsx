@@ -17,7 +17,7 @@ const Menu = ({ menu }: MenuProps): JSX.Element => (
     {menu.map((item) => (
       <ListItem key={item.title}>
         <Link to={item.path}>
-          <Text fontSize={{ base: 'xs', md: 'sm' }} color='gray.600'>
+          <Text fontSize={{ base: 'xs', md: 'sm' }} color='secondary.600'>
             {item.title}
           </Text>
         </Link>

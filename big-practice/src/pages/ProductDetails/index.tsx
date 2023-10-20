@@ -45,7 +45,7 @@ const ProductDetails = (): JSX.Element => {
 
   return (
     <>
-      <Box bg='yellow.150' w='full' h='100px'></Box>
+      <Box bg='primary.150' w='full' h='100px'></Box>
       <Container>
         {isLoading ? (
           <Box textAlign='center' pt='20px'>

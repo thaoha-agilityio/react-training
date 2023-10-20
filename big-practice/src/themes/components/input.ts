@@ -11,8 +11,8 @@ const inputTheme = {
   variants: {
     outline: {
       field: {
-        borderColor: 'gray.100',
-        color: 'gray.250',
+        borderColor: 'secondary.100',
+        color: 'secondary.250',
         borderRadius: '10px',
       },
     },
@@ -23,11 +23,11 @@ const inputTheme = {
       px: '20px',
       h: { base: '50px', md: '75px' },
       _placeholder: {
-        color: 'gray.100',
+        color: 'secondary.100',
         fontSize: { base: 'xs', md: 'tiny' },
       },
       _invalid: {
-        color: 'red.400',
+        color: 'error.400',
       },
     },
   },

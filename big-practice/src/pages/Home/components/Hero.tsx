@@ -20,7 +20,7 @@ export const Hero = memo(
         w={{ base: '300px', md: '643px' }}
         h={{ base: '250px', md: '443px' }}
         borderRadius='md'
-        bg='yellow.200'
+        bg='primary.200'
         border='1px solid'
         pos='absolute'
         transform={{ base: 'translateX(-50%)', lg: 'translateX(0%)' }}
@@ -32,14 +32,14 @@ export const Hero = memo(
             textTransform='uppercase'
             letterSpacing='3px'
             fontSize='sm'
-            color='gray.500'
+            color='secondary.500'
             fontWeight='bold'
           >
             new arrival
           </Text>
           <Heading
             textTransform='capitalize'
-            color='yellow.250'
+            color='primary.250'
             textShadow={'0px 4px 4px rgba(0, 0, 0, 0.25)'}
             fontWeight='bolder'
             fontSize={{ base: 'xxl', md: '5xl' }}

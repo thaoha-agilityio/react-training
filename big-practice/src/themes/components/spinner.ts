@@ -2,7 +2,7 @@ import { defineStyleConfig } from '@chakra-ui/react';
 
 const spinnerTheme = defineStyleConfig({
   baseStyle: {
-    color: 'gray.200',
+    color: 'secondary.200',
     m: 'auto',
   },
   variants: {
@@ -11,7 +11,7 @@ const spinnerTheme = defineStyleConfig({
       speed: '0.8s',
     },
     secondary: {
-      color: 'yellow.250',
+      color: 'primary.250',
       size: 'xl',
     },
   },

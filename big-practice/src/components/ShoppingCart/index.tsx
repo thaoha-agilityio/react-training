@@ -21,8 +21,8 @@ const ShoppingCart = ({ numberOfItems }: ShoppingCartProps): JSX.Element => {
         {numberOfItems > 0 && (
           <Box
             pos='absolute'
-            color='gray.600'
-            bg='yellow.250'
+            color='secondary.600'
+            bg='primary.250'
             rounded='50%'
             w='20px'
             h='19px'
