@@ -10,16 +10,21 @@ export const BrowTheRange = memo(
   (): JSX.Element => (
     <Box as='section'>
       <Box textAlign='center' textShadow={'0px 4px 4px rgba(0, 0, 0, 0.25)'} mt='40px'>
-        <Heading as='h3' fontSize={{ base: 'lg', md: 'xl' }} fontWeight='bold' color='gray.500'>
+        <Heading
+          as='h3'
+          fontSize={{ base: 'lg', md: 'xl' }}
+          fontWeight='bold'
+          color='secondary.500'
+        >
           Browse The Range
         </Heading>
-        <Text fontSize={{ base: 'sm', md: 'md' }} color='gray.200'>
+        <Text fontSize={{ base: 'sm', md: 'md' }} color='secondary.200'>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </Text>
       </Box>
       <Flex
         fontSize='lg'
-        color='gray.500'
+        color='secondary.500'
         mt='40px'
         gap='20px'
         justify='center'

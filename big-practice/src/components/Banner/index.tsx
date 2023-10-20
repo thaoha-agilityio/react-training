@@ -51,7 +51,7 @@ const Banner = ({ title, crumbs }: BannerProps): JSX.Element => {
           {title}
         </Text>
 
-        <Breadcrumb spacing='8px' separator={<ChevronRightIcon color='gray.500' />}>
+        <Breadcrumb spacing='8px' separator={<ChevronRightIcon color='secondary.500' />}>
           {renderBreadcrumbItem}
         </Breadcrumb>
       </VStack>

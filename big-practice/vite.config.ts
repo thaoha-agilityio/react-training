@@ -21,7 +21,6 @@ export default defineConfig({
     react(),
     EnvironmentPlugin('all'),
     tsconfigPaths(),
-    EnvironmentPlugin('all'),
     Sitemap({ dynamicRoutes, hostname: envVariables.VITE_HOST_NAME }),
     viteImagemin({
       gifsicle: {

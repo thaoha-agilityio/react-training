@@ -162,7 +162,7 @@ const Form = ({ isLoading, title, onSubmitProduct, product }: FormProps): JSX.El
                 w={{ base: '180px', md: '237px' }}
                 {...register('image', schema.image)}
               />
-              <Button bg='yellow.150' variant='outline' rounded='xs'>
+              <Button bg='primary.150' variant='outline' rounded='xs'>
                 <AddImageIcon />
                 Choose file
               </Button>

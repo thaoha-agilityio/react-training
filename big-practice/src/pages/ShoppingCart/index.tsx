@@ -86,7 +86,7 @@ const ShoppingCart = (): JSX.Element => {
       <Stack
         w={{ base: '200px', md: '393px' }}
         h={{ base: '180px', md: '390px' }}
-        bg='yellow.150'
+        bg='primary.150'
         alignItems='center'
         pt='10px'
         pb='60px'
@@ -99,7 +99,7 @@ const ShoppingCart = (): JSX.Element => {
           <Text variant='primary' fontWeight='medium'>
             Total
           </Text>
-          <Text variant='tertiary' color='yellow.250' fontWeight='medium'>
+          <Text variant='tertiary' color='primary.250' fontWeight='medium'>
             Rs. {formatPrice(totalPrice)}
           </Text>
         </Flex>
@@ -116,7 +116,7 @@ const ShoppingCart = (): JSX.Element => {
       <Flex
         w={{ base: '370px', md: '817px' }}
         h='55px'
-        bg='yellow.150'
+        bg='primary.150'
         justifyContent='space-evenly'
         alignItems='center'
         pl={{ base: '30px', md: '70px' }}

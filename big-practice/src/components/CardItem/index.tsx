@@ -34,7 +34,7 @@ const CardItem = ({
   onShowDetailItem,
   onOpen,
 }: CardItemProps): JSX.Element => {
-  const { id, name, description, price, image } = item;
+  const { id, name, description, price, image } = item || {};
 
   const handleOpen = useCallback(() => {
     onOpen?.(id);
@@ -63,7 +63,7 @@ const CardItem = ({
             <Box
               zIndex={1}
               pos='absolute'
-              bgColor='gray.250'
+              bgColor='secondary.250'
               opacity={0.72}
               top={0}
               right={0}
@@ -131,7 +131,7 @@ const CardItem = ({
           <Stack spacing='8px' maxW={{ base: '160px', md: '260px' }}>
             <Heading fontSize={{ base: 'base', md: 'lg' }}>{name}</Heading>
             <Text
-              color='gray.150'
+              color='secondary.150'
               fontWeight='medium'
               overflow='hidden'
               whiteSpace='nowrap'

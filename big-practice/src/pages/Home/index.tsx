@@ -21,7 +21,7 @@ const Home = () => {
           <Heading
             as='h3'
             fontSize={{ base: 'lg', md: '3xl' }}
-            color='gray.250'
+            color='secondary.250'
             fontWeight='bolder'
             textShadow={'0px 4px 4px rgba(0, 0, 0, 0.25)'}
             textAlign='center'

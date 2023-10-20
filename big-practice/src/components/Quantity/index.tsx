@@ -29,7 +29,7 @@ const Quantity = ({ initialCount, onQuantityChange }: QuantityProps): JSX.Elemen
     <Flex
       flexDir='row'
       alignItems='center'
-      borderColor='gray.100'
+      borderColor='secondary.100'
       justifyContent='space-between'
       rounded='md'
       border='1px'

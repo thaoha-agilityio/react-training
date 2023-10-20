@@ -3,13 +3,13 @@
  * Following this document: https://chakra-ui.com/docs/styled-system/theme#colors
  */
 const colors = {
-  yellow: {
+  primary: {
     150: '#F9F1E7',
     200: '#FFF3E3',
     250: '#B88E2F',
   },
 
-  gray: {
+  secondary: {
     50: '#F4F5F7',
     100: '#9F9F9F',
     150: '#898989',
@@ -21,13 +21,13 @@ const colors = {
     600: '#000',
   },
 
-  red: {
+  error: {
     300: '#FAE1DF',
     400: '#DD3929',
     800: '#9E2301',
   },
 
-  green: {
+  success: {
     300: '#DBF1DB',
     400: '#0FA30C',
   },

@@ -14,12 +14,12 @@ const Footer = (): JSX.Element => (
           <Heading fontSize={{ base: 'base', md: 'lg' }} fontWeight='bolder'>
             Funiro.
           </Heading>
-          <Text color='gray.100' maxW='285px' mt='50px'>
+          <Text color='secondary.100' maxW='285px' mt='50px'>
             400 University Drive Suite 200 Coral Gables, FL 33134 USA
           </Text>
         </Stack>
         <Stack>
-          <Text color='gray.100'>Links</Text>
+          <Text color='secondary.100'>Links</Text>
           <Stack mt='55px' gap='46px'>
             {MENU.map((item) => (
               <Link to={item.path} key={item.title}>
@@ -29,7 +29,7 @@ const Footer = (): JSX.Element => (
           </Stack>
         </Stack>
         <Stack>
-          <Text color='gray.100'>Helps</Text>
+          <Text color='secondary.100'>Helps</Text>
           <Stack mt='55px' gap='46px'>
             {HELPS.map((item) => (
               <Link to={item.path} key={item.title}>
@@ -39,7 +39,7 @@ const Footer = (): JSX.Element => (
           </Stack>
         </Stack>
         <Stack>
-          <Text color='gray.100'>Newsletter</Text>
+          <Text color='secondary.100'>Newsletter</Text>
           <Flex mt='55px' gap='46px' flexDir={{ base: 'column', md: 'row' }}>
             <Box>
               <Input
@@ -50,7 +50,7 @@ const Footer = (): JSX.Element => (
                 pl='-1.5'
                 _focusVisible={{ border: 'none' }}
               />
-              <Divider h='1px' color='gray.600' />
+              <Divider h='1px' color='secondary.600' />
             </Box>
             <Box borderBottom='1px'>
               <Link to='/'>SUBSCRIBE</Link>
