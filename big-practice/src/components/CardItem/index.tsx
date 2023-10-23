@@ -17,6 +17,9 @@ import { DeleteIcon, EditIcon, InfoIcon } from '@chakra-ui/icons';
 // Types
 import { IProduct } from '@types';
 
+// Constants
+import { PLACEHOLDER_IMAGE } from '@constants';
+
 type CardItemProps = {
   item: IProduct;
   isAction?: boolean;
@@ -57,7 +60,13 @@ const CardItem = ({
       <Card>
         <CardBody role='group'>
           <Box w={{ base: '180px', md: '285px' }}>
-            <Image src={image} alt='card-item' width='100%' height='100%' />
+            <Image
+              src={image}
+              alt='card-item'
+              width='100%'
+              height='100%'
+              fallbackSrc={PLACEHOLDER_IMAGE}
+            />
           </Box>
           <Box display={isAction ? 'block' : 'none'}>
             <Box
