@@ -7,7 +7,7 @@ import { DeleteIcon } from '@assets/icons';
 
 // Types
 import { IProductCart } from '@types';
-import { INITIAL_PRODUCT_CART } from '@constants';
+import { INITIAL_PRODUCT_CART, PLACEHOLDER_IMAGE } from '@constants';
 
 type CartItemProps = {
   cartItem: IProductCart;
@@ -28,7 +28,14 @@ const CartItem = ({ onOpen, cartItem }: CartItemProps): JSX.Element => {
   return (
     <Flex alignItems='center' gap={{ base: '20px', md: '50px' }} pt='20px'>
       <Box>
-        <Image w='111px' h='90px' rounded='xs' src={image} alt='image-product' />
+        <Image
+          w='111px'
+          h='90px'
+          rounded='xs'
+          src={image}
+          alt='image-product'
+          fallbackSrc={PLACEHOLDER_IMAGE}
+        />
       </Box>
       <Text variant='cart' width='130px'>
         {name}

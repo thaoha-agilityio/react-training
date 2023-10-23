@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { Container, Flex, Heading, Spinner, Stack, Text } from '@chakra-ui/react';
 import { Hero, BrowTheRange, Adverse } from './components';
 
@@ -10,6 +11,12 @@ import { useInfiniteProducts } from '@hooks/useProduct';
 
 const Home = () => {
   const { data: products, isLoading, isError, error } = useInfiniteProducts(LIMIT_PRODUCTS);
+
+  const renderProducts = useMemo(() => {
+    if (isLoading) return <Spinner />;
+
+    return isError ? <Text>{error.message}</Text> : <Products products={products} />;
+  }, [isError, isLoading, products]);
 
   return (
     <>
@@ -29,8 +36,7 @@ const Home = () => {
             Our Products
           </Heading>
           <Flex pt='32px' gap='32px' wrap='wrap' justifyContent='center'>
-            {isError ? <Text>{error.message}</Text> : <Products products={products} />}
-            {isLoading && <Spinner />}
+            {renderProducts}
           </Flex>
         </Stack>
         <Adverse />
