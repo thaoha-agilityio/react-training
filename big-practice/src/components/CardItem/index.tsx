@@ -17,6 +17,9 @@ import { DeleteIcon, EditIcon, InfoIcon } from '@chakra-ui/icons';
 // Types
 import { IProduct } from '@types';
 
+// Constants
+import { INITIAL_PRODUCT, PLACEHOLDER_IMAGE } from '@constants';
+
 type CardItemProps = {
   item: IProduct;
   isAction?: boolean;
@@ -34,7 +37,7 @@ const CardItem = ({
   onShowDetailItem,
   onOpen,
 }: CardItemProps): JSX.Element => {
-  const { id, name, description, price, image } = item || {};
+  const { id, name, description, price, image } = item || INITIAL_PRODUCT;
 
   const handleOpen = useCallback(() => {
     onOpen?.(id);
@@ -57,7 +60,13 @@ const CardItem = ({
       <Card>
         <CardBody role='group'>
           <Box w={{ base: '180px', md: '285px' }}>
-            <Image src={image} alt='card-item' width='100%' height='100%' />
+            <Image
+              src={image}
+              alt='card-item'
+              width='100%'
+              height='100%'
+              fallbackSrc={PLACEHOLDER_IMAGE}
+            />
           </Box>
           <Box display={isAction ? 'block' : 'none'}>
             <Box

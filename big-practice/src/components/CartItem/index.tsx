@@ -7,16 +7,16 @@ import { DeleteIcon } from '@assets/icons';
 
 // Types
 import { IProductCart } from '@types';
+import { INITIAL_PRODUCT_CART } from '@constants';
 
 type CartItemProps = {
   cartItem: IProductCart;
   onOpen: (id: string) => void;
 };
 
-const CartItem = ({
-  onOpen,
-  cartItem: { id, image, name, price, quantity },
-}: CartItemProps): JSX.Element => {
+const CartItem = ({ onOpen, cartItem }: CartItemProps): JSX.Element => {
+  const { id, image, name, price, quantity } = cartItem || INITIAL_PRODUCT_CART;
+
   //Handle total amount for each product
   const subTotal = useMemo(() => price * quantity, [price, quantity]);
 

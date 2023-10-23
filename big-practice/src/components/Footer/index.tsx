@@ -9,36 +9,44 @@ const Footer = (): JSX.Element => (
   <Box as='footer'>
     <Divider />
     <Container display='flex' gap='48px' flexDir='column' pt='48px' pb='35px'>
-      <Flex justifyContent='space-between' fontSize={{ base: 'xs', md: 'sm' }} fontWeight='medium'>
+      <Flex
+        justifyContent='space-between'
+        fontSize={{ base: 'xs', md: 'sm' }}
+        fontWeight='medium'
+        flexDir={{ base: 'column', md: 'row' }}
+      >
         <Stack>
           <Heading fontSize={{ base: 'base', md: 'lg' }} fontWeight='bolder'>
-            Funiro.
+            Furniro.
           </Heading>
           <Text color='secondary.100' maxW='285px' mt='50px'>
             400 University Drive Suite 200 Coral Gables, FL 33134 USA
           </Text>
         </Stack>
-        <Stack>
-          <Text color='secondary.100'>Links</Text>
-          <Stack mt='55px' gap='46px'>
-            {MENU.map((item) => (
-              <Link to={item.path} key={item.title}>
-                {item.title}
-              </Link>
-            ))}
+        <Flex flexDir={{ base: 'column', md: 'row' }} gap='50px'>
+          <Stack mt={{ base: '20px', md: 'none' }}>
+            <Text color='secondary.100'>Links</Text>
+            <Stack mt='55px' gap='46px'>
+              {MENU.map((item) => (
+                <Link to={item.path} key={item.title}>
+                  {item.title}
+                </Link>
+              ))}
+            </Stack>
           </Stack>
-        </Stack>
-        <Stack>
-          <Text color='secondary.100'>Helps</Text>
-          <Stack mt='55px' gap='46px'>
-            {HELPS.map((item) => (
-              <Link to={item.path} key={item.title}>
-                {item.title}
-              </Link>
-            ))}
+          <Stack mt={{ base: '20px', md: 'none' }}>
+            <Text color='secondary.100'>Helps</Text>
+            <Stack mt='55px' gap='46px'>
+              {HELPS.map((item) => (
+                <Link to={item.path} key={item.title}>
+                  {item.title}
+                </Link>
+              ))}
+            </Stack>
           </Stack>
-        </Stack>
-        <Stack>
+        </Flex>
+
+        <Stack mt={{ base: '20px', md: 'none' }} w='25%'>
           <Text color='secondary.100'>Newsletter</Text>
           <Flex mt='55px' gap='46px' flexDir={{ base: 'column', md: 'row' }}>
             <Box>
@@ -59,7 +67,7 @@ const Footer = (): JSX.Element => (
         </Stack>
       </Flex>
       <Divider />
-      <Text fontSize={{ base: 'xs', md: 'sm' }}>2023 furino. All rights reverved</Text>
+      <Text fontSize={{ base: 'xs', md: 'sm' }}>2023 furniro. All rights reverved</Text>
     </Container>
   </Box>
 );
