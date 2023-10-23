@@ -18,7 +18,7 @@ import { DeleteIcon, EditIcon, InfoIcon } from '@chakra-ui/icons';
 import { IProduct } from '@types';
 
 // Constants
-import { PLACEHOLDER_IMAGE } from '@constants';
+import { INITIAL_PRODUCT, PLACEHOLDER_IMAGE } from '@constants';
 
 type CardItemProps = {
   item: IProduct;
@@ -37,7 +37,7 @@ const CardItem = ({
   onShowDetailItem,
   onOpen,
 }: CardItemProps): JSX.Element => {
-  const { id, name, description, price, image } = item || {};
+  const { id, name, description, price, image } = item || INITIAL_PRODUCT;
 
   const handleOpen = useCallback(() => {
     onOpen?.(id);
