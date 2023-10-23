@@ -2,9 +2,9 @@ import { memo } from 'react';
 import { Box, Heading, Text, Image, Flex, Stack } from '@chakra-ui/react';
 
 //Images
-import dining from '@assets/photos/dining.png';
-import bedroom from '@assets/photos/bedroom.png';
-import living from '@assets/photos/living.png';
+import dining from '@assets/photos/dining.jpg';
+import bedroom from '@assets/photos/bedroom.jpg';
+import living from '@assets/photos/living.jpg';
 
 export const BrowTheRange = memo(
   (): JSX.Element => (
