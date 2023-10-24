@@ -6,5 +6,6 @@ describe('MainLayout component', () => {
     const { container } = renderWithRouterAndQuery(<MainLayout />);
 
     expect(container).toBeInTheDocument();
+    expect(container).toMatchSnapshot();
   });
 });

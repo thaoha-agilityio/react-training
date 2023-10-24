@@ -1,0 +1,150 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home page should render component correctly 1`] = `
+<div>
+  <section
+    class="css-1x1cs40"
+  >
+    <div
+      class="css-1rrw7j4"
+    />
+    <div
+      class="css-1nio0lb"
+    >
+      <div
+        class="css-1vvasvl"
+      >
+        <p
+          class="chakra-text css-b2hpjo"
+        >
+          New Arrival
+        </p>
+        <h2
+          class="chakra-heading css-sbfz88"
+        >
+          discover our new collection
+        </h2>
+        <p
+          class="chakra-text css-152l52r"
+        >
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.
+        </p>
+        <button
+          class="chakra-button css-1gvc6wf"
+          type="button"
+        >
+          buy now
+        </button>
+      </div>
+    </div>
+  </section>
+  <div
+    class="chakra-container css-0"
+  >
+    <section
+      class="css-0"
+    >
+      <div
+        class="css-1h1egd6"
+      >
+        <h3
+          class="chakra-heading css-hvgyr9"
+        >
+          Browse The Range
+        </h3>
+        <p
+          class="chakra-text css-lzwicj"
+        >
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </p>
+      </div>
+      <div
+        class="css-1vjvxz0"
+      >
+        <div
+          class="chakra-stack css-1x72rqo"
+        >
+          <img
+            alt="dining"
+            class="chakra-image css-3qdny7"
+            src=""
+          />
+          <p
+            class="chakra-text css-0"
+          >
+            Dining
+          </p>
+        </div>
+        <div
+          class="chakra-stack css-1x72rqo"
+        >
+          <img
+            alt="bedroom"
+            class="chakra-image css-3qdny7"
+            src=""
+          />
+          <p
+            class="chakra-text css-0"
+          >
+            Bedroom
+          </p>
+        </div>
+        <div
+          class="chakra-stack css-1x72rqo"
+        >
+          <img
+            alt="living"
+            class="chakra-image css-3qdny7"
+            src=""
+          />
+          <p
+            class="chakra-text css-0"
+          >
+            Living
+          </p>
+        </div>
+      </div>
+    </section>
+    <section
+      class="chakra-stack css-yet0nr"
+    >
+      <h3
+        class="chakra-heading css-11yk9zt"
+      >
+        Our Products
+      </h3>
+      <div
+        class="css-sipp05"
+      >
+        <div
+          class="chakra-spinner css-1y7joxr"
+        >
+          <span
+            class="css-8b45rq"
+          >
+            Loading...
+          </span>
+        </div>
+      </div>
+    </section>
+    <section
+      class="css-175tbkm"
+    >
+      <div
+        class="css-1l4w6pd"
+      >
+        <h3
+          class="chakra-heading css-15ca6y6"
+        >
+          #FuniroFurniture
+        </h3>
+      </div>
+      <img
+        alt="adverse"
+        class="chakra-image css-uwwqev"
+        src=""
+      />
+    </section>
+  </div>
+</div>
+`;

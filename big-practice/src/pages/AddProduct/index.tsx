@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { useCallback } from 'react';
 
 // Constants
-import { ADD_PRODUCT_CRUMBS, MENU, ROUTES, SUCCESS_MESSAGES } from '@constants';
+import { ADD_PRODUCT_CRUMBS, ROUTES, SUCCESS_MESSAGES } from '@constants';
 
 // Hooks
 import { useCustomToast, useMutationPostProduct } from '@hooks';
@@ -53,7 +53,7 @@ const AddProduct = (): JSX.Element => {
     <>
       <Banner title='Add Product' crumbs={ADD_PRODUCT_CRUMBS} />
       <Container>
-        <Form isLoading={isLoading} title={MENU[2].title} onSubmitProduct={handleAddProduct} />
+        <Form isLoading={isLoading} title='Add Product' onSubmitProduct={handleAddProduct} />
       </Container>
     </>
   );

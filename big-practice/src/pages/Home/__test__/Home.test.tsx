@@ -6,5 +6,6 @@ describe('Home page', () => {
     const { container } = renderWithRouterAndQuery(<Home />);
 
     expect(container).toBeInTheDocument();
+    expect(container).toMatchSnapshot();
   });
 });

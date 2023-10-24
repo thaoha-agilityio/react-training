@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BrowTheRange component should render component correctly 1`] = `
+<div>
+  <section
+    class="css-0"
+  >
+    <div
+      class="css-1h1egd6"
+    >
+      <h3
+        class="chakra-heading css-hvgyr9"
+      >
+        Browse The Range
+      </h3>
+      <p
+        class="chakra-text css-lzwicj"
+      >
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      </p>
+    </div>
+    <div
+      class="css-1vjvxz0"
+    >
+      <div
+        class="chakra-stack css-1x72rqo"
+      >
+        <img
+          alt="dining"
+          class="chakra-image css-3qdny7"
+          src=""
+        />
+        <p
+          class="chakra-text css-0"
+        >
+          Dining
+        </p>
+      </div>
+      <div
+        class="chakra-stack css-1x72rqo"
+      >
+        <img
+          alt="bedroom"
+          class="chakra-image css-3qdny7"
+          src=""
+        />
+        <p
+          class="chakra-text css-0"
+        >
+          Bedroom
+        </p>
+      </div>
+      <div
+        class="chakra-stack css-1x72rqo"
+      >
+        <img
+          alt="living"
+          class="chakra-image css-3qdny7"
+          src=""
+        />
+        <p
+          class="chakra-text css-0"
+        >
+          Living
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+`;

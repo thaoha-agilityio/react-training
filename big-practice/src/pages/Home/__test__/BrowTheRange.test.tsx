@@ -6,5 +6,6 @@ describe('BrowTheRange component', () => {
     const { container } = render(<BrowTheRange />);
 
     expect(container).toBeInTheDocument();
+    expect(container).toMatchSnapshot();
   });
 });
