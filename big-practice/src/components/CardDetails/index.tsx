@@ -7,6 +7,7 @@ import Quantity from '@components/Quantity';
 
 // Types
 import { IProduct } from '@types';
+import { INITIAL_PRODUCT, PLACEHOLDER_IMAGE } from '@constants';
 
 type CardDetailProps = {
   card: IProduct;
@@ -16,11 +17,13 @@ type CardDetailProps = {
 };
 
 const CardDetails = ({
-  card: { name, description, price, image },
+  card,
   initialCount,
   onAddToCart,
   onQuantityChange,
 }: CardDetailProps): JSX.Element => {
+  const { name, description, price, image } = card || INITIAL_PRODUCT;
+
   const renderInfoProduct = useMemo(() => {
     return (
       <Stack borderTop='1px' borderColor='secondary.350' pt='40px'>
@@ -50,7 +53,7 @@ const CardDetails = ({
     <Box py='35px'>
       <Flex justifyContent='space-around' gap='10px'>
         <Stack w='424px' h='auto'>
-          <Image alt='card-image' src={image} />
+          <Image alt='card-image' src={image} fallbackSrc={PLACEHOLDER_IMAGE} />
         </Stack>
         <Stack w='420px' spacing='25px'>
           <Text variant='title' textTransform='capitalize'>

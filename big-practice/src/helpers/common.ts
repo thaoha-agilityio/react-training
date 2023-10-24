@@ -1,3 +1,5 @@
+import { KeyboardEventHandler } from 'react';
+
 /**
  * Converts a File object to a Base64 encoded string.
  * @param {File} file - The File object to be converted.
@@ -34,4 +36,12 @@ export const flattenArray = <T>(pages: T[][]): T[] => {
   });
 
   return result;
+};
+
+// This is a KeyboardEventHandler function that prevents negative values in an input element.
+export const preventNegativeValues: KeyboardEventHandler<HTMLInputElement> = (e) => {
+  if (!['e', 'E', '+', '-'].includes(e.key)) return true;
+
+  e.preventDefault();
+  return false;
 };

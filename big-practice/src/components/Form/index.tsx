@@ -22,7 +22,7 @@ import { IProduct } from '@types';
 import { ERROR_MESSAGES, REGEX, MAXIMUM_FILE_SIZE, PLACEHOLDER_MESSAGE } from '@constants';
 
 // Helpers
-import { convertBase64 } from '@helpers';
+import { convertBase64, preventNegativeValues } from '@helpers';
 
 interface FormInput extends Omit<IProduct, 'image'> {
   image: File[] | [];
@@ -66,10 +66,6 @@ const Form = ({ isLoading, title, onSubmitProduct, product }: FormProps): JSX.El
         min: {
           value: 1,
           message: ERROR_MESSAGES.MIN_PRICE,
-        },
-        pattern: {
-          value: REGEX.CHECK_NUMBER,
-          message: ERROR_MESSAGES.PRICE_INVALID,
         },
       },
       image: {
@@ -139,6 +135,8 @@ const Form = ({ isLoading, title, onSubmitProduct, product }: FormProps): JSX.El
             <FormLabel>Price</FormLabel>
             <Input
               id='price'
+              type='number'
+              onKeyDown={preventNegativeValues}
               aria-label='enter price'
               placeholder={PLACEHOLDER_MESSAGE.PRICE}
               {...register('price', schema.price)}

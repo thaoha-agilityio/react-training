@@ -1,10 +1,10 @@
 import { shallow } from 'zustand/shallow';
-import { useCallback, useState } from 'react';
+import { lazy, useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button, Container, Flex, Spinner, Stack, Text, useDisclosure } from '@chakra-ui/react';
 
 // Components
-import { ConfirmModal, Products } from '@components';
+import { ConfirmModal } from '@components';
 import Banner from '@components/Banner';
 
 // Constants
@@ -18,6 +18,8 @@ import { useCartStore } from '@stores';
 
 // Constants
 import { IProduct, STATUSES } from '@types';
+
+const Products = lazy(() => import('@components/Products'));
 
 const Shop = (): JSX.Element => {
   const { isOpen, onOpen, onClose } = useDisclosure();
