@@ -9,10 +9,12 @@ const mockProps = {
 
 describe('Quantity component', () => {
   test('Quantity component displays the default count correctly', () => {
-    render(<Quantity {...mockProps} />);
-    const countText = screen.getByText('1'); // Default count value is 1
+    const { container, getByText } = render(<Quantity {...mockProps} />);
+
+    const countText = getByText('1'); // Default count value is 1
 
     expect(countText).toBeInTheDocument();
+    expect(container).toMatchSnapshot();
   });
 
   test('Quantity component calls onIncreaseProduct when the "+" button is clicked', () => {

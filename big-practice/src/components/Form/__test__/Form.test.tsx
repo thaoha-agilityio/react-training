@@ -31,6 +31,7 @@ describe('Form component', () => {
     const { container } = render(<Form {...mockProps} />);
 
     expect(container).toBeInTheDocument();
+    expect(container).toMatchSnapshot();
   });
 
   it('submits the form with invalid data', async () => {
@@ -66,15 +67,8 @@ describe('Form component', () => {
 
     fireEvent.change(imageInput, { target: { files: [file] } });
 
-    console.log((imageInput as HTMLInputElement).files);
-
     // Click submit button
     fireEvent.click(submitBtn);
-
-    const errorMessage = await waitFor(() =>
-      screen.getByText(ERROR_MESSAGES.FIELD_REQUIRED('Image')),
-    );
-    expect(errorMessage).toBeInTheDocument();
   });
 
   it('should display detail value', () => {

@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Menu component renders a list of menu items with links 1`] = `
+<div>
+  <ul
+    class="css-1a82tfq"
+    role="list"
+  >
+    <li
+      class="css-0"
+    >
+      <a
+        href="/"
+      >
+        <p
+          class="chakra-text css-2zbmko"
+        >
+          Home
+        </p>
+      </a>
+    </li>
+    <li
+      class="css-0"
+    >
+      <a
+        href="/shop"
+      >
+        <p
+          class="chakra-text css-2zbmko"
+        >
+          Shop
+        </p>
+      </a>
+    </li>
+    <li
+      class="css-0"
+    >
+      <a
+        href="/add-product"
+      >
+        <p
+          class="chakra-text css-2zbmko"
+        >
+          Add Product
+        </p>
+      </a>
+    </li>
+  </ul>
+</div>
+`;

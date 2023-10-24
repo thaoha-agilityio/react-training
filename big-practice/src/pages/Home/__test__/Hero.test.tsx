@@ -6,5 +6,6 @@ describe('Hero component', () => {
     const { container } = render(<Hero />);
 
     expect(container).toBeInTheDocument();
+    expect(container).toMatchSnapshot();
   });
 });

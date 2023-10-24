@@ -47,6 +47,7 @@ describe('ProductDetails component', () => {
     const { container } = renderWithRouterAndQuery(<ProductDetails />);
 
     expect(container).toBeInTheDocument();
+    expect(container).toMatchSnapshot();
   });
 
   it('should update quantity if existed product in cart', async () => {

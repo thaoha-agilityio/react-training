@@ -15,13 +15,15 @@ const mockProps = {
 
 describe('CardItem Component', () => {
   it('renders product information correctly', () => {
-    const { getByText, getByAltText } = render(<CardItem {...mockProps} />);
+    const { container, getByText, getByAltText } = render(<CardItem {...mockProps} />);
 
     // Assert that the product name, description, and price are displayed
     expect(getByText(MOCK_PRODUCTS[1].name)).toBeInTheDocument();
     expect(getByText(MOCK_PRODUCTS[1].description)).toBeInTheDocument();
     expect(getByText(`Rp ${MOCK_PRODUCTS[1].price}`)).toBeInTheDocument();
     expect(getByAltText('card-item')).toBeInTheDocument();
+
+    expect(container).toMatchSnapshot();
   });
 
   it('should call functions when button is clicked', () => {

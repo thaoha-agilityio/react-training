@@ -23,6 +23,7 @@ describe('ShoppingCart component', () => {
     const { container } = renderWithRouterAndQuery(<ShoppingCart />);
 
     expect(container).toBeInTheDocument();
+    expect(container).toMatchSnapshot();
   });
 
   it('displays a message when the cart is empty', () => {

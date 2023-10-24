@@ -11,6 +11,7 @@ describe('Menu component', () => {
     const { container, getByRole } = renderWithRouterAndQuery(<Menu menu={MENU} />);
 
     expect(container).toBeInTheDocument();
+    expect(container).toMatchSnapshot();
 
     // Check that each menu item and link is rendered
     MENU.forEach((item) => {

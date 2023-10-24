@@ -58,6 +58,7 @@ describe('Shop component', () => {
     const { container } = renderWithRouterAndQuery(<Shop />);
 
     expect(container).toBeInTheDocument();
+    expect(container).toMatchSnapshot();
   });
 
   it('should render message if the list is empty', () => {

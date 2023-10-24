@@ -6,5 +6,6 @@ describe('Adverse component', () => {
     const { container } = render(<Adverse />);
 
     expect(container).toBeInTheDocument();
+    expect(container).toMatchSnapshot();
   });
 });

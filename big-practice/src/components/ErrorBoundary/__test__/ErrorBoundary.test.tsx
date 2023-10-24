@@ -5,12 +5,14 @@ import ErrorBoundary from '..';
 
 describe('Testing ErrorBoundary class', () => {
   it('Should render children when there is no error', () => {
-    const { getByText } = render(
+    const { container, getByText } = render(
       <ErrorBoundary fallback={<div>Error occurred</div>}>
         <div>Content</div>
       </ErrorBoundary>,
     );
     expect(getByText('Content')).toBeInTheDocument();
+
+    expect(container).toMatchSnapshot();
   });
 
   it('Should render fallback when there is an error', () => {

@@ -26,6 +26,7 @@ describe('AddProduct component', () => {
     const { container } = renderWithRouterAndQuery(<AddProduct />);
 
     expect(container).toBeInTheDocument();
+    expect(container).toMatchSnapshot();
   });
 
   it('should call handleAddProduct success when submit button is clicked', () => {
