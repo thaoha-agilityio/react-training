@@ -2,9 +2,11 @@ import { fireEvent, renderWithRouterAndQuery } from '@helpers';
 import ProductDetails from '..';
 import * as reactRouter from 'react-router-dom';
 
+// Constants
+import { MOCK_CARTS, MOCK_PRODUCT, MOCK_PRODUCTS } from '@constants';
+
 // Hooks
 import * as hooks from '@hooks';
-import { MOCK_CARTS, MOCK_PRODUCT, MOCK_PRODUCTS } from '@constants';
 
 // Stores
 import * as stores from '@stores';

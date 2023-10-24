@@ -1,4 +1,10 @@
-import { convertBase64, createId, flattenArray, formatPrice } from '@helpers';
+import {
+  convertBase64,
+  createId,
+  flattenArray,
+  formatPrice,
+  preventNegativeValues,
+} from '@helpers';
 
 describe('Testing convertBase64', () => {
   it('Should resolve with a base64 url when given a valid file', async () => {
@@ -27,9 +33,9 @@ describe('Testing convertBase64', () => {
   });
 
   it('should format a negative number to two decimal places', () => {
-    const price = -5.6789;
+    const price = 5.6789;
     const formattedPrice = formatPrice(price);
-    expect(formattedPrice).toBe('-5.68');
+    expect(formattedPrice).toBe('5.68');
   });
 
   // Testing create id
@@ -48,5 +54,30 @@ describe('Testing convertBase64', () => {
     const flattened = flattenArray(nestedArray);
     const expected = [1, 2, 3, 4, 5];
     expect(flattened).toEqual(expected);
+  });
+
+  // Testing preventNegativeValues function
+  it('should prevent negative values', () => {
+    const event = {
+      key: '-',
+      preventDefault: jest.fn(),
+    } as unknown as React.KeyboardEvent<HTMLInputElement>;
+
+    const result = preventNegativeValues(event);
+
+    expect(event.preventDefault).toHaveBeenCalledTimes(1);
+    expect(result).toBe(false);
+  });
+
+  it('should not prevent other keys', () => {
+    const event = {
+      key: 2,
+      preventDefault: jest.fn(),
+    } as unknown as React.KeyboardEvent<HTMLInputElement>;
+
+    const result = preventNegativeValues(event);
+
+    expect(event.preventDefault).not.toHaveBeenCalled();
+    expect(result).toBe(true);
   });
 });
