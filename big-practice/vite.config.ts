@@ -5,6 +5,7 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 import EnvironmentPlugin from 'vite-plugin-environment';
 import Sitemap from 'vite-plugin-sitemap';
 import viteImagemin from 'vite-plugin-imagemin';
+import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
 
 const names = ['', 'shops', 'add-product', 'edit-product', 'product-detail', 'shopping-cart'];
 const dynamicRoutes = names.map((name) => `/${name}`);
@@ -47,6 +48,17 @@ export default defineConfig({
             active: false,
           },
         ],
+      },
+    }),
+    ViteImageOptimizer({
+      png: {
+        quality: 100,
+      },
+      jpg: {
+        quality: 100,
+      },
+      webp: {
+        lossless: true,
       },
     }),
   ],

@@ -18,9 +18,17 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   plugins: ['react', '@typescript-eslint', 'import', 'jsx-a11y', 'react-hooks', 'prettier'],
   rules: {
+    '@typescript-eslint/no-empty-interface': [
+      'error',
+      {
+        allowSingleExtends: true,
+      },
+    ],
     quotes: ['error', 'single'],
+    semi: ['error', 'always'],
     'prettier/prettier': ['error'],
     'react/react-in-jsx-scope': 'off',
+    '@typescript-eslint/no-unused-vars': 'error',
     'jsx-a11y/click-events-have-key-events': 'off',
     'jsx-a11y/no-noninteractive-element-interactions': 'off',
     'jsx-a11y/no-static-element-interactions': 'off',
