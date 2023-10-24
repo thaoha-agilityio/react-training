@@ -40,10 +40,8 @@ export const flattenArray = <T>(pages: T[][]): T[] => {
 
 // This is a KeyboardEventHandler function that prevents negative values in an input element.
 export const preventNegativeValues: KeyboardEventHandler<HTMLInputElement> = (e) => {
-  if (['e', 'E', '+', '-'].includes(e.key)) {
-    e.preventDefault();
-    return false;
-  }
+  if (!['e', 'E', '+', '-'].includes(e.key)) return true;
 
-  return true;
+  e.preventDefault();
+  return false;
 };
