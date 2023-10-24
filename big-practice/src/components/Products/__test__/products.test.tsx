@@ -18,9 +18,11 @@ const mockProps = {
 
 describe('Products Component', () => {
   it('should render a list of products', () => {
-    const { getByTestId } = renderWithRouterAndQuery(<Products {...mockProps} />);
+    const { getByTestId, container } = renderWithRouterAndQuery(<Products {...mockProps} />);
 
     expect(getByTestId('products')).toBeInTheDocument();
+
+    expect(container).toMatchSnapshot();
   });
 
   it('should call functions when button is clicked', () => {

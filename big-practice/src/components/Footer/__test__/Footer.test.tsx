@@ -6,18 +6,20 @@ import Footer from '../index';
 
 describe('Footer Component', () => {
   it('renders the footer correctly', () => {
-    const { getByText, getByPlaceholderText } = render(
+    const { container, getByText, getByPlaceholderText } = render(
       <Router>
         <Footer />
       </Router>,
     );
 
-    const headingElement = getByText('Funiro.');
+    const headingElement = getByText('Furniro.');
     expect(headingElement).toBeInTheDocument();
 
     const newsletterInput = getByPlaceholderText(PLACEHOLDER_MESSAGE.NEWSLETTER);
     const subscribeLink = getByText('SUBSCRIBE');
     expect(newsletterInput).toBeInTheDocument();
     expect(subscribeLink).toBeInTheDocument();
+
+    expect(container).toMatchSnapshot();
   });
 });

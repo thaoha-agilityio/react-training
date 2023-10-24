@@ -15,7 +15,7 @@ const mockProps = {
 
 describe('ConfirmModal Component', () => {
   it('renders product information correctly', () => {
-    const { getByText } = render(<ConfirmModal {...mockProps} />);
+    const { container, getByText } = render(<ConfirmModal {...mockProps} />);
 
     expect(getByText(mockProps.title)).toBeInTheDocument();
     expect(getByText(mockProps.text)).toBeInTheDocument();
@@ -27,5 +27,7 @@ describe('ConfirmModal Component', () => {
     const submitBtn = getByText(mockProps.textSubmit);
     fireEvent.click(submitBtn);
     expect(mockProps.onSubmit).toHaveBeenCalled();
+
+    expect(container).toMatchSnapshot();
   });
 });

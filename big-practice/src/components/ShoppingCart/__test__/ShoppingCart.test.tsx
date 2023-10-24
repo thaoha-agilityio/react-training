@@ -10,5 +10,7 @@ describe('Shopping Cart component', () => {
     expect(container).toBeInTheDocument();
 
     expect(getByText('5')).toBeInTheDocument();
+
+    expect(container).toMatchSnapshot();
   });
 });

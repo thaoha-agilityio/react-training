@@ -25,6 +25,7 @@ describe('CartItem Component', () => {
 
     // Assert that the product name, description, and price are displayed
     expect(container).toBeInTheDocument();
+    expect(container).toMatchSnapshot();
   });
 
   it('should call onDeleteCart functions when button is clicked', () => {

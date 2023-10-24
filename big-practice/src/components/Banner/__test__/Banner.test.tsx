@@ -14,7 +14,7 @@ const bannerProps = {
 
 describe('Banner Component', () => {
   it('displays the title correctly', () => {
-    const { getByTestId } = render(
+    const { container, getByTestId } = render(
       <Router>
         <Banner {...bannerProps} />
       </Router>,
@@ -22,6 +22,8 @@ describe('Banner Component', () => {
 
     const titleElement = getByTestId('title');
     expect(titleElement).toHaveTextContent(bannerProps.title);
+
+    expect(container).toMatchSnapshot();
   });
 
   it('displays the breadcrumb correctly', () => {
