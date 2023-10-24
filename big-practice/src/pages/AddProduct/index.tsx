@@ -1,3 +1,4 @@
+import { Container } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 import { useCallback } from 'react';
 
@@ -13,7 +14,6 @@ import { IProduct, STATUSES } from '@types';
 // Components
 import Banner from '@components/Banner';
 import Form from '@components/Form';
-import { Container } from '@chakra-ui/react';
 
 const AddProduct = (): JSX.Element => {
   const navigate = useNavigate();
