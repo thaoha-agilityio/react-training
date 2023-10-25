@@ -31,16 +31,22 @@ export const BrowTheRange = memo(
         wrap={{ base: 'wrap', md: 'nowrap' }}
         textShadow={'0px 4px 4px rgba(0, 0, 0, 0.25)'}
       >
-        <Stack w='480px' textAlign='center'>
-          <Image src={dining} borderRadius='xl' alt='dining' w='100%' h='100%' />
+        <Stack textAlign='center'>
+          <Box w='381px' h='480px'>
+            <Image src={dining} borderRadius='xl' alt='dining' w='100%' h='100%' />
+          </Box>
           <Text>Dining</Text>
         </Stack>
-        <Stack w='480px' textAlign='center'>
-          <Image src={bedroom} borderRadius='xl' alt='bedroom' w='100%' h='100%' />
+        <Stack textAlign='center'>
+          <Box w='375px' h='480px'>
+            <Image src={bedroom} borderRadius='xl' alt='bedroom' w='100%' h='100%' />
+          </Box>
           <Text>Bedroom</Text>
         </Stack>
-        <Stack w='480px' textAlign='center'>
-          <Image src={living} borderRadius='xl' alt='living' w='100%' h='100%' />
+        <Stack textAlign='center'>
+          <Box w='381px' h='480px'>
+            <Image src={living} borderRadius='xl' alt='living' w='100%' h='100%' />
+          </Box>
           <Text>Living</Text>
         </Stack>
       </Flex>
