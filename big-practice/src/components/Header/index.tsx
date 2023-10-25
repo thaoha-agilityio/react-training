@@ -27,7 +27,11 @@ const Header = (): JSX.Element => {
           <Link to='/'>
             <HStack spacing='5px'>
               <FurniroLogo />
-              <Heading as='h1' variant='tertiary' textShadow='0px 4px 4px rgba(0, 0, 0, 0.25)'>
+              <Heading
+                as='h1'
+                fontSize={{ base: 'lg', md: '3xl' }}
+                textShadow='0px 4px 4px rgba(0, 0, 0, 0.25)'
+              >
                 Furniro
               </Heading>
             </HStack>

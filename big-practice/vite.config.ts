@@ -52,10 +52,10 @@ export default defineConfig({
     }),
     ViteImageOptimizer({
       png: {
-        quality: 100,
+        quality: 50,
       },
       jpg: {
-        quality: 100,
+        quality: 50,
       },
       webp: {
         lossless: true,
