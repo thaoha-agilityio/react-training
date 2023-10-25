@@ -3,6 +3,7 @@ import {
   createId,
   flattenArray,
   formatPrice,
+  getIdsFromList,
   preventNegativeValues,
 } from '@helpers';
 
@@ -79,5 +80,13 @@ describe('Testing convertBase64', () => {
 
     expect(event.preventDefault).not.toHaveBeenCalled();
     expect(result).toBe(true);
+  });
+
+  it('should return an array of product IDs', () => {
+    const inputArray = [{ productId: '1' }, { productId: '2' }, { productId: '3' }];
+
+    const expectedOutput = ['1', '2', '3'];
+
+    expect(getIdsFromList(inputArray)).toEqual(expectedOutput);
   });
 });

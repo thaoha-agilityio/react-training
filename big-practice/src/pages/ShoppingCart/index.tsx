@@ -17,7 +17,8 @@ import { useCartStore, useProductStore } from '@stores';
 import { ICart, IProductCart } from '@types';
 
 // Helper
-import { formatPrice } from '@helpers';
+import { formatPrice, getIdsFromList } from '@helpers';
+import { useFilterProducts } from '@hooks';
 
 const ShoppingCart = (): JSX.Element => {
   // Initialize isOpen, onOpen, and onClose from useDisclosure
@@ -31,10 +32,12 @@ const ShoppingCart = (): JSX.Element => {
   // Get products from store
   const [products] = useProductStore((state) => [state.products], shallow);
 
-  // Render cart product
+  // Fetch product list by id
+  useFilterProducts(getIdsFromList(cart));
+
   const getProductCart = useCallback(
     (cart: ICart): IProductCart => {
-      const product = products.find((product) => product.id === cart.productId);
+      const product = products?.find((product) => product.id === cart.productId);
 
       // If the product is not found, return an initial product cart
       if (!product) return INITIAL_PRODUCT_CART;

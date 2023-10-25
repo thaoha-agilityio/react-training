@@ -3,6 +3,7 @@ import { renderHook, waitFor } from '@testing-library/react';
 // Hooks
 import {
   useFetchProductDetail,
+  useFilterProducts,
   useInfiniteProducts,
   useMutationDeleteProduct,
   useMutationEditProduct,
@@ -134,6 +135,27 @@ describe('Test useFetchProduct', () => {
 
     await waitFor(() => {
       expect(result.current.data).toEqual(undefined);
+      expect(result.current.isSuccess).toEqual(false);
+      expect(result.current.error?.message).toEqual('Error');
+    });
+  });
+
+  it('Should return data when call useFilterProducts success', async () => {
+    jest.spyOn(api, 'getData').mockResolvedValue([MOCK_PRODUCTS[1]]);
+    const { result } = renderHook(() => useFilterProducts(['2']), { wrapper });
+
+    await waitFor(() => {
+      expect(result.current.data).toEqual([MOCK_PRODUCTS[1]]);
+      expect(result.current.isSuccess).toEqual(true);
+    });
+  });
+
+  it('Should return error when call useFilterProducts failed', async () => {
+    jest.spyOn(api, 'getData').mockRejectedValue(new Error('Error'));
+    const { result } = renderHook(() => useFilterProducts(['2']), { wrapper });
+
+    await waitFor(() => {
+      expect(result.current.data).toEqual([]);
       expect(result.current.isSuccess).toEqual(false);
       expect(result.current.error?.message).toEqual('Error');
     });

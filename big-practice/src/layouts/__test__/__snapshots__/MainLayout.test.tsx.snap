@@ -49,7 +49,7 @@ exports[`MainLayout component should render component correctly 1`] = `
               </defs>
             </svg>
             <h1
-              class="chakra-heading css-1dr5imy"
+              class="chakra-heading css-1fntch5"
             >
               Furniro
             </h1>
