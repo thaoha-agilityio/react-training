@@ -4,8 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { Button, Container, Flex, Spinner, Stack, Text, useDisclosure } from '@chakra-ui/react';
 
 // Components
-import { ConfirmModal } from '@components';
 import Banner from '@components/Banner';
+import Products from '@components/Products';
 
 // Constants
 import { LIMIT_PRODUCTS, SHOP_CRUMBS, ROUTES, SUCCESS_MESSAGES, NO_RESULT } from '@constants';
@@ -19,7 +19,8 @@ import { useCartStore } from '@stores';
 // Constants
 import { IProduct, STATUSES } from '@types';
 
-const Products = lazy(() => import('@components/Products'));
+// Lazy
+const ConfirmModal = lazy(() => import('@components/ConfirmModal'));
 
 const Shop = (): JSX.Element => {
   const { isOpen, onOpen, onClose } = useDisclosure();

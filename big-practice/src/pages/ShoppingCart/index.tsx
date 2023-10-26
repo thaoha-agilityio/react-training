@@ -1,11 +1,10 @@
 import { shallow } from 'zustand/shallow';
-import { useCallback, useMemo, useState } from 'react';
+import { lazy, useCallback, useMemo, useState } from 'react';
 import { Button, Container, Flex, Stack, Text, useDisclosure } from '@chakra-ui/react';
 
 // Components
 import Banner from '@components/Banner';
 import CartItem from '@components/CartItem';
-import ConfirmModal from '@components/ConfirmModal';
 
 // Constants
 import { CART_CRUMBS, INITIAL_PRODUCT_CART, NO_RESULT } from '@constants';
@@ -19,6 +18,9 @@ import { ICart, IProductCart } from '@types';
 // Helper
 import { formatPrice, getIdsFromList } from '@helpers';
 import { useFilterProducts } from '@hooks';
+
+// Lazy
+const ConfirmModal = lazy(() => import('@components/ConfirmModal'));
 
 const ShoppingCart = (): JSX.Element => {
   // Initialize isOpen, onOpen, and onClose from useDisclosure
