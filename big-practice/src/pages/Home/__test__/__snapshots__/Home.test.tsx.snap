@@ -62,13 +62,17 @@ exports[`Home page should render component correctly 1`] = `
         class="css-1vjvxz0"
       >
         <div
-          class="chakra-stack css-1x72rqo"
+          class="chakra-stack css-gsjke4"
         >
-          <img
-            alt="dining"
-            class="chakra-image css-3qdny7"
-            src=""
-          />
+          <div
+            class="css-ja56zq"
+          >
+            <img
+              alt="dining"
+              class="chakra-image css-3qdny7"
+              src=""
+            />
+          </div>
           <p
             class="chakra-text css-0"
           >
@@ -76,13 +80,17 @@ exports[`Home page should render component correctly 1`] = `
           </p>
         </div>
         <div
-          class="chakra-stack css-1x72rqo"
+          class="chakra-stack css-gsjke4"
         >
-          <img
-            alt="bedroom"
-            class="chakra-image css-3qdny7"
-            src=""
-          />
+          <div
+            class="css-1yfqxfp"
+          >
+            <img
+              alt="bedroom"
+              class="chakra-image css-3qdny7"
+              src=""
+            />
+          </div>
           <p
             class="chakra-text css-0"
           >
@@ -90,13 +98,17 @@ exports[`Home page should render component correctly 1`] = `
           </p>
         </div>
         <div
-          class="chakra-stack css-1x72rqo"
+          class="chakra-stack css-gsjke4"
         >
-          <img
-            alt="living"
-            class="chakra-image css-3qdny7"
-            src=""
-          />
+          <div
+            class="css-ja56zq"
+          >
+            <img
+              alt="living"
+              class="chakra-image css-3qdny7"
+              src=""
+            />
+          </div>
           <p
             class="chakra-text css-0"
           >

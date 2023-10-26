@@ -13,13 +13,8 @@ import { IProduct } from '@types';
 // Services
 import { api } from '@services/APIRequest';
 
-// Helper
-import { flattenArray } from '@helpers';
-
 //  Custom hook to get Products with pagination
 export const useInfiniteProducts = (limit: number) => {
-  const setProducts = useProductStore((state) => state.setProducts);
-
   const { data, ...rest } = useInfiniteQuery<IProduct[], AxiosError>({
     queryKey: [QUERY_KEYS.PRODUCTS],
     queryFn: async ({ pageParam = 1 }) =>
@@ -27,10 +22,6 @@ export const useInfiniteProducts = (limit: number) => {
     getNextPageParam: (lastPage, pages) => {
       const nextPage = pages.length + 1;
       return lastPage?.length > 0 && lastPage?.length === limit ? nextPage : undefined;
-    },
-    onSuccess: ({ pages }) => {
-      const result = flattenArray(pages);
-      setProducts(result);
     },
   });
 
@@ -81,4 +72,22 @@ export const useMutationDeleteProduct = () => {
       queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.PRODUCTS] });
     },
   });
+};
+
+// Custom hook filter product by ids
+export const useFilterProducts = (ids: string[]) => {
+  const setProducts = useProductStore((state) => state.setProducts);
+
+  const { data, ...rest } = useQuery<IProduct[], AxiosError>({
+    queryKey: [QUERY_KEYS.PRODUCT + ids],
+    queryFn: async () => await api.getData(`${URL.BASE}${URL.PRODUCTS}?id=[${ids}]`),
+    onSuccess: (res) => {
+      setProducts(res);
+    },
+  });
+
+  return {
+    data: data || [],
+    ...rest,
+  };
 };

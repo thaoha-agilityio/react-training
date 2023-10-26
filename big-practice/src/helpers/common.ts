@@ -45,3 +45,7 @@ export const preventNegativeValues: KeyboardEventHandler<HTMLInputElement> = (e)
   e.preventDefault();
   return false;
 };
+
+// Get ids from list
+export const getIdsFromList = <T extends { productId: string }>(array: T[]): string[] =>
+  array.map((item) => item.productId);
