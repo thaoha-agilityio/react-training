@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Quantity component Quantity component displays the default count correctly 1`] = `
+<div>
+  <div
+    class="css-ddi599"
+  >
+    <button
+      class="chakra-button css-4xx2wk"
+      type="button"
+    >
+      -
+    </button>
+    <p
+      class="chakra-text css-1il0tvo"
+    >
+      1
+    </p>
+    <button
+      class="chakra-button css-4xx2wk"
+      type="button"
+    >
+      +
+    </button>
+  </div>
+</div>
+`;

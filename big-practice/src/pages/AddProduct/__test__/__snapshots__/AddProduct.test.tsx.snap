@@ -1,0 +1,202 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddProduct component should render component correctly 1`] = `
+<div>
+  <div
+    class="css-i9nokg"
+  >
+    <div
+      class="chakra-stack css-103yzil"
+    >
+      <p
+        class="chakra-text css-18xzx14"
+        data-testid="title"
+      >
+        Add Product
+      </p>
+      <nav
+        aria-label="breadcrumb"
+        class="chakra-breadcrumb css-0"
+      >
+        <ol
+          class="chakra-breadcrumb__list css-70qvj9"
+        >
+          <li
+            class="chakra-breadcrumb__list-item css-18biwo"
+          >
+            <a
+              class="chakra-breadcrumb__link css-0"
+              href="/"
+            >
+              Home
+            </a>
+            <span
+              class="css-syhbcg"
+              role="presentation"
+            >
+              <svg
+                class="chakra-icon css-rozz42"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
+                  fill="currentColor"
+                />
+              </svg>
+            </span>
+          </li>
+          <li
+            class="chakra-breadcrumb__list-item css-18biwo"
+            data-testid="breadcrumb-item"
+          >
+            <span
+              aria-current="page"
+              class="chakra-breadcrumb__link css-0"
+            >
+              Add Product
+            </span>
+          </li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+  <div
+    class="chakra-container css-0"
+  >
+    <div
+      class="css-z7ff2d"
+    >
+      <p
+        class="chakra-text css-1y4gmt"
+      >
+        Add Product
+      </p>
+      <form
+        class="css-0"
+      >
+        <div
+          class="chakra-stack css-kj715k"
+        >
+          <div
+            class="chakra-form-control css-0"
+            role="group"
+          >
+            <label
+              class="chakra-form__label css-uvho5g"
+              for="field-:r0:"
+              id="field-:r0:-label"
+            >
+              Product Name
+            </label>
+            <input
+              aria-label="enter product name"
+              class="chakra-input css-0"
+              id="name"
+              name="name"
+              placeholder="Product name"
+            />
+          </div>
+          <div
+            class="chakra-form-control css-0"
+            role="group"
+          >
+            <label
+              class="chakra-form__label css-uvho5g"
+              for="field-:r1:"
+              id="field-:r1:-label"
+            >
+              Description
+            </label>
+            <input
+              aria-label="enter description"
+              class="chakra-input css-0"
+              id="description"
+              name="description"
+              placeholder="Description"
+            />
+          </div>
+          <div
+            class="chakra-form-control css-0"
+            role="group"
+          >
+            <label
+              class="chakra-form__label css-uvho5g"
+              for="field-:r2:"
+              id="field-:r2:-label"
+            >
+              Price
+            </label>
+            <input
+              aria-label="enter price"
+              class="chakra-input css-0"
+              id="price"
+              name="price"
+              placeholder="Price"
+              type="number"
+            />
+          </div>
+          <div
+            class="chakra-form-control css-0"
+            role="group"
+          >
+            <label
+              class="chakra-form__label css-uvho5g"
+              for="field-:r3:"
+              id="field-:r3:-label"
+            >
+              Image
+            </label>
+            <div
+              class="css-79elbk"
+            >
+              <input
+                accept="image/*"
+                aria-label="upload file"
+                class="chakra-input css-gauaqi"
+                id="image"
+                name="image"
+                placeholder="Image"
+                type="file"
+              />
+              <button
+                class="chakra-button css-1yf4vi4"
+                type="button"
+              >
+                <svg
+                  fill="none"
+                  height="30"
+                  viewBox="0 0 30 30"
+                  width="30"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M28.8125 23.5H25.625V20.3125C25.625 20.0307 25.5131 19.7605 25.3138 19.5612C25.1145 19.3619 24.8443 19.25 24.5625 19.25C24.2807 19.25 24.0105 19.3619 23.8112 19.5612C23.6119 19.7605 23.5 20.0307 23.5 20.3125V23.5H20.3125C20.0307 23.5 19.7605 23.6119 19.5612 23.8112C19.3619 24.0105 19.25 24.2807 19.25 24.5625C19.25 24.8443 19.3619 25.1145 19.5612 25.3138C19.7605 25.5131 20.0307 25.625 20.3125 25.625H23.5V28.8125C23.5 29.0943 23.6119 29.3645 23.8112 29.5638C24.0105 29.7631 24.2807 29.875 24.5625 29.875C24.8443 29.875 25.1145 29.7631 25.3138 29.5638C25.5131 29.3645 25.625 29.0943 25.625 28.8125V25.625H28.8125C29.0943 25.625 29.3645 25.5131 29.5638 25.3138C29.7631 25.1145 29.875 24.8443 29.875 24.5625C29.875 24.2807 29.7631 24.0105 29.5638 23.8112C29.3645 23.6119 29.0943 23.5 28.8125 23.5Z"
+                    fill="black"
+                  />
+                  <path
+                    d="M16.0625 23.5H3.3125C3.03071 23.5 2.76046 23.3881 2.5612 23.1888C2.36194 22.9895 2.25 22.7193 2.25 22.4375V19.6856L6.5 15.4356L8.93312 17.8794C9.0319 17.979 9.14941 18.058 9.27889 18.1119C9.40836 18.1659 9.54724 18.1937 9.6875 18.1937C9.82776 18.1937 9.96664 18.1659 10.0961 18.1119C10.2256 18.058 10.3431 17.979 10.4419 17.8794L16.0625 12.2481L20.6206 16.8169C20.8207 17.0169 21.0921 17.1293 21.375 17.1293C21.6579 17.1293 21.9293 17.0169 22.1294 16.8169C22.3294 16.6168 22.4418 16.3454 22.4418 16.0625C22.4418 15.7796 22.3294 15.5082 22.1294 15.3081L16.8169 9.99562C16.7181 9.89604 16.6006 9.81699 16.4711 9.76305C16.3416 9.70911 16.2028 9.68134 16.0625 9.68134C15.9222 9.68134 15.7834 9.70911 15.6539 9.76305C15.5244 9.81699 15.4069 9.89604 15.3081 9.99562L9.6875 15.6269L7.25437 13.1831C7.1556 13.0835 7.03809 13.0045 6.90861 12.9506C6.77914 12.8966 6.64026 12.8688 6.5 12.8688C6.35974 12.8688 6.22086 12.8966 6.09139 12.9506C5.96191 13.0045 5.8444 13.0835 5.74563 13.1831L2.25 16.6894V3.3125C2.25 3.03071 2.36194 2.76046 2.5612 2.5612C2.76046 2.36194 3.03071 2.25 3.3125 2.25H22.4375C22.7193 2.25 22.9895 2.36194 23.1888 2.5612C23.3881 2.76046 23.5 3.03071 23.5 3.3125V16.0625C23.5 16.3443 23.6119 16.6145 23.8112 16.8138C24.0105 17.0131 24.2807 17.125 24.5625 17.125C24.8443 17.125 25.1145 17.0131 25.3138 16.8138C25.5131 16.6145 25.625 16.3443 25.625 16.0625V3.3125C25.625 2.46712 25.2892 1.65637 24.6914 1.0586C24.0936 0.460825 23.2829 0.125 22.4375 0.125H3.3125C2.46712 0.125 1.65637 0.460825 1.0586 1.0586C0.460825 1.65637 0.125 2.46712 0.125 3.3125V22.4375C0.125 23.2829 0.460825 24.0936 1.0586 24.6914C1.65637 25.2892 2.46712 25.625 3.3125 25.625H16.0625C16.3443 25.625 16.6145 25.5131 16.8138 25.3138C17.0131 25.1145 17.125 24.8443 17.125 24.5625C17.125 24.2807 17.0131 24.0105 16.8138 23.8112C16.6145 23.6119 16.3443 23.5 16.0625 23.5Z"
+                    fill="black"
+                  />
+                  <path
+                    d="M6.5 7.5625C6.5 8.19292 6.68694 8.80919 7.03719 9.33337C7.38744 9.85756 7.88526 10.2661 8.46769 10.5074C9.05013 10.7486 9.69103 10.8117 10.3093 10.6887C10.9277 10.5658 11.4956 10.2622 11.9414 9.8164C12.3872 9.37062 12.6908 8.80266 12.8137 8.18435C12.9367 7.56603 12.8736 6.92513 12.6324 6.34269C12.3911 5.76026 11.9826 5.26244 11.4584 4.91219C10.9342 4.56194 10.3179 4.375 9.6875 4.375C8.84212 4.375 8.03137 4.71082 7.4336 5.3086C6.83582 5.90637 6.5 6.71712 6.5 7.5625ZM10.75 7.5625C10.75 7.77264 10.6877 7.97806 10.5709 8.15279C10.4542 8.32752 10.2882 8.4637 10.0941 8.54412C9.89995 8.62454 9.68632 8.64558 9.48021 8.60458C9.27411 8.56358 9.08479 8.46239 8.9362 8.3138C8.7876 8.1652 8.68641 7.97588 8.64541 7.76978C8.60442 7.56367 8.62546 7.35004 8.70588 7.1559C8.78629 6.96175 8.92248 6.79581 9.0972 6.67906C9.27193 6.56231 9.47735 6.5 9.6875 6.5C9.96929 6.5 10.2395 6.61194 10.4388 6.8112C10.6381 7.01045 10.75 7.2807 10.75 7.5625Z"
+                    fill="black"
+                  />
+                </svg>
+                Choose file
+              </button>
+            </div>
+          </div>
+          <button
+            class="chakra-button css-t9acja"
+            disabled=""
+            type="submit"
+          >
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+`;

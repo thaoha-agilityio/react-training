@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Hero component should render component correctly 1`] = `
+<div>
+  <section
+    class="css-1x1cs40"
+  >
+    <div
+      class="css-1rrw7j4"
+    />
+    <div
+      class="css-1nio0lb"
+    >
+      <div
+        class="css-1vvasvl"
+      >
+        <p
+          class="chakra-text css-b2hpjo"
+        >
+          New Arrival
+        </p>
+        <h2
+          class="chakra-heading css-sbfz88"
+        >
+          discover our new collection
+        </h2>
+        <p
+          class="chakra-text css-152l52r"
+        >
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.
+        </p>
+        <button
+          class="chakra-button css-1gvc6wf"
+          type="button"
+        >
+          buy now
+        </button>
+      </div>
+    </div>
+  </section>
+</div>
+`;
