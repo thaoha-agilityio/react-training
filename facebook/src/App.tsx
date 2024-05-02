@@ -1,4 +1,6 @@
 import { ChakraProvider } from "@chakra-ui/react";
+
+// Themes
 import { theme } from "./themes";
 
 const App = () => (
