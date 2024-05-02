@@ -3,5 +3,8 @@ export * from './DownArrowIcon';
 export * from './FacebookIcon';
 export * from './HomeIcon';
 export * from './LikeIcon';
+export * from './MenuIcon';
+export * from './MessageIcon';
+export * from './NotificationIcon';
 export * from './PhotoIcon';
 export * from './ShareIcon';
