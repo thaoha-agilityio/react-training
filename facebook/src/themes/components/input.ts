@@ -16,7 +16,7 @@ export const Input = defineStyleConfig({
   variants: {
     primary: {
       field: {
-        fontSize: '17px',
+        fontSize: 'lg',
         borderRadius: 'sm',
         padding: '14px 16px',
         border: '0.5px solid',

@@ -4,7 +4,7 @@ export const fontSizes = {
   sm: '13px',
   base: '14px',
   md: '15px',
-  lg: '18px',
+  lg: '17px',
   xl: '20px',
   xxl: '28px',
   '3xl': '32px',
