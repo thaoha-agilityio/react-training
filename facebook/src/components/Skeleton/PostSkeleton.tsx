@@ -1,9 +1,9 @@
-import { Flex, Skeleton, SkeletonCircle, SkeletonText, Wrap, WrapItem } from '@chakra-ui/react';
+import { Box, Flex, Skeleton, SkeletonCircle, SkeletonText } from '@chakra-ui/react';
 
 const PostSkeleton = () => (
-  <Wrap display='block'>
+  <Box>
     {Array.from({ length: 2 }, (_, index) => (
-      <WrapItem key={index}>
+      <Box key={index}>
         <Flex
           padding='6'
           boxShadow='lg'
@@ -25,9 +25,9 @@ const PostSkeleton = () => (
             <Skeleton height='10px' mt='10px' w='100px' />
           </Flex>
         </Flex>
-      </WrapItem>
+      </Box>
     ))}
-  </Wrap>
+  </Box>
 );
 
 export default PostSkeleton;
