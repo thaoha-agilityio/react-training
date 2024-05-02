@@ -7,4 +7,5 @@ export * from './MenuIcon';
 export * from './MessageIcon';
 export * from './NotificationIcon';
 export * from './PhotoIcon';
+export * from './SearchIcon';
 export * from './ShareIcon';
