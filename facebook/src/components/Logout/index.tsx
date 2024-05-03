@@ -1,5 +1,5 @@
-import { Menu, MenuButton, MenuList, MenuItem, IconButton, Text } from '@chakra-ui/react';
 import { memo } from 'react';
+import { Menu, MenuButton, MenuList, MenuItem, IconButton, Text } from '@chakra-ui/react';
 
 // Icon component
 import { ChevronDownIcon, LogoutIcon } from '../Icons';
