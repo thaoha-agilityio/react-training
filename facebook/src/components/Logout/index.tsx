@@ -5,7 +5,7 @@ import { memo } from 'react';
 import { ChevronDownIcon, LogoutIcon } from '../Icons';
 
 interface LogoutProps {
-  onLogout?: () => void;
+  onLogout: () => void;
 }
 
 const Logout = memo(({ onLogout }: LogoutProps) => (
