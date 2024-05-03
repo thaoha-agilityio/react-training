@@ -1,6 +1,6 @@
 import { SVGProps } from 'react';
 
-export const DownArrowIcon = ({ width = 22, height = 22, ...rest }: SVGProps<SVGSVGElement>) => (
+export const ChevronDownIcon = ({ width = 22, height = 22, ...rest }: SVGProps<SVGSVGElement>) => (
   <svg xmlns='http://www.w3.org/2000/svg' width={width} height={height} fill='none' {...rest}>
     <path
       fill='#000'

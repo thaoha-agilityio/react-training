@@ -1,5 +1,5 @@
 export * from './CommentIcon';
-export * from './DownArrowIcon';
+export * from './ChevronDownIcon';
 export * from './FacebookIcon';
 export * from './HomeIcon';
 export * from './LogoutIcon';
