@@ -1,9 +1,19 @@
-# React Training
+# Practice
 
 ## Overview
 
 - This document provides the plan, requirements and estimation for React Practice.
 - Build Facebook web
+
+## Target
+
+- Apply everything I have learned into practice.
+- Create a diagram analytics database
+- Apply private router, public router
+- Apply HOC
+- Use JSON server to build API
+- Apply normalizing state shape
+- Can use LocalStorage and understand hydrate data from localStorage in Authentication
 
 ## Technical Stack
 
@@ -21,19 +31,22 @@
 - Husky
 - Eslint
 
-## Target
-
-- Apply everything I have learned into practice.
-- Create a diagram analytics database
-- Apply private router, public router
-- Apply HOC
-- Use JSON server to build API
-- Apply normalizing state shape
-- Can use LocalStorage and understand hydrate data from localStorage in Authentication
-
 ## Requirements
 
-- [link](https://docs.google.com/document/d/1eKqjMQv3JoMqsaLNxoOMD_m-7_T5Af96g5kLDgpKEpk/edit)
+- [link](https://docs.google.com/document/d/1eKqjMQv3JoMqsaLNxoOMD_m-7_T5Af96g5kLDgpKEpk/edit#heading=h.wg4wd25dpqd9)
+
+## Design
+
+- Refer [design](<https://www.figma.com/file/sYK9lV1oRDcbY3O2NJupNz/Facebook-UI-(Community)?type=design&node-id=0-1&mode=design&t=uYiU20xyWrLlfXUh-0>)
+
+## Deployment
+
+- [link](https://dashboard-git-feat-practice-thaoha-agilityios-projects.vercel.app/)
+
+## Prerequisites
+
+- node: v20.7.0
+- pnpm: v8.14.1
 
 ## Overview app feature
 
@@ -45,15 +58,6 @@
   - Reaction post (only like)
   - Comment post
   - Reaction comment post (only like)
-
-## Design
-
-- Refer [design](<[<https://www.figma.com/file/Bkkhwv7NtxHSrucbVmnCUx/eCommerce-Website-%7C-Web-Page-Design-%7C-UI-KIT-%7C-Interior-Landing-Page-(Community)?type=design&node-id=117-336&mode=design&t=U9mmh1mg27ZOD39P-0>](https://www.figma.com/file/sYK9lV1oRDcbY3O2NJupNz/Facebook-UI-(Community)?type=design&node-id=0-1&mode=design&t=EfzBS1CjAVEFwLZi-0)>)
-
-## Prerequisites
-
-- node: v20.0.0
-- pnpm: v8.6.1
 
 ## Getting started
 
@@ -72,7 +76,7 @@
 
 - Step 6: Follow to command lines below
 
-| Command         | Action                                             |
-| :-------------- | :------------------------------------------------- |
-| `pnpm run dev`  | Start local dev server at `http://127.0.0.1:5173/` |
-| `pnpm run jest` | Run unit test                                      |
+| Command        | Action                                             |
+| :------------- | :------------------------------------------------- |
+| `pnpm run dev` | Start local dev server at `http://127.0.0.1:5173/` |
+| `pnpm test`    | Run unit test                                      |
