@@ -67,6 +67,20 @@ export const Button = defineStyleConfig({
         rounded: 'sm',
       },
     },
+
+    icon: {
+      width: '40px',
+      height: '40px',
+      bg: 'button.charcoal',
+      borderRadius: 'full',
+
+      _hover: {
+        bg: 'button.iconHoverBg',
+        _disabled: {
+          bg: 'background.secondary',
+        },
+      },
+    },
   },
 
   defaultProps: {
