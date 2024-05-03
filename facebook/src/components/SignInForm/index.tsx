@@ -40,6 +40,10 @@ const SignInForm = () => {
     password: {
       required: ERROR_MESSAGES.FIELD_REQUIRED('Password'),
       minLength: { value: 8, message: ERROR_MESSAGES.PASSWORD_NOT_LONG },
+      pattern: {
+        value: REGEX.CHECK_SYMBOL,
+        message: ERROR_MESSAGES.PASSWORD_NOT_HAVE_SYMBOL,
+      },
     },
   };
 
