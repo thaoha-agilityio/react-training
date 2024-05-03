@@ -105,13 +105,12 @@ const SignInForm = () => {
         />
 
         <Button type='submit'>Log In</Button>
+      </Stack>
 
-        <Link textAlign='center' href='#'>
-          Forgotten password?
-        </Link>
+      <Stack spacing='15px' textAlign='center' mt='15px'>
+        <Link href='#'>Forgotten password?</Link>
         <Divider color='input.borderColor' />
-
-        <Box textAlign='center'>
+        <Box>
           <Button variant='secondary' w='198px' h='48px'>
             Create New Account
           </Button>
