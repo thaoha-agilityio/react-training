@@ -5,7 +5,6 @@ export const FormError = defineStyleConfig({
     text: {
       fontSize: 'sm',
       lineHeight: 'xs',
-      position: 'absolute',
     },
   },
 });
