@@ -2,6 +2,7 @@ export * from './CommentIcon';
 export * from './DownArrowIcon';
 export * from './FacebookIcon';
 export * from './HomeIcon';
+export * from './LogoutIcon';
 export * from './LikeIcon';
 export * from './MenuIcon';
 export * from './MessageIcon';
