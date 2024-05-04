@@ -1,3 +1,4 @@
+export * from './AddImageIcon';
 export * from './CommentIcon';
 export * from './ChevronDownIcon';
 export * from './FacebookIcon';

@@ -9,7 +9,6 @@ import {
   RadioGroup,
   Stack,
   Link,
-  Divider,
 } from '@chakra-ui/react';
 import { Controller, useForm, SubmitHandler } from 'react-hook-form';
 
@@ -81,7 +80,6 @@ const SignUpFormModal = memo(({ isOpen, onClose }: SignUpFormProps) => {
 
   return (
     <CustomModal isOpen={isOpen} title='Sign Up' onClose={onClose}>
-      <Divider />
       <Box maxW='432px' borderRadius='md' py='20px' px='25px'>
         <Stack as='form' onSubmit={handleSubmit(onSubmit)} spacing='12px'>
           {/* firstName */}
