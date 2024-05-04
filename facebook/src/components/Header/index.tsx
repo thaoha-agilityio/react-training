@@ -23,7 +23,7 @@ import {
 import { ICON_LINKS } from '@/constants';
 
 const Header = () => (
-  <HStack as='header' p='8px'>
+  <HStack as='header' p='8px' boxShadow='0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1)'>
     <Flex alignItems='center' gap='15px'>
       <Link href='/'>
         <FacebookIcon />
