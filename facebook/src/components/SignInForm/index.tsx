@@ -1,17 +1,11 @@
-import {
-  Box,
-  Button,
-  Divider,
-  FormControl,
-  FormErrorMessage,
-  Input,
-  Link,
-  Stack,
-} from '@chakra-ui/react';
+import { Box, Button, Divider, FormControl, Link, Stack } from '@chakra-ui/react';
 import { Controller, useForm, SubmitHandler } from 'react-hook-form';
 
 // Constants
 import { ERROR_MESSAGES, INPUT_PLACEHOLDER, REGEX } from '@/constants';
+
+// Components
+import { Input } from '@/components';
 
 interface SignInFormData {
   email: string;
@@ -70,15 +64,14 @@ const SignInForm = () => {
           render={({ field: { onChange, ...rest }, fieldState: { error } }) => (
             <FormControl isInvalid={!!error}>
               <Input
-                variant='primary'
                 placeholder={INPUT_PLACEHOLDER.EMAIL}
+                errorMessage={error?.message}
                 onChange={(e) => {
                   const value = e.target?.value;
                   onChange(value);
                 }}
                 {...rest}
               />
-              {error?.message && <FormErrorMessage>{error.message}</FormErrorMessage>}
             </FormControl>
           )}
         />
@@ -90,16 +83,15 @@ const SignInForm = () => {
           render={({ field: { onChange, ...rest }, fieldState: { error } }) => (
             <FormControl isInvalid={!!error}>
               <Input
-                variant='primary'
                 type='password'
                 placeholder={INPUT_PLACEHOLDER.PASSWORD}
+                errorMessage={error?.message}
                 onChange={(e) => {
                   const value = e.target?.value;
                   onChange(value);
                 }}
                 {...rest}
               />
-              {error?.message && <FormErrorMessage>{error.message}</FormErrorMessage>}
             </FormControl>
           )}
         />

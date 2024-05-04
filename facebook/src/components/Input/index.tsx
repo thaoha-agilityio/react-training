@@ -1,13 +1,13 @@
-import { memo } from 'react';
+import { forwardRef } from 'react';
 import { FormErrorMessage, Input as InputBase, InputProps } from '@chakra-ui/react';
 
 interface Props extends InputProps {
   errorMessage?: string;
 }
 
-const Input = memo(({ errorMessage, ...rest }: Props) => (
+const Input = forwardRef<HTMLInputElement, Props>(({ errorMessage, ...rest }, ref) => (
   <>
-    <InputBase variant='primary' {...rest} />
+    <InputBase variant='primary' ref={ref} {...rest} />
     {errorMessage && <FormErrorMessage>{errorMessage}</FormErrorMessage>}
   </>
 ));
