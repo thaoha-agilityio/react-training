@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import {
   Box,
   Button,
@@ -17,7 +18,7 @@ import { Controller, useForm, SubmitHandler } from 'react-hook-form';
 import { ERROR_MESSAGES, GENDER, GENDER_OPTION, INPUT_PLACEHOLDER, REGEX } from '@/constants';
 
 // Components
-import CustomModal from '../Modal/CustomModal';
+import CustomModal from '../CustomModal';
 
 interface SignUpFormData {
   firstName: string;
@@ -33,7 +34,7 @@ interface SignUpFormProps {
   onClose: () => void;
 }
 
-const SignUpForm = ({ isOpen, onClose }: SignUpFormProps) => {
+const SignUpFormModal = memo(({ isOpen, onClose }: SignUpFormProps) => {
   const { control, handleSubmit } = useForm<SignUpFormData>({
     mode: 'onSubmit',
     reValidateMode: 'onSubmit',
@@ -247,6 +248,6 @@ const SignUpForm = ({ isOpen, onClose }: SignUpFormProps) => {
       </Box>
     </CustomModal>
   );
-};
+});
 
-export default SignUpForm;
+export default SignUpFormModal;
