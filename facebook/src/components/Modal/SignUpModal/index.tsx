@@ -5,7 +5,6 @@ import {
   Text,
   FormControl,
   FormErrorMessage,
-  Input,
   Radio,
   RadioGroup,
   Stack,
@@ -18,7 +17,7 @@ import { Controller, useForm, SubmitHandler } from 'react-hook-form';
 import { ERROR_MESSAGES, GENDER, GENDER_OPTION, INPUT_PLACEHOLDER, REGEX } from '@/constants';
 
 // Components
-import CustomModal from '../CustomModal';
+import { Input, CustomModal } from '@/components';
 
 interface SignUpFormData {
   firstName: string;
@@ -93,20 +92,19 @@ const SignUpFormModal = memo(({ isOpen, onClose }: SignUpFormProps) => {
             render={({ field: { onChange, ...rest }, fieldState: { error } }) => (
               <FormControl isInvalid={!!error}>
                 <Input
-                  variant='primary'
                   placeholder={INPUT_PLACEHOLDER.FIRST_NAME}
+                  errorMessage={error?.message}
                   onChange={(e) => {
                     const value = e.target?.value;
                     onChange(value);
                   }}
                   {...rest}
                 />
-                {error?.message && <FormErrorMessage>{error.message}</FormErrorMessage>}
               </FormControl>
             )}
           />
 
-          {/*surname  */}
+          {/* surname  */}
           <Controller
             name='surname'
             control={control}
@@ -114,15 +112,14 @@ const SignUpFormModal = memo(({ isOpen, onClose }: SignUpFormProps) => {
             render={({ field: { onChange, ...rest }, fieldState: { error } }) => (
               <FormControl isInvalid={!!error}>
                 <Input
-                  variant='primary'
                   placeholder={INPUT_PLACEHOLDER.SURNAME}
+                  errorMessage={error?.message}
                   onChange={(e) => {
                     const value = e.target?.value;
                     onChange(value);
                   }}
                   {...rest}
                 />
-                {error?.message && <FormErrorMessage>{error.message}</FormErrorMessage>}
               </FormControl>
             )}
           />
@@ -135,20 +132,19 @@ const SignUpFormModal = memo(({ isOpen, onClose }: SignUpFormProps) => {
             render={({ field: { onChange, ...rest }, fieldState: { error } }) => (
               <FormControl isInvalid={!!error}>
                 <Input
-                  variant='primary'
                   placeholder={INPUT_PLACEHOLDER.EMAIL}
+                  errorMessage={error?.message}
                   onChange={(e) => {
                     const value = e.target?.value;
                     onChange(value);
                   }}
                   {...rest}
                 />
-                {error?.message && <FormErrorMessage>{error.message}</FormErrorMessage>}
               </FormControl>
             )}
           />
 
-          {/*password  */}
+          {/* password  */}
           <Controller
             name='password'
             control={control}
@@ -156,16 +152,15 @@ const SignUpFormModal = memo(({ isOpen, onClose }: SignUpFormProps) => {
             render={({ field: { onChange, ...rest }, fieldState: { error } }) => (
               <FormControl isInvalid={!!error}>
                 <Input
-                  variant='primary'
                   type='password'
                   placeholder={INPUT_PLACEHOLDER.PASSWORD}
+                  errorMessage={error?.message}
                   onChange={(e) => {
                     const value = e.target?.value;
                     onChange(value);
                   }}
                   {...rest}
                 />
-                {error?.message && <FormErrorMessage>{error.message}</FormErrorMessage>}
               </FormControl>
             )}
           />
@@ -180,18 +175,18 @@ const SignUpFormModal = memo(({ isOpen, onClose }: SignUpFormProps) => {
                 <Input
                   size='md'
                   type='date'
+                  errorMessage={error?.message}
                   onChange={(e) => {
                     const value = e.target?.value;
                     onChange(value);
                   }}
                   {...rest}
                 />
-                {error?.message && <FormErrorMessage>{error.message}</FormErrorMessage>}
               </FormControl>
             )}
           />
 
-          {/* Gender */}
+          {/* gender */}
           <Controller
             name='gender'
             control={control}
@@ -240,6 +235,7 @@ const SignUpFormModal = memo(({ isOpen, onClose }: SignUpFormProps) => {
           </Text>
 
           <Box textAlign='center'>
+            {/* TODO: will handle disable and loading button later */}
             <Button type='submit' variant='secondary' w='198px' h='48px'>
               Sign up
             </Button>
