@@ -1,8 +1,11 @@
+export * from './AddImageIcon';
 export * from './CommentIcon';
 export * from './ChevronDownIcon';
 export * from './FacebookIcon';
+export * from './FriendIcon';
 export * from './HomeIcon';
 export * from './LogoutIcon';
+export * from './MarketPlaceIcon';
 export * from './LikeIcon';
 export * from './MenuIcon';
 export * from './MessageIcon';
@@ -10,3 +13,4 @@ export * from './NotificationIcon';
 export * from './PhotoIcon';
 export * from './SearchIcon';
 export * from './ShareIcon';
+export * from './VideoIcon';

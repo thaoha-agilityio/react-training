@@ -5,7 +5,12 @@ export const Text = defineStyleConfig({
     default: {
       fontSize: 'md',
       fontWeights: 'normal',
-      text: 'text.primary',
+      color: 'text.primary',
+    },
+
+    helper: {
+      fontSize: 'tiny',
+      color: 'text.helper',
     },
   },
 

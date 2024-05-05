@@ -16,6 +16,7 @@ export const Radio = defineStyleConfig({
       label: {
         fontSize: 'md',
         color: 'text.radio',
+        textTransform: 'capitalize',
       },
     },
   },
