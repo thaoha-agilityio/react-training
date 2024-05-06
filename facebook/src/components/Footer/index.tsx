@@ -16,9 +16,9 @@ const Footer = () => (
 
       <Divider />
 
-      <UnorderedList gap='10px' display='flex' flexWrap='wrap' styleType='none'>
+      <UnorderedList display='flex' flexWrap='wrap' styleType='none'>
         {FOOTER_LINKS.map(({ href, label }) => (
-          <ListItem>
+          <ListItem mr='8px'>
             <Link key={label} href={href} variant='helper'>
               {label}
             </Link>
