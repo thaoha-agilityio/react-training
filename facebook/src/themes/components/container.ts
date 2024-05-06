@@ -8,7 +8,7 @@ export const Container = defineStyleConfig({
     },
     md: {
       w: 'full',
-      maxW: '1040px',
+      maxW: '1024px',
     },
   },
   defaultProps: {

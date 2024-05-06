@@ -1,4 +1,6 @@
 import { Container, Divider, Link, ListItem, Stack, UnorderedList } from '@chakra-ui/react';
+
+// Constants
 import { FOOTER_LINKS, LOCATION_LINKS } from '@/constants';
 
 const Footer = () => (
