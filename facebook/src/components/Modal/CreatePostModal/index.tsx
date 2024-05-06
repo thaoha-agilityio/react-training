@@ -16,9 +16,8 @@ import {
 import { INPUT_PLACEHOLDER } from '@/constants';
 
 // Components
-import CustomModal from '../CustomModal';
 import { AddImageIcon } from '@/components/Icons';
-import { UserProfile } from '@/components';
+import { UserProfile, CustomModal } from '@/components';
 
 interface CreatePostModalProps {
   isOpen: boolean;
