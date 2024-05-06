@@ -19,7 +19,7 @@ export const ICON_LINKS = [
   },
 ];
 
-export const LOCALE_LINKS = [
+export const LOCATION_LINKS = [
   {
     href: '#',
     label: 'English (UK)',
