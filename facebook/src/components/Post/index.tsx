@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { Box, Text, Image, Stack, Container, Flex, Button } from '@chakra-ui/react';
 
 // Components
@@ -7,13 +8,14 @@ import { CommentIcon, LikeIcon, ShareIcon } from '../Icons';
 // Constants
 import { PLACEHOLDER_IMAGE } from '@/constants';
 
+// TODO: update props later
 interface PostProps {
   userName: string;
   content: string;
   image: string;
 }
 
-const Post = ({ userName, content, image }: PostProps) => {
+const Post = memo(({ userName, content, image }: PostProps) => {
   return (
     <Container>
       <Stack
@@ -50,6 +52,6 @@ const Post = ({ userName, content, image }: PostProps) => {
       </Stack>
     </Container>
   );
-};
+});
 
 export default Post;
