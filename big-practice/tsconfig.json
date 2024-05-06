@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "target": "es6",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "baseUrl": "./",
+    "paths": {
+      "@components": ["src/components"],
+      "@layouts": ["src/layouts"],
+      "@pages": ["src/pages"],
+      "@constants": ["src/constants"],
+      "@helpers": ["src/helpers"],
+      "@stores": ["src/stores"],
+      "@assets": ["src/assets"],
+      "@fonts": ["src/fonts"],
+      "@hooks": ["src/hooks"],
+      "@types": ["src/types"],
+      "@*": ["src/*"]
+    }
+  },
+  "include": ["src", "node", "jest", "@testing-library/jest-dom"]
+}

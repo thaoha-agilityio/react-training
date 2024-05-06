@@ -1,0 +1,132 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardDetails component should render the card details correctly 1`] = `
+<div>
+  <div
+    class="css-1mvdat4"
+  >
+    <div
+      class="css-1w4kxfq"
+    >
+      <div
+        class="chakra-stack css-pxhuyg"
+      >
+        <img
+          alt="card-image"
+          class="chakra-image__placeholder css-0"
+          src="https://www.charlotteathleticclub.com/assets/camaleon_cms/image-not-found-4a963b95bf081c3ea02923dceaeb3f8085e1a654fc54840aac61a57a60903fef.png"
+        />
+      </div>
+      <div
+        class="chakra-stack css-15oiwx7"
+      >
+        <p
+          class="chakra-text css-10iahqc"
+        >
+          name 1
+        </p>
+        <p
+          class="chakra-text css-14h5pyi"
+        >
+          Rs. 
+          8
+        </p>
+        <p
+          class="chakra-text css-kb9q25"
+        >
+          description
+        </p>
+        <div
+          class="css-2kr1vg"
+        >
+          <div
+            class="css-ddi599"
+          >
+            <button
+              class="chakra-button css-4xx2wk"
+              type="button"
+            >
+              -
+            </button>
+            <p
+              class="chakra-text css-1il0tvo"
+            >
+              2
+            </p>
+            <button
+              class="chakra-button css-4xx2wk"
+              type="button"
+            >
+              +
+            </button>
+          </div>
+          <button
+            class="chakra-button css-4xx2wk"
+            type="button"
+          >
+            Add To Cart
+          </button>
+        </div>
+        <div
+          class="chakra-stack css-19bjeu2"
+        >
+          <div
+            class="css-kl5uk3"
+          >
+            <div
+              class="css-gw1u79"
+            >
+              <p
+                class="chakra-text css-0"
+              >
+                SKU
+              </p>
+            </div>
+            <p
+              class="chakra-text css-0"
+            >
+              : SS001
+            </p>
+          </div>
+          <div
+            class="css-kl5uk3"
+          >
+            <div
+              class="css-gw1u79"
+            >
+              <p
+                class="chakra-text css-0"
+              >
+                Category
+              </p>
+            </div>
+            <p
+              class="chakra-text css-0"
+            >
+              : Furniture
+            </p>
+          </div>
+          <div
+            class="css-kl5uk3"
+          >
+            <div
+              class="css-gw1u79"
+            >
+              <p
+                class="chakra-text css-0"
+              >
+                Tags
+              </p>
+            </div>
+            <p
+              class="chakra-text css-0"
+            >
+              : Sofa, Chair
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

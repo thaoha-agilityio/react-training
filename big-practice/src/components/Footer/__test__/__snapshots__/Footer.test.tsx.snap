@@ -1,0 +1,139 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer Component renders the footer correctly 1`] = `
+<div>
+  <footer
+    class="css-0"
+  >
+    <hr
+      aria-orientation="horizontal"
+      class="chakra-divider css-1upb9tn"
+    />
+    <div
+      class="chakra-container css-1mp8xin"
+    >
+      <div
+        class="css-1rd3ca5"
+      >
+        <div
+          class="chakra-stack css-8g8ihq"
+        >
+          <h2
+            class="chakra-heading css-1anfozk"
+          >
+            Furniro.
+          </h2>
+          <p
+            class="chakra-text css-nh0zjw"
+          >
+            400 University Drive Suite 200 Coral Gables, FL 33134 USA
+          </p>
+        </div>
+        <div
+          class="css-pdcctm"
+        >
+          <div
+            class="chakra-stack css-1l051xc"
+          >
+            <p
+              class="chakra-text css-14h5pyi"
+            >
+              Links
+            </p>
+            <div
+              class="chakra-stack css-1enrxk9"
+            >
+              <a
+                href="/"
+              >
+                Home
+              </a>
+              <a
+                href="/shop"
+              >
+                Shop
+              </a>
+              <a
+                href="/add-product"
+              >
+                Add Product
+              </a>
+            </div>
+          </div>
+          <div
+            class="chakra-stack css-1l051xc"
+          >
+            <p
+              class="chakra-text css-14h5pyi"
+            >
+              Helps
+            </p>
+            <div
+              class="chakra-stack css-1enrxk9"
+            >
+              <a
+                href="/"
+              >
+                Payment Options
+              </a>
+              <a
+                href="/"
+              >
+                Returns
+              </a>
+              <a
+                href="/"
+              >
+                Privacy Policies
+              </a>
+            </div>
+          </div>
+        </div>
+        <div
+          class="chakra-stack css-1umi0nh"
+        >
+          <p
+            class="chakra-text css-14h5pyi"
+          >
+            Newsletter
+          </p>
+          <div
+            class="css-1fb8qo7"
+          >
+            <div
+              class="css-0"
+            >
+              <input
+                class="chakra-input css-1alxois"
+                placeholder="Enter Your Email Address"
+              />
+              <hr
+                aria-orientation="horizontal"
+                class="chakra-divider css-pio7g1"
+              />
+            </div>
+            <div
+              class="css-x39wmu"
+            >
+              <a
+                href="/"
+              >
+                SUBSCRIBE
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr
+        aria-orientation="horizontal"
+        class="chakra-divider css-1upb9tn"
+      />
+      <p
+        class="chakra-text css-1il0tvo"
+      >
+        2023 furniro. All rights reverved
+      </p>
+    </div>
+  </footer>
+</div>
+`;

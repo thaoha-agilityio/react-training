@@ -1,0 +1,22 @@
+.avatar {
+  object-fit: cover;
+}
+
+.avatar-circle {
+  border-radius: 50%;
+}
+
+.avatar-small {
+  width: 201px;
+  height: 202px;
+}
+
+.avatar-medium {
+  width: 201px;
+  height: 263px;
+}
+
+.avatar-large {
+  width: 353px;
+  height: 144px;
+}

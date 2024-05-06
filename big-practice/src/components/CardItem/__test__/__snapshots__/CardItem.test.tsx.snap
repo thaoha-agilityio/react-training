@@ -1,0 +1,155 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardItem Component renders product information correctly 1`] = `
+<div>
+  <div
+    class="css-kjafn5"
+  >
+    <div
+      class="chakra-card css-2dlz7"
+    >
+      <div
+        class="chakra-card__body css-0"
+        role="group"
+      >
+        <div
+          class="css-1bl94k9"
+        >
+          <img
+            alt="card-item"
+            class="chakra-image__placeholder css-uwwqev"
+            src="https://www.charlotteathleticclub.com/assets/camaleon_cms/image-not-found-4a963b95bf081c3ea02923dceaeb3f8085e1a654fc54840aac61a57a60903fef.png"
+          />
+        </div>
+        <div
+          class="css-1hyfx7x"
+        >
+          <div
+            class="css-e4qces"
+          />
+          <div
+            class="css-ll7lr2"
+          >
+            <button
+              class="chakra-button css-s3fhhx"
+              type="button"
+            >
+              Add to cart
+            </button>
+            <div
+              class="css-7hqoax"
+            >
+              <div
+                class="css-u0pkxt"
+              >
+                <button
+                  class="chakra-button css-117sk0y"
+                  data-testid="delete-btn"
+                  type="button"
+                >
+                  <span
+                    class="chakra-button__icon css-1wh2kri"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="chakra-icon css-onkibi"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <g
+                        fill="currentColor"
+                      >
+                        <path
+                          d="M19.452 7.5H4.547a.5.5 0 00-.5.545l1.287 14.136A2 2 0 007.326 24h9.347a2 2 0 001.992-1.819L19.95 8.045a.5.5 0 00-.129-.382.5.5 0 00-.369-.163zm-9.2 13a.75.75 0 01-1.5 0v-9a.75.75 0 011.5 0zm5 0a.75.75 0 01-1.5 0v-9a.75.75 0 011.5 0zM22 4h-4.75a.25.25 0 01-.25-.25V2.5A2.5 2.5 0 0014.5 0h-5A2.5 2.5 0 007 2.5v1.25a.25.25 0 01-.25.25H2a1 1 0 000 2h20a1 1 0 000-2zM9 3.75V2.5a.5.5 0 01.5-.5h5a.5.5 0 01.5.5v1.25a.25.25 0 01-.25.25h-5.5A.25.25 0 019 3.75z"
+                        />
+                      </g>
+                    </svg>
+                  </span>
+                  Delete
+                </button>
+                <button
+                  class="chakra-button css-117sk0y"
+                  data-testid="edit-btn"
+                  type="button"
+                >
+                  <span
+                    class="chakra-button__icon css-1wh2kri"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="chakra-icon css-onkibi"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <g
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-width="2"
+                      >
+                        <path
+                          d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"
+                        />
+                        <path
+                          d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"
+                        />
+                      </g>
+                    </svg>
+                  </span>
+                  Edit
+                </button>
+                <button
+                  class="chakra-button css-117sk0y"
+                  data-testid="detail-btn"
+                  type="button"
+                >
+                  <span
+                    class="chakra-button__icon css-1wh2kri"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="chakra-icon css-onkibi"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M12,0A12,12,0,1,0,24,12,12.013,12.013,0,0,0,12,0Zm.25,5a1.5,1.5,0,1,1-1.5,1.5A1.5,1.5,0,0,1,12.25,5ZM14.5,18.5h-4a1,1,0,0,1,0-2h.75a.25.25,0,0,0,.25-.25v-4.5a.25.25,0,0,0-.25-.25H10.5a1,1,0,0,1,0-2h1a2,2,0,0,1,2,2v4.75a.25.25,0,0,0,.25.25h.75a1,1,0,1,1,0,2Z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                  Detail
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="chakra-card__footer css-k008qs"
+      >
+        <div
+          class="chakra-stack css-1272ag6"
+        >
+          <h2
+            class="chakra-heading css-hwp7z0"
+          >
+            name 1
+          </h2>
+          <p
+            class="chakra-text css-szn3bb"
+          >
+            description
+          </p>
+          <p
+            class="chakra-text css-3ut35e"
+          >
+            Rp 
+            8
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

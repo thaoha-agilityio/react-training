@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Adverse component should render component correctly 1`] = `
+<div>
+  <section
+    class="css-175tbkm"
+  >
+    <div
+      class="css-1l4w6pd"
+    >
+      <h3
+        class="chakra-heading css-15ca6y6"
+      >
+        #FuniroFurniture
+      </h3>
+    </div>
+    <img
+      alt="adverse"
+      class="chakra-image css-uwwqev"
+      src=""
+    />
+  </section>
+</div>
+`;

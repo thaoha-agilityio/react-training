@@ -1,0 +1,249 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ShoppingCart component should render component correctly 1`] = `
+<div>
+  <div
+    class="css-i9nokg"
+  >
+    <div
+      class="chakra-stack css-103yzil"
+    >
+      <p
+        class="chakra-text css-18xzx14"
+        data-testid="title"
+      >
+        Cart
+      </p>
+      <nav
+        aria-label="breadcrumb"
+        class="chakra-breadcrumb css-0"
+      >
+        <ol
+          class="chakra-breadcrumb__list css-70qvj9"
+        >
+          <li
+            class="chakra-breadcrumb__list-item css-18biwo"
+          >
+            <a
+              class="chakra-breadcrumb__link css-0"
+              href="/"
+            >
+              Home
+            </a>
+            <span
+              class="css-syhbcg"
+              role="presentation"
+            >
+              <svg
+                class="chakra-icon css-rozz42"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
+                  fill="currentColor"
+                />
+              </svg>
+            </span>
+          </li>
+          <li
+            class="chakra-breadcrumb__list-item css-18biwo"
+            data-testid="breadcrumb-item"
+          >
+            <span
+              aria-current="page"
+              class="chakra-breadcrumb__link css-0"
+            >
+              Cart
+            </span>
+          </li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+  <div
+    class="chakra-container css-0"
+  >
+    <div
+      class="css-fizwzs"
+    >
+      <div
+        class="chakra-stack css-kojlld"
+      >
+        <div
+          class="css-15mlu1t"
+        >
+          <p
+            class="chakra-text css-0"
+          >
+            Product
+          </p>
+          <p
+            class="chakra-text css-0"
+          >
+            Price
+          </p>
+          <p
+            class="chakra-text css-0"
+          >
+            Quantity
+          </p>
+          <p
+            class="chakra-text css-0"
+          >
+            Subtotal
+          </p>
+        </div>
+        <div
+          class="css-13kt5mu"
+        >
+          <div
+            class="css-0"
+          >
+            <img
+              alt="image-product"
+              class="chakra-image__placeholder css-1m6xaip"
+              src="https://www.charlotteathleticclub.com/assets/camaleon_cms/image-not-found-4a963b95bf081c3ea02923dceaeb3f8085e1a654fc54840aac61a57a60903fef.png"
+            />
+          </div>
+          <p
+            class="chakra-text css-1s16w59"
+          />
+          <p
+            class="chakra-text css-0"
+          >
+            Rs. 
+            0
+          </p>
+          <div
+            class="css-1dmif2y"
+          >
+            <p
+              class="chakra-text css-17tp7st"
+            >
+              0
+            </p>
+          </div>
+          <p
+            class="chakra-text css-0"
+          >
+            Rs. 
+            0
+          </p>
+          <button
+            aria-label="delete-btn"
+            class="chakra-button css-p7mkev"
+            data-testid="delete-btn"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              fill="none"
+              focusable="false"
+              height="28"
+              viewBox="0 0 28 28"
+              width="28"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M23.625 7H20.125V4.8125C20.125 3.84727 19.3402 3.0625 18.375 3.0625H9.625C8.65977 3.0625 7.875 3.84727 7.875 4.8125V7H4.375C3.89102 7 3.5 7.39102 3.5 7.875V8.75C3.5 8.87031 3.59844 8.96875 3.71875 8.96875H5.37031L6.0457 23.2695C6.08945 24.202 6.86055 24.9375 7.79297 24.9375H20.207C21.1422 24.9375 21.9105 24.2047 21.9543 23.2695L22.6297 8.96875H24.2812C24.4016 8.96875 24.5 8.87031 24.5 8.75V7.875C24.5 7.39102 24.109 7 23.625 7ZM18.1562 7H9.84375V5.03125H18.1562V7Z"
+                fill="#B88E2F"
+              />
+            </svg>
+          </button>
+        </div>
+        <div
+          class="css-13kt5mu"
+        >
+          <div
+            class="css-0"
+          >
+            <img
+              alt="image-product"
+              class="chakra-image__placeholder css-1m6xaip"
+              src="https://www.charlotteathleticclub.com/assets/camaleon_cms/image-not-found-4a963b95bf081c3ea02923dceaeb3f8085e1a654fc54840aac61a57a60903fef.png"
+            />
+          </div>
+          <p
+            class="chakra-text css-1s16w59"
+          >
+            name 3
+          </p>
+          <p
+            class="chakra-text css-0"
+          >
+            Rs. 
+            15
+          </p>
+          <div
+            class="css-1dmif2y"
+          >
+            <p
+              class="chakra-text css-17tp7st"
+            >
+              2
+            </p>
+          </div>
+          <p
+            class="chakra-text css-0"
+          >
+            Rs. 
+            30
+          </p>
+          <button
+            aria-label="delete-btn"
+            class="chakra-button css-p7mkev"
+            data-testid="delete-btn"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              fill="none"
+              focusable="false"
+              height="28"
+              viewBox="0 0 28 28"
+              width="28"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M23.625 7H20.125V4.8125C20.125 3.84727 19.3402 3.0625 18.375 3.0625H9.625C8.65977 3.0625 7.875 3.84727 7.875 4.8125V7H4.375C3.89102 7 3.5 7.39102 3.5 7.875V8.75C3.5 8.87031 3.59844 8.96875 3.71875 8.96875H5.37031L6.0457 23.2695C6.08945 24.202 6.86055 24.9375 7.79297 24.9375H20.207C21.1422 24.9375 21.9105 24.2047 21.9543 23.2695L22.6297 8.96875H24.2812C24.4016 8.96875 24.5 8.87031 24.5 8.75V7.875C24.5 7.39102 24.109 7 23.625 7ZM18.1562 7H9.84375V5.03125H18.1562V7Z"
+                fill="#B88E2F"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div
+        class="chakra-stack css-1vw5xai"
+      >
+        <p
+          class="chakra-text css-in3yi3"
+        >
+          Cart Totals
+        </p>
+        <div
+          class="css-1t0sl6i"
+        >
+          <p
+            class="chakra-text css-1xnzs7r"
+          >
+            Total
+          </p>
+          <p
+            class="chakra-text css-6g0uv4"
+          >
+            Rs. 
+            30.00
+          </p>
+        </div>
+        <button
+          class="chakra-button css-xagc7"
+          type="button"
+        >
+          Check Out
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;

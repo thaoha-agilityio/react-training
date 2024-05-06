@@ -1,5 +1,6 @@
 import { ReactNode, memo } from 'react';
 import {
+  Divider,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -21,6 +22,7 @@ const CustomModal = memo(({ isOpen, children, title, onClose }: CustomModalProps
     <ModalContent>
       <ModalHeader>{title}</ModalHeader>
       <ModalCloseButton />
+      <Divider color='input.borderColor' w='100%' />
       <ModalBody>{children}</ModalBody>
     </ModalContent>
   </Modal>
