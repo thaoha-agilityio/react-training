@@ -2,7 +2,7 @@ import { memo } from 'react';
 import { Box, Text, Image, Stack, Container, Flex, Button } from '@chakra-ui/react';
 
 // Components
-import UserProfile from '../UserProfile';
+import { UserProfile } from '@/components';
 import { CommentIcon, LikeIcon, ShareIcon } from '../Icons';
 
 // Constants
