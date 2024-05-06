@@ -1,8 +1,10 @@
+export { default as Footer } from './Footer';
 export { default as Header } from './Header';
 export { default as Input } from './Input';
 export { default as Logout } from './Logout';
 export { default as SignInForm } from './SignInForm';
 export { default as UserProfile } from './UserProfile';
+export { default as Sidebar } from './Sidebar';
 
 // Modal
 export { default as SignUpFormModal } from './Modal/SignUpModal';
