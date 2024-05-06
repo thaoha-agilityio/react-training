@@ -7,3 +7,4 @@ export { FormLabel } from './formLabel';
 export { FormError } from './formError';
 export { Radio } from './radio';
 export { Text } from './text';
+export { Textarea } from './textarea';
