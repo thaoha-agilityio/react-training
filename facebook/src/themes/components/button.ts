@@ -60,6 +60,7 @@ export const Button = defineStyleConfig({
     unstyled: {
       color: 'text.label',
       bg: 'none',
+      display: 'flex',
       fontSize: 'md',
       fontWeight: 'bold',
       _hover: {

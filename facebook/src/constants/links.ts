@@ -240,7 +240,14 @@ export const FOOTER_SIDEBAR_LINKS = [
     href: '#',
     label: 'Add Choices',
   },
-  { href: '#', label: 'More' },
+  {
+    href: '#',
+    label: 'Cookies',
+  },
+  {
+    href: '#',
+    label: 'More',
+  },
   {
     href: '#',
     label: 'Meta © 2024',

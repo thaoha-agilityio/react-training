@@ -6,6 +6,10 @@ export const Container = defineStyleConfig({
       w: 'full',
       maxW: '650px',
     },
+    md: {
+      w: 'full',
+      maxW: '1024px',
+    },
   },
   defaultProps: {
     size: 'sm',

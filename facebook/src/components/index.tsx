@@ -8,3 +8,4 @@ export { default as Sidebar } from './Sidebar';
 // Modal
 export { default as SignUpFormModal } from './Modal/SignUpModal';
 export { default as CustomModal } from './Modal/CustomModal';
+export { default as CreatePostModal } from './Modal/CreatePostModal';
