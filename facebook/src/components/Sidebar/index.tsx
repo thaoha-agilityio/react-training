@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { Stack, Text, Flex, Link, Divider, ListItem, UnorderedList, Box } from '@chakra-ui/react';
 
 // Constants
@@ -10,7 +11,7 @@ interface SidebarProps {
   userName: string;
 }
 
-const Sidebar = ({ userName }: SidebarProps) => (
+const Sidebar = memo(({ userName }: SidebarProps) => (
   <Stack minH={`calc(100vh - 56px)`} w='300px' bg='secondary' px='10px' py='20px'>
     <Stack spacing='17px'>
       <UserProfile userName={userName} />
@@ -47,6 +48,6 @@ const Sidebar = ({ userName }: SidebarProps) => (
       </UnorderedList>
     </Flex>
   </Stack>
-);
+));
 
 export default Sidebar;
