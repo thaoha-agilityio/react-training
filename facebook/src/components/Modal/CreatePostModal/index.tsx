@@ -1,7 +1,6 @@
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { memo } from 'react';
 import {
-  Avatar,
   Box,
   Button,
   Flex,
@@ -19,6 +18,7 @@ import { INPUT_PLACEHOLDER } from '@/constants';
 // Components
 import CustomModal from '../CustomModal';
 import { AddImageIcon } from '@/components/Icons';
+import { UserProfile } from '@/components';
 
 interface CreatePostModalProps {
   isOpen: boolean;
@@ -48,10 +48,8 @@ const CreatePostModal = memo(({ isOpen, onClose, userName }: CreatePostModalProp
 
   return (
     <CustomModal isOpen={isOpen} onClose={onClose} title='Create post'>
-      <Flex gap='10px' alignItems='center'>
-        <Avatar />
-        <Text>{userName}</Text>
-      </Flex>
+      <UserProfile userName={userName} />
+
       <Stack as='form' py='5px' onSubmit={handleSubmit(onSubmit)}>
         {/* Status */}
         <Controller
