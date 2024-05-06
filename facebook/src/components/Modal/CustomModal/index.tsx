@@ -13,17 +13,18 @@ interface CustomModalProps {
   isOpen: boolean;
   title: string;
   children: ReactNode;
+  size?: string;
   onClose: () => void;
 }
 
-const CustomModal = memo(({ isOpen, children, title, onClose }: CustomModalProps) => (
-  <Modal isOpen={isOpen} onClose={onClose}>
+const CustomModal = memo(({ isOpen, children, title, onClose, size = 'md' }: CustomModalProps) => (
+  <Modal isOpen={isOpen} onClose={onClose} size={size}>
     <ModalOverlay />
     <ModalContent>
       <ModalHeader>{title}</ModalHeader>
       <ModalCloseButton />
       <Divider color='input.borderColor' w='100%' />
-      <ModalBody>{children}</ModalBody>
+      <ModalBody p={0}>{children}</ModalBody>
     </ModalContent>
   </Modal>
 ));

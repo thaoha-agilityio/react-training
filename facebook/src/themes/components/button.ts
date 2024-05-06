@@ -82,6 +82,16 @@ export const Button = defineStyleConfig({
         },
       },
     },
+
+    action: {
+      color: 'text.label',
+      bg: 'none',
+      fontSize: 'tiny',
+      fontWeight: 'bold',
+      _hover: {
+        bg: 'none',
+      },
+    },
   },
 
   defaultProps: {

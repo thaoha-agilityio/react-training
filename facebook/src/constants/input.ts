@@ -4,4 +4,5 @@ export const INPUT_PLACEHOLDER = {
   FIRST_NAME: 'First name',
   SURNAME: 'Surname',
   POST: `What's on your mind?`,
+  COMMENT: 'Write a comment...',
 };

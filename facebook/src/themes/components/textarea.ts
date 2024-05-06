@@ -8,6 +8,15 @@ export const Textarea = defineStyleConfig({
         borderColor: 'white',
       },
     },
+
+    filled: {
+      bg: 'secondary',
+      borderRadius: 'lg',
+      _focus: {
+        borderColor: 'secondary',
+        bg: 'secondary',
+      },
+    },
   },
 
   defaultProps: {
