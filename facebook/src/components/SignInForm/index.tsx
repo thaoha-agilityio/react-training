@@ -1,11 +1,11 @@
-import { Box, Button, Divider, FormControl, Link, Stack } from '@chakra-ui/react';
+import { Box, Button, Divider, FormControl, Link, Stack, useDisclosure } from '@chakra-ui/react';
 import { Controller, useForm, SubmitHandler } from 'react-hook-form';
 
 // Constants
 import { ERROR_MESSAGES, INPUT_PLACEHOLDER, REGEX } from '@/constants';
 
 // Components
-import { Input } from '@/components';
+import { Input, SignUpFormModal } from '@/components';
 
 interface SignInFormData {
   email: string;
@@ -13,6 +13,8 @@ interface SignInFormData {
 }
 
 const SignInForm = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
   const { control, handleSubmit } = useForm<SignInFormData>({
     mode: 'onSubmit',
     reValidateMode: 'onSubmit',
@@ -48,10 +50,11 @@ const SignInForm = () => {
 
   return (
     <Box
-      maxW='396px'
+      w='396px'
       borderRadius='md'
       border='0.5px solid'
       borderColor='input.borderColor'
+      bg='white'
       py='20px'
       px='25px'
       boxShadow='0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1)'
@@ -103,11 +106,14 @@ const SignInForm = () => {
         <Link href='#'>Forgotten password?</Link>
         <Divider color='input.borderColor' />
         <Box>
-          <Button variant='secondary' w='198px' h='48px'>
+          <Button variant='secondary' w='198px' h='48px' onClick={onOpen}>
             Create New Account
           </Button>
         </Box>
       </Stack>
+
+      {/* Sign up form */}
+      {isOpen && <SignUpFormModal isOpen={isOpen} onClose={onClose} />}
     </Box>
   );
 };
