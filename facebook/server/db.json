@@ -1,0 +1,174 @@
+{
+  "users": [
+    {
+      "email": "olivier@mail.com",
+      "password": "$2a$10$9p/BWKGGVFvMUywBB0p0o.52zUtlnf5rdk.5zEpFcqpDSi520tdXu",
+      "id": 1
+    },
+    {
+      "email": "olivier1@mail.com",
+      "password": "$2a$10$DvQLv39N6MtTNvtkBYMtCOSqOVrsqNq.qgwU4hbT1hb3aLSd2o94.",
+      "firstname": "Olivier",
+      "lastname": "Monge",
+      "age": 32,
+      "id": 2
+    },
+    {
+      "email": "hoajthu_97@yahoo.com",
+      "password": "$2a$10$5NnREen3BkZTUDza1yRLUe8aqhK/1Mt7NXxDHjmqXmim4xV8tGUyO",
+      "firstName": "tester",
+      "surname": "qwe",
+      "dateOfBirth": "2000-01-01",
+      "gender": "female",
+      "id": 3
+    },
+    {
+      "email": "test12@mail.com",
+      "password": "$2a$10$Pt.NKS7lG4Gw53XMV0z81.WWXI1P6YIUAmcF6PUAAIvKXmtfQ5kWO",
+      "id": 4
+    },
+    {
+      "firstName": "tester",
+      "surname": "qwe",
+      "email": "hoajthu_97@yahoo.com",
+      "password": "Haythao123@",
+      "dateOfBirth": "2000-01-01",
+      "gender": "female",
+      "id": 5
+    },
+    {
+      "firstName": "test",
+      "surname": "123",
+      "email": "thao.ha@asnet.com.vn",
+      "password": "hAYTHAO123@",
+      "dateOfBirth": "2000-01-01",
+      "gender": "female",
+      "id": 6
+    },
+    {
+      "email": "hoajthu_9711@yahoo.com",
+      "password": "Haythao1213@",
+      "id": 7
+    },
+    {
+      "firstName": "test",
+      "surname": "123",
+      "email": "thao.ha@asnet.com.vn",
+      "password": "hAYTHAO123@",
+      "dateOfBirth": "2000-01-01",
+      "gender": "female",
+      "id": 8
+    },
+    {
+      "firstName": "Ngoc Ngo",
+      "surname": "123",
+      "email": "thao.ha@asnet.com.vn",
+      "password": "1132123123D@",
+      "dateOfBirth": "2000-01-01",
+      "gender": "male",
+      "id": 9
+    },
+    {
+      "firstName": "Ngoc Ngo",
+      "surname": "123",
+      "email": "thao.ha@asnet.com.vn",
+      "password": "1132123123D@",
+      "dateOfBirth": "2000-01-01",
+      "gender": "male",
+      "id": 10
+    },
+    {
+      "firstName": "Ngoc Ngo",
+      "surname": "123",
+      "email": "thao.ha@asnet.com.vn",
+      "password": "1132123123D@",
+      "dateOfBirth": "2000-01-01",
+      "gender": "male",
+      "id": 11
+    },
+    {
+      "firstName": "Ngoc Ngo",
+      "surname": "123",
+      "email": "thao.ha@asnet.com.vn",
+      "password": "1132123123D@",
+      "dateOfBirth": "2000-01-01",
+      "gender": "male",
+      "id": 12
+    },
+    {
+      "firstName": "test",
+      "surname": "123",
+      "email": "thao.ha@asnet.com.vn",
+      "password": "âDSasdaASD@!",
+      "dateOfBirth": "2000-12-31",
+      "gender": "female",
+      "id": 13
+    },
+    {
+      "email": "hoajthu_9711@yahoo.com",
+      "password": "Haythao1213@",
+      "id": 14
+    },
+    {
+      "email": "hoajthu_9711@yahoo.com",
+      "password": "Haythao1213@",
+      "id": 15
+    },
+    {
+      "email": "hung.do+1@asnet.com.vn",
+      "password": "$2a$10$ZvbHQ5SpYnznKu155XSe1e2MB9ItaPkmi0TM8SBqeSrr73jTYg6OS",
+      "id": 16
+    },
+    {
+      "email": "portalstester+2@asnet.com.vn",
+      "password": "$2a$10$8amCXieC1iyysoYD5oCMxu3UgecCLVy/0.ekcwiQ8BLjdjcJvZDSi",
+      "firstName": "qư",
+      "surname": "123",
+      "dateOfBirth": "2000-01-01",
+      "gender": "male",
+      "id": 17
+    },
+    {
+      "email": "thao.ha+1@asnet.com.vn",
+      "password": "$2a$10$UwEU3kUyNme0BjCjc3iAdu0XZIxN.H30i/OHxUiqoSd6YMhX69NO2",
+      "firstName": "Ngoc Ngo",
+      "surname": "123",
+      "dateOfBirth": "2000-01-01",
+      "gender": "male",
+      "id": 18
+    },
+    {
+      "email": "portalstester+34@asnet.com.vn",
+      "password": "$2a$10$6PxG/F.MKFV/MpRansv6Z.kFcCLwLqqp9tsqXkIGNXk4fMZ7cJaPK",
+      "firstName": "Ngoc Ngo",
+      "surname": "123",
+      "dateOfBirth": "2000-01-01",
+      "gender": "female",
+      "id": 19
+    },
+    {
+      "email": "portalstester+35@asnet.com.vn",
+      "password": "$2a$10$3uPsDnVVnA.nFuEh0coRI.S2545dYRepEOz/M97wM.5ar6cc6VBWe",
+      "firstName": "Ngoc Ngo",
+      "surname": "123",
+      "dateOfBirth": "2000-01-01",
+      "gender": "female",
+      "id": 20
+    },
+    {
+      "email": "portalstester+36@asnet.com.vn",
+      "password": "$2a$10$7vW8Ez4qKwcepT20G.qwkeLb8E3rJmdYHorix/qTolgP7wBdDP.62",
+      "firstName": "Ngoc Ngo",
+      "surname": "123",
+      "dateOfBirth": "2000-01-01",
+      "gender": "female",
+      "id": 21
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "content": "test"
+    }
+  ]
+}
