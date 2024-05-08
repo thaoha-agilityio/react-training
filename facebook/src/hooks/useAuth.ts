@@ -26,8 +26,10 @@ export const useAuthSignUp = () => {
   return useMutation<SignUpResponse, string, SignUpPayload>({
     mutationFn: async (payload: SignUpPayload) => await api.postData(ROUTES.SIGN_UP, payload),
     onSuccess: (res: LoginResponse) => {
+      const { accessToken } = res || {};
+
       setAuthenticated(true);
-      setAccessToken(encryptAccessToken(res.accessToken));
+      setAccessToken(encryptAccessToken(accessToken));
     },
   });
 };
@@ -41,8 +43,10 @@ export const useAuthSignIn = () => {
   return useMutation<LoginResponse, string, LoginPayload>({
     mutationFn: async (payload: LoginPayload) => await api.postData(ROUTES.SIGN_IN, payload),
     onSuccess: (res: LoginResponse) => {
+      const { accessToken } = res || {};
+
       setAuthenticated(true);
-      setAccessToken(encryptAccessToken(res.accessToken));
+      setAccessToken(encryptAccessToken(accessToken));
     },
   });
 };
