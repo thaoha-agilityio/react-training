@@ -23,7 +23,12 @@ import {
 import { ICON_LINKS } from '@/constants';
 
 const Header = () => (
-  <HStack as='header' p='8px' boxShadow='0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1)'>
+  <HStack
+    as='header'
+    px='15px'
+    py='10px'
+    boxShadow='0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1)'
+  >
     <Flex alignItems='center' gap='15px'>
       <Link href='/'>
         <FacebookIcon />
@@ -32,7 +37,7 @@ const Header = () => (
         <InputLeftElement pointerEvents='none' top='-3px'>
           <SearchIcon />
         </InputLeftElement>
-        <Input variant='filled' h='40px' w='212px' />
+        <Input variant='filled' h='40px' w='212px' placeholder='Search Facebook' />
       </InputGroup>
     </Flex>
 

@@ -10,6 +10,7 @@ export * from './LogoutIcon';
 export * from './MarketPlaceIcon';
 export * from './MemoriesIcon';
 export * from './LikeIcon';
+export * from './LiveIcon'
 export * from './MenuIcon';
 export * from './MessageIcon';
 export * from './NotificationIcon';
@@ -19,4 +20,5 @@ export * from './SaveIcon';
 export * from './SearchIcon';
 export * from './SendIcon';
 export * from './ShareIcon';
+export * from './SmileIcon';
 export * from './VideoIcon';
