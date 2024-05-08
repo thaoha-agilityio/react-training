@@ -1,14 +1,18 @@
 import { defineStyleConfig } from '@chakra-ui/react';
 
 export const Container = defineStyleConfig({
+  baseStyle: {
+    w: 'full',
+  },
   sizes: {
     sm: {
-      w: 'full',
       maxW: '650px',
     },
     md: {
-      w: 'full',
       maxW: '1024px',
+    },
+    lg: {
+      maxW: '1440px',
     },
   },
   defaultProps: {
