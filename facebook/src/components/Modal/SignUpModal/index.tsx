@@ -13,26 +13,13 @@ import {
 import { Controller, useForm, SubmitHandler } from 'react-hook-form';
 
 // Constants
-import {
-  ACCESS_TOKEN,
-  ERROR_MESSAGES,
-  GENDER,
-  GENDER_OPTION,
-  INPUT_PLACEHOLDER,
-  REGEX,
-} from '@/constants';
+import { ERROR_MESSAGES, GENDER, GENDER_OPTION, INPUT_PLACEHOLDER, REGEX } from '@/constants';
 
 // Components
 import { Input, CustomModal } from '@/components';
 
 // Hooks
 import { useAuthSignUp } from '@/hooks';
-
-// Services
-import { setItemLocalStorage } from '@/services';
-
-// Types
-import { SignUpResponse } from '@/types';
 
 interface SignUpFormData {
   firstName: string;
@@ -96,11 +83,8 @@ const SignUpFormModal = memo(({ isOpen, onClose }: SignUpFormProps) => {
     },
   };
 
-  const handleSignUpSuccess = (data: SignUpResponse) => {
-    const { accessToken } = data || {};
-    setItemLocalStorage(ACCESS_TOKEN, accessToken);
-    // TODO: handle navigate to Home page later
-  };
+  // TODO: handle navigate to Home page later
+  const handleSignUpSuccess = () => {};
 
   // TODO: handle show toast error message
   const handleSignUpError = () => {};
