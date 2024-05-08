@@ -13,13 +13,23 @@ import {
 import { Controller, useForm, SubmitHandler } from 'react-hook-form';
 
 // Constants
-import { ERROR_MESSAGES, GENDER, GENDER_OPTION, INPUT_PLACEHOLDER, REGEX } from '@/constants';
+import {
+  ERROR_MESSAGES,
+  GENDER,
+  GENDER_OPTION,
+  INPUT_PLACEHOLDER,
+  REGEX,
+  STATUS,
+} from '@/constants';
 
 // Components
 import { Input, CustomModal } from '@/components';
 
 // Hooks
-import { useAuthSignUp } from '@/hooks';
+import { useAuthSignUp, useCustomToast } from '@/hooks';
+
+// Utils
+import { getAPIErrorMessage } from '@/utils';
 
 interface SignUpFormData {
   firstName: string;
@@ -56,6 +66,8 @@ const SignUpFormModal = memo(({ isOpen, onClose }: SignUpFormProps) => {
 
   const { mutate: signUp, isLoading } = useAuthSignUp();
 
+  const { showToast } = useCustomToast();
+
   const validationRule = {
     firstName: { required: ERROR_MESSAGES.FIELD_REQUIRED('First Name') },
 
@@ -86,8 +98,8 @@ const SignUpFormModal = memo(({ isOpen, onClose }: SignUpFormProps) => {
   // TODO: handle navigate to Home page later
   const handleSignUpSuccess = () => {};
 
-  // TODO: handle show toast error message
-  const handleSignUpError = () => {};
+  // Handle show toast error message
+  const handleSignUpError = (error: string) => showToast(STATUS.ERROR, getAPIErrorMessage(error));
 
   // Handle signUp
   const onSubmit: SubmitHandler<SignUpFormData> = (data) => {
