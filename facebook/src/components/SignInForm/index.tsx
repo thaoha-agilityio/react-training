@@ -8,6 +8,9 @@ import { ERROR_MESSAGES, INPUT_PLACEHOLDER, REGEX } from '@/constants';
 // Components
 import { Input } from '@/components';
 
+// Hooks
+import { useAuthSignIn } from '@/hooks';
+
 const SignUpFormModal = lazy(() => import('@/components/Modal/SignUpModal'));
 
 interface SignInFormData {
@@ -18,7 +21,12 @@ interface SignInFormData {
 const SignInForm = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const { control, handleSubmit } = useForm<SignInFormData>({
+  const {
+    control,
+    handleSubmit,
+    clearErrors,
+    formState: { isDirty },
+  } = useForm<SignInFormData>({
     mode: 'onSubmit',
     reValidateMode: 'onSubmit',
     defaultValues: {
@@ -26,6 +34,8 @@ const SignInForm = () => {
       password: '',
     },
   });
+
+  const { mutate: signIn, isLoading } = useAuthSignIn();
 
   const validationRule = {
     email: {
@@ -46,10 +56,26 @@ const SignInForm = () => {
     },
   };
 
+  // TODO: handle navigate to Home page later
+  const handleSignInSuccess = () => {};
+
+  // TODO: handle show toast error message
+  const handleSignInError = () => {};
+
   // TODO: will handle submit
   const onSubmit: SubmitHandler<SignInFormData> = (data) => {
-    console.log(data);
+    signIn(data, {
+      onSuccess: handleSignInSuccess,
+      onError: handleSignInError,
+    });
   };
+
+  // Clear error when typing that field.
+  const handleClearErrors = (fieldName: keyof SignInFormData) => {
+    clearErrors(fieldName);
+  };
+
+  const isDisableButton = !isDirty || isLoading;
 
   return (
     <Box
@@ -75,6 +101,7 @@ const SignInForm = () => {
                 onChange={(e) => {
                   const value = e.target?.value;
                   onChange(value);
+                  handleClearErrors('email');
                 }}
                 {...rest}
               />
@@ -95,6 +122,7 @@ const SignInForm = () => {
                 onChange={(e) => {
                   const value = e.target?.value;
                   onChange(value);
+                  handleClearErrors('password');
                 }}
                 {...rest}
               />
@@ -102,7 +130,9 @@ const SignInForm = () => {
           )}
         />
 
-        <Button type='submit'>Log In</Button>
+        <Button type='submit' isDisabled={isDisableButton} isLoading={isLoading}>
+          Log In
+        </Button>
       </Stack>
 
       <Stack spacing='15px' textAlign='center' mt='15px'>
