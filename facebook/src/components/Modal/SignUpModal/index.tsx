@@ -13,10 +13,26 @@ import {
 import { Controller, useForm, SubmitHandler } from 'react-hook-form';
 
 // Constants
-import { ERROR_MESSAGES, GENDER, GENDER_OPTION, INPUT_PLACEHOLDER, REGEX } from '@/constants';
+import {
+  ACCESS_TOKEN,
+  ERROR_MESSAGES,
+  GENDER,
+  GENDER_OPTION,
+  INPUT_PLACEHOLDER,
+  REGEX,
+} from '@/constants';
 
 // Components
 import { Input, CustomModal } from '@/components';
+
+// Hooks
+import { useAuthSignUp } from '@/hooks';
+
+// Services
+import { setItemLocalStorage } from '@/services';
+
+// Types
+import { SignUpResponse } from '@/types';
 
 interface SignUpFormData {
   firstName: string;
@@ -33,7 +49,12 @@ interface SignUpFormProps {
 }
 
 const SignUpFormModal = memo(({ isOpen, onClose }: SignUpFormProps) => {
-  const { control, handleSubmit } = useForm<SignUpFormData>({
+  const {
+    control,
+    handleSubmit,
+    clearErrors,
+    formState: { isDirty },
+  } = useForm<SignUpFormData>({
     mode: 'onSubmit',
     reValidateMode: 'onSubmit',
     defaultValues: {
@@ -45,6 +66,8 @@ const SignUpFormModal = memo(({ isOpen, onClose }: SignUpFormProps) => {
       gender: GENDER.FEMALE,
     },
   });
+
+  const { mutate: signUp, isLoading } = useAuthSignUp();
 
   const validationRule = {
     firstName: { required: ERROR_MESSAGES.FIELD_REQUIRED('First Name') },
@@ -73,10 +96,29 @@ const SignUpFormModal = memo(({ isOpen, onClose }: SignUpFormProps) => {
     },
   };
 
-  // TODO: will handle submit
-  const onSubmit: SubmitHandler<SignUpFormData> = (data) => {
-    console.log(data);
+  const handleSignUpSuccess = (data: SignUpResponse) => {
+    const { accessToken } = data || {};
+    setItemLocalStorage(ACCESS_TOKEN, accessToken);
+    // TODO: handle navigate to Home page later
   };
+
+  // TODO: handle show toast error message
+  const handleSignUpError = () => {};
+
+  // Handle signUp
+  const onSubmit: SubmitHandler<SignUpFormData> = (data) => {
+    signUp(data, {
+      onSuccess: handleSignUpSuccess,
+      onError: handleSignUpError,
+    });
+  };
+
+  // Clear error when typing that field.
+  const handleClearErrors = (fieldName: keyof SignUpFormData) => {
+    clearErrors(fieldName);
+  };
+
+  const isDisableButton = !isDirty || isLoading;
 
   return (
     <CustomModal isOpen={isOpen} title='Sign Up' onClose={onClose}>
@@ -95,6 +137,7 @@ const SignUpFormModal = memo(({ isOpen, onClose }: SignUpFormProps) => {
                   onChange={(e) => {
                     const value = e.target?.value;
                     onChange(value);
+                    handleClearErrors('firstName');
                   }}
                   {...rest}
                 />
@@ -115,6 +158,7 @@ const SignUpFormModal = memo(({ isOpen, onClose }: SignUpFormProps) => {
                   onChange={(e) => {
                     const value = e.target?.value;
                     onChange(value);
+                    handleClearErrors('surname');
                   }}
                   {...rest}
                 />
@@ -135,6 +179,7 @@ const SignUpFormModal = memo(({ isOpen, onClose }: SignUpFormProps) => {
                   onChange={(e) => {
                     const value = e.target?.value;
                     onChange(value);
+                    handleClearErrors('email');
                   }}
                   {...rest}
                 />
@@ -156,6 +201,7 @@ const SignUpFormModal = memo(({ isOpen, onClose }: SignUpFormProps) => {
                   onChange={(e) => {
                     const value = e.target?.value;
                     onChange(value);
+                    handleClearErrors('password');
                   }}
                   {...rest}
                 />
@@ -177,6 +223,7 @@ const SignUpFormModal = memo(({ isOpen, onClose }: SignUpFormProps) => {
                   onChange={(e) => {
                     const value = e.target?.value;
                     onChange(value);
+                    handleClearErrors('dateOfBirth');
                   }}
                   {...rest}
                 />
@@ -204,6 +251,7 @@ const SignUpFormModal = memo(({ isOpen, onClose }: SignUpFormProps) => {
                         onChange={(e) => {
                           const value = e.target?.value;
                           onChange(value);
+                          handleClearErrors('gender');
                         }}
                       >
                         {label}
@@ -233,8 +281,14 @@ const SignUpFormModal = memo(({ isOpen, onClose }: SignUpFormProps) => {
           </Text>
 
           <Box textAlign='center'>
-            {/* TODO: will handle disable and loading button later */}
-            <Button type='submit' variant='secondary' w='198px' h='48px'>
+            <Button
+              type='submit'
+              variant='secondary'
+              w='198px'
+              h='48px'
+              isDisabled={isDisableButton}
+              isLoading={isLoading}
+            >
               Sign up
             </Button>
           </Box>
