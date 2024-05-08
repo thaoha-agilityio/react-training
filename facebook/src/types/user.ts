@@ -23,5 +23,3 @@ export interface LoginResponse {
   accessToken: string;
   user: Omit<User, 'password'>;
 }
-
-export interface AuthSignUpRequest extends User {}
