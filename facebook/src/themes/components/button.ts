@@ -23,9 +23,6 @@ export const Button = defineStyleConfig({
       _active: {
         bg: 'primary',
       },
-      _disabled: {
-        bg: 'background.secondary',
-      },
     },
 
     secondary: {
