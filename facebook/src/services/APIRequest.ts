@@ -8,8 +8,8 @@ const getData = async <T>(url: string): Promise<T> => {
 };
 
 // Sends a POST request to URL with data provided as an argument.
-const postData = async <T>(url: string, arg: T): Promise<T> => {
-  const response = await axios.post<T>(url, arg);
+const postData = async <T, R>(url: string, arg: T): Promise<R> => {
+  const response = await axios.post<R>(url, arg);
 
   return response.data;
 };

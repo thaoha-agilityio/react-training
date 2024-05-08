@@ -5,7 +5,7 @@ export interface User {
   email: string;
   password: string;
   firstName: string;
-  surName: string;
+  surname: string;
   dateOfBirth: string;
   gender: GENDER;
 }
@@ -23,3 +23,5 @@ export interface LoginResponse {
   accessToken: string;
   user: Omit<User, 'password'>;
 }
+
+export interface AuthSignUpRequest extends User {}

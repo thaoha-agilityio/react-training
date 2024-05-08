@@ -2,6 +2,7 @@ export * from './api';
 export * from './gender';
 export * from './image';
 export * from './validation';
+export * from './localStorage';
 export * from './regex';
 export * from './input';
 export * from './links';
