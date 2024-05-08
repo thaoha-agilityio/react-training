@@ -1,3 +1,4 @@
+import { Suspense, lazy } from 'react';
 import { Box, Button, Divider, FormControl, Link, Stack, useDisclosure } from '@chakra-ui/react';
 import { Controller, useForm, SubmitHandler } from 'react-hook-form';
 
@@ -5,7 +6,9 @@ import { Controller, useForm, SubmitHandler } from 'react-hook-form';
 import { ERROR_MESSAGES, INPUT_PLACEHOLDER, REGEX } from '@/constants';
 
 // Components
-import { Input, SignUpFormModal } from '@/components';
+import { Input } from '@/components';
+
+const SignUpFormModal = lazy(() => import('@/components/Modal/SignUpModal'));
 
 interface SignInFormData {
   email: string;
@@ -113,7 +116,12 @@ const SignInForm = () => {
       </Stack>
 
       {/* Sign up form */}
-      {isOpen && <SignUpFormModal isOpen={isOpen} onClose={onClose} />}
+      {isOpen && (
+        // TODO: will add spinner later
+        <Suspense fallback={<p>Loading...</p>}>
+          <SignUpFormModal isOpen={isOpen} onClose={onClose} />
+        </Suspense>
+      )}
     </Box>
   );
 };
