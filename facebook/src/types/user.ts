@@ -8,9 +8,10 @@ export interface User {
   surname: string;
   dateOfBirth: string;
   gender: GENDER;
+  following: number[];
 }
 
-export type SignUpPayload = Omit<User, 'id'>;
+export type SignUpPayload = Omit<User, 'id' | 'following'>;
 
 export type SignUpResponse = {
   accessToken: string;

@@ -35,18 +35,19 @@ export const useAuthSignUp = () => {
 };
 
 export const useAuthSignIn = () => {
-  const [setAuthenticated, setAccessToken] = useAuthStore(
-    (state) => [state.setAuthenticated, state.setAccessToken],
+  const [setAuthenticated, setAccessToken, setAuth] = useAuthStore(
+    (state) => [state.setAuthenticated, state.setAccessToken, state.setAuth],
     shallow,
   );
 
   return useMutation<LoginResponse, string, LoginPayload>({
     mutationFn: async (payload: LoginPayload) => await api.postData(ROUTES.SIGN_IN, payload),
     onSuccess: (res: LoginResponse) => {
-      const { accessToken } = res || {};
+      const { accessToken, user } = res || {};
 
       setAuthenticated(true);
       setAccessToken(encryptAccessToken(accessToken));
+      setAuth(user);
     },
   });
 };
