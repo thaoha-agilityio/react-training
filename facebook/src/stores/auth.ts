@@ -9,6 +9,7 @@ interface AuthState {
 interface AuthStore extends AuthState {
   setAuthenticated: (isAuthenticated: boolean) => void;
   setAccessToken: (accessToken: string) => void;
+  clearAuth: () => void;
 }
 
 const INITIAL_AUTH_STATE = {
@@ -27,6 +28,10 @@ export const useAuthStore = createWithEqualityFn<AuthStore>()(
 
       setAccessToken: (accessToken) => {
         set({ accessToken });
+      },
+
+      clearAuth: () => {
+        set({ ...INITIAL_AUTH_STATE });
       },
     }),
     { name: 'auth' },

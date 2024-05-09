@@ -18,7 +18,7 @@ const Logout = memo(({ onLogout }: LogoutProps) => (
     />
     <MenuList>
       <MenuItem gap='8px' onClick={onLogout}>
-        <IconButton icon={<LogoutIcon />} aria-label='logout-icon' variant='icon' />
+        <LogoutIcon />
         <Text>Logout</Text>
       </MenuItem>
     </MenuList>
