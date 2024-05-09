@@ -3,13 +3,16 @@ import { Box, Button, Divider, FormControl, Link, Stack, useDisclosure } from '@
 import { Controller, useForm, SubmitHandler } from 'react-hook-form';
 
 // Constants
-import { ERROR_MESSAGES, INPUT_PLACEHOLDER, REGEX } from '@/constants';
+import { ERROR_MESSAGES, INPUT_PLACEHOLDER, REGEX, STATUS } from '@/constants';
 
 // Components
 import { Input } from '@/components';
 
 // Hooks
-import { useAuthSignIn } from '@/hooks';
+import { useAuthSignIn, useCustomToast } from '@/hooks';
+
+// Utils
+import { getAPIErrorMessage } from '@/utils';
 
 const SignUpFormModal = lazy(() => import('@/components/Modal/SignUpModal'));
 
@@ -37,6 +40,8 @@ const SignInForm = () => {
 
   const { mutate: signIn, isLoading } = useAuthSignIn();
 
+  const { showToast } = useCustomToast();
+
   const validationRule = {
     email: {
       required: ERROR_MESSAGES.FIELD_REQUIRED('Email'),
@@ -59,8 +64,8 @@ const SignInForm = () => {
   // TODO: handle navigate to Home page later
   const handleSignInSuccess = () => {};
 
-  // TODO: handle show toast error message
-  const handleSignInError = () => {};
+  // Handle show toast error message
+  const handleSignInError = (error: string) => showToast(STATUS.ERROR, getAPIErrorMessage(error));
 
   // TODO: will handle submit
   const onSubmit: SubmitHandler<SignInFormData> = (data) => {

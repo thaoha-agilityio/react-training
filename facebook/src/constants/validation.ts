@@ -5,4 +5,6 @@ export const ERROR_MESSAGES = {
   PASSWORD_NOT_HAVE_NUMBER: 'Your password must contain at least one number.',
   PASSWORD_NOT_HAVE_SYMBOL: 'Your password must contain at least one special character.',
   EMAIL_IS_INVALID: 'Invalid email or password.',
+  DEFAULT_API_ERROR:
+    'Something went wrong. Please try again later or contact our team for further support.',
 };
