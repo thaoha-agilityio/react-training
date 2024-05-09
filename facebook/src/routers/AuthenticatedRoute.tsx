@@ -7,7 +7,6 @@ import { useAuthStore } from '@/stores';
 import { ROUTES } from '@/constants';
 
 const AuthenticatedRoute = () => {
-  // Auth store
   const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
 
   if (!isAuthenticated) {
