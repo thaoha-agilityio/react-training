@@ -10,3 +10,4 @@ export * from './input';
 export * from './links';
 export * from './status';
 export * from './timing';
+export * from './message';

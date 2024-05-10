@@ -2,9 +2,10 @@ import { DEFAULT_IMAGE } from '@/constants';
 
 export const POSTS = [
   {
-    id: '1',
+    id: 1,
     content: 'Content marketing definition',
-    author: 'Pam',
+    email: '',
+    author: 2,
     image: DEFAULT_IMAGE,
     likes: [],
     comments: [],

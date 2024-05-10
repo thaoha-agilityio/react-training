@@ -12,3 +12,7 @@ export { default as Sidebar } from './Sidebar';
 export { default as SignUpFormModal } from './Modal/SignUpModal';
 export { default as CustomModal } from './Modal/CustomModal';
 export { default as CreatePostModal } from './Modal/CreatePostModal';
+
+// Skeleton
+export { default as PostSkeleton } from './Skeleton/PostSkeleton';
+export { default as CommentSkeleton } from './Skeleton/CommentSkeleton';

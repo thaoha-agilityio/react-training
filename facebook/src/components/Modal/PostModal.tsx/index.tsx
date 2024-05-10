@@ -19,8 +19,8 @@ interface PostModalProps {
 
 const PostModal = ({ isOpen, onClose, comments, post }: PostModalProps) => {
   return (
-    <CustomModal isOpen={isOpen} onClose={onClose} title={post.author} size='2xl'>
-      <Post post={post} isModal />
+    <CustomModal isOpen={isOpen} onClose={onClose} title={'Pam'} size='2xl'>
+      <Post post={post} isModal userName='Pam' />
 
       {/* List comment */}
       <Stack spacing='10px' pl='10px'>

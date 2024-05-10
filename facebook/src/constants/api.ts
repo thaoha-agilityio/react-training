@@ -5,4 +5,5 @@ export const ROUTES = {
   SIGN_IN: '/signin',
   SIGN_UP: '/signup',
   POSTS: '/posts',
+  USERS: '/users',
 };

@@ -1,7 +1,7 @@
 import { GENDER } from '@/constants';
 
 export interface User {
-  id: string;
+  id: number;
   email: string;
   password: string;
   firstName: string;

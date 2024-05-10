@@ -1,7 +1,7 @@
 export interface IPost {
-  id: string;
+  id: number;
   content: string;
-  author: string;
+  author: number;
   image: string;
   likes: string[];
   comments: string[];
