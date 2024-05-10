@@ -5,4 +5,4 @@
  * @returns The generated URL.
  */
 export const generateUrl = (queryValues: number[], paramName: string) =>
-  queryValues.map((value) => `?${paramName}=${value}`).join('&');
+  queryValues.map((value) => `${paramName}=${value}`).join('&');

@@ -9,6 +9,8 @@ import { QUERY_KEYS } from '@/constants';
 
 // Types
 import { IPost } from '@/types';
+
+// Stores
 import { useAuthStore } from '@/stores';
 
 export const useGetPostsByAuthor = () => {
@@ -17,11 +19,11 @@ export const useGetPostsByAuthor = () => {
   const { data, ...rest } = useQuery<IPost[], AxiosError>({
     queryKey: QUERY_KEYS.POSTS,
     queryFn: () => {
-      const { following } = user || {};
+      const { following, id } = user || {};
 
-      return getPostsByAuthor(following);
+      // Can see the posts of the people you are following and your own posts
+      return getPostsByAuthor([...following, id]);
     },
-    enabled: !user.following,
   });
 
   return {
