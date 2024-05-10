@@ -1,11 +1,14 @@
-import { useGetPostsByAuthor } from '@/hooks';
+import { Container } from '@chakra-ui/react';
+
+// Components
+import Posts from './Posts';
 
 const Home = () => {
-  const { data } = useGetPostsByAuthor();
-
-  console.log('data', data);
-
-  return <h2>Home page</h2>;
+  return (
+    <Container>
+      <Posts />
+    </Container>
+  );
 };
 
 export default Home;
