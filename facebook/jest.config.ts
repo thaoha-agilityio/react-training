@@ -16,5 +16,5 @@ module.exports = {
   },
   testPathIgnorePatterns: ['<rootDir>/node_modules/'],
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
-  collectCoverageFrom: ['**/*.{ts,tsx}'],
+  collectCoverageFrom: ['**/*.{ts,tsx}', '!**/icons/**'],
 };
