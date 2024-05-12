@@ -38,7 +38,7 @@ describe('SignInForm Component', () => {
     expect(component).toMatchSnapshot();
   });
 
-  it('should create the Employee with valid data', () => {
+  it('should login with valid data', () => {
     jest.spyOn(api, 'postData').mockResolvedValue(USERS[0]);
 
     const { email, password, submitBtn } = setup();
@@ -50,7 +50,7 @@ describe('SignInForm Component', () => {
     });
   });
 
-  it('should create the Employee with invalid data', () => {
+  it('should login with invalid data', () => {
     jest.spyOn(api, 'postData').mockRejectedValue(new Error('Error'));
 
     const mockShowToast = jest.fn();

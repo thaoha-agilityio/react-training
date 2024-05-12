@@ -8,7 +8,9 @@ interface Props extends InputProps {
 const Input = forwardRef<HTMLInputElement, Props>(({ errorMessage, ...rest }, ref) => (
   <>
     <InputBase variant='primary' ref={ref} {...rest} />
-    {errorMessage && <FormErrorMessage>{errorMessage}</FormErrorMessage>}
+    {errorMessage && (
+      <FormErrorMessage data-testid='error-message'>{errorMessage}</FormErrorMessage>
+    )}
   </>
 ));
 
