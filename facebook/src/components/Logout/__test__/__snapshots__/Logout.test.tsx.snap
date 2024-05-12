@@ -1,0 +1,186 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Logout Component Should render Logout Component correctly 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <button
+        aria-controls="menu-list-:r1:"
+        aria-expanded="false"
+        aria-haspopup="menu"
+        aria-label="chevron-down-icon"
+        class="chakra-button chakra-menu__menu-button css-p7mkev"
+        id="menu-button-:r1:"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          fill="none"
+          focusable="false"
+          height="22"
+          width="22"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M10.247 17.938a.915.915 0 0 0 1.507 0l8.25-11.916a.915.915 0 0 0-.754-1.439H2.75a.919.919 0 0 0-.753 1.439l8.25 11.916Z"
+            fill="#000"
+          />
+        </svg>
+      </button>
+      <div
+        class="css-0"
+        style="visibility: hidden; position: absolute; min-width: max-content; inset: 0 auto auto 0;"
+      >
+        <div
+          aria-orientation="vertical"
+          class="chakra-menu__menu-list css-sjt5nk"
+          id="menu-list-:r1:"
+          role="menu"
+          style="transform-origin: var(--popper-transform-origin); opacity: 0; visibility: hidden; transform: scale(0.8) translateZ(0);"
+          tabindex="-1"
+        >
+          <button
+            class="chakra-menu__menuitem css-1vs7hf8"
+            data-index="0"
+            id="menu-list-:r1:-menuitem-:r2:"
+            role="menuitem"
+            tabindex="-1"
+            type="button"
+          >
+            <svg
+              height="13"
+              viewBox="0 0 17 13"
+              width="17"
+            >
+              <path
+                d="M5.313 5.208c0-.292.239-.53.53-.53h4.782V1.558c0-.235.286-.355.452-.189l4.701 4.751c.21.21.21.545 0 .754l-4.701 4.752a.265.265 0 0 1-.452-.19V8.32H5.844a.533.533 0 0 1-.532-.532v-2.58Zm-1.063 0v2.58c0 .88.714 1.594 1.594 1.594h3.718v2.055c0 1.179 1.428 1.777 2.265.94l4.705-4.748a1.595 1.595 0 0 0 0-2.258L11.827.62c-.833-.834-2.264-.243-2.264.94v2.055h-3.72c-.88 0-1.593.717-1.593 1.593ZM0 1.718v9.563c0 .88.714 1.594 1.594 1.594h4.383a.4.4 0 0 0 .398-.398v-.266a.4.4 0 0 0-.398-.399H1.594a.533.533 0 0 1-.532-.53V1.718c0-.292.24-.532.532-.532h4.383A.4.4 0 0 0 6.375.79V.523a.4.4 0 0 0-.398-.398H1.594C.714.125 0 .839 0 1.719Z"
+                fill="#000000"
+              />
+            </svg>
+            <p
+              class="chakra-text css-0"
+            >
+              Logout
+            </p>
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <button
+      aria-controls="menu-list-:r1:"
+      aria-expanded="false"
+      aria-haspopup="menu"
+      aria-label="chevron-down-icon"
+      class="chakra-button chakra-menu__menu-button css-p7mkev"
+      id="menu-button-:r1:"
+      type="button"
+    >
+      <svg
+        aria-hidden="true"
+        fill="none"
+        focusable="false"
+        height="22"
+        width="22"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M10.247 17.938a.915.915 0 0 0 1.507 0l8.25-11.916a.915.915 0 0 0-.754-1.439H2.75a.919.919 0 0 0-.753 1.439l8.25 11.916Z"
+          fill="#000"
+        />
+      </svg>
+    </button>
+    <div
+      class="css-0"
+      style="visibility: hidden; position: absolute; min-width: max-content; inset: 0 auto auto 0;"
+    >
+      <div
+        aria-orientation="vertical"
+        class="chakra-menu__menu-list css-sjt5nk"
+        id="menu-list-:r1:"
+        role="menu"
+        style="transform-origin: var(--popper-transform-origin); opacity: 0; visibility: hidden; transform: scale(0.8) translateZ(0);"
+        tabindex="-1"
+      >
+        <button
+          class="chakra-menu__menuitem css-1vs7hf8"
+          data-index="0"
+          id="menu-list-:r1:-menuitem-:r2:"
+          role="menuitem"
+          tabindex="-1"
+          type="button"
+        >
+          <svg
+            height="13"
+            viewBox="0 0 17 13"
+            width="17"
+          >
+            <path
+              d="M5.313 5.208c0-.292.239-.53.53-.53h4.782V1.558c0-.235.286-.355.452-.189l4.701 4.751c.21.21.21.545 0 .754l-4.701 4.752a.265.265 0 0 1-.452-.19V8.32H5.844a.533.533 0 0 1-.532-.532v-2.58Zm-1.063 0v2.58c0 .88.714 1.594 1.594 1.594h3.718v2.055c0 1.179 1.428 1.777 2.265.94l4.705-4.748a1.595 1.595 0 0 0 0-2.258L11.827.62c-.833-.834-2.264-.243-2.264.94v2.055h-3.72c-.88 0-1.593.717-1.593 1.593ZM0 1.718v9.563c0 .88.714 1.594 1.594 1.594h4.383a.4.4 0 0 0 .398-.398v-.266a.4.4 0 0 0-.398-.399H1.594a.533.533 0 0 1-.532-.53V1.718c0-.292.24-.532.532-.532h4.383A.4.4 0 0 0 6.375.79V.523a.4.4 0 0 0-.398-.398H1.594C.714.125 0 .839 0 1.719Z"
+              fill="#000000"
+            />
+          </svg>
+          <p
+            class="chakra-text css-0"
+          >
+            Logout
+          </p>
+        </button>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
