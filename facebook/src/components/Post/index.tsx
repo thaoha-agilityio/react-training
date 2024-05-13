@@ -33,16 +33,19 @@ const Post = memo(({ post, isModal = false, userName }: PostProps) => {
         <UserProfile userName={userName} />
       </Box>
       <Text pl='15px'>{content}</Text>
-      <Box w='full' h='533px'>
-        <Image
-          src={image}
-          alt='post-img'
-          width='100%'
-          height='100%'
-          objectFit='cover'
-          fallbackSrc={PLACEHOLDER_IMAGE}
-        />
-      </Box>
+
+      {image && (
+        <Box w='full' h='533px'>
+          <Image
+            src={image}
+            alt='post-img'
+            width='100%'
+            height='100%'
+            objectFit='cover'
+            fallbackSrc={PLACEHOLDER_IMAGE}
+          />
+        </Box>
+      )}
 
       <Flex justifyContent='space-between' px='10px'>
         <Button variant='unstyled' leftIcon={<LikeIcon />} alignItems='center' w='150px'>

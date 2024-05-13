@@ -1,4 +1,4 @@
-export const API_BASE_URL = import.meta.env.VITE_API_ENDPOINT;
+export const API_BASE_URL = process.env.VITE_API_ENDPOINT;
 
 export const ROUTES = {
   HOME: '/',
