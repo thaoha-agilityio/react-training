@@ -1,8 +1,8 @@
-import { memo } from 'react';
-import { Box, Text, Image, Stack, Flex, Button, Divider } from '@chakra-ui/react';
+import { Suspense, lazy, memo } from 'react';
+import { Box, Text, Image, Stack, Flex, Button, Divider, useDisclosure } from '@chakra-ui/react';
 
 // Components
-import { UserProfile } from '@/components';
+import { LoadingIndicator, UserProfile } from '@/components';
 import { CommentIcon, LikeIcon, ShareIcon } from '@/components/Icons';
 
 // Constants
@@ -10,6 +10,8 @@ import { PLACEHOLDER_IMAGE } from '@/constants';
 
 // Types
 import { IPost } from '@/types';
+
+const PostModal = lazy(() => import('@/components/Modal/PostModal'));
 
 interface PostProps {
   isModal?: boolean;
@@ -19,6 +21,7 @@ interface PostProps {
 
 const Post = memo(({ post, isModal = false, userName }: PostProps) => {
   const { content, image } = post || {};
+  const { isOpen, onClose, onOpen } = useDisclosure();
 
   return (
     <Stack
@@ -51,7 +54,13 @@ const Post = memo(({ post, isModal = false, userName }: PostProps) => {
         <Button variant='unstyled' leftIcon={<LikeIcon />} alignItems='center' w='150px'>
           Like
         </Button>
-        <Button variant='unstyled' leftIcon={<CommentIcon />} alignItems='center' w='150px'>
+        <Button
+          variant='unstyled'
+          leftIcon={<CommentIcon />}
+          alignItems='center'
+          w='150px'
+          onClick={onOpen}
+        >
           Comment
         </Button>
         <Button variant='unstyled' leftIcon={<ShareIcon />} alignItems='center' w='150px'>
@@ -59,6 +68,18 @@ const Post = memo(({ post, isModal = false, userName }: PostProps) => {
         </Button>
       </Flex>
       <Divider />
+
+      {isOpen && (
+        <Suspense fallback={<LoadingIndicator />}>
+          <PostModal
+            isOpen={isOpen}
+            post={post}
+            comments={[]}
+            onClose={onClose}
+            userName={userName}
+          />
+        </Suspense>
+      )}
     </Stack>
   );
 });
