@@ -1,4 +1,4 @@
-import { Suspense } from 'react';
+import { Suspense, lazy } from 'react';
 import { Flex, Avatar, Input, Divider, Button, Box, useDisclosure } from '@chakra-ui/react';
 
 // Icon components
@@ -8,10 +8,12 @@ import { LiveIcon, PhotoIcon, SmileIcon } from '@/components/Icons';
 import { DEFAULT_IMAGE, INPUT_PLACEHOLDER } from '@/constants';
 
 // Components
-import { CreatePostModal, LoadingIndicator } from '@/components';
+import { LoadingIndicator } from '@/components';
 
 // Stores
 import { useAuthStore } from '@/stores';
+
+const CreatePostModal = lazy(() => import('@/components/Modal/CreatePostModal'));
 
 const CreatePost = () => {
   const { onClose, onOpen, isOpen } = useDisclosure();
