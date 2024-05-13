@@ -18,15 +18,8 @@ import { encryptAccessToken } from '@/utils';
 
 //  Custom hook signup
 export const useAuthSignUp = () => {
-  const setAccessToken = useAuthStore((state) => state.setAccessToken);
-
   return useMutation<SignUpResponse, string, SignUpPayload>({
     mutationFn: async (payload: SignUpPayload) => await api.postData(ROUTES.SIGN_UP, payload),
-    onSuccess: (res: LoginResponse) => {
-      const { accessToken } = res || {};
-
-      setAccessToken(encryptAccessToken(accessToken));
-    },
   });
 };
 

@@ -13,7 +13,6 @@ const MainLayout = () => {
     <>
       <Header />
       <Flex bg='secondary'>
-        {/* TODO: will handle get userName later*/}
         <Sidebar userName={`${firstName} ${surname}`} />
         <Outlet />
       </Flex>
