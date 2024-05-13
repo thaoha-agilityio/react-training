@@ -3,7 +3,7 @@ import { Box, Text, Image, Stack, Flex, Button, Divider } from '@chakra-ui/react
 
 // Components
 import { UserProfile } from '@/components';
-import { CommentIcon, LikeIcon, ShareIcon } from '../Icons';
+import { CommentIcon, LikeIcon, ShareIcon } from '@/components/Icons';
 
 // Constants
 import { PLACEHOLDER_IMAGE } from '@/constants';
@@ -11,14 +11,14 @@ import { PLACEHOLDER_IMAGE } from '@/constants';
 // Types
 import { IPost } from '@/types';
 
-// TODO: update props later
 interface PostProps {
-  post: IPost;
   isModal?: boolean;
+  userName: string;
+  post: IPost;
 }
 
-const Post = memo(({ post, isModal = false }: PostProps) => {
-  const { author, content, image } = post || {};
+const Post = memo(({ post, isModal = false, userName }: PostProps) => {
+  const { content, image } = post || {};
 
   return (
     <Stack
@@ -26,11 +26,11 @@ const Post = memo(({ post, isModal = false }: PostProps) => {
       py='10px'
       borderRadius='md'
       width='full'
+      bg='white'
       boxShadow={isModal ? 'none' : '0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1)'}
     >
       <Box pl='15px'>
-        {/* TODO: will handle get userName by author */}
-        <UserProfile userName={author} />
+        <UserProfile userName={userName} />
       </Box>
       <Text pl='15px'>{content}</Text>
       <Box w='full' h='533px'>

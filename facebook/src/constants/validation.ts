@@ -7,4 +7,5 @@ export const ERROR_MESSAGES = {
   EMAIL_IS_INVALID: 'Invalid email or password.',
   DEFAULT_API_ERROR:
     'Something went wrong. Please try again later or contact our team for further support.',
+  IMAGE_INVALID: 'Incorrect image file format',
 };

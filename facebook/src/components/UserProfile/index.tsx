@@ -1,13 +1,15 @@
-import { Avatar, Flex, Text } from '@chakra-ui/react';
 import { memo } from 'react';
+import { Avatar, Flex, Text } from '@chakra-ui/react';
 
+// Constants
+import { DEFAULT_IMAGE } from '@/constants';
 interface UserProfileProps {
   userName: string;
 }
 
 const UserProfile = memo(({ userName }: UserProfileProps) => (
   <Flex gap='10px' alignItems='center'>
-    <Avatar />
+    <Avatar src={DEFAULT_IMAGE} />
     <Text>{userName}</Text>
   </Flex>
 ));

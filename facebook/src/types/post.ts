@@ -1,8 +1,10 @@
 export interface IPost {
-  id: string;
+  id: number;
   content: string;
-  author: string;
-  image: string;
-  likes: string[];
-  comments: string[];
+  author: number;
+  image?: string;
+  likes: string[] | [];
+  comments: string[] | [];
 }
+
+export type PostPayload = Pick<IPost, 'content' | 'image'>;

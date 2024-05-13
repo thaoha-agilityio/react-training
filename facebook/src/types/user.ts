@@ -1,16 +1,17 @@
 import { GENDER } from '@/constants';
 
 export interface User {
-  id: string;
+  id: number;
   email: string;
   password: string;
   firstName: string;
   surname: string;
   dateOfBirth: string;
   gender: GENDER;
+  following: number[];
 }
 
-export type SignUpPayload = Omit<User, 'id'>;
+export type SignUpPayload = Omit<User, 'id' | 'following'>;
 
 export type SignUpResponse = {
   accessToken: string;

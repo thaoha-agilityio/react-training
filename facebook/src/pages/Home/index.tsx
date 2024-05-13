@@ -1,3 +1,16 @@
-const Home = () => <h2>Home page</h2>;
+import { Container } from '@chakra-ui/react';
+
+// Components
+import Posts from './Posts';
+import CreatePost from './CreatePost';
+
+const Home = () => {
+  return (
+    <Container>
+      <CreatePost />
+      <Posts />
+    </Container>
+  );
+};
 
 export default Home;

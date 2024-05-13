@@ -3,4 +3,5 @@ export const REGEX = {
   CHECK_SYMBOL: /.*[!@#$%^&+=*].*/,
   NOT_NUMBER: /[^\d]/g,
   CHECK_NUMBER: /.*[0-9].*/,
+  CHECK_URL: /\.(jpg|jpeg|png)$/,
 };

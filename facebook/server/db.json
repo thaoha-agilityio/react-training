@@ -8,8 +8,8 @@
     {
       "email": "olivier1@mail.com",
       "password": "$2a$10$DvQLv39N6MtTNvtkBYMtCOSqOVrsqNq.qgwU4hbT1hb3aLSd2o94.",
-      "firstname": "Olivier",
-      "lastname": "Monge",
+      "firstName": "Olivier",
+      "surname": "Monge",
       "age": 32,
       "id": 2
     },
@@ -25,7 +25,9 @@
     {
       "email": "test12@mail.com",
       "password": "$2a$10$Pt.NKS7lG4Gw53XMV0z81.WWXI1P6YIUAmcF6PUAAIvKXmtfQ5kWO",
-      "id": 4
+      "id": 4,
+      "firstName": "Olivier",
+      "surname": "Monge"
     },
     {
       "firstName": "tester",
@@ -163,12 +165,111 @@
       "dateOfBirth": "2000-01-01",
       "gender": "female",
       "id": 21
+    },
+    {
+      "email": "portalstester+3@asnet.com.vn",
+      "password": "$2a$10$V.GTZ4Gh/H7E4PeePDTxeuViwXsqPC4U77pHiohBNQYhHC4074CWa",
+      "firstName": "Ngoc Ngo",
+      "surname": "123",
+      "dateOfBirth": "2000-01-01",
+      "gender": "male",
+      "id": 22
+    },
+    {
+      "email": "portalstester+12@asnet.com.vn",
+      "password": "$2a$10$IH.IKmKmbpAO0lCCWOSfU.7myCUPtSQy57gk3ghep374d7BrDBAjO",
+      "firstName": "Ngoc Ngo",
+      "surname": "123",
+      "dateOfBirth": "2000-01-01",
+      "gender": "female",
+      "id": 23
+    },
+    {
+      "email": "portalstester+14@asnet.com.vn",
+      "password": "$2a$10$1J9A0TzBTRewx3GPz.0ilu8vkNi2NGuocOuRASyCZv/q7RO8SXcsi",
+      "firstName": "Thao",
+      "surname": "Ha",
+      "dateOfBirth": "2000-09-01",
+      "gender": "female",
+      "id": 24,
+      "followers": [3],
+      "following": [2, 3, 4]
     }
   ],
   "posts": [
     {
       "id": 1,
       "content": "test"
+    },
+    {
+      "id": 2,
+      "title": "Hello World",
+      "content": "This is my first post-author2",
+      "author": 2,
+      "likes": [1, 2, 3],
+      "comments": [1, 2, 3]
+    },
+    {
+      "id": 3,
+      "title": "Hello World",
+      "content": "This is my first post-author24",
+      "author": 24,
+      "likes": [1, 2, 3],
+      "comments": [1, 2, 3]
+    },
+    {
+      "id": 4,
+      "title": "Hello World",
+      "content": "This is my first post-author3",
+      "author": 3,
+      "likes": [1, 2, 3],
+      "comments": [1, 2, 3]
+    },
+    {
+      "id": 5,
+      "title": "Hello World",
+      "content": "This is my first post-author4",
+      "author": 4,
+      "likes": [1, 2, 3],
+      "comments": [1, 2, 3]
+    },
+    {
+      "id": 6,
+      "title": "Hello World",
+      "content": "This is my first post-author5",
+      "author": 5,
+      "likes": [1, 2, 3],
+      "comments": [1, 2, 3]
     }
-  ]
+  ],
+  "comments": {
+    "byId": {
+      "comment1": {
+        "id": "comment1",
+        "author": "user2",
+        "comment": "....."
+      },
+      "comment2": {
+        "id": "comment2",
+        "author": "user3",
+        "comment": "....."
+      },
+      "comment3": {
+        "id": "comment3",
+        "author": "user3",
+        "comment": "....."
+      },
+      "comment4": {
+        "id": "comment4",
+        "author": "user1",
+        "comment": "....."
+      },
+      "comment5": {
+        "id": "comment5",
+        "author": "user3",
+        "comment": "....."
+      }
+    },
+    "allIds": ["comment1", "comment2", "comment3", "comment4", "comment5"]
+  }
 }
