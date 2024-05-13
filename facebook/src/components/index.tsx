@@ -2,6 +2,7 @@ export { default as Comment } from './Comment';
 export { default as Footer } from './Footer';
 export { default as Header } from './Header';
 export { default as Input } from './Input';
+export { default as LoadingIndicator } from './LoadingIndicator';
 export { default as Logout } from './Logout';
 export { default as SignInForm } from './SignInForm';
 export { default as Post } from './Post';
