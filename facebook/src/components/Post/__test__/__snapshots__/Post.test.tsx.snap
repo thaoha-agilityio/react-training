@@ -6,7 +6,7 @@ exports[`Post Component Should render Post Component correctly 1`] = `
   "baseElement": <body>
     <div>
       <div
-        class="chakra-stack css-1rhel7"
+        class="chakra-stack css-8137lp"
       >
         <div
           class="css-clmjzp"
@@ -138,7 +138,7 @@ exports[`Post Component Should render Post Component correctly 1`] = `
   </body>,
   "container": <div>
     <div
-      class="chakra-stack css-1rhel7"
+      class="chakra-stack css-8137lp"
     >
       <div
         class="css-clmjzp"

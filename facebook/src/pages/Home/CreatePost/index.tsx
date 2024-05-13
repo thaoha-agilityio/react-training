@@ -17,6 +17,7 @@ const CreatePost = () => {
   const { onClose, onOpen, isOpen } = useDisclosure();
 
   const user = useAuthStore((state) => state.user);
+  const { firstName, surname } = user || {};
 
   return (
     <Box
@@ -47,11 +48,7 @@ const CreatePost = () => {
 
       {isOpen && (
         <Suspense fallback={<LoadingIndicator />}>
-          <CreatePostModal
-            isOpen={isOpen}
-            userName={`${user.firstName} ${user.surname}`}
-            onClose={onClose}
-          />
+          <CreatePostModal isOpen={isOpen} userName={`${firstName} ${surname}`} onClose={onClose} />
         </Suspense>
       )}
     </Box>

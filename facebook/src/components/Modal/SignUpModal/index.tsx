@@ -20,6 +20,7 @@ import {
   INPUT_PLACEHOLDER,
   REGEX,
   STATUS,
+  SUCCESS_MESSAGES,
 } from '@/constants';
 
 // Components
@@ -95,8 +96,11 @@ const SignUpFormModal = memo(({ isOpen, onClose }: SignUpFormProps) => {
     },
   };
 
-  // TODO: handle navigate to Home page later
-  const handleSignUpSuccess = () => {};
+  // Handle show toast success message
+  const handleSignUpSuccess = () => {
+    showToast(STATUS.SUCCESS, SUCCESS_MESSAGES.SIGN_UP);
+    onClose();
+  };
 
   // Handle show toast error message
   const handleSignUpError = (error: string) => showToast(STATUS.ERROR, getAPIErrorMessage(error));
