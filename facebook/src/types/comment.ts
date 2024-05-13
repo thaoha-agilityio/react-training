@@ -1,7 +1,9 @@
 export interface IComment {
-  id: string;
-  author: string;
-  postId: string;
+  id: number;
+  author: number;
+  postId: number;
   content: string;
-  likes: string[];
+  likes: number[] | [];
 }
+
+export type CommentPayload = Omit<IComment, 'id' | 'likes'>;
