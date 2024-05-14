@@ -1,8 +1,8 @@
-import { Suspense, lazy, memo } from 'react';
-import { Box, Text, Image, Stack, Flex, Button, Divider, useDisclosure } from '@chakra-ui/react';
+import { memo } from 'react';
+import { Box, Text, Image, Stack, Flex, Button, Divider } from '@chakra-ui/react';
 
 // Components
-import { LoadingIndicator, UserProfile } from '@/components';
+import { UserProfile } from '@/components';
 import { CommentIcon, LikeIcon, ShareIcon } from '@/components/Icons';
 
 // Constants
@@ -11,22 +11,19 @@ import { PLACEHOLDER_IMAGE } from '@/constants';
 // Types
 import { IPost } from '@/types';
 
-// Hooks
-import { useGetCommentByPostId } from '@/hooks';
-
-const PostModal = lazy(() => import('@/components/Modal/PostModal'));
-
 interface PostProps {
   isModal?: boolean;
   userName: string;
   post: IPost;
+  onShowComment?: (post: IPost) => void;
 }
 
-const Post = memo(({ post, isModal = false, userName }: PostProps) => {
-  const { content, image, id } = post || {};
-  const { isOpen, onClose, onOpen } = useDisclosure();
+const Post = memo(({ post, isModal = false, userName, onShowComment }: PostProps) => {
+  const { content, image } = post || {};
 
-  const { data: comments } = useGetCommentByPostId(id);
+  const handleShowComment = () => {
+    onShowComment?.(post);
+  };
 
   return (
     <Stack
@@ -64,7 +61,7 @@ const Post = memo(({ post, isModal = false, userName }: PostProps) => {
           leftIcon={<CommentIcon />}
           alignItems='center'
           w='150px'
-          onClick={onOpen}
+          onClick={handleShowComment}
         >
           Comment
         </Button>
@@ -73,18 +70,6 @@ const Post = memo(({ post, isModal = false, userName }: PostProps) => {
         </Button>
       </Flex>
       <Divider />
-
-      {isOpen && (
-        <Suspense fallback={<LoadingIndicator />}>
-          <PostModal
-            isOpen={isOpen}
-            post={post}
-            comments={comments}
-            onClose={onClose}
-            userName={userName}
-          />
-        </Suspense>
-      )}
     </Stack>
   );
 });

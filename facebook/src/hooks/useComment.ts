@@ -23,7 +23,7 @@ export const useCreateComment = () => {
 
 export const useGetCommentByPostId = (postId: number) => {
   const { data, ...rest } = useQuery<IComment[], AxiosError>({
-    queryKey: QUERY_KEYS.COMMENTS,
+    queryKey: QUERY_KEYS.COMMENTS_BY_POST_ID(postId),
     queryFn: async () => await api.getData(`${ROUTES.COMMENTS}?${SEARCH_PARAMS.POST_ID}=${postId}`),
   });
 
