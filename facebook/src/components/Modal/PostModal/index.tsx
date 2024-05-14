@@ -1,3 +1,4 @@
+import { AxiosError } from 'axios';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import {
   Avatar,
@@ -15,10 +16,19 @@ import { Comment, CustomModal, Post } from '@/components';
 import { SendIcon } from '@/components/Icons';
 
 // Constants
-import { DEFAULT_IMAGE, INPUT_PLACEHOLDER } from '@/constants';
+import { DEFAULT_IMAGE, INPUT_PLACEHOLDER, STATUS } from '@/constants';
 
 // Types
 import { IComment, IPost } from '@/types';
+
+// Hooks
+import { useCreateComment, useCustomToast } from '@/hooks';
+
+// Stores
+import { useAuthStore } from '@/stores';
+
+// Utils
+import { getAPIErrorMessage } from '@/utils';
 
 interface PostModalProps {
   isOpen: boolean;
@@ -36,6 +46,7 @@ const PostModal = ({ isOpen, onClose, comments, post, userName }: PostModalProps
   const {
     control,
     handleSubmit,
+    resetField,
     formState: { isDirty },
   } = useForm<CreateCommentFormData>({
     mode: 'onSubmit',
@@ -45,12 +56,32 @@ const PostModal = ({ isOpen, onClose, comments, post, userName }: PostModalProps
     },
   });
 
+  // Auth store
+  const user = useAuthStore((state) => state.user);
+  const { id: userId } = user || {};
+
+  // custom hooks
+  const { mutate: createComment, isLoading } = useCreateComment();
+  const { showToast } = useCustomToast();
+
+  //  Handle show toast success message
+  const handleCreateSuccess = () => resetField('content');
+
+  // Handle show toast error message
+  const handleCreateError = (error: AxiosError) =>
+    showToast(STATUS.ERROR, getAPIErrorMessage(error));
+
   // Handle add comment
   const onSubmit: SubmitHandler<CreateCommentFormData> = (data) => {
-    console.log(data);
+    const payload = { ...data, postId: post.id, author: userId };
+
+    createComment(payload, {
+      onSuccess: handleCreateSuccess,
+      onError: handleCreateError,
+    });
   };
 
-  const isDisableButton = !isDirty;
+  const isDisableButton = !isDirty || isLoading;
 
   return (
     <CustomModal isOpen={isOpen} onClose={onClose} title={userName} size='2xl'>
