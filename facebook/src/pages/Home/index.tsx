@@ -1,15 +1,19 @@
-import { Container } from '@chakra-ui/react';
+import { Container, Flex } from '@chakra-ui/react';
 
 // Components
 import Posts from './Posts';
 import CreatePost from './CreatePost';
+import Absence from '../Absence';
 
 const Home = () => {
   return (
-    <Container>
-      <CreatePost />
-      <Posts />
-    </Container>
+    <Flex w='full'>
+      <Container overflowY='auto'>
+        <CreatePost />
+        <Posts />
+      </Container>
+      <Absence />
+    </Flex>
   );
 };
 
