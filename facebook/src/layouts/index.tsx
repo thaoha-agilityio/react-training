@@ -12,7 +12,7 @@ const MainLayout = () => {
   return (
     <>
       <Header />
-      <Flex bg='secondary'>
+      <Flex bg='secondary' h='100vh'>
         <Sidebar userName={`${firstName} ${surname}`} />
         <Outlet />
       </Flex>
