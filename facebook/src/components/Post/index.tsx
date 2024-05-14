@@ -11,6 +11,9 @@ import { PLACEHOLDER_IMAGE } from '@/constants';
 // Types
 import { IPost } from '@/types';
 
+// Hooks
+import { useGetCommentByPostId } from '@/hooks';
+
 const PostModal = lazy(() => import('@/components/Modal/PostModal'));
 
 interface PostProps {
@@ -20,8 +23,10 @@ interface PostProps {
 }
 
 const Post = memo(({ post, isModal = false, userName }: PostProps) => {
-  const { content, image } = post || {};
+  const { content, image, id } = post || {};
   const { isOpen, onClose, onOpen } = useDisclosure();
+
+  const { data: comments } = useGetCommentByPostId(id);
 
   return (
     <Stack
@@ -74,7 +79,7 @@ const Post = memo(({ post, isModal = false, userName }: PostProps) => {
           <PostModal
             isOpen={isOpen}
             post={post}
-            comments={[]}
+            comments={comments}
             onClose={onClose}
             userName={userName}
           />

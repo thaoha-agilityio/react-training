@@ -1,3 +1,4 @@
+import { AxiosError } from 'axios';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import {
   Avatar,
@@ -15,10 +16,19 @@ import { Comment, CustomModal, Post } from '@/components';
 import { SendIcon } from '@/components/Icons';
 
 // Constants
-import { DEFAULT_IMAGE, INPUT_PLACEHOLDER } from '@/constants';
+import { DEFAULT_IMAGE, INPUT_PLACEHOLDER, STATUS } from '@/constants';
 
 // Types
 import { IComment, IPost } from '@/types';
+
+// Hooks
+import { useCreateComment, useCustomToast, useGetUsers } from '@/hooks';
+
+// Stores
+import { useAuthStore } from '@/stores';
+
+// Utils
+import { getAPIErrorMessage, getNameById } from '@/utils';
 
 interface PostModalProps {
   isOpen: boolean;
@@ -36,6 +46,7 @@ const PostModal = ({ isOpen, onClose, comments, post, userName }: PostModalProps
   const {
     control,
     handleSubmit,
+    resetField,
     formState: { isDirty },
   } = useForm<CreateCommentFormData>({
     mode: 'onSubmit',
@@ -45,12 +56,33 @@ const PostModal = ({ isOpen, onClose, comments, post, userName }: PostModalProps
     },
   });
 
+  // Auth store
+  const user = useAuthStore((state) => state.user);
+  const { id: userId } = user || {};
+
+  // custom hooks
+  const { mutate: createComment, isLoading } = useCreateComment();
+  const { showToast } = useCustomToast();
+  const { data: users } = useGetUsers();
+
+  //  Handle create success
+  const handleCreateSuccess = () => resetField('content');
+
+  // Handle show toast error message
+  const handleCreateError = (error: AxiosError) =>
+    showToast(STATUS.ERROR, getAPIErrorMessage(error));
+
   // Handle add comment
   const onSubmit: SubmitHandler<CreateCommentFormData> = (data) => {
-    console.log(data);
+    const payload = { ...data, postId: post.id, author: userId };
+
+    createComment(payload, {
+      onSuccess: handleCreateSuccess,
+      onError: handleCreateError,
+    });
   };
 
-  const isDisableButton = !isDirty;
+  const isDisableButton = !isDirty || isLoading;
 
   return (
     <CustomModal isOpen={isOpen} onClose={onClose} title={userName} size='2xl'>
@@ -58,9 +90,11 @@ const PostModal = ({ isOpen, onClose, comments, post, userName }: PostModalProps
 
       {/* List comment */}
       <Stack spacing='10px' pl='10px'>
-        {comments.map((comment: IComment) => (
-          <Comment comment={comment} key={comment.id} />
-        ))}
+        {comments.map((comment: IComment) => {
+          const { id, content, author } = comment || {};
+
+          return <Comment content={content} key={id} userName={getNameById(users, author)} />;
+        })}
       </Stack>
 
       {/* Write comment */}
@@ -90,6 +124,7 @@ const PostModal = ({ isOpen, onClose, comments, post, userName }: PostModalProps
             <IconButton
               type='submit'
               disabled={isDisableButton}
+              isLoading={isLoading}
               icon={<SendIcon />}
               aria-label='comment-icon'
               variant='action'
