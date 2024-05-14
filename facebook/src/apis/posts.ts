@@ -12,3 +12,6 @@ import { generateUrl } from '@/utils';
 
 export const getPostsByAuthor = async (author: number[]): Promise<IPost[]> =>
   await api.getData(`${ROUTES.POSTS}?${generateUrl(author, SEARCH_PARAMS.AUTHOR)}`);
+
+export const updatePost = async (postId: number, { totalComments }: { totalComments: number }) =>
+  await api.patchData(`${ROUTES.POSTS}/${postId}`, { totalComments });

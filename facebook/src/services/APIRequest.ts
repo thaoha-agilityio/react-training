@@ -14,6 +14,13 @@ const postData = async <T, R>(url: string, arg: T): Promise<R> => {
   return response.data;
 };
 
-const api = { getData, postData };
+// Sends a PUT request to URL with data provided as an argument.
+const patchData = async <T, R>(url: string, arg: T): Promise<R> => {
+  const response = await axios.patch<R>(url, arg);
+
+  return response.data;
+};
+
+const api = { getData, postData, patchData };
 
 export { api };

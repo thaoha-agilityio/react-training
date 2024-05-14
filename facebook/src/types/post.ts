@@ -3,8 +3,8 @@ export interface IPost {
   content: string;
   author: number;
   image?: string;
-  likes: string[] | [];
-  comments: string[] | [];
+  totalLikes: number;
+  totalComments: number;
 }
 
 export type PostPayload = Pick<IPost, 'content' | 'image'>;

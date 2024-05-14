@@ -8,15 +8,22 @@ import { QUERY_KEYS, ROUTES, SEARCH_PARAMS } from '@/constants';
 import { api } from '@/services';
 
 // Types
-import { CommentPayload, IComment } from '@/types';
+import { CommentPayload, IComment, IPost } from '@/types';
+import { updatePost } from '@/apis';
 
-export const useCreateComment = () => {
+export const useCreateComment = (post: IPost) => {
   const queryClient = useQueryClient();
 
   return useMutation<IComment, AxiosError, CommentPayload>({
     mutationFn: async (payload: CommentPayload) => await api.postData(ROUTES.COMMENTS, payload),
-    onSuccess: () => {
+    onSuccess: async () => {
+      const { totalComments, id } = post || {};
+
+      const totalComment = totalComments + 1;
+      await updatePost(id, { totalComments: totalComment });
+
       queryClient.invalidateQueries({ queryKey: QUERY_KEYS.COMMENTS });
+      queryClient.invalidateQueries({ queryKey: QUERY_KEYS.POSTS });
     },
   });
 };
