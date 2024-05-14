@@ -61,7 +61,7 @@ const PostModal = ({ isOpen, onClose, comments, post, userName }: PostModalProps
   const { id: userId } = user || {};
 
   // custom hooks
-  const { mutate: createComment, isLoading } = useCreateComment();
+  const { mutate: createComment, isLoading } = useCreateComment(post);
   const { showToast } = useCustomToast();
   const { data: users } = useGetUsers();
 
