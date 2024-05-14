@@ -22,13 +22,13 @@ import { DEFAULT_IMAGE, INPUT_PLACEHOLDER, STATUS } from '@/constants';
 import { IComment, IPost } from '@/types';
 
 // Hooks
-import { useCreateComment, useCustomToast } from '@/hooks';
+import { useCreateComment, useCustomToast, useGetUsers } from '@/hooks';
 
 // Stores
 import { useAuthStore } from '@/stores';
 
 // Utils
-import { getAPIErrorMessage } from '@/utils';
+import { getAPIErrorMessage, getNameById } from '@/utils';
 
 interface PostModalProps {
   isOpen: boolean;
@@ -63,8 +63,9 @@ const PostModal = ({ isOpen, onClose, comments, post, userName }: PostModalProps
   // custom hooks
   const { mutate: createComment, isLoading } = useCreateComment();
   const { showToast } = useCustomToast();
+  const { data: users } = useGetUsers();
 
-  //  Handle show toast success message
+  //  Handle create success
   const handleCreateSuccess = () => resetField('content');
 
   // Handle show toast error message
@@ -89,9 +90,11 @@ const PostModal = ({ isOpen, onClose, comments, post, userName }: PostModalProps
 
       {/* List comment */}
       <Stack spacing='10px' pl='10px'>
-        {comments.map((comment: IComment) => (
-          <Comment comment={comment} key={comment.id} />
-        ))}
+        {comments.map((comment: IComment) => {
+          const { id, content, author } = comment || {};
+
+          return <Comment content={content} key={id} userName={getNameById(users, author)} />;
+        })}
       </Stack>
 
       {/* Write comment */}
@@ -121,6 +124,7 @@ const PostModal = ({ isOpen, onClose, comments, post, userName }: PostModalProps
             <IconButton
               type='submit'
               disabled={isDisableButton}
+              isLoading={isLoading}
               icon={<SendIcon />}
               aria-label='comment-icon'
               variant='action'
