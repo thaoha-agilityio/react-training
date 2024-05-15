@@ -1,9 +1,13 @@
-import { memo, useEffect, useState } from 'react';
+import { memo, useState } from 'react';
 import { Avatar, Box, Button, Flex, Text } from '@chakra-ui/react';
 
 // Constants
 import { DEFAULT_IMAGE } from '@/constants';
+
+// Utils
 import { filterItem } from '@/utils';
+
+// Hooks
 import { useLikeComment } from '@/hooks';
 
 interface CommentProps {
@@ -15,29 +19,20 @@ interface CommentProps {
 }
 
 const Comment = memo(({ userName, content, userId, likes, commentId }: CommentProps) => {
-  const isCheck = likes.includes(userId);
-  console.log('first', isCheck);
-
-  // Check if the user has liked the post or not
-  const [isLike, setIsLike] = useState<boolean>(isCheck);
-  const [isAction, setIsAction] = useState(false);
-
-  const handleLikeComment = () => {
-    setIsLike((prev) => !prev);
-    setIsAction(true);
-  };
+  // Check if the user has liked the comment or not
+  const isUserLiked = likes.includes(userId);
+  const [isLike, setIsLike] = useState<boolean>(isUserLiked);
 
   const { mutate: updateComment } = useLikeComment(commentId);
 
-  useEffect(() => {
-    if (!isAction) return;
+  const handleLikeComment = () => {
+    const newIsLike = !isLike;
+    setIsLike(newIsLike);
 
     // If isLike is true then add userId into likes list else remove useId from likes list
-    const userIds = isLike ? [...likes, userId] : filterItem(likes, userId);
+    const userIds = newIsLike ? [...likes, userId] : filterItem(likes, userId);
     updateComment({ likes: userIds });
-
-    setIsAction(false);
-  }, [isAction, isLike, likes, updateComment, userId]);
+  };
 
   return (
     <Flex gap='10px'>
@@ -47,14 +42,17 @@ const Comment = memo(({ userName, content, userId, likes, commentId }: CommentPr
           <Text fontWeight='semibold'>{userName}</Text>
           <Text>{content}</Text>
         </Box>
-        {likes.length > 0 && <Text>{likes.length}</Text>}
-        <Button
-          variant='action'
-          color={isLike ? 'primary' : 'text.label'}
-          onClick={handleLikeComment}
-        >
-          like
-        </Button>
+        <Flex alignItems='baseline'>
+          {likes.length > 0 && <Text fontSize='tiny'>{likes.length}</Text>}
+          <Button
+            variant='action'
+            px='5px'
+            color={isLike ? 'primary' : 'text.label'}
+            onClick={handleLikeComment}
+          >
+            like
+          </Button>
+        </Flex>
       </Box>
     </Flex>
   );

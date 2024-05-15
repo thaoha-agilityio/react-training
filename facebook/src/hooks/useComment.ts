@@ -42,9 +42,7 @@ export const useLikeComment = (commentId: number) => {
   const queryClient = useQueryClient();
 
   return useMutation<IComment, AxiosError, LikeCommentPayload>({
-    mutationFn: async (payload) => {
-      return await api.patchData(`${ROUTES.COMMENTS}/${commentId}`, payload);
-    },
+    mutationFn: async (payload) => await api.patchData(`${ROUTES.COMMENTS}/${commentId}`, payload),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: QUERY_KEYS.COMMENTS });
     },
