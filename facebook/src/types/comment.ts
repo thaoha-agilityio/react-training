@@ -3,7 +3,9 @@ export interface IComment {
   author: number;
   postId: number;
   content: string;
-  likes: number[] | [];
+  likes: number[];
 }
 
-export type CommentPayload = Omit<IComment, 'id' | 'likes'>;
+export type CommentPayload = Omit<IComment, 'id'>;
+
+export type LikeCommentPayload = Pick<IComment, 'likes'>;

@@ -75,7 +75,7 @@ const PostModal = ({ isOpen, onClose, comments, post }: PostModalProps) => {
 
   // Handle add comment
   const onSubmit: SubmitHandler<CreateCommentFormData> = (data) => {
-    const payload = { ...data, postId: postId, author: userId };
+    const payload = { ...data, postId: postId, author: userId, likes: [] };
 
     createComment(payload, {
       onSuccess: handleCreateSuccess,
@@ -136,9 +136,18 @@ const PostModal = ({ isOpen, onClose, comments, post }: PostModalProps) => {
       {/* List comment */}
       <Stack spacing='10px' pl='10px'>
         {comments.map((comment: IComment) => {
-          const { id, content } = comment || {};
+          const { id, content, likes } = comment || {};
 
-          return <Comment content={content} key={id} userName={authorName} />;
+          return (
+            <Comment
+              content={content}
+              key={id}
+              userName={authorName}
+              userId={userId}
+              commentId={id}
+              likes={likes}
+            />
+          );
         })}
       </Stack>
     </CustomModal>
