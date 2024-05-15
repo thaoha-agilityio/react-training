@@ -10,9 +10,15 @@ import { PLACEHOLDER_IMAGE } from '@/constants';
 
 // Types
 import { IPost } from '@/types';
+
+// Stores
 import { useAuthStore } from '@/stores';
-import { likePost } from '@/apis';
-import { checkItemInArray } from '@/utils';
+
+// Utils
+import { filterItem } from '@/utils';
+
+// Hooks
+import { useLikePost } from '@/hooks';
 
 interface PostProps {
   isModal?: boolean;
@@ -23,23 +29,36 @@ interface PostProps {
 
 const Post = memo(({ post, isModal = false, userName, onShowComment }: PostProps) => {
   const { content, image, totalComments, likes, id: postId } = post || {};
+
+  // Auth store
   const user = useAuthStore((state) => state.user);
+  const { id: userId } = user;
 
-  const [isLike, setIsLike] = useState<boolean>(checkItemInArray(likes, user.id));
+  // Check if the user has liked the post or not
+  const [isLike, setIsLike] = useState<boolean>(likes.includes(userId));
+  const [isAction, setIsAction] = useState(false);
 
-  const handleLikePost = () => setIsLike((prev) => !prev);
+  // Update post data when user click like button
+  const { mutate: updatePost } = useLikePost(postId);
 
   const handleShowComment = () => {
     onShowComment?.(post);
   };
 
+  const handleLikePost = () => {
+    setIsLike((prev) => !prev);
+    setIsAction(true);
+  };
+
   useEffect(() => {
-    const userIds = isLike ? [...likes, user.id] : likes?.filter((item) => item !== user.id);
+    if (!isAction) return;
 
-    const handleLikePost = async () => await likePost(postId, { likes: userIds });
+    // If isLike is true then add userId into likes list else remove useId from likes list
+    const userIds = isLike ? [...likes, userId] : filterItem(likes, userId);
+    updatePost({ likes: userIds });
 
-    handleLikePost();
-  }, [isLike, likes, postId, user]);
+    setIsAction(false);
+  }, [isAction, isLike, likes, updatePost, userId]);
 
   return (
     <Stack

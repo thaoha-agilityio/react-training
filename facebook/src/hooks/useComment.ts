@@ -9,7 +9,6 @@ import { api } from '@/services';
 
 // Types
 import { CommentPayload, IComment, IPost } from '@/types';
-import { updatePost } from '@/apis';
 
 export const useCreateComment = (post: IPost) => {
   const queryClient = useQueryClient();
@@ -19,9 +18,7 @@ export const useCreateComment = (post: IPost) => {
     onSuccess: async () => {
       const { totalComments, id } = post || {};
 
-      // json-server not support
-      const totalComment = totalComments + 1;
-      await updatePost(id, { totalComments: totalComment });
+      await api.patchData(`${ROUTES.POSTS}/${id}`, { totalComments: totalComments + 1 });
 
       queryClient.invalidateQueries({ queryKey: QUERY_KEYS.COMMENTS });
       queryClient.invalidateQueries({ queryKey: QUERY_KEYS.POSTS });

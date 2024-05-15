@@ -8,3 +8,5 @@ export interface IPost {
 }
 
 export type PostPayload = Pick<IPost, 'content' | 'image'>;
+
+export type LikePostPayload = Pick<IPost, 'likes'>;

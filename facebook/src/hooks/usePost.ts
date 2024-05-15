@@ -8,7 +8,7 @@ import { getPostsByAuthor } from '@/apis';
 import { QUERY_KEYS, ROUTES } from '@/constants';
 
 // Types
-import { IPost, PostPayload } from '@/types';
+import { IPost, LikePostPayload, PostPayload } from '@/types';
 
 // Stores
 import { useAuthStore } from '@/stores';
@@ -46,6 +46,19 @@ export const useCreatePost = () => {
       const data = { ...payload, author: id };
 
       return await api.postData(ROUTES.POSTS, data);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: QUERY_KEYS.POSTS });
+    },
+  });
+};
+
+export const useLikePost = (postId: number) => {
+  const queryClient = useQueryClient();
+
+  return useMutation<IPost, AxiosError, LikePostPayload>({
+    mutationFn: async (payload) => {
+      return await api.patchData(`${ROUTES.POSTS}/${postId}`, payload);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: QUERY_KEYS.POSTS });
