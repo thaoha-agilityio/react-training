@@ -8,7 +8,8 @@ export const POSTS: IPost[] = [
   {
     id: 1,
     content: 'Content marketing definition',
-    author: 2,
+    authorId: 2,
+    authorName: 'Pam',
     image: DEFAULT_IMAGE,
     likes: [],
     totalComments: 0,
