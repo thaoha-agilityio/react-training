@@ -50,7 +50,7 @@ describe('SignUpFormModal Component', () => {
     expect(component).toMatchSnapshot();
   });
 
-  it('should create the Employee with valid data', () => {
+  it('should create the user with valid data', () => {
     jest.spyOn(api, 'postData').mockResolvedValue(USERS[0]);
 
     const { email, password, submitBtn, firstName, surname, dateOfBirth, gender } = setup();
@@ -66,7 +66,7 @@ describe('SignUpFormModal Component', () => {
     });
   });
 
-  it('should create the Employee with invalid data', () => {
+  it('should create the user with invalid data', () => {
     const errorMessage = 'Failed to create user';
 
     jest.spyOn(api, 'postData').mockRejectedValue(new Error(errorMessage));

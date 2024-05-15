@@ -2,7 +2,7 @@
 import { DEFAULT_IMAGE } from '@/constants';
 
 // Type
-import { IPost } from '@/types';
+import { IPost, PostPayload } from '@/types';
 
 export const POSTS: IPost[] = [
   {
@@ -15,3 +15,11 @@ export const POSTS: IPost[] = [
     totalComments: 0,
   },
 ];
+
+export const POST_PAYLOAD: PostPayload = {
+  content: 'Content marketing definition',
+  authorName: 'Pam',
+  image: DEFAULT_IMAGE,
+  likes: [],
+  totalComments: 0,
+};

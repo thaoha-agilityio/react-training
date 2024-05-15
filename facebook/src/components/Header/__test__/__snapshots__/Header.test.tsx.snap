@@ -150,7 +150,7 @@ exports[`Header Component Should render Header Component correctly 1`] = `
           </div>
         </div>
         <div
-          class="css-17mf67i"
+          class="css-1rpvr3t"
         >
           <button
             aria-label="menu-btn"
@@ -434,7 +434,7 @@ exports[`Header Component Should render Header Component correctly 1`] = `
         </div>
       </div>
       <div
-        class="css-17mf67i"
+        class="css-1rpvr3t"
       >
         <button
           aria-label="menu-btn"

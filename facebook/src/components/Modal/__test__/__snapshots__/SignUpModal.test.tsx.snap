@@ -37,7 +37,7 @@ exports[`SignUpFormModal Component Should render SignUpFormModal Component corre
             aria-describedby="chakra-modal--body-:r0:"
             aria-labelledby="chakra-modal--header-:r0:"
             aria-modal="true"
-            class="chakra-modal__content css-6yiygt"
+            class="chakra-modal__content css-1fc6ndu"
             id="chakra-modal-:r0:"
             role="dialog"
             style="opacity: 0; transform: scale(0.95) translateZ(0);"
@@ -71,7 +71,7 @@ exports[`SignUpFormModal Component Should render SignUpFormModal Component corre
               class="chakra-divider css-drdvxx"
             />
             <div
-              class="chakra-modal__body css-old1by"
+              class="chakra-modal__body css-1yxaeig"
               id="chakra-modal--body-:r0:"
             >
               <div

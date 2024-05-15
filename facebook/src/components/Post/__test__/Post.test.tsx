@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { renderWithRouterAndQuery } from '@/utils';
 
 // Constants
 import { POSTS } from '@/mocks';
@@ -6,9 +6,15 @@ import { POSTS } from '@/mocks';
 // Components
 import Post from '..';
 
+const mockProps = {
+  isModal: false,
+  post: POSTS[0],
+  onShowComment: jest.fn(),
+};
+
 describe('Post Component', () => {
   it('Should render Post Component correctly', () => {
-    const component = render(<Post post={POSTS[0]} />);
+    const component = renderWithRouterAndQuery(<Post {...mockProps} />);
 
     expect(component).toMatchSnapshot();
   });
