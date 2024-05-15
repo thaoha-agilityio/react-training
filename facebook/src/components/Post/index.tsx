@@ -28,7 +28,6 @@ interface PostProps {
 
 const Post = memo(({ post, isModal = false, onShowComment }: PostProps) => {
   const { content, image, totalComments, likes, id: postId, authorName } = post || {};
-  console.log('authorName', authorName);
 
   // Auth store
   const user = useAuthStore((state) => state.user);

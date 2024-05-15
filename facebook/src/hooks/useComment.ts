@@ -8,7 +8,7 @@ import { QUERY_KEYS, ROUTES, SEARCH_PARAMS } from '@/constants';
 import { api } from '@/services';
 
 // Types
-import { CommentPayload, IComment, IPost } from '@/types';
+import { CommentPayload, IComment, IPost, LikeCommentPayload } from '@/types';
 
 export const useCreateComment = (post: IPost) => {
   const queryClient = useQueryClient();
@@ -36,4 +36,17 @@ export const useGetCommentByPostId = (postId: number) => {
     data: data || [],
     ...rest,
   };
+};
+
+export const useLikeComment = (commentId: number) => {
+  const queryClient = useQueryClient();
+
+  return useMutation<IComment, AxiosError, LikeCommentPayload>({
+    mutationFn: async (payload) => {
+      return await api.patchData(`${ROUTES.COMMENTS}/${commentId}`, payload);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: QUERY_KEYS.COMMENTS });
+    },
+  });
 };
