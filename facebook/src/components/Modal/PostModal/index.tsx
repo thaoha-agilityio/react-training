@@ -22,19 +22,18 @@ import { DEFAULT_IMAGE, INPUT_PLACEHOLDER, STATUS } from '@/constants';
 import { IComment, IPost } from '@/types';
 
 // Hooks
-import { useCreateComment, useCustomToast, useGetUsers } from '@/hooks';
+import { useCreateComment, useCustomToast } from '@/hooks';
 
 // Stores
 import { useAuthStore } from '@/stores';
 
 // Utils
-import { getAPIErrorMessage, getNameById } from '@/utils';
+import { getAPIErrorMessage } from '@/utils';
 
 interface PostModalProps {
   isOpen: boolean;
   post: IPost;
   comments: IComment[];
-  userName: string;
   onClose: () => void;
 }
 
@@ -42,7 +41,7 @@ interface CreateCommentFormData {
   content: string;
 }
 
-const PostModal = ({ isOpen, onClose, comments, post, userName }: PostModalProps) => {
+const PostModal = ({ isOpen, onClose, comments, post }: PostModalProps) => {
   const {
     control,
     handleSubmit,
@@ -56,6 +55,9 @@ const PostModal = ({ isOpen, onClose, comments, post, userName }: PostModalProps
     },
   });
 
+  // Destructing object
+  const { authorName, id: postId } = post;
+
   // Auth store
   const user = useAuthStore((state) => state.user);
   const { id: userId } = user || {};
@@ -63,7 +65,6 @@ const PostModal = ({ isOpen, onClose, comments, post, userName }: PostModalProps
   // custom hooks
   const { mutate: createComment, isLoading } = useCreateComment(post);
   const { showToast } = useCustomToast();
-  const { data: users } = useGetUsers();
 
   //  Handle create success
   const handleCreateSuccess = () => resetField('content');
@@ -74,7 +75,7 @@ const PostModal = ({ isOpen, onClose, comments, post, userName }: PostModalProps
 
   // Handle add comment
   const onSubmit: SubmitHandler<CreateCommentFormData> = (data) => {
-    const payload = { ...data, postId: post.id, author: userId };
+    const payload = { ...data, postId: postId, author: userId };
 
     createComment(payload, {
       onSuccess: handleCreateSuccess,
@@ -126,18 +127,18 @@ const PostModal = ({ isOpen, onClose, comments, post, userName }: PostModalProps
     <CustomModal
       isOpen={isOpen}
       onClose={onClose}
-      title={userName}
+      title={authorName}
       size='2xl'
       childrenModalFooter={renderWriteComment()}
     >
-      <Post post={post} isModal userName={userName} />
+      <Post post={post} isModal />
 
       {/* List comment */}
       <Stack spacing='10px' pl='10px'>
         {comments.map((comment: IComment) => {
-          const { id, content, author } = comment || {};
+          const { id, content } = comment || {};
 
-          return <Comment content={content} key={id} userName={getNameById(users, author)} />;
+          return <Comment content={content} key={id} userName={authorName} />;
         })}
       </Stack>
     </CustomModal>

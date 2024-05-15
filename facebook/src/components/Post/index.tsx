@@ -22,13 +22,13 @@ import { useLikePost } from '@/hooks';
 
 interface PostProps {
   isModal?: boolean;
-  userName: string;
   post: IPost;
   onShowComment?: (post: IPost) => void;
 }
 
-const Post = memo(({ post, isModal = false, userName, onShowComment }: PostProps) => {
-  const { content, image, totalComments, likes, id: postId } = post || {};
+const Post = memo(({ post, isModal = false, onShowComment }: PostProps) => {
+  const { content, image, totalComments, likes, id: postId, authorName } = post || {};
+  console.log('authorName', authorName);
 
   // Auth store
   const user = useAuthStore((state) => state.user);
@@ -70,7 +70,7 @@ const Post = memo(({ post, isModal = false, userName, onShowComment }: PostProps
       boxShadow={isModal ? 'none' : '0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1)'}
     >
       <Box pl='15px'>
-        <UserProfile userName={userName} />
+        <UserProfile userName={authorName} />
       </Box>
       <Text pl='15px'>{content}</Text>
 
