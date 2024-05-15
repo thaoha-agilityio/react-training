@@ -1,4 +1,4 @@
-import { memo, useEffect, useState } from 'react';
+import { memo, useState } from 'react';
 import { Box, Text, Image, Stack, Flex, Button, Divider } from '@chakra-ui/react';
 
 // Components
@@ -34,8 +34,8 @@ const Post = memo(({ post, isModal = false, onShowComment }: PostProps) => {
   const { id: userId } = user;
 
   // Check if the user has liked the post or not
-  const [isLike, setIsLike] = useState<boolean>(likes.includes(userId));
-  const [isAction, setIsAction] = useState(false);
+  const isUserLiked = likes.includes(userId);
+  const [isLike, setIsLike] = useState<boolean>(isUserLiked);
 
   // Update post data when user click like button
   const { mutate: updatePost } = useLikePost(postId);
@@ -45,19 +45,13 @@ const Post = memo(({ post, isModal = false, onShowComment }: PostProps) => {
   };
 
   const handleLikePost = () => {
-    setIsLike((prev) => !prev);
-    setIsAction(true);
-  };
-
-  useEffect(() => {
-    if (!isAction) return;
+    const isNewLike = !isLike;
+    setIsLike(isNewLike);
 
     // If isLike is true then add userId into likes list else remove useId from likes list
-    const userIds = isLike ? [...likes, userId] : filterItem(likes, userId);
+    const userIds = isNewLike ? [...likes, userId] : filterItem(likes, userId);
     updatePost({ likes: userIds });
-
-    setIsAction(false);
-  }, [isAction, isLike, likes, updatePost, userId]);
+  };
 
   return (
     <Stack
