@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo, useEffect, useState } from 'react';
 import { Box, Text, Image, Stack, Flex, Button, Divider } from '@chakra-ui/react';
 
 // Components
@@ -11,6 +11,15 @@ import { PLACEHOLDER_IMAGE } from '@/constants';
 // Types
 import { IPost } from '@/types';
 
+// Stores
+import { useAuthStore } from '@/stores';
+
+// Utils
+import { filterItem } from '@/utils';
+
+// Hooks
+import { useLikePost } from '@/hooks';
+
 interface PostProps {
   isModal?: boolean;
   userName: string;
@@ -19,11 +28,37 @@ interface PostProps {
 }
 
 const Post = memo(({ post, isModal = false, userName, onShowComment }: PostProps) => {
-  const { content, image } = post || {};
+  const { content, image, totalComments, likes, id: postId } = post || {};
+
+  // Auth store
+  const user = useAuthStore((state) => state.user);
+  const { id: userId } = user;
+
+  // Check if the user has liked the post or not
+  const [isLike, setIsLike] = useState<boolean>(likes.includes(userId));
+  const [isAction, setIsAction] = useState(false);
+
+  // Update post data when user click like button
+  const { mutate: updatePost } = useLikePost(postId);
 
   const handleShowComment = () => {
     onShowComment?.(post);
   };
+
+  const handleLikePost = () => {
+    setIsLike((prev) => !prev);
+    setIsAction(true);
+  };
+
+  useEffect(() => {
+    if (!isAction) return;
+
+    // If isLike is true then add userId into likes list else remove useId from likes list
+    const userIds = isLike ? [...likes, userId] : filterItem(likes, userId);
+    updatePost({ likes: userIds });
+
+    setIsAction(false);
+  }, [isAction, isLike, likes, updatePost, userId]);
 
   return (
     <Stack
@@ -52,8 +87,26 @@ const Post = memo(({ post, isModal = false, userName, onShowComment }: PostProps
         </Box>
       )}
 
+      {/* Only Show total likes and total comments in Homepage */}
+      {!isModal && (
+        <>
+          <Flex px='45px' justifyContent='space-between'>
+            <Text variant='helper'>{likes?.length} Likes</Text>
+            <Text variant='helper'>{totalComments} Comments</Text>
+          </Flex>
+          <Divider />
+        </>
+      )}
+
       <Flex justifyContent='space-between' px='10px'>
-        <Button variant='unstyled' leftIcon={<LikeIcon />} alignItems='center' w='150px'>
+        <Button
+          variant='unstyled'
+          leftIcon={<LikeIcon color={isLike ? '#0866FF' : '#65676B'} />}
+          alignItems='center'
+          w='150px'
+          onClick={handleLikePost}
+          color={isLike ? 'primary' : 'text.label'}
+        >
           Like
         </Button>
         <Button

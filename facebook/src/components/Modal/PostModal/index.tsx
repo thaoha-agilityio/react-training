@@ -61,7 +61,7 @@ const PostModal = ({ isOpen, onClose, comments, post, userName }: PostModalProps
   const { id: userId } = user || {};
 
   // custom hooks
-  const { mutate: createComment, isLoading } = useCreateComment();
+  const { mutate: createComment, isLoading } = useCreateComment(post);
   const { showToast } = useCustomToast();
   const { data: users } = useGetUsers();
 
@@ -84,8 +84,52 @@ const PostModal = ({ isOpen, onClose, comments, post, userName }: PostModalProps
 
   const isDisableButton = !isDirty || isLoading;
 
+  // Render write comment
+  const renderWriteComment = () => (
+    <Flex as='form' gap='10px' onSubmit={handleSubmit(onSubmit)} w='full'>
+      <Avatar src={DEFAULT_IMAGE} />
+      <Box pos='relative' w='full'>
+        <Controller
+          name='content'
+          control={control}
+          rules={{ required: true }}
+          render={({ field: { onChange, ...rest }, fieldState: { error } }) => (
+            <FormControl isInvalid={!!error}>
+              <Textarea
+                variant='filled'
+                placeholder={INPUT_PLACEHOLDER.COMMENT}
+                onChange={(e) => {
+                  const value = e.target?.value;
+                  onChange(value);
+                }}
+                {...rest}
+              />
+              {error?.message && <FormErrorMessage>{error.message}</FormErrorMessage>}
+            </FormControl>
+          )}
+        />
+        <Box pos='absolute' right={0} top='35px'>
+          <IconButton
+            type='submit'
+            aria-label='comment-icon'
+            variant='action'
+            disabled={isDisableButton}
+            isLoading={isLoading}
+            icon={<SendIcon />}
+          />
+        </Box>
+      </Box>
+    </Flex>
+  );
+
   return (
-    <CustomModal isOpen={isOpen} onClose={onClose} title={userName} size='2xl'>
+    <CustomModal
+      isOpen={isOpen}
+      onClose={onClose}
+      title={userName}
+      size='2xl'
+      childrenModalFooter={renderWriteComment()}
+    >
       <Post post={post} isModal userName={userName} />
 
       {/* List comment */}
@@ -96,42 +140,6 @@ const PostModal = ({ isOpen, onClose, comments, post, userName }: PostModalProps
           return <Comment content={content} key={id} userName={getNameById(users, author)} />;
         })}
       </Stack>
-
-      {/* Write comment */}
-      <Flex as='form' p='10px' gap='10px' onSubmit={handleSubmit(onSubmit)}>
-        <Avatar src={DEFAULT_IMAGE} />
-        <Box pos='relative' w='full'>
-          <Controller
-            name='content'
-            control={control}
-            rules={{ required: true }}
-            render={({ field: { onChange, ...rest }, fieldState: { error } }) => (
-              <FormControl isInvalid={!!error}>
-                <Textarea
-                  variant='filled'
-                  placeholder={INPUT_PLACEHOLDER.COMMENT}
-                  onChange={(e) => {
-                    const value = e.target?.value;
-                    onChange(value);
-                  }}
-                  {...rest}
-                />
-                {error?.message && <FormErrorMessage>{error.message}</FormErrorMessage>}
-              </FormControl>
-            )}
-          />
-          <Box pos='absolute' right={0} top='35px'>
-            <IconButton
-              type='submit'
-              disabled={isDisableButton}
-              isLoading={isLoading}
-              icon={<SendIcon />}
-              aria-label='comment-icon'
-              variant='action'
-            />
-          </Box>
-        </Box>
-      </Flex>
     </CustomModal>
   );
 };
