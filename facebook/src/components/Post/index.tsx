@@ -87,6 +87,7 @@ const Post = memo(({ post, isModal = false, userName, onShowComment }: PostProps
         </Box>
       )}
 
+      {/* Only Show total likes and total comments in Homepage */}
       {!isModal && (
         <>
           <Flex px='45px' justifyContent='space-between'>
