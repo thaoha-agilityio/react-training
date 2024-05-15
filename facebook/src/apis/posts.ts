@@ -15,3 +15,6 @@ export const getPostsByAuthor = async (author: number[]): Promise<IPost[]> =>
 
 export const updatePost = async (postId: number, { totalComments }: { totalComments: number }) =>
   await api.patchData(`${ROUTES.POSTS}/${postId}`, { totalComments });
+
+export const likePost = async (postId: number, { likes }: { likes: number[] }) =>
+  await api.patchData(`${ROUTES.POSTS}/${postId}`, { likes });

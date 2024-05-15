@@ -3,7 +3,7 @@ export interface IPost {
   content: string;
   author: number;
   image?: string;
-  totalLikes: number;
+  likes: number[];
   totalComments: number;
 }
 

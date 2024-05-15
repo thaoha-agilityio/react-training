@@ -88,7 +88,7 @@ const CreatePostModal = memo(({ isOpen, onClose, userName }: CreatePostModalProp
       ...data,
       image: urlImage || '',
       totalComments: 0,
-      totalLikes: 0,
+      likes: [],
     };
 
     createPost(postData, {

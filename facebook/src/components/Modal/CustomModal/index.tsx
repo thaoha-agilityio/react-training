@@ -20,7 +20,7 @@ interface CustomModalProps {
 const CustomModal = memo(({ isOpen, children, title, onClose, size = 'md' }: CustomModalProps) => (
   <Modal isOpen={isOpen} onClose={onClose} size={size}>
     <ModalOverlay />
-    <ModalContent h='100vh'>
+    <ModalContent maxH='100vh'>
       <ModalHeader>{title}</ModalHeader>
       <ModalCloseButton />
       <Divider color='input.borderColor' w='100%' />

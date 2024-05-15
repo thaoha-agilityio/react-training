@@ -19,6 +19,7 @@ export const useCreateComment = (post: IPost) => {
     onSuccess: async () => {
       const { totalComments, id } = post || {};
 
+      // json-server not support
       const totalComment = totalComments + 1;
       await updatePost(id, { totalComments: totalComment });
 
