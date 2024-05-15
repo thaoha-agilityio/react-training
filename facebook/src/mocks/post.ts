@@ -1,13 +1,17 @@
+// Constants
 import { DEFAULT_IMAGE } from '@/constants';
 
-export const POSTS = [
+// Type
+import { IPost } from '@/types';
+
+export const POSTS: IPost[] = [
   {
     id: 1,
     content: 'Content marketing definition',
-    email: '',
-    author: 2,
+    authorId: 2,
+    authorName: 'Pam',
     image: DEFAULT_IMAGE,
     likes: [],
-    comments: [],
+    totalComments: 0,
   },
 ];

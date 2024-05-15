@@ -5,6 +5,7 @@ import {
   ModalBody,
   ModalCloseButton,
   ModalContent,
+  ModalFooter,
   ModalHeader,
   ModalOverlay,
 } from '@chakra-ui/react';
@@ -12,21 +13,27 @@ import {
 interface CustomModalProps {
   isOpen: boolean;
   title: string;
-  children: ReactNode;
   size?: string;
+  children: ReactNode;
+  childrenModalFooter?: ReactNode;
   onClose: () => void;
 }
 
-const CustomModal = memo(({ isOpen, children, title, onClose, size = 'md' }: CustomModalProps) => (
-  <Modal isOpen={isOpen} onClose={onClose} size={size}>
-    <ModalOverlay />
-    <ModalContent>
-      <ModalHeader>{title}</ModalHeader>
-      <ModalCloseButton />
-      <Divider color='input.borderColor' w='100%' />
-      <ModalBody p={0}>{children}</ModalBody>
-    </ModalContent>
-  </Modal>
-));
+const CustomModal = memo(
+  ({ isOpen, children, childrenModalFooter, title, onClose, size = 'md' }: CustomModalProps) => (
+    <Modal isOpen={isOpen} onClose={onClose} size={size}>
+      <ModalOverlay />
+      <ModalContent maxH='100vh'>
+        <ModalHeader>{title}</ModalHeader>
+        <ModalCloseButton />
+        <Divider color='input.borderColor' w='100%' />
+        <ModalBody overflowY='auto' p={0}>
+          {children}
+        </ModalBody>
+        {!!childrenModalFooter && <ModalFooter>{childrenModalFooter}</ModalFooter>}
+      </ModalContent>
+    </Modal>
+  ),
+);
 
 export default CustomModal;

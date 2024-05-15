@@ -65,7 +65,7 @@ const Header = () => {
         </Flex>
       </Container>
 
-      <Flex justifyContent='space-between' gap='10px'>
+      <Flex justifyContent='space-around' w='300px'>
         <IconButton aria-label='menu-btn' icon={<MenuIcon />} variant='icon' />
         <IconButton aria-label='message-btn' icon={<MessageIcon />} variant='icon' />
         <IconButton aria-label='notify-btn' icon={<NotificationIcon />} variant='icon' />

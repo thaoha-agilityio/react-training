@@ -15,6 +15,6 @@ export default defineConfig({
   },
 
   define: {
-    'process.env.SOME_KEY': JSON.stringify(envVariables.SOME_KEY),
+    'process.env.VITE_API_ENDPOINT': JSON.stringify(envVariables.VITE_API_ENDPOINT),
   },
 });
