@@ -32,8 +32,13 @@ const CreatePost = () => {
       my='15px'
     >
       <Flex gap='15px' pb='12px'>
-        <Avatar src={DEFAULT_IMAGE} />
-        <Input variant='filled' placeholder={INPUT_PLACEHOLDER.POST} onClick={onOpen} />
+        <Avatar src={DEFAULT_IMAGE} name='avatar' />
+        <Input
+          variant='filled'
+          name='status'
+          placeholder={INPUT_PLACEHOLDER.POST}
+          onClick={onOpen}
+        />
       </Flex>
       <Divider />
       <Flex justifyContent='space-around' pt='12px'>

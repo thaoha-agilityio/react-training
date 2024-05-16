@@ -33,7 +33,7 @@ const Comment = memo(
 
     return (
       <Flex gap='10px'>
-        <Avatar src={DEFAULT_IMAGE} />
+        <Avatar src={DEFAULT_IMAGE} name='avatar' />
         <Box>
           <Box bg='secondary' py='7px' px='15px' borderRadius='lg'>
             <Text fontWeight='semibold'>{userName}</Text>

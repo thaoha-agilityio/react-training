@@ -5,15 +5,16 @@ const Absence = () => (
   <Stack spacing='15px' my='16px' p='10px' w='300px'>
     <Flex alignItems='center' gap='15px'>
       <Image
-        src='https://duan24h.net/wp-content/uploads/2023/10/pam-2.webp'
+        src='https://cdn.eva.vn/upload/1-2023/images/2023-03-13/con-gai-thieu-gia-nganh-may-mac-va-hotgirl-ha-thanh-la-the-luc-nhi-sieu-hot-lap-ky-luc-chua-tung-co--312664461_5569265269788525_490616098331863877_n-1678699659-789-width780height780.jpg'
         w='131px'
         h='131px'
         borderRadius='md'
+        alt='ads'
       />
       <Box>
         <Text>ICC Officials</Text>
 
-        <Link href='#' variant='helper'>
+        <Link href='#' variant='helper' aria-label='officials'>
           @icc_officials
         </Link>
       </Box>
@@ -25,11 +26,12 @@ const Absence = () => (
         h='131px'
         borderRadius='md'
         objectFit='cover'
+        alt='ads'
       />
       <Box>
         <Text>Pamela Officials</Text>
 
-        <Link href='#' variant='helper'>
+        <Link href='#' variant='helper' aria-label='officials'>
           @pamyeuoi_officials
         </Link>
       </Box>

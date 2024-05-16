@@ -72,11 +72,18 @@
 
 - Step 4: Install packages `pnpm install`
 
-- Step 5: Run project `pnpm run dev`
+- Step 5: Run server `pnpm run server`
 
-- Step 6: Follow to command lines below
+- Step 6: Run project `pnpm run dev`
+
+- Step 7: Follow to command lines below
 
 | Command        | Action                                             |
 | :------------- | :------------------------------------------------- |
 | `pnpm run dev` | Start local dev server at `http://127.0.0.1:5173/` |
 | `pnpm test`    | Run unit test                                      |
+
+## Account to test app
+
+- email: portalstester+14@asnet.com.vn
+- password: Tester@123

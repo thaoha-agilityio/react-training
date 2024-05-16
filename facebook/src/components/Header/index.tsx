@@ -39,14 +39,20 @@ const Header = () => {
       boxShadow='0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1)'
     >
       <Flex alignItems='center' gap='15px'>
-        <Link href='/'>
+        <Link href='/' aria-label='facebook'>
           <FacebookIcon />
         </Link>
         <InputGroup>
           <InputLeftElement pointerEvents='none' top='-3px'>
             <SearchIcon />
           </InputLeftElement>
-          <Input variant='filled' h='40px' w='212px' placeholder='Search Facebook' />
+          <Input
+            variant='filled'
+            h='40px'
+            w='212px'
+            placeholder='Search Facebook'
+            name='search-facebook'
+          />
         </InputGroup>
       </Flex>
 
@@ -57,7 +63,7 @@ const Header = () => {
             const LinkIcon = icon;
 
             return (
-              <Link key={`${index}-${href}`} href={href}>
+              <Link key={`${index}-${href}`} href={href} aria-label='icon-link'>
                 <LinkIcon />
               </Link>
             );
