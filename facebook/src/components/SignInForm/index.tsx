@@ -6,7 +6,7 @@ import { Controller, useForm, SubmitHandler } from 'react-hook-form';
 import { ERROR_MESSAGES, INPUT_PLACEHOLDER, REGEX, STATUS } from '@/constants';
 
 // Components
-import { Input } from '@/components';
+import { Input, LoadingIndicator } from '@/components';
 
 // Hooks
 import { useAuthSignIn, useCustomToast } from '@/hooks';
@@ -152,8 +152,7 @@ const SignInForm = () => {
 
       {/* Sign up form */}
       {isOpen && (
-        // TODO: will add spinner later
-        <Suspense fallback={<p>Loading...</p>}>
+        <Suspense fallback={<LoadingIndicator />}>
           <SignUpFormModal isOpen={isOpen} onClose={onClose} />
         </Suspense>
       )}

@@ -1,3 +1,4 @@
+import { memo, useCallback, useState } from 'react';
 import { AxiosError } from 'axios';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import {
@@ -29,7 +30,6 @@ import { useAuthStore } from '@/stores';
 
 // Utils
 import { getAPIErrorMessage } from '@/utils';
-import { useCallback, useState } from 'react';
 
 interface PostModalProps {
   isOpen: boolean;
@@ -43,7 +43,7 @@ interface CreateCommentFormData {
   content: string;
 }
 
-const PostModal = ({ isOpen, onClose, comments, post, onLikePost }: PostModalProps) => {
+const PostModal = memo(({ isOpen, onClose, comments, post, onLikePost }: PostModalProps) => {
   const {
     control,
     handleSubmit,
@@ -167,6 +167,6 @@ const PostModal = ({ isOpen, onClose, comments, post, onLikePost }: PostModalPro
       </Stack>
     </CustomModal>
   );
-};
+});
 
 export default PostModal;
