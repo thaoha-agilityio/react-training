@@ -22,26 +22,28 @@ import { DEFAULT_IMAGE, INPUT_PLACEHOLDER, STATUS } from '@/constants';
 import { IComment, IPost } from '@/types';
 
 // Hooks
-import { useCreateComment, useCustomToast } from '@/hooks';
+import { useCreateComment, useCustomToast, useLikeComment } from '@/hooks';
 
 // Stores
 import { useAuthStore } from '@/stores';
 
 // Utils
 import { getAPIErrorMessage } from '@/utils';
+import { useCallback, useState } from 'react';
 
 interface PostModalProps {
   isOpen: boolean;
   post: IPost;
   comments: IComment[];
   onClose: () => void;
+  onLikePost: (likes: number[], id: number) => void;
 }
 
 interface CreateCommentFormData {
   content: string;
 }
 
-const PostModal = ({ isOpen, onClose, comments, post }: PostModalProps) => {
+const PostModal = ({ isOpen, onClose, comments, post, onLikePost }: PostModalProps) => {
   const {
     control,
     handleSubmit,
@@ -62,9 +64,21 @@ const PostModal = ({ isOpen, onClose, comments, post }: PostModalProps) => {
   const user = useAuthStore((state) => state.user);
   const { id: userId } = user || {};
 
+  const [selectedCommentId, setSelectedCommentId] = useState<number>();
+
   // custom hooks
   const { mutate: createComment, isLoading } = useCreateComment(post);
   const { showToast } = useCustomToast();
+  const { mutate: updateComment } = useLikeComment(selectedCommentId ? selectedCommentId : -1);
+
+  // Handle Like Comment
+  const handleLikeComment = useCallback(
+    (likes: number[], id: number) => {
+      setSelectedCommentId(id);
+      updateComment({ likes: likes });
+    },
+    [updateComment],
+  );
 
   //  Handle create success
   const handleCreateSuccess = () => resetField('content');
@@ -131,7 +145,7 @@ const PostModal = ({ isOpen, onClose, comments, post }: PostModalProps) => {
       size='2xl'
       childrenModalFooter={renderWriteComment()}
     >
-      <Post post={post} isModal />
+      <Post post={post} isModal onLikePost={onLikePost} />
 
       {/* List comment */}
       <Stack spacing='10px' pl='10px'>
@@ -146,6 +160,7 @@ const PostModal = ({ isOpen, onClose, comments, post }: PostModalProps) => {
               userId={userId}
               commentId={id}
               likes={likes}
+              onLikeComment={handleLikeComment}
             />
           );
         })}

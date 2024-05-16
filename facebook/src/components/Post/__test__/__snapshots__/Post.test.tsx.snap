@@ -55,10 +55,30 @@ exports[`Post Component Should render Post Component correctly 1`] = `
           />
         </div>
         <div
+          class="css-s6d1me"
+        >
+          <p
+            class="chakra-text css-0"
+          >
+            0
+             Likes
+          </p>
+          <p
+            class="chakra-text css-0"
+          >
+            0
+             Comments
+          </p>
+        </div>
+        <hr
+          aria-orientation="horizontal"
+          class="chakra-divider css-1upb9tn"
+        />
+        <div
           class="css-j1dxzk"
         >
           <button
-            class="chakra-button css-1mn1wbo"
+            class="chakra-button css-x8u05e"
             type="button"
           >
             <span
@@ -187,10 +207,30 @@ exports[`Post Component Should render Post Component correctly 1`] = `
         />
       </div>
       <div
+        class="css-s6d1me"
+      >
+        <p
+          class="chakra-text css-0"
+        >
+          0
+           Likes
+        </p>
+        <p
+          class="chakra-text css-0"
+        >
+          0
+           Comments
+        </p>
+      </div>
+      <hr
+        aria-orientation="horizontal"
+        class="chakra-divider css-1upb9tn"
+      />
+      <div
         class="css-j1dxzk"
       >
         <button
-          class="chakra-button css-1mn1wbo"
+          class="chakra-button css-x8u05e"
           type="button"
         >
           <span

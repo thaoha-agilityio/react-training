@@ -5,7 +5,7 @@ import { Stack, Text, useDisclosure } from '@chakra-ui/react';
 import { LoadingIndicator, Post, PostSkeleton } from '@/components';
 
 // Hooks
-import { useGetCommentByPostId, useGetPostsByAuthor } from '@/hooks';
+import { useGetCommentByPostId, useGetPostsByAuthor, useLikePost } from '@/hooks';
 
 // Constants
 import { NOTICE_MESSAGE } from '@/constants';
@@ -18,10 +18,14 @@ const PostModal = lazy(() => import('@/components/Modal/PostModal'));
 const Posts = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [selectedPost, setSelectedPost] = useState<IPost>();
+  const [selectedPostId, setSelectedPostId] = useState<number>();
 
   // Custom hooks
   const { data: posts, isLoading: isPostLoading } = useGetPostsByAuthor();
   const { data: comments } = useGetCommentByPostId(selectedPost ? selectedPost.id : -1);
+
+  // Update post data when user click like button
+  const { mutate: updatePost } = useLikePost(selectedPostId ? selectedPostId : -1);
 
   const handleShowComment = useCallback(
     (post: IPost) => {
@@ -29,6 +33,14 @@ const Posts = () => {
       onOpen();
     },
     [onOpen],
+  );
+
+  const handleLikePost = useCallback(
+    (likes: number[], id: number) => {
+      setSelectedPostId(id);
+      updatePost({ likes: likes });
+    },
+    [updatePost],
   );
 
   if (isPostLoading) return <PostSkeleton />;
@@ -39,7 +51,14 @@ const Posts = () => {
         posts.map((post) => {
           const { id } = post || {};
 
-          return <Post post={post} key={id} onShowComment={handleShowComment} />;
+          return (
+            <Post
+              post={post}
+              key={id}
+              onShowComment={handleShowComment}
+              onLikePost={handleLikePost}
+            />
+          );
         })
       ) : (
         <Text>{NOTICE_MESSAGE}</Text>
@@ -47,7 +66,13 @@ const Posts = () => {
 
       {isOpen && selectedPost && (
         <Suspense fallback={<LoadingIndicator />}>
-          <PostModal isOpen={isOpen} post={selectedPost} comments={comments} onClose={onClose} />
+          <PostModal
+            isOpen={isOpen}
+            post={selectedPost}
+            comments={comments}
+            onClose={onClose}
+            onLikePost={handleLikePost}
+          />
         </Suspense>
       )}
     </Stack>
