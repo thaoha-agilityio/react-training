@@ -79,6 +79,7 @@ exports[`SignUpFormModal Component Should render SignUpFormModal Component corre
               >
                 <form
                   class="chakra-stack css-1hdbc19"
+                  id="sign-up-form"
                 >
                   <div
                     class="chakra-form-control css-0"
@@ -227,6 +228,7 @@ exports[`SignUpFormModal Component Should render SignUpFormModal Component corre
                   >
                     By clicking Sign Up, you agree to our
                     <a
+                      aria-label="terms"
                       class="chakra-link css-1lj023j"
                       href="#"
                     >
@@ -234,6 +236,7 @@ exports[`SignUpFormModal Component Should render SignUpFormModal Component corre
                     </a>
                     ,
                     <a
+                      aria-label="data-policy"
                       class="chakra-link css-1lj023j"
                       href="#"
                     >
@@ -241,6 +244,7 @@ exports[`SignUpFormModal Component Should render SignUpFormModal Component corre
                     </a>
                      and
                     <a
+                      aria-label="cookie-policy"
                       class="chakra-link css-1lj023j"
                       href="#"
                     >

@@ -1,7 +1,7 @@
 import { fireEvent, render } from '@/utils';
 
 // Component
-import CreatePost from '../CreatePost';
+import CreatePost from '..';
 
 // Constants
 import { INPUT_PLACEHOLDER } from '@/constants';

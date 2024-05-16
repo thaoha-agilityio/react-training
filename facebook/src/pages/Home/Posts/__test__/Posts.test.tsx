@@ -1,8 +1,13 @@
 import { renderWithRouterAndQuery } from '@/utils';
 
-import Posts from '../Posts';
+import Posts from '..';
+
+// Servers
 import { api } from '@/services';
+
+// Mocks
 import { POSTS } from '@/mocks';
+
 // Hooks
 import * as hooks from '@/hooks';
 

@@ -19,6 +19,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
               class="css-0"
             >
               <a
+                aria-label="location-link"
                 class="chakra-link css-0"
                 href="#"
               >
@@ -29,6 +30,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
               class="css-0"
             >
               <a
+                aria-label="location-link"
                 class="chakra-link css-0"
                 href="#"
               >
@@ -39,6 +41,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
               class="css-0"
             >
               <a
+                aria-label="location-link"
                 class="chakra-link css-0"
                 href="#"
               >
@@ -49,6 +52,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
               class="css-0"
             >
               <a
+                aria-label="location-link"
                 class="chakra-link css-0"
                 href="#"
               >
@@ -59,6 +63,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
               class="css-0"
             >
               <a
+                aria-label="location-link"
                 class="chakra-link css-0"
                 href="#"
               >
@@ -69,6 +74,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
               class="css-0"
             >
               <a
+                aria-label="location-link"
                 class="chakra-link css-0"
                 href="#"
               >
@@ -79,6 +85,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
               class="css-0"
             >
               <a
+                aria-label="location-link"
                 class="chakra-link css-0"
                 href="#"
               >
@@ -89,6 +96,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
               class="css-0"
             >
               <a
+                aria-label="location-link"
                 class="chakra-link css-0"
                 href="#"
               >
@@ -99,6 +107,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
               class="css-0"
             >
               <a
+                aria-label="location-link"
                 class="chakra-link css-0"
                 href="#"
               >
@@ -109,6 +118,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
               class="css-0"
             >
               <a
+                aria-label="location-link"
                 class="chakra-link css-0"
                 href="#"
               >
@@ -119,6 +129,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
               class="css-0"
             >
               <a
+                aria-label="location-link"
                 class="chakra-link css-0"
                 href="#"
               >
@@ -138,6 +149,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
               class="css-12z0wuy"
             >
               <a
+                aria-label="footer-link"
                 class="chakra-link css-0"
                 href="#"
               >
@@ -148,6 +160,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
               class="css-12z0wuy"
             >
               <a
+                aria-label="footer-link"
                 class="chakra-link css-0"
                 href="#"
               >
@@ -158,6 +171,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
               class="css-12z0wuy"
             >
               <a
+                aria-label="footer-link"
                 class="chakra-link css-0"
                 href="#"
               >
@@ -168,6 +182,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
               class="css-12z0wuy"
             >
               <a
+                aria-label="footer-link"
                 class="chakra-link css-0"
                 href="#"
               >
@@ -178,6 +193,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
               class="css-12z0wuy"
             >
               <a
+                aria-label="footer-link"
                 class="chakra-link css-0"
                 href="#"
               >
@@ -188,6 +204,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
               class="css-12z0wuy"
             >
               <a
+                aria-label="footer-link"
                 class="chakra-link css-0"
                 href="#"
               >
@@ -198,6 +215,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
               class="css-12z0wuy"
             >
               <a
+                aria-label="footer-link"
                 class="chakra-link css-0"
                 href="#"
               >
@@ -208,6 +226,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
               class="css-12z0wuy"
             >
               <a
+                aria-label="footer-link"
                 class="chakra-link css-0"
                 href="#"
               >
@@ -218,6 +237,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
               class="css-12z0wuy"
             >
               <a
+                aria-label="footer-link"
                 class="chakra-link css-0"
                 href="#"
               >
@@ -228,6 +248,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
               class="css-12z0wuy"
             >
               <a
+                aria-label="footer-link"
                 class="chakra-link css-0"
                 href="#"
               >
@@ -238,6 +259,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
               class="css-12z0wuy"
             >
               <a
+                aria-label="footer-link"
                 class="chakra-link css-0"
                 href="#"
               >
@@ -248,6 +270,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
               class="css-12z0wuy"
             >
               <a
+                aria-label="footer-link"
                 class="chakra-link css-0"
                 href="#"
               >
@@ -258,6 +281,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
               class="css-12z0wuy"
             >
               <a
+                aria-label="footer-link"
                 class="chakra-link css-0"
                 href="#"
               >
@@ -268,6 +292,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
               class="css-12z0wuy"
             >
               <a
+                aria-label="footer-link"
                 class="chakra-link css-0"
                 href="#"
               >
@@ -278,6 +303,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
               class="css-12z0wuy"
             >
               <a
+                aria-label="footer-link"
                 class="chakra-link css-0"
                 href="#"
               >
@@ -288,6 +314,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
               class="css-12z0wuy"
             >
               <a
+                aria-label="footer-link"
                 class="chakra-link css-0"
                 href="#"
               >
@@ -298,6 +325,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
               class="css-12z0wuy"
             >
               <a
+                aria-label="footer-link"
                 class="chakra-link css-0"
                 href="#"
               >
@@ -308,6 +336,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
               class="css-12z0wuy"
             >
               <a
+                aria-label="footer-link"
                 class="chakra-link css-0"
                 href="#"
               >
@@ -318,6 +347,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
               class="css-12z0wuy"
             >
               <a
+                aria-label="footer-link"
                 class="chakra-link css-0"
                 href="#"
               >
@@ -328,6 +358,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
               class="css-12z0wuy"
             >
               <a
+                aria-label="footer-link"
                 class="chakra-link css-0"
                 href="#"
               >
@@ -338,6 +369,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
               class="css-12z0wuy"
             >
               <a
+                aria-label="footer-link"
                 class="chakra-link css-0"
                 href="#"
               >
@@ -348,6 +380,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
               class="css-12z0wuy"
             >
               <a
+                aria-label="footer-link"
                 class="chakra-link css-0"
                 href="#"
               >
@@ -358,6 +391,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
               class="css-12z0wuy"
             >
               <a
+                aria-label="footer-link"
                 class="chakra-link css-0"
                 href="#"
               >
@@ -368,6 +402,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
               class="css-12z0wuy"
             >
               <a
+                aria-label="footer-link"
                 class="chakra-link css-0"
                 href="#"
               >
@@ -378,6 +413,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
               class="css-12z0wuy"
             >
               <a
+                aria-label="footer-link"
                 class="chakra-link css-0"
                 href="#"
               >
@@ -388,6 +424,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
               class="css-12z0wuy"
             >
               <a
+                aria-label="footer-link"
                 class="chakra-link css-0"
                 href="#"
               >
@@ -398,6 +435,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
               class="css-12z0wuy"
             >
               <a
+                aria-label="footer-link"
                 class="chakra-link css-0"
                 href="#"
               >
@@ -408,6 +446,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
               class="css-12z0wuy"
             >
               <a
+                aria-label="footer-link"
                 class="chakra-link css-0"
                 href="#"
               >
@@ -418,6 +457,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
               class="css-12z0wuy"
             >
               <a
+                aria-label="footer-link"
                 class="chakra-link css-0"
                 href="#"
               >
@@ -444,6 +484,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
             class="css-0"
           >
             <a
+              aria-label="location-link"
               class="chakra-link css-0"
               href="#"
             >
@@ -454,6 +495,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
             class="css-0"
           >
             <a
+              aria-label="location-link"
               class="chakra-link css-0"
               href="#"
             >
@@ -464,6 +506,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
             class="css-0"
           >
             <a
+              aria-label="location-link"
               class="chakra-link css-0"
               href="#"
             >
@@ -474,6 +517,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
             class="css-0"
           >
             <a
+              aria-label="location-link"
               class="chakra-link css-0"
               href="#"
             >
@@ -484,6 +528,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
             class="css-0"
           >
             <a
+              aria-label="location-link"
               class="chakra-link css-0"
               href="#"
             >
@@ -494,6 +539,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
             class="css-0"
           >
             <a
+              aria-label="location-link"
               class="chakra-link css-0"
               href="#"
             >
@@ -504,6 +550,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
             class="css-0"
           >
             <a
+              aria-label="location-link"
               class="chakra-link css-0"
               href="#"
             >
@@ -514,6 +561,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
             class="css-0"
           >
             <a
+              aria-label="location-link"
               class="chakra-link css-0"
               href="#"
             >
@@ -524,6 +572,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
             class="css-0"
           >
             <a
+              aria-label="location-link"
               class="chakra-link css-0"
               href="#"
             >
@@ -534,6 +583,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
             class="css-0"
           >
             <a
+              aria-label="location-link"
               class="chakra-link css-0"
               href="#"
             >
@@ -544,6 +594,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
             class="css-0"
           >
             <a
+              aria-label="location-link"
               class="chakra-link css-0"
               href="#"
             >
@@ -563,6 +614,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
             class="css-12z0wuy"
           >
             <a
+              aria-label="footer-link"
               class="chakra-link css-0"
               href="#"
             >
@@ -573,6 +625,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
             class="css-12z0wuy"
           >
             <a
+              aria-label="footer-link"
               class="chakra-link css-0"
               href="#"
             >
@@ -583,6 +636,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
             class="css-12z0wuy"
           >
             <a
+              aria-label="footer-link"
               class="chakra-link css-0"
               href="#"
             >
@@ -593,6 +647,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
             class="css-12z0wuy"
           >
             <a
+              aria-label="footer-link"
               class="chakra-link css-0"
               href="#"
             >
@@ -603,6 +658,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
             class="css-12z0wuy"
           >
             <a
+              aria-label="footer-link"
               class="chakra-link css-0"
               href="#"
             >
@@ -613,6 +669,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
             class="css-12z0wuy"
           >
             <a
+              aria-label="footer-link"
               class="chakra-link css-0"
               href="#"
             >
@@ -623,6 +680,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
             class="css-12z0wuy"
           >
             <a
+              aria-label="footer-link"
               class="chakra-link css-0"
               href="#"
             >
@@ -633,6 +691,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
             class="css-12z0wuy"
           >
             <a
+              aria-label="footer-link"
               class="chakra-link css-0"
               href="#"
             >
@@ -643,6 +702,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
             class="css-12z0wuy"
           >
             <a
+              aria-label="footer-link"
               class="chakra-link css-0"
               href="#"
             >
@@ -653,6 +713,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
             class="css-12z0wuy"
           >
             <a
+              aria-label="footer-link"
               class="chakra-link css-0"
               href="#"
             >
@@ -663,6 +724,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
             class="css-12z0wuy"
           >
             <a
+              aria-label="footer-link"
               class="chakra-link css-0"
               href="#"
             >
@@ -673,6 +735,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
             class="css-12z0wuy"
           >
             <a
+              aria-label="footer-link"
               class="chakra-link css-0"
               href="#"
             >
@@ -683,6 +746,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
             class="css-12z0wuy"
           >
             <a
+              aria-label="footer-link"
               class="chakra-link css-0"
               href="#"
             >
@@ -693,6 +757,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
             class="css-12z0wuy"
           >
             <a
+              aria-label="footer-link"
               class="chakra-link css-0"
               href="#"
             >
@@ -703,6 +768,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
             class="css-12z0wuy"
           >
             <a
+              aria-label="footer-link"
               class="chakra-link css-0"
               href="#"
             >
@@ -713,6 +779,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
             class="css-12z0wuy"
           >
             <a
+              aria-label="footer-link"
               class="chakra-link css-0"
               href="#"
             >
@@ -723,6 +790,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
             class="css-12z0wuy"
           >
             <a
+              aria-label="footer-link"
               class="chakra-link css-0"
               href="#"
             >
@@ -733,6 +801,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
             class="css-12z0wuy"
           >
             <a
+              aria-label="footer-link"
               class="chakra-link css-0"
               href="#"
             >
@@ -743,6 +812,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
             class="css-12z0wuy"
           >
             <a
+              aria-label="footer-link"
               class="chakra-link css-0"
               href="#"
             >
@@ -753,6 +823,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
             class="css-12z0wuy"
           >
             <a
+              aria-label="footer-link"
               class="chakra-link css-0"
               href="#"
             >
@@ -763,6 +834,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
             class="css-12z0wuy"
           >
             <a
+              aria-label="footer-link"
               class="chakra-link css-0"
               href="#"
             >
@@ -773,6 +845,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
             class="css-12z0wuy"
           >
             <a
+              aria-label="footer-link"
               class="chakra-link css-0"
               href="#"
             >
@@ -783,6 +856,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
             class="css-12z0wuy"
           >
             <a
+              aria-label="footer-link"
               class="chakra-link css-0"
               href="#"
             >
@@ -793,6 +867,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
             class="css-12z0wuy"
           >
             <a
+              aria-label="footer-link"
               class="chakra-link css-0"
               href="#"
             >
@@ -803,6 +878,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
             class="css-12z0wuy"
           >
             <a
+              aria-label="footer-link"
               class="chakra-link css-0"
               href="#"
             >
@@ -813,6 +889,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
             class="css-12z0wuy"
           >
             <a
+              aria-label="footer-link"
               class="chakra-link css-0"
               href="#"
             >
@@ -823,6 +900,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
             class="css-12z0wuy"
           >
             <a
+              aria-label="footer-link"
               class="chakra-link css-0"
               href="#"
             >
@@ -833,6 +911,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
             class="css-12z0wuy"
           >
             <a
+              aria-label="footer-link"
               class="chakra-link css-0"
               href="#"
             >
@@ -843,6 +922,7 @@ exports[`Footer Component Should render Footer Component correctly 1`] = `
             class="css-12z0wuy"
           >
             <a
+              aria-label="footer-link"
               class="chakra-link css-0"
               href="#"
             >

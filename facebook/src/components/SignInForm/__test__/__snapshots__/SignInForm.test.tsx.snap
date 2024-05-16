@@ -10,6 +10,7 @@ exports[`SignInForm Component Should render SignInForm Component correctly 1`] =
       >
         <form
           class="chakra-stack css-1hdbc19"
+          id="sign-in-form"
         >
           <div
             class="chakra-form-control css-0"
@@ -48,6 +49,7 @@ exports[`SignInForm Component Should render SignInForm Component correctly 1`] =
           class="chakra-stack css-fe10bw"
         >
           <a
+            aria-label="forgotten-password"
             class="chakra-link css-0"
             href="#"
           >
@@ -77,6 +79,7 @@ exports[`SignInForm Component Should render SignInForm Component correctly 1`] =
     >
       <form
         class="chakra-stack css-1hdbc19"
+        id="sign-in-form"
       >
         <div
           class="chakra-form-control css-0"
@@ -115,6 +118,7 @@ exports[`SignInForm Component Should render SignInForm Component correctly 1`] =
         class="chakra-stack css-fe10bw"
       >
         <a
+          aria-label="forgotten-password"
           class="chakra-link css-0"
           href="#"
         >
