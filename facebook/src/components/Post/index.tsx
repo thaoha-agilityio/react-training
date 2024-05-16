@@ -1,4 +1,4 @@
-import { memo, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import { Box, Text, Image, Stack, Flex, Button, Divider } from '@chakra-ui/react';
 
 // Components
@@ -17,16 +17,14 @@ import { useAuthStore } from '@/stores';
 // Utils
 import { filterItem } from '@/utils';
 
-// Hooks
-import { useLikePost } from '@/hooks';
-
 interface PostProps {
   isModal?: boolean;
   post: IPost;
   onShowComment?: (post: IPost) => void;
+  onLikePost: (likes: number[], id: number) => void;
 }
 
-const Post = memo(({ post, isModal = false, onShowComment }: PostProps) => {
+const Post = memo(({ post, isModal = false, onShowComment, onLikePost }: PostProps) => {
   const { content, image, totalComments, likes, id: postId, authorName } = post || {};
 
   // Auth store
@@ -37,8 +35,9 @@ const Post = memo(({ post, isModal = false, onShowComment }: PostProps) => {
   const isUserLiked = likes.includes(userId);
   const [isLike, setIsLike] = useState<boolean>(isUserLiked);
 
-  // Update post data when user click like button
-  const { mutate: updatePost } = useLikePost(postId);
+  useEffect(() => {
+    setIsLike(isUserLiked);
+  }, [isUserLiked]);
 
   const handleShowComment = () => {
     onShowComment?.(post);
@@ -50,7 +49,8 @@ const Post = memo(({ post, isModal = false, onShowComment }: PostProps) => {
 
     // If isLike is true then add userId into likes list else remove useId from likes list
     const userIds = isNewLike ? [...likes, userId] : filterItem(likes, userId);
-    updatePost({ likes: userIds });
+
+    onLikePost(userIds, postId);
   };
 
   return (
