@@ -219,6 +219,7 @@ const SignUpFormModal = memo(({ isOpen, onClose }: SignUpFormProps) => {
                 <Input
                   size='md'
                   type='date'
+                  data-testid='date-of-birth'
                   errorMessage={error?.message}
                   onChange={(e) => {
                     const value = e.target?.value;
@@ -248,6 +249,7 @@ const SignUpFormModal = memo(({ isOpen, onClose }: SignUpFormProps) => {
                       <Radio
                         key={value}
                         value={value}
+                        data-testid='select-gender'
                         onChange={(e) => {
                           const value = e.target?.value;
                           onChange(value);
