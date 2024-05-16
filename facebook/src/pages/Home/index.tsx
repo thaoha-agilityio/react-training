@@ -3,7 +3,7 @@ import { Container, Flex } from '@chakra-ui/react';
 // Components
 import Posts from './Posts';
 import CreatePost from './CreatePost';
-import Absence from '../Absence';
+import Advertisement from '../Advertisement';
 
 const Home = () => {
   return (
@@ -12,7 +12,7 @@ const Home = () => {
         <CreatePost />
         <Posts />
       </Container>
-      <Absence />
+      <Advertisement />
     </Flex>
   );
 };
