@@ -1,4 +1,4 @@
-import { renderWithRouterAndQuery } from '@/utils';
+import { fireEvent, renderWithRouterAndQuery } from '@/utils';
 
 // Constants
 
@@ -11,6 +11,7 @@ const mockProps = {
   userId: 1,
   commentId: 2,
   likes: [],
+  onLikeComment: jest.fn(),
 };
 
 describe('Comment Component', () => {
@@ -18,5 +19,23 @@ describe('Comment Component', () => {
     const component = renderWithRouterAndQuery(<Comment {...mockProps} />);
 
     expect(component).toMatchSnapshot();
+  });
+
+  it('Should be handleLikeComment is called', () => {
+    const { getByText } = renderWithRouterAndQuery(<Comment {...mockProps} />);
+
+    const likeBtn = getByText('like');
+    fireEvent.click(likeBtn);
+
+    expect(mockProps.onLikeComment).toHaveBeenCalled();
+  });
+
+  it('Should be handleLikeComment is called', () => {
+    const { getByText } = renderWithRouterAndQuery(<Comment {...mockProps} likes={[2]} />);
+
+    const likeBtn = getByText('like');
+    fireEvent.click(likeBtn);
+
+    expect(mockProps.onLikeComment).toHaveBeenCalled();
   });
 });

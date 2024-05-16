@@ -1,0 +1,789 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PostModal Component Should render SignUpFormModal Component correctly 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body
+    data-scroll-locked="1"
+  >
+    <div
+      aria-hidden="true"
+      data-aria-hidden="true"
+    />
+    <div
+      class="chakra-portal"
+    >
+      <div
+        aria-hidden="true"
+        class="chakra-modal__overlay css-13d1tkw"
+        data-aria-hidden="true"
+        style="opacity: 0;"
+      />
+      <div
+        aria-hidden="true"
+        data-aria-hidden="true"
+        data-focus-guard="true"
+        style="width: 1px; height: 0px; padding: 0px; overflow: hidden; position: fixed; top: 1px; left: 1px;"
+        tabindex="0"
+      />
+      <div
+        data-focus-lock-disabled="false"
+      >
+        <div
+          class="chakra-modal__content-container css-1oxhx2p"
+          tabindex="-1"
+        >
+          <section
+            aria-describedby="chakra-modal--body-:r0:"
+            aria-labelledby="chakra-modal--header-:r0:"
+            aria-modal="true"
+            class="chakra-modal__content css-1fc6ndu"
+            id="chakra-modal-:r0:"
+            role="dialog"
+            style="opacity: 0; transform: scale(0.95) translateZ(0);"
+            tabindex="-1"
+          >
+            <header
+              class="chakra-modal__header css-72fd9l"
+              id="chakra-modal--header-:r0:"
+            >
+              Pam
+            </header>
+            <button
+              aria-label="Close"
+              class="chakra-modal__close-btn css-6sdaxy"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                class="chakra-icon css-onkibi"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M.439,21.44a1.5,1.5,0,0,0,2.122,2.121L11.823,14.3a.25.25,0,0,1,.354,0l9.262,9.263a1.5,1.5,0,1,0,2.122-2.121L14.3,12.177a.25.25,0,0,1,0-.354l9.263-9.262A1.5,1.5,0,0,0,21.439.44L12.177,9.7a.25.25,0,0,1-.354,0L2.561.44A1.5,1.5,0,0,0,.439,2.561L9.7,11.823a.25.25,0,0,1,0,.354Z"
+                  fill="currentColor"
+                />
+              </svg>
+            </button>
+            <hr
+              aria-orientation="horizontal"
+              class="chakra-divider css-drdvxx"
+            />
+            <div
+              class="chakra-modal__body css-1yxaeig"
+              id="chakra-modal--body-:r0:"
+            >
+              <div
+                class="chakra-stack css-avv155"
+              >
+                <div
+                  class="css-clmjzp"
+                >
+                  <div
+                    class="css-15zum9u"
+                  >
+                    <span
+                      class="chakra-avatar css-1ruhx4w"
+                    >
+                      <svg
+                        aria-label=" avatar"
+                        class="chakra-avatar__svg css-16ite8i"
+                        role="img"
+                        viewBox="0 0 128 128"
+                      >
+                        <path
+                          d="M103,102.1388 C93.094,111.92 79.3504,118 64.1638,118 C48.8056,118 34.9294,111.768 25,101.7892 L25,95.2 C25,86.8096 31.981,80 40.6,80 L87.4,80 C96.019,80 103,86.8096 103,95.2 L103,102.1388 Z"
+                          fill="currentColor"
+                        />
+                        <path
+                          d="M63.9961647,24 C51.2938136,24 41,34.2938136 41,46.9961647 C41,59.7061864 51.2938136,70 63.9961647,70 C76.6985159,70 87,59.7061864 87,46.9961647 C87,34.2938136 76.6985159,24 63.9961647,24"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </span>
+                    <p
+                      class="chakra-text css-0"
+                    >
+                      Pam
+                    </p>
+                  </div>
+                </div>
+                <p
+                  class="chakra-text css-clmjzp"
+                >
+                  Content marketing definition
+                </p>
+                <div
+                  class="css-m6euur"
+                >
+                  <img
+                    alt="post-img"
+                    class="chakra-image__placeholder css-bh4wo8"
+                    src="https://www.charlotteathleticclub.com/assets/camaleon_cms/image-not-found-4a963b95bf081c3ea02923dceaeb3f8085e1a654fc54840aac61a57a60903fef.png"
+                  />
+                </div>
+                <div
+                  class="css-j1dxzk"
+                >
+                  <button
+                    class="chakra-button css-x8u05e"
+                    type="button"
+                  >
+                    <span
+                      class="chakra-button__icon css-1wh2kri"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        fill="none"
+                        focusable="false"
+                        height="25"
+                        width="24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M1.7 11.869v8.946h3.788l.191.022c3.516.82 5.846 1.412 7.008 1.778 1.542.486 2.117.605 3.163.675.783.054 1.671-.247 2.077-.66.223-.227.39-.695.457-1.42a.85.85 0 0 1 .508-.704c.31-.135.57-.355.786-.675.2-.292.33-.837.354-1.626a.854.854 0 0 1 .423-.712c.728-.422 1.088-.897 1.163-1.454.082-.617-.118-1.31-.641-2.1a.854.854 0 0 1 .22-1.17c.5-.353.776-.843.845-1.538.11-1.107-.597-1.926-2.196-2.09a11.775 11.775 0 0 0-4.242.354.85.85 0 0 1-.982-1.188c.624-1.322.972-2.413 1.053-3.258.106-1.122-.152-1.934-.757-2.604-.459-.508-1.193-.798-1.468-.738-.362.078-.598.288-.906 1.023-.181.435-.269.805-.419 1.669-.143.82-.222 1.19-.386 1.675-.494 1.47-1.705 2.993-3.331 4.045a14.846 14.846 0 0 1-3.671 1.712.844.844 0 0 1-.25.038H1.7Zm-.052 10.65c-.404.011-.767-.079-1.07-.291-.388-.272-.57-.7-.574-1.192l.004-9.154c-.043-.487.101-.934.441-1.267.319-.313.735-.46 1.175-.45h2.731a13.133 13.133 0 0 0 3.133-1.478c1.31-.847 2.275-2.062 2.644-3.157.126-.378.193-.69.32-1.425.173-.986.28-1.445.528-2.035C11.493.842 12.165.242 13.093.041c.912-.197 2.241.329 3.081 1.259.931 1.03 1.343 2.319 1.19 3.911-.065.685-.255 1.451-.567 2.305a13.136 13.136 0 0 1 3.222-.07c2.509.256 3.918 1.89 3.713 3.955-.09.89-.413 1.646-.962 2.24.462.889.645 1.768.53 2.625-.132.988-.682 1.81-1.597 2.449-.072.866-.27 1.558-.623 2.075-.277.418-.64.773-1.063 1.043-.136.855-.42 1.523-.883 1.993-.769.783-2.143 1.249-3.398 1.164-1.19-.08-1.896-.225-3.558-.75-1.097-.346-3.367-.921-6.788-1.721H1.647ZM3.774 11.48a.85.85 0 1 1 1.697 0v9.598a.85.85 0 1 1-1.697 0V11.48Z"
+                          fill="#65676B"
+                        />
+                      </svg>
+                    </span>
+                    Like
+                  </button>
+                  <button
+                    class="chakra-button css-1mn1wbo"
+                    type="button"
+                  >
+                    <span
+                      class="chakra-button__icon css-1wh2kri"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        fill="none"
+                        focusable="false"
+                        height="25"
+                        width="25"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M1.563 7.031a3.906 3.906 0 0 1 3.906-3.906H19.53a3.906 3.906 0 0 1 3.907 3.906v7.813a3.906 3.906 0 0 1-3.907 3.906h-5.956l-4.786 4.188a1.531 1.531 0 0 1-2.539-1.154V18.75h-.781a3.907 3.907 0 0 1-3.907-3.906V7.03Zm3.906-2.343A2.344 2.344 0 0 0 3.125 7.03v7.813a2.343 2.343 0 0 0 2.344 2.344h2.343v4.528l5.176-4.529h6.543a2.343 2.343 0 0 0 2.344-2.343V7.03a2.344 2.344 0 0 0-2.344-2.343H5.47Z"
+                          fill="#65676B"
+                        />
+                      </svg>
+                    </span>
+                    Comment
+                  </button>
+                  <button
+                    class="chakra-button css-1mn1wbo"
+                    type="button"
+                  >
+                    <span
+                      class="chakra-button__icon css-1wh2kri"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        fill="none"
+                        focusable="false"
+                        height="25"
+                        width="25"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="m15.298 1.038 8.594 8.481c.144.143.144.462 0 .604l-8.594 8.482a.18.18 0 0 1-.045.035c-.006.003-.009.003-.01.003h-.008a.095.095 0 0 1-.026-.01c-.043-.022-.146-.108-.146-.33V12.381l-1.017.017c-1.93.031-3.642.192-5.087.566-1.447.373-2.689.977-3.603 1.94-1.833 1.93-1.999 4.884-.95 8.865C2.591 22.096 1 19.135 1 16.2c0-3.956 1.418-6.172 3.605-7.487 2.293-1.378 5.577-1.856 9.47-1.907l.988-.013V1.34c0-.22.103-.307.146-.33a.098.098 0 0 1 .027-.01h.008s.003 0 .01.004a.186.186 0 0 1 .044.034ZM4.479 24.053v-.001.001Z"
+                          fill="#fff"
+                          stroke="#65676B"
+                          stroke-width="2"
+                        />
+                      </svg>
+                    </span>
+                    Share
+                  </button>
+                </div>
+                <hr
+                  aria-orientation="horizontal"
+                  class="chakra-divider css-1upb9tn"
+                />
+              </div>
+              <div
+                class="chakra-stack css-1684bks"
+              >
+                <div
+                  class="css-i5q2k0"
+                >
+                  <span
+                    class="chakra-avatar css-1ruhx4w"
+                  >
+                    <svg
+                      aria-label=" avatar"
+                      class="chakra-avatar__svg css-16ite8i"
+                      role="img"
+                      viewBox="0 0 128 128"
+                    >
+                      <path
+                        d="M103,102.1388 C93.094,111.92 79.3504,118 64.1638,118 C48.8056,118 34.9294,111.768 25,101.7892 L25,95.2 C25,86.8096 31.981,80 40.6,80 L87.4,80 C96.019,80 103,86.8096 103,95.2 L103,102.1388 Z"
+                        fill="currentColor"
+                      />
+                      <path
+                        d="M63.9961647,24 C51.2938136,24 41,34.2938136 41,46.9961647 C41,59.7061864 51.2938136,70 63.9961647,70 C76.6985159,70 87,59.7061864 87,46.9961647 C87,34.2938136 76.6985159,24 63.9961647,24"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                  <div
+                    class="css-0"
+                  >
+                    <div
+                      class="css-6s5wms"
+                    >
+                      <p
+                        class="chakra-text css-10ircq3"
+                      >
+                        Pam
+                      </p>
+                      <p
+                        class="chakra-text css-0"
+                      >
+                        Comment1
+                      </p>
+                    </div>
+                    <div
+                      class="css-x1sij0"
+                    >
+                      <button
+                        class="chakra-button css-xfesjo"
+                        type="button"
+                      >
+                        like
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <footer
+              class="chakra-modal__footer css-192qrng"
+            >
+              <form
+                class="css-1b8tsty"
+              >
+                <span
+                  class="chakra-avatar css-1ruhx4w"
+                >
+                  <svg
+                    aria-label=" avatar"
+                    class="chakra-avatar__svg css-16ite8i"
+                    role="img"
+                    viewBox="0 0 128 128"
+                  >
+                    <path
+                      d="M103,102.1388 C93.094,111.92 79.3504,118 64.1638,118 C48.8056,118 34.9294,111.768 25,101.7892 L25,95.2 C25,86.8096 31.981,80 40.6,80 L87.4,80 C96.019,80 103,86.8096 103,95.2 L103,102.1388 Z"
+                      fill="currentColor"
+                    />
+                    <path
+                      d="M63.9961647,24 C51.2938136,24 41,34.2938136 41,46.9961647 C41,59.7061864 51.2938136,70 63.9961647,70 C76.6985159,70 87,59.7061864 87,46.9961647 C87,34.2938136 76.6985159,24 63.9961647,24"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+                <div
+                  class="css-907p52"
+                >
+                  <div
+                    class="chakra-form-control css-0"
+                    role="group"
+                  >
+                    <textarea
+                      class="chakra-textarea css-0"
+                      id="field-:r3:"
+                      name="content"
+                      placeholder="Write a comment..."
+                    />
+                  </div>
+                  <div
+                    class="css-11rmz0r"
+                  >
+                    <button
+                      aria-label="comment-icon"
+                      class="chakra-button css-p7mkev"
+                      data-testid="comment"
+                      type="submit"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        focusable="false"
+                        height="20"
+                        width="20"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="m2.721 2.051 15.355 7.566a.5.5 0 0 1 0 .897L2.72 18.08a.5.5 0 0 1-.704-.576l1.521-5.745a.5.5 0 0 1 .401-.365l6.881-1.147a.25.25 0 0 0 .188-.146l.018-.06a.25.25 0 0 0-.15-.272l-.056-.016L3.9 8.6a.5.5 0 0 1-.4-.365L2.016 2.628a.5.5 0 0 1 .704-.577z"
+                          fill="#0866FF"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </footer>
+          </section>
+        </div>
+      </div>
+      <div
+        aria-hidden="true"
+        data-aria-hidden="true"
+        data-focus-guard="true"
+        style="width: 1px; height: 0px; padding: 0px; overflow: hidden; position: fixed; top: 1px; left: 1px;"
+        tabindex="0"
+      />
+    </div>
+  </body>,
+  "container": <div
+    aria-hidden="true"
+    data-aria-hidden="true"
+  />,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
+exports[`PostModal Component Should render SignUpFormModal Component correctly 2`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body
+    data-scroll-locked="1"
+  >
+    <div
+      aria-hidden="true"
+      data-aria-hidden="true"
+    />
+    <div
+      class="chakra-portal"
+    >
+      <div
+        aria-hidden="true"
+        class="chakra-modal__overlay css-13d1tkw"
+        data-aria-hidden="true"
+        style="opacity: 0;"
+      />
+      <div
+        aria-hidden="true"
+        data-aria-hidden="true"
+        data-focus-guard="true"
+        style="width: 1px; height: 0px; padding: 0px; overflow: hidden; position: fixed; top: 1px; left: 1px;"
+        tabindex="0"
+      />
+      <div
+        data-focus-lock-disabled="false"
+      >
+        <div
+          class="chakra-modal__content-container css-1oxhx2p"
+          tabindex="-1"
+        >
+          <section
+            aria-describedby="chakra-modal--body-:rc:"
+            aria-labelledby="chakra-modal--header-:rc:"
+            aria-modal="true"
+            class="chakra-modal__content css-1fc6ndu"
+            id="chakra-modal-:rc:"
+            role="dialog"
+            style="opacity: 0; transform: scale(0.95) translateZ(0);"
+            tabindex="-1"
+          >
+            <header
+              class="chakra-modal__header css-72fd9l"
+              id="chakra-modal--header-:rc:"
+            >
+              Pam
+            </header>
+            <button
+              aria-label="Close"
+              class="chakra-modal__close-btn css-6sdaxy"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                class="chakra-icon css-onkibi"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M.439,21.44a1.5,1.5,0,0,0,2.122,2.121L11.823,14.3a.25.25,0,0,1,.354,0l9.262,9.263a1.5,1.5,0,1,0,2.122-2.121L14.3,12.177a.25.25,0,0,1,0-.354l9.263-9.262A1.5,1.5,0,0,0,21.439.44L12.177,9.7a.25.25,0,0,1-.354,0L2.561.44A1.5,1.5,0,0,0,.439,2.561L9.7,11.823a.25.25,0,0,1,0,.354Z"
+                  fill="currentColor"
+                />
+              </svg>
+            </button>
+            <hr
+              aria-orientation="horizontal"
+              class="chakra-divider css-drdvxx"
+            />
+            <div
+              class="chakra-modal__body css-1yxaeig"
+              id="chakra-modal--body-:rc:"
+            >
+              <div
+                class="chakra-stack css-avv155"
+              >
+                <div
+                  class="css-clmjzp"
+                >
+                  <div
+                    class="css-15zum9u"
+                  >
+                    <span
+                      class="chakra-avatar css-1ruhx4w"
+                    >
+                      <svg
+                        aria-label=" avatar"
+                        class="chakra-avatar__svg css-16ite8i"
+                        role="img"
+                        viewBox="0 0 128 128"
+                      >
+                        <path
+                          d="M103,102.1388 C93.094,111.92 79.3504,118 64.1638,118 C48.8056,118 34.9294,111.768 25,101.7892 L25,95.2 C25,86.8096 31.981,80 40.6,80 L87.4,80 C96.019,80 103,86.8096 103,95.2 L103,102.1388 Z"
+                          fill="currentColor"
+                        />
+                        <path
+                          d="M63.9961647,24 C51.2938136,24 41,34.2938136 41,46.9961647 C41,59.7061864 51.2938136,70 63.9961647,70 C76.6985159,70 87,59.7061864 87,46.9961647 C87,34.2938136 76.6985159,24 63.9961647,24"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </span>
+                    <p
+                      class="chakra-text css-0"
+                    >
+                      Pam
+                    </p>
+                  </div>
+                </div>
+                <p
+                  class="chakra-text css-clmjzp"
+                >
+                  Content marketing definition
+                </p>
+                <div
+                  class="css-m6euur"
+                >
+                  <img
+                    alt="post-img"
+                    class="chakra-image__placeholder css-bh4wo8"
+                    src="https://www.charlotteathleticclub.com/assets/camaleon_cms/image-not-found-4a963b95bf081c3ea02923dceaeb3f8085e1a654fc54840aac61a57a60903fef.png"
+                  />
+                </div>
+                <div
+                  class="css-j1dxzk"
+                >
+                  <button
+                    class="chakra-button css-x8u05e"
+                    type="button"
+                  >
+                    <span
+                      class="chakra-button__icon css-1wh2kri"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        fill="none"
+                        focusable="false"
+                        height="25"
+                        width="24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M1.7 11.869v8.946h3.788l.191.022c3.516.82 5.846 1.412 7.008 1.778 1.542.486 2.117.605 3.163.675.783.054 1.671-.247 2.077-.66.223-.227.39-.695.457-1.42a.85.85 0 0 1 .508-.704c.31-.135.57-.355.786-.675.2-.292.33-.837.354-1.626a.854.854 0 0 1 .423-.712c.728-.422 1.088-.897 1.163-1.454.082-.617-.118-1.31-.641-2.1a.854.854 0 0 1 .22-1.17c.5-.353.776-.843.845-1.538.11-1.107-.597-1.926-2.196-2.09a11.775 11.775 0 0 0-4.242.354.85.85 0 0 1-.982-1.188c.624-1.322.972-2.413 1.053-3.258.106-1.122-.152-1.934-.757-2.604-.459-.508-1.193-.798-1.468-.738-.362.078-.598.288-.906 1.023-.181.435-.269.805-.419 1.669-.143.82-.222 1.19-.386 1.675-.494 1.47-1.705 2.993-3.331 4.045a14.846 14.846 0 0 1-3.671 1.712.844.844 0 0 1-.25.038H1.7Zm-.052 10.65c-.404.011-.767-.079-1.07-.291-.388-.272-.57-.7-.574-1.192l.004-9.154c-.043-.487.101-.934.441-1.267.319-.313.735-.46 1.175-.45h2.731a13.133 13.133 0 0 0 3.133-1.478c1.31-.847 2.275-2.062 2.644-3.157.126-.378.193-.69.32-1.425.173-.986.28-1.445.528-2.035C11.493.842 12.165.242 13.093.041c.912-.197 2.241.329 3.081 1.259.931 1.03 1.343 2.319 1.19 3.911-.065.685-.255 1.451-.567 2.305a13.136 13.136 0 0 1 3.222-.07c2.509.256 3.918 1.89 3.713 3.955-.09.89-.413 1.646-.962 2.24.462.889.645 1.768.53 2.625-.132.988-.682 1.81-1.597 2.449-.072.866-.27 1.558-.623 2.075-.277.418-.64.773-1.063 1.043-.136.855-.42 1.523-.883 1.993-.769.783-2.143 1.249-3.398 1.164-1.19-.08-1.896-.225-3.558-.75-1.097-.346-3.367-.921-6.788-1.721H1.647ZM3.774 11.48a.85.85 0 1 1 1.697 0v9.598a.85.85 0 1 1-1.697 0V11.48Z"
+                          fill="#65676B"
+                        />
+                      </svg>
+                    </span>
+                    Like
+                  </button>
+                  <button
+                    class="chakra-button css-1mn1wbo"
+                    type="button"
+                  >
+                    <span
+                      class="chakra-button__icon css-1wh2kri"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        fill="none"
+                        focusable="false"
+                        height="25"
+                        width="25"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M1.563 7.031a3.906 3.906 0 0 1 3.906-3.906H19.53a3.906 3.906 0 0 1 3.907 3.906v7.813a3.906 3.906 0 0 1-3.907 3.906h-5.956l-4.786 4.188a1.531 1.531 0 0 1-2.539-1.154V18.75h-.781a3.907 3.907 0 0 1-3.907-3.906V7.03Zm3.906-2.343A2.344 2.344 0 0 0 3.125 7.03v7.813a2.343 2.343 0 0 0 2.344 2.344h2.343v4.528l5.176-4.529h6.543a2.343 2.343 0 0 0 2.344-2.343V7.03a2.344 2.344 0 0 0-2.344-2.343H5.47Z"
+                          fill="#65676B"
+                        />
+                      </svg>
+                    </span>
+                    Comment
+                  </button>
+                  <button
+                    class="chakra-button css-1mn1wbo"
+                    type="button"
+                  >
+                    <span
+                      class="chakra-button__icon css-1wh2kri"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        fill="none"
+                        focusable="false"
+                        height="25"
+                        width="25"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="m15.298 1.038 8.594 8.481c.144.143.144.462 0 .604l-8.594 8.482a.18.18 0 0 1-.045.035c-.006.003-.009.003-.01.003h-.008a.095.095 0 0 1-.026-.01c-.043-.022-.146-.108-.146-.33V12.381l-1.017.017c-1.93.031-3.642.192-5.087.566-1.447.373-2.689.977-3.603 1.94-1.833 1.93-1.999 4.884-.95 8.865C2.591 22.096 1 19.135 1 16.2c0-3.956 1.418-6.172 3.605-7.487 2.293-1.378 5.577-1.856 9.47-1.907l.988-.013V1.34c0-.22.103-.307.146-.33a.098.098 0 0 1 .027-.01h.008s.003 0 .01.004a.186.186 0 0 1 .044.034ZM4.479 24.053v-.001.001Z"
+                          fill="#fff"
+                          stroke="#65676B"
+                          stroke-width="2"
+                        />
+                      </svg>
+                    </span>
+                    Share
+                  </button>
+                </div>
+                <hr
+                  aria-orientation="horizontal"
+                  class="chakra-divider css-1upb9tn"
+                />
+              </div>
+              <div
+                class="chakra-stack css-1684bks"
+              >
+                <div
+                  class="css-i5q2k0"
+                >
+                  <span
+                    class="chakra-avatar css-1ruhx4w"
+                  >
+                    <svg
+                      aria-label=" avatar"
+                      class="chakra-avatar__svg css-16ite8i"
+                      role="img"
+                      viewBox="0 0 128 128"
+                    >
+                      <path
+                        d="M103,102.1388 C93.094,111.92 79.3504,118 64.1638,118 C48.8056,118 34.9294,111.768 25,101.7892 L25,95.2 C25,86.8096 31.981,80 40.6,80 L87.4,80 C96.019,80 103,86.8096 103,95.2 L103,102.1388 Z"
+                        fill="currentColor"
+                      />
+                      <path
+                        d="M63.9961647,24 C51.2938136,24 41,34.2938136 41,46.9961647 C41,59.7061864 51.2938136,70 63.9961647,70 C76.6985159,70 87,59.7061864 87,46.9961647 C87,34.2938136 76.6985159,24 63.9961647,24"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </span>
+                  <div
+                    class="css-0"
+                  >
+                    <div
+                      class="css-6s5wms"
+                    >
+                      <p
+                        class="chakra-text css-10ircq3"
+                      >
+                        Pam
+                      </p>
+                      <p
+                        class="chakra-text css-0"
+                      >
+                        Comment1
+                      </p>
+                    </div>
+                    <div
+                      class="css-x1sij0"
+                    >
+                      <button
+                        class="chakra-button css-xfesjo"
+                        type="button"
+                      >
+                        like
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <footer
+              class="chakra-modal__footer css-192qrng"
+            >
+              <form
+                class="css-1b8tsty"
+              >
+                <span
+                  class="chakra-avatar css-1ruhx4w"
+                >
+                  <svg
+                    aria-label=" avatar"
+                    class="chakra-avatar__svg css-16ite8i"
+                    role="img"
+                    viewBox="0 0 128 128"
+                  >
+                    <path
+                      d="M103,102.1388 C93.094,111.92 79.3504,118 64.1638,118 C48.8056,118 34.9294,111.768 25,101.7892 L25,95.2 C25,86.8096 31.981,80 40.6,80 L87.4,80 C96.019,80 103,86.8096 103,95.2 L103,102.1388 Z"
+                      fill="currentColor"
+                    />
+                    <path
+                      d="M63.9961647,24 C51.2938136,24 41,34.2938136 41,46.9961647 C41,59.7061864 51.2938136,70 63.9961647,70 C76.6985159,70 87,59.7061864 87,46.9961647 C87,34.2938136 76.6985159,24 63.9961647,24"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </span>
+                <div
+                  class="css-907p52"
+                >
+                  <div
+                    class="chakra-form-control css-0"
+                    role="group"
+                  >
+                    <textarea
+                      class="chakra-textarea css-0"
+                      id="field-:rf:"
+                      name="content"
+                      placeholder="Write a comment..."
+                    />
+                  </div>
+                  <div
+                    class="css-11rmz0r"
+                  >
+                    <button
+                      aria-label="comment-icon"
+                      class="chakra-button css-p7mkev"
+                      data-testid="comment"
+                      type="submit"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        focusable="false"
+                        height="20"
+                        width="20"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="m2.721 2.051 15.355 7.566a.5.5 0 0 1 0 .897L2.72 18.08a.5.5 0 0 1-.704-.576l1.521-5.745a.5.5 0 0 1 .401-.365l6.881-1.147a.25.25 0 0 0 .188-.146l.018-.06a.25.25 0 0 0-.15-.272l-.056-.016L3.9 8.6a.5.5 0 0 1-.4-.365L2.016 2.628a.5.5 0 0 1 .704-.577z"
+                          fill="#0866FF"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </footer>
+          </section>
+        </div>
+      </div>
+      <div
+        aria-hidden="true"
+        data-aria-hidden="true"
+        data-focus-guard="true"
+        style="width: 1px; height: 0px; padding: 0px; overflow: hidden; position: fixed; top: 1px; left: 1px;"
+        tabindex="0"
+      />
+    </div>
+  </body>,
+  "container": <div
+    aria-hidden="true"
+    data-aria-hidden="true"
+  />,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

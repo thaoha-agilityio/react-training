@@ -127,6 +127,7 @@ const PostModal = memo(({ isOpen, onClose, comments, post, onLikePost }: PostMod
           <IconButton
             type='submit'
             aria-label='comment-icon'
+            data-testid='comment'
             variant='action'
             disabled={isDisableButton}
             isLoading={isLoading}

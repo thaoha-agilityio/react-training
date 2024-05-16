@@ -4,7 +4,7 @@ import { act, fireEvent, renderWithRouterAndQuery, waitFor } from '@/utils';
 import CreatePostModal from '../CreatePostModal';
 
 // Constants
-import { INPUT_PLACEHOLDER, STATUS } from '@/constants';
+import { INPUT_PLACEHOLDER, STATUS, SUCCESS_MESSAGES } from '@/constants';
 
 // Services
 import { api } from '@/services';
@@ -30,6 +30,11 @@ describe('CreatePostModal  Component', () => {
 
   it('should create the Employee with valid data', () => {
     jest.spyOn(api, 'postData').mockResolvedValue(POST_PAYLOAD);
+
+    const mockShowToast = jest.fn();
+    (jest.spyOn(hooks, 'useCustomToast') as jest.Mock).mockReturnValue({
+      showToast: mockShowToast,
+    });
     const { getByPlaceholderText, getByText } = renderWithRouterAndQuery(
       <CreatePostModal {...mockProps} />,
     );
@@ -39,8 +44,11 @@ describe('CreatePostModal  Component', () => {
 
     act(() => {
       fireEvent.change(content, { target: { values: POST_PAYLOAD.content } });
-
       fireEvent.click(submitBtn);
+    });
+
+    waitFor(() => {
+      expect(mockShowToast).toHaveBeenCalledWith(STATUS.SUCCESS, SUCCESS_MESSAGES.CREATED_POST);
     });
   });
 
@@ -59,8 +67,6 @@ describe('CreatePostModal  Component', () => {
 
     const content = getByPlaceholderText(INPUT_PLACEHOLDER.POST);
     const submitBtn = getByText('post');
-
-    jest.spyOn(api, 'postData').mockResolvedValue(POST_PAYLOAD);
 
     act(() => {
       fireEvent.change(content, { target: { values: POST_PAYLOAD.content } });

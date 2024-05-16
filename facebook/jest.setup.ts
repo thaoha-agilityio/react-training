@@ -11,3 +11,13 @@ jest.mock('@/hooks', () => ({
   __esModule: true,
   ...jest.requireActual('@/hooks'),
 }));
+
+// Mock react query
+jest.mock('@tanstack/react-query', () => ({
+  useQuery: jest.fn(),
+}));
+
+jest.mock('@/services/APIRequest', () => ({
+  __esModule: true,
+  ...jest.requireActual('@/services/APIRequest'),
+}));
