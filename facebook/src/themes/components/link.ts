@@ -10,7 +10,7 @@ export const Link = defineStyleConfig({
     },
 
     helper: {
-      color: 'text.helper',
+      color: 'text.label',
       fontWeight: 'light',
       fontSize: 'tiny',
       lineHeight: 'sm',

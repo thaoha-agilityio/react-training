@@ -22,7 +22,7 @@ const Sidebar = memo(({ userName }: SidebarProps) => (
 
           return (
             <Flex gap='15px' alignItems='center' key={label}>
-              <Link href={href}>
+              <Link href={href} aria-label='sidebar-link'>
                 <LinkIcon />
               </Link>
               <Text fontWeight='medium'>{label}</Text>
@@ -40,7 +40,7 @@ const Sidebar = memo(({ userName }: SidebarProps) => (
       <UnorderedList gap='5px' display='flex' flexWrap='wrap' styleType='none'>
         {FOOTER_SIDEBAR_LINKS.map(({ href, label }) => (
           <ListItem key={label}>
-            <Link href={href} variant='helper'>
+            <Link href={href} variant='helper' aria-label='footer-sidebar'>
               {label}
             </Link>
           </ListItem>

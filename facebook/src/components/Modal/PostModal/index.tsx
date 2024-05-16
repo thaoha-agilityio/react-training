@@ -101,8 +101,8 @@ const PostModal = memo(({ isOpen, onClose, comments, post, onLikePost }: PostMod
 
   // Render write comment
   const renderWriteComment = () => (
-    <Flex as='form' gap='10px' onSubmit={handleSubmit(onSubmit)} w='full'>
-      <Avatar src={DEFAULT_IMAGE} />
+    <Flex as='form' gap='10px' onSubmit={handleSubmit(onSubmit)} w='full' id='create-comment-form'>
+      <Avatar src={DEFAULT_IMAGE} name='avatar' />
       <Box pos='relative' w='full'>
         <Controller
           name='content'
