@@ -125,7 +125,7 @@ const CreatePostModal = memo(({ isOpen, onClose, userName }: CreatePostModalProp
 
   return (
     <CustomModal isOpen={isOpen} onClose={onClose} title='Create post'>
-      <Stack as='form' py='5px' px='20px' onSubmit={handleSubmit(onSubmit)}>
+      <Stack as='form' py='5px' px='20px' onSubmit={handleSubmit(onSubmit)} id='create-post-form'>
         <UserProfile userName={userName} />
 
         {/* content */}

@@ -93,7 +93,7 @@ const SignInForm = () => {
       px='25px'
       boxShadow='0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1)'
     >
-      <Stack as='form' onSubmit={handleSubmit(onSubmit)} spacing='12px'>
+      <Stack as='form' onSubmit={handleSubmit(onSubmit)} spacing='12px' id='sign-in-form'>
         <Controller
           name='email'
           control={control}
@@ -141,7 +141,9 @@ const SignInForm = () => {
       </Stack>
 
       <Stack spacing='15px' textAlign='center' mt='15px'>
-        <Link href='#'>Forgotten password?</Link>
+        <Link href='#' aria-label='forgotten-password'>
+          Forgotten password?
+        </Link>
         <Divider color='input.borderColor' />
         <Box>
           <Button variant='secondary' w='198px' h='48px' onClick={onOpen}>
