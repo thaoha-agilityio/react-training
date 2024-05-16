@@ -65,3 +65,16 @@ export const useLikePost = (postId: number) => {
     },
   });
 };
+
+export const useCommentPost = (postId: number) => {
+  const queryClient = useQueryClient();
+
+  return useMutation<IPost, AxiosError, number>({
+    mutationFn: async (totalComments: number) => {
+      return await api.patchData(`${ROUTES.POSTS}/${postId}`, { totalComments: totalComments + 1 });
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: QUERY_KEYS.POSTS });
+    },
+  });
+};
