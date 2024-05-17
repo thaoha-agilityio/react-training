@@ -55,7 +55,7 @@ exports[`Posts Component Should render Posts  Component correctly 1`] = `
             <p
               class="chakra-text css-0"
             >
-              0
+              1
                Likes
             </p>
             <p
@@ -203,7 +203,7 @@ exports[`Posts Component Should render Posts  Component correctly 1`] = `
           <p
             class="chakra-text css-0"
           >
-            0
+            1
              Likes
           </p>
           <p

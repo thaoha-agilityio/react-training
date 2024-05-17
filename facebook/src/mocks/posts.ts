@@ -11,7 +11,7 @@ export const POSTS: IPost[] = [
     authorId: 2,
     authorName: 'Pam',
     image: DEFAULT_IMAGE,
-    likes: [],
+    likes: [1],
     totalComments: 0,
   },
 ];
