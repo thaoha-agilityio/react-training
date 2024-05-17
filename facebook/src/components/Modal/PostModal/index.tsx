@@ -23,7 +23,7 @@ import { DEFAULT_IMAGE, INPUT_PLACEHOLDER, STATUS } from '@/constants';
 import { IComment, IPost } from '@/types';
 
 // Hooks
-import { useCreateComment, useCustomToast, useLikeComment } from '@/hooks';
+import { useCommentPost, useCreateComment, useCustomToast, useLikeComment } from '@/hooks';
 
 // Stores
 import { useAuthStore } from '@/stores';
@@ -58,18 +58,20 @@ const PostModal = memo(({ isOpen, onClose, comments, post, onLikePost }: PostMod
   });
 
   // Destructing object
-  const { authorName, id: postId } = post;
+  const { authorName, id: postId, totalComments } = post;
 
   // Auth store
   const user = useAuthStore((state) => state.user);
   const { id: userId } = user || {};
 
   const [selectedCommentId, setSelectedCommentId] = useState<number>();
+  const [totalCommentsPost, setTotalCommentPost] = useState(totalComments);
 
   // custom hooks
-  const { mutate: createComment, isLoading } = useCreateComment(post);
+  const { mutate: createComment, isLoading } = useCreateComment();
   const { showToast } = useCustomToast();
   const { mutate: updateComment } = useLikeComment(selectedCommentId ? selectedCommentId : -1);
+  const { mutate: commentPost } = useCommentPost(postId);
 
   // Handle Like Comment
   const handleLikeComment = useCallback(
@@ -80,8 +82,14 @@ const PostModal = memo(({ isOpen, onClose, comments, post, onLikePost }: PostMod
     [updateComment],
   );
 
-  //  Handle create success
-  const handleCreateSuccess = () => resetField('content');
+  //  Handle create comment success
+  const handleCreateSuccess = async () => {
+    // Update totalComments prop of post data
+    commentPost(totalCommentsPost);
+
+    // Reset field when you create a comment success
+    resetField('content');
+  };
 
   // Handle show toast error message
   const handleCreateError = (error: AxiosError) =>
@@ -90,6 +98,7 @@ const PostModal = memo(({ isOpen, onClose, comments, post, onLikePost }: PostMod
   // Handle add comment
   const onSubmit: SubmitHandler<CreateCommentFormData> = (data) => {
     const payload = { ...data, postId: postId, author: userId, likes: [] };
+    setTotalCommentPost((prev) => prev + 1);
 
     createComment(payload, {
       onSuccess: handleCreateSuccess,
