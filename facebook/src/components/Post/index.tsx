@@ -39,9 +39,7 @@ const Post = memo(({ post, isModal = false, onShowComment, onLikePost }: PostPro
     setIsLike(isUserLiked);
   }, [isUserLiked]);
 
-  const handleShowComment = () => {
-    onShowComment?.(post);
-  };
+  const handleShowComment = () => onShowComment?.(post);
 
   const handleLikePost = () => {
     const isNewLike = !isLike;

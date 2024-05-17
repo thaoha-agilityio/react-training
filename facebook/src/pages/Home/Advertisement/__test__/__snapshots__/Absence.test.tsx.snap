@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Absence  Component Should render Absence  Component correctly 1`] = `
+exports[`Advertisement  Component Should render Advertisement Component correctly 1`] = `
 {
   "asFragment": [Function],
   "baseElement": <body>
@@ -12,8 +12,9 @@ exports[`Absence  Component Should render Absence  Component correctly 1`] = `
           class="css-15v75y9"
         >
           <img
+            alt="ads"
             class="chakra-image css-rcyivw"
-            src="https://duan24h.net/wp-content/uploads/2023/10/pam-2.webp"
+            src="https://cdn.eva.vn/upload/1-2023/images/2023-03-13/con-gai-thieu-gia-nganh-may-mac-va-hotgirl-ha-thanh-la-the-luc-nhi-sieu-hot-lap-ky-luc-chua-tung-co--312664461_5569265269788525_490616098331863877_n-1678699659-789-width780height780.jpg"
           />
           <div
             class="css-0"
@@ -24,6 +25,7 @@ exports[`Absence  Component Should render Absence  Component correctly 1`] = `
               ICC Officials
             </p>
             <a
+              aria-label="officials"
               class="chakra-link css-0"
               href="#"
             >
@@ -35,7 +37,8 @@ exports[`Absence  Component Should render Absence  Component correctly 1`] = `
           class="css-15v75y9"
         >
           <img
-            class="chakra-image css-1pf988g"
+            alt="ads"
+            class="chakra-image css-rcyivw"
             src="https://kenh14cdn.com/203336854389633024/2023/9/22/photo-18-1695382154012318071367.jpg"
           />
           <div
@@ -47,10 +50,11 @@ exports[`Absence  Component Should render Absence  Component correctly 1`] = `
               Pamela Officials
             </p>
             <a
+              aria-label="officials"
               class="chakra-link css-0"
               href="#"
             >
-              @pamyeuoi_officials
+              @pamela_officials
             </a>
           </div>
         </div>
@@ -69,8 +73,9 @@ exports[`Absence  Component Should render Absence  Component correctly 1`] = `
         class="css-15v75y9"
       >
         <img
+          alt="ads"
           class="chakra-image css-rcyivw"
-          src="https://duan24h.net/wp-content/uploads/2023/10/pam-2.webp"
+          src="https://cdn.eva.vn/upload/1-2023/images/2023-03-13/con-gai-thieu-gia-nganh-may-mac-va-hotgirl-ha-thanh-la-the-luc-nhi-sieu-hot-lap-ky-luc-chua-tung-co--312664461_5569265269788525_490616098331863877_n-1678699659-789-width780height780.jpg"
         />
         <div
           class="css-0"
@@ -81,6 +86,7 @@ exports[`Absence  Component Should render Absence  Component correctly 1`] = `
             ICC Officials
           </p>
           <a
+            aria-label="officials"
             class="chakra-link css-0"
             href="#"
           >
@@ -92,7 +98,8 @@ exports[`Absence  Component Should render Absence  Component correctly 1`] = `
         class="css-15v75y9"
       >
         <img
-          class="chakra-image css-1pf988g"
+          alt="ads"
+          class="chakra-image css-rcyivw"
           src="https://kenh14cdn.com/203336854389633024/2023/9/22/photo-18-1695382154012318071367.jpg"
         />
         <div
@@ -104,10 +111,11 @@ exports[`Absence  Component Should render Absence  Component correctly 1`] = `
             Pamela Officials
           </p>
           <a
+            aria-label="officials"
             class="chakra-link css-0"
             href="#"
           >
-            @pamyeuoi_officials
+            @pamela_officials
           </a>
         </div>
       </div>

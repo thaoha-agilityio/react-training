@@ -25,6 +25,7 @@ module.exports = {
     '!src/helpers/testUtils.tsx',
     '!src/routers/**',
     '!**/mocks/**',
+    '!**/Skeleton/**',
     '!**/*.config.ts',
     '!**/node_modules/**',
     '!**/constants/**',

@@ -123,7 +123,7 @@ const SignUpFormModal = memo(({ isOpen, onClose }: SignUpFormProps) => {
   return (
     <CustomModal isOpen={isOpen} title='Sign Up' onClose={onClose}>
       <Box maxW='432px' borderRadius='md' py='20px' px='25px'>
-        <Stack as='form' onSubmit={handleSubmit(onSubmit)} spacing='12px'>
+        <Stack as='form' onSubmit={handleSubmit(onSubmit)} spacing='12px' id='sign-up-form'>
           {/* firstName */}
           <Controller
             name='firstName'
@@ -268,15 +268,15 @@ const SignUpFormModal = memo(({ isOpen, onClose }: SignUpFormProps) => {
 
           <Text variant='helper' fontSize='xs'>
             By clicking Sign Up, you agree to our
-            <Link fontSize='xs' href='#'>
+            <Link fontSize='xs' href='#' aria-label='terms'>
               &#160;Terms
             </Link>
             ,
-            <Link fontSize='xs' href='#'>
+            <Link fontSize='xs' href='#' aria-label='data-policy'>
               &#160;Data Policy
             </Link>
             &#160;and
-            <Link fontSize='xs' href='#'>
+            <Link fontSize='xs' href='#' aria-label='cookie-policy'>
               &#160;Cookie Policy
             </Link>
             . You may receive SMS notifications from us and can opt out at any time.
