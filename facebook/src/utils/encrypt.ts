@@ -6,7 +6,7 @@
 export const encryptAccessToken = (accessToken: string): string => {
   let encryptedAccessToken = '';
 
-  for (let i = 0; i < accessToken.length; i++) {
+  for (let i = 0; i < accessToken?.length; i++) {
     const encryptedCharCode = accessToken.charCodeAt(i) + 1;
 
     encryptedAccessToken += String.fromCharCode(encryptedCharCode);
