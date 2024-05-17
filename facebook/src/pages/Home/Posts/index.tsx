@@ -70,11 +70,11 @@ const Posts = () => {
         <Suspense fallback={<LoadingIndicator />}>
           <PostModal
             isOpen={isOpen}
+            isCommentLoading={isCommentLoading}
             post={selectedPost}
             comments={comments}
             onClose={onClose}
             onLikePost={handleLikePost}
-            isCommentLoading={isCommentLoading}
           />
         </Suspense>
       )}
