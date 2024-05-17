@@ -6,7 +6,15 @@ const Advertisement = () => (
   <Stack spacing='15px' my='16px' p='10px' w='300px'>
     {ADS.map(({ textLink, label, img }) => (
       <Flex alignItems='center' gap='15px' key={label}>
-        <Image src={img} w='131px' h='131px' borderRadius='md' alt='ads' />
+        <Image
+          src={img}
+          w='131px'
+          h='131px'
+          borderRadius='md'
+          alt='ads'
+          objectFit='cover'
+          fetchPriority='low'
+        />
         <Box>
           <Text>{label}</Text>
 
