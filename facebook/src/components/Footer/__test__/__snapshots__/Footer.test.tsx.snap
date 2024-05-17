@@ -1,0 +1,988 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer Component Should render Footer Component correctly 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="chakra-stack css-8g8ihq"
+      >
+        <div
+          class="chakra-container css-0"
+        >
+          <ul
+            class="css-gh8rw2"
+            role="list"
+          >
+            <li
+              class="css-0"
+            >
+              <a
+                aria-label="location-link"
+                class="chakra-link css-0"
+                href="#"
+              >
+                English (UK)
+              </a>
+            </li>
+            <li
+              class="css-0"
+            >
+              <a
+                aria-label="location-link"
+                class="chakra-link css-0"
+                href="#"
+              >
+                Tiếng Việt
+              </a>
+            </li>
+            <li
+              class="css-0"
+            >
+              <a
+                aria-label="location-link"
+                class="chakra-link css-0"
+                href="#"
+              >
+                中文(台灣
+              </a>
+            </li>
+            <li
+              class="css-0"
+            >
+              <a
+                aria-label="location-link"
+                class="chakra-link css-0"
+                href="#"
+              >
+                한국어
+              </a>
+            </li>
+            <li
+              class="css-0"
+            >
+              <a
+                aria-label="location-link"
+                class="chakra-link css-0"
+                href="#"
+              >
+                日本語
+              </a>
+            </li>
+            <li
+              class="css-0"
+            >
+              <a
+                aria-label="location-link"
+                class="chakra-link css-0"
+                href="#"
+              >
+                Français (France)
+              </a>
+            </li>
+            <li
+              class="css-0"
+            >
+              <a
+                aria-label="location-link"
+                class="chakra-link css-0"
+                href="#"
+              >
+                ภาษาไทย
+              </a>
+            </li>
+            <li
+              class="css-0"
+            >
+              <a
+                aria-label="location-link"
+                class="chakra-link css-0"
+                href="#"
+              >
+                Español
+              </a>
+            </li>
+            <li
+              class="css-0"
+            >
+              <a
+                aria-label="location-link"
+                class="chakra-link css-0"
+                href="#"
+              >
+                Português (Brasil)
+              </a>
+            </li>
+            <li
+              class="css-0"
+            >
+              <a
+                aria-label="location-link"
+                class="chakra-link css-0"
+                href="#"
+              >
+                Deutsch
+              </a>
+            </li>
+            <li
+              class="css-0"
+            >
+              <a
+                aria-label="location-link"
+                class="chakra-link css-0"
+                href="#"
+              >
+                Italiano
+              </a>
+            </li>
+          </ul>
+          <hr
+            aria-orientation="horizontal"
+            class="chakra-divider css-1upb9tn"
+          />
+          <ul
+            class="css-1aatv2w"
+            role="list"
+          >
+            <li
+              class="css-12z0wuy"
+            >
+              <a
+                aria-label="footer-link"
+                class="chakra-link css-0"
+                href="#"
+              >
+                Sign Up
+              </a>
+            </li>
+            <li
+              class="css-12z0wuy"
+            >
+              <a
+                aria-label="footer-link"
+                class="chakra-link css-0"
+                href="#"
+              >
+                Log in
+              </a>
+            </li>
+            <li
+              class="css-12z0wuy"
+            >
+              <a
+                aria-label="footer-link"
+                class="chakra-link css-0"
+                href="#"
+              >
+                Messenger
+              </a>
+            </li>
+            <li
+              class="css-12z0wuy"
+            >
+              <a
+                aria-label="footer-link"
+                class="chakra-link css-0"
+                href="#"
+              >
+                Facebook Lite
+              </a>
+            </li>
+            <li
+              class="css-12z0wuy"
+            >
+              <a
+                aria-label="footer-link"
+                class="chakra-link css-0"
+                href="#"
+              >
+                Video
+              </a>
+            </li>
+            <li
+              class="css-12z0wuy"
+            >
+              <a
+                aria-label="footer-link"
+                class="chakra-link css-0"
+                href="#"
+              >
+                Places
+              </a>
+            </li>
+            <li
+              class="css-12z0wuy"
+            >
+              <a
+                aria-label="footer-link"
+                class="chakra-link css-0"
+                href="#"
+              >
+                Games
+              </a>
+            </li>
+            <li
+              class="css-12z0wuy"
+            >
+              <a
+                aria-label="footer-link"
+                class="chakra-link css-0"
+                href="#"
+              >
+                Marketplace
+              </a>
+            </li>
+            <li
+              class="css-12z0wuy"
+            >
+              <a
+                aria-label="footer-link"
+                class="chakra-link css-0"
+                href="#"
+              >
+                Meta Pay
+              </a>
+            </li>
+            <li
+              class="css-12z0wuy"
+            >
+              <a
+                aria-label="footer-link"
+                class="chakra-link css-0"
+                href="#"
+              >
+                Meta Store
+              </a>
+            </li>
+            <li
+              class="css-12z0wuy"
+            >
+              <a
+                aria-label="footer-link"
+                class="chakra-link css-0"
+                href="#"
+              >
+                Meta Quest
+              </a>
+            </li>
+            <li
+              class="css-12z0wuy"
+            >
+              <a
+                aria-label="footer-link"
+                class="chakra-link css-0"
+                href="#"
+              >
+                Meta AI
+              </a>
+            </li>
+            <li
+              class="css-12z0wuy"
+            >
+              <a
+                aria-label="footer-link"
+                class="chakra-link css-0"
+                href="#"
+              >
+                Instagram
+              </a>
+            </li>
+            <li
+              class="css-12z0wuy"
+            >
+              <a
+                aria-label="footer-link"
+                class="chakra-link css-0"
+                href="#"
+              >
+                Threads
+              </a>
+            </li>
+            <li
+              class="css-12z0wuy"
+            >
+              <a
+                aria-label="footer-link"
+                class="chakra-link css-0"
+                href="#"
+              >
+                Fundraisers
+              </a>
+            </li>
+            <li
+              class="css-12z0wuy"
+            >
+              <a
+                aria-label="footer-link"
+                class="chakra-link css-0"
+                href="#"
+              >
+                Services
+              </a>
+            </li>
+            <li
+              class="css-12z0wuy"
+            >
+              <a
+                aria-label="footer-link"
+                class="chakra-link css-0"
+                href="#"
+              >
+                Voting Information Centre
+              </a>
+            </li>
+            <li
+              class="css-12z0wuy"
+            >
+              <a
+                aria-label="footer-link"
+                class="chakra-link css-0"
+                href="#"
+              >
+                Privacy Policy
+              </a>
+            </li>
+            <li
+              class="css-12z0wuy"
+            >
+              <a
+                aria-label="footer-link"
+                class="chakra-link css-0"
+                href="#"
+              >
+                Privacy Centre
+              </a>
+            </li>
+            <li
+              class="css-12z0wuy"
+            >
+              <a
+                aria-label="footer-link"
+                class="chakra-link css-0"
+                href="#"
+              >
+                Groups
+              </a>
+            </li>
+            <li
+              class="css-12z0wuy"
+            >
+              <a
+                aria-label="footer-link"
+                class="chakra-link css-0"
+                href="#"
+              >
+                About
+              </a>
+            </li>
+            <li
+              class="css-12z0wuy"
+            >
+              <a
+                aria-label="footer-link"
+                class="chakra-link css-0"
+                href="#"
+              >
+                Create ad
+              </a>
+            </li>
+            <li
+              class="css-12z0wuy"
+            >
+              <a
+                aria-label="footer-link"
+                class="chakra-link css-0"
+                href="#"
+              >
+                Create Page
+              </a>
+            </li>
+            <li
+              class="css-12z0wuy"
+            >
+              <a
+                aria-label="footer-link"
+                class="chakra-link css-0"
+                href="#"
+              >
+                Developers
+              </a>
+            </li>
+            <li
+              class="css-12z0wuy"
+            >
+              <a
+                aria-label="footer-link"
+                class="chakra-link css-0"
+                href="#"
+              >
+                Careers
+              </a>
+            </li>
+            <li
+              class="css-12z0wuy"
+            >
+              <a
+                aria-label="footer-link"
+                class="chakra-link css-0"
+                href="#"
+              >
+                Cookies
+              </a>
+            </li>
+            <li
+              class="css-12z0wuy"
+            >
+              <a
+                aria-label="footer-link"
+                class="chakra-link css-0"
+                href="#"
+              >
+                Terms
+              </a>
+            </li>
+            <li
+              class="css-12z0wuy"
+            >
+              <a
+                aria-label="footer-link"
+                class="chakra-link css-0"
+                href="#"
+              >
+                Help
+              </a>
+            </li>
+            <li
+              class="css-12z0wuy"
+            >
+              <a
+                aria-label="footer-link"
+                class="chakra-link css-0"
+                href="#"
+              >
+                Contact uploading and non-usersSettings
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="chakra-stack css-8g8ihq"
+    >
+      <div
+        class="chakra-container css-0"
+      >
+        <ul
+          class="css-gh8rw2"
+          role="list"
+        >
+          <li
+            class="css-0"
+          >
+            <a
+              aria-label="location-link"
+              class="chakra-link css-0"
+              href="#"
+            >
+              English (UK)
+            </a>
+          </li>
+          <li
+            class="css-0"
+          >
+            <a
+              aria-label="location-link"
+              class="chakra-link css-0"
+              href="#"
+            >
+              Tiếng Việt
+            </a>
+          </li>
+          <li
+            class="css-0"
+          >
+            <a
+              aria-label="location-link"
+              class="chakra-link css-0"
+              href="#"
+            >
+              中文(台灣
+            </a>
+          </li>
+          <li
+            class="css-0"
+          >
+            <a
+              aria-label="location-link"
+              class="chakra-link css-0"
+              href="#"
+            >
+              한국어
+            </a>
+          </li>
+          <li
+            class="css-0"
+          >
+            <a
+              aria-label="location-link"
+              class="chakra-link css-0"
+              href="#"
+            >
+              日本語
+            </a>
+          </li>
+          <li
+            class="css-0"
+          >
+            <a
+              aria-label="location-link"
+              class="chakra-link css-0"
+              href="#"
+            >
+              Français (France)
+            </a>
+          </li>
+          <li
+            class="css-0"
+          >
+            <a
+              aria-label="location-link"
+              class="chakra-link css-0"
+              href="#"
+            >
+              ภาษาไทย
+            </a>
+          </li>
+          <li
+            class="css-0"
+          >
+            <a
+              aria-label="location-link"
+              class="chakra-link css-0"
+              href="#"
+            >
+              Español
+            </a>
+          </li>
+          <li
+            class="css-0"
+          >
+            <a
+              aria-label="location-link"
+              class="chakra-link css-0"
+              href="#"
+            >
+              Português (Brasil)
+            </a>
+          </li>
+          <li
+            class="css-0"
+          >
+            <a
+              aria-label="location-link"
+              class="chakra-link css-0"
+              href="#"
+            >
+              Deutsch
+            </a>
+          </li>
+          <li
+            class="css-0"
+          >
+            <a
+              aria-label="location-link"
+              class="chakra-link css-0"
+              href="#"
+            >
+              Italiano
+            </a>
+          </li>
+        </ul>
+        <hr
+          aria-orientation="horizontal"
+          class="chakra-divider css-1upb9tn"
+        />
+        <ul
+          class="css-1aatv2w"
+          role="list"
+        >
+          <li
+            class="css-12z0wuy"
+          >
+            <a
+              aria-label="footer-link"
+              class="chakra-link css-0"
+              href="#"
+            >
+              Sign Up
+            </a>
+          </li>
+          <li
+            class="css-12z0wuy"
+          >
+            <a
+              aria-label="footer-link"
+              class="chakra-link css-0"
+              href="#"
+            >
+              Log in
+            </a>
+          </li>
+          <li
+            class="css-12z0wuy"
+          >
+            <a
+              aria-label="footer-link"
+              class="chakra-link css-0"
+              href="#"
+            >
+              Messenger
+            </a>
+          </li>
+          <li
+            class="css-12z0wuy"
+          >
+            <a
+              aria-label="footer-link"
+              class="chakra-link css-0"
+              href="#"
+            >
+              Facebook Lite
+            </a>
+          </li>
+          <li
+            class="css-12z0wuy"
+          >
+            <a
+              aria-label="footer-link"
+              class="chakra-link css-0"
+              href="#"
+            >
+              Video
+            </a>
+          </li>
+          <li
+            class="css-12z0wuy"
+          >
+            <a
+              aria-label="footer-link"
+              class="chakra-link css-0"
+              href="#"
+            >
+              Places
+            </a>
+          </li>
+          <li
+            class="css-12z0wuy"
+          >
+            <a
+              aria-label="footer-link"
+              class="chakra-link css-0"
+              href="#"
+            >
+              Games
+            </a>
+          </li>
+          <li
+            class="css-12z0wuy"
+          >
+            <a
+              aria-label="footer-link"
+              class="chakra-link css-0"
+              href="#"
+            >
+              Marketplace
+            </a>
+          </li>
+          <li
+            class="css-12z0wuy"
+          >
+            <a
+              aria-label="footer-link"
+              class="chakra-link css-0"
+              href="#"
+            >
+              Meta Pay
+            </a>
+          </li>
+          <li
+            class="css-12z0wuy"
+          >
+            <a
+              aria-label="footer-link"
+              class="chakra-link css-0"
+              href="#"
+            >
+              Meta Store
+            </a>
+          </li>
+          <li
+            class="css-12z0wuy"
+          >
+            <a
+              aria-label="footer-link"
+              class="chakra-link css-0"
+              href="#"
+            >
+              Meta Quest
+            </a>
+          </li>
+          <li
+            class="css-12z0wuy"
+          >
+            <a
+              aria-label="footer-link"
+              class="chakra-link css-0"
+              href="#"
+            >
+              Meta AI
+            </a>
+          </li>
+          <li
+            class="css-12z0wuy"
+          >
+            <a
+              aria-label="footer-link"
+              class="chakra-link css-0"
+              href="#"
+            >
+              Instagram
+            </a>
+          </li>
+          <li
+            class="css-12z0wuy"
+          >
+            <a
+              aria-label="footer-link"
+              class="chakra-link css-0"
+              href="#"
+            >
+              Threads
+            </a>
+          </li>
+          <li
+            class="css-12z0wuy"
+          >
+            <a
+              aria-label="footer-link"
+              class="chakra-link css-0"
+              href="#"
+            >
+              Fundraisers
+            </a>
+          </li>
+          <li
+            class="css-12z0wuy"
+          >
+            <a
+              aria-label="footer-link"
+              class="chakra-link css-0"
+              href="#"
+            >
+              Services
+            </a>
+          </li>
+          <li
+            class="css-12z0wuy"
+          >
+            <a
+              aria-label="footer-link"
+              class="chakra-link css-0"
+              href="#"
+            >
+              Voting Information Centre
+            </a>
+          </li>
+          <li
+            class="css-12z0wuy"
+          >
+            <a
+              aria-label="footer-link"
+              class="chakra-link css-0"
+              href="#"
+            >
+              Privacy Policy
+            </a>
+          </li>
+          <li
+            class="css-12z0wuy"
+          >
+            <a
+              aria-label="footer-link"
+              class="chakra-link css-0"
+              href="#"
+            >
+              Privacy Centre
+            </a>
+          </li>
+          <li
+            class="css-12z0wuy"
+          >
+            <a
+              aria-label="footer-link"
+              class="chakra-link css-0"
+              href="#"
+            >
+              Groups
+            </a>
+          </li>
+          <li
+            class="css-12z0wuy"
+          >
+            <a
+              aria-label="footer-link"
+              class="chakra-link css-0"
+              href="#"
+            >
+              About
+            </a>
+          </li>
+          <li
+            class="css-12z0wuy"
+          >
+            <a
+              aria-label="footer-link"
+              class="chakra-link css-0"
+              href="#"
+            >
+              Create ad
+            </a>
+          </li>
+          <li
+            class="css-12z0wuy"
+          >
+            <a
+              aria-label="footer-link"
+              class="chakra-link css-0"
+              href="#"
+            >
+              Create Page
+            </a>
+          </li>
+          <li
+            class="css-12z0wuy"
+          >
+            <a
+              aria-label="footer-link"
+              class="chakra-link css-0"
+              href="#"
+            >
+              Developers
+            </a>
+          </li>
+          <li
+            class="css-12z0wuy"
+          >
+            <a
+              aria-label="footer-link"
+              class="chakra-link css-0"
+              href="#"
+            >
+              Careers
+            </a>
+          </li>
+          <li
+            class="css-12z0wuy"
+          >
+            <a
+              aria-label="footer-link"
+              class="chakra-link css-0"
+              href="#"
+            >
+              Cookies
+            </a>
+          </li>
+          <li
+            class="css-12z0wuy"
+          >
+            <a
+              aria-label="footer-link"
+              class="chakra-link css-0"
+              href="#"
+            >
+              Terms
+            </a>
+          </li>
+          <li
+            class="css-12z0wuy"
+          >
+            <a
+              aria-label="footer-link"
+              class="chakra-link css-0"
+              href="#"
+            >
+              Help
+            </a>
+          </li>
+          <li
+            class="css-12z0wuy"
+          >
+            <a
+              aria-label="footer-link"
+              class="chakra-link css-0"
+              href="#"
+            >
+              Contact uploading and non-usersSettings
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
