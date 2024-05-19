@@ -6,6 +6,6 @@ export const COMMENTS: IComment[] = [
     author: 1,
     postId: 2,
     content: 'Comment1',
-    likes: [],
+    likes: [2],
   },
 ];

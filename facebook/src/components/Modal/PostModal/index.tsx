@@ -1,4 +1,4 @@
-import { memo, useCallback, useState } from 'react';
+import { memo, useCallback, useState, KeyboardEvent } from 'react';
 import { AxiosError } from 'axios';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import {
@@ -108,6 +108,12 @@ const PostModal = memo(({ isOpen, onClose, comments, post, onLikePost }: PostMod
 
   const isDisableButton = !isDirty || isLoading;
 
+  const handleKeyDown = (e: KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === 'Enter') {
+      handleSubmit(onSubmit)();
+    }
+  };
+
   // Render write comment
   const renderWriteComment = () => (
     <Flex as='form' gap='10px' onSubmit={handleSubmit(onSubmit)} w='full' id='create-comment-form'>
@@ -126,6 +132,7 @@ const PostModal = memo(({ isOpen, onClose, comments, post, onLikePost }: PostMod
                   const value = e.target?.value;
                   onChange(value);
                 }}
+                onKeyDown={handleKeyDown}
                 {...rest}
               />
               {error?.message && <FormErrorMessage>{error.message}</FormErrorMessage>}
