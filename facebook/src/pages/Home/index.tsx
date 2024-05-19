@@ -6,8 +6,8 @@ import CreatePost from './CreatePost';
 import Advertisement from './Advertisement';
 
 const Home = () => (
-  <Flex w='full'>
-    <Container overflowY='auto'>
+  <Flex w='full' overflowY='auto'>
+    <Container>
       <CreatePost />
       <Posts />
     </Container>

@@ -37,7 +37,7 @@ exports[`CreatePostModal  Component Should render CreatePostModal  Component cor
             aria-describedby="chakra-modal--body-:r0:"
             aria-labelledby="chakra-modal--header-:r0:"
             aria-modal="true"
-            class="chakra-modal__content css-1fc6ndu"
+            class="chakra-modal__content css-1xczjnm"
             id="chakra-modal-:r0:"
             role="dialog"
             style="opacity: 0; transform: scale(0.95) translateZ(0);"
@@ -93,7 +93,7 @@ exports[`CreatePostModal  Component Should render CreatePostModal  Component cor
                     </div>
                   </span>
                   <p
-                    class="chakra-text css-0"
+                    class="chakra-text css-10ircq3"
                   >
                     Pam
                   </p>

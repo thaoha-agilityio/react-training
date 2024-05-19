@@ -12,7 +12,7 @@ interface SidebarProps {
 }
 
 const Sidebar = memo(({ userName }: SidebarProps) => (
-  <Stack minH={`calc(100vh - 71px)`} w='300px' bg='secondary' p='20px'>
+  <Stack minH={`calc(100vh - 76px)`} w='300px' bg='secondary' p='20px'>
     <Stack spacing='17px'>
       <UserProfile userName={userName} />
       <Stack spacing='15px'>
