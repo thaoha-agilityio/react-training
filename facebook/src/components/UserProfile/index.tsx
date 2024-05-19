@@ -10,7 +10,7 @@ interface UserProfileProps {
 const UserProfile = memo(({ userName }: UserProfileProps) => (
   <Flex gap='10px' alignItems='center'>
     <Avatar src={DEFAULT_IMAGE} name='avatar' />
-    <Text>{userName}</Text>
+    <Text fontWeight='semibold'>{userName}</Text>
   </Flex>
 ));
 

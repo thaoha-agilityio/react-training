@@ -6,7 +6,7 @@ exports[`Sidebar Component Should render Sidebar Component correctly 1`] = `
   "baseElement": <body>
     <div>
       <div
-        class="chakra-stack css-x4tynl"
+        class="chakra-stack css-1677m3k"
       >
         <div
           class="chakra-stack css-1lwomm1"
@@ -26,7 +26,7 @@ exports[`Sidebar Component Should render Sidebar Component correctly 1`] = `
               </div>
             </span>
             <p
-              class="chakra-text css-0"
+              class="chakra-text css-10ircq3"
             >
               Pam
             </p>
@@ -365,7 +365,7 @@ exports[`Sidebar Component Should render Sidebar Component correctly 1`] = `
   </body>,
   "container": <div>
     <div
-      class="chakra-stack css-x4tynl"
+      class="chakra-stack css-1677m3k"
     >
       <div
         class="chakra-stack css-1lwomm1"
@@ -385,7 +385,7 @@ exports[`Sidebar Component Should render Sidebar Component correctly 1`] = `
             </div>
           </span>
           <p
-            class="chakra-text css-0"
+            class="chakra-text css-10ircq3"
           >
             Pam
           </p>
