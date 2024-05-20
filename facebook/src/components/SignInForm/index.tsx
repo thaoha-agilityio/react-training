@@ -6,7 +6,7 @@ import { Controller, useForm, SubmitHandler } from 'react-hook-form';
 import { ERROR_MESSAGES, INPUT_PLACEHOLDER, REGEX, STATUS } from '@/constants';
 
 // Components
-import { Input, LoadingIndicator } from '@/components';
+import { Input, LoadingIndicator, PasswordInput } from '@/components';
 
 // Hooks
 import { useAuthSignIn, useCustomToast } from '@/hooks';
@@ -120,10 +120,7 @@ const SignInForm = () => {
           rules={validationRule.password}
           render={({ field: { onChange, ...rest }, fieldState: { error } }) => (
             <FormControl isInvalid={!!error}>
-              <Input
-                type='password'
-                placeholder={INPUT_PLACEHOLDER.PASSWORD}
-                errorMessage={error?.message}
+              <PasswordInput
                 onChange={(e) => {
                   const value = e.target?.value;
                   onChange(value);
