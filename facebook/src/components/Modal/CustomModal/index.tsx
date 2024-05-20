@@ -23,7 +23,7 @@ const CustomModal = memo(
   ({ isOpen, children, childrenModalFooter, title, onClose, size = 'md' }: CustomModalProps) => (
     <Modal isOpen={isOpen} onClose={onClose} size={size} scrollBehavior='inside'>
       <ModalOverlay />
-      <ModalContent h={childrenModalFooter ? '100vh' : 'auto'}>
+      <ModalContent maxH={childrenModalFooter ? '100vh' : 'auto'}>
         <ModalHeader>{title}</ModalHeader>
         <ModalCloseButton />
         <Divider color='input.borderColor' w='100%' />
