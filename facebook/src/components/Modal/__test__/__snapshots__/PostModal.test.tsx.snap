@@ -232,6 +232,11 @@ exports[`PostModal Component Should render SignUpFormModal Component correctly 1
                     <div
                       class="css-x1sij0"
                     >
+                      <p
+                        class="chakra-text css-kb9q25"
+                      >
+                        1
+                      </p>
                       <button
                         class="chakra-button css-xfesjo"
                         type="button"
@@ -603,6 +608,11 @@ exports[`PostModal Component Should render SignUpFormModal Component correctly 2
                     <div
                       class="css-x1sij0"
                     >
+                      <p
+                        class="chakra-text css-kb9q25"
+                      >
+                        1
+                      </p>
                       <button
                         class="chakra-button css-xfesjo"
                         type="button"
