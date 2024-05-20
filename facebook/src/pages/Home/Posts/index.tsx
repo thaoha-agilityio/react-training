@@ -22,7 +22,9 @@ const Posts = () => {
 
   // Custom hooks
   const { data: posts, isLoading: isPostLoading } = useGetPostsByAuthor();
-  const { data: comments } = useGetCommentByPostId(selectedPost ? selectedPost.id : -1);
+  const { data: comments, isLoading: isCommentLoading } = useGetCommentByPostId(
+    selectedPost ? selectedPost.id : -1,
+  );
 
   // Update post data when user click like button
   const { mutate: updatePost } = useLikePost(selectedPostId ? selectedPostId : -1);
@@ -68,6 +70,7 @@ const Posts = () => {
         <Suspense fallback={<LoadingIndicator />}>
           <PostModal
             isOpen={isOpen}
+            isCommentLoading={isCommentLoading}
             post={selectedPost}
             comments={comments}
             onClose={onClose}

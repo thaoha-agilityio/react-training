@@ -8,6 +8,7 @@ import * as hooks from '@/hooks';
 
 const mockProps = {
   isOpen: true,
+  isCommentLoading: false,
   post: POSTS[0],
   comments: COMMENTS,
   onClose: jest.fn(),
