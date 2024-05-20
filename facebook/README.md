@@ -85,5 +85,5 @@
 
 ## Account to test app
 
-- email: portalstester+14@asnet.com.vn
-- password: Tester@123
+- email: portalstester+17@asnet.com.vn
+- password: Portalstester@123
