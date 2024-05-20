@@ -10,7 +10,6 @@
 - Apply everything I have learned into practice.
 - Create a diagram analytics database
 - Apply private router, public router
-- Apply HOC
 - Use JSON server to build API
 - Apply normalizing state shape
 - Can use LocalStorage and understand hydrate data from localStorage in Authentication
