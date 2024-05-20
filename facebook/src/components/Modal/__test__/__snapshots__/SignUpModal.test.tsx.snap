@@ -37,7 +37,7 @@ exports[`SignUpFormModal Component Should render SignUpFormModal Component corre
             aria-describedby="chakra-modal--body-:r0:"
             aria-labelledby="chakra-modal--header-:r0:"
             aria-modal="true"
-            class="chakra-modal__content css-1fc6ndu"
+            class="chakra-modal__content css-1xczjnm"
             id="chakra-modal-:r0:"
             role="dialog"
             style="opacity: 0; transform: scale(0.95) translateZ(0);"
@@ -121,14 +121,29 @@ exports[`SignUpFormModal Component Should render SignUpFormModal Component corre
                     class="chakra-form-control css-0"
                     role="group"
                   >
-                    <input
-                      class="chakra-input css-0"
-                      id="field-:r6:"
-                      name="password"
-                      placeholder="Password"
-                      type="password"
-                      value=""
-                    />
+                    <div
+                      class="chakra-input__group css-bx0blc"
+                      data-group="true"
+                    >
+                      <input
+                        class="chakra-input css-1n0hj84"
+                        id="field-:r6:"
+                        name="password"
+                        placeholder="Password"
+                        type="password"
+                        value=""
+                      />
+                      <div
+                        class="chakra-input__right-element css-84fob4"
+                      >
+                        <button
+                          class="chakra-button css-4xx2wk"
+                          type="button"
+                        >
+                          Show
+                        </button>
+                      </div>
+                    </div>
                   </div>
                   <div
                     class="chakra-form-control css-0"

@@ -20,7 +20,7 @@ exports[`UserProfile  Component Should render UserProfile  Component correctly 1
           </div>
         </span>
         <p
-          class="chakra-text css-0"
+          class="chakra-text css-10ircq3"
         >
           Pam
         </p>
@@ -43,7 +43,7 @@ exports[`UserProfile  Component Should render UserProfile  Component correctly 1
         </div>
       </span>
       <p
-        class="chakra-text css-0"
+        class="chakra-text css-10ircq3"
       >
         Pam
       </p>

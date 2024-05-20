@@ -24,7 +24,7 @@ import {
 } from '@/constants';
 
 // Components
-import { Input, CustomModal } from '@/components';
+import { Input, CustomModal, PasswordInput } from '@/components';
 
 // Hooks
 import { useAuthSignUp, useCustomToast } from '@/hooks';
@@ -194,10 +194,7 @@ const SignUpFormModal = memo(({ isOpen, onClose }: SignUpFormProps) => {
             rules={validationRule.password}
             render={({ field: { onChange, ...rest }, fieldState: { error } }) => (
               <FormControl isInvalid={!!error}>
-                <Input
-                  type='password'
-                  placeholder={INPUT_PLACEHOLDER.PASSWORD}
-                  errorMessage={error?.message}
+                <PasswordInput
                   onChange={(e) => {
                     const value = e.target?.value;
                     onChange(value);

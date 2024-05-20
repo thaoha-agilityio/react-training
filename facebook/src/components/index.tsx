@@ -6,6 +6,7 @@ export { default as Input } from './Input';
 export { default as LoadingIndicator } from './LoadingIndicator';
 export { default as Logout } from './Logout';
 export { default as SignInForm } from './SignInForm';
+export { default as PasswordInput } from './PasswordInput';
 export { default as Post } from './Post';
 export { default as UserProfile } from './UserProfile';
 export { default as Sidebar } from './Sidebar';
