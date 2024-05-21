@@ -37,7 +37,7 @@ exports[`SignUpFormModal Component Should render SignUpFormModal Component corre
             aria-describedby="chakra-modal--body-:r0:"
             aria-labelledby="chakra-modal--header-:r0:"
             aria-modal="true"
-            class="chakra-modal__content css-2lisl7"
+            class="chakra-modal__content css-1xczjnm"
             id="chakra-modal-:r0:"
             role="dialog"
             style="opacity: 0; transform: scale(0.95) translateZ(0);"
