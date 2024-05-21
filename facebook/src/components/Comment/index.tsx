@@ -10,16 +10,16 @@ import { filterItem } from '@/utils';
 interface CommentProps {
   userName: string;
   content: string;
-  userId: number;
   commentId: number;
+  currentUser: number;
   likes: number[];
   onLikeComment: (likes: number[], id: number) => void;
 }
 
 const Comment = memo(
-  ({ userName, content, userId, likes, commentId, onLikeComment }: CommentProps) => {
+  ({ userName, content, likes, currentUser, commentId, onLikeComment }: CommentProps) => {
     // Check if the user has liked the comment or not
-    const isUserLiked = likes.includes(userId);
+    const isUserLiked = likes.includes(currentUser);
     const [isLike, setIsLike] = useState<boolean>(isUserLiked);
 
     useEffect(() => {
@@ -31,7 +31,7 @@ const Comment = memo(
       setIsLike(newIsLike);
 
       // If isLike is true then add userId into likes list else remove useId from likes list
-      const userIds = newIsLike ? [...likes, userId] : filterItem(likes, userId);
+      const userIds = newIsLike ? [...likes, currentUser] : filterItem(likes, currentUser);
       onLikeComment(userIds, commentId);
     };
 

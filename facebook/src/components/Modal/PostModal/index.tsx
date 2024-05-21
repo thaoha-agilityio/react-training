@@ -64,7 +64,7 @@ const PostModal = memo(
 
     // Auth store
     const user = useAuthStore((state) => state.user);
-    const { id: userId } = user || {};
+    const { id: userId, firstName, surname } = user || {};
 
     const [selectedCommentId, setSelectedCommentId] = useState<number>();
     const [totalCommentsPost, setTotalCommentPost] = useState(totalComments);
@@ -99,7 +99,13 @@ const PostModal = memo(
 
     // Handle add comment
     const onSubmit: SubmitHandler<CreateCommentFormData> = (data) => {
-      const payload = { ...data, postId: postId, author: userId, likes: [] };
+      const payload = {
+        ...data,
+        postId: postId,
+        authorName: `${firstName} ${surname}`,
+        authorId: userId,
+        likes: [],
+      };
       setTotalCommentPost((prev) => prev + 1);
 
       createComment(payload, {
@@ -178,16 +184,16 @@ const PostModal = memo(
         ) : (
           <Stack spacing='10px' pl='10px'>
             {comments.map((comment: IComment) => {
-              const { id, content, likes } = comment || {};
+              const { id, content, likes, authorName: userName } = comment || {};
 
               return (
                 <Comment
                   content={content}
                   key={id}
-                  userName={authorName}
-                  userId={userId}
+                  userName={userName}
                   commentId={id}
                   likes={likes}
+                  currentUser={userId}
                   onLikeComment={handleLikeComment}
                 />
               );
