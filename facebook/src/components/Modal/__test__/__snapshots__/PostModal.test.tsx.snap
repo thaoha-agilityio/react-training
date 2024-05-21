@@ -281,7 +281,7 @@ exports[`PostModal Component Should render SignUpFormModal Component correctly 1
                     />
                   </div>
                   <div
-                    class="css-11rmz0r"
+                    class="css-1cxlyc2"
                   >
                     <button
                       aria-label="comment-icon"
@@ -657,7 +657,7 @@ exports[`PostModal Component Should render SignUpFormModal Component correctly 2
                     />
                   </div>
                   <div
-                    class="css-11rmz0r"
+                    class="css-1cxlyc2"
                   >
                     <button
                       aria-label="comment-icon"

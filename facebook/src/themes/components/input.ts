@@ -9,6 +9,7 @@ export const Input = defineStyleConfig({
       w: '100%',
       _invalid: {
         color: 'error',
+        borderColor: 'error',
       },
     },
   },

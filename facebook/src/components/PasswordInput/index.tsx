@@ -23,7 +23,7 @@ const PasswordInput = memo(
 
     return (
       <>
-        <InputGroup size='md'>
+        <InputGroup>
           <Input
             pr='4.5rem'
             type={isShowPassword ? 'text' : 'password'}
