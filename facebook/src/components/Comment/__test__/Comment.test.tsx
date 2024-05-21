@@ -8,7 +8,7 @@ import Comment from '..';
 const mockProps = {
   userName: 'Pam',
   content: 'Comment1',
-  userId: 1,
+  currentUser: 1,
   commentId: 2,
   likes: [],
   onLikeComment: jest.fn(),
