@@ -147,7 +147,7 @@ const PostModal = memo(
               </FormControl>
             )}
           />
-          <Box pos='absolute' right={0} top='35px'>
+          <Box pos='absolute' right={0} top='19px'>
             <IconButton
               type='submit'
               aria-label='comment-icon'

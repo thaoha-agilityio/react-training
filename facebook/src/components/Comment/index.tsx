@@ -1,4 +1,4 @@
-import { memo, useState } from 'react';
+import { memo, useState, useEffect } from 'react';
 import { Avatar, Box, Button, Flex, Text } from '@chakra-ui/react';
 
 // Constants
@@ -21,6 +21,10 @@ const Comment = memo(
     // Check if the user has liked the comment or not
     const isUserLiked = likes.includes(userId);
     const [isLike, setIsLike] = useState<boolean>(isUserLiked);
+
+    useEffect(() => {
+      setIsLike(isUserLiked);
+    }, [isUserLiked]);
 
     const handleLikeComment = () => {
       const newIsLike = !isLike;

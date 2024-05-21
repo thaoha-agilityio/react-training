@@ -195,6 +195,7 @@ const SignUpFormModal = memo(({ isOpen, onClose }: SignUpFormProps) => {
             render={({ field: { onChange, ...rest }, fieldState: { error } }) => (
               <FormControl isInvalid={!!error}>
                 <PasswordInput
+                  errorMessage={error?.message}
                   onChange={(e) => {
                     const value = e.target?.value;
                     onChange(value);
