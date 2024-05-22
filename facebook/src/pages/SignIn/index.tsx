@@ -3,7 +3,10 @@ import { Container, Flex, Heading, Stack, Text } from '@chakra-ui/react';
 // Components
 import { SignInForm } from '@/components';
 
-const SignInPage = () => (
+// Hocs
+import withErrorBoundary from '@/hocs/withErrorBoundary';
+
+const SignInPage = withErrorBoundary(() => (
   <Flex as='main' bg='secondary' minH='100vh'>
     <Container size='lg'>
       <Flex py='80px' justifyContent='space-between'>
@@ -19,6 +22,6 @@ const SignInPage = () => (
       </Flex>
     </Container>
   </Flex>
-);
+));
 
 export default SignInPage;

@@ -1,5 +1,5 @@
 import { Suspense } from 'react';
-import { ChakraProvider, Text } from '@chakra-ui/react';
+import { ChakraProvider } from '@chakra-ui/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { BrowserRouter as Router, Route, Routes, RouteObject } from 'react-router-dom';
 
@@ -15,7 +15,7 @@ import PublicRoute from '@/routers/PublicRouter';
 import MainLayout from '@/layouts';
 
 // Components
-import { ErrorBoundary, LoadingIndicator } from './components';
+import { LoadingIndicator } from './components';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -28,35 +28,33 @@ const queryClient = new QueryClient({
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <ChakraProvider theme={theme}>
-      <ErrorBoundary fallback={<Text textAlign='center'>Something went wrong</Text>}>
-        <Router>
-          <Routes>
-            <Route element={<PublicRoute />}>
-              <Route>
-                {PUBLIC_ROUTERS.map(({ path, element }: RouteObject) => (
-                  <Route
-                    key={path}
-                    path={path}
-                    element={<Suspense fallback={<LoadingIndicator />}>{element}</Suspense>}
-                  />
-                ))}
-              </Route>
+      <Router>
+        <Routes>
+          <Route element={<PublicRoute />}>
+            <Route>
+              {PUBLIC_ROUTERS.map(({ path, element }: RouteObject) => (
+                <Route
+                  key={path}
+                  path={path}
+                  element={<Suspense fallback={<LoadingIndicator />}>{element}</Suspense>}
+                />
+              ))}
             </Route>
+          </Route>
 
-            <Route element={<AuthenticatedRoute />}>
-              <Route element={<MainLayout />}>
-                {HOME_ROUTERS.map(({ path, element }: RouteObject) => (
-                  <Route
-                    key={path}
-                    path={path}
-                    element={<Suspense fallback={<LoadingIndicator />}>{element}</Suspense>}
-                  />
-                ))}
-              </Route>
+          <Route element={<AuthenticatedRoute />}>
+            <Route element={<MainLayout />}>
+              {HOME_ROUTERS.map(({ path, element }: RouteObject) => (
+                <Route
+                  key={path}
+                  path={path}
+                  element={<Suspense fallback={<LoadingIndicator />}>{element}</Suspense>}
+                />
+              ))}
             </Route>
-          </Routes>
-        </Router>
-      </ErrorBoundary>
+          </Route>
+        </Routes>
+      </Router>
     </ChakraProvider>
   </QueryClientProvider>
 );
