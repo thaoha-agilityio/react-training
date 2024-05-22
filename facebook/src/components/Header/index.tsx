@@ -1,5 +1,4 @@
 import { useQueryClient } from '@tanstack/react-query';
-import { useNavigate } from 'react-router-dom';
 import { useCallback } from 'react';
 import {
   Container,
@@ -17,23 +16,22 @@ import { FacebookIcon, MenuIcon, MessageIcon, NotificationIcon, SearchIcon } fro
 import Logout from '../Logout';
 
 // Constants
-import { ICON_LINKS, QUERY_KEYS, ROUTES } from '@/constants';
+import { ICON_LINKS, QUERY_KEYS } from '@/constants';
 
 // Stores
 import { useAuthStore } from '@/stores';
 
 const Header = () => {
   const queryClient = useQueryClient();
-  const navigate = useNavigate();
 
   // Auth store
   const clearAuth = useAuthStore((state) => state.clearAuth);
 
   const handleLogout = useCallback(() => {
     clearAuth();
-    navigate(ROUTES.SIGN_IN);
+
     queryClient.removeQueries(QUERY_KEYS.POSTS);
-  }, [clearAuth, navigate, queryClient]);
+  }, [clearAuth, queryClient]);
 
   return (
     <HStack

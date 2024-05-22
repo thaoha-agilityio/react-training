@@ -1,9 +1,10 @@
+import { useNavigate } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
 import { Box, Button, Divider, FormControl, Link, Stack, useDisclosure } from '@chakra-ui/react';
 import { Controller, useForm, SubmitHandler } from 'react-hook-form';
 
 // Constants
-import { ERROR_MESSAGES, INPUT_PLACEHOLDER, REGEX, STATUS } from '@/constants';
+import { ERROR_MESSAGES, INPUT_PLACEHOLDER, REGEX, ROUTES, STATUS } from '@/constants';
 
 // Components
 import { Input, LoadingIndicator, PasswordInput } from '@/components';
@@ -23,6 +24,7 @@ interface SignInFormData {
 
 const SignInForm = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const navigate = useNavigate();
 
   const {
     control,
@@ -62,7 +64,7 @@ const SignInForm = () => {
   };
 
   // TODO: handle navigate to Home page later
-  const handleSignInSuccess = () => {};
+  const handleSignInSuccess = () => navigate(ROUTES.HOME);
 
   // Handle show toast error message
   const handleSignInError = (error: string) => showToast(STATUS.ERROR, getAPIErrorMessage(error));
