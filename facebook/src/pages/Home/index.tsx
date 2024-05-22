@@ -5,6 +5,9 @@ import Posts from './Posts';
 import CreatePost from './CreatePost';
 import Advertisement from './Advertisement';
 
+//
+import withErrorBoundary from '@/hocs/withErrorBoundary';
+
 const Home = () => (
   <Flex w='full' overflowY='auto'>
     <Container>
@@ -15,4 +18,6 @@ const Home = () => (
   </Flex>
 );
 
-export default Home;
+const HomPage = withErrorBoundary(Home);
+
+export default HomPage;
