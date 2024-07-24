@@ -1,0 +1,97 @@
+import { defineStyleConfig } from '@chakra-ui/react';
+
+export const Button = defineStyleConfig({
+  baseStyle: {
+    fontWeight: 'normal',
+    fontStyle: 'normal',
+    textTransform: 'capitalize',
+  },
+
+  variants: {
+    primary: {
+      color: 'white',
+      bg: 'primary',
+      fontSize: 'md',
+      rounded: 'sm',
+      lineHeight: 'md',
+      _hover: {
+        bg: 'button.primaryHoverBg',
+        _disabled: {
+          bg: 'background.secondary',
+        },
+      },
+      _active: {
+        bg: 'primary',
+      },
+    },
+
+    secondary: {
+      bg: 'button.secondary',
+      rounded: 'sm',
+      color: 'white',
+      fontSize: 'lg',
+      fontWeight: 'bold',
+      lineHeight: 'xs',
+      _hover: {
+        bg: 'background.active',
+        _disabled: {
+          bg: 'background.secondary',
+        },
+      },
+      _active: {
+        bg: 'button.secondary',
+      },
+    },
+
+    cancel: {
+      bg: 'button.charcoal',
+      rounded: 'sm',
+      color: 'text.primary',
+      fontSize: 'md',
+      fontWeight: 'bold',
+      _hover: {
+        bg: 'background.secondary',
+      },
+    },
+
+    unstyled: {
+      color: 'text.label',
+      bg: 'none',
+      display: 'flex',
+      fontSize: 'md',
+      fontWeight: 'bold',
+      _hover: {
+        bg: 'button.charcoal',
+        rounded: 'sm',
+      },
+    },
+
+    icon: {
+      width: '40px',
+      height: '40px',
+      bg: 'button.charcoal',
+      borderRadius: 'full',
+
+      _hover: {
+        bg: 'button.iconHoverBg',
+        _disabled: {
+          bg: 'background.secondary',
+        },
+      },
+    },
+
+    action: {
+      color: 'text.label',
+      bg: 'none',
+      fontSize: 'tiny',
+      fontWeight: 'bold',
+      _hover: {
+        bg: 'none',
+      },
+    },
+  },
+
+  defaultProps: {
+    variant: 'primary',
+  },
+});
