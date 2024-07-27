@@ -1,6 +1,6 @@
 import { ButtonHTMLAttributes, memo } from "react";
+import { clsx } from "clsx";
 
-import clsx from "clsx";
 // Components
 import { SpinnerIcon } from "../Icons";
 
