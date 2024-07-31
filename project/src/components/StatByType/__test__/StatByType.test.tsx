@@ -3,13 +3,13 @@ import { render } from "@testing-library/react";
 // Components
 import StatByType from "..";
 
-import { TYPE_STATUS } from "@/constants";
+import { STAT_STATUS } from "@/constants";
 
 describe("StatByType component", () => {
   const mockProps = {
     total: 100,
     label: "To do",
-    type: TYPE_STATUS.TODO,
+    type: STAT_STATUS.TODO,
   };
 
   it("should render the StatByType correctly", () => {
