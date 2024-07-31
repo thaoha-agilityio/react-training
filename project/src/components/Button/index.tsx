@@ -8,7 +8,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   disabled?: boolean;
   isLoading?: boolean;
   extraStyle?: string;
-  variant?: "primary" | "secondary";
+  variant?: "primary" | "secondary" | "unstyled";
 }
 
 const Button = ({
@@ -23,6 +23,9 @@ const Button = ({
     switch (variant) {
       case "secondary":
         return "bg-slate-50 text-zinc-800";
+
+      case "unstyled":
+        return "bg-none";
 
       case "primary":
       default:

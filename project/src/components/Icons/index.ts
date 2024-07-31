@@ -4,6 +4,7 @@ export * from "./DashboardIcon";
 export * from "./ExportIcon";
 export * from "./InfoIcon";
 export * from "./IntegrationIcon";
+export * from "./LogoIcon";
 export * from "./MoreIcon";
 export * from "./PlayIcon";
 export * from "./ReportIcon";
