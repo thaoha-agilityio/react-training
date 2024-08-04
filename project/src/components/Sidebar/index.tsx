@@ -23,7 +23,7 @@ const Sidebar = () => (
       <NavBar />
     </div>
 
-    <div className="pb-9 pl-1">
+    <div className="pl-1">
       <UserProfile {...USER} />
     </div>
   </div>
