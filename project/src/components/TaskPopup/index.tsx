@@ -36,7 +36,7 @@ const TaskPopup = ({
 
   return (
     <div ref={modalRef}>
-      <div className="w-[120px] h-[70px] shadow-md rounded-lg p-2 absolute z-10 bg-white top-2">
+      <div className="w-[120px] h-[90px] shadow-md rounded-lg p-2 absolute z-10 bg-white top-2">
         <Button variant="unstyled" onClick={onShowEditFormModal}>
           Edit Task
         </Button>
