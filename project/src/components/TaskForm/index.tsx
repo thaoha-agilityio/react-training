@@ -2,7 +2,13 @@ import { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 
 // Components
-import { Button, Dropdown, InputGroup, RadioGroup } from "@/components";
+import {
+  Button,
+  Dropdown,
+  InputGroup,
+  RadioGroup,
+  BaseModal,
+} from "@/components";
 
 // Constants
 import {
@@ -21,9 +27,10 @@ import { findProjectById, transformProject } from "@/utils";
 interface TaskFromProps {
   projects: Project[];
   task?: Task;
+  onCloseForm: () => void;
 }
 
-const TaskFrom = ({ projects, task }: TaskFromProps) => {
+const TaskFrom = ({ projects, task, onCloseForm }: TaskFromProps) => {
   const { title, timeSpent, estimation, project } = task || {};
   const { id: projectId } = project || {};
 
@@ -90,86 +97,88 @@ const TaskFrom = ({ projects, task }: TaskFromProps) => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="flex flex-col gap-4 ">
-        {/* Task Name */}
-        <InputGroup
-          label="Task name"
-          placeholder="Task name"
-          defaultValue={title}
-          errorMessage={errors.title?.message}
-          {...register("title", validationRule.title)}
-        />
-
-        {/* Project name */}
-        <div className="flex flex-col gap-2 w-[137px]">
-          <label className="text-gray-700 capitalize font-medium text-sm">
-            Project
-          </label>
-          <Dropdown
-            placeholder="Choose project"
-            options={projectOption}
-            selectedValue={projectSelected}
-            onSelect={handleSelectedProject}
-            errorMessage={errors.project?.message}
-            {...register("project", validationRule.project)}
+    <BaseModal title="Add Task" onClose={onCloseForm}>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="flex flex-col gap-4 ">
+          {/* Task Name */}
+          <InputGroup
+            label="Task name"
+            placeholder="Task name"
+            defaultValue={title}
+            errorMessage={errors.title?.message}
+            {...register("title", validationRule.title)}
           />
-        </div>
 
-        {/* Time spent */}
-        <div className="flex flex-col gap-2 w-[137px]">
-          <label className="text-gray-700 capitalize font-medium text-sm">
-            Time spent
-          </label>
-          <Dropdown
-            placeholder="Choose time"
-            options={TIME}
-            selectedValue={timeSpentSelected}
-            onSelect={handleSelectedTimeSpent}
-            errorMessage={errors.timeSpent?.message}
-            {...register("timeSpent", validationRule.timeSpent)}
+          {/* Project name */}
+          <div className="flex flex-col gap-2 w-[137px]">
+            <label className="text-gray-700 capitalize font-medium text-sm">
+              Project
+            </label>
+            <Dropdown
+              placeholder="Choose project"
+              options={projectOption}
+              selectedValue={projectSelected}
+              onSelect={handleSelectedProject}
+              errorMessage={errors.project?.message}
+              {...register("project", validationRule.project)}
+            />
+          </div>
+
+          {/* Time spent */}
+          <div className="flex flex-col gap-2 w-[137px]">
+            <label className="text-gray-700 capitalize font-medium text-sm">
+              Time spent
+            </label>
+            <Dropdown
+              placeholder="Choose time"
+              options={TIME}
+              selectedValue={timeSpentSelected}
+              onSelect={handleSelectedTimeSpent}
+              errorMessage={errors.timeSpent?.message}
+              {...register("timeSpent", validationRule.timeSpent)}
+            />
+          </div>
+
+          {/* Estimation time */}
+          <div className="flex flex-col gap-2 w-[137px]">
+            <label className="text-gray-700 capitalize font-medium text-sm">
+              Estimation time
+            </label>
+            <Dropdown
+              placeholder="Choose time"
+              options={TIME}
+              selectedValue={estimationTime}
+              errorMessage={errors.estimation?.message}
+              onSelect={handleSelectedEstimationTime}
+              {...register("estimation", validationRule.timeSpent)}
+            />
+          </div>
+
+          {/* Task status */}
+          <RadioGroup
+            label="Task Status"
+            options={TASK_STATUS_OPTIONS}
+            errorMessage={errors.status?.message}
+            {...register("status", validationRule.status)}
           />
-        </div>
 
-        {/* Estimation time */}
-        <div className="flex flex-col gap-2 w-[137px]">
-          <label className="text-gray-700 capitalize font-medium text-sm">
-            Estimation time
-          </label>
-          <Dropdown
-            placeholder="Choose time"
-            options={TIME}
-            selectedValue={estimationTime}
-            errorMessage={errors.estimation?.message}
-            onSelect={handleSelectedEstimationTime}
-            {...register("estimation", validationRule.timeSpent)}
+          {/* Task Priority */}
+          <RadioGroup
+            label="Priority"
+            options={TASK_PRIORITY_OPTIONS}
+            errorMessage={errors.priority?.message}
+            {...register("priority", validationRule.priority)}
           />
+
+          <div className="flex justify-end gap-3">
+            <Button type="submit" disabled={!isDirty}>
+              Save
+            </Button>
+            <Button variant="secondary">Cancel</Button>
+          </div>
         </div>
-
-        {/* Task status */}
-        <RadioGroup
-          label="Task Status"
-          options={TASK_STATUS_OPTIONS}
-          errorMessage={errors.status?.message}
-          {...register("status", validationRule.status)}
-        />
-
-        {/* Task Priority */}
-        <RadioGroup
-          label="Priority"
-          options={TASK_PRIORITY_OPTIONS}
-          errorMessage={errors.priority?.message}
-          {...register("priority", validationRule.priority)}
-        />
-
-        <div className="flex justify-end gap-3">
-          <Button type="submit" disabled={!isDirty}>
-            Save
-          </Button>
-          <Button variant="secondary">Cancel</Button>
-        </div>
-      </div>
-    </form>
+      </form>
+    </BaseModal>
   );
 };
 
