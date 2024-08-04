@@ -31,10 +31,12 @@ interface TaskFromProps {
 }
 
 const TaskFrom = ({ projects, task, onCloseForm }: TaskFromProps) => {
-  const { title, timeSpent, estimation, project } = task || {};
+  const { id, title, timeSpent, estimation, project } = task || {};
   const { id: projectId } = project || {};
 
   const projectOption = transformProject(projects);
+
+  const titleModal = id ? "Edit task" : "Add task";
 
   const {
     handleSubmit,
@@ -97,7 +99,7 @@ const TaskFrom = ({ projects, task, onCloseForm }: TaskFromProps) => {
   };
 
   return (
-    <BaseModal title="Add Task" onClose={onCloseForm}>
+    <BaseModal title={titleModal} onClose={onCloseForm}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="flex flex-col gap-4 ">
           {/* Task Name */}
