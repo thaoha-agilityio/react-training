@@ -8,7 +8,10 @@ interface NavItemProps {
 }
 
 const NavItem = ({ to, label, icon: Icon }: NavItemProps) => (
-  <NavLink to={to} className="flex gap-2 text-sm">
+  <NavLink
+    to={to}
+    className="flex gap-2 text-sm hover:bg-indigo-50 h-[40px] p-2 rounded-md"
+  >
     {({ isActive }) => {
       const activeClassName = isActive ? "text-indigo-600" : "text-neutral-400";
       const iconClassName = isActive ? "fill-indigo-600" : "fill-neutral-400";

@@ -11,7 +11,7 @@ interface UserProfileProps {
 }
 
 const UserProfile = ({ name, avatar, role }: UserProfileProps) => (
-  <div className="pb-9">
+  <div className="pb-5">
     <div className="pt-10 flex justify-between align-center">
       <div className="flex gap-3">
         <img src={avatar} className="w-11 h-11 rounded-full" />
