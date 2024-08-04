@@ -9,3 +9,4 @@ export { default as StatByType } from "./StatByType";
 
 // Modal
 export { default as BaseModal } from "./Modal/BaseModal";
+export { default as DeleteModal } from "./Modal/DeleteModal";

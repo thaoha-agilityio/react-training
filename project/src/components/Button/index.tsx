@@ -22,7 +22,7 @@ const Button = ({
   const variantClass = () => {
     switch (variant) {
       case "secondary":
-        return "bg-slate-50 text-zinc-800";
+        return "bg-slate-100 text-zinc-800";
 
       case "unstyled":
         return "bg-none";
@@ -34,7 +34,7 @@ const Button = ({
   };
 
   const baseClass =
-    "flex items-center justify-center rounded-md text-sm font-medium px-4 py-1 hover:opacity-70";
+    "flex items-center justify-center rounded-md text-sm font-medium px-4 py-2 hover:opacity-70";
 
   const activeClass =
     disabled || isLoading ? "opacity-70 pointer-events-none" : "cursor-pointer";
