@@ -16,7 +16,7 @@ const PaginationItem = ({
   children,
 }: PaginationItemProps) => {
   const baseClass =
-    "flex h-10 p-[15px] rounded-lg border text-gray-400 items-center gap-1";
+    "flex h-10 p-[15px] rounded-lg border text-gray-400 items-center gap-1 bg-white";
 
   const disableClass = isDisabled ? "pointer-events-none" : "hover:bg-blue-100";
 

@@ -1,32 +1,37 @@
-import { useState } from "react";
-
 // Types
 import { Task } from "@/types";
 
 // Components
-import { MoreIcon, PlayIcon } from "../Icons";
-import { Button, TaskPopup } from "@/components";
+import { PlayIcon } from "@/components/Icons";
+import { MoreMenu } from "@/components";
 
 // Utils
 import { formatTime, getColorPriority, getColorTaskStatus } from "@/utils";
 
 interface TaskTableRowProps {
   task: Task;
+  onShowEditFormModal: () => void;
+  onShowConfirmDeleteModal: () => void;
 }
 
-const TaskTableRow = ({ task }: TaskTableRowProps) => {
+const TaskTableRow = ({
+  task,
+  onShowEditFormModal,
+  onShowConfirmDeleteModal,
+}: TaskTableRowProps) => {
   const { title, timeSpent, estimation, status, project, date, priority } =
     task || {};
 
-  const [isShowPopup, setIsShowPopup] = useState(false);
-
-  const handleTogglePopup = () => {
-    setIsShowPopup((prev) => !prev);
-  };
-
-  const handleClosePopup = () => {
-    setIsShowPopup(false);
-  };
+  const MENU_OPTION = [
+    {
+      title: "Edit Task",
+      onClick: onShowEditFormModal,
+    },
+    {
+      title: "Delete Task",
+      onClick: onShowConfirmDeleteModal,
+    },
+  ];
 
   return (
     <tr className="text-left border-b capitalize">
@@ -64,12 +69,8 @@ const TaskTableRow = ({ task }: TaskTableRowProps) => {
 
       {/* Estimation */}
       <td className="p-5 text-gray-400 text-sm">{formatTime(estimation)}</td>
-      <td className="relative">
-        <Button variant="unstyled" onClick={handleTogglePopup}>
-          <MoreIcon width={5} className="fill-gray-400" />
-        </Button>
-
-        {isShowPopup && <TaskPopup onClosePopup={handleClosePopup} />}
+      <td>
+        <MoreMenu options={MENU_OPTION} />
       </td>
     </tr>
   );
