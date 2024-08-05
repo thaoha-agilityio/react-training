@@ -38,7 +38,11 @@ describe("Button", () => {
   });
 
   it("should renders the SpinnerIcon when 'isLoading' is true", () => {
-    const { getByTestId } = render(<Button isLoading>{buttonText}</Button>);
+    const { getByTestId } = render(
+      <Button isLoading variant="secondary">
+        {buttonText}
+      </Button>,
+    );
 
     expect(getByTestId("spinner-icon")).toBeInTheDocument();
   });
