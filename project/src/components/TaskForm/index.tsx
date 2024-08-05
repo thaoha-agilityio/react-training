@@ -1,13 +1,12 @@
-import { useState } from "react";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { Controller, SubmitHandler, useForm } from "react-hook-form";
 
 // Components
 import {
+  BaseModal,
   Button,
   Dropdown,
   InputGroup,
   RadioGroup,
-  BaseModal,
 } from "@/components";
 
 // Constants
@@ -19,7 +18,7 @@ import {
 } from "@/constants";
 
 // Types
-import { Task, Project } from "@/types";
+import { Project, Task } from "@/types";
 
 // Utils
 import { findProjectById, transformProject } from "@/utils";
@@ -30,15 +29,15 @@ interface TaskFromProps {
   onCloseForm: () => void;
 }
 
-const TaskFrom = ({ projects, task, onCloseForm }: TaskFromProps) => {
-  const { id, title, timeSpent, estimation, project } = task || {};
-  const { id: projectId } = project || {};
+const TaskForm = ({ projects, task, onCloseForm }: TaskFromProps) => {
+  const { id, title } = task || {};
 
   const projectOption = transformProject(projects);
 
   const titleModal = id ? "Edit task" : "Add task";
 
   const {
+    control,
     handleSubmit,
     register,
     formState: { errors, isDirty },
@@ -49,29 +48,14 @@ const TaskFrom = ({ projects, task, onCloseForm }: TaskFromProps) => {
     defaultValues: { ...task },
   });
 
-  const [estimationTime, setEstimationTime] = useState(
-    estimation?.toString() || "",
-  );
-  const [timeSpentSelected, setTimeSpentSelected] = useState(
-    timeSpent?.toString() || "",
-  );
-  const [projectSelected, setProjectSelected] = useState(projectId || "");
-
-  const handleSelectedEstimationTime = (value: string) => {
-    setEstimationTime(value);
-    setValue("estimation", +value);
-  };
-
-  const handleSelectedTimeSpent = (value: string) => {
-    setTimeSpentSelected(value);
-    setValue("timeSpent", +value);
-  };
-
-  const handleSelectedProject = (value: string) => {
-    const project = findProjectById(value, projects);
-    setProjectSelected(value);
-    setValue("project", project!);
-  };
+  const handleSelectedProject =
+    (onChange: (value: string) => void) => (value: string) => {
+      const project = findProjectById(value, projects);
+      if (project) {
+        onChange(value);
+        setValue("project", project);
+      }
+    };
 
   const validationRule = {
     title: {
@@ -94,6 +78,7 @@ const TaskFrom = ({ projects, task, onCloseForm }: TaskFromProps) => {
     },
   };
 
+  // TODO: will integrate  API later
   const onSubmit: SubmitHandler<Task> = (data) => {
     console.log(data);
   };
@@ -101,7 +86,7 @@ const TaskFrom = ({ projects, task, onCloseForm }: TaskFromProps) => {
   return (
     <BaseModal title={titleModal} onClose={onCloseForm}>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="flex flex-col gap-4 ">
+        <div className="flex flex-col gap-4">
           {/* Task Name */}
           <InputGroup
             label="Task name"
@@ -116,13 +101,20 @@ const TaskFrom = ({ projects, task, onCloseForm }: TaskFromProps) => {
             <label className="text-gray-700 capitalize font-medium text-sm">
               Project
             </label>
-            <Dropdown
-              placeholder="Choose project"
-              options={projectOption}
-              selectedValue={projectSelected}
-              onSelect={handleSelectedProject}
-              errorMessage={errors.project?.message}
-              {...register("project", validationRule.project)}
+            <Controller
+              name="project"
+              control={control}
+              render={({ field: { value, onChange } }) => {
+                return (
+                  <Dropdown
+                    placeholder="Select project"
+                    options={projectOption}
+                    selectedValue={value?.id}
+                    errorMessage={errors.estimation?.message}
+                    onSelect={handleSelectedProject(onChange)}
+                  />
+                );
+              }}
             />
           </div>
 
@@ -131,13 +123,20 @@ const TaskFrom = ({ projects, task, onCloseForm }: TaskFromProps) => {
             <label className="text-gray-700 capitalize font-medium text-sm">
               Time spent
             </label>
-            <Dropdown
-              placeholder="Choose time"
-              options={TIME}
-              selectedValue={timeSpentSelected}
-              onSelect={handleSelectedTimeSpent}
-              errorMessage={errors.timeSpent?.message}
-              {...register("timeSpent", validationRule.timeSpent)}
+            <Controller
+              name="timeSpent"
+              control={control}
+              render={({ field: { value, onChange } }) => {
+                return (
+                  <Dropdown
+                    placeholder="Select time"
+                    options={TIME}
+                    selectedValue={value?.toString()}
+                    errorMessage={errors.estimation?.message}
+                    onSelect={onChange}
+                  />
+                );
+              }}
             />
           </div>
 
@@ -146,13 +145,20 @@ const TaskFrom = ({ projects, task, onCloseForm }: TaskFromProps) => {
             <label className="text-gray-700 capitalize font-medium text-sm">
               Estimation time
             </label>
-            <Dropdown
-              placeholder="Choose time"
-              options={TIME}
-              selectedValue={estimationTime}
-              errorMessage={errors.estimation?.message}
-              onSelect={handleSelectedEstimationTime}
-              {...register("estimation", validationRule.timeSpent)}
+            <Controller
+              name="estimation"
+              control={control}
+              render={({ field: { value, onChange } }) => {
+                return (
+                  <Dropdown
+                    placeholder="Select time"
+                    options={TIME}
+                    selectedValue={value?.toString()}
+                    errorMessage={errors.estimation?.message}
+                    onSelect={onChange}
+                  />
+                );
+              }}
             />
           </div>
 
@@ -176,7 +182,9 @@ const TaskFrom = ({ projects, task, onCloseForm }: TaskFromProps) => {
             <Button type="submit" disabled={!isDirty}>
               Save
             </Button>
-            <Button variant="secondary">Cancel</Button>
+            <Button variant="secondary" onClick={onCloseForm}>
+              Cancel
+            </Button>
           </div>
         </div>
       </form>
@@ -184,4 +192,4 @@ const TaskFrom = ({ projects, task, onCloseForm }: TaskFromProps) => {
   );
 };
 
-export default TaskFrom;
+export default TaskForm;

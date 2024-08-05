@@ -26,7 +26,7 @@ const Pagination = ({
         // TODO: will handle createPageURL later
         href={`/${currentPage - 1}`}
       >
-        <ChevronLeftIcon />
+        <ChevronLeftIcon width={12} height={12} />
         Previous
       </PaginationItem>
 
@@ -50,7 +50,7 @@ const Pagination = ({
         href={`/${currentPage + 1}`}
       >
         Next
-        <ChevronLeftIcon className="rotate-180" />
+        <ChevronLeftIcon className="rotate-180" width={12} height={12} />
       </PaginationItem>
     </div>
   );

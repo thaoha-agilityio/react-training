@@ -1,7 +1,7 @@
 import { memo, ReactNode } from "react";
 
 // Components
-import { InfoIcon, ReviewIcon, TickIcon, ToDoIcon } from "../Icons";
+import { InfoIcon, ReviewIcon, ToDoIcon } from "../Icons";
 
 // Constants
 import { STAT_STATUS } from "@/constants";
@@ -9,10 +9,22 @@ import { STAT_STATUS } from "@/constants";
 const ICON_MAPPING: {
   [key in STAT_STATUS]: { color: string; icon: ReactNode };
 } = {
-  [STAT_STATUS.TODO]: { color: "bg-blue-100", icon: <ToDoIcon /> },
-  [STAT_STATUS.COMPLETED]: { color: "bg-emerald-100", icon: <TickIcon /> },
-  [STAT_STATUS.REVIEW]: { color: "bg-yellow-100", icon: <ReviewIcon /> },
-  [STAT_STATUS.BLOCK]: { color: "bg-red-100", icon: <InfoIcon /> },
+  [STAT_STATUS.TODO]: {
+    color: "bg-blue-100",
+    icon: <ToDoIcon className="fill-blue-500" />,
+  },
+  [STAT_STATUS.COMPLETED]: {
+    color: "bg-emerald-100",
+    icon: <InfoIcon className="fill-green-500" />,
+  },
+  [STAT_STATUS.REVIEW]: {
+    color: "bg-yellow-100",
+    icon: <ReviewIcon className="fill-yellow-600" />,
+  },
+  [STAT_STATUS.BLOCK]: {
+    color: "bg-red-100",
+    icon: <InfoIcon className="fill-red-600" />,
+  },
 };
 
 interface StatByTypeProps {
