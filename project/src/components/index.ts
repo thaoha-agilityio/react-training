@@ -7,7 +7,7 @@ export { default as Pagination } from "./Pagination";
 export { default as RadioGroup } from "./RadioGroup";
 export { default as Sidebar } from "./Sidebar";
 export { default as StatByType } from "./StatByType";
-export { default as TaskPopup } from "./TaskPopup";
+export { default as MoreMenu } from "./MoreMenu";
 
 // Modal
 export { default as BaseModal } from "./Modal/BaseModal";
