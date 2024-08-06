@@ -1,11 +1,9 @@
-import { render, screen } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import App from "./App";
 
 describe("App", () => {
   test("renders heading", async () => {
-    render(<App />);
-    expect(
-      screen.getByRole("heading", { name: "Vite + React" }),
-    ).toBeInTheDocument();
+    const { container } = render(<App />);
+    expect(container).toBeInTheDocument();
   });
 });

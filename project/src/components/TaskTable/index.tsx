@@ -70,7 +70,7 @@ const TaskTable = ({ tasks }: TaskTableProp) => {
       {isShowEditModal && (
         <TaskForm
           projects={PROJECTS}
-          onCloseForm={handleCloseEditModal}
+          onClose={handleCloseEditModal}
           task={selectedTask}
         />
       )}
