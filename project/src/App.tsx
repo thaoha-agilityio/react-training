@@ -11,7 +11,7 @@ import { Routers } from "./routes";
 
 // Components
 import MainLayout from "./layouts";
-import { SpinnerIcon } from "./components/Icons";
+import { SpinnerIcon } from "@/components/Icons";
 
 const App = () => (
   <Router>

@@ -104,12 +104,16 @@ const TaskForm = ({ projects, task, onClose }: TaskFromProps) => {
             <Controller
               name="project"
               control={control}
-              render={({ field: { value, onChange } }) => (
+              rules={validationRule.project}
+              render={({
+                field: { value, onChange },
+                fieldState: { error },
+              }) => (
                 <Dropdown
                   placeholder="Select project"
                   options={projectOptions}
                   selectedValue={value?.id}
-                  errorMessage={errors.estimation?.message}
+                  errorMessage={error?.message}
                   onSelect={handleSelectedProject(onChange)}
                 />
               )}
@@ -124,12 +128,16 @@ const TaskForm = ({ projects, task, onClose }: TaskFromProps) => {
             <Controller
               name="timeSpent"
               control={control}
-              render={({ field: { value, onChange } }) => (
+              rules={validationRule.timeSpent}
+              render={({
+                field: { value, onChange },
+                fieldState: { error },
+              }) => (
                 <Dropdown
                   placeholder="Select time"
                   options={TIME}
                   selectedValue={value?.toString()}
-                  errorMessage={errors.estimation?.message}
+                  errorMessage={error?.message}
                   onSelect={onChange}
                 />
               )}
@@ -144,12 +152,16 @@ const TaskForm = ({ projects, task, onClose }: TaskFromProps) => {
             <Controller
               name="estimation"
               control={control}
-              render={({ field: { value, onChange } }) => (
+              rules={validationRule.estimation}
+              render={({
+                field: { value, onChange },
+                fieldState: { error },
+              }) => (
                 <Dropdown
                   placeholder="Estimation"
                   options={TIME}
                   selectedValue={value?.toString()}
-                  errorMessage={errors.estimation?.message}
+                  errorMessage={error?.message}
                   onSelect={onChange}
                 />
               )}
