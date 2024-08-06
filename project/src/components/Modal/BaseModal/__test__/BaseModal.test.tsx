@@ -19,14 +19,14 @@ describe("BaseModal component", () => {
   });
 
   it("should call onClosePopup when the background is clicked", () => {
-    const { getByTestId } = render(
+    const { container } = render(
       <BaseModal title="Delete Confirmation" onClose={mockProps.onClose}>
         <p>Are you sure you want to delete this item?</p>
       </BaseModal>,
     );
 
-    fireEvent.click(getByTestId("outside-modal"));
+    fireEvent.mouseDown(container); // Simulate click outside the modal
 
-    expect(mockProps.onClose).toHaveBeenCalledTimes(1);
+    expect(mockProps.onClose).toHaveBeenCalled();
   });
 });

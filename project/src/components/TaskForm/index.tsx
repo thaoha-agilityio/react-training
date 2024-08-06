@@ -26,13 +26,13 @@ import { findProjectById, transformProject } from "@/utils";
 interface TaskFromProps {
   projects: Project[];
   task?: Task;
-  onCloseForm: () => void;
+  onClose: () => void;
 }
 
-const TaskForm = ({ projects, task, onCloseForm }: TaskFromProps) => {
+const TaskForm = ({ projects, task, onClose }: TaskFromProps) => {
   const { id, title } = task || {};
 
-  const projectOption = transformProject(projects);
+  const projectOptions = transformProject(projects);
 
   const titleModal = id ? "Edit task" : "Add task";
 
@@ -79,13 +79,13 @@ const TaskForm = ({ projects, task, onCloseForm }: TaskFromProps) => {
   };
 
   // TODO: will integrate  API later
-  const onSubmit: SubmitHandler<Task> = (data) => {
+  const handleSubmitTask: SubmitHandler<Task> = (data) => {
     console.log(data);
   };
 
   return (
-    <BaseModal title={titleModal} onClose={onCloseForm}>
-      <form onSubmit={handleSubmit(onSubmit)}>
+    <BaseModal title={titleModal} onClose={onClose}>
+      <form onSubmit={handleSubmit(handleSubmitTask)}>
         <div className="flex flex-col gap-4">
           {/* Task Name */}
           <InputGroup
@@ -100,34 +100,30 @@ const TaskForm = ({ projects, task, onCloseForm }: TaskFromProps) => {
           <div className="flex flex-col gap-2 w-[137px]">
             <label className="text-gray-700 capitalize font-medium text-sm">
               Project
-            </label>
-            <Controller
-              name="project"
-              control={control}
-              render={({ field: { value, onChange } }) => {
-                return (
+              <Controller
+                name="project"
+                control={control}
+                render={({ field: { value, onChange } }) => (
                   <Dropdown
                     placeholder="Select project"
-                    options={projectOption}
+                    options={projectOptions}
                     selectedValue={value?.id}
                     errorMessage={errors.estimation?.message}
                     onSelect={handleSelectedProject(onChange)}
                   />
-                );
-              }}
-            />
+                )}
+              />
+            </label>
           </div>
 
           {/* Time spent */}
           <div className="flex flex-col gap-2 w-[137px]">
             <label className="text-gray-700 capitalize font-medium text-sm">
               Time spent
-            </label>
-            <Controller
-              name="timeSpent"
-              control={control}
-              render={({ field: { value, onChange } }) => {
-                return (
+              <Controller
+                name="timeSpent"
+                control={control}
+                render={({ field: { value, onChange } }) => (
                   <Dropdown
                     placeholder="Select time"
                     options={TIME}
@@ -135,31 +131,29 @@ const TaskForm = ({ projects, task, onCloseForm }: TaskFromProps) => {
                     errorMessage={errors.estimation?.message}
                     onSelect={onChange}
                   />
-                );
-              }}
-            />
+                )}
+              />
+            </label>
           </div>
 
           {/* Estimation time */}
           <div className="flex flex-col gap-2 w-[137px]">
             <label className="text-gray-700 capitalize font-medium text-sm">
               Estimation time
-            </label>
-            <Controller
-              name="estimation"
-              control={control}
-              render={({ field: { value, onChange } }) => {
-                return (
+              <Controller
+                name="estimation"
+                control={control}
+                render={({ field: { value, onChange } }) => (
                   <Dropdown
-                    placeholder="Select time"
+                    placeholder="Estimation"
                     options={TIME}
                     selectedValue={value?.toString()}
                     errorMessage={errors.estimation?.message}
                     onSelect={onChange}
                   />
-                );
-              }}
-            />
+                )}
+              />
+            </label>
           </div>
 
           {/* Task status */}
@@ -182,7 +176,7 @@ const TaskForm = ({ projects, task, onCloseForm }: TaskFromProps) => {
             <Button type="submit" disabled={!isDirty}>
               Save
             </Button>
-            <Button variant="secondary" onClick={onCloseForm}>
+            <Button variant="secondary" onClick={onClose}>
               Cancel
             </Button>
           </div>

@@ -1,4 +1,5 @@
 // Libs
+import { MemoryRouter } from "react-router-dom";
 import { render } from "@testing-library/react";
 
 // Components
@@ -12,7 +13,11 @@ describe("Pagination", () => {
   };
 
   it("should render the Pagination correctly", () => {
-    const { container } = render(<Pagination {...mockProps} />);
+    const { container } = render(
+      <MemoryRouter>
+        <Pagination {...mockProps} />
+      </MemoryRouter>,
+    );
 
     expect(container).toMatchSnapshot();
   });

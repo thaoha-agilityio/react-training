@@ -54,7 +54,7 @@ const Home = () => {
       </div>
 
       {isShowTaskForm && (
-        <TaskForm projects={PROJECTS} onCloseForm={handleCloseTaskForm} />
+        <TaskForm projects={PROJECTS} onClose={handleCloseTaskForm} />
       )}
     </div>
   );
