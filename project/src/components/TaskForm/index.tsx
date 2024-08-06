@@ -100,60 +100,60 @@ const TaskForm = ({ projects, task, onClose }: TaskFromProps) => {
           <div className="flex flex-col gap-2 w-[137px]">
             <label className="text-gray-700 capitalize font-medium text-sm">
               Project
-              <Controller
-                name="project"
-                control={control}
-                render={({ field: { value, onChange } }) => (
-                  <Dropdown
-                    placeholder="Select project"
-                    options={projectOptions}
-                    selectedValue={value?.id}
-                    errorMessage={errors.estimation?.message}
-                    onSelect={handleSelectedProject(onChange)}
-                  />
-                )}
-              />
             </label>
+            <Controller
+              name="project"
+              control={control}
+              render={({ field: { value, onChange } }) => (
+                <Dropdown
+                  placeholder="Select project"
+                  options={projectOptions}
+                  selectedValue={value?.id}
+                  errorMessage={errors.estimation?.message}
+                  onSelect={handleSelectedProject(onChange)}
+                />
+              )}
+            />
           </div>
 
           {/* Time spent */}
           <div className="flex flex-col gap-2 w-[137px]">
             <label className="text-gray-700 capitalize font-medium text-sm">
               Time spent
-              <Controller
-                name="timeSpent"
-                control={control}
-                render={({ field: { value, onChange } }) => (
-                  <Dropdown
-                    placeholder="Select time"
-                    options={TIME}
-                    selectedValue={value?.toString()}
-                    errorMessage={errors.estimation?.message}
-                    onSelect={onChange}
-                  />
-                )}
-              />
             </label>
+            <Controller
+              name="timeSpent"
+              control={control}
+              render={({ field: { value, onChange } }) => (
+                <Dropdown
+                  placeholder="Select time"
+                  options={TIME}
+                  selectedValue={value?.toString()}
+                  errorMessage={errors.estimation?.message}
+                  onSelect={onChange}
+                />
+              )}
+            />
           </div>
 
           {/* Estimation time */}
           <div className="flex flex-col gap-2 w-[137px]">
             <label className="text-gray-700 capitalize font-medium text-sm">
               Estimation time
-              <Controller
-                name="estimation"
-                control={control}
-                render={({ field: { value, onChange } }) => (
-                  <Dropdown
-                    placeholder="Estimation"
-                    options={TIME}
-                    selectedValue={value?.toString()}
-                    errorMessage={errors.estimation?.message}
-                    onSelect={onChange}
-                  />
-                )}
-              />
             </label>
+            <Controller
+              name="estimation"
+              control={control}
+              render={({ field: { value, onChange } }) => (
+                <Dropdown
+                  placeholder="Estimation"
+                  options={TIME}
+                  selectedValue={value?.toString()}
+                  errorMessage={errors.estimation?.message}
+                  onSelect={onChange}
+                />
+              )}
+            />
           </div>
 
           {/* Task status */}

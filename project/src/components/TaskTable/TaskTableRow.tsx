@@ -1,5 +1,5 @@
 // Types
-import { Task } from "@/types";
+import { Project } from "@/types";
 
 // Components
 import { PlayIcon } from "@/components/Icons";
@@ -8,20 +8,32 @@ import { MoreMenu } from "@/components";
 // Utils
 import { formatTime, getColorPriority, getColorTaskStatus } from "@/utils";
 
+// Constants
+import { PRIORITY_STATUS, TASK_STATUS } from "@/constants";
+
 interface TaskTableRowProps {
-  task: Task;
+  title: string;
+  timeSpent: number;
+  estimation: number;
+  date: string;
+  project: Project;
+  priority: PRIORITY_STATUS;
+  status: TASK_STATUS;
   onShowEditFormModal: () => void;
   onShowConfirmDeleteModal: () => void;
 }
 
 const TaskTableRow = ({
-  task,
+  title,
+  timeSpent,
+  estimation,
+  status,
+  project,
+  date,
+  priority,
   onShowEditFormModal,
   onShowConfirmDeleteModal,
 }: TaskTableRowProps) => {
-  const { title, timeSpent, estimation, status, project, date, priority } =
-    task || {};
-
   const MENU_OPTION = [
     {
       title: "Edit Task",

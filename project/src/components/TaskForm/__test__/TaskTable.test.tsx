@@ -93,12 +93,12 @@ describe("TaskForm Component", () => {
       target: { value: TASKS[0].title },
     });
 
-    fireEvent.click(screen.getByLabelText("Project"));
+    fireEvent.click(screen.getByText("Select project"));
     fireEvent.click(screen.getByText("google"));
-    fireEvent.click(screen.getByLabelText("Time spent"));
+    fireEvent.click(screen.getByText("Select time"));
     fireEvent.click(screen.getByText("1hrs 30m"));
-    fireEvent.click(screen.getByLabelText("Estimation time"));
-    fireEvent.click(screen.getAllByText("2hrs")[1]);
+    fireEvent.click(screen.getByText("Estimation"));
+    fireEvent.click(screen.getByText("2hrs"));
 
     fireEvent.click(taskStatus);
     fireEvent.click(priority);

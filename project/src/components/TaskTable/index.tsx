@@ -59,7 +59,7 @@ const TaskTable = ({ tasks }: TaskTableProp) => {
           {tasks.map((item: Task) => (
             <TaskTableRow
               key={item.id}
-              task={item}
+              {...item}
               onShowEditFormModal={() => handleShowEditModal(item.id)}
               onShowConfirmDeleteModal={() => handleShowDeleteModal(item.id)}
             />
