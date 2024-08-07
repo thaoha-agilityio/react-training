@@ -1,17 +1,16 @@
-import { useState } from "react";
-import {
-  Button,
-  Pagination,
-  StatByType,
-  TaskTable,
-  TaskForm,
-} from "@/components";
+import { lazy, Suspense, useCallback, useState } from "react";
+
+// Components
+import { Button, Pagination, StatByType, TaskTable } from "@/components";
+import { SpinnerIcon } from "@/components/Icons";
 
 // Constants
 import { STAT_STATUS } from "@/constants";
 
 // Mocks
 import { PROJECTS, TASKS } from "@/mocks";
+
+const TaskForm = lazy(() => import("@/components/TaskForm"));
 
 const Home = () => {
   const [isShowTaskForm, setIsShowTaskForm] = useState(false);
@@ -20,9 +19,9 @@ const Home = () => {
     setIsShowTaskForm(true);
   };
 
-  const handleCloseTaskForm = () => {
+  const handleCloseTaskForm = useCallback(() => {
     setIsShowTaskForm(false);
-  };
+  }, []);
 
   return (
     <div className="p-8">
@@ -54,7 +53,9 @@ const Home = () => {
       </div>
 
       {isShowTaskForm && (
-        <TaskForm projects={PROJECTS} onClose={handleCloseTaskForm} />
+        <Suspense fallback={<SpinnerIcon />}>
+          <TaskForm projects={PROJECTS} onClose={handleCloseTaskForm} />
+        </Suspense>
       )}
     </div>
   );

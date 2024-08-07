@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { lazy, memo, Suspense, useCallback, useState } from "react";
 
 // Types
 import { Task } from "@/types";
@@ -6,11 +6,13 @@ import { Task } from "@/types";
 // Components
 import TaskTableHeader from "./TaskTableHeader";
 import TaskTableRow from "./TaskTableRow";
-import DeleteModal from "../Modal/DeleteModal";
-import TaskForm from "../TaskForm";
 
 // Mocks
 import { PROJECTS } from "@/mocks";
+import { SpinnerIcon } from "../Icons";
+
+const TaskForm = lazy(() => import("@/components/TaskForm"));
+const DeleteModal = lazy(() => import("@/components/Modal/DeleteModal"));
 
 interface TaskTableProp {
   tasks: Task[];
@@ -22,30 +24,30 @@ const TaskTable = ({ tasks }: TaskTableProp) => {
 
   const [selectedId, setSelectedId] = useState("");
 
-  const handleShowEditModal = (id: string) => {
+  const handleShowEditModal = useCallback((id: string) => {
     setIsShowEditModal(true);
     setSelectedId(id);
-  };
+  }, []);
 
-  const handleCloseEditModal = () => {
+  const handleCloseEditModal = useCallback(() => {
     setIsShowEditModal(false);
-  };
+  }, []);
 
-  const handleShowDeleteModal = (id: string) => {
+  const handleShowDeleteModal = useCallback((id: string) => {
     setIsShowDeleteModal(true);
     setSelectedId(id);
-  };
+  }, []);
 
-  const handleCloseDeleteModal = () => {
+  const handleCloseDeleteModal = useCallback(() => {
     setIsShowDeleteModal(false);
-  };
+  }, []);
 
   // TODO: will integrate  API later
-  const handleDeleteTask = () => {
+  const handleDeleteTask = useCallback(() => {
     console.log("Delete the task with id", selectedId);
 
     handleCloseDeleteModal();
-  };
+  }, [selectedId]);
 
   // TODO: will integrate  API later
   const selectedTask = tasks.find((task) => task.id === selectedId);
@@ -68,22 +70,26 @@ const TaskTable = ({ tasks }: TaskTableProp) => {
       </table>
       {/* Edit Modal*/}
       {isShowEditModal && (
-        <TaskForm
-          projects={PROJECTS}
-          onClose={handleCloseEditModal}
-          task={selectedTask}
-        />
+        <Suspense fallback={<SpinnerIcon />}>
+          <TaskForm
+            projects={PROJECTS}
+            onClose={handleCloseEditModal}
+            task={selectedTask}
+          />
+        </Suspense>
       )}
 
       {/* Delete Modal */}
       {isShowDeleteModal && (
-        <DeleteModal
-          onClose={handleCloseDeleteModal}
-          onSubmit={handleDeleteTask}
-        />
+        <Suspense fallback={<SpinnerIcon />}>
+          <DeleteModal
+            onClose={handleCloseDeleteModal}
+            onSubmit={handleDeleteTask}
+          />
+        </Suspense>
       )}
     </>
   );
 };
 
-export default TaskTable;
+export default memo(TaskTable);

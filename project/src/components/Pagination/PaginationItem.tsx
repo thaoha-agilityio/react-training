@@ -1,6 +1,6 @@
 import { clsx } from "clsx";
 import { Link } from "react-router-dom";
-import { ReactNode } from "react";
+import { memo, ReactNode } from "react";
 
 interface PaginationItemProps {
   isDisabled?: boolean;
@@ -32,4 +32,4 @@ const PaginationItem = ({
   );
 };
 
-export default PaginationItem;
+export default memo(PaginationItem);

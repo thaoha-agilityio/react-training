@@ -1,5 +1,5 @@
 import { clsx } from "clsx";
-import { forwardRef, InputHTMLAttributes } from "react";
+import { forwardRef, InputHTMLAttributes, memo } from "react";
 
 // Types
 import { RadioOptions } from "@/types";
@@ -49,4 +49,4 @@ const RadioGroup = forwardRef<HTMLInputElement, RadioGroupProps>(
   ),
 );
 
-export default RadioGroup;
+export default memo(RadioGroup);

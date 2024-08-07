@@ -1,3 +1,5 @@
+import { memo } from "react";
+
 // Types
 import { Project } from "@/types";
 
@@ -88,4 +90,4 @@ const TaskTableRow = ({
   );
 };
 
-export default TaskTableRow;
+export default memo(TaskTableRow);
