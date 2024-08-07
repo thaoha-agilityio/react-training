@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { memo, useRef, useState } from "react";
 
 // Icons
 import { ChevronDownIcon } from "../Icons";
@@ -84,4 +84,4 @@ const Dropdown = ({
   );
 };
 
-export default Dropdown;
+export default memo(Dropdown);

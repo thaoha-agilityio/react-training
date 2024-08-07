@@ -1,3 +1,5 @@
+import { memo } from "react";
+
 // Components
 import { Button, BaseModal } from "@/components";
 
@@ -21,4 +23,4 @@ const DeleteModal = ({ isLoading, onClose, onSubmit }: DeleteModalProps) => (
   </BaseModal>
 );
 
-export default DeleteModal;
+export default memo(DeleteModal);

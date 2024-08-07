@@ -1,3 +1,5 @@
+import { memo } from "react";
+
 // Utils
 import { calculateTotalPages, generatePagination } from "@/utils";
 
@@ -56,4 +58,4 @@ const Pagination = ({
   );
 };
 
-export default Pagination;
+export default memo(Pagination);

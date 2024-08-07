@@ -1,4 +1,5 @@
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
+import { memo } from "react";
 
 // Components
 import {
@@ -198,4 +199,4 @@ const TaskForm = ({ projects, task, onClose }: TaskFromProps) => {
   );
 };
 
-export default TaskForm;
+export default memo(TaskForm);

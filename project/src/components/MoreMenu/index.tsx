@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { memo, useRef, useState } from "react";
 
 // Components
 import Button from "../Button";
@@ -56,4 +56,4 @@ const MoreMenu = ({ options }: MoreMenuProps) => {
   );
 };
 
-export default MoreMenu;
+export default memo(MoreMenu);
