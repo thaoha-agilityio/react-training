@@ -50,9 +50,11 @@
 
 - Step 4: Install packages `pnpm install`
 
-- Step 5: Run project `pnpm run dev`
+- Step 5: Run server `pnpm run server`
 
-- Step 6: Follow to command lines below
+- Step 6: Run project `pnpm run dev`
+
+- Step 7: Follow to command lines below
 
 | Command        | Action                                             |
 | :------------- | :------------------------------------------------- |
