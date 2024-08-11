@@ -23,6 +23,10 @@ const Home = () => {
     setIsShowTaskForm(false);
   }, []);
 
+  const handleChangeToNextPage = (page: number) => {
+    console.log(page);
+  };
+
   return (
     <div className="p-8">
       <div className="flex justify-between">
@@ -49,7 +53,12 @@ const Home = () => {
       {/* TODO: will integrate  API later */}
       <TaskTable tasks={TASKS} />
       <div className="flex justify-end my-5">
-        <Pagination currentPage={1} totalItems={10} itemsPerPage={1} />
+        <Pagination
+          currentPage={1}
+          totalItems={10}
+          itemsPerPage={1}
+          onChangePage={handleChangeToNextPage}
+        />
       </div>
 
       {isShowTaskForm && (
