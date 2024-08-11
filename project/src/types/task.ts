@@ -2,7 +2,7 @@ import { PRIORITY_STATUS, TASK_STATUS } from "@/constants";
 import { Project } from "./project";
 
 export interface Task {
-  id: string;
+  id: number;
   title: string;
   timeSpent: number;
   estimation: number;
