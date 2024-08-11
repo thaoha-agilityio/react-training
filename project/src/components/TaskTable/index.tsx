@@ -22,9 +22,9 @@ const TaskTable = ({ tasks }: TaskTableProp) => {
   const [isShowEditModal, setIsShowEditModal] = useState(false);
   const [isShowDeleteModal, setIsShowDeleteModal] = useState(false);
 
-  const [selectedId, setSelectedId] = useState("");
+  const [selectedId, setSelectedId] = useState(0);
 
-  const handleShowEditModal = useCallback((id: string) => {
+  const handleShowEditModal = useCallback((id: number) => {
     setIsShowEditModal(true);
     setSelectedId(id);
   }, []);
@@ -33,7 +33,7 @@ const TaskTable = ({ tasks }: TaskTableProp) => {
     setIsShowEditModal(false);
   }, []);
 
-  const handleShowDeleteModal = useCallback((id: string) => {
+  const handleShowDeleteModal = useCallback((id: number) => {
     setIsShowDeleteModal(true);
     setSelectedId(id);
   }, []);
