@@ -1,19 +1,18 @@
 import { clsx } from "clsx";
-import { Link } from "react-router-dom";
 import { memo, ReactNode } from "react";
 
 interface PaginationItemProps {
   isDisabled?: boolean;
   isCurrentPage?: boolean;
-  href: string;
   children: ReactNode;
+  onClick: () => void;
 }
 
 const PaginationItem = ({
   isDisabled = false,
   isCurrentPage = false,
-  href,
   children,
+  onClick,
 }: PaginationItemProps) => {
   const baseClass =
     "flex h-10 p-[15px] rounded-lg border text-gray-400 items-center gap-1 bg-white";
@@ -26,9 +25,12 @@ const PaginationItem = ({
     : "hover:bg-blue-100";
 
   return (
-    <Link className={clsx(baseClass, disableClass, pageClass)} to={href}>
+    <button
+      className={clsx(baseClass, disableClass, pageClass)}
+      onClick={onClick}
+    >
       {children}
-    </Link>
+    </button>
   );
 };
 

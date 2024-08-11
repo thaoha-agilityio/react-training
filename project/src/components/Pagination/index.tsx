@@ -11,22 +11,31 @@ interface PaginationProps {
   currentPage: number;
   totalItems: number;
   itemsPerPage: number;
+  onChangePage: (page: number) => void;
 }
 
 const Pagination = ({
   currentPage,
   totalItems,
   itemsPerPage,
+  onChangePage,
 }: PaginationProps) => {
   const totalPages = calculateTotalPages(totalItems, itemsPerPage);
   const allPages = generatePagination(currentPage, totalPages);
+
+  const handleChangeToPreviousPage = () => {
+    onChangePage(currentPage - 1);
+  };
+
+  const handleChangeToNextPage = () => {
+    onChangePage(currentPage + 1);
+  };
 
   return (
     <div className="flex gap-2">
       <PaginationItem
         isDisabled={currentPage <= 1}
-        // TODO: will handle createPageURL later
-        href={`/${currentPage - 1}`}
+        onClick={handleChangeToPreviousPage}
       >
         <ChevronLeftIcon width={12} height={12} />
         Previous
@@ -38,8 +47,7 @@ const Pagination = ({
           <PaginationItem
             key={`${page}-${index}`}
             isCurrentPage={currentPage === page}
-            // TODO: will handle createPageURL later
-            href={`/${page}`}
+            onClick={() => onChangePage(Number(page))}
           >
             {page}
           </PaginationItem>
@@ -48,8 +56,7 @@ const Pagination = ({
 
       <PaginationItem
         isDisabled={currentPage >= totalPages}
-        // TODO: will handle createPageURL later
-        href={`/${currentPage + 1}`}
+        onClick={handleChangeToNextPage}
       >
         Next
         <ChevronLeftIcon className="rotate-180" width={12} height={12} />

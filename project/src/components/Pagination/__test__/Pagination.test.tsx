@@ -10,6 +10,7 @@ describe("Pagination", () => {
     currentPage: 1,
     totalItems: 10,
     itemsPerPage: 1,
+    onChangePage: jest.fn(),
   };
 
   it("should render the Pagination correctly", () => {
