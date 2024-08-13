@@ -27,10 +27,17 @@ const apiRequest = async <T>(
   }
 };
 
-const getData = async <T>(url: string, headers?: HeadersInit): Promise<T> => {
+const getData = async <T>(
+  url: string,
+  headers?: HeadersInit,
+): Promise<{ data: T; total: string }> => {
   const response = await apiRequest(`${API_BASE_URL}/${url}`, { headers });
+  const total = response.headers.get("X-Total-Count") || "";
 
-  return response.json();
+  return {
+    data: await response.json(),
+    total,
+  };
 };
 
 const putData = async <T, R>(
