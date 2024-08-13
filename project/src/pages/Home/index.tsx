@@ -5,15 +5,26 @@ import { Button, Pagination, StatByType, TaskTable } from "@/components";
 import { SpinnerIcon } from "@/components/Icons";
 
 // Constants
-import { STAT_STATUS } from "@/constants";
+import { PAGINATION_LIMIT, STAT_STATUS } from "@/constants";
 
 // Mocks
-import { PROJECTS, TASKS } from "@/mocks";
+import { PROJECTS } from "@/mocks";
+
+// Hooks
+import { usePaginationTasks } from "@/hooks";
 
 const TaskForm = lazy(() => import("@/components/TaskForm"));
 
 const Home = () => {
   const [isShowTaskForm, setIsShowTaskForm] = useState(false);
+
+  const {
+    data: tasks,
+    totalItem,
+    isLoading,
+    currentPage,
+    fetchAtPage,
+  } = usePaginationTasks();
 
   const handleShowTaskForm = () => {
     setIsShowTaskForm(true);
@@ -23,16 +34,16 @@ const Home = () => {
     setIsShowTaskForm(false);
   }, []);
 
-  const handleChangeToNextPage = (page: number) => {
-    console.log(page);
-  };
+  if (isLoading) {
+    return <SpinnerIcon />;
+  }
 
   return (
     <div className="p-8">
       <div className="flex justify-between">
         <div>
           <h2 className="text-lg font-semibold">Tasks</h2>
-          <p className="text-gray-500 text-xs">You have {TASKS.length} tasks</p>
+          <p className="text-gray-500 text-xs">You have {tasks.length} tasks</p>
         </div>
         <Button extraStyle="h-[35px]" onClick={handleShowTaskForm}>
           + Add Tasks
@@ -50,14 +61,13 @@ const Home = () => {
         <StatByType total={10} label="Blocker" type={STAT_STATUS.BLOCK} />
       </div>
 
-      {/* TODO: will integrate  API later */}
-      <TaskTable tasks={TASKS} />
+      <TaskTable tasks={tasks} />
       <div className="flex justify-end my-5">
         <Pagination
-          currentPage={1}
-          totalItems={10}
-          itemsPerPage={1}
-          onChangePage={handleChangeToNextPage}
+          currentPage={currentPage}
+          totalItems={totalItem}
+          itemsPerPage={PAGINATION_LIMIT}
+          onChangePage={fetchAtPage}
         />
       </div>
 
