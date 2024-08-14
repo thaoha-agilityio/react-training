@@ -14,7 +14,7 @@ import { formatTime, getColorPriority, getColorTaskStatus } from "@/utils";
 import { PRIORITY_STATUS, TASK_STATUS } from "@/constants";
 
 interface TaskTableRowProps {
-  id: number;
+  id: string;
   title: string;
   timeSpent: number;
   estimation: number;
@@ -24,7 +24,7 @@ interface TaskTableRowProps {
   status: TASK_STATUS;
   onShowEditFormModal: () => void;
   onShowConfirmDeleteModal: () => void;
-  onShowDetail: (id: number) => void;
+  onShowDetail: (id: string) => void;
 }
 
 const TaskTableRow = ({

@@ -5,7 +5,7 @@ import { immer } from "zustand/middleware/immer";
 import { Task } from "@/types";
 
 type TaskState = {
-  tasks: Record<number, Task>;
+  tasks: Record<string, Task>;
 };
 
 type TaskActions = {
@@ -13,7 +13,7 @@ type TaskActions = {
 };
 
 const INITIAL_TASK_STATE = {
-  tasks: {} as Record<number, Task>,
+  tasks: {} as Record<string, Task>,
 };
 
 export const useTaskStore = create<TaskState & TaskActions>()(
