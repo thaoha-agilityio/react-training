@@ -54,11 +54,11 @@ const putData = async <T, R>(
   return response.json();
 };
 
-const postData = async <T, R>(
+const postData = async <T>(
   url: string,
   data: Partial<T>,
   headers?: HeadersInit,
-): Promise<R> => {
+): Promise<T> => {
   const response = await apiRequest(`${API_BASE_URL}/${url}`, {
     method: "POST",
     data,

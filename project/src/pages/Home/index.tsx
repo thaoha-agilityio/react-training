@@ -37,7 +37,7 @@ const Home = () => {
     setIsShowTaskForm(false);
   }, []);
 
-  const handleShowDetail = useCallback((id: number) => {
+  const handleShowDetail = useCallback((id: string) => {
     navigate(`${ROUTES.TASKS}/${id}`);
   }, []);
 

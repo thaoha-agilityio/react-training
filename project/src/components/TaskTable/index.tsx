@@ -16,16 +16,16 @@ const DeleteModal = lazy(() => import("@/components/Modal/DeleteModal"));
 
 interface TaskTableProp {
   tasks: Task[];
-  onShowDetail: (id: number) => void;
+  onShowDetail: (id: string) => void;
 }
 
 const TaskTable = ({ tasks, onShowDetail }: TaskTableProp) => {
   const [isShowEditModal, setIsShowEditModal] = useState(false);
   const [isShowDeleteModal, setIsShowDeleteModal] = useState(false);
 
-  const [selectedId, setSelectedId] = useState(0);
+  const [selectedId, setSelectedId] = useState("");
 
-  const handleShowEditModal = useCallback((id: number) => {
+  const handleShowEditModal = useCallback((id: string) => {
     setIsShowEditModal(true);
     setSelectedId(id);
   }, []);
@@ -34,7 +34,7 @@ const TaskTable = ({ tasks, onShowDetail }: TaskTableProp) => {
     setIsShowEditModal(false);
   }, []);
 
-  const handleShowDeleteModal = useCallback((id: number) => {
+  const handleShowDeleteModal = useCallback((id: string) => {
     setIsShowDeleteModal(true);
     setSelectedId(id);
   }, []);

@@ -9,7 +9,7 @@ import { PROJECTS } from "./projects";
 
 export const TASKS: Task[] = [
   {
-    id: 1,
+    id: "1",
     title: "Integrating with database",
     project: PROJECTS[0],
     estimation: 90,
@@ -19,7 +19,7 @@ export const TASKS: Task[] = [
     date: "Mar 22, 2023",
   },
   {
-    id: 2,
+    id: "2",
     title: "Fix add work log API issue",
     project: PROJECTS[0],
     estimation: 120,
@@ -29,7 +29,7 @@ export const TASKS: Task[] = [
     priority: PRIORITY_STATUS.LOW,
   },
   {
-    id: 3,
+    id: "3",
     title: "Database query optimization",
     project: PROJECTS[1],
     estimation: 120,
@@ -39,7 +39,7 @@ export const TASKS: Task[] = [
     priority: PRIORITY_STATUS.MEDIUM,
   },
   {
-    id: 4,
+    id: "4",
     title: "Working with frameworks and libs",
     project: PROJECTS[2],
     estimation: 120,
