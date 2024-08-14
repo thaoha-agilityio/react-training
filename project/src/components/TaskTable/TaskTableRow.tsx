@@ -14,6 +14,7 @@ import { formatTime, getColorPriority, getColorTaskStatus } from "@/utils";
 import { PRIORITY_STATUS, TASK_STATUS } from "@/constants";
 
 interface TaskTableRowProps {
+  id: number;
   title: string;
   timeSpent: number;
   estimation: number;
@@ -23,9 +24,11 @@ interface TaskTableRowProps {
   status: TASK_STATUS;
   onShowEditFormModal: () => void;
   onShowConfirmDeleteModal: () => void;
+  onShowDetail: (id: number) => void;
 }
 
 const TaskTableRow = ({
+  id,
   title,
   timeSpent,
   estimation,
@@ -35,6 +38,7 @@ const TaskTableRow = ({
   priority,
   onShowEditFormModal,
   onShowConfirmDeleteModal,
+  onShowDetail,
 }: TaskTableRowProps) => {
   const MENU_OPTION = [
     {
@@ -47,8 +51,15 @@ const TaskTableRow = ({
     },
   ];
 
+  const handleShowDetail = () => {
+    onShowDetail(id);
+  };
+
   return (
-    <tr className="text-left border-b capitalize">
+    <tr
+      className="text-left border-b capitalize cursor-pointer"
+      onClick={handleShowDetail}
+    >
       {/* Project name  and Task name*/}
       <td className="flex gap-3 p-5 items-center">
         <PlayIcon width={30} height={30} className="fill-slate-400" />

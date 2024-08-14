@@ -1,11 +1,12 @@
 import { lazy, Suspense, useCallback, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 // Components
 import { Button, Pagination, StatByType, TaskTable } from "@/components";
 import { SpinnerIcon } from "@/components/Icons";
 
 // Constants
-import { PAGINATION_LIMIT, STAT_STATUS } from "@/constants";
+import { PAGINATION_LIMIT, ROUTES, STAT_STATUS } from "@/constants";
 
 // Mocks
 import { PROJECTS } from "@/mocks";
@@ -26,12 +27,18 @@ const Home = () => {
     fetchAtPage,
   } = usePaginationTasks();
 
+  const navigate = useNavigate();
+
   const handleShowTaskForm = () => {
     setIsShowTaskForm(true);
   };
 
   const handleCloseTaskForm = useCallback(() => {
     setIsShowTaskForm(false);
+  }, []);
+
+  const handleShowDetail = useCallback((id: number) => {
+    navigate(`${ROUTES.TASKS}/${id}`);
   }, []);
 
   if (isLoading) {
@@ -61,7 +68,7 @@ const Home = () => {
         <StatByType total={10} label="Blocker" type={STAT_STATUS.BLOCK} />
       </div>
 
-      <TaskTable tasks={tasks} />
+      <TaskTable tasks={tasks} onShowDetail={handleShowDetail} />
       <div className="flex justify-end my-5">
         <Pagination
           currentPage={currentPage}

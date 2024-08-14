@@ -10,7 +10,7 @@ interface BreadcrumbProps {
 
 const Breadcrumbs = ({ breadcrumbs }: BreadcrumbProps) => (
   <nav aria-label="Breadcrumb" className="mb-6 block">
-    <ul className="flex text-xl">
+    <ul className="flex text-md">
       {breadcrumbs.map((breadcrumb, index) => {
         const { href, label } = breadcrumb || {};
         const lastIndex = breadcrumbs.length - 1;

@@ -16,9 +16,10 @@ const DeleteModal = lazy(() => import("@/components/Modal/DeleteModal"));
 
 interface TaskTableProp {
   tasks: Task[];
+  onShowDetail: (id: number) => void;
 }
 
-const TaskTable = ({ tasks }: TaskTableProp) => {
+const TaskTable = ({ tasks, onShowDetail }: TaskTableProp) => {
   const [isShowEditModal, setIsShowEditModal] = useState(false);
   const [isShowDeleteModal, setIsShowDeleteModal] = useState(false);
 
@@ -64,6 +65,7 @@ const TaskTable = ({ tasks }: TaskTableProp) => {
               {...item}
               onShowEditFormModal={() => handleShowEditModal(item.id)}
               onShowConfirmDeleteModal={() => handleShowDeleteModal(item.id)}
+              onShowDetail={onShowDetail}
             />
           ))}
         </tbody>
