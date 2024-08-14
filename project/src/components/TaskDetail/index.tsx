@@ -29,11 +29,13 @@ const TaskDetail = ({
   priority,
 }: TaskDetailProps) => {
   const baseClass = "font-medium text-zinc-800";
-  const detailClass = "text-gray-500 px-3";
+  const detailClass = "text-gray-500";
 
   return (
     <div className="mt-10">
-      <h2 className="text-xl text-indigo-600 mb-3 font-medium">{title}</h2>
+      <h2 className="text-xl text-indigo-600 mb-3 font-medium capitalize">
+        {title}
+      </h2>
       <div className="rounded-3xl bg-white p-4">
         <div className="grid grid-cols-2 capitalize text-sm gap-4 w-[400px] items-center">
           <p className={baseClass}>project name:</p>
@@ -41,7 +43,7 @@ const TaskDetail = ({
 
           <p className={baseClass}>Status:</p>
           <div
-            className={`rounded-lg py-[2px] text-center w-[60px] ${getColorTaskStatus(status).bgColor}`}
+            className={`rounded-lg pb-[3px] text-center w-fit px-3 ${getColorTaskStatus(status).bgColor}`}
           >
             <p className="text-white">{status}</p>
           </div>
@@ -52,7 +54,7 @@ const TaskDetail = ({
           <p className={baseClass}>Priority:</p>
 
           <div
-            className={`rounded-lg py-[2px] text-center w-[60px] ${getColorPriority(priority).bgColor}`}
+            className={`rounded-lg py-[3px] text-center w-fit px-3 ${getColorPriority(priority).bgColor}`}
           >
             <p className="text-white">{priority}</p>
           </div>
