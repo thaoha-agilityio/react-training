@@ -21,7 +21,7 @@ const Home = () => {
 
   const {
     data: tasks,
-    totalItem,
+    totalItems,
     isLoading,
     currentPage,
     fetchAtPage,
@@ -72,7 +72,7 @@ const Home = () => {
       <div className="flex justify-end my-5">
         <Pagination
           currentPage={currentPage}
-          totalItems={totalItem}
+          totalItems={totalItems}
           itemsPerPage={PAGINATION_LIMIT}
           onChangePage={fetchAtPage}
         />
