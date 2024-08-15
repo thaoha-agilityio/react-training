@@ -1,11 +1,18 @@
+import { useParams } from "react-router-dom";
+
 // Components
 import { Breadcrumbs, TaskDetail } from "@/components";
+import { SpinnerIcon } from "@/components/Icons";
 
 // Constants
 import { ROUTES } from "@/constants";
-import { TASKS } from "@/mocks";
+
+// Hooks
+import { useTaskGetDetail } from "@/hooks";
 
 const TaskDetailPage = () => {
+  const { id = "" } = useParams();
+
   const DETAIL_TASK_BREADCRUMBS = [
     {
       label: "Tasks",
@@ -13,16 +20,17 @@ const TaskDetailPage = () => {
     },
     {
       label: "Task detail",
-      href: ROUTES.TASK_DETAIL,
+      href: `${ROUTES.TASKS}/${id}`,
     },
   ];
+
+  const { taskDetail, isLoading } = useTaskGetDetail(id);
 
   return (
     <div className="p-9">
       <Breadcrumbs breadcrumbs={DETAIL_TASK_BREADCRUMBS} />
 
-      {/* TODO: will integrate  API later */}
-      <TaskDetail {...TASKS[0]} />
+      {isLoading ? <SpinnerIcon /> : <TaskDetail {...taskDetail} />}
     </div>
   );
 };
