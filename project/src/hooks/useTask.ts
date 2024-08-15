@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 // Constants
-import { API_ROUTES, PAGINATION_LIMIT } from "@/constants";
+import { API_ROUTES, ERROR_MESSAGE, PAGINATION_LIMIT } from "@/constants";
 
 // Services
 import { api } from "@/services";
@@ -14,6 +14,9 @@ import { usePaginationStore, useTaskStore } from "@/stores";
 
 // Utils
 import { generateUrl, getIdsFromList } from "@/utils";
+
+// Mocks
+import { INITIAL_TASK } from "@/mocks";
 
 /**
  * Custom hook to manage paginated tasks.
@@ -81,5 +84,51 @@ export const usePaginationTasks = (page: number = 1) => {
     fetchAtPage: trigger,
     totalItem,
     error,
+  };
+};
+
+/**
+ * Custom hook to fetch the details of a specific task by its ID.
+ * @param id - The unique identifier of the task to fetch.
+ * @returns An object containing the task details, loading state, and any error encountered during the fetch.
+ */
+export const useTaskGetDetail = (id: string) => {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string>("");
+
+  const [tasks, setTask] = useTaskStore((state) => [
+    state.tasks,
+    state.setTask,
+  ]);
+
+  const trigger = async (id: string) => {
+    // If data for this id is already fetched, skip fetch data
+    if (tasks[id]) return;
+
+    // Start fetching data
+    setIsLoading(true);
+
+    try {
+      const url = `${API_ROUTES.TASKS}/${id}`;
+      const { data } = await api.getData<Task>(url);
+
+      setTask(data);
+    } catch (error) {
+      const errorMessage =
+        error instanceof Error ? error.message : ERROR_MESSAGE.DEFAULT;
+      setError(errorMessage);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    trigger(id);
+  }, [id]);
+
+  return {
+    isLoading,
+    error,
+    taskDetail: tasks[id] || INITIAL_TASK,
   };
 };

@@ -49,3 +49,19 @@ export const TASKS: Task[] = [
     priority: PRIORITY_STATUS.MEDIUM,
   },
 ];
+
+export const INITIAL_PROJECT = {
+  id: "",
+  name: "",
+};
+
+export const INITIAL_TASK = {
+  id: 0,
+  title: "",
+  project: INITIAL_PROJECT,
+  estimation: 0,
+  timeSpent: 0,
+  status: TASK_STATUS.NOTE_STARTED,
+  priority: PRIORITY_STATUS.LOW,
+  date: "",
+};
