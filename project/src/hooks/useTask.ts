@@ -27,16 +27,18 @@ export const usePaginationTasks = (page: number = 1) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
   const [currentPage, setCurrentPage] = useState<number>(page);
-  const [totalItem, setTotalItem] = useState<number>(0);
+
+  const [setPagination, pagination, totalItems, setTotalItems] =
+    usePaginationStore((state) => [
+      state.setPagination,
+      state.pagination,
+      state.totalItems,
+      state.setTotalItems,
+    ]);
 
   const [tasks, setTask] = useTaskStore((state) => [
     state.tasks,
     state.setTask,
-  ]);
-
-  const [setPagination, pagination] = usePaginationStore((state) => [
-    state.setPagination,
-    state.pagination,
   ]);
 
   const trigger = async (page: number) => {
@@ -60,7 +62,7 @@ export const usePaginationTasks = (page: number = 1) => {
 
       data.forEach((task) => setTask(task));
 
-      setTotalItem(+total);
+      setTotalItems(+total);
 
       const ids = getIdsFromList(data);
       setPagination(page, ids);
@@ -75,14 +77,14 @@ export const usePaginationTasks = (page: number = 1) => {
 
   useEffect(() => {
     trigger(page);
-  }, []);
+  }, [page]);
 
   return {
     currentPage,
     data: pagination[currentPage]?.map((id) => tasks[id]) || [],
     isLoading,
     fetchAtPage: trigger,
-    totalItem,
+    totalItems,
     error,
   };
 };
