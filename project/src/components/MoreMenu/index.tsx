@@ -1,4 +1,4 @@
-import { memo, useRef, useState } from "react";
+import { memo, useRef, useState, MouseEvent } from "react";
 
 // Components
 import Button from "../Button";
@@ -17,7 +17,8 @@ interface MoreMenuProps {
 const MoreMenu = ({ options }: MoreMenuProps) => {
   const [isShowMenu, setIsShowMenu] = useState(false);
 
-  const handleToggleMenu = () => {
+  const handleToggleMenu = (event: MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation();
     setIsShowMenu((prev) => !prev);
   };
 
