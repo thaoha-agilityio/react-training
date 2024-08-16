@@ -17,6 +17,7 @@ describe("TaskForm Component", () => {
   const mockProps = {
     projects: PROJECTS,
     onClose: jest.fn(),
+    onSubmit: jest.fn(),
   };
 
   const setup = () => {

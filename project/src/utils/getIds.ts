@@ -5,4 +5,4 @@
  */
 export const getIdsFromList = <T extends { id: string }>(
   array: T[],
-): number[] => array.map((item) => +item.id);
+): string[] => array.map((item) => item.id);
