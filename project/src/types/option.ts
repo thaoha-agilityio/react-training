@@ -6,3 +6,8 @@ export interface Option {
 export interface RadioOptions extends Option {
   color: string;
 }
+
+export interface MutateOptions {
+  onSuccess: () => void;
+  onError: (error: unknown) => void;
+}
