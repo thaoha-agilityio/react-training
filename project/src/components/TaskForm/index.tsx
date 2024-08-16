@@ -25,12 +25,20 @@ import { Project, Task } from "@/types";
 import { findProjectById, transformProject } from "@/utils";
 
 interface TaskFromProps {
+  isDisableButton?: boolean;
   projects: Project[];
   task?: Task;
   onClose: () => void;
+  onSubmit: (formData: Omit<Task, "id">) => void;
 }
 
-const TaskForm = ({ projects, task, onClose }: TaskFromProps) => {
+const TaskForm = ({
+  isDisableButton = false,
+  projects,
+  task,
+  onClose,
+  onSubmit,
+}: TaskFromProps) => {
   const { id, title } = task || {};
 
   const projectOptions = transformProject(projects);
@@ -79,9 +87,8 @@ const TaskForm = ({ projects, task, onClose }: TaskFromProps) => {
     },
   };
 
-  // TODO: will integrate  API later
   const handleSubmitTask: SubmitHandler<Task> = (data) => {
-    console.log(data);
+    onSubmit(data);
   };
 
   return (
@@ -186,7 +193,7 @@ const TaskForm = ({ projects, task, onClose }: TaskFromProps) => {
           />
 
           <div className="flex justify-end gap-3">
-            <Button type="submit" disabled={!isDirty}>
+            <Button type="submit" disabled={isDisableButton || !isDirty}>
               Save
             </Button>
             <Button variant="secondary" onClick={onClose}>

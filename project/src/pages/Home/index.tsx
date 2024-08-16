@@ -6,13 +6,24 @@ import { Button, Pagination, StatByType, TaskTable } from "@/components";
 import { SpinnerIcon } from "@/components/Icons";
 
 // Constants
-import { PAGINATION_LIMIT, ROUTES, STAT_STATUS } from "@/constants";
+import {
+  PAGINATION_LIMIT,
+  ROUTES,
+  STAT_STATUS,
+  SUCCESS_MESSAGES,
+} from "@/constants";
 
 // Mocks
 import { PROJECTS } from "@/mocks";
 
 // Hooks
-import { usePaginationTasks } from "@/hooks";
+import { useTaskCreate, useTaskPagination } from "@/hooks";
+
+// Types
+import { Task } from "@/types";
+
+// Stores
+import { usePaginationStore } from "@/stores";
 
 const TaskForm = lazy(() => import("@/components/TaskForm"));
 
@@ -25,7 +36,9 @@ const Home = () => {
     isLoading,
     currentPage,
     fetchAtPage,
-  } = usePaginationTasks();
+  } = useTaskPagination();
+
+  const clearPagination = usePaginationStore((state) => state.clearPagination);
 
   const navigate = useNavigate();
 
@@ -37,9 +50,41 @@ const Home = () => {
     setIsShowTaskForm(false);
   }, []);
 
-  const handleShowDetail = useCallback((id: string) => {
-    navigate(`${ROUTES.TASKS}/${id}`);
+  const handleShowDetail = useCallback(
+    (id: string) => {
+      navigate(`${ROUTES.TASKS}/${id}`);
+    },
+    [navigate],
+  );
+
+  const { trigger: createTask, isLoading: isCreateTaskLoading } =
+    useTaskCreate();
+
+  // Handle edit and create success
+  const handleSuccess = (message: string) => {
+    // TODO: Handle toast success message
+    console.log(message);
+
+    // Clear pagination from store
+    clearPagination();
+
+    fetchAtPage(currentPage);
+
+    handleCloseTaskForm();
+  };
+
+  // Handle edit and create error
+  const handleError = useCallback((error: unknown) => {
+    // TODO: Handle toast error message
+    console.log(error);
   }, []);
+
+  const handleSubmit = (data: Omit<Task, "id">) => {
+    createTask(data, {
+      onError: handleError,
+      onSuccess: () => handleSuccess(SUCCESS_MESSAGES.ADDED(data.title)),
+    });
+  };
 
   if (isLoading) {
     return <SpinnerIcon />;
@@ -80,7 +125,12 @@ const Home = () => {
 
       {isShowTaskForm && (
         <Suspense fallback={<SpinnerIcon />}>
-          <TaskForm projects={PROJECTS} onClose={handleCloseTaskForm} />
+          <TaskForm
+            projects={PROJECTS}
+            onClose={handleCloseTaskForm}
+            onSubmit={handleSubmit}
+            isDisableButton={isCreateTaskLoading}
+          />
         </Suspense>
       )}
     </div>
