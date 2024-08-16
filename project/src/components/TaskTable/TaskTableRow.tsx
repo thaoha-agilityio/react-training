@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { memo, MouseEvent } from "react";
 
 // Types
 import { Project } from "@/types";
@@ -40,14 +40,26 @@ const TaskTableRow = ({
   onShowConfirmDeleteModal,
   onShowDetail,
 }: TaskTableRowProps) => {
+  const handleShowEditFormModal = (event: MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation();
+    onShowEditFormModal();
+  };
+
+  const handleShowConfirmDeleteModal = (
+    event: MouseEvent<HTMLButtonElement>,
+  ) => {
+    event.stopPropagation();
+    onShowConfirmDeleteModal();
+  };
+
   const MENU_OPTION = [
     {
       title: "Edit Task",
-      onClick: onShowEditFormModal,
+      onClick: handleShowEditFormModal,
     },
     {
       title: "Delete Task",
-      onClick: onShowConfirmDeleteModal,
+      onClick: handleShowConfirmDeleteModal,
     },
   ];
 
