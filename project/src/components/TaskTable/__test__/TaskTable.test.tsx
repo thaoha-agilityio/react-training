@@ -10,6 +10,8 @@ describe("TaskTable component", () => {
   const mockProps = {
     tasks: TASKS,
     onShowDetail: jest.fn(),
+    onShowEditModal: jest.fn(),
+    onSubmit: jest.fn(),
   };
   it("should render the TaskTable correctly", () => {
     const { container } = render(<TaskTable {...mockProps} />);
