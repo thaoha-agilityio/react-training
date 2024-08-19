@@ -183,7 +183,6 @@ export const useTaskEdit = () => {
 
     try {
       const url = `${API_ROUTES.TASKS}/${item.id}`;
-
       const res = await api.putData<Task>(url, item);
       setTask(res);
 
