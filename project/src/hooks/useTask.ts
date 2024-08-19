@@ -198,3 +198,28 @@ export const useTaskEdit = () => {
 
   return { trigger, isLoading };
 };
+
+export const useTaskDelete = () => {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  const trigger = async (id: string, options: MutateOptions) => {
+    const { onSuccess, onError } = options;
+
+    setIsLoading(true);
+
+    try {
+      const url = `${API_ROUTES.TASKS}/${id}`;
+      await api.deleteData(url);
+
+      onSuccess();
+    } catch (error) {
+      const errorMessage =
+        error instanceof Error ? error.message : ERROR_MESSAGE.DEFAULT;
+      onError(errorMessage);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  return { trigger, isLoading };
+};

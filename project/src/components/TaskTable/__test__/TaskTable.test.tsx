@@ -11,6 +11,7 @@ describe("TaskTable component", () => {
     tasks: TASKS,
     onShowDetail: jest.fn(),
     onShowEditModal: jest.fn(),
+    onShowDeleteModal: jest.fn(),
     onSubmit: jest.fn(),
   };
   it("should render the TaskTable correctly", () => {
