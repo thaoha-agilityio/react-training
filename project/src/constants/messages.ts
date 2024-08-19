@@ -7,3 +7,5 @@ export const SUCCESS_MESSAGES = {
   EDITED: (name: string) => `${name} was edited successfully.`,
   DELETED: (name: string) => `${name} was deleted successfully.`,
 };
+
+export const NOTICE_MESSAGE = "No records to display";

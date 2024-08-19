@@ -17,7 +17,12 @@ import {
 import { PROJECTS } from "@/mocks";
 
 // Hooks
-import { useTaskCreate, useTaskEdit, useTaskPagination } from "@/hooks";
+import {
+  useTaskCreate,
+  useTaskDelete,
+  useTaskEdit,
+  useTaskPagination,
+} from "@/hooks";
 
 // Types
 import { Task } from "@/types";
@@ -26,10 +31,13 @@ import { Task } from "@/types";
 import { usePaginationStore } from "@/stores";
 
 const TaskForm = lazy(() => import("@/components/TaskForm"));
+const DeleteModal = lazy(() => import("@/components/Modal/DeleteModal"));
 
 const Home = () => {
-  const [isShowTaskForm, setIsShowTaskForm] = useState(false);
+  const navigate = useNavigate();
 
+  const [isShowTaskForm, setIsShowTaskForm] = useState(false);
+  const [isShowDeleteModal, setIsShowDeleteModal] = useState(false);
   const [selectedId, setSelectedId] = useState("");
 
   const {
@@ -42,7 +50,12 @@ const Home = () => {
 
   const clearPagination = usePaginationStore((state) => state.clearPagination);
 
-  const navigate = useNavigate();
+  const { trigger: createTask, isLoading: isCreateTaskLoading } =
+    useTaskCreate();
+
+  const { trigger: editTask, isLoading: isEditTaskLoading } = useTaskEdit();
+
+  const { trigger: deleteTask } = useTaskDelete();
 
   const handleShowEditModal = useCallback((id: string) => {
     setIsShowTaskForm(true);
@@ -64,11 +77,6 @@ const Home = () => {
     },
     [navigate],
   );
-
-  const { trigger: createTask, isLoading: isCreateTaskLoading } =
-    useTaskCreate();
-
-  const { trigger: editTask, isLoading: isEditTaskLoading } = useTaskEdit();
 
   // Handle edit and create success
   const handleSuccess = (message: string) => {
@@ -104,6 +112,34 @@ const Home = () => {
 
   const selectedTask = tasks.find((task) => task.id === selectedId);
 
+  const handleShowDeleteModal = useCallback((id: string) => {
+    setIsShowDeleteModal(true);
+    setSelectedId(id);
+  }, []);
+
+  const handleCloseDeleteModal = useCallback(() => {
+    setIsShowDeleteModal(false);
+  }, []);
+
+  const handleDeleteSuccess = useCallback(
+    (message: string) => {
+      console.log(message);
+      clearPagination();
+      fetchAtPage(currentPage);
+      handleCloseDeleteModal();
+    },
+    [clearPagination, currentPage, fetchAtPage, handleCloseDeleteModal],
+  );
+
+  const handleDeleteTask = () => {
+    deleteTask(selectedId, {
+      onError: handleError,
+      onSuccess: () => {
+        handleDeleteSuccess(SUCCESS_MESSAGES.DELETED("Task"));
+      },
+    });
+  };
+
   if (isLoading) {
     return <SpinnerIcon />;
   }
@@ -136,7 +172,9 @@ const Home = () => {
         onShowDetail={handleShowDetail}
         onSubmit={handleSubmit}
         onShowEditModal={handleShowEditModal}
+        onShowDeleteModal={handleShowDeleteModal}
       />
+
       <div className="flex justify-end my-5">
         <Pagination
           currentPage={currentPage}
@@ -154,6 +192,16 @@ const Home = () => {
             onClose={handleCloseTaskForm}
             onSubmit={handleSubmit}
             isDisableButton={isCreateTaskLoading || isEditTaskLoading}
+          />
+        </Suspense>
+      )}
+
+      {/* Delete Modal */}
+      {isShowDeleteModal && (
+        <Suspense fallback={<SpinnerIcon />}>
+          <DeleteModal
+            onClose={handleCloseDeleteModal}
+            onSubmit={handleDeleteTask}
           />
         </Suspense>
       )}
