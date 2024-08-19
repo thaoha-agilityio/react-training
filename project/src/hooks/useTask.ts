@@ -167,3 +167,35 @@ export const useTaskCreate = () => {
 
   return { trigger, isLoading };
 };
+
+/**
+ * Custom hook to edit an existing task and handle the associated loading state and error handling.
+ * @returns An object containing the `trigger` function to create a task and the `isLoading` state.
+ */
+export const useTaskEdit = () => {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const setTask = useTaskStore((state) => state.setTask);
+
+  const trigger = async (item: Partial<Task>, options: MutateOptions) => {
+    const { onSuccess, onError } = options;
+
+    setIsLoading(true);
+
+    try {
+      const url = `${API_ROUTES.TASKS}/${item.id}`;
+
+      const res = await api.putData<Task>(url, item);
+      setTask(res);
+
+      onSuccess();
+    } catch (error) {
+      const errorMessage =
+        error instanceof Error ? error.message : ERROR_MESSAGE.DEFAULT;
+      onError(errorMessage);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  return { trigger, isLoading };
+};

@@ -17,7 +17,7 @@ import {
 import { PROJECTS } from "@/mocks";
 
 // Hooks
-import { useTaskCreate, useTaskPagination } from "@/hooks";
+import { useTaskCreate, useTaskEdit, useTaskPagination } from "@/hooks";
 
 // Types
 import { Task } from "@/types";
@@ -29,6 +29,8 @@ const TaskForm = lazy(() => import("@/components/TaskForm"));
 
 const Home = () => {
   const [isShowTaskForm, setIsShowTaskForm] = useState(false);
+
+  const [selectedId, setSelectedId] = useState("");
 
   const {
     data: tasks,
@@ -42,7 +44,13 @@ const Home = () => {
 
   const navigate = useNavigate();
 
+  const handleShowEditModal = useCallback((id: string) => {
+    setIsShowTaskForm(true);
+    setSelectedId(id);
+  }, []);
+
   const handleShowTaskForm = () => {
+    setSelectedId("");
     setIsShowTaskForm(true);
   };
 
@@ -60,15 +68,17 @@ const Home = () => {
   const { trigger: createTask, isLoading: isCreateTaskLoading } =
     useTaskCreate();
 
+  const { trigger: editTask, isLoading: isEditTaskLoading } = useTaskEdit();
+
   // Handle edit and create success
   const handleSuccess = (message: string) => {
     // TODO: Handle toast success message
     console.log(message);
 
-    // Clear pagination from store
-    clearPagination();
-
-    fetchAtPage(currentPage);
+    if (!selectedId) {
+      clearPagination();
+      fetchAtPage(currentPage);
+    }
 
     handleCloseTaskForm();
   };
@@ -79,12 +89,20 @@ const Home = () => {
     console.log(error);
   }, []);
 
-  const handleSubmit = (data: Omit<Task, "id">) => {
-    createTask(data, {
+  const handleSubmit = (data: Task) => {
+    const mutate = data.id ? editTask : createTask;
+
+    const successMessage = data.id
+      ? SUCCESS_MESSAGES.EDITED(data.title)
+      : SUCCESS_MESSAGES.ADDED(data.title);
+
+    mutate(data, {
       onError: handleError,
-      onSuccess: () => handleSuccess(SUCCESS_MESSAGES.ADDED(data.title)),
+      onSuccess: () => handleSuccess(successMessage),
     });
   };
+
+  const selectedTask = tasks.find((task) => task.id === selectedId);
 
   if (isLoading) {
     return <SpinnerIcon />;
@@ -113,7 +131,12 @@ const Home = () => {
         <StatByType total={10} label="Blocker" type={STAT_STATUS.BLOCK} />
       </div>
 
-      <TaskTable tasks={tasks} onShowDetail={handleShowDetail} />
+      <TaskTable
+        tasks={tasks}
+        onShowDetail={handleShowDetail}
+        onSubmit={handleSubmit}
+        onShowEditModal={handleShowEditModal}
+      />
       <div className="flex justify-end my-5">
         <Pagination
           currentPage={currentPage}
@@ -127,9 +150,10 @@ const Home = () => {
         <Suspense fallback={<SpinnerIcon />}>
           <TaskForm
             projects={PROJECTS}
+            task={selectedTask}
             onClose={handleCloseTaskForm}
             onSubmit={handleSubmit}
-            isDisableButton={isCreateTaskLoading}
+            isDisableButton={isCreateTaskLoading || isEditTaskLoading}
           />
         </Suspense>
       )}

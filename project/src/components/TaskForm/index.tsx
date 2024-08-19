@@ -29,7 +29,7 @@ interface TaskFromProps {
   projects: Project[];
   task?: Task;
   onClose: () => void;
-  onSubmit: (formData: Omit<Task, "id">) => void;
+  onSubmit: (formData: Task) => void;
 }
 
 const TaskForm = ({
