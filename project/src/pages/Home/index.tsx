@@ -11,6 +11,7 @@ import {
   ROUTES,
   STAT_STATUS,
   SUCCESS_MESSAGES,
+  TOAST_STATUS,
 } from "@/constants";
 
 // Mocks
@@ -22,6 +23,7 @@ import {
   useTaskDelete,
   useTaskEdit,
   useTaskPagination,
+  useToast,
 } from "@/hooks";
 
 // Types
@@ -57,6 +59,8 @@ const Home = () => {
 
   const { trigger: deleteTask } = useTaskDelete();
 
+  const { showToast } = useToast();
+
   const handleShowEditModal = useCallback((id: string) => {
     setIsShowTaskForm(true);
     setSelectedId(id);
@@ -80,8 +84,7 @@ const Home = () => {
 
   // Handle edit and create success
   const handleSuccess = (message: string) => {
-    // TODO: Handle toast success message
-    console.log(message);
+    showToast(message, TOAST_STATUS.SUCCESS);
 
     if (!selectedId) {
       clearPagination();
@@ -92,10 +95,12 @@ const Home = () => {
   };
 
   // Handle edit and create error
-  const handleError = useCallback((error: unknown) => {
-    // TODO: Handle toast error message
-    console.log(error);
-  }, []);
+  const handleError = useCallback(
+    (error: unknown) => {
+      showToast(error as string, TOAST_STATUS.ERROR);
+    },
+    [showToast],
+  );
 
   const handleSubmit = (data: Task) => {
     const mutate = data.id ? editTask : createTask;
@@ -123,12 +128,18 @@ const Home = () => {
 
   const handleDeleteSuccess = useCallback(
     (message: string) => {
-      console.log(message);
+      showToast(message, TOAST_STATUS.SUCCESS);
       clearPagination();
       fetchAtPage(currentPage);
       handleCloseDeleteModal();
     },
-    [clearPagination, currentPage, fetchAtPage, handleCloseDeleteModal],
+    [
+      clearPagination,
+      currentPage,
+      fetchAtPage,
+      handleCloseDeleteModal,
+      showToast,
+    ],
   );
 
   const handleDeleteTask = () => {
