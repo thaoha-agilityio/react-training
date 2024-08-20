@@ -54,7 +54,7 @@
       "estimation": 120,
       "timeSpent": 60,
       "date": "Mar 22, 2024",
-      "status": "not started",
+      "status": "note started",
       "priority": "medium"
     },
     {
@@ -67,7 +67,7 @@
       "estimation": 120,
       "timeSpent": 60,
       "date": "Mar 22, 2024",
-      "status": "not started",
+      "status": "note started",
       "priority": "high"
     },
     {
@@ -80,7 +80,7 @@
       "estimation": 120,
       "timeSpent": 60,
       "date": "Mar 22, 2024",
-      "status": "not started",
+      "status": "note started",
       "priority": "high"
     }
   ]
