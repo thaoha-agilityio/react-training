@@ -1,23 +1,27 @@
 import { api } from "../apiRequest";
 
+// Mocks
+import { TASKS } from "@/mocks";
+
 describe("API request", () => {
   afterEach(() => {
     jest.resetAllMocks();
   });
 
   it("fetches successfully data from an API", async () => {
-    const mockResponse = [
-      {
-        id: 0,
-        tile: "Integrate API",
-      },
-    ];
+    const mockTotal = "4";
     global.fetch = jest.fn().mockResolvedValueOnce({
       ok: true,
-      json: jest.fn().mockResolvedValueOnce(mockResponse),
+      json: jest.fn().mockResolvedValueOnce(TASKS),
+      headers: {
+        get: jest.fn().mockReturnValue(mockTotal),
+      },
     });
     const response = await api.getData("/tasks");
-    expect(response).toEqual(mockResponse);
+    expect(response).toEqual({
+      data: TASKS,
+      total: mockTotal,
+    });
   });
 
   it("should return error message when fetching data from an API", async () => {
@@ -26,6 +30,9 @@ describe("API request", () => {
     global.fetch = jest.fn().mockResolvedValueOnce({
       ok: true,
       json: jest.fn().mockRejectedValue(new Error(errorMessage)),
+      headers: {
+        get: jest.fn().mockReturnValue(""),
+      },
     });
 
     try {
@@ -53,37 +60,24 @@ describe("API request", () => {
   });
 
   it("should make a Put request and return response data", async () => {
-    const mockResponse = [
-      {
-        id: 1,
-        tile: "Integrate API",
-      },
-    ];
     global.fetch = jest.fn().mockResolvedValueOnce({
       ok: true,
-      json: jest.fn().mockResolvedValueOnce(mockResponse),
+      json: jest.fn().mockResolvedValueOnce(TASKS),
     });
     const response = await api.putData("/tasks", {
-      ...mockResponse,
+      ...TASKS,
     });
-    expect(response).toEqual(mockResponse);
+    expect(response).toEqual(TASKS);
   });
 
   it("should make a Delete request and return response data", async () => {
-    const mockResponse = [
-      {
-        id: 1,
-        tile: "Integrate API",
-      },
-    ];
-
     global.fetch = jest.fn().mockResolvedValueOnce({
       ok: true,
-      json: jest.fn().mockResolvedValueOnce(mockResponse),
+      json: jest.fn().mockResolvedValueOnce(TASKS),
     });
 
     const response = await api.deleteData("/tasks/1");
 
-    expect(response).toEqual(mockResponse);
+    expect(response).toEqual(TASKS);
   });
 });
