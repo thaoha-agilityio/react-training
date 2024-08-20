@@ -6,6 +6,9 @@ import TaskTable from "..";
 // Mocks
 import { TASKS } from "@/mocks";
 
+// Constants
+import { NOTICE_MESSAGE } from "@/constants";
+
 describe("TaskTable component", () => {
   const mockProps = {
     tasks: TASKS,
@@ -21,7 +24,7 @@ describe("TaskTable component", () => {
   });
 
   it("should show edit modal when edit button is clicked", async () => {
-    const { getByText, getAllByLabelText, findByText } = render(
+    const { getByText, getAllByLabelText } = render(
       <TaskTable {...mockProps} />,
     );
 
@@ -29,12 +32,11 @@ describe("TaskTable component", () => {
     // Click the edit button for the first task
     fireEvent.click(getByText("Edit Task"));
 
-    // Check that the edit modal is displayed
-    expect(await findByText("Edit task")).toBeInTheDocument();
+    expect(mockProps.onShowEditModal).toHaveBeenCalled();
   });
 
   it("should show delete modal when delete button is clicked", async () => {
-    const { getByText, getAllByLabelText, findByText } = render(
+    const { getByText, getAllByLabelText } = render(
       <TaskTable {...mockProps} />,
     );
 
@@ -42,37 +44,20 @@ describe("TaskTable component", () => {
     // Click the edit button for the first task
     fireEvent.click(getByText("Delete Task"));
 
-    // Check that the edit modal is displayed
-    expect(await findByText("Delete Confirmation")).toBeInTheDocument();
+    expect(mockProps.onShowDeleteModal).toHaveBeenCalledWith("1");
   });
 
-  it("should close the edit modal when cancel button is clicked", async () => {
-    const { getByText, getAllByLabelText, queryByText } = render(
-      <TaskTable {...mockProps} />,
-    );
+  it("should display a notice message when there are no tasks", () => {
+    const { getByText } = render(<TaskTable {...mockProps} tasks={[]} />);
 
-    // Open the edit modal
-    fireEvent.click(getAllByLabelText("open menu")[0]);
-    fireEvent.click(getByText("Edit Task"));
-
-    // Click the cancel button
-    fireEvent.click(getByText("Cancel"));
-
-    // Check that the edit modal is no longer displayed
-    expect(queryByText("Edit task")).not.toBeInTheDocument();
+    expect(getByText(NOTICE_MESSAGE)).toBeInTheDocument();
   });
 
-  it("should close the delete modal when cancel button is clicked", async () => {
-    const { getByText, getAllByLabelText, queryByText } = render(
-      <TaskTable {...mockProps} />,
-    );
+  it("should call onShowDetail when a row is clicked", () => {
+    const { getByText } = render(<TaskTable {...mockProps} />);
 
-    // Open the delete modal
-    fireEvent.click(getAllByLabelText("open menu")[0]);
-    fireEvent.click(getByText("Delete Task"));
+    fireEvent.click(getByText(TASKS[0].title));
 
-    fireEvent.click(getByText("Cancel"));
-
-    expect(queryByText("Delete Confirmation")).not.toBeInTheDocument();
+    expect(mockProps.onShowDetail).toHaveBeenCalledWith("1");
   });
 });
