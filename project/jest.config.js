@@ -13,6 +13,8 @@ export default {
     "src/**/*.{ts,tsx}",
     "!<rootDir>/node_modules/",
     "!<rootDir>/path/to/dir/",
+    "!**/types/**",
+    "!**/routes/**",
   ],
   coveragePathIgnorePatterns: [
     "node_modules",
