@@ -10,3 +10,20 @@ export const formatTime = (minutes: number): string => {
 
   return `${hours}hrs ${remainingMinutes}m`;
 };
+
+/**
+ * Function to format the current date and time.
+ * @returns A string representing the current date and time in the format 'MMM DD, YYYY'.
+ */
+export const getCurrentDate = () => {
+  const currentDate = new Date();
+
+  // Define options for formatting the date part
+  const dateOptions = {
+    year: "numeric",
+    month: "short",
+    day: "2-digit",
+  } as Intl.DateTimeFormatOptions;
+
+  return currentDate.toLocaleDateString("en-US", dateOptions);
+};
