@@ -9,6 +9,7 @@
 
 - Build component UI
 - Unit testing
+- Apply zustand for state management
 
 ## Technical Stack
 
