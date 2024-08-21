@@ -39,7 +39,13 @@ const TaskTable = ({
         ))}
       </tbody>
     ) : (
-      <p className="text-center">{NOTICE_MESSAGE}</p>
+      <tbody>
+        <tr>
+          <td colSpan={6} className="text-center">
+            {NOTICE_MESSAGE}
+          </td>
+        </tr>
+      </tbody>
     )}
   </table>
 );
