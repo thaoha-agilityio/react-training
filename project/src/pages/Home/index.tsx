@@ -1,4 +1,11 @@
-import { lazy, Suspense, useCallback, useEffect, useState } from "react";
+import {
+  lazy,
+  Suspense,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 // Components
@@ -33,6 +40,9 @@ import { Task } from "@/types";
 // Stores
 import { usePaginationStore } from "@/stores";
 
+// Utils
+import { createPageURL } from "@/utils";
+
 const TaskForm = lazy(() => import("@/components/TaskForm"));
 const DeleteModal = lazy(() => import("@/components/Modal/DeleteModal"));
 
@@ -40,7 +50,10 @@ const Home = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const searchParams = new URLSearchParams(location.search);
+  const searchParams = useMemo(
+    () => new URLSearchParams(location.search),
+    [location.search],
+  );
   const currentPage = Number(searchParams.get(SEARCH_PARAMS.PAGE)) || 1;
 
   const [isShowTaskForm, setIsShowTaskForm] = useState(false);
@@ -140,13 +153,23 @@ const Home = () => {
       clearPagination();
       fetchAtPage(currentPage);
       handleCloseDeleteModal();
+
+      // Check if the current page has no items left after deletion
+      if (tasks.length === 1 && currentPage > 1) {
+        // Navigate to the previous page
+        const previousPageURL = createPageURL(currentPage - 1, searchParams);
+        navigate(previousPageURL);
+      }
     },
     [
       clearPagination,
       currentPage,
       fetchAtPage,
       handleCloseDeleteModal,
+      navigate,
+      searchParams,
       showToast,
+      tasks.length,
     ],
   );
 
