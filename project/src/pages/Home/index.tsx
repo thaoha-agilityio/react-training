@@ -1,5 +1,5 @@
-import { lazy, Suspense, useCallback, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { lazy, Suspense, useCallback, useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 // Components
 import { Button, Pagination, StatByType, TaskTable } from "@/components";
@@ -9,6 +9,7 @@ import { SpinnerIcon } from "@/components/Icons";
 import {
   PAGINATION_LIMIT,
   ROUTES,
+  SEARCH_PARAMS,
   STAT_STATUS,
   SUCCESS_MESSAGES,
   TOAST_STATUS,
@@ -37,6 +38,10 @@ const DeleteModal = lazy(() => import("@/components/Modal/DeleteModal"));
 
 const Home = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const searchParams = new URLSearchParams(location.search);
+  const currentPage = Number(searchParams.get(SEARCH_PARAMS.PAGE)) || 1;
 
   const [isShowTaskForm, setIsShowTaskForm] = useState(false);
   const [isShowDeleteModal, setIsShowDeleteModal] = useState(false);
@@ -46,9 +51,12 @@ const Home = () => {
     data: tasks,
     totalItems,
     isLoading,
-    currentPage,
     fetchAtPage,
   } = useTaskPagination();
+
+  useEffect(() => {
+    fetchAtPage(currentPage);
+  }, [currentPage, fetchAtPage]);
 
   const clearPagination = usePaginationStore((state) => state.clearPagination);
 
@@ -191,7 +199,7 @@ const Home = () => {
           currentPage={currentPage}
           totalItems={totalItems}
           itemsPerPage={PAGINATION_LIMIT}
-          onChangePage={fetchAtPage}
+          searchParams={searchParams}
         />
       </div>
 
