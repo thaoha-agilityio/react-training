@@ -7,35 +7,37 @@ import { calculateTotalPages, generatePagination } from "@/utils";
 import { ChevronLeftIcon } from "../Icons";
 import PaginationItem from "./PaginationItem";
 
+// Constants
+import { SEARCH_PARAMS } from "@/constants";
+
 interface PaginationProps {
   currentPage: number;
   totalItems: number;
   itemsPerPage: number;
-  onChangePage: (page: number) => void;
+  searchParams: URLSearchParams;
 }
 
 const Pagination = ({
   currentPage,
   totalItems,
   itemsPerPage,
-  onChangePage,
+  searchParams,
 }: PaginationProps) => {
   const totalPages = calculateTotalPages(totalItems, itemsPerPage);
   const allPages = generatePagination(currentPage, totalPages);
 
-  const handleChangeToPreviousPage = () => {
-    onChangePage(currentPage - 1);
-  };
+  const createPageURL = (pageNumber: number | string) => {
+    const params = new URLSearchParams(searchParams);
+    params.set(SEARCH_PARAMS.PAGE, pageNumber.toString());
 
-  const handleChangeToNextPage = () => {
-    onChangePage(currentPage + 1);
+    return `${location.pathname}?${params.toString()}`;
   };
 
   return (
     <div className="flex gap-2">
       <PaginationItem
         isDisabled={currentPage <= 1}
-        onClick={handleChangeToPreviousPage}
+        href={createPageURL(currentPage - 1)}
       >
         <ChevronLeftIcon width={12} height={12} />
         Previous
@@ -46,8 +48,8 @@ const Pagination = ({
         {allPages.map((page, index) => (
           <PaginationItem
             key={`${page}-${index}`}
+            href={createPageURL(page)}
             isCurrentPage={currentPage === page}
-            onClick={() => onChangePage(Number(page))}
           >
             {page}
           </PaginationItem>
@@ -56,7 +58,7 @@ const Pagination = ({
 
       <PaginationItem
         isDisabled={currentPage >= totalPages}
-        onClick={handleChangeToNextPage}
+        href={createPageURL(currentPage + 1)}
       >
         Next
         <ChevronLeftIcon className="rotate-180" width={12} height={12} />

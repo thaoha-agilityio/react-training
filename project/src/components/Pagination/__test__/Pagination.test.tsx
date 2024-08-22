@@ -1,5 +1,6 @@
 // Libs
-import { fireEvent, render } from "@testing-library/react";
+import { render } from "@testing-library/react";
+import { MemoryRouter } from "react-router-dom";
 
 // Components
 import Pagination from "..";
@@ -9,49 +10,16 @@ describe("Pagination", () => {
     currentPage: 2,
     totalItems: 10,
     itemsPerPage: 1,
-    onChangePage: jest.fn(),
+    searchParams: new URLSearchParams("page=1"),
   };
 
   it("should render the Pagination correctly", () => {
-    const { container } = render(<Pagination {...mockProps} />);
+    const { container } = render(
+      <MemoryRouter>
+        <Pagination {...mockProps} />
+      </MemoryRouter>,
+    );
 
     expect(container).toMatchSnapshot();
-  });
-
-  it("should call onChangePage when button previous click", () => {
-    const { getByRole } = render(<Pagination {...mockProps} />);
-    const previousButton = getByRole("button", {
-      name: "Previous",
-    });
-
-    expect(previousButton).toBeInTheDocument();
-    fireEvent.click(previousButton);
-    expect(mockProps.onChangePage).toHaveBeenCalledWith(
-      mockProps.currentPage - 1,
-    );
-  });
-
-  it("should call onChangePage when button next click", () => {
-    const { getByRole } = render(<Pagination {...mockProps} />);
-    const nextButton = getByRole("button", {
-      name: "Next",
-    });
-
-    expect(nextButton).toBeInTheDocument();
-    fireEvent.click(nextButton);
-    expect(mockProps.onChangePage).toHaveBeenCalledWith(
-      mockProps.currentPage + 1,
-    );
-  });
-
-  it("should call onChangePage when specific page", () => {
-    const { getByRole } = render(<Pagination {...mockProps} />);
-    const firstPageButton = getByRole("button", {
-      name: "1",
-    });
-
-    expect(firstPageButton).toBeInTheDocument();
-    fireEvent.click(firstPageButton);
-    expect(mockProps.onChangePage).toHaveBeenCalledWith(1);
   });
 });

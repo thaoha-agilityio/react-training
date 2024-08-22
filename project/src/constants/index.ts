@@ -4,6 +4,7 @@ export * from "./navigation";
 export * from "./options";
 export * from "./pagination";
 export * from "./routes";
+export * from "./searchParams";
 export * from "./status";
 export * from "./taskTable";
 export * from "./toast";
