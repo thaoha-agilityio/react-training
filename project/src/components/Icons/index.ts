@@ -10,6 +10,7 @@ export * from "./MoreIcon";
 export * from "./PlayIcon";
 export * from "./ReportIcon";
 export * from "./ReviewIcon";
+export * from "./SearchIcon";
 export * from "./SettingIcon";
 export * from "./SpinnerIcon";
 export * from "./TickIcon";

@@ -7,6 +7,7 @@ export { default as InputGroup } from "./InputGroup";
 export { default as NavBar } from "./NavBar";
 export { default as Pagination } from "./Pagination";
 export { default as RadioGroup } from "./RadioGroup";
+export { default as SearchBar } from "./SearchBar";
 export { default as Sidebar } from "./Sidebar";
 export { default as StatByType } from "./StatByType";
 export { default as TaskDetail } from "./TaskDetail";
