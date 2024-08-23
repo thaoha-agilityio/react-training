@@ -4,7 +4,7 @@ import { Option, RadioOptions } from "@/types";
 // Status
 import { PRIORITY_STATUS, TASK_STATUS } from "./status";
 
-export const TIME: Option[] = [
+export const TIME_OPTION: Option[] = [
   {
     value: "30",
     label: "30 minutes",

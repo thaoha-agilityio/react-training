@@ -15,7 +15,7 @@ import {
   ERROR_MESSAGES,
   TASK_PRIORITY_OPTIONS,
   TASK_STATUS_OPTIONS,
-  TIME,
+  TIME_OPTION,
 } from "@/constants";
 
 // Types
@@ -143,7 +143,7 @@ const TaskForm = ({
               }) => (
                 <Dropdown
                   placeholder="Select time"
-                  options={TIME}
+                  options={TIME_OPTION}
                   selectedValue={value?.toString()}
                   errorMessage={error?.message}
                   onSelect={onChange}
@@ -167,7 +167,7 @@ const TaskForm = ({
               }) => (
                 <Dropdown
                   placeholder="Estimation"
-                  options={TIME}
+                  options={TIME_OPTION}
                   selectedValue={value?.toString()}
                   errorMessage={error?.message}
                   onSelect={onChange}
