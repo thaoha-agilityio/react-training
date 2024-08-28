@@ -1,5 +1,5 @@
 // Constants
-import { TIME } from "@/constants";
+import { TIME_OPTION } from "@/constants";
 
 // Utils
 import { findProjectById, getLabelByValue, transformProject } from "../options";
@@ -9,8 +9,8 @@ import { PROJECTS } from "@/mocks";
 
 describe("getLabelByValue", () => {
   it("should return the correct label for a given value", () => {
-    expect(getLabelByValue(TIME, "30")).toBe("30 minutes");
-    expect(getLabelByValue(TIME, "60")).toBe("1hrs");
+    expect(getLabelByValue(TIME_OPTION, "30")).toBe("30 minutes");
+    expect(getLabelByValue(TIME_OPTION, "60")).toBe("1hrs");
   });
 });
 

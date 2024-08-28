@@ -23,7 +23,7 @@ import { INITIAL_TASK } from "@/mocks";
  * @param {number} page - The initial page to load.
  * @returns An object containing The state and actions for handling paginated tasks.
  */
-export const useTaskPagination = (page: number = 1) => {
+export const useTaskPagination = (page: number = 1, title?: string) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
   const [currentPage, setCurrentPage] = useState<number>(page);
@@ -42,10 +42,11 @@ export const useTaskPagination = (page: number = 1) => {
   ]);
 
   const trigger = useCallback(
-    async (page: number) => {
+    async (page: number, title?: string) => {
       const filterPaginationParam = {
-        page: page,
-        limit: PAGINATION_LIMIT,
+        title_like: title || "",
+        _page: page,
+        _limit: PAGINATION_LIMIT,
       };
       const url = `${API_ROUTES.TASKS}${generateUrl(filterPaginationParam)}`;
 
@@ -53,7 +54,7 @@ export const useTaskPagination = (page: number = 1) => {
       setCurrentPage(page);
 
       // If data for this page is already fetched, skip fetch data
-      if (pagination[page]) return;
+      if (pagination[page] && title === undefined) return;
 
       // Start fetching data
       setIsLoading(true);
@@ -79,8 +80,8 @@ export const useTaskPagination = (page: number = 1) => {
   // Effect to trigger data load when the page changes
   useEffect(() => {
     // Ensure page change triggers the fetch immediately
-    trigger(currentPage);
-  }, [currentPage, trigger]);
+    trigger(currentPage, title);
+  }, [currentPage, title, trigger]);
 
   return {
     currentPage,

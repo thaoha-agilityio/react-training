@@ -9,7 +9,13 @@ import {
 import { useLocation, useNavigate } from "react-router-dom";
 
 // Components
-import { Button, Pagination, StatByType, TaskTable } from "@/components";
+import {
+  Button,
+  Pagination,
+  SearchBar,
+  StatByType,
+  TaskTable,
+} from "@/components";
 import { SpinnerIcon } from "@/components/Icons";
 
 // Constants
@@ -55,6 +61,7 @@ const Home = () => {
     [location.search],
   );
   const currentPage = Number(searchParams.get(SEARCH_PARAMS.PAGE)) || 1;
+  const titleSearch = searchParams.get(SEARCH_PARAMS.TITLE) || "";
 
   const [isShowTaskForm, setIsShowTaskForm] = useState(false);
   const [isShowDeleteModal, setIsShowDeleteModal] = useState(false);
@@ -68,8 +75,8 @@ const Home = () => {
   } = useTaskPagination();
 
   useEffect(() => {
-    fetchAtPage(currentPage);
-  }, [currentPage, fetchAtPage]);
+    fetchAtPage(currentPage, titleSearch);
+  }, [currentPage, titleSearch]);
 
   const clearPagination = usePaginationStore((state) => state.clearPagination);
 
@@ -182,6 +189,17 @@ const Home = () => {
     });
   };
 
+  const handleSearchTask = (title: string) => {
+    // Update search parameters with title
+    searchParams.set(SEARCH_PARAMS.TITLE, title);
+
+    // Generate the new URL with the page number
+    const newUrl = createPageURL(currentPage, searchParams);
+    navigate(newUrl);
+
+    fetchAtPage(currentPage, title);
+  };
+
   if (isLoading) {
     return <SpinnerIcon />;
   }
@@ -207,6 +225,10 @@ const Home = () => {
         />
         <StatByType total={10} label="In review" type={STAT_STATUS.REVIEW} />
         <StatByType total={10} label="Blocker" type={STAT_STATUS.BLOCK} />
+      </div>
+
+      <div className="flex justify-end mb-4">
+        <SearchBar onSearch={handleSearchTask} defaultValue={titleSearch} />
       </div>
 
       <TaskTable
