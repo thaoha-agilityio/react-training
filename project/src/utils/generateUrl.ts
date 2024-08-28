@@ -12,7 +12,7 @@ import { FilterParam } from "@/types";
 export const generateUrl = (filterParam?: FilterParam): string =>
   filterParam
     ? `?${Object.entries(filterParam)
-        .map(([key, value]) => `_${key}=${value}`)
+        .map(([key, value]) => `${key}=${value}`)
         .join("&")}`
     : "";
 
