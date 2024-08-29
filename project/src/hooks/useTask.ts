@@ -23,7 +23,11 @@ import { INITIAL_TASK } from "@/mocks";
  * @param {number} page - The initial page to load.
  * @returns An object containing The state and actions for handling paginated tasks.
  */
-export const useTaskPagination = (page: number = 1, title?: string) => {
+export const useTaskPagination = (
+  page: number = 1,
+  title?: string,
+  status?: string,
+) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
   const [currentPage, setCurrentPage] = useState<number>(page);
@@ -42,9 +46,15 @@ export const useTaskPagination = (page: number = 1, title?: string) => {
   ]);
 
   const trigger = useCallback(
-    async (page: number, title?: string) => {
+    async (
+      page: number,
+      title?: string,
+      status?: string,
+      isIgnoreStore?: boolean,
+    ) => {
       const filterPaginationParam = {
         title_like: title || "",
+        status_like: status || "",
         _page: page,
         _limit: PAGINATION_LIMIT,
       };
@@ -54,7 +64,7 @@ export const useTaskPagination = (page: number = 1, title?: string) => {
       setCurrentPage(page);
 
       // If data for this page is already fetched, skip fetch data
-      if (pagination[page] && title === undefined) return;
+      if (pagination[page] && !title && !status && !isIgnoreStore) return;
 
       // Start fetching data
       setIsLoading(true);
@@ -80,8 +90,8 @@ export const useTaskPagination = (page: number = 1, title?: string) => {
   // Effect to trigger data load when the page changes
   useEffect(() => {
     // Ensure page change triggers the fetch immediately
-    trigger(currentPage, title);
-  }, [currentPage, title, trigger]);
+    trigger(currentPage, title, status);
+  }, [currentPage, title, trigger, status]);
 
   return {
     currentPage,
