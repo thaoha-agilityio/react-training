@@ -30,7 +30,8 @@ const Dropdown = ({
   const [isOpen, setIsOpen] = useState(false);
 
   const handleSelectOption = (option: string) => {
-    onSelect(option);
+    option === selectedValue ? onSelect("") : onSelect(option);
+
     setIsOpen(false);
   };
 
@@ -45,13 +46,15 @@ const Dropdown = ({
   const containerRef = useRef(null);
   useOutsideClick(containerRef, handleCloseDropdown);
 
+  const activeClass = "bg-gray-200 dark:bg-gray-600 text-indigo-600";
+
   return (
     <div ref={containerRef} className="relative inline-block">
       <div>
         <button
           type="button"
           aria-label="dropdown"
-          className="inline-flex min-w-[137px] items-baseline justify-between gap-x-1.5 rounded-md bg-white px-3 py-2 text-xs font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+          className="inline-flex min-w-[137px] capitalize items-baseline justify-between gap-x-1.5 rounded-md bg-white px-3 py-2 text-xs font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
           onClick={toggleDropdown}
         >
           {selectedValue
@@ -67,7 +70,9 @@ const Dropdown = ({
             {options.map(({ value, label }, index) => (
               <li
                 key={`${value}-${index}`}
-                className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white cursor-pointer"
+                className={`block px-4 py-2 cursor-pointer capitalize hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white ${
+                  value === selectedValue ? activeClass : ""
+                }`}
                 onClick={() => handleSelectOption(value)}
               >
                 {label}

@@ -11,6 +11,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 // Components
 import {
   Button,
+  Dropdown,
   Pagination,
   SearchBar,
   StatByType,
@@ -25,6 +26,7 @@ import {
   SEARCH_PARAMS,
   STAT_STATUS,
   SUCCESS_MESSAGES,
+  TASK_STATUS_OPTIONS,
   TOAST_STATUS,
 } from "@/constants";
 
@@ -62,10 +64,12 @@ const Home = () => {
   );
   const currentPage = Number(searchParams.get(SEARCH_PARAMS.PAGE)) || 1;
   const titleSearch = searchParams.get(SEARCH_PARAMS.TITLE) || "";
+  const statusSearch = searchParams.get(SEARCH_PARAMS.STATUS) || "";
 
   const [isShowTaskForm, setIsShowTaskForm] = useState(false);
   const [isShowDeleteModal, setIsShowDeleteModal] = useState(false);
   const [selectedId, setSelectedId] = useState("");
+  const [selectedStatus, setSelectedStatus] = useState("");
 
   const {
     data: tasks,
@@ -75,8 +79,8 @@ const Home = () => {
   } = useTaskPagination();
 
   useEffect(() => {
-    fetchAtPage(currentPage, titleSearch);
-  }, [currentPage, titleSearch]);
+    fetchAtPage(currentPage, titleSearch, statusSearch);
+  }, [currentPage, titleSearch, statusSearch]);
 
   const clearPagination = usePaginationStore((state) => state.clearPagination);
 
@@ -189,20 +193,33 @@ const Home = () => {
     });
   };
 
-  const handleSearchTask = (title: string) => {
-    // Update search parameters with title
-    searchParams.set(SEARCH_PARAMS.TITLE, title);
+  const handleSearchTask = useCallback(
+    (title: string) => {
+      // Update search parameters with title
+      searchParams.set(SEARCH_PARAMS.TITLE, title);
 
-    // Generate the new URL with the page number
-    const newUrl = createPageURL(currentPage, searchParams);
-    navigate(newUrl);
+      // Generate the new URL with the page number
+      const newUrl = createPageURL(1, searchParams);
 
-    fetchAtPage(currentPage, title);
-  };
+      // Push the new URL to the browser history
+      navigate(newUrl);
+      fetchAtPage(1, title, statusSearch, true);
+    },
+    [searchParams, statusSearch],
+  );
 
-  if (isLoading) {
-    return <SpinnerIcon />;
-  }
+  const handleSortByStatus = useCallback(
+    (status: string) => {
+      setSelectedStatus(status);
+
+      searchParams.set(SEARCH_PARAMS.STATUS, status);
+      const newUrl = createPageURL(1, searchParams);
+      navigate(newUrl);
+
+      fetchAtPage(1, titleSearch, status, true);
+    },
+    [searchParams, titleSearch],
+  );
 
   return (
     <div className="p-8">
@@ -227,17 +244,27 @@ const Home = () => {
         <StatByType total={10} label="Blocker" type={STAT_STATUS.BLOCK} />
       </div>
 
-      <div className="flex justify-end mb-4">
+      <div className="flex justify-end mb-4 gap-3">
         <SearchBar onSearch={handleSearchTask} defaultValue={titleSearch} />
+        <Dropdown
+          placeholder="Filter by status"
+          selectedValue={selectedStatus || statusSearch}
+          options={TASK_STATUS_OPTIONS}
+          onSelect={handleSortByStatus}
+        />
       </div>
 
-      <TaskTable
-        tasks={tasks}
-        onShowDetail={handleShowDetail}
-        onSubmit={handleSubmit}
-        onShowEditModal={handleShowEditModal}
-        onShowDeleteModal={handleShowDeleteModal}
-      />
+      {isLoading ? (
+        <SpinnerIcon />
+      ) : (
+        <TaskTable
+          tasks={tasks}
+          onShowDetail={handleShowDetail}
+          onSubmit={handleSubmit}
+          onShowEditModal={handleShowEditModal}
+          onShowDeleteModal={handleShowDeleteModal}
+        />
+      )}
 
       <div className="flex justify-end my-5">
         <Pagination
