@@ -163,6 +163,9 @@ devDependencies:
   vite:
     specifier: ^5.2.0
     version: 5.3.4(@types/node@20.14.12)
+  vite-plugin-sitemap:
+    specifier: ^0.4.2
+    version: 0.4.2
   vite-tsconfig-paths:
     specifier: ^4.3.2
     version: 4.3.2(typescript@5.5.4)(vite@5.3.4)
@@ -8950,6 +8953,10 @@ packages:
   /vary@1.1.2:
     resolution: {integrity: sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==}
     engines: {node: '>= 0.8'}
+
+  /vite-plugin-sitemap@0.4.2:
+    resolution: {integrity: sha512-xNTYPcNW+XthOJqI459DYyCZ6nPDKpnFFnvMHVlshtDn+UUp1y37HgmvmWEsCdLp0LZILnzHfrjVrH44V2krAg==}
+    dev: true
 
   /vite-tsconfig-paths@4.3.2(typescript@5.5.4)(vite@5.3.4):
     resolution: {integrity: sha512-0Vd/a6po6Q+86rPlntHye7F31zA2URZMbH8M3saAZ/xR9QoGN/L21bxEGfXdWmFdNkqPpRdxFT7nmNe12e9/uA==}
