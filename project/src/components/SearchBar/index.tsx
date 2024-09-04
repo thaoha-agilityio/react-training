@@ -27,7 +27,7 @@ const SearchBar = ({ onSearch, defaultValue }: SearchBarProps) => {
         defaultValue={defaultValue}
         placeholder="Search..."
         type="search"
-        className="w-full h-8 outline-0 py-1.5 pl-10 shadow text-sm ring-1 focus:ring-mainColor rounded-lg bg-white ring-white focus:ring-indigo-600"
+        className="w-full h-8 outline-0 py-1.5 pl-10 pr-2 shadow text-sm ring-1 focus:ring-mainColor rounded-lg bg-white ring-white focus:ring-indigo-600"
         onChange={handleSearch}
       />
     </div>
