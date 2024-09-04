@@ -13,7 +13,7 @@ export default defineConfig({
   plugins: [
     react(),
     tsconfigPaths(),
-    Sitemap({ dynamicRoutes, hostname: envVariables.VITE_HOST_NAME }),
+    Sitemap({ dynamicRoutes, hostname: envVariables.VITE_API_URL }),
   ],
 
   define: {
