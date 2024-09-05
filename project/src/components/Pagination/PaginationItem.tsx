@@ -26,9 +26,13 @@ const PaginationItem = ({
     : "hover:bg-blue-100";
 
   return (
-    <Link to={href} className={clsx(baseClass, disableClass, pageClass)}>
-      {children}
-    </Link>
+    <div
+      className={clsx({ "cursor-not-allowed": isDisabled || isCurrentPage })}
+    >
+      <Link to={href} className={clsx(baseClass, disableClass, pageClass)}>
+        {children}
+      </Link>
+    </div>
   );
 };
 
