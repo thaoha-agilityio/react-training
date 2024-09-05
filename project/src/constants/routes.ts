@@ -4,5 +4,6 @@ export const ROUTES = {
   REPORT: "/report",
   INTEGRATIONS: "/integrations",
   EXPORT: "/export",
+  TODO: "/todo",
   TASK_DETAIL: "/tasks/:id",
 };
