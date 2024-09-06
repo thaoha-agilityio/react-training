@@ -110,9 +110,8 @@ const Home = () => {
 
     if (!selectedId) {
       clearPagination();
-      fetchAtPage(currentPage, titleSearch, statusSearch, true);
     }
-
+    fetchAtPage(currentPage, titleSearch, statusSearch, true);
     handleCloseTaskForm();
   };
 
@@ -152,7 +151,7 @@ const Home = () => {
     (message: string) => {
       showToast(message, TOAST_STATUS.SUCCESS);
       clearPagination();
-      fetchAtPage(currentPage);
+      fetchAtPage(currentPage, titleSearch, statusSearch, true);
       handleCloseDeleteModal();
 
       // Check if the current page has no items left after deletion
@@ -160,6 +159,7 @@ const Home = () => {
         // Navigate to the previous page
         const previousPageURL = createPageURL(currentPage - 1, searchParams);
         navigate(previousPageURL);
+        fetchAtPage(currentPage - 1);
       }
     },
     [
@@ -170,7 +170,9 @@ const Home = () => {
       navigate,
       searchParams,
       showToast,
+      statusSearch,
       tasks.length,
+      titleSearch,
     ],
   );
 
