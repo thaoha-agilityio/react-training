@@ -7,6 +7,7 @@ interface PaginationItemProps {
   isCurrentPage?: boolean;
   href: string;
   children: ReactNode;
+  onClick: () => void;
 }
 
 const PaginationItem = ({
@@ -14,6 +15,7 @@ const PaginationItem = ({
   isCurrentPage = false,
   href,
   children,
+  onClick,
 }: PaginationItemProps) => {
   const baseClass =
     "flex h-10 p-[15px] rounded-lg border text-gray-400 items-center gap-1 bg-white";
@@ -29,7 +31,11 @@ const PaginationItem = ({
     <div
       className={clsx({ "cursor-not-allowed": isDisabled || isCurrentPage })}
     >
-      <Link to={href} className={clsx(baseClass, disableClass, pageClass)}>
+      <Link
+        to={href}
+        className={clsx(baseClass, disableClass, pageClass)}
+        onClick={onClick}
+      >
         {children}
       </Link>
     </div>

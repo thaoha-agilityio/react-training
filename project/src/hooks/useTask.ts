@@ -91,7 +91,7 @@ export const useTaskPagination = (
   useEffect(() => {
     // Ensure page change triggers the fetch immediately
     trigger(currentPage, title, status);
-  }, [currentPage, title, trigger, status]);
+  }, []);
 
   return {
     currentPage,
