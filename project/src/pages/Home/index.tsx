@@ -1,11 +1,4 @@
-import {
-  lazy,
-  Suspense,
-  useCallback,
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
+import { lazy, Suspense, useCallback, useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 // Components
@@ -15,6 +8,7 @@ import {
   Pagination,
   SearchBar,
   StatByType,
+  TableSkeleton,
   TaskTable,
 } from "@/components";
 import { SpinnerIcon } from "@/components/Icons";
@@ -78,10 +72,6 @@ const Home = () => {
     fetchAtPage,
   } = useTaskPagination();
 
-  useEffect(() => {
-    fetchAtPage(currentPage, titleSearch, statusSearch);
-  }, [currentPage, titleSearch, statusSearch]);
-
   const clearPagination = usePaginationStore((state) => state.clearPagination);
 
   const { trigger: createTask, isLoading: isCreateTaskLoading } =
@@ -120,7 +110,7 @@ const Home = () => {
 
     if (!selectedId) {
       clearPagination();
-      fetchAtPage(currentPage);
+      fetchAtPage(currentPage, titleSearch, statusSearch, true);
     }
 
     handleCloseTaskForm();
@@ -255,7 +245,7 @@ const Home = () => {
       </div>
 
       {isLoading ? (
-        <SpinnerIcon />
+        <TableSkeleton />
       ) : (
         <TaskTable
           tasks={tasks}
@@ -272,6 +262,9 @@ const Home = () => {
           totalItems={totalItems}
           itemsPerPage={PAGINATION_LIMIT}
           searchParams={searchParams}
+          title={titleSearch}
+          status={statusSearch}
+          fetchAtPage={fetchAtPage}
         />
       </div>
 
