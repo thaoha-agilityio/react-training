@@ -43,7 +43,7 @@ import { Task } from "@/types";
 import { usePaginationStore } from "@/stores";
 
 // Utils
-import { createPageURL } from "@/utils";
+import { createPageURL, getCurrentDate } from "@/utils";
 
 const TaskForm = lazy(() => import("@/components/TaskForm"));
 const DeleteModal = lazy(() => import("@/components/Modal/DeleteModal"));
@@ -123,14 +123,17 @@ const Home = () => {
     [showToast],
   );
 
-  const handleSubmit = (data: Task) => {
-    const mutate = data.id ? editTask : createTask;
+  const handleSubmit = (value: Task) => {
+    const mutate = value.id ? editTask : createTask;
 
-    const successMessage = data.id
-      ? SUCCESS_MESSAGES.EDITED(data.title)
-      : SUCCESS_MESSAGES.ADDED(data.title);
+    const successMessage = value.id
+      ? SUCCESS_MESSAGES.EDITED(value.title)
+      : SUCCESS_MESSAGES.ADDED(value.title);
 
-    mutate(data, {
+    const newValue = { ...value, date: getCurrentDate() };
+    const taskValue = value.id ? value : newValue;
+
+    mutate(taskValue, {
       onError: handleError,
       onSuccess: () => handleSuccess(successMessage),
     });
