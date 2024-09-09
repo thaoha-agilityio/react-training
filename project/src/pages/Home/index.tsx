@@ -1,4 +1,11 @@
-import { lazy, Suspense, useCallback, useMemo, useState } from "react";
+import {
+  lazy,
+  Suspense,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 // Components
@@ -74,6 +81,10 @@ const Home = () => {
 
   const clearPagination = usePaginationStore((state) => state.clearPagination);
 
+  useEffect(() => {
+    fetchAtPage(currentPage, titleSearch, statusSearch);
+  }, [location.search]);
+
   const { trigger: createTask, isLoading: isCreateTaskLoading } =
     useTaskCreate();
 
@@ -99,6 +110,7 @@ const Home = () => {
 
   const handleShowDetail = useCallback(
     (id: string) => {
+      fetchAtPage(currentPage, "", "", true);
       navigate(`${ROUTES.TASKS}/${id}`);
     },
     [navigate],
@@ -190,6 +202,8 @@ const Home = () => {
 
   const handleSearchTask = useCallback(
     (title: string) => {
+      clearPagination();
+
       // Update search parameters with title
       searchParams.set(SEARCH_PARAMS.TITLE, title);
 
@@ -205,15 +219,16 @@ const Home = () => {
 
   const handleSortByStatus = useCallback(
     (status: string) => {
-      setSelectedStatus(status);
+      clearPagination();
 
+      setSelectedStatus(status);
       searchParams.set(SEARCH_PARAMS.STATUS, status);
       const newUrl = createPageURL(1, searchParams);
       navigate(newUrl);
 
       fetchAtPage(1, titleSearch, status, true);
     },
-    [searchParams, titleSearch],
+    [clearPagination, fetchAtPage, navigate, searchParams, titleSearch],
   );
 
   return (
