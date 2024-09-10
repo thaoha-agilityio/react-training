@@ -15,6 +15,7 @@ import {
   Pagination,
   SearchBar,
   StatByType,
+  TableSkeleton,
   TaskTable,
 } from "@/components";
 import { SpinnerIcon } from "@/components/Icons";
@@ -49,7 +50,7 @@ import { Task } from "@/types";
 import { usePaginationStore } from "@/stores";
 
 // Utils
-import { createPageURL } from "@/utils";
+import { createPageURL, getCurrentDate } from "@/utils";
 
 const TaskForm = lazy(() => import("@/components/TaskForm"));
 const DeleteModal = lazy(() => import("@/components/Modal/DeleteModal"));
@@ -78,11 +79,11 @@ const Home = () => {
     fetchAtPage,
   } = useTaskPagination();
 
+  const clearPagination = usePaginationStore((state) => state.clearPagination);
+
   useEffect(() => {
     fetchAtPage(currentPage, titleSearch, statusSearch);
-  }, [currentPage, titleSearch, statusSearch]);
-
-  const clearPagination = usePaginationStore((state) => state.clearPagination);
+  }, [location.search]);
 
   const { trigger: createTask, isLoading: isCreateTaskLoading } =
     useTaskCreate();
@@ -109,6 +110,7 @@ const Home = () => {
 
   const handleShowDetail = useCallback(
     (id: string) => {
+      fetchAtPage(currentPage, "", "", true);
       navigate(`${ROUTES.TASKS}/${id}`);
     },
     [navigate],
@@ -120,9 +122,8 @@ const Home = () => {
 
     if (!selectedId) {
       clearPagination();
-      fetchAtPage(currentPage);
     }
-
+    fetchAtPage(currentPage, titleSearch, statusSearch, true);
     handleCloseTaskForm();
   };
 
@@ -134,14 +135,17 @@ const Home = () => {
     [showToast],
   );
 
-  const handleSubmit = (data: Task) => {
-    const mutate = data.id ? editTask : createTask;
+  const handleSubmit = (value: Task) => {
+    const mutate = value.id ? editTask : createTask;
 
-    const successMessage = data.id
-      ? SUCCESS_MESSAGES.EDITED(data.title)
-      : SUCCESS_MESSAGES.ADDED(data.title);
+    const successMessage = value.id
+      ? SUCCESS_MESSAGES.EDITED(value.title)
+      : SUCCESS_MESSAGES.ADDED(value.title);
 
-    mutate(data, {
+    const newValue = { ...value, date: getCurrentDate() };
+    const taskValue = value.id ? value : newValue;
+
+    mutate(taskValue, {
       onError: handleError,
       onSuccess: () => handleSuccess(successMessage),
     });
@@ -162,7 +166,7 @@ const Home = () => {
     (message: string) => {
       showToast(message, TOAST_STATUS.SUCCESS);
       clearPagination();
-      fetchAtPage(currentPage);
+      fetchAtPage(currentPage, titleSearch, statusSearch, true);
       handleCloseDeleteModal();
 
       // Check if the current page has no items left after deletion
@@ -170,6 +174,7 @@ const Home = () => {
         // Navigate to the previous page
         const previousPageURL = createPageURL(currentPage - 1, searchParams);
         navigate(previousPageURL);
+        fetchAtPage(currentPage - 1);
       }
     },
     [
@@ -180,7 +185,9 @@ const Home = () => {
       navigate,
       searchParams,
       showToast,
+      statusSearch,
       tasks.length,
+      titleSearch,
     ],
   );
 
@@ -195,6 +202,8 @@ const Home = () => {
 
   const handleSearchTask = useCallback(
     (title: string) => {
+      clearPagination();
+
       // Update search parameters with title
       searchParams.set(SEARCH_PARAMS.TITLE, title);
 
@@ -210,15 +219,16 @@ const Home = () => {
 
   const handleSortByStatus = useCallback(
     (status: string) => {
-      setSelectedStatus(status);
+      clearPagination();
 
+      setSelectedStatus(status);
       searchParams.set(SEARCH_PARAMS.STATUS, status);
       const newUrl = createPageURL(1, searchParams);
       navigate(newUrl);
 
       fetchAtPage(1, titleSearch, status, true);
     },
-    [searchParams, titleSearch],
+    [clearPagination, fetchAtPage, navigate, searchParams, titleSearch],
   );
 
   return (
@@ -255,7 +265,7 @@ const Home = () => {
       </div>
 
       {isLoading ? (
-        <SpinnerIcon />
+        <TableSkeleton />
       ) : (
         <TaskTable
           tasks={tasks}
@@ -272,6 +282,9 @@ const Home = () => {
           totalItems={totalItems}
           itemsPerPage={PAGINATION_LIMIT}
           searchParams={searchParams}
+          title={titleSearch}
+          status={statusSearch}
+          fetchAtPage={fetchAtPage}
         />
       </div>
 

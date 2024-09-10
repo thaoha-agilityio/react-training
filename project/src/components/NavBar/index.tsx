@@ -6,8 +6,14 @@ import NavItem from "./NavItem";
 
 const NavBar = () => (
   <div className="flex flex-col gap-4">
-    {SIDEBAR_NAVIGATION.map(({ label, icon, to }) => (
-      <NavItem key={label} to={to} icon={icon} label={label} />
+    {SIDEBAR_NAVIGATION.map(({ label, icon, to, isEnabled }) => (
+      <NavItem
+        key={label}
+        isEnabled={isEnabled}
+        to={to}
+        icon={icon}
+        label={label}
+      />
     ))}
   </div>
 );

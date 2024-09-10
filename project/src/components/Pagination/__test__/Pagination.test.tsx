@@ -11,6 +11,7 @@ describe("Pagination", () => {
     totalItems: 10,
     itemsPerPage: 1,
     searchParams: new URLSearchParams("page=1"),
+    fetchAtPage: jest.fn(),
   };
 
   it("should render the Pagination correctly", () => {

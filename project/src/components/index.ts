@@ -18,3 +18,6 @@ export { default as MoreMenu } from "./MoreMenu";
 // Modal
 export { default as BaseModal } from "./Modal/BaseModal";
 export { default as DeleteModal } from "./Modal/DeleteModal";
+
+// Skeleton
+export { default as TableSkeleton } from "./Skeleton/TableSkeleton";

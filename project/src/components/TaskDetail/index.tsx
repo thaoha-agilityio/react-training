@@ -1,4 +1,5 @@
 import { memo } from "react";
+import { useNavigate } from "react-router-dom";
 
 // Constants
 import { PRIORITY_STATUS, TASK_STATUS } from "@/constants";
@@ -8,6 +9,9 @@ import { Project } from "@/types";
 
 // Utils
 import { formatTime, getColorPriority, getColorTaskStatus } from "@/utils";
+
+// Components
+import Button from "../Button";
 
 interface TaskDetailProps {
   title: string;
@@ -30,6 +34,10 @@ const TaskDetail = ({
 }: TaskDetailProps) => {
   const baseClass = "font-medium text-zinc-800";
   const detailClass = "text-gray-500";
+
+  const navigate = useNavigate();
+
+  const goBack = () => navigate(-1);
 
   return (
     <div className="mt-10">
@@ -64,6 +72,9 @@ const TaskDetail = ({
 
           <p className={baseClass}>Estimation:</p>
           <p className={detailClass}>{formatTime(estimation)}</p>
+        </div>
+        <div className="flex justify-end mt-5">
+          <Button onClick={goBack}>Back to tasks</Button>
         </div>
       </div>
     </div>
