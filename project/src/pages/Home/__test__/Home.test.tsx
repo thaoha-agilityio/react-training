@@ -13,6 +13,9 @@ import { TASKS } from "@/mocks";
 // Hooks
 import * as hooks from "@/hooks";
 
+// Constants
+import { SUCCESS_MESSAGES, TOAST_STATUS } from "@/constants";
+
 describe("Home page", () => {
   const mockFetchAtPage = jest.fn();
   beforeEach(() => {
@@ -50,12 +53,22 @@ describe("Home page", () => {
     });
   });
 
-  it("shows and handles delete task modal", async () => {
+  it("should be call delete task successfully", async () => {
+    (jest.spyOn(hooks, "useTaskDelete") as jest.Mock).mockReturnValue({
+      trigger: (_: string, { onSuccess }: { onSuccess: () => void }) => {
+        onSuccess();
+      },
+    });
     render(
       <MemoryRouter>
         <Home />
       </MemoryRouter>,
     );
+
+    const mockShowToast = jest.fn();
+    (jest.spyOn(hooks, "useToast") as jest.Mock).mockReturnValue({
+      showToast: mockShowToast,
+    });
 
     const buttons = screen.getAllByLabelText("open menu");
     fireEvent.click(buttons[0]);
@@ -66,6 +79,49 @@ describe("Home page", () => {
     await waitFor(() => {
       const submitBtn = screen.getByText("Yes, Delete");
       fireEvent.click(submitBtn);
+
+      expect(mockShowToast).toHaveBeenCalledWith(
+        SUCCESS_MESSAGES.DELETED("Task"),
+        TOAST_STATUS.SUCCESS,
+      );
+    });
+  });
+
+  it("should be called delete task error", async () => {
+    const errorMessage = "Network Error";
+    (jest.spyOn(hooks, "useTaskDelete") as jest.Mock).mockReturnValue({
+      trigger: (
+        _: string,
+        { onError }: { onError: (error: string) => void },
+      ) => {
+        onError(errorMessage);
+      },
+    });
+    render(
+      <MemoryRouter>
+        <Home />
+      </MemoryRouter>,
+    );
+
+    const mockShowToast = jest.fn();
+    (jest.spyOn(hooks, "useToast") as jest.Mock).mockReturnValue({
+      showToast: mockShowToast,
+    });
+
+    const buttons = screen.getAllByLabelText("open menu");
+    fireEvent.click(buttons[0]);
+
+    const deleteBtn = screen.getByText("Delete Task");
+    fireEvent.click(deleteBtn);
+
+    await waitFor(() => {
+      const submitBtn = screen.getByText("Yes, Delete");
+      fireEvent.click(submitBtn);
+
+      expect(mockShowToast).toHaveBeenCalledWith(
+        errorMessage,
+        TOAST_STATUS.ERROR,
+      );
     });
   });
 });

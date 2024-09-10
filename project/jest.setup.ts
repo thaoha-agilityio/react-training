@@ -16,3 +16,9 @@ jest.mock("@/stores", () => ({
   __esModule: true,
   ...jest.requireActual("@/stores"),
 }));
+
+// Mock the useNavigate hook
+jest.mock("react-router-dom", () => ({
+  __esModule: true,
+  ...jest.requireActual("react-router-dom"),
+}));
